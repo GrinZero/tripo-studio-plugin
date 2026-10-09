@@ -5,6 +5,13 @@ on:
     branches: [main]
   pull_request:
   workflow_call:
+    inputs:
+      source_ref:
+        required: false
+        type: string
+      release_tag:
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -24,6 +31,8 @@ jobs:
             node: 24
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.source_ref || github.sha }}
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: ${{ matrix.node }}
@@ -31,7 +40,7 @@ jobs:
       - run: npm ci
       - run: npm run check:distribution
         env:
-          RELEASE_TAG: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
+          RELEASE_TAG: ${{ inputs.release_tag || (github.event_name == 'release' && github.event.release.tag_name) || '' }}
       - run: npm run build
       - name: Test cross-platform startup and input snapshots
         run: node --test test/bootstrap.test.mjs test/snapshots.test.mjs

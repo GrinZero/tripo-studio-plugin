@@ -67,6 +67,8 @@ Release 附件上传使用 GitHub Actions 自动提供的 `GITHUB_TOKEN`，仅�
 
 Action 会在 Linux、macOS、Windows 上验收发布包，Release 附件与 npm 发布复用同一个 Linux Node 22 验收后保存的 tarball，不会重新打包。PR 和 `main` 的 push 只触发验证，不会上传 Release 附件或发布 npm。
 
+如果需要用修复后的发布工作流补发已有 Release，可在 Actions → **Publish npm plugin** → **Run workflow** 中选择 `main` 并输入已有的稳定版标签。工作流会检出该标签，重新执行跨平台验收，上传附件并发布同版本的 npm 包；不会移动 Release 标签。补发前先确认该版本尚未发布到 npm。
+
 市场 `main` 分支上的新版本清单与 npm 发布之间可能有短暂间隔；在对应 npm 版本发布完成前不要宣布安装／更新可用。
 
 ## 用户更新与卸载
