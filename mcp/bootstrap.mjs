@@ -4,7 +4,7 @@
 // repository itself is runnable during development.
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const bundled = path.join(root, "dist", "server.mjs");
@@ -15,4 +15,4 @@ if (!existsSync(target)) {
   console.error("[tripo-studio-plugin] no server entry found; run `npm run build` or keep src/ alongside mcp/.");
   process.exit(1);
 }
-await import(target);
+await import(pathToFileURL(target).href);
