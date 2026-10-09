@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/images/banner.png" alt="Tripo Studio for Codex — 你的對話式 3D 資產工坊" width="100%" />
+
 <p align="center">
   <a href="README.md"><b>简体中文</b></a> ·
   <a href="README.zh-TW.md"><b>繁體中文</b></a> ·
@@ -7,8 +9,6 @@
   <a href="README.ja.md"><b>日本語</b></a> ·
   <a href="README.ko.md"><b>한국어</b></a>
 </p>
-
-<img src="docs/images/banner.png" alt="Tripo Studio for Codex — 你的對話式 3D 資產工坊" width="100%" />
 
 # Tripo Studio for Codex
 
@@ -54,6 +54,8 @@
 
 ## 1. 什麼是 Tripo Studio for Codex (What it is)
 
+**Tripo API 由 Tripo 官方提供；Tripo Studio for Codex 是我們獨立開發的非官方外掛。** 官方目前未提供在 Codex 中直接複用 Tripo Studio 網頁會員帳號的整合，因此我們提供這個外掛來補足這項能力，讓使用者透過自己的 Studio 帳號在 Codex 中完成 3D 資產工作流程。
+
 以往製作 3D 資產是一條高度割裂的繁複管線：
 在瀏覽器網頁中輸入 Prompt 生成模型 ➔ 手動下載 GLB 導出檔案 ➔ 導入 Blender 檢查拓撲與面數 ➔ 發現問題反覆切換回網頁重刷 ➔ 換外部工具綁定骨骼與動作 ➔ 格式轉換與貼圖烘焙頻繁報錯。
 
@@ -81,9 +83,25 @@
 - 自己的 **Tripo Studio 會員帳號**（瀏覽器登入會話）
 - *（可選）* **Blender**：用於本地幾何檢查、線框渲染與投影烘焙；純雲端生成不依賴 Blender
 
-### 2.2 透過 Codex 市集安裝外掛
+### 2.2 複製給 AI，讓它幫你安裝（推薦）
 
-在終端機中執行以下命令，新增本專案的外掛市集並完成安裝：
+**複製下面整段文字，貼到 Codex 對話框並送出即可。** AI 會檢查環境、執行安裝並確認結果；你無需自己輸入終端機命令。
+
+```text
+請幫我安裝 Tripo Studio for Codex 外掛。
+專案網址：https://github.com/GrinZero/tripo-studio-plugin
+
+請先檢查本機是否有 Node.js ≥ 22、npm / npx 和支援外掛的 Codex CLI，缺少時幫我安裝或設定。
+然後執行以下命令：
+codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin add tripo-studio-plugin@tripo-studio-plugins
+
+如果市集已經新增，請沿用它；需要重新整理時執行 codex plugin marketplace upgrade tripo-studio-plugins。
+請確認外掛安裝成功；遇到錯誤請排查並修復。完成後提醒我在 Codex 中開啟新聊天，
+再傳送「檢查 Tripo Studio 登入狀態，需要的話幫我登入」，然後傳送「打開 Tripo 工作台」。
+```
+
+需要自己安裝時，也可以在終端機中執行：
 
 ```bash
 codex plugin marketplace add GrinZero/tripo-studio-plugin

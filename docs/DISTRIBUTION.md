@@ -33,7 +33,9 @@ npm run test:package
 
 包名为 `tripo-studio-plugin`，以 [MIT License](../LICENSE) 公开发布。第三方依赖的许可证声明随包提供于 `dist/THIRD_PARTY_NOTICES.txt`。首次发布前确认维护者的 npm 账号有权使用这个包名。
 
-工作流为 `.github/workflows/publish.yml`，由稳定版 GitHub Release 的 `published` 事件触发。CI 通过后发布已经验证的 tarball，附带 provenance。源码仓库需要公开，才能生成公共包的 provenance。
+工作流为 `.github/workflows/publish.yml`，由稳定版 GitHub Release 的 `published` 事件触发。CI 通过后，将已经验证的 tarball 上传到该 Release 的 Assets，并发布到 npm，附带 provenance。源码仓库需要公开，才能生成公共包的 provenance。
+
+Release 附件上传使用 GitHub Actions 自动提供的 `GITHUB_TOKEN`，仅上传任务授予 `contents: write`，无需额外配置 token。附件上传与 npm 发布分别在 CI 通过后执行；即使 npm 凭据未配置或发布失败，Release 附件仍可上传。重跑附件上传任务会替换同名 `.tgz` 文件。
 
 首次创建 npm 包时，可以在 GitHub 仓库的 Actions secrets 中配置具有发布权限的 **`NPM_TOKEN`**。使用支持发布的 granular token，并根据账号的 2FA 策略设置适用于 CI 的权限。Action 将它传入 `NODE_AUTH_TOKEN`，无需把凭据提交到仓库。
 
@@ -61,9 +63,9 @@ npm run test:package
 1. 在发布分支更新版本，例如 `npm version 0.3.5 --no-git-tag-version`。npm 的 `version` 钩子自动同步插件清单、市场版本、MCP 的 npm 版本、服务／界面版本和 README 徽章。
 2. 执行 `npm run build`、`npm test` 和 `npm run test:package`，提交版本修改与构建产物，然后推送到 GitHub。
 3. 创建对应的 `v0.3.5` 标签，并发布该标签的 GitHub Release。发布稳定版本；当前工作流跳过 prerelease，拒绝标签与包版本不一致。
-4. 等待 **Validate plugin** 和 **Publish npm plugin** 成功，再通知用户更新。npm 发布版本不可覆盖；失败重试前先确认该版本是否已在注册表中。
+4. 等待 **Publish npm plugin** 工作流中的验证、**Upload tested package to Release** 和 npm 发布任务成功，确认 Release 的 Assets 中出现 `tripo-studio-plugin-<版本>.tgz`，再通知用户更新。npm 发布版本不可覆盖；失败重试前先确认该版本是否已在注册表中。
 
-Action 会在 Linux、macOS、Windows 上验收发布包，并使用 Linux Node 22 验收后保存的 tarball 发布，不会重新打包。PR 和 `main` 的 push 只触发验证，不会发布。
+Action 会在 Linux、macOS、Windows 上验收发布包，Release 附件与 npm 发布复用同一个 Linux Node 22 验收后保存的 tarball，不会重新打包。PR 和 `main` 的 push 只触发验证，不会上传 Release 附件或发布 npm。
 
 市场 `main` 分支上的新版本清单与 npm 发布之间可能有短暂间隔；在对应 npm 版本发布完成前不要宣布安装／更新可用。
 
