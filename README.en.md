@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/images/banner.png" alt="Tripo Studio for Codex — Your Conversational 3D Studio" width="100%" />
+
 <p align="center">
   <a href="README.md"><b>简体中文</b></a> ·
   <a href="README.zh-TW.md"><b>繁體中文</b></a> ·
@@ -7,8 +9,6 @@
   <a href="README.ja.md"><b>日本語</b></a> ·
   <a href="README.ko.md"><b>한국어</b></a>
 </p>
-
-<img src="docs/images/banner.png" alt="Tripo Studio for Codex — Your Conversational 3D Studio" width="100%" />
 
 # Tripo Studio for Codex
 
@@ -54,6 +54,8 @@
 
 ## 1. What it is
 
+**Tripo API is provided officially by Tripo; Tripo Studio for Codex is an unofficial plugin developed independently by us.** Tripo does not currently offer a Codex integration that directly reuses your Tripo Studio web membership account, so we built this plugin to fill that gap and let you run 3D asset workflows in Codex with your own Studio account.
+
 Traditionally, creating 3D assets has been a disjointed and tedious pipeline:
 Prompt in a web browser ➔ Manually download raw GLB files ➔ Import into Blender to check polycount & manifold issues ➔ Switch back and forth to re-prompt ➔ Transfer to external rigging tools ➔ Suffer from texture baking and format conversion failures.
 
@@ -81,9 +83,25 @@ Simply send a natural language prompt to Codex. Your agent drafts generation par
 - A **Tripo Studio account** (browser login session)
 - *(Optional)* **Blender** (for offline mesh checks, wireframe renders, and projection baking)
 
-### 2.2 Install Plugin via Codex Marketplace
+### 2.2 Copy This Prompt to AI and Let It Install (Recommended)
 
-Run the following commands in your terminal:
+**Copy the entire block below, paste it into a Codex chat, and send it.** AI will check your environment, run the installation, and verify the result for you.
+
+```text
+Please install the Tripo Studio for Codex plugin for me.
+Repository: https://github.com/GrinZero/tripo-studio-plugin
+
+First check for Node.js ≥ 22, npm / npx, and a Codex CLI with plugin support. Help install or configure anything missing.
+Then run:
+codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin add tripo-studio-plugin@tripo-studio-plugins
+
+If the marketplace is already added, reuse it; refresh it with codex plugin marketplace upgrade tripo-studio-plugins if needed.
+Verify the plugin is installed successfully, and diagnose and fix any errors. When done, remind me to open a new Codex chat,
+send "Check my Tripo Studio login status, and log in if needed," then send "Open Tripo workbench."
+```
+
+For manual installation, run these commands in your terminal:
 
 ```bash
 codex plugin marketplace add GrinZero/tripo-studio-plugin

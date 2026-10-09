@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/images/banner.png" alt="Tripo Studio for Codex — 대화형 3D 에셋 스튜디오" width="100%" />
+
 <p align="center">
   <a href="README.md"><b>简体中文</b></a> ·
   <a href="README.zh-TW.md"><b>繁體中文</b></a> ·
@@ -7,8 +9,6 @@
   <a href="README.ja.md"><b>日本語</b></a> ·
   <a href="README.ko.md"><b>한국어</b></a>
 </p>
-
-<img src="docs/images/banner.png" alt="Tripo Studio for Codex — 대화형 3D 에셋 스튜디오" width="100%" />
 
 # Tripo Studio for Codex
 
@@ -54,6 +54,8 @@
 
 ## 1. Tripo Studio for Codex란? (What it is)
 
+**Tripo API는 Tripo가 공식 제공하며, Tripo Studio for Codex는 저희가 독립적으로 개발한 비공식 플러그인입니다.** 현재 Tripo는 기존 Tripo Studio 웹 멤버십 계정을 직접 활용하는 Codex 연동을 공식 제공하지 않습니다. 저희는 이 기능을 보완하기 위해 플러그인을 개발했으며, 사용자는 자신의 Studio 계정으로 Codex에서 3D 에셋 제작 워크플로우를 진행할 수 있습니다.
+
 기존의 3D 에셋 제작은 매우 번거롭고 단절된 워크플로우였습니다:
 웹 브라우저에서 프롬프트로 모델 생성 ➔ GLB 파일 수동 다운로드 ➔ Blender로 가져와 토폴로지와 폴리곤 수 검사 ➔ 문제 발견 시 브라우저로 돌아가 재시도 ➔ 외부 리깅 툴로 이동해 뼈대 및 모션 부여 ➔ 텍스처 베이킹 및 포맷 변환 오류 해결.
 
@@ -81,9 +83,25 @@ Codex에 자연어로 요청하기만 하면, 에이전트가 생성 파라미�
 - **Tripo Studio 계정** (브라우저 로그인 세션)
 - *(선택 사항)* **Blender** (로컬 메쉬 검사, 와이어프레임 렌더링 및 텍스처 프로젝션 베이킹용)
 
-### 2.2 Codex 마켓플레이스를 통한 설치
+### 2.2 AI에게 복사해서 설치 맡기기 (권장)
 
-터미널에서 아래 명령을 실행하여 마켓플레이스를 추가하고 설치합니다:
+**아래 문장 전체를 복사해서 Codex 대화창에 붙여넣고 전송하세요.** AI가 환경을 확인하고 설치를 진행한 뒤 결과를 검증합니다.
+
+```text
+Tripo Studio for Codex 플러그인을 설치해 주세요.
+저장소: https://github.com/GrinZero/tripo-studio-plugin
+
+먼저 Node.js ≥ 22, npm / npx, 플러그인을 지원하는 Codex CLI가 있는지 확인하고, 없으면 설치나 설정을 도와주세요.
+그런 다음 아래 명령을 실행해 주세요:
+codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin add tripo-studio-plugin@tripo-studio-plugins
+
+마켓플레이스가 이미 추가되어 있으면 그대로 사용하고, 갱신이 필요하면 codex plugin marketplace upgrade tripo-studio-plugins를 실행해 주세요.
+플러그인 설치가 성공했는지 확인하고 오류가 있으면 원인을 찾아 해결해 주세요. 완료 후 Codex에서 새 대화를 열고,
+"Tripo Studio 로그인 상태 확인하고 필요하면 로그인해 줘", 이어서 "Tripo 워크벤치 열어줘"라고 보내도록 안내해 주세요.
+```
+
+직접 설치하려면 터미널에서 아래 명령을 실행하세요:
 
 ```bash
 codex plugin marketplace add GrinZero/tripo-studio-plugin

@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/images/banner.png" alt="Tripo Studio for Codex — 対話型 3D アセットスタジオ" width="100%" />
+
 <p align="center">
   <a href="README.md"><b>简体中文</b></a> ·
   <a href="README.zh-TW.md"><b>繁體中文</b></a> ·
@@ -7,8 +9,6 @@
   <a href="README.ja.md"><b>日本語</b></a> ·
   <a href="README.ko.md"><b>한국어</b></a>
 </p>
-
-<img src="docs/images/banner.png" alt="Tripo Studio for Codex — 対話型 3D アセットスタジオ" width="100%" />
 
 # Tripo Studio for Codex
 
@@ -54,6 +54,8 @@
 
 ## 1. Tripo Studio for Codex とは (What it is)
 
+**Tripo API は Tripo が公式に提供しています。一方、Tripo Studio for Codex は私たちが独自に開発した非公式プラグインです。** 現在、Tripo は既存の Tripo Studio の Web 会員アカウントを直接利用できる Codex 連携を公式には提供していません。そのため、このプラグインでその機能を補い、自分の Studio アカウントを使って Codex 内で 3D アセット制作を進められるようにしました。
+
 従来の 3D アセット制作は分断された煩雑な作業の連続でした：
 Web ブラウザでプロンプトを入力して生成 ➔ GLB ファイルを手動ダウンロード ➔ Blender に取り込んでトポロジーとポリゴン数を確認 ➔ 修正のためにブラウザへ戻り再生成 ➔ 外部ツールでボーン入れとリギング ➔ テクスチャのベイクやフォーマット変換で頻発するエラー。
 
@@ -81,9 +83,25 @@ Codex に自然言語で話しかけるだけで、エージェントがパラ�
 - **Tripo Studio 会員アカウント**（Web ブラウザのログインセッション）
 - *（任意）* **Blender**：ローカルメッシュ検査、ワイヤーフレーム描画、投影ベイク用
 
-### 2.2 Codex マーケットプレイス経由でのインストール
+### 2.2 AI にコピーしてインストールを任せる（推奨）
 
-ターミナルで以下のコマンドを実行します：
+**以下の文章をすべてコピーし、Codex のチャットに貼り付けて送信してください。** AI が環境の確認、インストール、結果の検証を行います。
+
+```text
+Tripo Studio for Codex プラグインをインストールしてください。
+リポジトリ：https://github.com/GrinZero/tripo-studio-plugin
+
+まず Node.js ≥ 22、npm / npx、プラグイン対応の Codex CLI があるか確認し、不足があればインストールや設定を手伝ってください。
+次に以下のコマンドを実行してください：
+codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin add tripo-studio-plugin@tripo-studio-plugins
+
+マーケットプレイスが追加済みなら再利用し、更新が必要なら codex plugin marketplace upgrade tripo-studio-plugins を実行してください。
+インストールの成功を確認し、エラーがあれば原因を調べて修正してください。完了したら Codex で新しいチャットを開き、
+「Tripo Studio のログイン状態を確認して、必要ならログインを手伝って」、続いて「Tripo ワークベンチを開いて」と送信するよう案内してください。
+```
+
+手動でインストールする場合は、ターミナルで以下のコマンドを実行します：
 
 ```bash
 codex plugin marketplace add GrinZero/tripo-studio-plugin
