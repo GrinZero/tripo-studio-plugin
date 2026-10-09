@@ -1,5 +1,5 @@
 import path from 'node:path';
-import sharp from 'sharp';
+import { convertImage } from '../util/image-processing.mjs';
 import { verifySnapshot } from '../ops/images.mjs';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { z } from 'zod';
@@ -53,7 +53,7 @@ export class ConfigurationReviews {
     if(!snapshot)throw new TripoError('PREVIEW_UNAVAILABLE','此视图暂时没有图片。');
     const file=await verifySnapshot(this.runtime.config,task.task_id,snapshot);
     if((await stat(file)).size>20*1024*1024)throw new TripoError('PREVIEW_UNAVAILABLE','输入图片超过预览大小限制。');
-    const bytes=await sharp(await readFile(file),{limitInputPixels:64*1024*1024}).rotate().resize({width:640,height:640,fit:'inside',withoutEnlargement:true}).webp({quality:85}).toBuffer();
+    const bytes=await convertImage(await readFile(file), { autoOrient: true, maxSize: 640, format: 'webp', quality: 85 });
     return {mime_type:'image/webp',data_url:`data:image/webp;base64,${bytes.toString('base64')}`,bytes:bytes.length};
   }
   async output(record) {

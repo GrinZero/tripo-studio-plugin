@@ -8,7 +8,8 @@ import { operationCatalog } from '../../src/ops/registry.mjs';
 import { modelQuote } from '../fixtures/model-quote.mjs';
 import { fixtureGlb } from '../helpers/glb-fixture.mjs';
 import { AssetLibrary } from '../../src/ui/asset-library.mjs';
-import sharp from 'sharp';
+import { initializeImageMagick, ImageMagick, MagickFormat } from '@imagemagick/magick-wasm';
+await initializeImageMagick(await readFile(new URL(import.meta.resolve('@imagemagick/magick-wasm/magick.wasm'))));
 const root = new URL('../../', import.meta.url), dir = await mkdtemp(path.join(tmpdir(), 'tripo-i18n-host-'));
 await build({entryPoints:[new URL('i18n-host.mjs',import.meta.url).pathname],outfile:path.join(dir,'host.js'),bundle:true,format:'esm',platform:'browser'});
 const pages = Object.fromEntries(await Promise.all(['workbench','result-card'].map(async name => {
@@ -23,7 +24,7 @@ const characters = [{id:'paimon',name:'派蒙'},{id:'traveler',name:'旅行者'}
 const models = Array.from({length:45},(_,i)=>({project_id:`model-${i}`,name:`模型 ${i}`,created_at:'2026-10-09T00:00:00Z',visibility:'private',character_group:i===44?null:characters[i%2]}));
 const images = Array.from({length:3},(_,i)=>({asset_id:`image-${i}`,input:{prompt:`图片 ${i}`},status:'success',output_count:1,character_group:i===2?null:characters[i]}));
 let library,fixtureAccount=0;
-const covers = await Promise.all(['#e4a24b','#6b94cc','#83ac91','#b989ac'].map(async color => 'data:image/png;base64,'+(await sharp(Buffer.from(`<svg width="320" height="256" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="256" fill="#eef0f4"/><ellipse cx="160" cy="222" rx="80" ry="12" fill="#d4d8e0"/><path d="M104 202V116Q104 92 128 92H192Q216 92 216 116V202Z" fill="${color}"/><circle cx="160" cy="65" r="38" fill="${color}"/><path d="M118 124H202M160 103V192" stroke="#fff" stroke-opacity=".35" stroke-width="4"/></svg>`)).png().toBuffer()).toString('base64')));
+const covers = await Promise.all(['#e4a24b','#6b94cc','#83ac91','#b989ac'].map(async color => 'data:image/png;base64,'+(ImageMagick.read(Buffer.from(`<svg width="320" height="256" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="256" fill="#eef0f4"/><ellipse cx="160" cy="222" rx="80" ry="12" fill="#d4d8e0"/><path d="M104 202V116Q104 92 128 92H192Q216 92 216 116V202Z" fill="${color}"/><circle cx="160" cy="65" r="38" fill="${color}"/><path d="M118 124H202M160 103V192" stroke="#fff" stroke-opacity=".35" stroke-width="4"/></svg>`), image => image.write(MagickFormat.Png, bytes => Buffer.from(bytes)))).toString('base64')));
 function reset() {
   calls=[];unknownCosts=false;groupedAssets=false;fixtureAccount++;
   const account=`fixture-${fixtureAccount}`;

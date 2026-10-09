@@ -3,7 +3,7 @@ import {describe,it} from 'node:test';
 import {mkdtemp,mkdir,readFile,rm,writeFile,symlink} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
-import sharp from 'sharp';
+import { solidImage } from './helpers/image-fixture.mjs';
 import {generationInput,quoteCurrent,artifactFor} from '../ui/model.mjs';
 import {createWorkbenchMedia,readPreviewUrl,validatePreviewGlb} from '../src/ui/media.mjs';
 import {fixtureGlb} from './helpers/glb-fixture.mjs';
@@ -45,7 +45,7 @@ describe('workbench media isolation',()=>{
    const preview=await media.preview({local_path:model,type:'model'});
    assert.equal(preview.mime_type,'model/gltf-binary');
    assert.ok(validatePreviewGlb(Buffer.from(preview.data_url.split(',')[1],'base64')));
-   const image=path.join(output,'second.png');await writeFile(image,await sharp({create:{width:13,height:7,channels:3,background:'#aabbcc'}}).png().toBuffer());
+   const image=path.join(output,'second.png');await writeFile(image,await solidImage({width:13,height:7,channels:3,background:'#aabbcc'}));
    assert.equal((await media.preview({local_path:image,type:'image'})).width,13);
    await assert.rejects(media.preview({local_path:model,project_id:'another',type:'model'}),/请选择一个/);
    await assert.rejects(media.preview({local_path:'relative.glb',type:'model'}),/绝对路径/);
@@ -60,7 +60,7 @@ describe('workbench media isolation',()=>{
  it('imports valid images locally, uses opaque handles, and refuses non-raster input',async()=>{
   const dir=await mkdtemp(path.join(tmpdir(),'tripo-ui-media-'));const config=makeConfig(dir);await mkdir(config.assetRoot);
   try{
-   const media=createWorkbenchMedia({config});const bytes=await sharp({create:{width:32,height:24,channels:3,background:'#cc7755'}}).png().toBuffer();
+   const media=createWorkbenchMedia({config});const bytes=await solidImage({width:32,height:24,channels:3,background:'#cc7755'});
    const image=await media.importImage({name:'../../input.png',data_base64:bytes.toString('base64')});assert.equal(image.name,'input.png');assert.equal(image.width,32);assert.ok(image.file_path.startsWith(path.join(config.assetRoot,'ui-inputs')));assert.ok(image.preview.data_url.startsWith('data:image/webp;base64,'));assert.ok((await readFile(image.file_path)).length>0);
    const preview=await media.preview({input_id:image.input_id,type:'image'});assert.equal(preview.width,32);assert.equal(preview.height,24);
    await assert.rejects(media.importImage({name:'fake.png',data_base64:Buffer.from('<svg/>').toString('base64')}));

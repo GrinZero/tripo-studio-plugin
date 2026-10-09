@@ -1,12 +1,16 @@
 {
   "name": "tripo-studio-plugin",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Generate, edit, rig, animate and export images or 3D models with your Tripo Studio member account, without an API key. Browse existing assets and let agents create or rename groups and add, move or remove model/image members in the shared asset workbench. Reuses your browser session, then runs headlessly with persistent task records.",
   "author": {
     "name": "tripo-studio-plugin contributors"
   },
-  "license": "UNLICENSED",
+  "homepage": "https://github.com/GrinZero/tripo-studio-plugin",
+  "repository": "https://github.com/GrinZero/tripo-studio-plugin",
+  "license": "MIT",
   "keywords": [
+    "codex",
+    "codex-plugin",
     "tripo",
     "tripo-studio",
     "3d",

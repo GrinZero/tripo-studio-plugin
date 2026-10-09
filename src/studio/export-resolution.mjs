@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { readFile, writeFile, mkdir, unlink } from 'node:fs/promises';
-import sharp from 'sharp';
+import { convertImage, imageMetadata } from '../util/image-processing.mjs';
 import { unzipSync, zipSync } from 'fflate';
 import { TripoError } from '../errors.mjs';
 import { downloadArtifact } from './downloader.mjs';
@@ -35,23 +35,21 @@ function imageBytes(doc, bin, image) {
 export async function inspectGlbTextures(bytes) {
   const { doc, bin } = parseGlb(bytes);
   return Promise.all((doc.images ?? []).map(async (image, i) => {
-    const m = await sharp(imageBytes(doc, bin, image)).metadata();
+    const m = await imageMetadata(imageBytes(doc, bin, image));
     return { name: image.name ?? `image-${i}`, width: m.width, height: m.height };
   }));
 }
 async function resizeImage(bytes, size, name) {
-  const m = await sharp(bytes).metadata();
+  const m = await imageMetadata(bytes);
   if (!m.width || !m.height || m.pages > 1 || !['png', 'jpeg', 'webp'].includes(m.format)) reject(`Unsupported texture encoding: ${name}.`);
   const changed = Math.max(m.width, m.height) > size;
   // Resolution is a maximum edge length: preserve aspect ratio and never upscale.
   let output = bytes;
   if (changed) {
-    let pipe = sharp(bytes).resize({ width: size, height: size, fit: 'inside', withoutEnlargement: true });
     // Keep filenames, encoding and alpha; do not convert PBR data maps to sRGB.
-    pipe = m.format === 'jpeg' ? pipe.jpeg({ quality: 95, chromaSubsampling: '4:4:4' }) : m.format === 'png' ? pipe.png() : pipe.webp({ lossless: true });
-    output = await pipe.toBuffer();
+    output = await convertImage(bytes, { maxSize: size, format: m.format, quality: 95, lossless: true });
   }
-  const actual = await sharp(output).metadata();
+  const actual = await imageMetadata(output);
   if (Math.max(actual.width, actual.height) > size) reject(`Texture still exceeds requested resolution: ${name}.`);
   return { bytes: output, changed, texture: { name, source_width: m.width, source_height: m.height, width: actual.width, height: actual.height } };
 }

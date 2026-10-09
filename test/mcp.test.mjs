@@ -5,9 +5,11 @@ import { readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, it } from "node:test";
-import sharp from "sharp";
+import { solidImage } from './helpers/image-fixture.mjs';
+import { imageMetadata } from '../src/util/image-processing.mjs';
 
 const root = path.join(path.dirname(new URL(import.meta.url).pathname), "..");
+const { version } = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
 
 // Minimal stdio JSON-RPC client for handshake tests.
 function mcpClient(proc) {
@@ -97,7 +99,7 @@ describe("mcp handshake", () => {
       }
       assert.ok(names.includes("tripo_quote_operation"));
       for (const name of ["tripo_generate_uv", "tripo_apply_uv", "tripo_export_model", "tripo_generate_motion", "tripo_apply_motion", "tripo_get_uv_context", "tripo_list_motions", "tripo_get_motion", "tripo_upscale_image", "tripo_split_image", "tripo_render_model", "tripo_edit_parts", "tripo_bake_texture_projection", "tripo_paint_texture", "tripo_crop_image", "tripo_inspect_local_parts"]) assert.ok(names.includes(name), `missing tool ${name}`);
-      assert.equal(init.serverInfo.version, "0.3.3");
+      assert.equal(init.serverInfo.version, version);
       for (const name of ["tripo_ui_preview", "tripo_ui_import_image", "tripo_ui_review", "tripo_ui_asset_library"]) assert.deepEqual(tools.tools.find(t => t.name === name)._meta.ui.visibility, ["app"]);
       for (const name of ['tripo_auth_login','tripo_auth_status','tripo_auth_logout','tripo_get_payment','tripo_quote_operation','tripo_list_operations','tripo_list_models','tripo_get_model','tripo_list_image_assets','tripo_get_image_asset','tripo_submit_task','tripo_task_sync','tripo_task_wait','tripo_task_cancel','tripo_task_reconcile','tripo_list_tasks','tripo_get_task','tripo_download','tripo_list_task_groups','tripo_set_task_character','tripo_inspect_local_parts','tripo_run_workflow','tripo_open_in_studio']) {
         const t=tools.tools.find(t=>t.name===name);
@@ -112,7 +114,7 @@ describe("mcp handshake", () => {
       assert.equal(card.contents[0]._meta["openai/ui"].preferredDisplayMode, "inline");
       assert.ok(card.contents[0].text.includes("Tripo 工具结果"));
       assert.ok(!card.contents[0].text.includes("<!-- CARD_SCRIPT -->"));
-      const pixels = await sharp({ create: { width: 32, height: 24, channels: 3, background: "#cc7755" } }).png().toBuffer();
+      const pixels = await solidImage({ width: 32, height: 24, channels: 3, background: "#cc7755" });
       const imported = await client.request("tools/call", { name: "tripo_ui_import_image", arguments: { name: "fixture.png", data_base64: pixels.toString("base64") } });
       assert.equal(imported.isError, undefined);
       assert.ok(imported._meta.tripo.preview.data_url.startsWith("data:image/webp;base64,"));
@@ -125,7 +127,7 @@ describe("mcp handshake", () => {
       assert.ok(open.icons[0].src.startsWith("data:image/png;base64,"));
       const iconBytes = Buffer.from(open.icons[0].src.split(",")[1], "base64");
       assert.deepEqual(iconBytes, await readFile(path.join(root, "ui", "tripo-logo.png")));
-      assert.equal((await sharp(iconBytes).metadata()).width, 60);
+      assert.equal((await imageMetadata(iconBytes)).width, 60);
       assert.deepEqual(init.serverInfo.icons, open.icons);
       assert.equal(open.title, "Tripo 工作台");
       assert.deepEqual(open._meta["openai/ui"].entrypoints, [{ type: "global" }, { type: "thread" }]);

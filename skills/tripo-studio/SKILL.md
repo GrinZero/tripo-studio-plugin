@@ -3,7 +3,7 @@ name: tripo-studio
 description: Generate, edit, rig, animate and export images or 3D models through the user's Tripo Studio member account without an API key. Also use for browsing existing Studio assets, organizing models/images into groups or character collections, moving/removing members, renaming groups, and local Blender model or texture edits.
 ---
 
-# Tripo Studio 0.3.3
+# Tripo Studio 0.3.4
 
 Use the `tripo_*` MCP tools. Read `tripo_list_operations` for the available operation kinds, descriptions and `consumes_credits` flags. It does not return input schemas. Get parameter names, types, enums and defaults from the currently registered tool definitions (MCP `tools/list`), not from this catalog or the workbench's example JSON. If a required tool or parameter is missing, report the mismatch and reload/update the plugin connection before relying on it.
 

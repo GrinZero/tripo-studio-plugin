@@ -78,18 +78,18 @@ it('a restarted process waits for visible controls again and never retries inter
 it('an ambiguous submit failure is recorded without automatic retry',async()=>{const f=await fixture();try{f.runtime.service.submit=async()=>{throw Error('network lost after dispatch');};const r=await f.reviews.action({review_id:f.output.review.review_id,action:'confirm'});assert.equal(r.review.status,'failed');await f.reviews.action({review_id:f.output.review.review_id,action:'confirm'});assert.equal(f.scheduled.size,0);}finally{await f.close();}});
 it('expired quotes pause the deadline and account changes cannot submit',async()=>{const f=await fixture();try{await f.reviews.action({review_id:f.output.review.review_id,action:'ready'});f.tasks.get(f.output.task.task_id).cost_estimate.estimate_expires_at=new Date(0).toISOString();f.advance(60000);const r=await f.reviews.action({review_id:f.output.review.review_id,action:'confirm',automatic:true});assert.equal(r.review.status,'editing');assert.equal(f.submits(),0);f.runtime.session.accountFingerprint=async()=>'another';await assert.rejects(f.reviews.action({review_id:f.output.review.review_id,action:'confirm'}));}finally{await f.close();}});
 it('configuration thumbnails read verified snapshots and reject changed files or another account',async()=>{
- const {makeRuntime}=await import('./helpers/runtime.mjs');const sharp=(await import('sharp')).default;
+ const {makeRuntime}=await import('./helpers/runtime.mjs');const {solidImage}=await import('./helpers/image-fixture.mjs');
  const {writeFile,chmod}=await import('node:fs/promises');const {snapshotDirectory}=await import('../src/ops/images.mjs');
  const runtime=await makeRuntime();const reviews=new ConfigurationReviews(runtime,{schedule:()=>1,unschedule:()=>{}});
  try{
-  const image=path.join(runtime.config.dataDir,'input.png');await writeFile(image,await sharp({create:{width:32,height:32,channels:3,background:'#628c61'}}).png().toBuffer());
+  const image=path.join(runtime.config.dataDir,'input.png');await writeFile(image,await solidImage({width:32,height:32,channels:3,background:'#628c61'}));
   const input={image_path:image,left:0,top:0,width:16,height:16,submit:false};
   const output=await reviews.create('local.crop',input,await runtime.service.prepare('local.crop',input));
   assert.equal(output.review.sources.length,1);const slot=output.review.sources[0].slot;
   const preview=await reviews.preview(output.review.review_id,slot);assert.ok(preview.data_url.startsWith('data:image/webp;base64,'));
   await assert.rejects(reviews.preview(output.review.review_id,'../../other-file'));
   const frozen=await runtime.store.get(output.task.task_id);const file=path.join(snapshotDirectory(runtime.config,frozen.task_id),path.basename(frozen.snapshots[0].relative_path));
-  await chmod(file,0o600);await writeFile(file,await sharp({create:{width:32,height:32,channels:3,background:'#ff0000'}}).png().toBuffer());
+  await chmod(file,0o600);await writeFile(file,await solidImage({width:32,height:32,channels:3,background:'#ff0000'}));
   await assert.rejects(reviews.preview(output.review.review_id,slot),/provenance/);
   await reviews.doc(output.review.review_id).update(r=>({...r,account_fingerprint:'another-account'}));
   await assert.rejects(reviews.preview(output.review.review_id,slot),/another account/);

@@ -1,13 +1,14 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { readFile, mkdir } from 'node:fs/promises';
-import sharp from 'sharp';
+import { solidImage } from './helpers/image-fixture.mjs';
+import { imageMetadata } from '../src/util/image-processing.mjs';
 import { zipSync, unzipSync } from 'fflate';
 import { normalizeExport, inspectGlbTextures, sourceTextureInfo, prepareExportDownload } from '../src/studio/export-resolution.mjs';
 import { makeRuntime } from './helpers/runtime.mjs';
 import { fixtureGlb } from './helpers/glb-fixture.mjs';
 
-async function image(width=2048,height=2048) { return sharp({create:{width,height,channels:4,background:{r:200,g:90,b:30,alpha:0.4}}}).png().toBuffer(); }
+async function image(width=2048,height=2048) { return solidImage({width,height,channels:4,background:{r:200,g:90,b:30,alpha:0.4}}); }
 async function texturedGlb(size=2048) {
   const base=fixtureGlb(),n=base.readUInt32LE(12),doc=JSON.parse(base.subarray(20,20+n).toString().trim()),bin=base.subarray(28+n),texture=await image(size,size);
   const pad=Buffer.alloc(Math.ceil(texture.length/4)*4);texture.copy(pad);
@@ -23,7 +24,7 @@ describe('export resolution',()=>{
   const source=Buffer.from(zipSync({'model.fbx':mesh,'part/texture.png':texture,'model.mtl':mtl})),before=Buffer.from(source);
   const out=await normalizeExport(source,{textureSize:1024,format:'fbx',expectTextures:true}),files=unzipSync(out.bytes);
   assert.deepEqual(source,before);assert.deepEqual(Buffer.from(files['model.fbx']),mesh);assert.deepEqual(Buffer.from(files['model.mtl']),mtl);
-  const m=await sharp(files['part/texture.png']).metadata();assert.equal(m.width,1024);assert.equal(m.height,1024);assert.equal(m.hasAlpha,true);assert.equal(out.verification.actual_texture_size_verified,true);assert.equal(out.verification.resolution_method,'local_downsample');
+  const m=await imageMetadata(files['part/texture.png']);assert.equal(m.width,1024);assert.equal(m.height,1024);assert.equal(m.hasAlpha,true);assert.equal(out.verification.actual_texture_size_verified,true);assert.equal(out.verification.resolution_method,'local_downsample');
   const repeated=await normalizeExport(source,{textureSize:1024,format:'fbx',expectTextures:true});assert.deepEqual(repeated.bytes,out.bytes);
  });
  it('passes matching files byte-for-byte and never enlarges smaller/non-square textures',async()=>{
@@ -62,7 +63,7 @@ describe('export resolution',()=>{
    let requested;runtime.gateway.getExportDownload=async(op,name)=>{requested={op,name};return {model_url:'https://cdn.tripo3d.ai/frozen.zip?signature=secret'};};
    const resolved=await prepareExportDownload(runtime,{task_id:'test-export',payload:{name:'checked',texture_size:1024},remote:{operator_id:'frozen-export'},result:{format:'fbx'},metadata:{source_texture_count:1}});
    assert.deepEqual(requested,{op:'frozen-export',name:'checked'});assert.equal(resolved.defaultName,'checked.zip');assert.equal(resolved.verification.actual_texture_size_verified,true);assert.deepEqual(await readFile(resolved.verification.source_path),native);
-   const files=unzipSync(await readFile(resolved.localPath));assert.equal((await sharp(files['texture.png']).metadata()).width,1024);assert.deepEqual(Buffer.from(files['model.fbx']),Buffer.from('same skeleton'));
+   const files=unzipSync(await readFile(resolved.localPath));assert.equal((await imageMetadata(files['texture.png'])).width,1024);assert.deepEqual(Buffer.from(files['model.fbx']),Buffer.from('same skeleton'));
   } finally {globalThis.fetch=prior;}
  });
 });

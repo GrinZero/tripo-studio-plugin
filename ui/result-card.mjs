@@ -5,7 +5,7 @@ import { mountModel } from './viewer.mjs';
 import { mountConfiguration } from './configuration-card.mjs';
 import { cardItems, operationGroups } from './card-model.mjs';
 import { mountQuote } from './quote-card.mjs';
-const app = new App({name:'Tripo Studio',version:'0.3.3'}, {}, {autoResize:true});
+const app = new App({name:'Tripo Studio',version:'0.3.4'}, {}, {autoResize:true});
 new OpenAIExtensions(app);
 const $ = id => document.getElementById(id);
 initializeI18n();

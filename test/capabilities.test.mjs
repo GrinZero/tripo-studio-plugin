@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { mkdtemp, writeFile, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import sharp from 'sharp';
+import { solidImage } from './helpers/image-fixture.mjs';
+import { imageMetadata, decodePixels } from '../src/util/image-processing.mjs';
 import { makeRuntime } from './helpers/runtime.mjs';
 import { normalizeSettings, modelOperations, syncGeneratedModels } from '../src/ops/modelgen.mjs';
 import { postprocessOperations, postprocessSync } from '../src/ops/postops.mjs';
@@ -86,9 +87,9 @@ describe('Studio production contracts',()=>{
   const dir=await mkdtemp(path.join(tmpdir(),'tripo-model-snapshot-'));const file=path.join(dir,'model.obj');await writeFile(file,'v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n');const config={dataDir:dir};const taskId='00000000-0000-4000-8000-000000000000';const snapshot=await stageLocalModelFile(config,file,{taskId,index:1,label:'m',slot:'model'});assert.equal(await verifySnapshot(config,taskId,snapshot.provenance),snapshot.path);
  });
  it('local brush and crop work without login, upload, or credit consumption',async()=>{
-  const {service,gateway,config}=await makeRuntime();const file=path.join(config.dataDir,'input.png');await sharp({create:{width:16,height:16,channels:4,background:{r:0,g:0,b:0,alpha:1}}}).png().toFile(file);
-  gateway.requestTemporaryToken=()=>{throw Error('local operation uploaded')};const painted=await service.prepare('local.paint',{image_path:file,strokes:[{points:[[.5,.5]],radius:3,color:[255,0,0]}],submit:true});assert.equal(painted.paid_request_sent,false);const result=await service.sync(painted.task.task_id);const pixels=await sharp(result.task.result.image_path).raw().toBuffer();assert.equal(pixels[(8*16+8)*4],255);const original=await sharp(file).raw().toBuffer();assert.equal(original[(8*16+8)*4],0);
-  const crop=await service.prepare('local.crop',{image_path:file,left:2,top:3,width:4,height:5,submit:true});const cropped=await service.sync(crop.task.task_id);const meta=await sharp(cropped.task.result.image_path).metadata();assert.equal(meta.width,4);assert.equal(meta.height,5);await assert.rejects(()=>service.prepare('local.crop',{image_path:file,left:15,top:0,width:2,height:1}),/outside/);
+  const {service,gateway,config}=await makeRuntime();const file=path.join(config.dataDir,'input.png');await writeFile(file, await solidImage({width:16,height:16,channels:4,background:{r:0,g:0,b:0,alpha:1}}));
+  gateway.requestTemporaryToken=()=>{throw Error('local operation uploaded')};const painted=await service.prepare('local.paint',{image_path:file,strokes:[{points:[[.5,.5]],radius:3,color:[255,0,0]}],submit:true});assert.equal(painted.paid_request_sent,false);const result=await service.sync(painted.task.task_id);const pixels=(await decodePixels(result.task.result.image_path)).data;assert.equal(pixels[(8*16+8)*4],255);const original=(await decodePixels(file)).data;assert.equal(original[(8*16+8)*4],0);
+  const crop=await service.prepare('local.crop',{image_path:file,left:2,top:3,width:4,height:5,submit:true});const cropped=await service.sync(crop.task.task_id);const meta=await imageMetadata(cropped.task.result.image_path);assert.equal(meta.width,4);assert.equal(meta.height,5);await assert.rejects(()=>service.prepare('local.crop',{image_path:file,left:15,top:0,width:2,height:1}),/outside/);
  });
  it('does not silently discard unsupported parameters',async()=>{const {service}=await makeRuntime();await assert.rejects(()=>service.prepare('model.segment',{project_id:'proj-1',fake_option:true}),/Unrecognized key/);});
 });

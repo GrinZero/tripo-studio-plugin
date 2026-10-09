@@ -22,6 +22,14 @@ npm run serve:src
 
 它是 stdio MCP 服务，需要由 MCP 客户端连接。工作台与结果卡片仍加载 `dist/` 中的界面脚本，修改 `ui/` 后也要执行构建。
 
+调试未发布的修改时，单独注册源码仓库中的 MCP 服务：
+
+```bash
+codex mcp add tripo-studio-dev -- node "$(pwd)/mcp/bootstrap.mjs"
+```
+
+调试结束后执行 `codex mcp remove tripo-studio-dev`，避免与正式插件重复提供同名工具。正式插件的 `.mcp.json` 使用固定版本的 npm 运行时，不会加载工作区里的未发布代码。
+
 ## 测试与文档核对
 
 测试覆盖操作契约、任务恢复、来源快照、多输出身份、报价、资产分组、界面及真实 stdio MCP 握手。Blender 集成测试在安装 Blender 时运行，否则明确跳过；路径可通过 `TRIPO_BLENDER_EXECUTABLE` 指定。
@@ -30,9 +38,18 @@ npm run serve:src
 
 ## 分发
 
-执行 `npm run build` 后，分发文件需包含 `.codex-plugin/plugin.json`、`.mcp.json`、`mcp/`、`dist/`、`ui/`、`skills/`、`scripts/blender-worker.py` 和运行时依赖。服务构建保留部分外部依赖，不能只复制 `dist/server.mjs`。
+仓库中的 `.agents/plugins/marketplace.json` 指向固定版本的 npm 插件包。`package.json` 使用发布文件白名单，`npm pack` 自动构建服务器和界面。JavaScript 依赖全部打进服务器文件；图片处理使用 ImageMagick WASM，构建时将固定版本的 WASM 复制到 `dist/magick.wasm`，没有外部运行时依赖或平台原生二进制。正式插件使用 npx 启动同版本运行时，不需要安装时构建脚本。
 
-完整插件的本地市场安装还需要市场清单；本仓库不包含该清单。安装入口见 [README](README.md#安装与首次使用)。
+提交发布前执行：
+
+```bash
+npm run check:distribution
+npm run test:package
+```
+
+发布包验收从仓库外的临时目录、空 npm 缓存启动真实 npx，验证 MCP 握手、67 个工具、工作台与结果卡片、图片导入和裁剪，再验证缓存可离线启动。CI 在 Linux、macOS、Windows 的 Node 22 和 Linux Node 24 上运行发布包验收。
+
+GitHub Release 发布后，Action 先完成验证，再将已经验收的同一份 tarball 发布到 npm。首次 npm 配置、版本同步与发布步骤见[分发说明](docs/DISTRIBUTION.md)。安装入口见 [README](README.md#安装与快速上手-quick-start)。
 
 ## 架构与产品文档
 

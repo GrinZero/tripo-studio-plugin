@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile, stat, realpath } from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
-import sharp from "sharp";
+import { convertImage, imageMetadata } from "../util/image-processing.mjs";
 import { z } from "zod";
 import { TripoError } from "../errors.mjs";
 import { assertDownloadUrl, resolveOutputPath } from "../security/path-policy.mjs";
@@ -63,10 +63,9 @@ export async function decodePreviewGlb(bytes) {
 }
 
 async function imagePayload(bytes, full = false) {
-  const image = sharp(bytes, { limitInputPixels: 64 * 1024 * 1024, animated: false });
-  const metadata = await image.metadata();
+  const metadata = await imageMetadata(bytes);
   if (!["jpeg", "png", "webp"].includes(metadata.format)) throw unavailable("仅支持 PNG、JPG 和 WebP 图片。");
-  const webp = await image.rotate().resize(full ? 1400 : 420, full ? 1400 : 420, { fit: "inside", withoutEnlargement: true }).webp({ quality: 82 }).toBuffer();
+  const webp = await convertImage(bytes, { autoOrient: true, maxSize: full ? 1400 : 420, format: "webp", quality: 82 });
   return { data_url: `data:image/webp;base64,${webp.toString("base64")}`, mime_type: "image/webp", width: metadata.width, height: metadata.height, bytes: webp.length };
 }
 
@@ -98,7 +97,7 @@ export function createWorkbenchMedia(runtime) {
       const inputId = randomUUID();
       const filePath = await inputPath(inputId);
       await mkdir(path.dirname(filePath), { recursive: true, mode: 0o700 });
-      const normalized = await sharp(bytes, { limitInputPixels: 64 * 1024 * 1024 }).rotate().png().toBuffer();
+      const normalized = await convertImage(bytes, { autoOrient: true });
       if (normalized.length > MAX_IMAGE) throw unavailable("解码后的图片超过 20 MB，请压缩后重新选择。");
       await writeFile(filePath, normalized, { flag: "wx", mode: 0o600 });
       return { input_id: inputId, file_path: filePath, name: path.basename(name).slice(0, 120), width: preview.width, height: preview.height, preview };

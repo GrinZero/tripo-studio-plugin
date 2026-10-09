@@ -1,0 +1,3 @@
+dist/* linguist-generated=true
+# Bundled upstream template literals contain intentional trailing spaces.
+dist/server.mjs whitespace=-blank-at-eol

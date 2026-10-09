@@ -1,0 +1,22 @@
+{
+  "name": "tripo-studio-plugins",
+  "interface": {
+    "displayName": "Tripo Studio"
+  },
+  "plugins": [
+    {
+      "name": "tripo-studio-plugin",
+      "source": {
+        "source": "npm",
+        "package": "tripo-studio-plugin",
+        "version": "0.3.4",
+        "registry": "https://registry.npmjs.org"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Design"
+    }
+  ]
+}

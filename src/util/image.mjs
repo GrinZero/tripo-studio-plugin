@@ -78,7 +78,7 @@ function webpDimensions(bytes) {
     if (type === "VP8X") {
       if (length < 10) throw new Error("WebP VP8X chunk is too short");
       if ((bytes[data] & 2) !== 0) throw new Error("animated WebP is not accepted");
-      dimensions = { height: read24(bytes, data + 7) + 1, width: read24(bytes, data + 4) + 1 };
+      dimensions = { height: read24(data + 7) + 1, width: read24(data + 4) + 1 };
     } else if (type === "VP8L" && !dimensions) {
       if (length < 5 || bytes[data] !== 47) throw new Error("WebP VP8L header is invalid");
       const bits = bytes.readUInt32LE(data + 1);
@@ -97,7 +97,7 @@ function webpDimensions(bytes) {
   return dimensions;
 }
 
-function inspectImageBytes(bytes) {
+export function inspectImageBytes(bytes) {
   const detected = detectImageFormat(bytes);
   if (!detected) {
     throw new TripoError("FILE_INVALID", "Only real PNG, JPEG, and WebP image data is accepted.", { stage: "image_inspect" });

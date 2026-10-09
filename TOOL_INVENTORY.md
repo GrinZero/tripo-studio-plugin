@@ -37,7 +37,7 @@ The server registers 63 agent-visible tools and 4 app-only tools. Parameter name
 
 ## Operations (28)
 
-Individual operation tools default to an editable configuration card (`review:true`): confirmation or the 60-second deadline submits the staged task. Editing pauses the deadline; saving validates/requotes and restarts it. Use `review:false, submit:false` for a draft only, or `submit:true` for explicit immediate execution. Only entries marked yes below can consume Studio credits. Local operations use Blender/sharp and require no account. See [submission behavior](docs/USAGE.md#提交报价与草稿).
+Individual operation tools default to an editable configuration card (`review:true`): confirmation or the 60-second deadline submits the staged task. Editing pauses the deadline; saving validates/requotes and restarts it. Use `review:false, submit:false` for a draft only, or `submit:true` for explicit immediate execution. Only entries marked yes below can consume Studio credits. Local operations use Blender/ImageMagick WASM and require no account. See [submission behavior](docs/USAGE.md#提交报价与草稿).
 
 | Tool | Kind | Credits |
 |---|---|---|

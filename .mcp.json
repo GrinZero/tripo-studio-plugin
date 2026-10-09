@@ -1,9 +1,16 @@
 {
   "mcpServers": {
     "tripo-studio": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "./mcp/bootstrap.mjs"
+        "--yes",
+        "--ignore-scripts",
+        "--prefix=./mcp",
+        "--fetch-timeout=20000",
+        "--fetch-retries=1",
+        "--fetch-retry-mintimeout=1000",
+        "--package=tripo-studio-plugin@0.3.4",
+        "tripo-studio"
       ],
       "cwd": ".",
       "env": {},
@@ -20,7 +27,7 @@
         "no_proxy",
         "TRIPO_BLENDER_EXECUTABLE"
       ],
-      "startup_timeout_sec": 45,
+      "startup_timeout_sec": 180,
       "tool_timeout_sec": 3700
     }
   }

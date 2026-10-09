@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile, access, open } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import sharp from "sharp";
+import { convertImage, decodePixels, encodePixels } from "../util/image-processing.mjs";
 import { TripoError } from "../errors.mjs";
 import { stageLocalImage, stageLocalModelFile, snapshotDirectory } from "./images.mjs";
 import { inspectModel } from "../util/model-inspect.mjs";
@@ -52,7 +52,7 @@ async function blender(ctx, task, job) {
   const result = JSON.parse(await readFile(path.join(output, "result.json"), "utf8"));
   if (result.render_path) {
     const webp = path.join(output, "viewport.webp");
-    await sharp(result.render_path).flatten({ background: "#eeeeee" }).webp({ lossless: true }).toFile(webp);
+    await writeFile(webp, await convertImage(result.render_path, { background: "#eeeeee", format: "webp", lossless: true }));
     result.render_image_path = webp;
   }
   return { local_result: result };
@@ -93,7 +93,7 @@ export const localEditingOperations = {
     const image=await retainImage(ctx,input.image_path,taskId);
     return { payload:{ image_path:image.path,strokes:input.strokes }, snapshots:[image.provenance] };
   }, async (ctx, task) => {
-    const { data, info }=await sharp(task.payload.image_path,{limitInputPixels:64*1024*1024}).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+    const { data, info }=await decodePixels(task.payload.image_path);
     for (const stroke of task.payload.strokes) {
       const mask=new Float32Array(info.width*info.height);
       const stamp=(u,v)=>{
@@ -111,7 +111,7 @@ export const localEditingOperations = {
       for(let pixel=0;pixel<mask.length;pixel++) if(mask[pixel]) for(let channel=0;channel<3;channel++) data[pixel*4+channel]=Math.round(data[pixel*4+channel]*(1-mask[pixel])+stroke.color[channel]*mask[pixel]);
     }
     const dir=path.join(ctx.config.assetRoot,"operations",task.task_id);await mkdir(dir,{recursive:true});const output=path.join(dir,"painted-texture.png");
-    await sharp(data,{raw:info}).png().toFile(output);return { local_result:{image_path:output,width:info.width,height:info.height} };
+    await writeFile(output, await encodePixels(data, info));return { local_result:{image_path:output,width:info.width,height:info.height} };
   }),
   "local.crop": local("Crop image copy", "Crop a local image to an explicit pixel rectangle without changing its source; Studio automatic subject cutout is image.split.", {
     image_path:z.string(),left:z.number().int().nonnegative(),top:z.number().int().nonnegative(),width:z.number().int().min(1).max(16384),height:z.number().int().min(1).max(16384)
@@ -120,6 +120,6 @@ export const localEditingOperations = {
     if(input.left+input.width>image.metadata.width||input.top+input.height>image.metadata.height)throw new TripoError("INVALID_INPUT","Crop rectangle is outside the image.");
     return {payload:{image_path:image.path,rectangle:{left:input.left,top:input.top,width:input.width,height:input.height}},snapshots:[image.provenance]};
   },async(ctx,task)=>{
-    const dir=path.join(ctx.config.assetRoot,"operations",task.task_id);await mkdir(dir,{recursive:true});const output=path.join(dir,"cropped-image.png");await sharp(task.payload.image_path).extract(task.payload.rectangle).png().toFile(output);return {local_result:{image_path:output}};
+    const dir=path.join(ctx.config.assetRoot,"operations",task.task_id);await mkdir(dir,{recursive:true});const output=path.join(dir,"cropped-image.png");await writeFile(output, await convertImage(task.payload.image_path, { crop: task.payload.rectangle }));return {local_result:{image_path:output}};
   })
 };
