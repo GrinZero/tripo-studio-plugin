@@ -17,7 +17,9 @@ export function snapshotDirectory(config, taskId) {
 }
 
 async function syncSnapshot(filePath, directory) {
-  const handle = await open(filePath, "r");
+  // Windows requires a writable handle for FlushFileBuffers (fsync).
+  // POSIX snapshots have already been made read-only before this call.
+  const handle = await open(filePath, process.platform === "win32" ? "r+" : "r");
   try {
     await handle.sync();
   } finally {

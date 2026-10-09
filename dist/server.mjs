@@ -90304,7 +90304,7 @@ function snapshotDirectory(config3, taskId) {
   return path3.join(config3.dataDir, "task-inputs", taskId);
 }
 async function syncSnapshot(filePath, directory) {
-  const handle = await open2(filePath, "r");
+  const handle = await open2(filePath, process.platform === "win32" ? "r+" : "r");
   try {
     await handle.sync();
   } finally {
