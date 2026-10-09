@@ -8475,7 +8475,7 @@ var ConfigurationReviews = class {
   }
   arm(record) {
     this.stop(record.review_id);
-    if (record.status !== "pending") return;
+    if (record.status !== "pending" || !Number.isFinite(record.deadline_at)) return;
     const timer = this.schedule(() => {
       this.timers.delete(record.review_id);
       this.action({ review_id: record.review_id, action: "confirm", automatic: true }).catch(async (error) => {
@@ -8496,7 +8496,7 @@ var ConfigurationReviews = class {
     });
     for (const file of files.filter((f) => f.endsWith(".json"))) {
       const record = await new JsonDocument(path20.join(this.dir, file)).read();
-      if (record.status === "pending") this.arm(record);
+      if (record.status === "pending") await this.doc(record.review_id).update((r) => r.status === "pending" ? { ...r, deadline_at: null, revision: r.revision + 1 } : r);
       if (record.status === "submitting" && !this.processAlive(record.submitting_pid)) await this.doc(record.review_id).update((r) => ({ ...r, status: "failed", error: { code: "SUBMISSION_INTERRUPTED", message: "\u63D0\u4EA4\u88AB\u4E2D\u65AD\uFF0C\u8BF7\u67E5\u770B\u4EFB\u52A1\u72B6\u6001\uFF1B\u4E0D\u4F1A\u81EA\u52A8\u91CD\u8BD5\u3002" } }));
     }
   }
@@ -8559,7 +8559,7 @@ var ConfigurationReviews = class {
         account_fingerprint: prepared.task.account_fingerprint,
         status: "pending",
         revision: 0,
-        deadline_at: this.now() + this.timeoutMs
+        deadline_at: null
       };
       await this.doc(id3).write(r);
       return r;
@@ -8572,13 +8572,19 @@ var ConfigurationReviews = class {
     const record = await this.lock.withLock(`review-${review_id}`, async () => {
       let r = await this.owned(await this.doc(review_id).read());
       if (action === "get") return r;
-      if (automatic && (r.status !== "pending" || r.deadline_at > this.now())) {
+      if (automatic && (r.status !== "pending" || !Number.isFinite(r.deadline_at) || r.deadline_at > this.now())) {
         this.arm(r);
         return r;
       }
       if (revision !== void 0 && revision !== r.revision) throw new TripoError("PLAN_MISMATCH", "\u914D\u7F6E\u5DF2\u66F4\u65B0\uFF0C\u8BF7\u5237\u65B0\u5361\u7247\u3002");
       if (!editableStates.has(r.status)) return r;
-      if (action === "edit") {
+      if (action === "ready") {
+        if (r.status !== "pending" || Number.isFinite(r.deadline_at)) return r;
+        r.deadline_at = this.now() + this.timeoutMs;
+        await this.doc(review_id).write(r);
+        this.arm(r);
+        return r;
+      } else if (action === "edit") {
         r.status = "editing";
         r.deadline_at = null;
       } else if (action === "cancel") {
@@ -8596,7 +8602,7 @@ var ConfigurationReviews = class {
           await this.runtime.store.update(frozen.task_id, (task) => ({ ...task, cost_estimate: quote }));
         }
         if (prepared.task.task_id !== r.task_id) await this.runtime.service.cancel(r.task_id);
-        r = { ...r, input: parsed, task_id: prepared.task.task_id, status: "pending", deadline_at: this.now() + this.timeoutMs, error: null };
+        r = { ...r, input: parsed, task_id: prepared.task.task_id, status: "pending", deadline_at: null, error: null };
       } else if (action === "confirm") {
         if (r.status === "editing") throw new TripoError("STAGING_REQUIRED", "\u8BF7\u5148\u4FDD\u5B58\u914D\u7F6E\u5E76\u66F4\u65B0\u62A5\u4EF7\u3002");
         const { task } = await this.runtime.service.get(r.task_id);
@@ -9041,9 +9047,9 @@ async function main() {
   const reviews = new ConfigurationReviews({ ...runtime, media });
   await reviews.recover();
   server.registerTool("tripo_ui_review", {
-    description: "Configuration card actions: pause editing, save and requote, confirm, cancel, or read status. Confirmation or the authorized 60-second deadline submits the durable task once.",
+    description: "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save and requote, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
     _meta: { ui: { visibility: ["app"] } },
-    inputSchema: { review_id: taskIdShape, action: z20.enum(["get", "edit", "save", "confirm", "cancel", "preview"]), slot: z20.string().max(100).optional(), revision: z20.number().int().optional(), input: z20.record(z20.string(), z20.unknown()).optional() }
+    inputSchema: { review_id: taskIdShape, action: z20.enum(["get", "ready", "edit", "save", "confirm", "cancel", "preview"]), slot: z20.string().max(100).optional(), revision: z20.number().int().optional(), input: z20.record(z20.string(), z20.unknown()).optional() }
   }, async (input) => {
     try {
       if (input.action === "preview") {
@@ -9306,7 +9312,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
       {
         card: kind !== "local.inspect_parts",
         description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
-        inputSchema: { ...operation.inputShape, ...taskContextShape, review: z20.boolean().default(true).describe("Render an editable configuration card; auto-submit after 60 seconds unless editing or canceled. Set false only for draft-only/workbench flows.") }
+        inputSchema: { ...operation.inputShape, ...taskContextShape, review: z20.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Set false only for draft-only/workbench flows.") }
       },
       async (input) => {
         const { review, ...operationInput } = input;

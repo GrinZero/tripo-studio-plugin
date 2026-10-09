@@ -31,7 +31,7 @@ function reset() {
     listModels:async({offset})=>{const all=groupedAssets?models:[{project_id:'model',name:'用户模型 日本語',created_at:'2026-10-09T00:00:00Z',visibility:'private'}];return {projects:all.slice(offset,offset+20).map(m=>({id:m.project_id,project_name:m.name,create_time:m.created_at,visibility:m.visibility})),total:all.length};},
     listStudioImageAssets:async(page,size)=>({assets:(groupedAssets?images:[]).slice((page-1)*size,page*size).map(a=>({...a,output:{data:Array.from({length:a.output_count},()=>({}))}}))})
   }});
-  review={review_id:'review',revision:0,kind:'model.generate',status:'pending',input:{...initialInput},schema,quote:{estimated_credits:40},deadline_at:Date.now()+60000,timeout_seconds:60,sources:[]};
+  review={review_id:'review',revision:0,kind:'model.generate',status:'pending',input:{...initialInput},schema,quote:{estimated_credits:40},deadline_at:null,timeout_seconds:60,sources:[]};
 }
 reset();
 const server = http.createServer(async (req,res) => {
@@ -72,8 +72,9 @@ const server = http.createServer(async (req,res) => {
       if(call.name==='tripo_quote_operation')return send({structuredContent:{quote:{status:unknownCosts?'unknown':'estimated',estimated_credits:unknownCosts?null:40,estimate_expires_at:new Date(Date.now()+60000).toISOString()}}});
       if(call.name==='tripo_ui_preview'||call.name==='tripo_ui_review'&&args.action==='preview')return send({_meta:{tripo:{preview:{data_url:args.type==='model' ? `data:model/gltf-binary;base64,${fixtureGlb().toString('base64')}` : groupedAssets ? covers[(Number((args.project_id??args.asset_id??'0').split('-').at(-1))||0)%covers.length] : image}}}});
       if(call.name==='tripo_ui_review') {
+        if(args.action==='ready'&&review.status==='pending'&&review.deadline_at===null)review={...review,deadline_at:Date.now()+60000};
         if(args.action==='edit')review={...review,status:'editing',revision:review.revision+1,deadline_at:null};
-        if(args.action==='save') {await new Promise(resolve=>setTimeout(resolve,350));review={...review,input:args.input,status:'pending',revision:review.revision+1,deadline_at:Date.now()+60000};}
+        if(args.action==='save') {await new Promise(resolve=>setTimeout(resolve,350));review={...review,input:args.input,status:'pending',revision:review.revision+1,deadline_at:null};}
         if(args.action==='cancel')review={...review,status:'canceled',revision:review.revision+1};
         return send({content:[],structuredContent:{review}});
       }

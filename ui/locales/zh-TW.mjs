@@ -1,5 +1,6 @@
 // Authored UI copy only; interpolation values retain their original content.
 export default {
+  "正在准备编辑窗口…": "正在準備編輯視窗…",
   "、": "、",
   "，": "，",
   "待提交": "待提交",

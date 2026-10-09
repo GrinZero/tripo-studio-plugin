@@ -126,7 +126,7 @@ async function render(result) {
         if(current===epoch){
           latest=updated;
           // Keep the existing fields alive while the user edits.
-          if(action==='edit')configuration?.update(updated.structuredContent.review);
+          if(action==='edit'||action==='ready')configuration?.update(updated.structuredContent.review);
           else render(updated);
         }
         return updated.structuredContent;

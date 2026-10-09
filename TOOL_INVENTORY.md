@@ -1,4 +1,8 @@
-# Tool inventory — 53 MCP tools (0.2.1)
+# Tool inventory — 67 MCP tools (0.3.3)
+
+[README](README.md) · [Usage guide](docs/USAGE.md) · [Agent guide](skills/tripo-studio/SKILL.md)
+
+The server registers 63 agent-visible tools and 4 app-only tools. Parameter names, types, enums and defaults come from the current MCP `tools/list` schemas; `tripo_list_operations` returns operation descriptions and credit flags, not input schemas.
 
 ## Workbench
 
@@ -33,7 +37,7 @@
 
 ## Operations (28)
 
-All operations stage by default. `submit: true` executes in one call. Only the credits column marked yes can consume Studio credits. Local operations use Blender/sharp and require no account.
+Individual operation tools default to an editable configuration card (`review:true`): confirmation or the 60-second deadline submits the staged task. Editing pauses the deadline; saving validates/requotes and restarts it. Use `review:false, submit:false` for a draft only, or `submit:true` for explicit immediate execution. Only entries marked yes below can consume Studio credits. Local operations use Blender/sharp and require no account. See [submission behavior](docs/USAGE.md#提交报价与草稿).
 
 | Tool | Kind | Credits |
 |---|---|---|
@@ -66,7 +70,21 @@ All operations stage by default. `submit: true` executes in one call. Only the c
 | `tripo_paint_texture` | local.paint | no |
 | `tripo_crop_image` | local.crop | no |
 
-## Tasks (7)
+## Asset groups (5)
+
+These tools manage local, account-scoped membership shared with the workbench. They preserve assets and consume no credits.
+
+| Tool | Purpose |
+|---|---|
+| `tripo_list_asset_groups` | List groups and model/image/member counts |
+| `tripo_list_group_assets` | Page group members or ungrouped assets |
+| `tripo_create_asset_group` | Create a group, optionally with members; reuse the same normalized name |
+| `tripo_set_asset_group` | Add/move model or image references; `group_id:null` removes membership |
+| `tripo_rename_asset_group` | Change the name while retaining the group ID and members |
+
+See [asset-group workflows](skills/tripo-studio/references/asset-groups.md) for exact references, pagination and merging.
+
+## Tasks (9)
 
 | Tool | Purpose |
 |---|---|
@@ -77,13 +95,33 @@ All operations stage by default. `submit: true` executes in one call. Only the c
 | `tripo_task_reconcile` | Adopt observed remote IDs after an ambiguous write |
 | `tripo_list_tasks` | Filter persisted tasks |
 | `tripo_get_task` | Frozen settings, provenance, lineage, results and events |
+| `tripo_list_task_groups` | Character groups and retained task counts |
+| `tripo_set_task_character` | Correct local task character metadata; existing descendants retain their group |
 
-## Artifacts / workflow (3)
+## Artifacts / workflow (4)
 
 | Tool | Purpose |
 |---|---|
 | `tripo_download` | Remote artifacts or local copies within allowed output roots |
-| `tripo_run_workflow` | Shared lifecycle with previous-result dependencies |
+| `tripo_show_result` | Explicitly present one task, project, image asset or saved local GLB/image |
+| `tripo_run_workflow` | Shared lifecycle with previous-result dependencies; `submit` defaults to `true` |
 | `tripo_open_in_studio` | Project deep link |
 
 The `ui://tripo-studio/workbench.html` resource provides the workbench. Download artifacts include model/UV layout/image/render/per-part texture selections; `output_index` selects independent batch results.
+
+## Quotes (1)
+
+| Tool | Purpose |
+|---|---|
+| `tripo_quote_operation` | Estimate an operation or staged task without submitting; unknown cost is not zero |
+
+## App-only tools (4)
+
+These tools have `ui.visibility:["app"]` and are not exposed to the agent.
+
+| Tool | Purpose |
+|---|---|
+| `tripo_ui_preview` | Bounded image/model previews for the workbench |
+| `tripo_ui_import_image` | Import a user-selected local image for the workbench |
+| `tripo_ui_asset_library` | Aggregate/paginate asset and group cards; persist selections into groups |
+| `tripo_ui_review` | Configuration-card status, editing, requoting, confirmation and cancellation |

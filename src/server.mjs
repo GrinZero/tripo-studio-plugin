@@ -90,9 +90,9 @@ async function main() {
   const reviews = new ConfigurationReviews({ ...runtime, media });
   await reviews.recover();
   server.registerTool("tripo_ui_review", {
-    description: "Configuration card actions: pause editing, save and requote, confirm, cancel, or read status. Confirmation or the authorized 60-second deadline submits the durable task once.",
+    description: "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save and requote, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
     _meta: { ui: { visibility: ["app"] } },
-    inputSchema: { review_id: taskIdShape, action: z.enum(["get", "edit", "save", "confirm", "cancel", "preview"]), slot: z.string().max(100).optional(), revision: z.number().int().optional(), input: z.record(z.string(), z.unknown()).optional() }
+    inputSchema: { review_id: taskIdShape, action: z.enum(["get", "ready", "edit", "save", "confirm", "cancel", "preview"]), slot: z.string().max(100).optional(), revision: z.number().int().optional(), input: z.record(z.string(), z.unknown()).optional() }
   }, async input => { try { if(input.action==="preview") { const preview=await reviews.preview(input.review_id,input.slot);return {...ok({mime_type:preview.mime_type,bytes:preview.bytes}),_meta:{tripo:{preview}}}; } return ok(await reviews.action(input)); } catch (error) { return fail(error); } });
 
   // Data tools must not replace the user's current preview. Only creation
@@ -356,7 +356,7 @@ async function main() {
       {
         card: kind !== "local.inspect_parts",
         description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
-        inputSchema: { ...operation.inputShape, ...taskContextShape, review: z.boolean().default(true).describe("Render an editable configuration card; auto-submit after 60 seconds unless editing or canceled. Set false only for draft-only/workbench flows.") }
+        inputSchema: { ...operation.inputShape, ...taskContextShape, review: z.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Set false only for draft-only/workbench flows.") }
       },
       async (input) => {
         const { review, ...operationInput } = input;

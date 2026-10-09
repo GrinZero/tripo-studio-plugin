@@ -28,7 +28,7 @@ export class ConfigurationReviews {
   stop(id) { if(this.timers.has(id)){this.unschedule(this.timers.get(id));this.timers.delete(id);} }
   arm(record) {
     this.stop(record.review_id);
-    if(record.status!=='pending')return;
+    if(record.status!=='pending'||!Number.isFinite(record.deadline_at))return;
     const timer=this.schedule(()=>{this.timers.delete(record.review_id);this.action({review_id:record.review_id,action:'confirm',automatic:true}).catch(async error=>{await this.doc(record.review_id).update(r=>r.status==='pending'?{...r,status:'failed',deadline_at:null,error:errorSnapshot(error),revision:r.revision+1}:r).catch(()=>{});});},Math.max(0,record.deadline_at-this.now()));
     timer?.unref?.();this.timers.set(record.review_id,timer);
   }
@@ -37,7 +37,9 @@ export class ConfigurationReviews {
     const files=await readdir(this.dir).catch(e=>{if(e.code==='ENOENT')return [];throw e;});
     for(const file of files.filter(f=>f.endsWith('.json'))){
       const record=await new JsonDocument(path.join(this.dir,file)).read();
-      if(record.status==='pending')this.arm(record);
+      // A recovered process has no evidence that the card is still displayed.
+      // Require a new app visibility acknowledgement before restarting the window.
+      if(record.status==='pending')await this.doc(record.review_id).update(r=>r.status==='pending'?{...r,deadline_at:null,revision:r.revision+1}:r);
       // A process may have died after dispatch. Read the durable task; never retry the write.
       if(record.status==='submitting' && !this.processAlive(record.submitting_pid))await this.doc(record.review_id).update(r=>({...r,status:'failed',error:{code:'SUBMISSION_INTERRUPTED',message:'提交被中断，请查看任务状态；不会自动重试。'}}));
     }
@@ -74,7 +76,7 @@ export class ConfigurationReviews {
       for(const [key,value] of Object.entries(prepared.task.effective_settings ?? {}))
         if(key in this.schema(kind).shape && parsed[key]===undefined && value!==undefined)parsed[key]=value;
       const r={review_id:id,task_id:id,kind,input:parsed,account_fingerprint:prepared.task.account_fingerprint,
-        status:'pending',revision:0,deadline_at:this.now()+this.timeoutMs};
+        status:'pending',revision:0,deadline_at:null};
       await this.doc(id).write(r);return r;
     });
     this.arm(record);return {...prepared,...await this.output(record)};
@@ -84,10 +86,17 @@ export class ConfigurationReviews {
     const record=await this.lock.withLock(`review-${review_id}`,async()=>{
       let r=await this.owned(await this.doc(review_id).read());
       if(action==='get')return r;
-      if(automatic && (r.status!=='pending'||r.deadline_at>this.now())){this.arm(r);return r;}
+      if(automatic && (r.status!=='pending'||!Number.isFinite(r.deadline_at)||r.deadline_at>this.now())){this.arm(r);return r;}
       if(revision!==undefined && revision!==r.revision)throw new TripoError('PLAN_MISMATCH','配置已更新，请刷新卡片。');
       if(!editableStates.has(r.status))return r;
-      if(action==='edit') {r.status='editing';r.deadline_at=null;}
+      if(action==='ready') {
+        // App-only acknowledgement: repeated polls/renders must not extend the deadline.
+        if(r.status!=='pending'||Number.isFinite(r.deadline_at))return r;
+        r.deadline_at=this.now()+this.timeoutMs;
+        // Starting the clock must not invalidate a simultaneous focus/edit action.
+        await this.doc(review_id).write(r);this.arm(r);return r;
+      }
+      else if(action==='edit') {r.status='editing';r.deadline_at=null;}
       else if(action==='cancel') {await this.runtime.service.cancel(r.task_id);r.status='canceled';r.deadline_at=null;}
       else if(action==='save') {
         if(r.status!=='editing')throw new TripoError('STAGING_REQUIRED','先暂停倒计时，再修改配置。');
@@ -100,7 +109,7 @@ export class ConfigurationReviews {
           await this.runtime.store.update(frozen.task_id,task=>({...task,cost_estimate:quote}));
         }
         if(prepared.task.task_id!==r.task_id)await this.runtime.service.cancel(r.task_id);
-        r={...r,input:parsed,task_id:prepared.task.task_id,status:'pending',deadline_at:this.now()+this.timeoutMs,error:null};
+        r={...r,input:parsed,task_id:prepared.task.task_id,status:'pending',deadline_at:null,error:null};
       } else if(action==='confirm') {
         if(r.status==='editing')throw new TripoError('STAGING_REQUIRED','请先保存配置并更新报价。');
         const {task}=await this.runtime.service.get(r.task_id);

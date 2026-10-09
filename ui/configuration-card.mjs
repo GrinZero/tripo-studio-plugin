@@ -1,5 +1,6 @@
 import { t as tr, localizedMap, setText, setAttributeText } from './i18n.mjs';
 import { KINDS, PARAM_LABELS } from './model.mjs';
+import { watchConfigurationVisibility } from './configuration-visibility.mjs';
 export const LABELS = localizedMap({ ...PARAM_LABELS, tier:'生成类型', mode:'输入方式', model_version:'模型版本', geometry_quality:'超清几何', texture_quality:'贴图分辨率', generate_parts:'分件生成', quad:'四边形', t_pose:'T Pose', character_name:'角色名称', front_image_path:'正面', left_image_path:'左侧', back_image_path:'背面', right_image_path:'右侧', image_path:'参考图片', image_paths:'批量图片', studio_image_asset_id:'Studio 图片', studio_multiview_asset_id:'Studio 多视图', project_id:'源模型', parent_task_id:'上游任务', output_index:'输出编号', allow_sensitive:'允许敏感输入', enable_image_autofix:'自动修复图片' });
 export const VALUES = localizedMap({high_detail:'高精度 · H3.1',smart_mesh:'Smart Mesh',standard:'标准',detailed:'精细',ultra:'超清',text:'文字',image:'图片',multiview:'四视图',batch:'独立批量',studio_image:'Studio 图片',studio_multiview:'Studio 多视图',private:'私有',public:'公开',shareable:'可分享'});
 const order=['mode','tier','model_version','face_limit','geometry_quality','texture','texture_quality','delight','pbr','quad','generate_parts','amount','prompt','t_pose','visibility','front_image_path','left_image_path','back_image_path','right_image_path'];
@@ -160,9 +161,14 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
   form.onsubmit=async event=>{event.preventDefault();if(working||disposed)return;await editingRequest;if(disposed)return;try{await run('save',readConfiguration(form,current));}catch{}};
   confirm.onclick=async()=>{if(!working)try{await run('confirm');}catch{}};
   cancel.onclick=async()=>{if(!working)try{await editingRequest;await run('cancel');}catch{}};
-  function tick(){if(disposed||saving)return;if(current.status==='pending'){const seconds=Math.max(0,Math.ceil((current.deadline_at-Date.now())/1000));setText(notice, () => seconds?tr("{0} 秒后自动提交", { "0": seconds }):tr("正在自动提交…"));progress.style.transform=`scaleX(${seconds/(current.timeout_seconds??60)})`;}else if(current.status==='editing'){progress.style.transform='scaleX(0)';}
+  function tick(){if(disposed||saving)return;if(current.status==='pending'){const waiting=!Number.isFinite(current.deadline_at);const seconds=waiting?(current.timeout_seconds??60):Math.max(0,Math.ceil((current.deadline_at-Date.now())/1000));setText(notice, () => waiting?tr("正在准备编辑窗口…"):seconds?tr("{0} 秒后自动提交", { "0": seconds }):tr("正在自动提交…"));progress.style.transform=`scaleX(${seconds/(current.timeout_seconds??60)})`;}else if(current.status==='editing'){progress.style.transform='scaleX(0)';}
     if(current.status==='editing'){if(!notice.textContent)setText(notice, () => tr("编辑中"));setText(helper, () => tr("自动提交已暂停"));}}
   tick();const timer=setInterval(tick,250);root.append(form);
+  const visibility=watchConfigurationVisibility(form,async()=>{
+    if(current.status!=='pending'||Number.isFinite(current.deadline_at))return;
+    try{const result=await action('ready');if(!disposed&&current.status==='pending'&&result.review.revision>=current.revision){current=result.review;tick();}}
+    catch(error){if(!disposed)onError(error);throw error;}
+  });
   const close=document.getElementById('closeCard');if(close){close.hidden=false;close.onclick=()=>cancel.click();}
-  return {dispose(){disposed=true;clearInterval(timer);observers.forEach(observer=>observer.disconnect());if(close){close.hidden=true;close.onclick=null;}},update(record){if(record.revision<current.revision || current.status==='editing'&&record.status==='pending'&&record.revision===current.revision)return;current=record;confirm.disabled=working||record.status!=='pending';}};
+  return {dispose(){disposed=true;visibility.dispose();clearInterval(timer);observers.forEach(observer=>observer.disconnect());if(close){close.hidden=true;close.onclick=null;}},update(record){if(record.revision<current.revision || current.status==='editing'&&record.status==='pending'&&record.revision===current.revision)return;current=record;confirm.disabled=working||record.status!=='pending';visibility.check();}};
 }
