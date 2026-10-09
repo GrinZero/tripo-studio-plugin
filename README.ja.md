@@ -29,7 +29,7 @@
   <img src="https://img.shields.io/badge/credits-BYO%20Account%20%C2%B7%20Zero%20Markup-ff5722?style=flat-square" alt="BYO Account" />
   <img src="https://img.shields.io/badge/local%20engine-Blender%20Integrated-e87d0d?style=flat-square&logo=blender&logoColor=white" alt="Blender Integrated" />
   <img src="https://img.shields.io/badge/tools-67%20MCP%20Tools-10b981?style=flat-square" alt="67 MCP Tools" />
-  <img src="https://img.shields.io/badge/license-UNLICENSED-4b5563?style=flat-square" alt="License" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10b981?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/i18n-%E7%AE%80%E4%BD%93%20%C2%B7%20%E7%B9%81%E9%AB%94%20%C2%B7%20EN%20%C2%B7%20%E6%97%A5%E6%9C%AC%E8%AA%9E%20%C2%B7%20%ED%95%9C%EA%B5%AD%EC%96%B4-8b5cf6?style=flat-square" alt="Multi-language" />
 </p>
 
@@ -311,4 +311,4 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ## 8. ライセンス (License)
 
-本プラグインは現在 `UNLICENSED` として定義されています。オープンソースライセンスは付与されていません。[.codex-plugin/plugin.json](.codex-plugin/plugin.json) をご参照ください。
+本プロジェクトは [MIT ライセンス](LICENSE) に基づいてオープンソースで公開されています。サードパーティの依存パッケージにはそれぞれのライセンスが適用され、関連する通知は配布パッケージの `dist/THIRD_PARTY_NOTICES.txt` に含まれています。

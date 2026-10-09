@@ -29,7 +29,7 @@
   <img src="https://img.shields.io/badge/credits-BYO%20Account%20%C2%B7%20Zero%20Markup-ff5722?style=flat-square" alt="BYO Account" />
   <img src="https://img.shields.io/badge/local%20engine-Blender%20Integrated-e87d0d?style=flat-square&logo=blender&logoColor=white" alt="Blender Integrated" />
   <img src="https://img.shields.io/badge/tools-67%20MCP%20Tools-10b981?style=flat-square" alt="67 MCP Tools" />
-  <img src="https://img.shields.io/badge/license-UNLICENSED-4b5563?style=flat-square" alt="License" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10b981?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/i18n-%E7%AE%80%E4%BD%93%20%C2%B7%20%E7%B9%81%E9%AB%94%20%C2%B7%20EN%20%C2%B7%20%E6%97%A5%E6%9C%AC%E8%AA%9E%20%C2%B7%20%ED%95%9C%EA%B5%AD%EC%96%B4-8b5cf6?style=flat-square" alt="Multi-language" />
 </p>
 
@@ -331,4 +331,4 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ## 8. 许可证 (License)
 
-当前插件清单声明为 `UNLICENSED`。仓库未包含开源 `LICENSE` 文件，未授予开源许可。详见 [插件清单 (.codex-plugin/plugin.json)](.codex-plugin/plugin.json)。
+本项目采用 [MIT 许可证](LICENSE) 开源发布。第三方依赖保留各自的许可证，相关声明随发布包提供于 `dist/THIRD_PARTY_NOTICES.txt`。

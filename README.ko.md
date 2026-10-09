@@ -29,7 +29,7 @@
   <img src="https://img.shields.io/badge/credits-BYO%20Account%20%C2%B7%20Zero%20Markup-ff5722?style=flat-square" alt="BYO Account" />
   <img src="https://img.shields.io/badge/local%20engine-Blender%20Integrated-e87d0d?style=flat-square&logo=blender&logoColor=white" alt="Blender Integrated" />
   <img src="https://img.shields.io/badge/tools-67%20MCP%20Tools-10b981?style=flat-square" alt="67 MCP Tools" />
-  <img src="https://img.shields.io/badge/license-UNLICENSED-4b5563?style=flat-square" alt="License" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10b981?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/i18n-%E7%AE%80%E4%BD%93%20%C2%B7%20%E7%B9%81%E9%AB%94%20%C2%B7%20EN%20%C2%B7%20%E6%97%A5%E6%9C%AC%E8%AA%9E%20%C2%B7%20%ED%95%9C%EA%B5%AD%EC%96%B4-8b5cf6?style=flat-square" alt="Multi-language" />
 </p>
 
@@ -311,4 +311,4 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ## 8. 라이선스 (License)
 
-본 플러그인 매니페스트는 현재 `UNLICENSED`로 선언되어 있습니다. 오픈소스 라이선스가 부여되지 않았습니다. [.codex-plugin/plugin.json](.codex-plugin/plugin.json)을 참조하세요.
+이 프로젝트는 [MIT 라이선스](LICENSE)에 따라 오픈소스로 공개됩니다. 타사 의존성에는 각각의 라이선스가 적용되며, 관련 고지는 배포 패키지의 `dist/THIRD_PARTY_NOTICES.txt`에 포함되어 있습니다.
