@@ -1,0 +1,54 @@
+{
+  "observed_date": "2026-10-08",
+  "source_kind": "Public production scripts already loaded by browser; contract evidence, not paid-execution proof",
+  "sources": [
+    {
+      "file": "BOQlA7aJ.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/BOQlA7aJ.js",
+      "bytes": 392084,
+      "sha256": "b48ce6ec709a4ee37cdbcbe1c286ac2ac3b78449982d20befe6a691eefaa4115"
+    },
+    {
+      "file": "d0-kdlow.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/d0-kdlow.js",
+      "bytes": 611193,
+      "sha256": "4b89d75d52a2f61a2f61bf6dcc306e4ac2ea9fde785ec1daa74562ee3c454e96"
+    },
+    {
+      "file": "BANs6Mft.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/BANs6Mft.js",
+      "bytes": 255556,
+      "sha256": "87e13b48b61e79ab1f3749498e50873e9c00d5157d971efb9ad655bded847ae1"
+    },
+    {
+      "file": "B00y9j9b.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/B00y9j9b.js",
+      "bytes": 19618,
+      "sha256": "9bc1761ce173c0883b388dde770402d8b450dae0f6ac8b019066a0c81d713944"
+    },
+    {
+      "file": "DJfzZG46.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/DJfzZG46.js",
+      "bytes": 1535,
+      "sha256": "47f27bde9e52888ffd5379c7be5456fe223f2de0a572501f76b48492b5890fa5"
+    },
+    {
+      "file": "CpndXtBA.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/CpndXtBA.js",
+      "bytes": 30570,
+      "sha256": "8698348ae92795228ff177273f2877d5be05174c5b0afc65d215dd34ba697656"
+    },
+    {
+      "file": "DdkWXVAx.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/DdkWXVAx.js",
+      "bytes": 9679,
+      "sha256": "1e183905f74cf5714a6525c5aac8ed7ec4b7f5bfa6b75c93dbf3b46cc367b777"
+    },
+    {
+      "file": "CoGIo2xT.js",
+      "source_url": "https://tripo-webapp-assets.tripo3d.ai/studio-prod/_nuxt/CoGIo2xT.js",
+      "bytes": 2408,
+      "sha256": "d98fec2afc05e68c721b43f3133c9952fe4078a2582e5f88b08821cf107674ca"
+    }
+  ]
+}

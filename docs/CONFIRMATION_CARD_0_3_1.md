@@ -1,0 +1,11 @@
+# 提交前配置卡片
+
+界面按已确认的 [效果图](../design/concepts/tripo-confirmation-card-v1.png) 实现：顶部输入视图、生成配置、贴图设置、更多配置、费用与操作按钮、底部倒计时。深浅主题跟随宿主，375 px 下无横向溢出。
+
+生成/编辑工具默认 `review:true`：先准备实际任务及输入快照，返回可编辑卡片，60 秒后由持久服务端倒计时提交。编辑会暂停；保存验证配置、重新准备草稿与报价并重启倒计时。确认/自动提交共用现有持久提交边界；取消不再提交。工作台和仅存草稿的调用使用 `review:false,submit:false`。`submit:true` 保留直接执行语义，供明确要求跳过卡片的调用。
+
+卡片不显示原始文件路径。输入缩略图通过 app-only `tripo_ui_review` 的 `preview` action 读取已验证的冻结快照；Studio 输入通过已有有界媒体读取。图像字节仅在工具结果 metadata 中。替换图片先暂停倒计时，使用现有本地导入工具，保存后才替换任务输入。结果继续使用图片/3D 预览，并刷新活动任务。
+
+验证：90 项测试通过；标准 AppBridge 浏览器宿主验证了四视图、几何开关与参数映射、修改后费用从示例 40 更新为 55、取消、图片替换与持久输入保存、375 px 布局以及浅/深色主题。计费与远端提交在这个浏览器宿主中为隔离模拟，没有执行 Studio 付费生成。
+
+实际渲染截图：`output/playwright/approved-card-dark.png`、`approved-card-light.png`、`approved-card-narrow.png`、`approved-card-requoted.png`。本机安装包已同步；重载插件连接后发现新的工具/资源。浏览器宿主验收不等于 Codex 原生聊天渲染验收。

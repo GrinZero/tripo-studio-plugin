@@ -1,0 +1,11 @@
+node_modules/
+.local/
+local-archive/
+__pycache__/
+*.pyc
+.DS_Store
+.playwright-cli/
+output/
+.env
+.env.*
+!.env.example

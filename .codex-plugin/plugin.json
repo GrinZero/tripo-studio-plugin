@@ -1,0 +1,42 @@
+{
+  "name": "tripo-studio-plugin",
+  "version": "0.3.3",
+  "description": "Generate, edit, rig, animate and export images or 3D models with your Tripo Studio member account, without an API key. Browse existing assets and let agents create or rename groups and add, move or remove model/image members in the shared asset workbench. Reuses your browser session, then runs headlessly with persistent task records.",
+  "author": {
+    "name": "tripo-studio-plugin contributors"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "tripo",
+    "tripo-studio",
+    "3d",
+    "image-generation",
+    "smart-mesh",
+    "rigging",
+    "animation",
+    "provenance",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Tripo Studio",
+    "composerIcon": "./ui/tripo-logo.png",
+    "logo": "./ui/tripo-logo.png",
+    "shortDescription": "用 Tripo Studio 会员账号生成、编辑 3D 与图片，并由 agent 整理资产分组",
+    "longDescription": "在 Codex 中复用你自己的 Tripo Studio 会员会话，无需 API key。生成或编辑图片，使用真实多视图或独立图片批量建模，并完成纹理、Smart UV、Rig V3 绑骨、动作与格式导出；本地 Blender 工具支持分件编辑、渲染和纹理投影。资产页面支持直接点击卡片多选；按角色或自定义名称归组后，成员收进一张带预览和数量的分组卡片，点击查看组内资产。Agent 可查询分组与成员、创建分组、批量加入／移动／移出资产以及重命名，与工作台共用按账号保存的本地归属，不消耗积分。生成和编辑操作保留参数、任务状态及来源记录，付费操作遵循任务提交流程。",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "把我选中的模型和参考图片加入同一个角色分组，并检查组内数量。",
+      "列出我的 Tripo 模型，检查一个模型的 Smart UV 候选和当前操作状态。",
+      "用真实多视图生成 high_detail 模型，开启 4K、去光和 PBR，超清几何关闭；先展示冻结参数。",
+      "将已有绑骨模型导出为 Blender FBX，包含骨架和 4K 贴图。"
+    ],
+    "brandColor": "#BD624B"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "version": "0.3.3",
+  "capture_date": "2026-10-09",
+  "timezone": "Asia/Taipei",
+  "capture_method": "Fresh Playwright screenshots of current MCP Apps resources in a headed Chromium browser using the official AppBridge; live Studio reads and quotes; current source media helper for previews; no mock assets or quotes; no compositing or pixel editing.",
+  "images": [
+    {
+      "file": "workbench-create-dark.png",
+      "source": "output/playwright/readme-capture/workbench-create-dark.png",
+      "captured_at": "2026-10-09T13:59:25.118Z",
+      "width": 1440,
+      "height": 1250,
+      "sha256": "b86bb36eef018d9c0b4980dcf1a8cec7681d1045ac1c2d6c2b6138a6dca4a4f0",
+      "description": "深色文字建模表单、H3.1 与实时报价"
+    },
+    {
+      "file": "workbench-create-light.png",
+      "source": "output/playwright/readme-capture/workbench-create-light.png",
+      "captured_at": "2026-10-09T13:49:18.182Z",
+      "width": 1440,
+      "height": 1250,
+      "sha256": "1780bf1f9cd70606da73d89a172b0f1d9f570b8c949d9227736e6d455eefafe9",
+      "description": "浅色文字建模表单、角色归属与实时报价"
+    },
+    {
+      "file": "asset-groups.png",
+      "source": "output/playwright/readme-capture/asset-groups.png",
+      "captured_at": "2026-10-09T13:46:27.209Z",
+      "width": 1440,
+      "height": 960,
+      "sha256": "f7c8a5594c593d9cb67858445a9a7be43255e92936a41429bb7351c6b6daab46",
+      "description": "真实 Studio 模型的临时本地分组"
+    },
+    {
+      "file": "asset-multiselect.png",
+      "source": "output/playwright/readme-capture/asset-multiselect.png",
+      "captured_at": "2026-10-09T13:44:18.290Z",
+      "width": 1440,
+      "height": 960,
+      "sha256": "3de21f3e03026b07824f965fbfefdeaa8fcb55201842096724ad5173634b9955",
+      "description": "真实 Studio 角色模型的直接多选与分组操作栏"
+    },
+    {
+      "file": "configuration-dark.png",
+      "source": "output/playwright/readme-capture/configuration-dark.png",
+      "captured_at": "2026-10-09T13:46:52.239Z",
+      "width": 900,
+      "height": 970,
+      "sha256": "bdd6e445851e57505b7f45bfd2727ef6df7cc713ecb2a1b9d63d2983519b4dc6",
+      "description": "已有 Studio 图片的深色配置卡片，自动提交已暂停"
+    },
+    {
+      "file": "configuration-light.png",
+      "source": "output/playwright/readme-capture/configuration-light.png",
+      "captured_at": "2026-10-09T13:47:18.274Z",
+      "width": 900,
+      "height": 970,
+      "sha256": "85b5df00542eb5866744fcf748661e90c2addb962fa731dfa2f9d7f958268bde",
+      "description": "同一份真实配置的浅色卡片，自动提交已暂停"
+    },
+    {
+      "file": "model-preview-download.png",
+      "source": "output/playwright/readme-capture/model-preview-download.png",
+      "captured_at": "2026-10-09T13:55:28.679Z",
+      "width": 1280,
+      "height": 616,
+      "sha256": "cff2bc88a48a8a6f2d7453419997e140252a668500d7b8d86da82ca934dca5bc",
+      "description": "本次下载的 GLB、实际 3D 预览与 Blender 解码副本"
+    },
+    {
+      "file": "model-detail.png",
+      "source": "output/playwright/readme-capture/model-detail.png",
+      "captured_at": "2026-10-09T13:56:12.952Z",
+      "width": 1280,
+      "height": 1000,
+      "sha256": "bc469621e50674ca22b3c4225bfc3d3133fce7e0829de9db8c5ef6b0308aaaf4",
+      "description": "真实 GLB 模型详情、面数、部件与重拓扑报价"
+    },
+    {
+      "file": "workbench-japanese-narrow.png",
+      "source": "output/playwright/readme-capture/workbench-japanese-narrow.png",
+      "captured_at": "2026-10-09T13:45:51.228Z",
+      "width": 420,
+      "height": 1100,
+      "sha256": "c645baac5cd1d743ccb662408dfa00ee1bc8a7c10163cd89aeb8f46300c87873",
+      "description": "420 像素宽度的日语文字建模界面"
+    }
+  ]
+}

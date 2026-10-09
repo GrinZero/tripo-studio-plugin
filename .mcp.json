@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "tripo-studio": {
+      "command": "node",
+      "args": [
+        "./mcp/bootstrap.mjs"
+      ],
+      "cwd": ".",
+      "env": {},
+      "env_vars": [
+        "TRIPO_PLUGIN_DATA_DIR",
+        "TRIPO_ASSET_ROOT",
+        "TRIPO_BROWSER_PROFILE_DIR",
+        "TRIPO_OUTPUT_ROOTS",
+        "HTTPS_PROXY",
+        "HTTP_PROXY",
+        "NO_PROXY",
+        "https_proxy",
+        "http_proxy",
+        "no_proxy",
+        "TRIPO_BLENDER_EXECUTABLE"
+      ],
+      "startup_timeout_sec": 45,
+      "tool_timeout_sec": 3700
+    }
+  }
+}
