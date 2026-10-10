@@ -49,6 +49,9 @@ const check = (id, label, value) => `<label class="switch-row" for="${id}"><span
 const state = {
   ready: false,
   authed: false,
+  accountFingerprint: null,
+  credits: null,
+  creditsLoading: false,
   view: 'assets',
   assetType: 'models',
   assetFilter: 'all',
@@ -152,8 +155,8 @@ app.ontoolinput = ({ arguments: input }) => receiveOpenInput(input);
 app.ontoolresult = ({ structuredContent: input }) => { if (input) receiveOpenInput(input); };
 app.ontoolcancelled = () => showConnection(tr("打开请求已取消，请重新打开工作台。"));
 
-async function call(name, args = {}) {
-  const result = await app.callServerTool({ name, arguments: args }, { timeout: 300000 });
+async function call(name, args = {}, timeout = 300000) {
+  const result = await app.callServerTool({ name, arguments: args }, { timeout });
   if (result.isError) {
     const error = Error(result.structuredContent?.error?.message ?? result.content?.find(c => c.type === 'text')?.text ?? tr("操作失败，请重试。"));
     error.task = result.structuredContent?.task;
@@ -162,8 +165,8 @@ async function call(name, args = {}) {
   return result;
 }
 
-async function data(name, args) {
-  return (await call(name, args)).structuredContent ?? {};
+async function data(name, args, timeout) {
+  return (await call(name, args, timeout)).structuredContent ?? {};
 }
 
 function toast(message, error = false) {
@@ -181,10 +184,40 @@ function showConnection(message) {
 
 async function authStatus() {
   const result = await data('tripo_auth_status');
+  if (state.accountFingerprint !== result.account_fingerprint) state.credits = null;
+  state.accountFingerprint = result.account_fingerprint;
   state.authed = result.session?.authenticated === true;
   setText($('sessionStatus'), () => state.authed ? tr("已登录 Studio") : tr("未登录"));
   $('sessionStatus').className = `status ${state.authed ? 'ok' : ''}`;
   $('authNotice').classList.toggle('hidden', state.authed);
+  void refreshCredits();
+}
+
+let paymentEpoch = 0;
+async function refreshCredits() {
+  const epoch = ++paymentEpoch;
+  $('creditBalance').classList.toggle('hidden', !state.authed);
+  if (!state.authed) {
+    state.credits = null;
+    state.creditsLoading = false;
+    return;
+  }
+  state.creditsLoading = true;
+  setText($('creditAmount'), () => state.credits !== null ? formatNumber(state.credits) : state.creditsLoading ? tr("加载中…") : tr("暂不可用"));
+  try {
+    const { payment } = await data('tripo_get_payment', {}, 15000);
+    if (epoch !== paymentEpoch) return;
+    const amount = payment?.wallet?.total_credit;
+    state.credits = typeof amount === 'number' && Number.isFinite(amount) && amount >= 0 ? amount : null;
+  } catch {
+    if (epoch !== paymentEpoch) return;
+    state.credits = null;
+  } finally {
+    if (epoch === paymentEpoch) {
+      state.creditsLoading = false;
+      setText($('creditAmount'), () => state.credits !== null ? formatNumber(state.credits) : tr("暂不可用"));
+    }
+  }
 }
 
 function disposeViewer() {
@@ -1328,6 +1361,7 @@ async function confirmTask(task) {
   state.busy = true;
   try {
     const result = await data('tripo_submit_task', { task_id: task.task_id, confirmation: task.confirmation, request_hash: task.request_hash });
+    void refreshCredits();
     toast(tr("任务已成功提交。"));
     await showTask(result.task.task_id);
   } catch (e) {
@@ -1656,6 +1690,7 @@ const taskPoll = setInterval(async () => {
   syncing = true;
   try {
     const result = await data('tripo_task_sync', { task_id: id });
+    if (!ACTIVE.includes(result.task?.status)) void refreshCredits();
     if (state.view !== 'tasks' || state.taskId !== id) return;
     state.tasks = state.tasks.map(t => t.task_id === id ? result.task : t);
     const detail = await data('tripo_get_task', { task_id: id, include_events: true });
@@ -1670,8 +1705,14 @@ const taskPoll = setInterval(async () => {
   }
 }, 10000);
 
+const creditPoll = setInterval(() => {
+  if (!document.hidden && state.ready && !state.busy) authStatus().catch(() => {});
+}, 60000);
+
 window.addEventListener('pagehide', () => {
   clearInterval(taskPoll);
+  clearInterval(creditPoll);
+  ++paymentEpoch;
   clearTimeout(quoteTimer);
   clearTimeout(assetSearchTimer);
   disposeViewer();
@@ -1691,6 +1732,7 @@ window.addEventListener('pagehide', () => {
     await openInput();
   } catch (e) {
     setText($('sessionStatus'), () => tr("未连接"));
+    $('creditBalance').classList.add('hidden');
     showConnection(e.message);
   }
 })();

@@ -1,5 +1,8 @@
 // Authored UI copy only; interpolation values retain their original content.
 export default {
+  "剩余积分": "残りクレジット",
+  "加载中…": "読み込み中…",
+  "暂不可用": "取得できません",
   "正在准备编辑窗口…": "編集ウィンドウを準備中…",
   "、": "、",
   "，": "、",

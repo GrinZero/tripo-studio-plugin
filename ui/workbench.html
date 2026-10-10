@@ -532,11 +532,31 @@ svg {
 
 .language-select { width: auto; max-width: 160px; min-width: 90px; padding: 6px 24px 6px 8px; font-size: 12px; }
 
+.credit-balance {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.credit-balance strong {
+  color: var(--accent);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
 .status {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   font-size: 12px;
+  white-space: nowrap;
   font-weight: 500;
   padding: 4px 10px;
   border-radius: var(--radius-pill);
@@ -2772,6 +2792,11 @@ dialog .actions {
 /* ==========================================================================
    Responsive Adaptations (Codex Panel & Mobile)
    ========================================================================== */
+@media (max-width: 1200px) {
+  .appbar { height: auto; min-height: 64px; flex-wrap: wrap; padding: 10px 16px; gap: 12px; }
+  .bar-tools { flex-wrap: wrap; max-width: 100%; }
+}
+
 @media (max-width: 960px) {
   .create-layout, .detail-layout, .tasks-layout {
     grid-template-columns: minmax(0, 1fr);
@@ -2855,6 +2880,10 @@ dialog .actions {
   <div class="bar-tools">
     <select id="language" class="language-select" aria-label="Language"></select>
     <span id="sessionStatus" class="status">连接中</span>
+    <div id="creditBalance" class="credit-balance hidden" role="status" aria-live="polite" aria-atomic="true">
+      <span data-i18n="剩余积分">剩余积分</span>
+      <strong id="creditAmount">—</strong>
+    </div>
     <button id="refresh" class="icon-button" title="刷新当前页面" data-i18n-title="刷新当前页面" aria-label="刷新当前页面" data-i18n-aria-label="刷新当前页面"></button>
     <button id="appearance" class="icon-button" title="切换主题" data-i18n-title="切换主题" aria-label="切换主题" data-i18n-aria-label="切换主题"></button>
   </div>

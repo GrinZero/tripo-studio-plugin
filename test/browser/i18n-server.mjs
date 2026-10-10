@@ -54,6 +54,7 @@ const server = http.createServer(async (req,res) => {
       let body='';for await (const chunk of req) body+=chunk;
       const call=JSON.parse(body), args=call.arguments??{};calls.push(call);
       if(call.name==='tripo_auth_status')return send({structuredContent:{session:{authenticated:true}}});
+      if(call.name==='tripo_get_payment')return send({structuredContent:{payment:{wallet:{total_credit:24180,expiring_credit:24180}}}});
       if(call.name==='tripo_ui_asset_library')return send({structuredContent:await (args.action==='assign'?library.assign(args):library.list(args))});
       if(call.name==='tripo_list_asset_groups')return send({structuredContent:await library.listGroups(args)});
       if(call.name==='tripo_list_group_assets')return send({structuredContent:await library.list(args)});
