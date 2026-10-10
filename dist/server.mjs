@@ -260,10 +260,10 @@ function mergeDefs(...defs) {
 function cloneDef(schema) {
   return mergeDefs(schema._zod.def);
 }
-function getElementAtPath(obj, path23) {
-  if (!path23)
+function getElementAtPath(obj, path24) {
+  if (!path24)
     return obj;
-  return path23.reduce((acc, key) => acc?.[key], obj);
+  return path24.reduce((acc, key) => acc?.[key], obj);
 }
 function promiseAllObject(promisesObj) {
   const keys = Object.keys(promisesObj);
@@ -522,11 +522,11 @@ function explicitlyAborted(x2, startIndex = 0) {
   }
   return false;
 }
-function prefixIssues(path23, issues) {
+function prefixIssues(path24, issues) {
   return issues.map((iss) => {
     var _a7;
     (_a7 = iss).path ?? (_a7.path = []);
-    iss.path.unshift(path23);
+    iss.path.unshift(path24);
     return iss;
   });
 }
@@ -1047,16 +1047,16 @@ function flattenError(error113, mapper = (issue3) => issue3.message) {
 }
 function formatError(error113, mapper = (issue3) => issue3.message) {
   const fieldErrors = { _errors: [] };
-  const processError = (error114, path23 = []) => {
+  const processError = (error114, path24 = []) => {
     for (const issue3 of error114.issues) {
       if (issue3.code === "invalid_union" && issue3.errors.length) {
-        issue3.errors.map((issues) => processError({ issues }, [...path23, ...issue3.path]));
+        issue3.errors.map((issues) => processError({ issues }, [...path24, ...issue3.path]));
       } else if (issue3.code === "invalid_key") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else if (issue3.code === "invalid_element") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else {
-        const fullpath = [...path23, ...issue3.path];
+        const fullpath = [...path24, ...issue3.path];
         if (fullpath.length === 0) {
           fieldErrors._errors.push(mapper(issue3));
         } else {
@@ -1095,17 +1095,17 @@ function formatError(error113, mapper = (issue3) => issue3.message) {
 }
 function treeifyError(error113, mapper = (issue3) => issue3.message) {
   const result = { errors: [] };
-  const processError = (error114, path23 = []) => {
+  const processError = (error114, path24 = []) => {
     var _a7;
     for (const issue3 of error114.issues) {
       if (issue3.code === "invalid_union" && issue3.errors.length) {
-        issue3.errors.map((issues) => processError({ issues }, [...path23, ...issue3.path]));
+        issue3.errors.map((issues) => processError({ issues }, [...path24, ...issue3.path]));
       } else if (issue3.code === "invalid_key") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else if (issue3.code === "invalid_element") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else {
-        const fullpath = [...path23, ...issue3.path];
+        const fullpath = [...path24, ...issue3.path];
         if (fullpath.length === 0) {
           result.errors.push(mapper(issue3));
           continue;
@@ -1144,8 +1144,8 @@ function treeifyError(error113, mapper = (issue3) => issue3.message) {
 }
 function toDotPath(_path) {
   const segs = [];
-  const path23 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
-  for (const seg of path23) {
+  const path24 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
+  for (const seg of path24) {
     if (typeof seg === "number")
       segs.push(`[${seg}]`);
     else if (typeof seg === "symbol")
@@ -19303,13 +19303,13 @@ function resolveRef(ref, ctx) {
   if (!ref.startsWith("#")) {
     throw new Error("External $ref is not supported, only local refs (#/...) are allowed");
   }
-  const path23 = ref.slice(1).split("/").filter(Boolean);
-  if (path23.length === 0) {
+  const path24 = ref.slice(1).split("/").filter(Boolean);
+  if (path24.length === 0) {
     return ctx.rootSchema;
   }
   const defsKey = ctx.version === "draft-2020-12" ? "$defs" : "definitions";
-  if (path23[0] === defsKey) {
-    const key = path23[1] === void 0 ? void 0 : decodeJSONPointerSegment(path23[1]);
+  if (path24[0] === defsKey) {
+    const key = path24[1] === void 0 ? void 0 : decodeJSONPointerSegment(path24[1]);
     if (!key || !ctx.defs[key]) {
       throw new Error(`Reference not found: ${ref}`);
     }
@@ -23634,8 +23634,8 @@ var require_utils = __commonJS({
       }
       return ind;
     }
-    function removeDotSegments(path23) {
-      let input2 = path23;
+    function removeDotSegments(path24) {
+      let input2 = path24;
       const output2 = [];
       let nextSlash = -1;
       let len = 0;
@@ -24044,8 +24044,8 @@ var require_schemes = __commonJS({
       }
       if (wsComponent.resourceName) {
         const queryIndex = wsComponent.resourceName.indexOf("?");
-        const path23 = queryIndex === -1 ? wsComponent.resourceName : wsComponent.resourceName.slice(0, queryIndex);
-        wsComponent.path = path23 && path23 !== "/" ? path23 : void 0;
+        const path24 = queryIndex === -1 ? wsComponent.resourceName : wsComponent.resourceName.slice(0, queryIndex);
+        wsComponent.path = path24 && path24 !== "/" ? path24 : void 0;
         wsComponent.query = queryIndex === -1 ? void 0 : wsComponent.resourceName.slice(queryIndex + 1);
         wsComponent.resourceName = void 0;
       }
@@ -31637,14 +31637,14 @@ var init_readFile = __esm({
   "node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/readFile.js"() {
     filePromises = {};
     fileIntercept = {};
-    readFile11 = (path23, options) => {
-      if (fileIntercept[path23] !== void 0) {
-        return fileIntercept[path23];
+    readFile11 = (path24, options) => {
+      if (fileIntercept[path24] !== void 0) {
+        return fileIntercept[path24];
       }
-      if (!filePromises[path23] || options?.ignoreCache) {
-        filePromises[path23] = fsReadFile(path23, "utf8");
+      if (!filePromises[path24] || options?.ignoreCache) {
+        filePromises[path24] = fsReadFile(path24, "utf8");
       }
-      return filePromises[path23];
+      return filePromises[path24];
     };
   }
 });
@@ -31756,8 +31756,8 @@ var init_externalDataInterceptor = __esm({
       getFileRecord() {
         return fileIntercept;
       },
-      interceptFile(path23, contents) {
-        fileIntercept[path23] = Promise.resolve(contents);
+      interceptFile(path24, contents) {
+        fileIntercept[path24] = Promise.resolve(contents);
       },
       getTokenRecord() {
         return tokenIntercept;
@@ -32555,8 +32555,8 @@ var init_createConfigValueProvider = __esm({
               return endpoint.url.href;
             }
             if ("hostname" in endpoint) {
-              const { protocol, hostname: hostname5, port, path: path23 } = endpoint;
-              return `${protocol}//${hostname5}${port ? ":" + port : ""}${path23}`;
+              const { protocol, hostname: hostname5, port, path: path24 } = endpoint;
+              return `${protocol}//${hostname5}${port ? ":" + port : ""}${path24}`;
             }
           }
           return endpoint;
@@ -32931,18 +32931,18 @@ var getAttrPathList;
 var init_getAttrPathList = __esm({
   "node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttrPathList.js"() {
     init_types2();
-    getAttrPathList = (path23) => {
-      const parts = path23.split(".");
+    getAttrPathList = (path24) => {
+      const parts = path24.split(".");
       const pathList = [];
       for (const part of parts) {
         const squareBracketIndex = part.indexOf("[");
         if (squareBracketIndex !== -1) {
           if (part.indexOf("]") !== part.length - 1) {
-            throw new EndpointError(`Path: '${path23}' does not end with ']'`);
+            throw new EndpointError(`Path: '${path24}' does not end with ']'`);
           }
           const arrayIndex = part.slice(squareBracketIndex + 1, -1);
           if (Number.isNaN(parseInt(arrayIndex))) {
-            throw new EndpointError(`Invalid array index: '${arrayIndex}' in path: '${path23}'`);
+            throw new EndpointError(`Invalid array index: '${arrayIndex}' in path: '${path24}'`);
           }
           if (squareBracketIndex !== 0) {
             pathList.push(part.slice(0, squareBracketIndex));
@@ -32963,9 +32963,9 @@ var init_getAttr = __esm({
   "node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttr.js"() {
     init_types2();
     init_getAttrPathList();
-    getAttr = (value, path23) => getAttrPathList(path23).reduce((acc, index) => {
+    getAttr = (value, path24) => getAttrPathList(path24).reduce((acc, index) => {
       if (typeof acc !== "object") {
-        throw new EndpointError(`Index '${index}' in '${path23}' not found in '${JSON.stringify(value)}'`);
+        throw new EndpointError(`Index '${index}' in '${path24}' not found in '${JSON.stringify(value)}'`);
       } else if (Array.isArray(acc)) {
         const i5 = parseInt(index);
         return acc[i5 < 0 ? acc.length + i5 : i5];
@@ -33026,8 +33026,8 @@ var init_parseURL = __esm({
             return value;
           }
           if (typeof value === "object" && "hostname" in value) {
-            const { hostname: hostname6, port, protocol: protocol2 = "", path: path23 = "", query = {} } = value;
-            const url3 = new URL(`${protocol2}//${hostname6}${port ? `:${port}` : ""}${path23}`);
+            const { hostname: hostname6, port, protocol: protocol2 = "", path: path24 = "", query = {} } = value;
+            const url3 = new URL(`${protocol2}//${hostname6}${port ? `:${port}` : ""}${path24}`);
             url3.search = Object.entries(query).map(([k7, v3]) => `${k7}=${v3}`).join("&");
             return url3;
           }
@@ -36721,11 +36721,11 @@ var init_HttpBindingProtocol = __esm({
           const opTraits = translateTraits(operationSchema.traits);
           if (opTraits.http) {
             request.method = opTraits.http[0];
-            const [path23, search2] = opTraits.http[1].split("?");
+            const [path24, search2] = opTraits.http[1].split("?");
             if (request.path == "/") {
-              request.path = path23;
+              request.path = path24;
             } else {
-              request.path += path23;
+              request.path += path24;
             }
             const traitSearchParams = new URLSearchParams(search2 ?? "");
             for (const [key, value] of traitSearchParams) {
@@ -37136,8 +37136,8 @@ var init_requestBuilder = __esm({
         return this;
       }
       p(memberName, labelValueProvider, uriLabel, isGreedyLabel) {
-        this.resolvePathStack.push((path23) => {
-          this.path = resolvedPath(path23, this.input, memberName, labelValueProvider, uriLabel, isGreedyLabel);
+        this.resolvePathStack.push((path24) => {
+          this.path = resolvedPath(path24, this.input, memberName, labelValueProvider, uriLabel, isGreedyLabel);
         });
         return this;
       }
@@ -39254,9 +39254,9 @@ var init_createPaginator = __esm({
       command5 = withCommand(command5) ?? command5;
       return await client.send(command5, ...args);
     };
-    get = (fromObject, path23) => {
+    get = (fromObject, path24) => {
       let cursor = fromObject;
-      const pathComponents = path23.split(".");
+      const pathComponents = path24.split(".");
       for (const step of pathComponents) {
         if (!cursor || typeof cursor !== "object") {
           return void 0;
@@ -42517,10 +42517,10 @@ ${longDate}
 ${credentialScope}
 ${toHex2(hashedRequest)}`;
       }
-      getCanonicalPath({ path: path23 }) {
+      getCanonicalPath({ path: path24 }) {
         if (this.uriEscapePath) {
           const normalizedPathSegments = [];
-          for (const pathSegment of path23.split("/")) {
+          for (const pathSegment of path24.split("/")) {
             if (pathSegment?.length === 0)
               continue;
             if (pathSegment === ".")
@@ -42531,11 +42531,11 @@ ${toHex2(hashedRequest)}`;
               normalizedPathSegments.push(pathSegment);
             }
           }
-          const normalizedPath = `${path23?.startsWith("/") ? "/" : ""}${normalizedPathSegments.join("/")}${normalizedPathSegments.length > 0 && path23?.endsWith("/") ? "/" : ""}`;
+          const normalizedPath = `${path24?.startsWith("/") ? "/" : ""}${normalizedPathSegments.join("/")}${normalizedPathSegments.length > 0 && path24?.endsWith("/") ? "/" : ""}`;
           const doubleEncoded = escapeUri2(normalizedPath);
           return doubleEncoded.replace(/%2F/g, "/");
         }
-        return path23;
+        return path24;
       }
       validateResolvedCredentials(credentials) {
         if (typeof credentials !== "object" || typeof credentials.accessKeyId !== "string" || typeof credentials.secretAccessKey !== "string") {
@@ -47723,12 +47723,12 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
             const password = request.password ?? "";
             auth = `${username}:${password}`;
           }
-          let path23 = request.path;
+          let path24 = request.path;
           if (queryString) {
-            path23 += `?${queryString}`;
+            path24 += `?${queryString}`;
           }
           if (request.fragment) {
-            path23 += `#${request.fragment}`;
+            path24 += `#${request.fragment}`;
           }
           let hostname5 = request.hostname ?? "";
           if (hostname5[0] === "[" && hostname5.endsWith("]")) {
@@ -47740,7 +47740,7 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
             headers: request.headers,
             host: hostname5,
             method: request.method,
-            path: path23,
+            path: path24,
             port: request.port,
             agent,
             auth
@@ -48149,16 +48149,16 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
             reject2(err2);
           };
           const queryString = query ? buildQueryString2(query) : "";
-          let path23 = request.path;
+          let path24 = request.path;
           if (queryString) {
-            path23 += `?${queryString}`;
+            path24 += `?${queryString}`;
           }
           if (request.fragment) {
-            path23 += `#${request.fragment}`;
+            path24 += `#${request.fragment}`;
           }
           const clientHttp2Stream = session.request({
             ...request.headers,
-            [constants2.HTTP2_HEADER_PATH]: path23,
+            [constants2.HTTP2_HEADER_PATH]: path24,
             [constants2.HTTP2_HEADER_METHOD]: method
           });
           if (effectiveRequestTimeout) {
@@ -64309,8 +64309,8 @@ function getErrorMap() {
 
 // node_modules/zod/v3/helpers/parseUtil.js
 var makeIssue = (params) => {
-  const { data, path: path23, errorMaps, issueData } = params;
-  const fullPath = [...path23, ...issueData.path || []];
+  const { data, path: path24, errorMaps, issueData } = params;
+  const fullPath = [...path24, ...issueData.path || []];
   const fullIssue = {
     ...issueData,
     path: fullPath
@@ -64425,11 +64425,11 @@ var errorUtil;
 
 // node_modules/zod/v3/types.js
 var ParseInputLazyPath = class {
-  constructor(parent, value, path23, key) {
+  constructor(parent, value, path24, key) {
     this._cachedPath = [];
     this.parent = parent;
     this.data = value;
-    this._path = path23;
+    this._path = path24;
     this._key = key;
   }
   get path() {
@@ -67993,11 +67993,11 @@ function normalizeObjectSchema(schema) {
   }
   return void 0;
 }
-function getDotPath(path23) {
-  if (path23.length === 0) {
+function getDotPath(path24) {
+  if (path24.length === 0) {
     return "object root";
   }
-  return path23.reduce((acc, seg, index) => {
+  return path24.reduce((acc, seg, index) => {
     if (index === 0) {
       return String(seg);
     }
@@ -74487,10 +74487,10 @@ function mergeDefs2(...defs) {
 function cloneDef2(schema) {
   return mergeDefs2(schema._zod.def);
 }
-function getElementAtPath2(obj, path23) {
-  if (!path23)
+function getElementAtPath2(obj, path24) {
+  if (!path24)
     return obj;
-  return path23.reduce((acc, key) => acc?.[key], obj);
+  return path24.reduce((acc, key) => acc?.[key], obj);
 }
 function promiseAllObject2(promisesObj) {
   const keys = Object.keys(promisesObj);
@@ -74899,11 +74899,11 @@ function explicitlyAborted2(x2, startIndex = 0) {
   }
   return false;
 }
-function prefixIssues2(path23, issues) {
+function prefixIssues2(path24, issues) {
   return issues.map((iss) => {
     var _a7;
     (_a7 = iss).path ?? (_a7.path = []);
-    iss.path.unshift(path23);
+    iss.path.unshift(path24);
     return iss;
   });
 }
@@ -75050,16 +75050,16 @@ function flattenError2(error113, mapper = (issue3) => issue3.message) {
 }
 function formatError2(error113, mapper = (issue3) => issue3.message) {
   const fieldErrors = { _errors: [] };
-  const processError = (error114, path23 = []) => {
+  const processError = (error114, path24 = []) => {
     for (const issue3 of error114.issues) {
       if (issue3.code === "invalid_union" && issue3.errors.length) {
-        issue3.errors.map((issues) => processError({ issues }, [...path23, ...issue3.path]));
+        issue3.errors.map((issues) => processError({ issues }, [...path24, ...issue3.path]));
       } else if (issue3.code === "invalid_key") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else if (issue3.code === "invalid_element") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else {
-        const fullpath = [...path23, ...issue3.path];
+        const fullpath = [...path24, ...issue3.path];
         if (fullpath.length === 0) {
           fieldErrors._errors.push(mapper(issue3));
         } else {
@@ -75086,17 +75086,17 @@ function formatError2(error113, mapper = (issue3) => issue3.message) {
 }
 function treeifyError2(error113, mapper = (issue3) => issue3.message) {
   const result = { errors: [] };
-  const processError = (error114, path23 = []) => {
+  const processError = (error114, path24 = []) => {
     var _a7, _b2;
     for (const issue3 of error114.issues) {
       if (issue3.code === "invalid_union" && issue3.errors.length) {
-        issue3.errors.map((issues) => processError({ issues }, [...path23, ...issue3.path]));
+        issue3.errors.map((issues) => processError({ issues }, [...path24, ...issue3.path]));
       } else if (issue3.code === "invalid_key") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else if (issue3.code === "invalid_element") {
-        processError({ issues: issue3.issues }, [...path23, ...issue3.path]);
+        processError({ issues: issue3.issues }, [...path24, ...issue3.path]);
       } else {
-        const fullpath = [...path23, ...issue3.path];
+        const fullpath = [...path24, ...issue3.path];
         if (fullpath.length === 0) {
           result.errors.push(mapper(issue3));
           continue;
@@ -75128,8 +75128,8 @@ function treeifyError2(error113, mapper = (issue3) => issue3.message) {
 }
 function toDotPath2(_path) {
   const segs = [];
-  const path23 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
-  for (const seg of path23) {
+  const path24 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
+  for (const seg of path24) {
     if (typeof seg === "number")
       segs.push(`[${seg}]`);
     else if (typeof seg === "symbol")
@@ -87821,13 +87821,13 @@ function resolveRef2(ref, ctx) {
   if (!ref.startsWith("#")) {
     throw new Error("External $ref is not supported, only local refs (#/...) are allowed");
   }
-  const path23 = ref.slice(1).split("/").filter(Boolean);
-  if (path23.length === 0) {
+  const path24 = ref.slice(1).split("/").filter(Boolean);
+  if (path24.length === 0) {
     return ctx.rootSchema;
   }
   const defsKey = ctx.version === "draft-2020-12" ? "$defs" : "definitions";
-  if (path23[0] === defsKey) {
-    const key = path23[1];
+  if (path24[0] === defsKey) {
+    const key = path24[1];
     if (!key || !ctx.defs[key]) {
       throw new Error(`Reference not found: ${ref}`);
     }
@@ -89721,7 +89721,7 @@ var OpenAIExtensions = class {
 };
 
 // src/ops/studio-extras.mjs
-import path7 from "node:path";
+import path9 from "node:path";
 
 // src/redact.mjs
 var SENSITIVE_KEY = /authorization|cookie|token|secret|password|credential|session_token|sts_ak|sts_sk|jwt|bearer/i;
@@ -90065,11 +90065,11 @@ function assertProjectSupports(kind, capabilities, options = {}) {
 }
 
 // src/ops/images.mjs
-import { createHash as createHash2 } from "node:crypto";
-import { readFile as readFile2, stat as stat2 } from "node:fs/promises";
+import { createHash as createHash3, randomUUID as randomUUID4 } from "node:crypto";
+import { readFile as readFile4, stat as stat3 } from "node:fs/promises";
 import { COPYFILE_EXCL } from "node:constants";
-import { chmod, copyFile, mkdir, open as open2, rm } from "node:fs/promises";
-import path3 from "node:path";
+import { chmod, copyFile, mkdir as mkdir3, open as open4, rm as rm2 } from "node:fs/promises";
+import path5 from "node:path";
 
 // src/security/path-policy.mjs
 import path from "node:path";
@@ -90295,23 +90295,293 @@ async function inspectImage(inputPath) {
   };
 }
 
+// src/store/jsondoc.mjs
+import { mkdir, open as open2, readFile as readFile2, rename, unlink } from "node:fs/promises";
+import path3 from "node:path";
+import { randomUUID } from "node:crypto";
+var JsonDocument = class {
+  #file;
+  #mutation = Promise.resolve();
+  constructor(file3) {
+    this.#file = path3.resolve(file3);
+  }
+  get file() {
+    return this.#file;
+  }
+  async read(fallback2) {
+    let text;
+    try {
+      text = await readFile2(this.#file, "utf8");
+    } catch (error113) {
+      if (error113.code === "ENOENT") return typeof fallback2 === "function" ? fallback2() : fallback2;
+      throw new TripoError("PERSISTENCE_ERROR", `Could not read ${path3.basename(this.#file)}.`, { cause: error113 });
+    }
+    try {
+      return JSON.parse(text);
+    } catch (error113) {
+      throw new TripoError("PERSISTENCE_ERROR", `${path3.basename(this.#file)} is not valid JSON.`, { cause: error113 });
+    }
+  }
+  async write(value) {
+    await mkdir(path3.dirname(this.#file), { recursive: true });
+    const temporary = path3.join(path3.dirname(this.#file), `.${path3.basename(this.#file)}.${randomUUID()}.tmp`);
+    let handle;
+    try {
+      handle = await open2(temporary, "wx", 384);
+      await handle.writeFile(`${JSON.stringify(value)}
+`, "utf8");
+      await handle.sync();
+      await handle.close();
+      handle = void 0;
+      await rename(temporary, this.#file);
+      if (process.platform !== "win32") {
+        const directory = await open2(path3.dirname(this.#file), "r");
+        try {
+          await directory.sync();
+        } finally {
+          await directory.close();
+        }
+      }
+    } catch (error113) {
+      throw new TripoError("PERSISTENCE_ERROR", `Could not durably update ${path3.basename(this.#file)}.`, { cause: error113 });
+    } finally {
+      await handle?.close().catch(() => {
+      });
+      await unlink(temporary).catch(() => {
+      });
+    }
+  }
+  async update(mutator, fallback2) {
+    const previous = this.#mutation;
+    let release2;
+    this.#mutation = new Promise((resolve) => {
+      release2 = resolve;
+    });
+    await previous;
+    try {
+      const current = await this.read(fallback2);
+      const next = await mutator(current);
+      await this.write(next);
+      return next;
+    } finally {
+      release2();
+    }
+  }
+  async remove() {
+    await unlink(this.#file).catch((error113) => {
+      if (error113.code !== "ENOENT") throw error113;
+    });
+  }
+};
+
+// src/store/lock.mjs
+import { mkdir as mkdir2, open as open3, readFile as readFile3, rm, stat as stat2, writeFile } from "node:fs/promises";
+import path4 from "node:path";
+import { randomUUID as randomUUID3 } from "node:crypto";
+
+// src/util/misc.mjs
+import { createHash as createHash2, randomUUID as randomUUID2 } from "node:crypto";
+function hashObject(value) {
+  return createHash2("sha256").update(stableStringify(value), "utf8").digest("hex");
+}
+function stableStringify(value) {
+  if (value === null || typeof value !== "object") return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  const keys = Object.keys(value).sort();
+  return `{${keys.map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(",")}}`;
+}
+function uuid8() {
+  return randomUUID2();
+}
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+function isoNow() {
+  return (/* @__PURE__ */ new Date()).toISOString();
+}
+
+// src/store/lock.mjs
+var FileLock = class {
+  #dir;
+  constructor(locksDir) {
+    this.#dir = locksDir;
+  }
+  async acquire(name, { timeoutMs = 3e4, staleMs = 12e4 } = {}) {
+    if (!/^[a-z0-9][a-z0-9_-]{0,62}$/i.test(name)) throw new Error(`Invalid lock name: ${name}`);
+    const lockPath = path4.join(this.#dir, `${name}.lock`);
+    const ownerPath = path4.join(lockPath, "owner.json");
+    const owner = { id: randomUUID3(), pid: process.pid, at: (/* @__PURE__ */ new Date()).toISOString() };
+    const deadline = Date.now() + timeoutMs;
+    await mkdir2(this.#dir, { recursive: true });
+    for (; ; ) {
+      try {
+        await mkdir2(lockPath);
+        await writeFile(ownerPath, `${JSON.stringify(owner)}
+`, { mode: 384 });
+        return this.#handle(lockPath, ownerPath, owner.id);
+      } catch (error113) {
+        if (error113.code !== "EEXIST") throw error113;
+        if (await this.#reclaimIfStale(lockPath, ownerPath, staleMs)) continue;
+        if (Date.now() >= deadline) {
+          const err2 = new Error(`Timed out acquiring lock ${name}.`);
+          err2.code = "LOCK_TIMEOUT";
+          throw err2;
+        }
+        await delay(80 + Math.floor(Math.random() * 70));
+      }
+    }
+  }
+  async #reclaimIfStale(lockPath, ownerPath, staleMs) {
+    try {
+      const owner = JSON.parse(await readFile3(ownerPath, "utf8"));
+      const info = await stat2(lockPath);
+      const ageMs = Date.now() - Math.max(info.mtimeMs, Date.parse(owner.at ?? "") || 0);
+      const alive = typeof owner.pid === "number" && process.kill(owner.pid, 0) !== false;
+      if (alive && ageMs < staleMs) return false;
+      await rm(lockPath, { force: true, recursive: true });
+      return true;
+    } catch (error113) {
+      if (error113?.code === "ENOENT") return true;
+      if (error113?.code === "ESRCH") {
+        await rm(lockPath, { force: true, recursive: true }).catch(() => {
+        });
+        return true;
+      }
+      if (error113?.code === "EPERM") return false;
+      try {
+        const info = await stat2(lockPath);
+        if (Date.now() - info.mtimeMs > staleMs) {
+          await rm(lockPath, { force: true, recursive: true });
+          return true;
+        }
+      } catch {
+      }
+      return false;
+    }
+  }
+  #handle(lockPath, ownerPath, id3) {
+    let released = false;
+    return {
+      id: id3,
+      release: async () => {
+        if (released) return;
+        released = true;
+        await rm(lockPath, { force: true, recursive: true }).catch(() => {
+        });
+      },
+      [Symbol.asyncDispose]: async () => {
+        if (!released) {
+          released = true;
+          await rm(lockPath, { force: true, recursive: true }).catch(() => {
+          });
+        }
+      }
+    };
+  }
+  async withLock(name, fn, options) {
+    const lock = await this.acquire(name, options);
+    try {
+      return await fn();
+    } finally {
+      await lock.release();
+    }
+  }
+};
+
 // src/ops/images.mjs
 var PLAN_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+var LOCAL_INPUT_BUCKET = "tripo-plugin-local-input";
+function pendingInputWire(provenance) {
+  return { bucket: LOCAL_INPUT_BUCKET, key: provenance.relative_path };
+}
+async function cachedUpload(ctx, task, snapshot) {
+  const key = hashObject({ account: task.account_fingerprint, sha256: snapshot.sha256, format: snapshot.format });
+  const directory = path5.join(ctx.config.dataDir, "input-uploads");
+  const doc = new JsonDocument(path5.join(directory, `${key}.json`));
+  const lock = new FileLock(path5.join(ctx.config.dataDir, "locks"));
+  return lock.withLock(`input-${key.slice(0, 56)}`, async () => {
+    const assertAccount = async () => {
+      if (await ctx.session.accountFingerprint() !== task.account_fingerprint)
+        throw new TripoError("PLAN_MISMATCH", "The authenticated account changed while uploading inputs.", { stage: "operation_stage" });
+    };
+    await assertAccount();
+    let cached3 = await doc.read();
+    if (!cached3 || Date.parse(cached3.expires_at) <= Date.now()) {
+      const source = await verifySnapshot(ctx.config, task.task_id, snapshot);
+      await mkdir3(directory, { recursive: true, mode: 448 });
+      const file3 = path5.join(directory, `${key}.${snapshot.format}`);
+      try {
+        await copyFile(source, file3);
+        const verify = async () => {
+          const bytes = await readFile4(file3);
+          if (bytes.length !== snapshot.size_bytes || createHash3("sha256").update(bytes).digest("hex") !== snapshot.sha256)
+            throw new TripoError("FILE_CHANGED", "The cached upload input changed.", { stage: "operation_provenance" });
+        };
+        await verify();
+        const token = await ctx.gateway.requestTemporaryToken(snapshot.format);
+        const uploaded = await ctx.uploader.upload(file3, token);
+        await verify();
+        await assertAccount();
+        cached3 = { uploaded, expires_at: new Date(Date.now() + ctx.config.planTtlMs).toISOString() };
+        await doc.write(cached3);
+      } finally {
+        await rm2(file3, { force: true }).catch(() => {
+        });
+      }
+    }
+    if (snapshot.audit_required && !cached3.audit) {
+      cached3.audit = await ctx.gateway.auditImage(cached3.uploaded);
+      await assertAccount();
+      await doc.write(cached3);
+    }
+    return cached3;
+  }, { timeoutMs: 30 * 60 * 1e3, staleMs: 60 * 60 * 1e3 });
+}
+async function resolvePendingInputs(ctx, task, { uploadOnly = false } = {}) {
+  const resolved = /* @__PURE__ */ new Map();
+  for (const snapshot of task.snapshots ?? []) {
+    if (!snapshot.pending_upload) continue;
+    const { uploaded, audit } = await cachedUpload(ctx, task, snapshot);
+    if (audit && (!["pass", "sensitive"].includes(audit.result) || audit.result === "sensitive" && task.kind === "image.generate" && !task.metadata.allow_sensitive)) {
+      throw new TripoError("CONTENT_AUDIT_REJECTED", "The reference image did not pass the Studio audit.", { stage: "audit", safeToRetryPaidOperation: true });
+    }
+    resolved.set(snapshot.relative_path, { ...uploaded, ...audit ? { image_audit_result: audit.result } : {} });
+  }
+  if (uploadOnly) return;
+  const replace = (value) => {
+    if (Array.isArray(value)) return value.map(replace);
+    if (value && typeof value === "object") {
+      if (value.bucket === LOCAL_INPUT_BUCKET) {
+        const uploaded = resolved.get(value.key);
+        if (!uploaded) throw new TripoError("STAGING_REQUIRED", "A deferred input has no verified snapshot.", { stage: "operation_stage" });
+        return { ...value, ...uploaded };
+      }
+      return Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, replace(entry)]));
+    }
+    return value;
+  };
+  const payload = replace(task.payload);
+  if (task.metadata.pending_symmetry) {
+    const reference = Array.isArray(payload.body.image) ? payload.body.image.find(Boolean) : payload.body.image;
+    if (reference) payload.body.symmetry = await ctx.gateway.checkSymmetry(reference);
+  }
+  return payload;
+}
 function snapshotDirectory(config3, taskId) {
   if (!PLAN_ID.test(taskId)) {
     throw new TripoError("CONFIGURATION_ERROR", "The task identifier for input snapshots is invalid.", { stage: "operation_stage" });
   }
-  return path3.join(config3.dataDir, "task-inputs", taskId);
+  return path5.join(config3.dataDir, "task-inputs", taskId);
 }
 async function syncSnapshot(filePath, directory) {
-  const handle = await open2(filePath, process.platform === "win32" ? "r+" : "r");
+  const handle = await open4(filePath, process.platform === "win32" ? "r+" : "r");
   try {
     await handle.sync();
   } finally {
     await handle.close();
   }
   if (process.platform !== "win32") {
-    const directoryHandle = await open2(directory, "r");
+    const directoryHandle = await open4(directory, "r");
     try {
       await directoryHandle.sync();
     } finally {
@@ -90320,13 +90590,13 @@ async function syncSnapshot(filePath, directory) {
   }
 }
 async function removeSnapshots(config3, taskId) {
-  await rm(snapshotDirectory(config3, taskId), { force: true, recursive: true });
+  await rm2(snapshotDirectory(config3, taskId), { force: true, recursive: true });
 }
 async function verifySnapshot(config3, taskId, provenance) {
   const directory = snapshotDirectory(config3, taskId);
-  const snapshotPath = path3.join(directory, path3.basename(provenance.relative_path));
-  const relativeToDirectory = path3.relative(directory, snapshotPath);
-  if (relativeToDirectory === "" || relativeToDirectory.startsWith("..") || path3.isAbsolute(relativeToDirectory)) {
+  const snapshotPath = path5.join(directory, path5.basename(provenance.relative_path));
+  const relativeToDirectory = path5.relative(directory, snapshotPath);
+  if (relativeToDirectory === "" || relativeToDirectory.startsWith("..") || path5.isAbsolute(relativeToDirectory)) {
     throw new TripoError("FILE_INVALID", "A task input snapshot escaped its private directory.", {
       safeToRetryPaidOperation: false,
       stage: "operation_provenance"
@@ -90335,8 +90605,8 @@ async function verifySnapshot(config3, taskId, provenance) {
   let snapshot;
   try {
     if (["glb", "obj", "fbx", "stl"].includes(provenance.format)) {
-      const bytes = await readFile2(snapshotPath);
-      snapshot = { path: snapshotPath, sha256: createHash2("sha256").update(bytes).digest("hex"), size: bytes.length, format: path3.extname(snapshotPath).slice(1) };
+      const bytes = await readFile4(snapshotPath);
+      snapshot = { path: snapshotPath, sha256: createHash3("sha256").update(bytes).digest("hex"), size: bytes.length, format: path5.extname(snapshotPath).slice(1) };
     } else snapshot = await inspectImage(snapshotPath);
   } catch (error113) {
     throw new TripoError("FILE_CHANGED", "A retained task input snapshot is unavailable or invalid.", {
@@ -90368,9 +90638,9 @@ async function stageLocalImage(config3, gateway, uploader, inputPath, audit, ret
     throw new TripoError("CONFIGURATION_ERROR", "The task input snapshot index is invalid.", { stage: "operation_stage" });
   }
   const directory = snapshotDirectory(config3, retain.taskId);
-  await mkdir(directory, { recursive: true, mode: 448 });
-  const snapshotName = `input-${retain.index}.${canonicalSourceFormat}`;
-  const snapshotPath = path3.join(directory, snapshotName);
+  await mkdir3(directory, { recursive: true, mode: 448 });
+  const snapshotName = `input-${retain.index}-${randomUUID4()}.${canonicalSourceFormat}`;
+  const snapshotPath = path5.join(directory, snapshotName);
   let completed = false;
   try {
     await copyFile(source.path, snapshotPath, COPYFILE_EXCL);
@@ -90383,8 +90653,9 @@ async function stageLocalImage(config3, gateway, uploader, inputPath, audit, ret
         stage: "operation_stage"
       });
     }
-    const token = retain.upload === false ? null : await gateway.requestTemporaryToken(snapshot.format);
-    const uploaded = token ? await uploader.upload(snapshot.path, token) : void 0;
+    const deferred = retain.upload !== false && retain.deferUpload === true;
+    const token = retain.upload === false || deferred ? null : await gateway.requestTemporaryToken(snapshot.format);
+    const uploaded = deferred ? pendingInputWire({ relative_path: `task-inputs/${retain.taskId}/${snapshotName}` }) : token ? await uploader.upload(snapshot.path, token) : void 0;
     const unchanged = await inspectImage(snapshot.path);
     if (unchanged.sha256 !== snapshot.sha256 || unchanged.size !== snapshot.size) {
       throw new TripoError("FILE_CHANGED", "The immutable image snapshot changed during upload.", {
@@ -90392,7 +90663,7 @@ async function stageLocalImage(config3, gateway, uploader, inputPath, audit, ret
         stage: "operation_stage"
       });
     }
-    const auditResult = audit ? await gateway.auditImage(uploaded) : void 0;
+    const auditResult = audit ? deferred ? { result: "pass", deferred: true } : await gateway.auditImage(uploaded) : void 0;
     if (auditResult && !["pass", "sensitive"].includes(auditResult.result)) {
       throw new TripoError("CONTENT_AUDIT_REJECTED", `Tripo image audit returned ${auditResult.result}; the operation was not submitted.`, {
         safeToRetryPaidOperation: true,
@@ -90407,10 +90678,11 @@ async function stageLocalImage(config3, gateway, uploader, inputPath, audit, ret
         height: snapshot.height,
         sha256: snapshot.sha256,
         size_bytes: snapshot.size,
-        source_name: path3.basename(source.path),
+        source_name: path5.basename(source.path),
         width: snapshot.width
       },
       provenance: {
+        ...deferred ? { pending_upload: true, audit_required: audit } : {},
         format: snapshot.format,
         height: snapshot.height,
         label: retain.label,
@@ -90418,13 +90690,13 @@ async function stageLocalImage(config3, gateway, uploader, inputPath, audit, ret
         sha256: snapshot.sha256,
         size_bytes: snapshot.size,
         slot: retain.slot,
-        source_name: path3.basename(source.path),
+        source_name: path5.basename(source.path),
         width: snapshot.width
       },
       uploaded
     };
   } finally {
-    if (!completed) await rm(snapshotPath, { force: true }).catch(() => {
+    if (!completed) await rm2(snapshotPath, { force: true }).catch(() => {
     });
   }
 }
@@ -90432,17 +90704,17 @@ async function stageLocalModelFile(config3, inputPath, retain) {
   assertLocalPathSpecifier(inputPath, "import_input_policy");
   const { realpath: realpath5, stat: stat11, readFile: readFile16 } = await import("node:fs/promises");
   const { createHash: createHash16 } = await import("node:crypto");
-  const resolved = path3.resolve(inputPath);
+  const resolved = path5.resolve(inputPath);
   const canonical = await realpath5(resolved).catch((error113) => {
     throw new TripoError("FILE_INVALID", `Model file does not exist: ${resolved}`, { cause: error113, stage: "prepare" });
   });
   const metadata = await stat11(canonical);
   if (!metadata.isFile()) throw new TripoError("FILE_INVALID", "Model path must point to a regular file.", { stage: "prepare" });
   const directory = snapshotDirectory(config3, retain.taskId);
-  await mkdir(directory, { recursive: true, mode: 448 });
-  const extension = path3.extname(canonical).toLowerCase();
-  const snapshotName = `input-${retain.index}${extension}`;
-  const snapshotPath = path3.join(directory, snapshotName);
+  await mkdir3(directory, { recursive: true, mode: 448 });
+  const extension = path5.extname(canonical).toLowerCase();
+  const snapshotName = `input-${retain.index}-${randomUUID4()}${extension}`;
+  const snapshotPath = path5.join(directory, snapshotName);
   await copyFile(canonical, snapshotPath, COPYFILE_EXCL);
   if (process.platform !== "win32") await chmod(snapshotPath, 256);
   const bytes = await readFile16(snapshotPath);
@@ -90452,7 +90724,7 @@ async function stageLocalModelFile(config3, inputPath, retain) {
       format: extension.slice(1),
       sha256,
       size_bytes: metadata.size,
-      source_name: path3.basename(canonical)
+      source_name: path5.basename(canonical)
     },
     path: snapshotPath,
     provenance: {
@@ -90462,7 +90734,7 @@ async function stageLocalModelFile(config3, inputPath, retain) {
       sha256,
       size_bytes: metadata.size,
       slot: retain.slot,
-      source_name: path3.basename(canonical)
+      source_name: path5.basename(canonical)
     }
   };
 }
@@ -90480,10 +90752,10 @@ function directImageWire(image) {
 }
 
 // src/util/model-inspect.mjs
-import { createHash as createHash3 } from "node:crypto";
+import { createHash as createHash4 } from "node:crypto";
 import { createReadStream } from "node:fs";
-import { readFile as readFile3, realpath as realpath3, stat as stat3 } from "node:fs/promises";
-import path4 from "node:path";
+import { readFile as readFile5, realpath as realpath3, stat as stat4 } from "node:fs/promises";
+import path6 from "node:path";
 var GLB_MAGIC = 1179937895;
 var GLB_JSON_CHUNK = 1313821514;
 var FBX_BINARY_MAGIC = Buffer.from("Kaydara FBX Binary  \0\0", "binary");
@@ -90617,25 +90889,25 @@ function inspectStl(bytes) {
   return { faceCount: facets, isUvMapped: false };
 }
 function formatFromPath(filePath) {
-  const extension = path4.extname(filePath).slice(1).toLowerCase();
+  const extension = path6.extname(filePath).slice(1).toLowerCase();
   if (!["fbx", "glb", "obj", "stl"].includes(extension)) throw invalid("Model filename must end in .glb, .obj, .fbx, or .stl.");
   return extension;
 }
 async function sha256File(filePath) {
-  const hash5 = createHash3("sha256");
+  const hash5 = createHash4("sha256");
   const stream = createReadStream(filePath);
   for await (const chunk of stream) hash5.update(chunk);
   return hash5.digest("hex");
 }
 async function inspectModel(inputPath) {
-  const resolved = path4.resolve(inputPath);
+  const resolved = path6.resolve(inputPath);
   let canonicalPath;
   try {
     canonicalPath = await realpath3(resolved);
   } catch (error113) {
     throw new TripoError("FILE_INVALID", `Model does not exist: ${resolved}`, { cause: error113, stage: "model_inspect" });
   }
-  const metadata = await stat3(canonicalPath);
+  const metadata = await stat4(canonicalPath);
   if (!metadata.isFile()) throw invalid("Model path must point to a regular file.");
   if (metadata.size < 1 || metadata.size > MAX_IMPORT_MODEL_BYTES) {
     throw invalid("Model must be between 1 byte and 150 MiB.", { size_bytes: metadata.size });
@@ -90643,14 +90915,14 @@ async function inspectModel(inputPath) {
   const format3 = formatFromPath(canonicalPath);
   let bytes;
   try {
-    bytes = await readFile3(canonicalPath);
+    bytes = await readFile5(canonicalPath);
   } catch (error113) {
     throw new TripoError("FILE_INVALID", "The model could not be read.", { cause: error113, stage: "model_inspect" });
   }
   if (bytes.length !== metadata.size) throw new TripoError("FILE_CHANGED", "The model changed while it was being read.", { stage: "model_inspect" });
   const geometry = format3 === "glb" ? inspectGlb(bytes) : format3 === "obj" ? inspectObj(bytes) : format3 === "stl" ? inspectStl(bytes) : inspectFbx(bytes);
   const sha256 = await sha256File(canonicalPath);
-  const after = await stat3(canonicalPath);
+  const after = await stat4(canonicalPath);
   if (after.size !== metadata.size || after.mtimeMs !== metadata.mtimeMs) {
     throw new TripoError("FILE_CHANGED", "The model changed while it was being inspected.", { stage: "model_inspect" });
   }
@@ -90921,6 +91193,7 @@ var modelOperations = {
           }
           assertLocalPathSpecifier(filePath, "model_generation_input_policy");
           const staged = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, filePath, true, {
+            deferUpload: ctx.deferUploads,
             index: snapshots.length + 1,
             label: `${slot} view`,
             slot,
@@ -90956,7 +91229,10 @@ var modelOperations = {
       if (settings.model_version === NEXUS_V2_MODEL_VERSION) {
         const reference = Array.isArray(body.image) ? body.image.find(Boolean) : body.image;
         if (input2.symmetry !== void 0) body.symmetry = input2.symmetry;
-        else if (reference) body.symmetry = await ctx.gateway.checkSymmetry(reference);
+        else if (reference) {
+          if (ctx.deferUploads) metadata.pending_symmetry = true;
+          else body.symmetry = await ctx.gateway.checkSymmetry(reference);
+        }
       } else if (input2.symmetry !== void 0) throw new TripoError("INVALID_INPUT", "symmetry is a P2.0 setting.");
       return { metadata, payload: { body, mode: settingsMode }, settings, snapshots };
     },
@@ -90987,8 +91263,8 @@ var modelOperations = {
       const matrix2 = normalizeMatrix(input2.transform_matrix);
       const name = (input2.name ?? staged.metadata.source_name).replace(/[\u0000-\u001f\u007f]/g, " ").trim();
       if (!name || name.length > 255) throw new TripoError("INVALID_INPUT", "The model name must be 1-255 safe characters.", { stage: "model_import_prepare" });
-      const token = await ctx.gateway.requestTemporaryToken(inspected.format);
-      const uploaded = await ctx.uploader.upload(staged.path, token);
+      if (ctx.deferUploads) staged.provenance.pending_upload = true;
+      const uploaded = ctx.deferUploads ? pendingInputWire(staged.provenance) : await ctx.uploader.upload(staged.path, await ctx.gateway.requestTemporaryToken(inspected.format));
       return {
         metadata: {
           face_count: inspected.faceCount,
@@ -91328,7 +91604,7 @@ var postprocessOperations = {
       };
       const retain = async (imagePath2, label, slot) => {
         assertLocalPathSpecifier(imagePath2, "operation_input_policy");
-        const image = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, imagePath2, true, { index: snapshots.length + 1, label, slot, taskId });
+        const image = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, imagePath2, true, { deferUpload: ctx.deferUploads, index: snapshots.length + 1, label, slot, taskId });
         snapshots.push(image.provenance);
         return image;
       };
@@ -91398,6 +91674,7 @@ var postprocessOperations = {
       const pf = await preflight(ctx, "retexture_preview", input2.project_id);
       assertLocalPathSpecifier(input2.render_image_path, "operation_input_policy");
       const render = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, input2.render_image_path, false, {
+        deferUpload: ctx.deferUploads,
         index: 1,
         label: "Viewport render",
         requiredFormat: "webp",
@@ -91443,6 +91720,7 @@ var postprocessOperations = {
         const entry = input2.textures[index];
         assertLocalPathSpecifier(entry.image_path, "operation_input_policy");
         const image = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, entry.image_path, false, {
+          deferUpload: ctx.deferUploads,
           index: index + 1,
           label: names[index],
           slot: `part:${names[index]}`,
@@ -91598,8 +91876,8 @@ var postprocessOperations = {
 
 // src/studio/downloader.mjs
 import { createWriteStream } from "node:fs";
-import { mkdir as mkdir2, stat as stat4 } from "node:fs/promises";
-import path5 from "node:path";
+import { mkdir as mkdir4, stat as stat5 } from "node:fs/promises";
+import path7 from "node:path";
 import { Readable, Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
 var MAX_DOWNLOAD_BYTES = 4 * 1024 * 1024 * 1024;
@@ -91623,7 +91901,7 @@ async function downloadArtifact(config3, urlValue, requestedPath, defaultName, f
       });
       throw new TripoError("DOWNLOAD_FAILED", "The remote artifact exceeds the 4 GiB download limit.", { stage: "download" });
     }
-    await mkdir2(path5.dirname(target), { recursive: true });
+    await mkdir4(path7.dirname(target), { recursive: true });
     let bytes = 0;
     const counting = new Transform({
       transform(chunk, _encoding, callback) {
@@ -91636,7 +91914,7 @@ async function downloadArtifact(config3, urlValue, requestedPath, defaultName, f
       }
     });
     await pipeline(Readable.fromWeb(response.body), counting, createWriteStream(target));
-    const written = await stat4(target);
+    const written = await stat5(target);
     return {
       bytes: written.size,
       host: url3.hostname,
@@ -91651,12 +91929,12 @@ async function downloadArtifact(config3, urlValue, requestedPath, defaultName, f
 }
 
 // src/studio/export-resolution.mjs
-import path6 from "node:path";
-import { createHash as createHash4, randomUUID } from "node:crypto";
-import { readFile as readFile5, writeFile, mkdir as mkdir3, unlink } from "node:fs/promises";
+import path8 from "node:path";
+import { createHash as createHash5, randomUUID as randomUUID5 } from "node:crypto";
+import { readFile as readFile7, writeFile as writeFile2, mkdir as mkdir5, unlink as unlink2 } from "node:fs/promises";
 
 // src/util/image-processing.mjs
-import { readFile as readFile4 } from "node:fs/promises";
+import { readFile as readFile6 } from "node:fs/promises";
 
 // node_modules/@imagemagick/magick-wasm/dist/index.js
 function e(e33) {
@@ -99318,10 +99596,10 @@ async function initialize() {
   initialization ??= (async () => {
     let wasm;
     try {
-      wasm = await readFile4(new URL("./magick.wasm", import.meta.url));
+      wasm = await readFile6(new URL("./magick.wasm", import.meta.url));
     } catch (error113) {
       if (error113.code !== "ENOENT") throw error113;
-      wasm = await readFile4(new URL(import.meta.resolve("@imagemagick/magick-wasm/magick.wasm")));
+      wasm = await readFile6(new URL(import.meta.resolve("@imagemagick/magick-wasm/magick.wasm")));
     }
     await B(wasm);
     Xt.width = 16384n;
@@ -99337,7 +99615,7 @@ function dimensions(width, height) {
   }
 }
 async function inputBytes(input2) {
-  const bytes = typeof input2 === "string" ? await readFile4(input2) : Buffer.from(input2);
+  const bytes = typeof input2 === "string" ? await readFile6(input2) : Buffer.from(input2);
   const metadata = inspectImageBytes(bytes);
   dimensions(metadata.width, metadata.height);
   return { bytes, metadata };
@@ -100400,7 +100678,7 @@ function unzipSync(data, opts) {
 // src/studio/export-resolution.mjs
 var MAX_BYTES = 512 * 1024 * 1024;
 var imageName = /\.(png|jpe?g|webp)$/i;
-var hash3 = (bytes) => createHash4("sha256").update(bytes).digest("hex");
+var hash3 = (bytes) => createHash5("sha256").update(bytes).digest("hex");
 function reject(message) {
   throw new TripoError("EXPORT_RESOLUTION_UNVERIFIED", message, { stage: "export_resolution" });
 }
@@ -100534,43 +100812,43 @@ async function normalizeExport(bytes, { textureSize, format: format3, expectText
 }
 async function sourceTextureInfo(ctx, detail, operatorId) {
   if (!detail.model_url) return { source_texture_size: detail.operator?.is_ultra_textured ? 8192 : detail.operator?.is_hd_textured ? 4096 : 2048, source_texture_size_verified: false };
-  const root5 = path6.join(ctx.config.dataDir, "export-input-cache");
-  const file3 = await resolveOutputPath({ ...ctx.config, outputRoots: [root5] }, path6.join(root5, `${hash3(Buffer.from(operatorId))}.glb`), "source.glb");
+  const root5 = path8.join(ctx.config.dataDir, "export-input-cache");
+  const file3 = await resolveOutputPath({ ...ctx.config, outputRoots: [root5] }, path8.join(root5, `${hash3(Buffer.from(operatorId))}.glb`), "source.glb");
   let bytes;
   try {
-    bytes = await readFile5(file3);
+    bytes = await readFile7(file3);
   } catch (e33) {
     if (e33.code !== "ENOENT") throw e33;
     await downloadArtifact({ ...ctx.config, outputRoots: [root5] }, detail.model_url, file3, "source.glb");
-    bytes = await readFile5(file3);
+    bytes = await readFile7(file3);
   }
   const textures = await inspectGlbTextures(bytes);
   return { source_texture_size: textures.length ? Math.max(...textures.map((t8) => Math.max(t8.width, t8.height))) : 2048, source_texture_size_verified: true, source_texture_count: textures.length };
 }
 async function prepareExportDownload(runtime, record3) {
   const { config: config3, gateway } = runtime;
-  const root5 = path6.join(config3.assetRoot, "exports", record3.task_id);
-  const raw = await resolveOutputPath(config3, path6.join(root5, `download-${randomUUID()}.tmp`), "source.bin");
-  await mkdir3(path6.dirname(raw), { recursive: true });
+  const root5 = path8.join(config3.assetRoot, "exports", record3.task_id);
+  const raw = await resolveOutputPath(config3, path8.join(root5, `download-${randomUUID5()}.tmp`), "source.bin");
+  await mkdir5(path8.dirname(raw), { recursive: true });
   const url3 = record3.remote?.operator_id ? (await gateway.getExportDownload(record3.remote.operator_id, record3.payload.name)).model_url : record3.result.export_url;
   await downloadArtifact(config3, url3, raw, "source.bin");
-  const bytes = await readFile5(raw);
-  const source = await resolveOutputPath(config3, path6.join(root5, `${hash3(bytes)}.source.bin`), "source.bin");
+  const bytes = await readFile7(raw);
+  const source = await resolveOutputPath(config3, path8.join(root5, `${hash3(bytes)}.source.bin`), "source.bin");
   await writeImmutable(source, bytes);
-  await unlink(raw);
+  await unlink2(raw);
   const result = await normalizeExport(bytes, { textureSize: record3.payload.texture_size, format: record3.result.format, expectTextures: record3.metadata.source_texture_count > 0 });
   const zip = result.bytes.length >= 4 && result.bytes.readUInt32LE(0) === 67324752;
   const name = `${record3.payload.name}.${zip ? "zip" : record3.result.format}`;
-  const target = await resolveOutputPath(config3, path6.join(root5, `${hash3(result.bytes)}.${zip ? "zip" : record3.result.format}`), name);
+  const target = await resolveOutputPath(config3, path8.join(root5, `${hash3(result.bytes)}.${zip ? "zip" : record3.result.format}`), name);
   await writeImmutable(target, result.bytes);
   return { localPath: target, defaultName: name, verification: { ...result.verification, source_path: source }, source: { task_id: record3.task_id } };
 }
 async function writeImmutable(target, bytes) {
   try {
-    await writeFile(target, bytes, { flag: "wx" });
+    await writeFile2(target, bytes, { flag: "wx" });
   } catch (e33) {
     if (e33.code !== "EEXIST") throw e33;
-    if (hash3(await readFile5(target)) !== hash3(bytes)) reject("Cached export artifact changed; refusing to overwrite it.");
+    if (hash3(await readFile7(target)) !== hash3(bytes)) reject("Cached export artifact changed; refusing to overwrite it.");
   }
 }
 
@@ -100596,7 +100874,7 @@ async function uvContext(ctx, projectId2, expected) {
 async function uvEligibility(ctx, projectId2, detail) {
   if (detail.operator?.is_segmented) throw new TripoError("INVALID_INPUT", "Smart UV does not support segmented projects.");
   if (!detail.model_url) fail("Smart UV requires a model to inspect.");
-  const cache5 = path7.join(ctx.config.dataDir, "model-cache");
+  const cache5 = path9.join(ctx.config.dataDir, "model-cache");
   const saved = await downloadArtifact({ ...ctx.config, outputRoots: [cache5] }, detail.model_url, void 0, `uv-${encodeURIComponent(projectId2)}.glb`);
   const model = await inspectModel(saved.path);
   const quad = detail.operator?.is_quad === true;
@@ -100802,7 +101080,7 @@ var studioExtraOperations = {
 
 // src/server.mjs
 import { readFile as readFile15 } from "node:fs/promises";
-import path22 from "node:path";
+import path23 from "node:path";
 import { fileURLToPath as fileURLToPath2 } from "node:url";
 
 // src/mcp/result.mjs
@@ -100824,6 +101102,10 @@ function fail2(error113) {
   };
 }
 function summarize(value) {
+  if (value?.review) {
+    const r7 = value.review;
+    return `\u914D\u7F6E\u5361\u7247 ${r7.review_id}\uFF1A${r7.status}\u3002${value.task?.task_id ? `\u4EFB\u52A1 ID\uFF1A${value.task.task_id}` : "\u5C1A\u672A\u63D0\u4EA4\u751F\u6210\u4EFB\u52A1\uFF1B\u901A\u8FC7\u5361\u7247\u6807\u8BC6\u67E5\u8BE2\u5F53\u524D\u914D\u7F6E\u4E0E\u63D0\u4EA4\u72B6\u6001\u3002"}`;
+  }
   if (value?.download?.path) return `\u4E0B\u8F7D\u5B8C\u6210\uFF0C\u6587\u4EF6\u5DF2\u4FDD\u5B58\u5230 ${value.download.path}\u3002${value.download.blender_error ? "Blender \u517C\u5BB9\u5904\u7406\u5931\u8D25\uFF0C\u8BF7\u67E5\u770B\u5361\u7247\u4E2D\u7684\u63D0\u793A\u3002" : ""}`;
   if (value?.quote) {
     const quote = value.quote;
@@ -100923,6 +101205,7 @@ var imageOperations = {
       for (const [index, imagePath2] of imagePaths.entries()) {
         assertLocalPathSpecifier(imagePath2, "image_generation_input_policy");
         const staged = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, imagePath2, true, {
+          deferUpload: ctx.deferUploads,
           index: index + 1,
           label: `Reference ${index + 1}`,
           slot: `reference_${index + 1}`,
@@ -100951,7 +101234,7 @@ var imageOperations = {
         ...references2.length > 1 ? { images: references2 } : {}
       };
       const payload = imageWireSchema.parse(candidate);
-      return { metadata: { reference_count: references2.length, studio_references: studioReferences }, payload, snapshots };
+      return { metadata: { reference_count: references2.length, studio_references: studioReferences, allow_sensitive: input2.allow_sensitive ?? false }, payload, snapshots };
     },
     async submitRemote(ctx, task) {
       const receipt = await ctx.gateway.submitStudioImage(task.payload);
@@ -101056,15 +101339,15 @@ function remoteAssetStatus(status) {
 }
 
 // src/ops/local-editing.mjs
-import { mkdir as mkdir4, readFile as readFile7, writeFile as writeFile3, access, open as open3 } from "node:fs/promises";
+import { mkdir as mkdir6, readFile as readFile9, writeFile as writeFile4, access, open as open5 } from "node:fs/promises";
 import { spawn } from "node:child_process";
-import path9 from "node:path";
+import path11 from "node:path";
 import { fileURLToPath } from "node:url";
 
 // src/util/glb-decode.mjs
-import { createHash as createHash5 } from "node:crypto";
-import { readFile as readFile6, stat as stat5, writeFile as writeFile2 } from "node:fs/promises";
-import path8 from "node:path";
+import { createHash as createHash6 } from "node:crypto";
+import { readFile as readFile8, stat as stat6, writeFile as writeFile3 } from "node:fs/promises";
+import path10 from "node:path";
 
 // node_modules/three/examples/jsm/libs/meshopt_decoder.module.js
 var MeshoptDecoder = (function() {
@@ -101328,7 +101611,7 @@ var MeshoptDecoder = (function() {
 
 // src/util/glb-decode.mjs
 var invalid2 = (message) => new TripoError("FILE_INVALID", message, { stage: "model_decode" });
-var hash4 = (bytes) => createHash5("sha256").update(bytes).digest("hex");
+var hash4 = (bytes) => createHash6("sha256").update(bytes).digest("hex");
 var integer3 = (value) => Number.isSafeInteger(value) && value >= 0;
 async function decodeMeshoptGlb(bytes, maxBytes = MAX_IMPORT_MODEL_BYTES) {
   if (bytes.length < 28 || bytes.length > maxBytes || bytes.toString("ascii", 0, 4) !== "glTF" || bytes.readUInt32LE(4) !== 2 || bytes.readUInt32LE(8) !== bytes.length) throw invalid2("Invalid or oversized GLB v2 file.");
@@ -101405,19 +101688,19 @@ async function decodeMeshoptGlb(bytes, maxBytes = MAX_IMPORT_MODEL_BYTES) {
   return Buffer.concat([header, jsonBytes, binHeader, ...chunks]);
 }
 async function prepareGlbForBlender(config3, sourcePath) {
-  if ((await stat5(sourcePath)).size > MAX_IMPORT_MODEL_BYTES) throw invalid2("GLB exceeds the 150 MiB local model limit.");
-  const source = await readFile6(sourcePath);
+  if ((await stat6(sourcePath)).size > MAX_IMPORT_MODEL_BYTES) throw invalid2("GLB exceeds the 150 MiB local model limit.");
+  const source = await readFile8(sourcePath);
   const decoded = await decodeMeshoptGlb(source);
   const sourceHash = hash4(source), decodedHash = decoded === source ? sourceHash : hash4(decoded);
   let target = sourcePath;
   if (decoded !== source) {
-    const parsed = path8.parse(sourcePath);
-    target = await resolveOutputPath(config3, path8.join(parsed.dir, `${parsed.name}.decoded-${sourceHash.slice(0, 12)}.glb`), "decoded.glb");
+    const parsed = path10.parse(sourcePath);
+    target = await resolveOutputPath(config3, path10.join(parsed.dir, `${parsed.name}.decoded-${sourceHash.slice(0, 12)}.glb`), "decoded.glb");
     try {
-      await writeFile2(target, decoded, { flag: "wx", mode: 256 });
+      await writeFile3(target, decoded, { flag: "wx", mode: 256 });
     } catch (error113) {
       if (error113.code !== "EEXIST") throw error113;
-      if (hash4(await readFile6(target)) !== decodedHash) throw invalid2("The retained decoded GLB changed; refusing to overwrite it.");
+      if (hash4(await readFile8(target)) !== decodedHash) throw invalid2("The retained decoded GLB changed; refusing to overwrite it.");
     }
   }
   return { blender_path: target, meshopt_decoded: decoded !== source, source_sha256: sourceHash, blender_sha256: decodedHash, blender_bytes: decoded.length };
@@ -101428,17 +101711,17 @@ var matrix = external_exports.array(external_exports.number().finite()).length(1
 var dimension = external_exports.number().int().min(64).max(2048);
 var partName = external_exports.string().min(1).max(256).regex(/^[^\u0000-\u001f\u007f]+$/);
 function imagePath(ctx, taskId, provenance) {
-  return path9.join(snapshotDirectory(ctx.config, taskId), path9.basename(provenance.relative_path));
+  return path11.join(snapshotDirectory(ctx.config, taskId), path11.basename(provenance.relative_path));
 }
 async function retainImage(ctx, filePath, taskId, index = 1) {
   const image = await stageLocalImage(ctx.config, null, null, filePath, false, { taskId, index, label: "Local image", slot: "image", upload: false });
   return { ...image, path: imagePath(ctx, taskId, image.provenance) };
 }
 async function retainModel(ctx, filePath, taskId) {
-  if (path9.extname(filePath).toLowerCase() !== ".glb") throw new TripoError("INVALID_INPUT", "Local viewport/edit tools require a self-contained GLB.");
+  if (path11.extname(filePath).toLowerCase() !== ".glb") throw new TripoError("INVALID_INPUT", "Local viewport/edit tools require a self-contained GLB.");
   const model = await stageLocalModelFile(ctx.config, filePath, { taskId, index: 1, label: "Local GLB", slot: "model" });
   await inspectModel(model.path);
-  const bytes = await readFile7(model.path);
+  const bytes = await readFile9(model.path);
   const jsonLength = bytes.readUInt32LE(12);
   const document2 = JSON.parse(bytes.subarray(20, 20 + jsonLength).toString("utf8"));
   for (const resource of [...document2.buffers ?? [], ...document2.images ?? []]) {
@@ -101446,16 +101729,16 @@ async function retainModel(ctx, filePath, taskId) {
   }
   const compatible = await prepareGlbForBlender({ ...ctx.config, outputRoots: [snapshotDirectory(ctx.config, taskId)] }, model.path);
   if (!compatible.meshopt_decoded) return { ...model, snapshots: [model.provenance] };
-  const derived2 = { format: "glb", label: "Decoded Blender GLB", relative_path: path9.relative(ctx.config.dataDir, compatible.blender_path).split(path9.sep).join("/"), sha256: compatible.blender_sha256, size_bytes: compatible.blender_bytes, slot: "blender_model", source_name: path9.basename(filePath) };
+  const derived2 = { format: "glb", label: "Decoded Blender GLB", relative_path: path11.relative(ctx.config.dataDir, compatible.blender_path).split(path11.sep).join("/"), sha256: compatible.blender_sha256, size_bytes: compatible.blender_bytes, slot: "blender_model", source_name: path11.basename(filePath) };
   return { ...model, path: compatible.blender_path, snapshots: [model.provenance, derived2] };
 }
 async function blender(ctx, task, job) {
-  const output2 = path9.join(ctx.config.assetRoot, "operations", task.task_id);
-  await mkdir4(output2, { recursive: true });
-  const jobPath = path9.join(snapshotDirectory(ctx.config, task.task_id), "worker-job.json");
-  await writeFile3(jobPath, JSON.stringify({ ...job, output_dir: output2 }), { mode: 384 });
-  const moduleDir = path9.dirname(fileURLToPath(import.meta.url));
-  const candidates = [path9.resolve(moduleDir, "../../scripts/blender-worker.py"), path9.resolve(moduleDir, "../scripts/blender-worker.py")];
+  const output2 = path11.join(ctx.config.assetRoot, "operations", task.task_id);
+  await mkdir6(output2, { recursive: true });
+  const jobPath = path11.join(snapshotDirectory(ctx.config, task.task_id), "worker-job.json");
+  await writeFile4(jobPath, JSON.stringify({ ...job, output_dir: output2 }), { mode: 384 });
+  const moduleDir = path11.dirname(fileURLToPath(import.meta.url));
+  const candidates = [path11.resolve(moduleDir, "../../scripts/blender-worker.py"), path11.resolve(moduleDir, "../scripts/blender-worker.py")];
   let script;
   for (const candidate of candidates) {
     try {
@@ -101466,8 +101749,8 @@ async function blender(ctx, task, job) {
     }
   }
   if (!script) throw new TripoError("CONFIGURATION_ERROR", "Packaged Blender worker is missing.");
-  const logPath = path9.join(output2, "blender.log");
-  const log = await open3(logPath, "w", 384);
+  const logPath = path11.join(output2, "blender.log");
+  const log = await open5(logPath, "w", 384);
   try {
     await new Promise((resolve, reject2) => {
       const proc = spawn(ctx.config.blenderExecutable ?? "blender", ["--background", "--factory-startup", "--python-exit-code", "1", "--python", script, "--", jobPath], { stdio: ["ignore", log.fd, log.fd] });
@@ -101487,10 +101770,10 @@ async function blender(ctx, task, job) {
   } finally {
     await log.close();
   }
-  const result = JSON.parse(await readFile7(path9.join(output2, "result.json"), "utf8"));
+  const result = JSON.parse(await readFile9(path11.join(output2, "result.json"), "utf8"));
   if (result.render_path) {
-    const webp = path9.join(output2, "viewport.webp");
-    await writeFile3(webp, await convertImage(result.render_path, { background: "#eeeeee", format: "webp", lossless: true }));
+    const webp = path11.join(output2, "viewport.webp");
+    await writeFile4(webp, await convertImage(result.render_path, { background: "#eeeeee", format: "webp", lossless: true }));
     result.render_image_path = webp;
   }
   return { local_result: result };
@@ -101559,10 +101842,10 @@ var localEditingOperations = {
       }
       for (let pixel = 0; pixel < mask.length; pixel++) if (mask[pixel]) for (let channel = 0; channel < 3; channel++) data[pixel * 4 + channel] = Math.round(data[pixel * 4 + channel] * (1 - mask[pixel]) + stroke.color[channel] * mask[pixel]);
     }
-    const dir = path9.join(ctx.config.assetRoot, "operations", task.task_id);
-    await mkdir4(dir, { recursive: true });
-    const output2 = path9.join(dir, "painted-texture.png");
-    await writeFile3(output2, await encodePixels(data, info));
+    const dir = path11.join(ctx.config.assetRoot, "operations", task.task_id);
+    await mkdir6(dir, { recursive: true });
+    const output2 = path11.join(dir, "painted-texture.png");
+    await writeFile4(output2, await encodePixels(data, info));
     return { local_result: { image_path: output2, width: info.width, height: info.height } };
   }),
   "local.crop": local("Crop image copy", "Crop a local image to an explicit pixel rectangle without changing its source; Studio automatic subject cutout is image.split.", {
@@ -101576,10 +101859,10 @@ var localEditingOperations = {
     if (input2.left + input2.width > image.metadata.width || input2.top + input2.height > image.metadata.height) throw new TripoError("INVALID_INPUT", "Crop rectangle is outside the image.");
     return { payload: { image_path: image.path, rectangle: { left: input2.left, top: input2.top, width: input2.width, height: input2.height } }, snapshots: [image.provenance] };
   }, async (ctx, task) => {
-    const dir = path9.join(ctx.config.assetRoot, "operations", task.task_id);
-    await mkdir4(dir, { recursive: true });
-    const output2 = path9.join(dir, "cropped-image.png");
-    await writeFile3(output2, await convertImage(task.payload.image_path, { crop: task.payload.rectangle }));
+    const dir = path11.join(ctx.config.assetRoot, "operations", task.task_id);
+    await mkdir6(dir, { recursive: true });
+    const output2 = path11.join(dir, "cropped-image.png");
+    await writeFile4(output2, await convertImage(task.payload.image_path, { crop: task.payload.rectangle }));
     return { local_result: { image_path: output2 } };
   })
 };
@@ -101609,26 +101892,8 @@ function operationCatalog() {
   }));
 }
 
-// src/util/misc.mjs
-import { createHash as createHash6, randomUUID as randomUUID2 } from "node:crypto";
-function hashObject(value) {
-  return createHash6("sha256").update(stableStringify(value), "utf8").digest("hex");
-}
-function stableStringify(value) {
-  if (value === null || typeof value !== "object") return JSON.stringify(value);
-  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
-  const keys = Object.keys(value).sort();
-  return `{${keys.map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(",")}}`;
-}
-function uuid8() {
-  return randomUUID2();
-}
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-function isoNow() {
-  return (/* @__PURE__ */ new Date()).toISOString();
-}
+// src/ops/service.mjs
+import path12 from "node:path";
 
 // src/ops/task-groups.mjs
 var characterName = external_exports.string().trim().min(1).max(80).refine((s2) => !/[\u0000-\u001f\u007f]/.test(s2), "Character name must be a readable single line.");
@@ -101786,8 +102051,11 @@ function publicTask(record3) {
 }
 var OperationService = class {
   #ctx;
+  #submissionLock;
+  #inputPreparations = /* @__PURE__ */ new Map();
   constructor(ctx) {
     this.#ctx = ctx;
+    this.#submissionLock = new FileLock(path12.join(ctx.config.dataDir, "locks"));
   }
   // Recovery: anything still "dispatching" when the process died crossed the
   // paid boundary without a recorded outcome. It becomes outcome_unknown —
@@ -101814,21 +102082,28 @@ var OperationService = class {
     return recovered;
   }
   async prepare(kind, input2, options = {}) {
+    if (options.draftId) return this.#submissionLock.withLock(`submit-${options.draftId}`, () => this.#prepare(kind, input2, options), { staleMs: 60 * 60 * 1e3 });
+    return this.#prepare(kind, input2, options);
+  }
+  async #prepare(kind, input2, options) {
     const operation2 = getOperation(kind);
     const validated = external_exports.object({ ...operation2.inputShape, ...taskContextShape }).strict().parse(input2);
     const { character_name, parent_task_id, ...parsedInput } = validated;
     const accountFingerprint = operation2.category === "local" ? "local" : await this.#ctx.session.accountFingerprint();
+    const draft = options.draftId ? await this.#ctx.store.get(options.draftId) : null;
+    if (draft && (draft.status !== "staged" || draft.dispatch_started_at || draft.kind !== kind || draft.account_fingerprint !== accountFingerprint))
+      throw new TripoError("PLAN_MISMATCH", "Only the owned, unsubmitted draft can be revised.", { stage: "operation_stage" });
     const grouping = await resolveCharacterGroup(this.#ctx.store, parsedInput, accountFingerprint, { name: character_name ?? options.characterName, parentTaskId: parent_task_id ?? options.parentTaskId });
     const dedupeKey = hashObject({ account_fingerprint: accountFingerprint, input: stripSubmitFlag(parsedInput), kind });
-    const duplicate = await this.#ctx.store.findFirst(
+    const duplicate = draft ? null : await this.#ctx.store.findFirst(
       (record4) => record4.dedupe_key === dedupeKey && record4.account_fingerprint === accountFingerprint && !TERMINAL.has(record4.status)
     );
     if (duplicate) {
       this.#checkDuplicateGroup(duplicate, grouping.group, character_name ?? options.characterName);
       return { deduplicated: true, paid_request_sent: duplicate.dispatch_started_at !== void 0 && operation2.consumesCredits, task: publicTask(duplicate) };
     }
-    const taskId = uuid8();
-    const built = await operation2.build(this.#ctx, parsedInput, taskId);
+    const taskId = draft?.task_id ?? uuid8();
+    const built = await operation2.build({ ...this.#ctx, deferUploads: true }, parsedInput, taskId);
     const requestHash = hashObject({
       account_fingerprint: accountFingerprint,
       contract_version: CONTRACT_VERSION,
@@ -101837,7 +102112,7 @@ var OperationService = class {
       payload: built.payload,
       snapshots: (built.snapshots ?? []).map((s2) => ({ relative_path: s2.relative_path, sha256: s2.sha256, slot: s2.slot }))
     });
-    const existing = await this.#ctx.store.findByRequestHash(requestHash, accountFingerprint);
+    const existing = draft ? null : await this.#ctx.store.findByRequestHash(requestHash, accountFingerprint);
     if (existing) {
       this.#checkDuplicateGroup(existing, grouping.group, character_name ?? options.characterName);
       return { deduplicated: true, paid_request_sent: existing.dispatch_started_at !== void 0 && operation2.consumesCredits, task: publicTask(existing) };
@@ -101846,17 +102121,17 @@ var OperationService = class {
     const record3 = {
       account_fingerprint: accountFingerprint,
       contract_version: CONTRACT_VERSION,
-      created_at: now,
+      created_at: draft?.created_at ?? now,
       dedupe_key: dedupeKey,
       dispatch_state: "none",
       downloads: [],
-      events: [event("task.staged")],
+      events: draft ? [...draft.events, event("draft.settings_saved")] : [event("task.staged")],
       expires_at: new Date(Date.now() + this.#ctx.config.planTtlMs).toISOString(),
       input_summary: inputSummary(parsedInput),
       kind,
       metadata: built.metadata ?? {},
-      parent_task_id: grouping.parentTaskId ?? null,
-      character_group: grouping.group,
+      parent_task_id: grouping.parentTaskId ?? draft?.parent_task_id ?? null,
+      character_group: grouping.group ?? draft?.character_group ?? null,
       progress: null,
       remote: null,
       request_hash: requestHash,
@@ -101870,12 +102145,15 @@ var OperationService = class {
       task_id: taskId,
       updated_at: now,
       warnings: [...built.warnings ?? [], ...grouping.warning ? [grouping.warning] : []],
-      workflow_id: options.workflowId ?? null,
+      workflow_id: options.workflowId ?? draft?.workflow_id ?? null,
       payload: built.payload,
       settings: built.settings ?? null
     };
-    if (this.#ctx.pricing) record3.cost_estimate = await this.#ctx.pricing.quote(kind, {}, { task: record3 });
-    const created = await this.#ctx.store.create(record3);
+    if (this.#ctx.pricing) record3.cost_estimate = await this.#ctx.pricing.quote(kind, {}, { task: record3, offline: true });
+    const created = draft ? await this.#ctx.store.update(taskId, (current) => {
+      if (current.status !== "staged" || current.dispatch_started_at) throw new TripoError("STAGING_REQUIRED", "The draft was submitted while saving configuration.");
+      return record3;
+    }) : await this.#ctx.store.create(record3);
     const submitted = input2.submit === true ? await this.submit(taskId, { confirmation: record3.confirmation, requestHash }) : null;
     return {
       confirmation: record3.confirmation,
@@ -101903,6 +102181,21 @@ var OperationService = class {
     return { groups: summarizeGroups(records), total: records.length };
   }
   async submit(taskId, input2 = {}) {
+    return this.#submissionLock.withLock(`submit-${taskId}`, () => this.#submit(taskId, input2), { staleMs: 60 * 60 * 1e3 });
+  }
+  preupload(taskId) {
+    if (this.#inputPreparations.has(taskId)) return this.#inputPreparations.get(taskId);
+    const pending = (async () => {
+      const task = await this.#ctx.store.get(taskId);
+      if (task.status !== "staged") return;
+      const account = await this.#ctx.session.accountFingerprint();
+      if (task.account_fingerprint !== account) throw new TripoError("PLAN_MISMATCH", "The authenticated Studio account differs from the draft account.");
+      await resolvePendingInputs(this.#ctx, task, { uploadOnly: true });
+    })().finally(() => this.#inputPreparations.delete(taskId));
+    this.#inputPreparations.set(taskId, pending);
+    return pending;
+  }
+  async #submit(taskId, input2) {
     const store = this.#ctx.store;
     const staged = await store.get(taskId);
     if (staged.status !== "staged") {
@@ -101932,17 +102225,29 @@ var OperationService = class {
     }
     const operation2 = getOperation(staged.kind);
     if (operation2.beforeSubmit) await operation2.beforeSubmit(this.#ctx, staged);
+    if (staged.cost_estimate?.offline && this.#ctx.pricing) {
+      const quote = await this.#ctx.pricing.quote(staged.kind, {}, { task: staged });
+      await store.update(taskId, (record3) => ({ ...record3, cost_estimate: quote }));
+      if (Number.isFinite(staged.cost_estimate.estimated_credits) && Number.isFinite(quote.estimated_credits) && quote.estimated_credits > staged.cost_estimate.estimated_credits)
+        throw new TripoError("PRICE_CHANGED", "The estimate increased; review the updated quote before submitting.", { stage: "task_dispatch", safeToRetryPaidOperation: true });
+    }
+    const payload = await resolvePendingInputs(this.#ctx, staged);
+    if (operation2.category !== "local" && await this.#ctx.session.accountFingerprint() !== staged.account_fingerprint)
+      throw new TripoError("PLAN_MISMATCH", "The authenticated Studio account changed while preparing inputs.", { stage: "task_dispatch" });
+    if (Date.now() >= Date.parse(staged.expires_at))
+      throw new TripoError("PLAN_EXPIRED", "The staged task expired while preparing inputs.", { stage: "task_dispatch" });
     await store.update(taskId, (record3) => {
       if (record3.status !== "staged") throw new TripoError("STAGING_REQUIRED", "The task state changed before dispatch.", { stage: "task_dispatch" });
       record3.status = "dispatching";
       record3.dispatch_state = "dispatching";
       record3.dispatch_started_at = isoNow();
+      record3.dispatch_payload = payload;
       record3.events.push(event("dispatch.begin"));
       return record3;
     });
     let remote;
     try {
-      remote = await operation2.submitRemote(this.#ctx, staged);
+      remote = await operation2.submitRemote(this.#ctx, { ...staged, payload });
     } catch (error113) {
       const normalized = toTripoError(error113, "task_dispatch");
       if (operation2.category === "local" || isDefinitiveRemoteRejection(normalized)) {
@@ -102046,6 +102351,9 @@ var OperationService = class {
     return { completed: false, ...last ?? { task: publicTask(await this.#ctx.store.get(taskId)) } };
   }
   async cancel(taskId) {
+    return this.#submissionLock.withLock(`submit-${taskId}`, () => this.#cancel(taskId), { staleMs: 60 * 60 * 1e3 });
+  }
+  async #cancel(taskId) {
     const store = this.#ctx.store;
     const record3 = await store.get(taskId);
     if (record3.dispatch_started_at !== void 0 || !["staged", "dispatching"].includes(record3.status)) {
@@ -102157,103 +102465,12 @@ import { mkdir as mkdir8 } from "node:fs/promises";
 // src/auth/coordinator.mjs
 import { execFile } from "node:child_process";
 
-// src/store/lock.mjs
-import { mkdir as mkdir5, open as open4, readFile as readFile8, rm as rm2, stat as stat6, writeFile as writeFile4 } from "node:fs/promises";
-import path10 from "node:path";
-import { randomUUID as randomUUID3 } from "node:crypto";
-var FileLock = class {
-  #dir;
-  constructor(locksDir) {
-    this.#dir = locksDir;
-  }
-  async acquire(name, { timeoutMs = 3e4, staleMs = 12e4 } = {}) {
-    if (!/^[a-z0-9][a-z0-9_-]{0,62}$/i.test(name)) throw new Error(`Invalid lock name: ${name}`);
-    const lockPath = path10.join(this.#dir, `${name}.lock`);
-    const ownerPath = path10.join(lockPath, "owner.json");
-    const owner = { id: randomUUID3(), pid: process.pid, at: (/* @__PURE__ */ new Date()).toISOString() };
-    const deadline = Date.now() + timeoutMs;
-    await mkdir5(this.#dir, { recursive: true });
-    for (; ; ) {
-      try {
-        await mkdir5(lockPath);
-        await writeFile4(ownerPath, `${JSON.stringify(owner)}
-`, { mode: 384 });
-        return this.#handle(lockPath, ownerPath, owner.id);
-      } catch (error113) {
-        if (error113.code !== "EEXIST") throw error113;
-        if (await this.#reclaimIfStale(lockPath, ownerPath, staleMs)) continue;
-        if (Date.now() >= deadline) {
-          const err2 = new Error(`Timed out acquiring lock ${name}.`);
-          err2.code = "LOCK_TIMEOUT";
-          throw err2;
-        }
-        await delay(80 + Math.floor(Math.random() * 70));
-      }
-    }
-  }
-  async #reclaimIfStale(lockPath, ownerPath, staleMs) {
-    try {
-      const owner = JSON.parse(await readFile8(ownerPath, "utf8"));
-      const info = await stat6(lockPath);
-      const ageMs = Date.now() - Math.max(info.mtimeMs, Date.parse(owner.at ?? "") || 0);
-      const alive = typeof owner.pid === "number" && process.kill(owner.pid, 0) !== false;
-      if (alive && ageMs < staleMs) return false;
-      await rm2(lockPath, { force: true, recursive: true });
-      return true;
-    } catch (error113) {
-      if (error113?.code === "ENOENT") return true;
-      if (error113?.code === "ESRCH") {
-        await rm2(lockPath, { force: true, recursive: true }).catch(() => {
-        });
-        return true;
-      }
-      if (error113?.code === "EPERM") return false;
-      try {
-        const info = await stat6(lockPath);
-        if (Date.now() - info.mtimeMs > staleMs) {
-          await rm2(lockPath, { force: true, recursive: true });
-          return true;
-        }
-      } catch {
-      }
-      return false;
-    }
-  }
-  #handle(lockPath, ownerPath, id3) {
-    let released = false;
-    return {
-      id: id3,
-      release: async () => {
-        if (released) return;
-        released = true;
-        await rm2(lockPath, { force: true, recursive: true }).catch(() => {
-        });
-      },
-      [Symbol.asyncDispose]: async () => {
-        if (!released) {
-          released = true;
-          await rm2(lockPath, { force: true, recursive: true }).catch(() => {
-          });
-        }
-      }
-    };
-  }
-  async withLock(name, fn, options) {
-    const lock = await this.acquire(name, options);
-    try {
-      return await fn();
-    } finally {
-      await lock.release();
-    }
-  }
-};
-
 // src/auth/cookies.mjs
 import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
 import { createDecipheriv, createHash as createHash7, pbkdf2Sync } from "node:crypto";
 import os from "node:os";
-import path11 from "node:path";
+import path13 from "node:path";
 var TRIPO_COOKIE_NAMES = ["ory_kratos_session", "tripo_device_id"];
 var DatabaseSync;
 try {
@@ -102277,35 +102494,35 @@ function chromiumBrowserRoots(platform2, env2) {
   const home = os.homedir();
   const roots = [];
   const push = (name, rel, keychainLabel) => {
-    const dir = platform2 === "darwin" || platform2 === "linux" || platform2 === "win32" ? path11.join(home, rel) : null;
+    const dir = platform2 === "darwin" || platform2 === "linux" || platform2 === "win32" ? path13.join(home, rel) : null;
     if (dir) roots.push({ name, dir, keychainLabel });
   };
   if (platform2 === "darwin") {
-    const as = (rel) => path11.join("Library", "Application Support", rel);
-    push("chrome", as(path11.join("Google", "Chrome")), "Chrome Safe Storage");
-    push("chrome-beta", as(path11.join("Google", "Chrome Beta")), "Chrome Safe Storage");
+    const as = (rel) => path13.join("Library", "Application Support", rel);
+    push("chrome", as(path13.join("Google", "Chrome")), "Chrome Safe Storage");
+    push("chrome-beta", as(path13.join("Google", "Chrome Beta")), "Chrome Safe Storage");
     push("chromium", as("Chromium"), "Chromium Safe Storage");
     push("edge", as("Microsoft Edge"), "Microsoft Edge Safe Storage");
-    push("brave", as(path11.join("BraveSoftware", "Brave-Browser")), "Brave Safe Storage");
-    push("arc", as(path11.join("Arc", "User Data")), "Arc Safe Storage");
+    push("brave", as(path13.join("BraveSoftware", "Brave-Browser")), "Brave Safe Storage");
+    push("arc", as(path13.join("Arc", "User Data")), "Arc Safe Storage");
     push("vivaldi", as("Vivaldi"), "Vivaldi Safe Storage");
   } else if (platform2 === "linux") {
-    const cfg = (rel) => path11.join(".config", rel);
+    const cfg = (rel) => path13.join(".config", rel);
     push("chrome", cfg("google-chrome"), "Chrome Safe Storage");
     push("chromium", cfg("chromium"), "Chromium Safe Storage");
     push("edge", cfg("microsoft-edge"), "Microsoft Edge Safe Storage");
-    push("brave", cfg(path11.join("BraveSoftware", "Brave-Browser")), "Brave Safe Storage");
+    push("brave", cfg(path13.join("BraveSoftware", "Brave-Browser")), "Brave Safe Storage");
   }
   if (env2?.TRIPO_BROWSER_PROFILE_DIR) {
-    roots.push({ name: "custom", dir: path11.resolve(env2.TRIPO_BROWSER_PROFILE_DIR), keychainLabel: "Chrome Safe Storage" });
+    roots.push({ name: "custom", dir: path13.resolve(env2.TRIPO_BROWSER_PROFILE_DIR), keychainLabel: "Chrome Safe Storage" });
   }
   return roots;
 }
 function firefoxRoots(platform2, env2) {
   const home = os.homedir();
-  if (platform2 === "darwin") return [path11.join(home, "Library", "Application Support", "Firefox", "Profiles")];
-  if (platform2 === "linux") return [path11.join(home, ".mozilla", "firefox"), path11.join(home, "snap", "firefox", "common", ".mozilla", "firefox")];
-  if (platform2 === "win32") return [path11.join(env2?.APPDATA ?? path11.join(home, "AppData", "Roaming"), "Mozilla", "Firefox", "Profiles")];
+  if (platform2 === "darwin") return [path13.join(home, "Library", "Application Support", "Firefox", "Profiles")];
+  if (platform2 === "linux") return [path13.join(home, ".mozilla", "firefox"), path13.join(home, "snap", "firefox", "common", ".mozilla", "firefox")];
+  if (platform2 === "win32") return [path13.join(env2?.APPDATA ?? path13.join(home, "AppData", "Roaming"), "Mozilla", "Firefox", "Profiles")];
   return [];
 }
 function profileCookieDbs(rootDir) {
@@ -102313,15 +102530,15 @@ function profileCookieDbs(rootDir) {
   const candidates = [rootDir];
   try {
     for (const entry of readdirSync(rootDir, { withFileTypes: true })) {
-      if (entry.isDirectory()) candidates.push(path11.join(rootDir, entry.name));
+      if (entry.isDirectory()) candidates.push(path13.join(rootDir, entry.name));
     }
   } catch {
     return dbs;
   }
   for (const dir of candidates) {
-    for (const rel of ["Cookies", path11.join("Network", "Cookies")]) {
-      const dbPath = path11.join(dir, rel);
-      if (existsSync(dbPath)) dbs.push({ dbPath, profile: path11.basename(dir) });
+    for (const rel of ["Cookies", path13.join("Network", "Cookies")]) {
+      const dbPath = path13.join(dir, rel);
+      if (existsSync(dbPath)) dbs.push({ dbPath, profile: path13.basename(dir) });
     }
   }
   return dbs;
@@ -102365,8 +102582,8 @@ function decryptChromiumValue(encryptedHex, hostKey, keys) {
   return null;
 }
 function* copyDbForRead(dbPath) {
-  const dir = mkdtempSync(path11.join(os.tmpdir(), "tripo-cookies-"));
-  const target = path11.join(dir, "Cookies");
+  const dir = mkdtempSync(path13.join(os.tmpdir(), "tripo-cookies-"));
+  const target = path13.join(dir, "Cookies");
   try {
     for (const suffix of ["", "-wal", "-shm", "-journal"]) {
       const src = dbPath + suffix;
@@ -102446,7 +102663,7 @@ function firefoxCookies(env2) {
     }
     for (const entry of profiles) {
       if (!entry.isDirectory()) continue;
-      const dbPath = path11.join(root5, entry.name, "cookies.sqlite");
+      const dbPath = path13.join(root5, entry.name, "cookies.sqlite");
       if (!existsSync(dbPath)) continue;
       let rows;
       try {
@@ -102644,88 +102861,7 @@ var AuthCoordinator = class {
 // src/auth/session.mjs
 import { Buffer as Buffer2 } from "node:buffer";
 import { createHash as createHash8 } from "node:crypto";
-import path13 from "node:path";
-
-// src/store/jsondoc.mjs
-import { mkdir as mkdir6, open as open5, readFile as readFile9, rename, unlink as unlink2 } from "node:fs/promises";
-import path12 from "node:path";
-import { randomUUID as randomUUID4 } from "node:crypto";
-var JsonDocument = class {
-  #file;
-  #mutation = Promise.resolve();
-  constructor(file3) {
-    this.#file = path12.resolve(file3);
-  }
-  get file() {
-    return this.#file;
-  }
-  async read(fallback2) {
-    let text;
-    try {
-      text = await readFile9(this.#file, "utf8");
-    } catch (error113) {
-      if (error113.code === "ENOENT") return typeof fallback2 === "function" ? fallback2() : fallback2;
-      throw new TripoError("PERSISTENCE_ERROR", `Could not read ${path12.basename(this.#file)}.`, { cause: error113 });
-    }
-    try {
-      return JSON.parse(text);
-    } catch (error113) {
-      throw new TripoError("PERSISTENCE_ERROR", `${path12.basename(this.#file)} is not valid JSON.`, { cause: error113 });
-    }
-  }
-  async write(value) {
-    await mkdir6(path12.dirname(this.#file), { recursive: true });
-    const temporary = path12.join(path12.dirname(this.#file), `.${path12.basename(this.#file)}.${randomUUID4()}.tmp`);
-    let handle;
-    try {
-      handle = await open5(temporary, "wx", 384);
-      await handle.writeFile(`${JSON.stringify(value)}
-`, "utf8");
-      await handle.sync();
-      await handle.close();
-      handle = void 0;
-      await rename(temporary, this.#file);
-      if (process.platform !== "win32") {
-        const directory = await open5(path12.dirname(this.#file), "r");
-        try {
-          await directory.sync();
-        } finally {
-          await directory.close();
-        }
-      }
-    } catch (error113) {
-      throw new TripoError("PERSISTENCE_ERROR", `Could not durably update ${path12.basename(this.#file)}.`, { cause: error113 });
-    } finally {
-      await handle?.close().catch(() => {
-      });
-      await unlink2(temporary).catch(() => {
-      });
-    }
-  }
-  async update(mutator, fallback2) {
-    const previous = this.#mutation;
-    let release2;
-    this.#mutation = new Promise((resolve) => {
-      release2 = resolve;
-    });
-    await previous;
-    try {
-      const current = await this.read(fallback2);
-      const next = await mutator(current);
-      await this.write(next);
-      return next;
-    } finally {
-      release2();
-    }
-  }
-  async remove() {
-    await unlink2(this.#file).catch((error113) => {
-      if (error113.code !== "ENOENT") throw error113;
-    });
-  }
-};
-
-// src/auth/session.mjs
+import path14 from "node:path";
 var EXPIRY_GUARD_MS = 6e4;
 function decodeJwtPayload(token) {
   const parts = token.split(".");
@@ -102777,7 +102913,7 @@ var SessionManager = class {
   #loaded = false;
   constructor(config3) {
     this.#config = config3;
-    this.#doc = new JsonDocument(path13.join(config3.dataDir, "session.json"));
+    this.#doc = new JsonDocument(path14.join(config3.dataDir, "session.json"));
   }
   async #ensureLoaded() {
     if (this.#loaded) return;
@@ -102930,21 +103066,21 @@ var SessionManager = class {
 
 // src/config.mjs
 import os2 from "node:os";
-import path14 from "node:path";
+import path15 from "node:path";
 import { createHash as createHash9 } from "node:crypto";
 import { readFileSync as readFileSync2 } from "node:fs";
 function defaultDataDir(env2) {
   if (process.platform === "win32") {
-    return path14.join(env2.LOCALAPPDATA ?? path14.join(os2.homedir(), "AppData", "Local"), "TripoStudioPlugin");
+    return path15.join(env2.LOCALAPPDATA ?? path15.join(os2.homedir(), "AppData", "Local"), "TripoStudioPlugin");
   }
   if (process.platform === "darwin") {
-    return path14.join(os2.homedir(), "Library", "Application Support", "TripoStudioPlugin");
+    return path15.join(os2.homedir(), "Library", "Application Support", "TripoStudioPlugin");
   }
-  return path14.join(env2.XDG_STATE_HOME ?? path14.join(os2.homedir(), ".local", "state"), "tripo-studio-plugin");
+  return path15.join(env2.XDG_STATE_HOME ?? path15.join(os2.homedir(), ".local", "state"), "tripo-studio-plugin");
 }
 function defaultAssetRoot(env2) {
   const home = env2.USERPROFILE?.trim() || env2.HOME?.trim() || os2.homedir();
-  return path14.join(home, "Documents", "TripoStudio");
+  return path15.join(home, "Documents", "TripoStudio");
 }
 function parsePositiveInteger(value, fallback2, name) {
   if (value === void 0 || String(value).trim() === "") return fallback2;
@@ -102961,22 +103097,22 @@ function stableDeviceId(dataDir) {
   return `${hex5.slice(0, 8).join("")}-${hex5.slice(8, 12).join("")}-${hex5.slice(12, 16).join("")}-${hex5.slice(16, 20).join("")}-${hex5.slice(20).join("")}`;
 }
 function parseRoots(value, fallback2) {
-  const entries = (value?.trim() ? value.split(path14.delimiter) : fallback2).map((entry) => entry.trim()).filter(Boolean).map((entry) => path14.resolve(entry));
+  const entries = (value?.trim() ? value.split(path15.delimiter) : fallback2).map((entry) => entry.trim()).filter(Boolean).map((entry) => path15.resolve(entry));
   if (entries.length === 0) throw new TripoError("CONFIGURATION_ERROR", "At least one local path root is required.");
   return [...new Set(entries)];
 }
 var SETTINGS_FIELDS = /* @__PURE__ */ new Set(["asset_root", "schema_version"]);
 function normalizeAssetRoot(value) {
   const trimmed = String(value ?? "").trim();
-  if (!trimmed || !path14.isAbsolute(trimmed)) {
+  if (!trimmed || !path15.isAbsolute(trimmed)) {
     throw new TripoError("CONFIGURATION_ERROR", "asset_root must be an absolute path to a dedicated folder.");
   }
-  const resolved = path14.resolve(trimmed);
+  const resolved = path15.resolve(trimmed);
   const samePath = (a5, b9) => {
-    const n4 = (v3) => path14.resolve(v3).replace(/[\\/]+$/, "");
+    const n4 = (v3) => path15.resolve(v3).replace(/[\\/]+$/, "");
     return process.platform === "win32" ? n4(a5).toLowerCase() === n4(b9).toLowerCase() : n4(a5) === n4(b9);
   };
-  if (samePath(resolved, path14.parse(resolved).root)) {
+  if (samePath(resolved, path15.parse(resolved).root)) {
     throw new TripoError("CONFIGURATION_ERROR", "asset_root cannot be a filesystem root.");
   }
   if (samePath(resolved, os2.homedir()) || samePath(resolved, os2.tmpdir())) {
@@ -103008,8 +103144,8 @@ function readLocalSettings(settingsFile) {
   return { asset_root: normalizeAssetRoot(parsed.asset_root) };
 }
 function loadConfig(env2 = process.env) {
-  const dataDir = path14.resolve(env2.TRIPO_PLUGIN_DATA_DIR ?? defaultDataDir(env2));
-  const settingsFile = path14.join(dataDir, "settings.json");
+  const dataDir = path15.resolve(env2.TRIPO_PLUGIN_DATA_DIR ?? defaultDataDir(env2));
+  const settingsFile = path15.join(dataDir, "settings.json");
   const settings = readLocalSettings(settingsFile);
   const assetRoot = normalizeAssetRoot(settings?.asset_root ?? env2.TRIPO_ASSET_ROOT?.trim() ?? defaultAssetRoot(env2));
   const outputRoots = parseRoots(env2.TRIPO_OUTPUT_ROOTS, [assetRoot]);
@@ -103616,7 +103752,7 @@ var import_node_http_handler5 = __toESM(require_dist_cjs7(), 1);
 import { createReadStream as createReadStream3 } from "node:fs";
 import { stat as stat7 } from "node:fs/promises";
 import { Agent as HttpsAgent } from "node:https";
-import path15 from "node:path";
+import path16 from "node:path";
 var DEFAULT_REQUEST_TIMEOUT_MS = 12e4;
 var DEFAULT_UPLOAD_TIMEOUT_MS = 20 * 6e4;
 var DEFAULT_CONNECTION_TIMEOUT_MS = 15e3;
@@ -103633,7 +103769,7 @@ var CONTENT_TYPES = Object.freeze({
   ".webp": "image/webp"
 });
 function contentTypeForUpload(filePath) {
-  return CONTENT_TYPES[path15.extname(filePath).toLowerCase()] ?? "application/octet-stream";
+  return CONTENT_TYPES[path16.extname(filePath).toLowerCase()] ?? "application/octet-stream";
 }
 function safeAwsIdentifier(value) {
   if (typeof value !== "string" || !/^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$/.test(value)) return void 0;
@@ -103750,7 +103886,7 @@ var AwsObjectUploader = class {
 
 // src/store/tasks.mjs
 import { mkdir as mkdir7, readdir, readFile as readFile12 } from "node:fs/promises";
-import path16 from "node:path";
+import path17 from "node:path";
 var TASK_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 var ACTIVE_STATUSES = /* @__PURE__ */ new Set(["staged", "dispatching", "queued", "running", "waiting_for_auth"]);
 var TERMINAL_TASK_STATUSES = /* @__PURE__ */ new Set(["succeeded", "failed", "canceled", "outcome_unknown", "expired"]);
@@ -103759,13 +103895,13 @@ var TaskStore = class {
   #index;
   #lock;
   constructor(dataDir) {
-    this.#dir = path16.join(dataDir, "tasks");
-    this.#index = new JsonDocument(path16.join(this.#dir, "index.json"));
-    this.#lock = new FileLock(path16.join(dataDir, "locks"));
+    this.#dir = path17.join(dataDir, "tasks");
+    this.#index = new JsonDocument(path17.join(this.#dir, "index.json"));
+    this.#lock = new FileLock(path17.join(dataDir, "locks"));
   }
   #taskDoc(taskId) {
     if (!TASK_ID.test(taskId)) throw new TripoError("INVALID_INPUT", "task_id must be a plugin task identifier.", { stage: "task_store" });
-    return new JsonDocument(path16.join(this.#dir, `${taskId}.json`));
+    return new JsonDocument(path17.join(this.#dir, `${taskId}.json`));
   }
   async #readIndex() {
     const index = await this.#index.read({ task_ids: [] });
@@ -103877,6 +104013,56 @@ var pricing_contract_default = {
       "sha256": "4b89d75d52a2f61a2f61bf6dcc306e4ac2ea9fde785ec1daa74562ee3c454e96"
     }
   ]
+};
+
+// src/studio/pricing-snapshot.mjs
+var pricing_snapshot_default = {
+  credits: {
+    AICompletion: 0,
+    Completion: 5,
+    EditMesh: 50,
+    Export: 5,
+    FLUX_1_pro: 10,
+    GenerateBase: 15,
+    GenerateBaseNexus: 35,
+    GenerateBaseNexusV2: 100,
+    GenerateGenerateParts: 30,
+    GenerateGeometryQualityDetailed: 15,
+    GenerateQuad: 5,
+    GenerateSmartPoly: 20,
+    GenerateTextureQualityDetailed: 10,
+    GenerateTextureQualityExtreme: 20,
+    GenerateWithTexture: 25,
+    GPT_4o: 10,
+    GPT_image_2: 20,
+    GPT_image_2_5: 20,
+    HomeImageToModel: 40,
+    HomeTextToModel: 40,
+    ImageUpscale4K: 10,
+    MagicBrush: 5,
+    Midjourney: 10,
+    Motion: 20,
+    NanoBanana: 10,
+    NanoBanana_2: 10,
+    NanoBanana_pro: 20,
+    PBR: 5,
+    ProjectCopy: 5,
+    QuickCap: 0,
+    Retopology_Quad: 10,
+    Retopology_SmartPoly: 30,
+    Retopology_Triangle: 5,
+    Rigging: 20,
+    Segmentation: 40,
+    TextureGeneration: 10,
+    TextureQualityDetailed: 10,
+    TextureQualityExtreme: 20,
+    TextureStyle: 5,
+    Upscaler: 10,
+    UpscalerExtreme: 20,
+    UvEditGenerate: 20,
+    UvEditRetry: 10
+  },
+  discounts: { advanced: 0.5, basic: 1, premium: 0.2, professional: 1, starter: 1, team: 1 }
 };
 
 // src/studio/pricing.mjs
@@ -104092,7 +104278,7 @@ var PricingService = class {
       this.#pending = void 0;
     }
   }
-  async quote(kind, input2 = {}, { refresh = false, task } = {}) {
+  async quote(kind, input2 = {}, { refresh = false, task, offline = false } = {}) {
     const operation2 = getOperation(kind);
     if (input2.submit === true) throw new TripoError("INVALID_INPUT", "A quote cannot submit a task.");
     const parsed = task ? null : external_exports.object(operation2.inputShape).partial().strict().parse(input2);
@@ -104119,6 +104305,21 @@ var PricingService = class {
       return { ...out, status: "unknown", estimated_credits: null, base_credits: null, warnings: [error113.message] };
     }
     try {
+      if (offline) {
+        if (this.#clock() >= Date.parse(this.#contract.review_expires_at)) throw new Error("Reviewed pricing contract expired; verify the current webpage and update the plugin.");
+        const calculation2 = calculateQuote(kind, settings, pricing_snapshot_default);
+        const effective2 = Object.fromEntries(COST_FIELDS.filter((key) => settings[key] !== void 0).map((key) => [key, settings[key]]));
+        return {
+          ...out,
+          ...calculation2,
+          effective_settings: effective2,
+          pricing_type: "reviewed_frontend_estimate",
+          offline: true,
+          estimate_expires_at: new Date(this.#clock() + CACHE_MS).toISOString(),
+          source: { reviewed_at: this.#contract.reviewed_at, review_expires_at: this.#contract.review_expires_at, sources: this.#contract.sources },
+          warnings: [...calculation2.warnings, "Local estimate from reviewed rates; account discounts and trials require an online check after confirmation. Final server billing may differ."]
+        };
+      }
       const snapshot = await this.#load(refresh);
       const needsMarketing = kind === "image.generate" || kind === "model.generate" && settings.texture && settings.texture_quality === "ultra" || ["texture.generate", "texture.upscale"].includes(kind) && settings.quality === "ultra";
       const needsQuota = kind === "model.uv_generate" || kind === "model.generate" && settings.tier === "smart_mesh" && settings.model_version === NEXUS_V2_MODEL_VERSION;
@@ -104167,10 +104368,10 @@ async function createRuntime(env2 = process.env) {
 }
 
 // src/studio/model-download.mjs
-import path18 from "node:path";
+import path19 from "node:path";
 
 // src/studio/local-artifacts.mjs
-import path17 from "node:path";
+import path18 from "node:path";
 import { constants } from "node:fs";
 import { copyFile as copyFile2, mkdir as mkdir9, stat as stat8 } from "node:fs/promises";
 function localArtifact(record3, artifact, index = 0) {
@@ -104185,16 +104386,16 @@ async function copyLocalArtifact(config3, sourcePath, requestedPath, defaultName
   const info = await stat8(source);
   if (!info.isFile()) throw new TripoError("DOWNLOAD_REJECTED", "Local artifact is not a regular file.", { stage: "download" });
   if (source !== target) {
-    await mkdir9(path17.dirname(target), { recursive: true });
+    await mkdir9(path18.dirname(target), { recursive: true });
     await copyFile2(source, target, constants.COPYFILE_EXCL);
   }
-  return { bytes: info.size, host: "local", path: target, name: path17.basename(target) };
+  return { bytes: info.size, host: "local", path: target, name: path18.basename(target) };
 }
 
 // src/studio/model-download.mjs
 async function downloadResolvedArtifact(config3, resolved, requestedPath, fetchImpl = fetch) {
   const download = resolved.localPath ? await copyLocalArtifact(config3, resolved.localPath, requestedPath, resolved.defaultName) : await downloadArtifact(config3, resolved.url, requestedPath, resolved.defaultName, fetchImpl);
-  if (path18.extname(resolved.defaultName).toLowerCase() === ".glb") {
+  if (path19.extname(resolved.defaultName).toLowerCase() === ".glb") {
     try {
       Object.assign(download, await prepareGlbForBlender(config3, download.path));
     } catch (error113) {
@@ -104206,8 +104407,8 @@ async function downloadResolvedArtifact(config3, resolved, requestedPath, fetchI
 
 // src/ui/media.mjs
 import { mkdir as mkdir10, readFile as readFile13, writeFile as writeFile5, stat as stat9, realpath as realpath4 } from "node:fs/promises";
-import path19 from "node:path";
-import { randomUUID as randomUUID5 } from "node:crypto";
+import path20 from "node:path";
+import { randomUUID as randomUUID6 } from "node:crypto";
 var MAX_IMAGE = 20 * 1024 * 1024;
 var MAX_MODEL = 32 * 1024 * 1024;
 var id2 = external_exports.string().regex(/^[^\s\u0000-\u001f\u007f]{1,256}$/);
@@ -104266,13 +104467,13 @@ function createWorkbenchMedia(runtime) {
   const projects = /* @__PURE__ */ new Map();
   let projectAccount;
   const { config: config3, gateway, store, session } = runtime;
-  const inputPath = async (inputId) => resolveOutputPath(config3, path19.join(config3.assetRoot, "ui-inputs", `${inputId}.png`), "input.png");
+  const inputPath = async (inputId) => resolveOutputPath(config3, path20.join(config3.assetRoot, "ui-inputs", `${inputId}.png`), "input.png");
   const fromDisk = async (file3, limit, allowedRoots = [config3.assetRoot, config3.dataDir]) => {
     const canonical = await realpath4(file3);
-    const roots = await Promise.all(allowedRoots.map((r7) => realpath4(r7).catch(() => path19.resolve(r7))));
+    const roots = await Promise.all(allowedRoots.map((r7) => realpath4(r7).catch(() => path20.resolve(r7))));
     if (!roots.some((r7) => {
-      const rel = path19.relative(r7, canonical);
-      return rel === "" || !rel.startsWith("..") && !path19.isAbsolute(rel);
+      const rel = path20.relative(r7, canonical);
+      return rel === "" || !rel.startsWith("..") && !path20.isAbsolute(rel);
     })) throw unavailable("\u8BE5\u6587\u4EF6\u4E0D\u5728\u5DE5\u4F5C\u53F0\u7684\u7D20\u6750\u76EE\u5F55\u4E2D\u3002");
     if ((await stat9(canonical)).size > limit) throw unavailable("\u6587\u4EF6\u8D85\u8FC7\u4EA4\u4E92\u9884\u89C8\u5927\u5C0F\u9650\u5236\u3002");
     return readFile13(canonical);
@@ -104290,20 +104491,20 @@ function createWorkbenchMedia(runtime) {
       const bytes = Buffer.from(data_base64, "base64");
       if (!bytes.length || bytes.length > MAX_IMAGE) throw unavailable("\u56FE\u7247\u5FC5\u987B\u5C0F\u4E8E 20 MB\u3002");
       const preview = await imagePayload(bytes, true);
-      const inputId = randomUUID5();
+      const inputId = randomUUID6();
       const filePath = await inputPath(inputId);
-      await mkdir10(path19.dirname(filePath), { recursive: true, mode: 448 });
+      await mkdir10(path20.dirname(filePath), { recursive: true, mode: 448 });
       const normalized = await convertImage(bytes, { autoOrient: true });
       if (normalized.length > MAX_IMAGE) throw unavailable("\u89E3\u7801\u540E\u7684\u56FE\u7247\u8D85\u8FC7 20 MB\uFF0C\u8BF7\u538B\u7F29\u540E\u91CD\u65B0\u9009\u62E9\u3002");
       await writeFile5(filePath, normalized, { flag: "wx", mode: 384 });
-      return { input_id: inputId, file_path: filePath, name: path19.basename(name).slice(0, 120), width: preview.width, height: preview.height, preview };
+      return { input_id: inputId, file_path: filePath, name: path20.basename(name).slice(0, 120), width: preview.width, height: preview.height, preview };
     },
     async preview(input2) {
       if ([input2.project_id, input2.asset_id, input2.task_id, input2.input_id, input2.local_path].filter(Boolean).length !== 1) throw unavailable("\u8BF7\u9009\u62E9\u4E00\u4E2A\u6A21\u578B\u3001\u56FE\u7247\u3001\u4EFB\u52A1\u6216\u5DF2\u4E0B\u8F7D\u6587\u4EF6\u3002");
       let projectId2 = input2.project_id, assetId = input2.asset_id, operatorId, file3;
       const model = input2.type === "model";
       if (input2.local_path) {
-        if (!path19.isAbsolute(input2.local_path)) throw unavailable("\u8BF7\u63D0\u4F9B\u5DF2\u4E0B\u8F7D\u6587\u4EF6\u7684\u7EDD\u5BF9\u8DEF\u5F84\u3002");
+        if (!path20.isAbsolute(input2.local_path)) throw unavailable("\u8BF7\u63D0\u4F9B\u5DF2\u4E0B\u8F7D\u6587\u4EF6\u7684\u7EDD\u5BF9\u8DEF\u5F84\u3002");
         file3 = input2.local_path;
       }
       if (input2.input_id) file3 = await inputPath(input2.input_id);
@@ -104383,15 +104584,15 @@ function registerWorkbenchMedia(server, media) {
 }
 
 // src/ui/reviews.mjs
-import path20 from "node:path";
+import path21 from "node:path";
 import { readdir as readdir2, readFile as readFile14, stat as stat10 } from "node:fs/promises";
 var idPattern = /^[0-9a-f-]{36}$/i;
 var editableStates = /* @__PURE__ */ new Set(["pending", "editing"]);
 var ConfigurationReviews = class {
   constructor(runtime, { timeoutMs = 6e4, now = Date.now, schedule = setTimeout, unschedule = clearTimeout } = {}) {
     this.runtime = runtime;
-    this.dir = path20.join(runtime.config.dataDir, "reviews");
-    this.lock = new FileLock(path20.join(runtime.config.dataDir, "locks"));
+    this.dir = path21.join(runtime.config.dataDir, "reviews");
+    this.lock = new FileLock(path21.join(runtime.config.dataDir, "locks"));
     this.timeoutMs = timeoutMs;
     this.now = now;
     this.schedule = schedule;
@@ -104400,7 +104601,7 @@ var ConfigurationReviews = class {
   }
   doc(id3) {
     if (!idPattern.test(id3)) throw new TripoError("INVALID_INPUT", "Invalid configuration card id.");
-    return new JsonDocument(path20.join(this.dir, `${id3}.json`));
+    return new JsonDocument(path21.join(this.dir, `${id3}.json`));
   }
   schema(kind) {
     return external_exports.object({ ...getOperation(kind).inputShape, ...taskContextShape }).strict();
@@ -104433,13 +104634,18 @@ var ConfigurationReviews = class {
   close() {
     for (const id3 of this.timers.keys()) this.stop(id3);
   }
+  preupload(record3) {
+    if (getOperation(record3.kind).category === "local") return;
+    this.runtime.service.preupload?.(record3.task_id).catch(() => {
+    });
+  }
   async recover() {
     const files = await readdir2(this.dir).catch((e33) => {
       if (e33.code === "ENOENT") return [];
       throw e33;
     });
     for (const file3 of files.filter((f6) => f6.endsWith(".json"))) {
-      const record3 = await new JsonDocument(path20.join(this.dir, file3)).read();
+      const record3 = await new JsonDocument(path21.join(this.dir, file3)).read();
       if (record3.status === "pending") await this.doc(record3.review_id).update((r7) => r7.status === "pending" ? { ...r7, deadline_at: null, revision: r7.revision + 1 } : r7);
       if (record3.status === "submitting" && !this.processAlive(record3.submitting_pid)) await this.doc(record3.review_id).update((r7) => ({ ...r7, status: "failed", error: { code: "SUBMISSION_INTERRUPTED", message: "\u63D0\u4EA4\u88AB\u4E2D\u65AD\uFF0C\u8BF7\u67E5\u770B\u4EFB\u52A1\u72B6\u6001\uFF1B\u4E0D\u4F1A\u81EA\u52A8\u91CD\u8BD5\u3002" } }));
     }
@@ -104473,6 +104679,11 @@ var ConfigurationReviews = class {
       record3 = await this.doc(record3.review_id).update((r7) => ({ ...r7, status: task.status === "canceled" ? "canceled" : task.status === "expired" ? "failed" : "submitted", deadline_at: null, revision: r7.revision + 1 }));
       this.stop(record3.review_id);
     }
+    const visibleTask = { ...task };
+    if (!task.remote && task.dispatch_state !== "submitted" && task.status !== "outcome_unknown") {
+      visibleTask.draft_id = record3.task_id;
+      delete visibleTask.task_id;
+    }
     return { review: {
       review_id: record3.review_id,
       kind: record3.kind,
@@ -104485,7 +104696,7 @@ var ConfigurationReviews = class {
       schema: external_exports.toJSONSchema(this.schema(record3.kind), { io: "input", unrepresentable: "any" }),
       quote: task.cost_estimate,
       error: record3.error ?? null
-    }, task };
+    }, task: visibleTask };
   }
   async create(kind, input2, prepared) {
     const id3 = prepared.task.task_id;
@@ -104538,11 +104749,11 @@ var ConfigurationReviews = class {
       } else if (action === "save") {
         if (r7.status !== "editing") throw new TripoError("STAGING_REQUIRED", "\u5148\u6682\u505C\u5012\u8BA1\u65F6\uFF0C\u518D\u4FEE\u6539\u914D\u7F6E\u3002");
         const parsed = this.schema(r7.kind).parse({ ...input2, submit: false });
-        const prepared = await this.runtime.service.prepare(r7.kind, parsed);
+        const prepared = await this.runtime.service.prepare(r7.kind, parsed, { draftId: r7.task_id });
         if (prepared.task.status !== "staged") throw new TripoError("STAGING_REQUIRED", "\u76F8\u540C\u914D\u7F6E\u7684\u4EFB\u52A1\u5DF2\u63D0\u4EA4\uFF0C\u8BF7\u67E5\u770B\u5DF2\u6709\u4EFB\u52A1\u3002");
-        if (this.runtime.pricing && this.runtime.store) {
+        if (prepared.deduplicated && this.runtime.pricing && this.runtime.store) {
           const frozen = await this.runtime.store.get(prepared.task.task_id);
-          const quote = await this.runtime.pricing.quote(r7.kind, {}, { task: frozen, refresh: true });
+          const quote = await this.runtime.pricing.quote(r7.kind, {}, { task: frozen, offline: true });
           await this.runtime.store.update(frozen.task_id, (task) => ({ ...task, cost_estimate: quote }));
         }
         if (prepared.task.task_id !== r7.task_id) await this.runtime.service.cancel(r7.task_id);
@@ -104581,6 +104792,8 @@ var ConfigurationReviews = class {
       }
       return this.output(await this.doc(review_id).read());
     }
+    if (action === "ready" && editableStates.has(record3.status)) this.preupload(record3);
+    if (action === "save" && record3.status === "pending") this.preupload(record3);
     return this.output(record3);
   }
 };
@@ -104632,13 +104845,13 @@ async function characterAssetPage({ fetchPage, annotate, characterGroupId, offse
 }
 
 // src/store/asset-groups.mjs
-import path21 from "node:path";
-import { randomUUID as randomUUID6 } from "node:crypto";
+import path22 from "node:path";
+import { randomUUID as randomUUID7 } from "node:crypto";
 var assetKey = (asset) => asset.project_id ? `project_id:${asset.project_id}` : `asset_id:${asset.asset_id}`;
 var AssetGroupStore = class {
   constructor(dataDir) {
-    this.doc = new JsonDocument(path21.join(dataDir, "asset-groups.json"));
-    this.lock = new FileLock(path21.join(dataDir, "locks"));
+    this.doc = new JsonDocument(path22.join(dataDir, "asset-groups.json"));
+    this.lock = new FileLock(path22.join(dataDir, "locks"));
   }
   async read(account) {
     const state2 = await this.doc.read({ accounts: {} });
@@ -104653,7 +104866,7 @@ var AssetGroupStore = class {
       let target = group4 ? known.get(group4.id) ?? group4 : null;
       if (name !== void 0) {
         const named = characterGroup(name, account, "manual");
-        target = [...known.values()].find((g6) => normalizedCharacter(g6.name) === normalizedCharacter(named.name)) ?? { ...named, id: `group_${randomUUID6()}` };
+        target = [...known.values()].find((g6) => normalizedCharacter(g6.name) === normalizedCharacter(named.name)) ?? { ...named, id: `group_${randomUUID7()}` };
       }
       if (target?.id === "ungrouped") throw new TripoError("INVALID_INPUT", "Choose a named group.");
       if (target) current.groups[target.id] = { ...target, assigned_by: "manual" };
@@ -104963,7 +105176,7 @@ var OPERATION_TOOLS = {
 async function main() {
   const runtime = await createRuntime();
   const { auth, config: config3, gateway, service, session, store, pricing } = runtime;
-  const icon = await readFile15(path22.join(path22.dirname(fileURLToPath2(import.meta.url)), "..", "ui", "tripo-logo.png"));
+  const icon = await readFile15(path23.join(path23.dirname(fileURLToPath2(import.meta.url)), "..", "ui", "tripo-logo.png"));
   const icons = [{ src: `data:image/png;base64,${icon.toString("base64")}`, mimeType: "image/png", sizes: ["60x60"] }];
   const server = new McpServer({ name: SERVER_NAME, version: SERVER_VERSION, icons });
   const setRequestHandler = server.server.setRequestHandler.bind(server.server);
@@ -105248,6 +105461,11 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
     if (!kind) throw new TripoError("INVALID_INPUT", "Specify kind or task_id.");
     return ok({ quote: await pricing.quote(kind, input2 ?? {}, { refresh }) });
   });
+  tool("tripo_get_configuration_review", {
+    description: "Read the current configuration card by its stable review_id. Before submission returns a draft_id, not a submitted task_id. After the final Tripo submission receipt returns the actual task_id and remote IDs. Always follow this card when users edit settings; do not monitor an earlier draft or bypass its confirmation/countdown.",
+    inputSchema: { review_id: taskIdShape },
+    annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false }
+  }, async ({ review_id }) => ok(await reviews.action({ review_id, action: "get" })));
   for (const [kind, toolName] of Object.entries(OPERATION_TOOLS)) {
     const operation2 = getOperation(kind);
     tool(
@@ -105352,7 +105570,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
       data = { asset_id: input2.asset_id, status: asset.status };
       preview = { asset_id: input2.asset_id, type: "image", output_index: input2.output_index };
     } else {
-      const extension = path22.extname(input2.local_path).toLowerCase();
+      const extension = path23.extname(input2.local_path).toLowerCase();
       if (![".glb", ".png", ".jpg", ".jpeg", ".webp"].includes(extension)) throw new TripoError("INVALID_INPUT", "Only saved GLB, PNG, JPEG or WebP files can be previewed.");
       preview = { local_path: input2.local_path, type: extension === ".glb" ? "model" : "image" };
       await media.preview(preview);
@@ -105452,8 +105670,8 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
     { description: "Return the Studio workspace deep link for a project (open it in any browser).", inputSchema: { project_id: identifier4.optional() } },
     async (input2) => ok({ url: `${STUDIO_ORIGIN}/workspace/generate${input2.project_id ? `/${encodeURIComponent(input2.project_id)}` : ""}` })
   );
-  const workbenchPath = path22.join(path22.dirname(fileURLToPath2(import.meta.url)), "..", "ui", "workbench.html");
-  const workbenchScript = path22.join(path22.dirname(workbenchPath), "..", "dist", "workbench.js");
+  const workbenchPath = path23.join(path23.dirname(fileURLToPath2(import.meta.url)), "..", "ui", "workbench.html");
+  const workbenchScript = path23.join(path23.dirname(workbenchPath), "..", "dist", "workbench.js");
   K3(server, "tripo_open_workbench", {
     title: "Tripo \u5DE5\u4F5C\u53F0",
     description: "\u6253\u5F00 Tripo \u5DE5\u4F5C\u53F0\uFF1A\u4ECE\u4FA7\u8FB9\u680F\u67E5\u770B\u6A21\u578B\u3001\u56FE\u7247\u4E0E\u6301\u4E45\u4EFB\u52A1\uFF0C\u6216\u5728\u5BF9\u8BDD\u65C1\u7EE7\u7EED\u5904\u7406\u6307\u5B9A\u9879\u76EE/\u4EFB\u52A1\u3002\u53EA\u6253\u5F00\u754C\u9762\uFF0C\u4E0D\u63D0\u4EA4\u751F\u6210\u6216\u6D88\u8017\u79EF\u5206\u3002",
@@ -105487,8 +105705,8 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
     { description: "Tripo \u5DE5\u5177\u7ED3\u679C\u5361\u7247\uFF1A\u4EFB\u52A1\u72B6\u6001\u3001\u56FE\u7247\u4E0E\u6A21\u578B\u9884\u89C8\u3002", mimeType: p, _meta: cardMeta },
     async () => {
       const [html, script] = await Promise.all([
-        readFile15(path22.join(path22.dirname(workbenchPath), "result-card.html"), "utf8"),
-        readFile15(path22.join(path22.dirname(workbenchScript), "result-card.js"), "utf8")
+        readFile15(path23.join(path23.dirname(workbenchPath), "result-card.html"), "utf8"),
+        readFile15(path23.join(path23.dirname(workbenchScript), "result-card.js"), "utf8")
       ]);
       return { contents: [{
         uri: RESULT_CARD_RESOURCE_URI,
@@ -105530,7 +105748,7 @@ async function resolveDownloadTarget(runtime, input2) {
   }
   if (record3.kind.startsWith("local.")) {
     const localPath = localArtifact(record3, input2.artifact, input2.output_index ?? 0);
-    return { localPath, defaultName: path22.basename(localPath), source: { task_id: record3.task_id, artifact: input2.artifact, output_index: input2.output_index ?? 0 } };
+    return { localPath, defaultName: path23.basename(localPath), source: { task_id: record3.task_id, artifact: input2.artifact, output_index: input2.output_index ?? 0 } };
   }
   if (record3.result?.export_url) {
     return prepareExportDownload(runtime, record3);
@@ -105572,9 +105790,9 @@ async function resolveDownloadTarget(runtime, input2) {
 }
 async function loadPartNames(config3, gateway, projectId2, detail) {
   if (!detail.model_url) throw new TripoError("INSUFFICIENT_EVIDENCE", "The project has no downloadable GLB to inspect.", { stage: "parts" });
-  const cacheDir = path22.join(config3.dataDir, "model-cache");
-  const target = path22.join(cacheDir, `${projectId2}.glb`);
-  const downloaded = await downloadArtifact({ ...config3, outputRoots: [path22.join(config3.dataDir, "model-cache")] }, detail.model_url, target, `${projectId2}.glb`);
+  const cacheDir = path23.join(config3.dataDir, "model-cache");
+  const target = path23.join(cacheDir, `${projectId2}.glb`);
+  const downloaded = await downloadArtifact({ ...config3, outputRoots: [path23.join(config3.dataDir, "model-cache")] }, detail.model_url, target, `${projectId2}.glb`);
   const { readFile: readFile16 } = await import("node:fs/promises");
   const bytes = await readFile16(downloaded.path);
   const names = glbNodeNames(bytes);

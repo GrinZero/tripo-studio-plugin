@@ -20,7 +20,7 @@
   <a href="#2-安裝與快速上手-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
   <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.4-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
-  <a href="#3-完整工具矩陣與功能清單-67-mcp-tools"><img src="https://img.shields.io/badge/DOCS-67%20TOOLS-2563EB?style=for-the-badge" alt="67 Tools" /></a>
+  <a href="#3-完整工具矩陣與功能清單-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
   <img src="https://img.shields.io/badge/models-H3.1%20%C2%B7%20Smart%20Mesh%20%C2%B7%20Rig%20V3-1f2937?style=flat-square" alt="Models" />
   <img src="https://img.shields.io/badge/credits-BYO%20Account%20%C2%B7%20Zero%20Markup-ff5722?style=flat-square" alt="BYO Account" />
   <img src="https://img.shields.io/badge/local%20engine-Blender%20Integrated-e87d0d?style=flat-square&logo=blender&logoColor=white" alt="Blender Integrated" />
-  <img src="https://img.shields.io/badge/tools-67%20MCP%20Tools-10b981?style=flat-square" alt="67 MCP Tools" />
+  <img src="https://img.shields.io/badge/tools-68%20MCP%20Tools-10b981?style=flat-square" alt="68 MCP Tools" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10b981?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/i18n-%E7%AE%80%E4%BD%93%20%C2%B7%20%E7%B9%81%E9%AB%94%20%C2%B7%20EN%20%C2%B7%20%E6%97%A5%E6%9C%AC%E8%AA%9E%20%C2%B7%20%ED%95%9C%EA%B5%AD%EC%96%B4-8b5cf6?style=flat-square" alt="Multi-language" />
 </p>
@@ -36,7 +36,7 @@
 <p align="center">
   <a href="#1-什麼是-tripo-studio-for-codex-what-it-is"><b>💡 什麼是它</b></a> ·
   <a href="#2-安裝與快速上手-quick-start"><b>🚀 安裝上手</b></a> ·
-  <a href="#3-完整工具矩陣與功能清單-67-mcp-tools"><b>🛠️ 工具清單</b></a> ·
+  <a href="#3-完整工具矩陣與功能清單-68-mcp-tools"><b>🛠️ 工具清單</b></a> ·
   <a href="#4-使用示例與對話範式-showcase--prompts"><b>💬 對話範式</b></a> ·
   <a href="#5-介面畫廊-showcase-gallery"><b>🖼️ 介面畫廊</b></a> ·
   <a href="#6-使用限制與工程邊界-engineering-boundaries"><b>📐 工程邊界</b></a> ·
@@ -48,7 +48,7 @@
 ---
 
 > [!NOTE]
-> 🚀 **零 API 門檻 · 會員直接複用**：直接連接你在 Tripo Studio 網頁端的現有會員帳號，無需申請與額外購買 Tripo API Key。內嵌 67 個 MCP 工具與可互動式 MCP Apps 工作台，雲端積分透明預估，本地 Blender 輔助操作完全零積分消耗！
+> 🚀 **零 API 門檻 · 會員直接複用**：直接連接你在 Tripo Studio 網頁端的現有會員帳號，無需申請與額外購買 Tripo API Key。內嵌 68 個 MCP 工具與可互動式 MCP Apps 工作台，雲端積分透明預估，本地 Blender 輔助操作完全零積分消耗！
 
 ---
 
@@ -145,9 +145,9 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ---
 
-## 3. 完整工具矩陣與功能清單 (67 MCP Tools)
+## 3. 完整工具矩陣與功能清單 (68 MCP Tools)
 
-外掛伺服器共註冊了 **63 個智能體可見工具** 與 **4 個應用專屬工具**。我們為各個工具分類整理了詳盡的子文件、參數指南與互動截圖：
+外掛伺服器共註冊了 **64 個智能體可見工具** 與 **4 個應用專屬工具**。我們為各個工具分類整理了詳盡的子文件、參數指南與互動截圖：
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -314,7 +314,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ## 7. 文件導航 (Documentation)
 
-- 🛠️ **[完整工具分類索引總覽 (docs/tools/README.md)](docs/tools/README.md)**：全 67 個 MCP 工具分類速查表
+- 🛠️ **[完整工具分類索引總覽 (docs/tools/README.md)](docs/tools/README.md)**：全 68 個 MCP 工具分類速查表
 - ⚡ **[3D 生成工具指南 (docs/tools/generation.md)](docs/tools/generation.md)**：High Detail、Smart Mesh P2、多視角與草稿保護
 - 🔧 **[網格與材質工具指南 (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**：分件、重拓撲、Smart UV 與 8K PBR
 - 🦴 **[骨骼與 AI 動作指南 (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**：Rig V3、工業骨架與 AI Motion

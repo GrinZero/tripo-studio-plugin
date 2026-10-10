@@ -95,7 +95,7 @@ async function handshake(tarball, offline) {
     await access(path.join(runtimeRoot, 'dist', 'magick.wasm'));
     proc.stdin.write(`${JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" })}\n`);
     const tools = (await request("tools/list", {})).tools;
-    assert.equal(tools.length, 67);
+    assert.equal(tools.length, 68);
     const workbench = tools.find(tool => tool.name === "tripo_open_workbench");
     assert.ok(workbench.icons[0].src.startsWith("data:image/png;base64,"));
     const resources = (await request("resources/list", {})).resources;
@@ -122,7 +122,7 @@ async function handshake(tarball, offline) {
     const preview = await call("tripo_ui_preview", { task_id: crop.structuredContent.task.task_id, type: "image" });
     assert.equal(preview._meta.tripo.preview.width, 8);
     assert.equal(preview._meta.tripo.preview.height, 6);
-    console.log(`package: ${offline ? "offline cached" : "fresh npx"} startup, 67 tools, MCP Apps and WASM image processing passed`);
+    console.log(`package: ${offline ? "offline cached" : "fresh npx"} startup, 68 tools, MCP Apps and WASM image processing passed`);
   } finally {
     for (const item of pending.values()) clearTimeout(item.timer);
     // Closing MCP stdin also terminates the server behind npm exec, including

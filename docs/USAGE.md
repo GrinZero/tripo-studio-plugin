@@ -24,7 +24,7 @@ Smart Mesh 不接受 High Detail 的贴图、几何质量与分件参数。High 
 | `submit:true` | 准备并直接执行，用于明确要求立即执行的请求 |
 | `tripo_run_workflow` | `submit` 默认 `true`，执行到达的步骤；仅预览时设为 `false`，并确保步骤不覆盖此设置 |
 
-配置卡片展示输入缩略图、模型版本、面数、几何质量、贴图、PBR 和费用预估。修改参数后会重新校验与报价；保存修改后重启提交倒计时。工作台使用独立草稿与确认流程，配置修改会使旧报价失效，提交时展示本次冻结参数。
+配置卡片展示输入缩略图、模型版本、面数、几何质量、贴图、PBR 和费用预估。卡片先显示，展开后后台预上传图片。修改参数复用上传结果，并在本地重新校验与计算费用；保存修改后重启提交倒计时。保存更新同一份草稿，提交前仅返回 `draft_id`。用 `tripo_get_configuration_review(review_id)` 跟踪稳定卡片；收到最终提交回执后才返回 `task_id`，此后再查询／同步任务。工作台使用独立草稿与确认流程，配置修改会使旧报价失效，提交时展示本次冻结参数。
 
 `tripo_get_payment` 查询账号积分与会员信息；`tripo_quote_operation` 估算指定操作或已暂存任务的费用，不提交生成任务。报价可以结合会员折扣和试用信息，最终扣费以 Studio 为准；`estimated_credits:null` 表示未知费用。通过 `tripo_list_operations` 查看每项操作的 `consumes_credits` 标记。
 

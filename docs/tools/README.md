@@ -2,7 +2,7 @@
 
 [返回主 README](../../README.md) · [3D 生成工具](generation.md) · [网格与材质工具](mesh-texture.md) · [绑定与动画工具](rigging-animation.md) · [本地 Blender 工具](local-blender.md) · [资产与任务工具](assets-tasks-export.md)
 
-Tripo Studio for Codex 共向系统注册了 **67 个 MCP 工具**（包含 63 个智能体可见工具与 4 个 Webview App 专属交互工具）。所有云端生成工具默认接入 60 秒可编辑安全草稿卡片机制，本地 Blender 工具完全离线运行、零积分消耗。
+Tripo Studio for Codex 共向系统注册了 **68 个 MCP 工具**（包含 64 个智能体可见工具与 4 个 Webview App 专属交互工具）。所有云端生成工具默认接入 60 秒可编辑安全草稿卡片机制，本地 Blender 工具完全离线运行、零积分消耗。
 
 ---
 
@@ -151,6 +151,7 @@ Tripo Studio for Codex 共向系统注册了 **67 个 MCP 工具**（包含 63 �
 | `tripo_task_cancel` | 否 | 撤销处于待确认或排队状态的任务。 |
 | `tripo_task_reconcile` | 否 | 异常对账恢复：当网络抖动导致任务状态不明 (`outcome_unknown`) 时对账远端状态。 |
 | `tripo_list_tasks` | 否 | 查询本地持久化的任务历史队列，支持按类型、角色、状态筛选。 |
+| `tripo_get_configuration_review` | 否 | 按稳定卡片 ID 查询当前配置；提交回执后才返回最终任务 ID。 |
 | `tripo_get_task` | 否 | 读取任务完整血统快照（包含冻结参数、输入源哈希、关联上游 ID、执行事件）。 |
 | `tripo_list_task_groups` | 否 | 按角色名聚合统计已完成和进行中的任务分布。 |
 | `tripo_set_task_character`| 否 | 纠正或补充任务的角色元数据，便于资产血统回溯。 |

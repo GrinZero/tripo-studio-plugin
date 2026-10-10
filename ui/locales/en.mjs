@@ -191,6 +191,10 @@ export default {
   "正在保存并更新报价…": "Saving & updating estimate…",
   "正在保存配置并更新报价…": "Saving settings and updating the estimate…",
   "准备输入素材与查询费用中，完成后重新计时": "Preparing inputs and checking costs; countdown restarts when ready",
+  "图片在后台准备，修改参数不会重新上传": "Images prepare in the background; settings changes reuse uploads",
+  "配置卡片 ID: {0}": "Configuration card ID: {0}",
+  "草稿标识: {0}": "Draft reference: {0}",
+  "正在本地保存参数与计算费用，完成后重新计时": "Saving settings and estimating costs locally; countdown restarts when ready",
   "保存失败，请重试": "Save failed. Try again.",
   "自动提交已暂停": "Automatic submission paused",
   "编辑中": "Editing",
@@ -567,4 +571,7 @@ export default {
   "重命名分组": "Rename group",
   "保存名称": "Save name",
   "分组名称已更新。": "Group name updated.",
+  "进度: {0}%": "Progress: {0}%",
+  "模型 ID: {0}": "Model ID: {0}",
+  "错误: {0}": "Error: {0}",
 };

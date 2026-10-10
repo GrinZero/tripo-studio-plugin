@@ -31,6 +31,19 @@ function harness(overrides = {}) {
 }
 
 describe("reviewed Studio credit pricing", () => {
+  it('configuration estimates use bundled reviewed rates without network requests', async () => {
+    const {service, calls} = harness();
+    const input = {tier:'high_detail',mode:'multiview',face_limit:6000,texture:true,geometry_quality:'standard'};
+    assert.equal((await service.quote('model.generate',input,{offline:true})).estimated_credits,40);
+    assert.equal((await service.quote('model.generate',{...input,geometry_quality:'detailed'},{offline:true})).estimated_credits,55);
+    const image = await service.quote('image.generate', {}, {offline:true});
+    assert.equal(image.base_credits,20);
+    assert.equal(image.estimated_credits,null,'offline estimates cannot assume account discounts/trials');
+    assert.deepEqual(calls,[]);
+  });
+  it('bundled offline rates match the reviewed public configuration', async () => {
+    assert.deepEqual((await import('../src/studio/pricing-snapshot.mjs')).default,snapshot);
+  });
   it("reads exact minified public configuration without evaluating JavaScript", () => {
     assert.equal(snapshot.credits.GenerateBaseNexusV2, 100);
     assert.equal(snapshot.discounts.premium, 0.2);

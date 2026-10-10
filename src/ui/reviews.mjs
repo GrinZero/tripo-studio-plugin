@@ -33,6 +33,11 @@ export class ConfigurationReviews {
     timer?.unref?.();this.timers.set(record.review_id,timer);
   }
   close() { for(const id of this.timers.keys())this.stop(id); }
+  preupload(record) {
+    if(getOperation(record.kind).category==='local')return;
+    // Background optimization only: never block the card, saving or the clock.
+    this.runtime.service.preupload?.(record.task_id).catch(()=>{});
+  }
   async recover() {
     const files=await readdir(this.dir).catch(e=>{if(e.code==='ENOENT')return [];throw e;});
     for(const file of files.filter(f=>f.endsWith('.json'))){
@@ -62,10 +67,16 @@ export class ConfigurationReviews {
       record=await this.doc(record.review_id).update(r=>({...r,status:task.status==='canceled'?'canceled':task.status==='expired'?'failed':'submitted',deadline_at:null,revision:r.revision+1}));
       this.stop(record.review_id);
     }
+    // The local draft handle is useful for editing, but is not a submitted task.
+    const visibleTask={...task};
+    if(!task.remote && task.dispatch_state!=='submitted' && task.status!=='outcome_unknown') {
+      visibleTask.draft_id=record.task_id;
+      delete visibleTask.task_id;
+    }
     return {review:{review_id:record.review_id,kind:record.kind,status:record.status,revision:record.revision,
       deadline_at:record.deadline_at,timeout_seconds:this.timeoutMs/1000,input:record.input,
       sources:[...(task.snapshots?.filter(s=>['png','jpeg','jpg','webp'].includes(s.format)).map(s=>({slot:s.slot,name:s.source_name,label:s.label})) ?? []),...(task.metadata?.studio_inputs?.map(s=>({slot:s.slot,name:s.slot,label:s.slot})) ?? [])],
-      schema:z.toJSONSchema(this.schema(record.kind),{io:'input',unrepresentable:'any'}),quote:task.cost_estimate,error:record.error ?? null},task};
+      schema:z.toJSONSchema(this.schema(record.kind),{io:'input',unrepresentable:'any'}),quote:task.cost_estimate,error:record.error ?? null},task:visibleTask};
   }
   async create(kind,input,prepared) {
     const id=prepared.task.task_id;
@@ -101,11 +112,11 @@ export class ConfigurationReviews {
       else if(action==='save') {
         if(r.status!=='editing')throw new TripoError('STAGING_REQUIRED','先暂停倒计时，再修改配置。');
         const parsed=this.schema(r.kind).parse({...input,submit:false});
-        const prepared=await this.runtime.service.prepare(r.kind,parsed);
+        const prepared=await this.runtime.service.prepare(r.kind,parsed,{draftId:r.task_id});
         if(prepared.task.status!=='staged')throw new TripoError('STAGING_REQUIRED','相同配置的任务已提交，请查看已有任务。');
-        if(this.runtime.pricing && this.runtime.store){
+        if(prepared.deduplicated && this.runtime.pricing && this.runtime.store){
           const frozen=await this.runtime.store.get(prepared.task.task_id);
-          const quote=await this.runtime.pricing.quote(r.kind,{}, {task:frozen,refresh:true});
+          const quote=await this.runtime.pricing.quote(r.kind,{}, {task:frozen,offline:true});
           await this.runtime.store.update(frozen.task_id,task=>({...task,cost_estimate:quote}));
         }
         if(prepared.task.task_id!==r.task_id)await this.runtime.service.cancel(r.task_id);
@@ -131,6 +142,8 @@ export class ConfigurationReviews {
       } catch(error){await this.doc(review_id).update(r=>({...r,status:'failed',revision:r.revision+1,error:errorSnapshot(error)}));}
       return this.output(await this.doc(review_id).read());
     }
+    if(action==='ready' && editableStates.has(record.status))this.preupload(record);
+    if(action==='save' && record.status==='pending')this.preupload(record);
     return this.output(record);
   }
 }

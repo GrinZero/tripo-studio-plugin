@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { readFile, stat } from "node:fs/promises";
 import { COPYFILE_EXCL } from "node:constants";
 import { chmod, copyFile, mkdir, open, rm } from "node:fs/promises";
@@ -6,8 +6,94 @@ import path from "node:path";
 import { TripoError } from "../errors.mjs";
 import { assertLocalPathSpecifier } from "../security/path-policy.mjs";
 import { inspectImage } from "../util/image.mjs";
+import { JsonDocument } from '../store/jsondoc.mjs';
+import { FileLock } from '../store/lock.mjs';
+import { hashObject } from '../util/misc.mjs';
 
 const PLAN_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const LOCAL_INPUT_BUCKET = 'tripo-plugin-local-input';
+
+// An internal reference to a frozen local input; card mounting can pre-upload it.
+export function pendingInputWire(provenance) {
+  return { bucket: LOCAL_INPUT_BUCKET, key: provenance.relative_path };
+}
+
+async function cachedUpload(ctx, task, snapshot) {
+  const key = hashObject({ account: task.account_fingerprint, sha256: snapshot.sha256, format: snapshot.format });
+  const directory = path.join(ctx.config.dataDir, 'input-uploads');
+  const doc = new JsonDocument(path.join(directory, `${key}.json`));
+  const lock = new FileLock(path.join(ctx.config.dataDir, 'locks'));
+  // A separate content lock coalesces background uploads, saves and confirmation,
+  // including requests from other MCP processes using the same account.
+  return lock.withLock(`input-${key.slice(0, 56)}`, async () => {
+    const assertAccount = async () => {
+      if (await ctx.session.accountFingerprint() !== task.account_fingerprint)
+        throw new TripoError('PLAN_MISMATCH', 'The authenticated account changed while uploading inputs.', { stage: 'operation_stage' });
+    };
+    await assertAccount();
+    let cached = await doc.read();
+    if (!cached || Date.parse(cached.expires_at) <= Date.now()) {
+      const source = await verifySnapshot(ctx.config, task.task_id, snapshot);
+      await mkdir(directory, { recursive: true, mode: 0o700 });
+      const file = path.join(directory, `${key}.${snapshot.format}`);
+      try {
+        // The cache owns its upload file, so canceling/replacing a draft cannot
+        // delete an in-flight upload's input.
+        await copyFile(source, file);
+        const verify = async () => {
+          const bytes = await readFile(file);
+          if (bytes.length !== snapshot.size_bytes || createHash('sha256').update(bytes).digest('hex') !== snapshot.sha256)
+            throw new TripoError('FILE_CHANGED', 'The cached upload input changed.', { stage: 'operation_provenance' });
+        };
+        await verify();
+        const token = await ctx.gateway.requestTemporaryToken(snapshot.format);
+        const uploaded = await ctx.uploader.upload(file, token);
+        await verify();
+        await assertAccount();
+        cached = { uploaded, expires_at: new Date(Date.now() + ctx.config.planTtlMs).toISOString() };
+        await doc.write(cached);
+      } finally { await rm(file, { force: true }).catch(() => {}); }
+    }
+    if (snapshot.audit_required && !cached.audit) {
+      cached.audit = await ctx.gateway.auditImage(cached.uploaded);
+      await assertAccount();
+      await doc.write(cached);
+    }
+    return cached;
+  }, { timeoutMs: 30 * 60 * 1000, staleMs: 60 * 60 * 1000 });
+}
+
+export async function resolvePendingInputs(ctx, task, { uploadOnly = false } = {}) {
+  const resolved = new Map();
+  for (const snapshot of task.snapshots ?? []) {
+    if (!snapshot.pending_upload) continue;
+    const { uploaded, audit } = await cachedUpload(ctx, task, snapshot);
+    if (audit && (!['pass', 'sensitive'].includes(audit.result) ||
+      (audit.result === 'sensitive' && task.kind === 'image.generate' && !task.metadata.allow_sensitive))) {
+      throw new TripoError('CONTENT_AUDIT_REJECTED', 'The reference image did not pass the Studio audit.', { stage: 'audit', safeToRetryPaidOperation: true });
+    }
+    resolved.set(snapshot.relative_path, { ...uploaded, ...(audit ? { image_audit_result: audit.result } : {}) });
+  }
+  if (uploadOnly) return;
+  const replace = value => {
+    if (Array.isArray(value)) return value.map(replace);
+    if (value && typeof value === 'object') {
+      if (value.bucket === LOCAL_INPUT_BUCKET) {
+        const uploaded = resolved.get(value.key);
+        if (!uploaded) throw new TripoError('STAGING_REQUIRED', 'A deferred input has no verified snapshot.', { stage: 'operation_stage' });
+        return { ...value, ...uploaded };
+      }
+      return Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, replace(entry)]));
+    }
+    return value;
+  };
+  const payload = replace(task.payload);
+  if (task.metadata.pending_symmetry) {
+    const reference = Array.isArray(payload.body.image) ? payload.body.image.find(Boolean) : payload.body.image;
+    if (reference) payload.body.symmetry = await ctx.gateway.checkSymmetry(reference);
+  }
+  return payload;
+}
 
 export function snapshotDirectory(config, taskId) {
   if (!PLAN_ID.test(taskId)) {
@@ -97,7 +183,7 @@ export async function stageLocalImage(config, gateway, uploader, inputPath, audi
   }
   const directory = snapshotDirectory(config, retain.taskId);
   await mkdir(directory, { recursive: true, mode: 0o700 });
-  const snapshotName = `input-${retain.index}.${canonicalSourceFormat}`;
+  const snapshotName = `input-${retain.index}-${randomUUID()}.${canonicalSourceFormat}`;
   const snapshotPath = path.join(directory, snapshotName);
   let completed = false;
   try {
@@ -111,8 +197,9 @@ export async function stageLocalImage(config, gateway, uploader, inputPath, audi
         stage: "operation_stage"
       });
     }
-    const token = retain.upload === false ? null : await gateway.requestTemporaryToken(snapshot.format);
-    const uploaded = token ? await uploader.upload(snapshot.path, token) : undefined;
+    const deferred = retain.upload !== false && retain.deferUpload === true;
+    const token = retain.upload === false || deferred ? null : await gateway.requestTemporaryToken(snapshot.format);
+    const uploaded = deferred ? pendingInputWire({ relative_path: `task-inputs/${retain.taskId}/${snapshotName}` }) : token ? await uploader.upload(snapshot.path, token) : undefined;
     const unchanged = await inspectImage(snapshot.path);
     if (unchanged.sha256 !== snapshot.sha256 || unchanged.size !== snapshot.size) {
       throw new TripoError("FILE_CHANGED", "The immutable image snapshot changed during upload.", {
@@ -120,7 +207,7 @@ export async function stageLocalImage(config, gateway, uploader, inputPath, audi
         stage: "operation_stage"
       });
     }
-    const auditResult = audit ? await gateway.auditImage(uploaded) : undefined;
+    const auditResult = audit ? deferred ? { result: 'pass', deferred: true } : await gateway.auditImage(uploaded) : undefined;
     if (auditResult && !["pass", "sensitive"].includes(auditResult.result)) {
       throw new TripoError("CONTENT_AUDIT_REJECTED", `Tripo image audit returned ${auditResult.result}; the operation was not submitted.`, {
         safeToRetryPaidOperation: true,
@@ -139,6 +226,7 @@ export async function stageLocalImage(config, gateway, uploader, inputPath, audi
         width: snapshot.width
       },
       provenance: {
+        ...(deferred ? { pending_upload: true, audit_required: audit } : {}),
         format: snapshot.format,
         height: snapshot.height,
         label: retain.label,
@@ -170,7 +258,7 @@ export async function stageLocalModelFile(config, inputPath, retain) {
   const directory = snapshotDirectory(config, retain.taskId);
   await mkdir(directory, { recursive: true, mode: 0o700 });
   const extension = path.extname(canonical).toLowerCase();
-  const snapshotName = `input-${retain.index}${extension}`;
+  const snapshotName = `input-${retain.index}-${randomUUID()}${extension}`;
   const snapshotPath = path.join(directory, snapshotName);
   await copyFile(canonical, snapshotPath, COPYFILE_EXCL);
   if (process.platform !== "win32") await chmod(snapshotPath, 0o400);

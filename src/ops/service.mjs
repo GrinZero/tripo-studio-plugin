@@ -3,7 +3,9 @@ import { TripoError, errorSnapshot, isDefinitiveRemoteRejection, toTripoError } 
 import { redactDeep } from "../redact.mjs";
 import { hashObject, isoNow, uuid } from "../util/misc.mjs";
 import { getOperation } from "./registry.mjs";
-import { removeSnapshots, verifySnapshot } from "./images.mjs";
+import { removeSnapshots, resolvePendingInputs, verifySnapshot } from "./images.mjs";
+import path from 'node:path';
+import { FileLock } from '../store/lock.mjs';
 import { characterGroup, normalizedCharacter, resolveCharacterGroup, summarizeGroups, taskContextShape } from './task-groups.mjs';
 
 const CONTRACT_VERSION = "tripo-studio-plugin-v1";
@@ -85,8 +87,11 @@ function publicTask(record) {
 // for a duplicate submission.
 export class OperationService {
   #ctx;
+  #submissionLock;
+  #inputPreparations = new Map();
   constructor(ctx) {
     this.#ctx = ctx; // {config, gateway, session, store, uploader}
+    this.#submissionLock = new FileLock(path.join(ctx.config.dataDir, 'locks'));
   }
 
   // Recovery: anything still "dispatching" when the process died crossed the
@@ -116,23 +121,31 @@ export class OperationService {
   }
 
   async prepare(kind, input, options = {}) {
+    if (options.draftId) return this.#submissionLock.withLock(`submit-${options.draftId}`, () => this.#prepare(kind, input, options), { staleMs: 60 * 60 * 1000 });
+    return this.#prepare(kind, input, options);
+  }
+
+  async #prepare(kind, input, options) {
     const operation = getOperation(kind);
     const validated = z.object({ ...operation.inputShape, ...taskContextShape }).strict().parse(input);
     const { character_name, parent_task_id, ...parsedInput } = validated;
     const accountFingerprint = operation.category === "local" ? "local" : await this.#ctx.session.accountFingerprint();
+    const draft = options.draftId ? await this.#ctx.store.get(options.draftId) : null;
+    if (draft && (draft.status !== 'staged' || draft.dispatch_started_at || draft.kind !== kind || draft.account_fingerprint !== accountFingerprint))
+      throw new TripoError('PLAN_MISMATCH', 'Only the owned, unsubmitted draft can be revised.', { stage: 'operation_stage' });
     const grouping = await resolveCharacterGroup(this.#ctx.store, parsedInput, accountFingerprint, {name:character_name ?? options.characterName,parentTaskId:parent_task_id ?? options.parentTaskId});
     // Cheap dedupe before any uploads: same normalized input for the same
     // account + kind on a live task returns it untouched.
     const dedupeKey = hashObject({ account_fingerprint: accountFingerprint, input: stripSubmitFlag(parsedInput), kind });
-    const duplicate = await this.#ctx.store.findFirst(
+    const duplicate = draft ? null : await this.#ctx.store.findFirst(
       (record) => record.dedupe_key === dedupeKey && record.account_fingerprint === accountFingerprint && !TERMINAL.has(record.status)
     );
     if (duplicate) {
       this.#checkDuplicateGroup(duplicate, grouping.group, character_name ?? options.characterName);
       return { deduplicated: true, paid_request_sent: duplicate.dispatch_started_at !== undefined && operation.consumesCredits, task: publicTask(duplicate) };
     }
-    const taskId = uuid();
-    const built = await operation.build(this.#ctx, parsedInput, taskId);
+    const taskId = draft?.task_id ?? uuid();
+    const built = await operation.build({ ...this.#ctx, deferUploads: true }, parsedInput, taskId);
     const requestHash = hashObject({
       account_fingerprint: accountFingerprint,
       contract_version: CONTRACT_VERSION,
@@ -142,7 +155,7 @@ export class OperationService {
       snapshots: (built.snapshots ?? []).map((s) => ({ relative_path: s.relative_path, sha256: s.sha256, slot: s.slot }))
     });
     // Dedup: identical request already alive → return the existing task.
-    const existing = await this.#ctx.store.findByRequestHash(requestHash, accountFingerprint);
+    const existing = draft ? null : await this.#ctx.store.findByRequestHash(requestHash, accountFingerprint);
     if (existing) {
       this.#checkDuplicateGroup(existing, grouping.group, character_name ?? options.characterName);
       return { deduplicated: true, paid_request_sent: existing.dispatch_started_at !== undefined && operation.consumesCredits, task: publicTask(existing) };
@@ -151,17 +164,17 @@ export class OperationService {
     const record = {
       account_fingerprint: accountFingerprint,
       contract_version: CONTRACT_VERSION,
-      created_at: now,
+      created_at: draft?.created_at ?? now,
       dedupe_key: dedupeKey,
       dispatch_state: "none",
       downloads: [],
-      events: [event("task.staged")],
+      events: draft ? [...draft.events, event('draft.settings_saved')] : [event("task.staged")],
       expires_at: new Date(Date.now() + this.#ctx.config.planTtlMs).toISOString(),
       input_summary: inputSummary(parsedInput),
       kind,
       metadata: built.metadata ?? {},
-      parent_task_id: grouping.parentTaskId ?? null,
-      character_group: grouping.group,
+      parent_task_id: grouping.parentTaskId ?? draft?.parent_task_id ?? null,
+      character_group: grouping.group ?? draft?.character_group ?? null,
       progress: null,
       remote: null,
       request_hash: requestHash,
@@ -175,12 +188,15 @@ export class OperationService {
       task_id: taskId,
       updated_at: now,
       warnings: [...(built.warnings ?? []),...(grouping.warning ? [grouping.warning] : [])],
-      workflow_id: options.workflowId ?? null,
+      workflow_id: options.workflowId ?? draft?.workflow_id ?? null,
       payload: built.payload,
       settings: built.settings ?? null
     };
-    if (this.#ctx.pricing) record.cost_estimate = await this.#ctx.pricing.quote(kind, {}, { task: record });
-    const created = await this.#ctx.store.create(record);
+    if (this.#ctx.pricing) record.cost_estimate = await this.#ctx.pricing.quote(kind, {}, { task: record, offline: true });
+    const created = draft ? await this.#ctx.store.update(taskId, current => {
+      if (current.status !== 'staged' || current.dispatch_started_at) throw new TripoError('STAGING_REQUIRED', 'The draft was submitted while saving configuration.');
+      return record;
+    }) : await this.#ctx.store.create(record);
     const submitted = input.submit === true ? await this.submit(taskId, { confirmation: record.confirmation, requestHash }) : null;
     return {
       confirmation: record.confirmation,
@@ -212,6 +228,24 @@ export class OperationService {
   }
 
   async submit(taskId, input = {}) {
+    // Serialize input uploads with dispatch and cancellation across MCP processes.
+    return this.#submissionLock.withLock(`submit-${taskId}`, () => this.#submit(taskId, input), { staleMs: 60 * 60 * 1000 });
+  }
+
+  preupload(taskId) {
+    if (this.#inputPreparations.has(taskId)) return this.#inputPreparations.get(taskId);
+    const pending = (async () => {
+      const task = await this.#ctx.store.get(taskId);
+      if (task.status !== 'staged') return;
+      const account = await this.#ctx.session.accountFingerprint();
+      if (task.account_fingerprint !== account) throw new TripoError('PLAN_MISMATCH', 'The authenticated Studio account differs from the draft account.');
+      await resolvePendingInputs(this.#ctx, task, { uploadOnly: true });
+    })().finally(() => this.#inputPreparations.delete(taskId));
+    this.#inputPreparations.set(taskId, pending);
+    return pending;
+  }
+
+  async #submit(taskId, input) {
     const store = this.#ctx.store;
     const staged = await store.get(taskId);
     if (staged.status !== "staged") {
@@ -242,18 +276,32 @@ export class OperationService {
     const operation = getOperation(staged.kind);
     // Read-only stale-plan checks must finish before the durable write boundary.
     if (operation.beforeSubmit) await operation.beforeSubmit(this.#ctx, staged);
+    if (staged.cost_estimate?.offline && this.#ctx.pricing) {
+      const quote = await this.#ctx.pricing.quote(staged.kind, {}, { task: staged });
+      await store.update(taskId, record => ({ ...record, cost_estimate: quote }));
+      if (Number.isFinite(staged.cost_estimate.estimated_credits) && Number.isFinite(quote.estimated_credits) && quote.estimated_credits > staged.cost_estimate.estimated_credits)
+        throw new TripoError('PRICE_CHANGED', 'The estimate increased; review the updated quote before submitting.', { stage: 'task_dispatch', safeToRetryPaidOperation: true });
+    }
+    // Upload/audit failure is still before the paid boundary: retain the draft.
+    const payload = await resolvePendingInputs(this.#ctx, staged);
+    // Uploading may take time; a different account or expired plan cannot dispatch.
+    if (operation.category !== 'local' && await this.#ctx.session.accountFingerprint() !== staged.account_fingerprint)
+      throw new TripoError('PLAN_MISMATCH', 'The authenticated Studio account changed while preparing inputs.', { stage: 'task_dispatch' });
+    if (Date.now() >= Date.parse(staged.expires_at))
+      throw new TripoError('PLAN_EXPIRED', 'The staged task expired while preparing inputs.', { stage: 'task_dispatch' });
     // Durable dispatch boundary: persist "dispatching" BEFORE the remote call.
     await store.update(taskId, (record) => {
       if (record.status !== "staged") throw new TripoError("STAGING_REQUIRED", "The task state changed before dispatch.", { stage: "task_dispatch" });
       record.status = "dispatching";
       record.dispatch_state = "dispatching";
       record.dispatch_started_at = isoNow();
+      record.dispatch_payload = payload;
       record.events.push(event("dispatch.begin"));
       return record;
     });
     let remote;
     try {
-      remote = await operation.submitRemote(this.#ctx, staged);
+      remote = await operation.submitRemote(this.#ctx, { ...staged, payload });
     } catch (error) {
       const normalized = toTripoError(error, "task_dispatch");
       if (operation.category === "local" || isDefinitiveRemoteRejection(normalized)) {
@@ -366,6 +414,10 @@ export class OperationService {
   }
 
   async cancel(taskId) {
+    return this.#submissionLock.withLock(`submit-${taskId}`, () => this.#cancel(taskId), { staleMs: 60 * 60 * 1000 });
+  }
+
+  async #cancel(taskId) {
     const store = this.#ctx.store;
     const record = await store.get(taskId);
     if (record.dispatch_started_at !== undefined || !["staged", "dispatching"].includes(record.status)) {

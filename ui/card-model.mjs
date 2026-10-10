@@ -1,5 +1,28 @@
 import { t as tr } from './i18n.mjs';
-import { artifactFor, taskTitle, STATUS, KINDS } from './model.mjs';
+import { artifactFor, taskTitle, taskProject, STATUS, KINDS } from './model.mjs';
+
+// Keep model context readable and small; full configuration stays in the card.
+export function taskContextSummary({ review = {}, task = {} } = {}) {
+  const kind = task.kind ?? review.kind;
+  const name = task.character_group?.name ?? review.input?.character_name ?? task.input_summary?.character_name;
+  const title = name ? `${String(name).replace(/\s+/g, ' ').trim().slice(0, 80)} · ${KINDS[kind] ?? kind}`
+    : taskTitle({ ...task, kind, input_summary: task.input_summary ?? review.input });
+  const reviewStatus = { pending:tr("等待确认"), editing:tr("编辑中"), submitting:tr("提交中"), submitted: tr("已提交"), canceled: tr("已取消"), failed: tr("提交失败") }[review.status];
+  const status = ['pending','editing','submitting','canceled', 'failed'].includes(review.status) ? reviewStatus
+    : STATUS[task.status] ?? task.status ?? reviewStatus ?? tr("等待确认");
+  const lines = [`${title} · ${status}`];
+  if (!['canceled', 'failed'].includes(review.status) && Number.isFinite(task.progress?.progress)) {
+    lines.push(tr("进度: {0}%", { 0: Math.max(0, Math.min(100, task.progress.progress)) }));
+  }
+  if (review.review_id) lines.push(tr("配置卡片 ID: {0}", {0:review.review_id}));
+  if (task.task_id && !['staged','dispatching'].includes(task.status) && (task.remote || ['queued','running','succeeded','outcome_unknown','waiting_for_auth'].includes(task.status)))
+    lines.push(tr("任务 ID: {0}", { 0: task.task_id }));
+  const projectId = taskProject(task) ?? review.input?.project_id;
+  if (projectId) lines.push(tr("模型 ID: {0}", { 0: projectId }));
+  const error = review.error ?? task.error;
+  if (error?.message) lines.push(tr("错误: {0}", { 0: String(error.message).replace(/\s+/g, ' ').slice(0, 240) }));
+  return lines.join('\n');
+}
 
 export function operationGroups(operations) {
   const groups = new Map();

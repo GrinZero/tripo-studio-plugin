@@ -21,6 +21,10 @@ export function fail(error) {
 }
 
 function summarize(value) {
+  if(value?.review) {
+    const r=value.review;
+    return `配置卡片 ${r.review_id}：${r.status}。${value.task?.task_id ? `任务 ID：${value.task.task_id}` : '尚未提交生成任务；通过卡片标识查询当前配置与提交状态。'}`;
+  }
   if (value?.download?.path) return `下载完成，文件已保存到 ${value.download.path}。${value.download.blender_error ? 'Blender 兼容处理失败，请查看卡片中的提示。' : ''}`;
   if (value?.quote) {
     const quote = value.quote;

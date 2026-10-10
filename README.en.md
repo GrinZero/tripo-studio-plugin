@@ -20,7 +20,7 @@
   <a href="#2-installation--quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
   <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.4-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
-  <a href="#3-tool-matrix--capabilities-67-mcp-tools"><img src="https://img.shields.io/badge/DOCS-67%20TOOLS-2563EB?style=for-the-badge" alt="67 Tools" /></a>
+  <a href="#3-tool-matrix--capabilities-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
   <img src="https://img.shields.io/badge/models-H3.1%20%C2%B7%20Smart%20Mesh%20%C2%B7%20Rig%20V3-1f2937?style=flat-square" alt="Models" />
   <img src="https://img.shields.io/badge/credits-BYO%20Account%20%C2%B7%20Zero%20Markup-ff5722?style=flat-square" alt="BYO Account" />
   <img src="https://img.shields.io/badge/local%20engine-Blender%20Integrated-e87d0d?style=flat-square&logo=blender&logoColor=white" alt="Blender Integrated" />
-  <img src="https://img.shields.io/badge/tools-67%20MCP%20Tools-10b981?style=flat-square" alt="67 MCP Tools" />
+  <img src="https://img.shields.io/badge/tools-68%20MCP%20Tools-10b981?style=flat-square" alt="68 MCP Tools" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10b981?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/i18n-%E7%AE%80%E4%BD%93%20%C2%B7%20%E7%B9%81%E9%AB%94%20%C2%B7%20EN%20%C2%B7%20%E6%97%A5%E6%9C%AC%E8%AA%9E%20%C2%B7%20%ED%95%9C%EA%B5%AD%EC%96%B4-8b5cf6?style=flat-square" alt="Multi-language" />
 </p>
@@ -36,7 +36,7 @@
 <p align="center">
   <a href="#1-what-it-is"><b>💡 What it is</b></a> ·
   <a href="#2-installation--quick-start"><b>🚀 Quick Start</b></a> ·
-  <a href="#3-tool-matrix--capabilities-67-mcp-tools"><b>🛠️ 67 Tools</b></a> ·
+  <a href="#3-tool-matrix--capabilities-68-mcp-tools"><b>🛠️ 68 Tools</b></a> ·
   <a href="#4-prompts--showcase"><b>💬 Prompts</b></a> ·
   <a href="#5-showcase-gallery"><b>🖼️ Gallery</b></a> ·
   <a href="#6-engineering-boundaries"><b>📐 Boundaries</b></a> ·
@@ -48,7 +48,7 @@
 ---
 
 > [!NOTE]
-> 🚀 **Zero API Key Markup · Bring Your Own Studio Account**: Connect your existing Tripo Studio web membership directly. No need to apply for or purchase expensive API tokens. Featuring 67 MCP tools, an interactive MCP Apps workbench, transparent credit quotation, and completely free offline Blender processing!
+> 🚀 **Zero API Key Markup · Bring Your Own Studio Account**: Connect your existing Tripo Studio web membership directly. No need to apply for or purchase expensive API tokens. Featuring 68 MCP tools, an interactive MCP Apps workbench, transparent credit quotation, and completely free offline Blender processing!
 
 ---
 
@@ -141,9 +141,9 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ---
 
-## 3. Tool Matrix & Capabilities (67 MCP Tools)
+## 3. Tool Matrix & Capabilities (68 MCP Tools)
 
-The server registers **63 agent-visible tools** and **4 app-only streaming tools**. We have organized dedicated sub-documentation and tutorials for each category:
+The server registers **64 agent-visible tools** and **4 app-only streaming tools**. We have organized dedicated sub-documentation and tutorials for each category:
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -311,7 +311,7 @@ Generate a "Mecha Fox" model using this reference image:
 
 ## 7. Documentation
 
-- 🛠️ **[Complete Tool Index (docs/tools/README.md)](docs/tools/README.md)**: 67 MCP tools quick index
+- 🛠️ **[Complete Tool Index (docs/tools/README.md)](docs/tools/README.md)**: 68 MCP tools quick index
 - ⚡ **[3D Generation Guide (docs/tools/generation.md)](docs/tools/generation.md)**: H3.1, Smart Mesh P2, multiview & safety cards
 - 🔧 **[Mesh & Texture Guide (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**: Segmentation, remesh, Smart UV & PBR
 - 🦴 **[Rigging & Animation Guide (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**: Rig V3, skeletons & AI Motion

@@ -12,6 +12,16 @@ npm run build
 npm test
 ```
 
+本地插件的首次安装和后续更新统一使用：
+
+```bash
+npm run install:local
+```
+
+脚本构建后同步到 `~/.local/share/codex-integrations/tripo-studio-local/runtime`，本地插件只携带技能、图标和指向该固定目录的 MCP 配置。首次安装或从旧缓存版迁移后，重连 Tripo MCP 或开启新聊天一次。之后只修改界面时，重新打开工作台／卡片即可读取新构建，无需重装插件；后端或工具定义变化需要重连 MCP，技能或插件配置变化会自动更新本地安装并提示重新加载。脚本会判断本次是否需要重连。
+
+同步使用预先准备的完整构建，失败时保留或恢复旧目录。登录、任务、账号数据与下载文件继续使用原配置，不进入运行目录。此命令只更新 `tripo-studio-local` 本地安装，不修改固定 npm 版本的正式发布配置。
+
 `mcp/bootstrap.mjs` 优先加载 `dist/server.mjs`，没有构建产物时回退到源码。修改源码后重新构建，再重新加载宿主的 MCP 连接；界面也需重新打开。
 
 开发时可直接启动源码服务：
@@ -47,7 +57,7 @@ npm run check:distribution
 npm run test:package
 ```
 
-发布包验收从仓库外的临时目录、空 npm 缓存启动真实 npx，验证 MCP 握手、67 个工具、工作台与结果卡片、图片导入和裁剪，再验证缓存可离线启动。CI 在 Linux、macOS、Windows 的 Node 22 和 Linux Node 24 上运行发布包验收。
+发布包验收从仓库外的临时目录、空 npm 缓存启动真实 npx，验证 MCP 握手、68 个工具、工作台与结果卡片、图片导入和裁剪，再验证缓存可离线启动。CI 在 Linux、macOS、Windows 的 Node 22 和 Linux Node 24 上运行发布包验收。
 
 GitHub Release 发布后，Action 先完成验证，再将已经验收的同一份 tarball 发布到 npm。首次 npm 配置、版本同步与发布步骤见[分发说明](docs/DISTRIBUTION.md)。安装入口见 [README](README.md#安装与快速上手-quick-start)。
 

@@ -349,6 +349,11 @@ async function main() {
   });
 
   // ---- Operation tools (shared registry) ---------------------------------
+  tool('tripo_get_configuration_review', {
+    description: 'Read the current configuration card by its stable review_id. Before submission returns a draft_id, not a submitted task_id. After the final Tripo submission receipt returns the actual task_id and remote IDs. Always follow this card when users edit settings; do not monitor an earlier draft or bypass its confirmation/countdown.',
+    inputSchema: {review_id:taskIdShape},
+    annotations: {readOnlyHint:true, destructiveHint:false, openWorldHint:false}
+  }, async ({review_id}) => ok(await reviews.action({review_id,action:'get'})));
   for (const [kind, toolName] of Object.entries(OPERATION_TOOLS)) {
     const operation = getOperation(kind);
     tool(

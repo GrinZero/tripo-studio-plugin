@@ -1,0 +1,19 @@
+// Public rates from the configuration source in pricing-contract.mjs,
+// reviewed 2026-10-08. Used for instant, offline configuration estimates.
+export default {
+  credits: {
+    AICompletion:0, Completion:5, EditMesh:50, Export:5, FLUX_1_pro:10,
+    GenerateBase:15, GenerateBaseNexus:35, GenerateBaseNexusV2:100,
+    GenerateGenerateParts:30, GenerateGeometryQualityDetailed:15,
+    GenerateQuad:5, GenerateSmartPoly:20, GenerateTextureQualityDetailed:10,
+    GenerateTextureQualityExtreme:20, GenerateWithTexture:25, GPT_4o:10,
+    GPT_image_2:20, GPT_image_2_5:20, HomeImageToModel:40, HomeTextToModel:40,
+    ImageUpscale4K:10, MagicBrush:5, Midjourney:10, Motion:20, NanoBanana:10,
+    NanoBanana_2:10, NanoBanana_pro:20, PBR:5, ProjectCopy:5, QuickCap:0,
+    Retopology_Quad:10, Retopology_SmartPoly:30, Retopology_Triangle:5,
+    Rigging:20, Segmentation:40, TextureGeneration:10, TextureQualityDetailed:10,
+    TextureQualityExtreme:20, TextureStyle:5, Upscaler:10, UpscalerExtreme:20,
+    UvEditGenerate:20, UvEditRetry:10
+  },
+  discounts: { advanced:0.5, basic:1, premium:0.2, professional:1, starter:1, team:1 }
+};

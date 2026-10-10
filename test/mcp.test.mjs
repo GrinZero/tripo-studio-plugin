@@ -90,7 +90,7 @@ describe("mcp handshake", () => {
       ]) {
         assert.ok(names.includes(expected), `missing tool ${expected}`);
       }
-      assert.equal(names.length, 67);
+      assert.equal(names.length, 68);
       for(const name of ['tripo_list_asset_groups','tripo_list_group_assets','tripo_create_asset_group','tripo_set_asset_group','tripo_rename_asset_group']) {
         const registered=tools.tools.find(t=>t.name===name);
         assert.ok(registered,`missing agent asset group tool ${name}`);
@@ -101,7 +101,7 @@ describe("mcp handshake", () => {
       for (const name of ["tripo_generate_uv", "tripo_apply_uv", "tripo_export_model", "tripo_generate_motion", "tripo_apply_motion", "tripo_get_uv_context", "tripo_list_motions", "tripo_get_motion", "tripo_upscale_image", "tripo_split_image", "tripo_render_model", "tripo_edit_parts", "tripo_bake_texture_projection", "tripo_paint_texture", "tripo_crop_image", "tripo_inspect_local_parts"]) assert.ok(names.includes(name), `missing tool ${name}`);
       assert.equal(init.serverInfo.version, version);
       for (const name of ["tripo_ui_preview", "tripo_ui_import_image", "tripo_ui_review", "tripo_ui_asset_library"]) assert.deepEqual(tools.tools.find(t => t.name === name)._meta.ui.visibility, ["app"]);
-      for (const name of ['tripo_auth_login','tripo_auth_status','tripo_auth_logout','tripo_get_payment','tripo_quote_operation','tripo_list_operations','tripo_list_models','tripo_get_model','tripo_list_image_assets','tripo_get_image_asset','tripo_submit_task','tripo_task_sync','tripo_task_wait','tripo_task_cancel','tripo_task_reconcile','tripo_list_tasks','tripo_get_task','tripo_download','tripo_list_task_groups','tripo_set_task_character','tripo_inspect_local_parts','tripo_run_workflow','tripo_open_in_studio']) {
+      for (const name of ['tripo_auth_login','tripo_auth_status','tripo_auth_logout','tripo_get_payment','tripo_quote_operation','tripo_list_operations','tripo_list_models','tripo_get_model','tripo_list_image_assets','tripo_get_image_asset','tripo_submit_task','tripo_task_sync','tripo_task_wait','tripo_task_cancel','tripo_task_reconcile','tripo_list_tasks','tripo_get_task','tripo_get_configuration_review','tripo_download','tripo_list_task_groups','tripo_set_task_character','tripo_inspect_local_parts','tripo_run_workflow','tripo_open_in_studio']) {
         const t=tools.tools.find(t=>t.name===name);
         assert.equal(t._meta.ui.resourceUri, undefined, `${name} must preserve the current preview`);
         assert.deepEqual(t._meta.ui.visibility,['model','app']);
@@ -207,6 +207,16 @@ describe("mcp handshake", () => {
         assert.equal(t.inputSchema.type, "object");
       }
       // auth-free tool works without login: structured error, not a crash
+      const draftCard = await client.request('tools/call',{name:'tripo_crop_image',arguments:{image_path:imported.structuredContent.file_path,left:0,top:0,width:8,height:8}});
+      assert.equal(draftCard.isError,undefined);
+      assert.equal(draftCard.structuredContent.task.task_id,undefined);
+      const reviewId=draftCard.structuredContent.review.review_id;
+      const currentCard = await client.request('tools/call',{name:'tripo_get_configuration_review',arguments:{review_id:reviewId}});
+      assert.equal(currentCard._meta.tripo.presentation,'data');
+      assert.equal(currentCard.structuredContent.task.draft_id,draftCard.structuredContent.task.draft_id);
+      assert.equal(currentCard.structuredContent.task.task_id,undefined);
+      assert.equal(currentCard.structuredContent.review.status,'pending');
+      assert.equal(currentCard.structuredContent.review.deadline_at,null,'read-only monitoring must not start submission');
       const result = await client.request("tools/call", { arguments: {}, name: "tripo_auth_status" });
       assert.equal(result.structuredContent.session.authenticated, false);
       // Exercise the distributed worker lookup, not only the source implementation.

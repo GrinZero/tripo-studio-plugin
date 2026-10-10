@@ -98,6 +98,7 @@ export const imageOperations = {
       for (const [index, imagePath] of imagePaths.entries()) {
         assertLocalPathSpecifier(imagePath, "image_generation_input_policy");
         const staged = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, imagePath, true, {
+          deferUpload: ctx.deferUploads,
           index: index + 1,
           label: `Reference ${index + 1}`,
           slot: `reference_${index + 1}`,
@@ -126,7 +127,7 @@ export const imageOperations = {
         ...(references.length > 1 ? { images: references } : {})
       };
       const payload = imageWireSchema.parse(candidate);
-      return { metadata: { reference_count: references.length, studio_references: studioReferences }, payload, snapshots };
+      return { metadata: { reference_count: references.length, studio_references: studioReferences, allow_sensitive: input.allow_sensitive ?? false }, payload, snapshots };
     },
     async submitRemote(ctx, task) {
       const receipt = await ctx.gateway.submitStudioImage(task.payload);

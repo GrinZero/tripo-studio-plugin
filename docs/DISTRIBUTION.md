@@ -14,6 +14,8 @@ Codex 下载插件包不会运行 npm 生命周期脚本，也不能假定会为
 
 ## npm 发布包
 
+仓库开发时使用 `npm run install:local`，在独立的 `tripo-studio-local` 本地市场安装固定运行目录版。首次迁移需要重连 MCP；之后界面更新只需再次执行该命令并重新打开界面，后端更新仍需重连。详情见[本地开发](../CONTRIBUTING.md#本地开发)。下面的 npm 发布流程用于正式版本分发。
+
 `package.json` 的 `files` 白名单包含插件清单、MCP 配置、启动入口、构建产物、HTML 与图标、技能及引用、本地 Blender worker 和用户文档。README 的截图也随包分发。源码、测试、设计稿、开发依赖和本地账号数据不会进入 tarball。
 
 `npm pack` 的 `prepack` 会重新构建并检查分发配置。SDK、AWS 客户端、Zod、Three.js 等 JavaScript 依赖全部打进服务器或界面文件。图片处理使用固定版本的 `@imagemagick/magick-wasm`，其 JavaScript 打进服务器，约 15 MiB 的 WASM 复制到 `dist/magick.wasm`，首次处理图片时从本地懒加载。发布包没有外部运行时依赖，无需安装系统 ImageMagick。开发依赖不会安装到消费端。发布包没有 `install`、`postinstall` 或 `prepare` 构建步骤。
@@ -27,7 +29,7 @@ npm test
 npm run test:package
 ```
 
-`test:package` 输出 tarball 到被 Git 忽略的 `artifacts/`，并从全新临时目录通过 npm exec 启动，安装时禁用生命周期脚本。它验证 MCP 握手、67 个工具、图标、工作台和结果卡片资源，以及使用包内 WASM 的图片导入、WebP 预览和裁剪；之后使用同一缓存、`--offline` 再次启动。验收不登录真实账号、不提交付费任务，临时数据与 npm 缓存自动清理。CI 的 Windows 和 Linux 结果仍需在 GitHub 上实际运行确认。
+`test:package` 输出 tarball 到被 Git 忽略的 `artifacts/`，并从全新临时目录通过 npm exec 启动，安装时禁用生命周期脚本。它验证 MCP 握手、68 个工具、图标、工作台和结果卡片资源，以及使用包内 WASM 的图片导入、WebP 预览和裁剪；之后使用同一缓存、`--offline` 再次启动。验收不登录真实账号、不提交付费任务，临时数据与 npm 缓存自动清理。CI 的 Windows 和 Linux 结果仍需在 GitHub 上实际运行确认。
 
 ## 首次发布配置
 

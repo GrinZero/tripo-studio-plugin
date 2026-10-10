@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import contract from "./pricing-contract.mjs";
+import localSnapshot from './pricing-snapshot.mjs';
 import { getOperation } from "../ops/registry.mjs";
 import { normalizeSettings } from "../ops/modelgen.mjs";
 import { TripoError } from "../errors.mjs";
@@ -173,7 +174,7 @@ export class PricingService {
     })();
     try { return await this.#pending; } finally { this.#pending = undefined; }
   }
-  async quote(kind, input = {}, { refresh = false, task } = {}) {
+  async quote(kind, input = {}, { refresh = false, task, offline = false } = {}) {
     const operation = getOperation(kind);
     if (input.submit === true) throw new TripoError("INVALID_INPUT", "A quote cannot submit a task.");
     const parsed = task ? null : z.object(operation.inputShape).partial().strict().parse(input);
@@ -202,6 +203,15 @@ export class PricingService {
       return { ...out, status: "unknown", estimated_credits: null, base_credits: null, warnings: [error.message] };
     }
     try {
+      if (offline) {
+        if (this.#clock() >= Date.parse(this.#contract.review_expires_at)) throw new Error('Reviewed pricing contract expired; verify the current webpage and update the plugin.');
+        const calculation = calculateQuote(kind, settings, localSnapshot);
+        const effective = Object.fromEntries(COST_FIELDS.filter(key => settings[key] !== undefined).map(key => [key, settings[key]]));
+        return { ...out, ...calculation, effective_settings: effective, pricing_type: 'reviewed_frontend_estimate', offline: true,
+          estimate_expires_at: new Date(this.#clock() + CACHE_MS).toISOString(),
+          source: { reviewed_at: this.#contract.reviewed_at, review_expires_at: this.#contract.review_expires_at, sources: this.#contract.sources },
+          warnings: [...calculation.warnings, 'Local estimate from reviewed rates; account discounts and trials require an online check after confirmation. Final server billing may differ.'] };
+      }
       const snapshot = await this.#load(refresh);
       const needsMarketing = kind === "image.generate" || (kind === "model.generate" && settings.texture && settings.texture_quality === "ultra") || (["texture.generate", "texture.upscale"].includes(kind) && settings.quality === "ultra");
       const needsQuota = kind === "model.uv_generate" || (kind === "model.generate" && settings.tier === "smart_mesh" && settings.model_version === NEXUS_V2_MODEL_VERSION);

@@ -45,6 +45,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
+    "install:local": "node scripts/install-local.mjs",
     "prepack": "npm run build && npm run check:distribution",
     "version": "node scripts/sync-version.mjs",
     "check:distribution": "node scripts/check-distribution.mjs",

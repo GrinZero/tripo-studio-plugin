@@ -845,7 +845,7 @@ function renderTaskDetail() {
     <div class="task-detail-header row spread">
       <div>
         <h2>${esc(taskTitle(t, state.models))}</h2>
-        <span class="dim small mono">${th("任务 ID: {0}", { "0": esc(t.task_id) })}</span>
+        <span class="dim small mono">${t.remote || ['queued','running','succeeded','outcome_unknown'].includes(t.status) ? th("任务 ID: {0}", { "0": esc(t.task_id) }) : th("草稿标识: {0}", {"0":esc(t.task_id)})}</span>
       </div>
       <div class="row" style="gap:10px; align-items:center">
         ${status(t.status)}

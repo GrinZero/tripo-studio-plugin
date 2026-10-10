@@ -298,7 +298,7 @@ export const postprocessOperations = {
       };
       const retain = async (imagePath, label, slot) => {
         assertLocalPathSpecifier(imagePath, "operation_input_policy");
-        const image = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, imagePath, true, { index: snapshots.length + 1, label, slot, taskId });
+        const image = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, imagePath, true, { deferUpload: ctx.deferUploads, index: snapshots.length + 1, label, slot, taskId });
         snapshots.push(image.provenance);
         return image;
       };
@@ -370,6 +370,7 @@ export const postprocessOperations = {
       const pf = await preflight(ctx, "retexture_preview", input.project_id);
       assertLocalPathSpecifier(input.render_image_path, "operation_input_policy");
       const render = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, input.render_image_path, false, {
+        deferUpload: ctx.deferUploads,
         index: 1,
         label: "Viewport render",
         requiredFormat: "webp",
@@ -421,6 +422,7 @@ export const postprocessOperations = {
         const entry = input.textures[index];
         assertLocalPathSpecifier(entry.image_path, "operation_input_policy");
         const image = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, entry.image_path, false, {
+          deferUpload: ctx.deferUploads,
           index: index + 1,
           label: names[index],
           slot: `part:${names[index]}`,

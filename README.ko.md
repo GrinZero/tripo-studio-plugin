@@ -20,7 +20,7 @@
   <a href="#2-설치-및-빠른-시작-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
   <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.4-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
-  <a href="#3-전체-도구-매트릭스-및-기능-목록-67-mcp-tools"><img src="https://img.shields.io/badge/DOCS-67%20TOOLS-2563EB?style=for-the-badge" alt="67 Tools" /></a>
+  <a href="#3-전체-도구-매트릭스-및-기능-목록-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
   <img src="https://img.shields.io/badge/models-H3.1%20%C2%B7%20Smart%20Mesh%20%C2%B7%20Rig%20V3-1f2937?style=flat-square" alt="Models" />
   <img src="https://img.shields.io/badge/credits-BYO%20Account%20%C2%B7%20Zero%20Markup-ff5722?style=flat-square" alt="BYO Account" />
   <img src="https://img.shields.io/badge/local%20engine-Blender%20Integrated-e87d0d?style=flat-square&logo=blender&logoColor=white" alt="Blender Integrated" />
-  <img src="https://img.shields.io/badge/tools-67%20MCP%20Tools-10b981?style=flat-square" alt="67 MCP Tools" />
+  <img src="https://img.shields.io/badge/tools-68%20MCP%20Tools-10b981?style=flat-square" alt="68 MCP Tools" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10b981?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/i18n-%E7%AE%80%E4%BD%93%20%C2%B7%20%E7%B9%81%E9%AB%94%20%C2%B7%20EN%20%C2%B7%20%E6%97%A5%E6%9C%AC%E8%AA%9E%20%C2%B7%20%ED%95%9C%EA%B5%AD%EC%96%B4-8b5cf6?style=flat-square" alt="Multi-language" />
 </p>
@@ -36,7 +36,7 @@
 <p align="center">
   <a href="#1-tripo-studio-for-codex란-what-it-is"><b>💡 플러그인 소개</b></a> ·
   <a href="#2-설치-및-빠른-시작-quick-start"><b>🚀 빠른 시작</b></a> ·
-  <a href="#3-전체-도구-매트릭스-및-기능-목록-67-mcp-tools"><b>🛠️ 67개 도구</b></a> ·
+  <a href="#3-전체-도구-매트릭스-및-기능-목록-68-mcp-tools"><b>🛠️ 68개 도구</b></a> ·
   <a href="#4-사용-예시-및-프롬프트-패턴-showcase--prompts"><b>💬 프롬프트 예시</b></a> ·
   <a href="#5-인터페이스-갤러리-showcase-gallery"><b>🖼️ 갤러리</b></a> ·
   <a href="#6-사용-제한-및-엔지니어링-경계-engineering-boundaries"><b>📐 엔지니어링 경계</b></a> ·
@@ -48,7 +48,7 @@
 ---
 
 > [!NOTE]
-> 🚀 **API 키 불필요 · 기존 Studio 계정 직접 연동**: 별도의 고가 API 토큰 구매 없이 Tripo Studio 웹 멤버십 계정을 직접 연결할 수 있습니다. 67개의 MCP 도구와 상호작용형 MCP Apps 워크벤치가 내장되어 있으며, 투명한 크레딧 견적 및 완전 무료 로컬 Blender 파이프라인을 지원합니다!
+> 🚀 **API 키 불필요 · 기존 Studio 계정 직접 연동**: 별도의 고가 API 토큰 구매 없이 Tripo Studio 웹 멤버십 계정을 직접 연결할 수 있습니다. 68개의 MCP 도구와 상호작용형 MCP Apps 워크벤치가 내장되어 있으며, 투명한 크레딧 견적 및 완전 무료 로컬 Blender 파이프라인을 지원합니다!
 
 ---
 
@@ -137,9 +137,9 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ---
 
-## 3. 전체 도구 매트릭스 및 기능 목록 (67 MCP Tools)
+## 3. 전체 도구 매트릭스 및 기능 목록 (68 MCP Tools)
 
-플러그인 서버에는 **63개의 에이전트 가시 도구**와 **4개의 Webview 앱 전용 도구**가 등록되어 있습니다.
+플러그인 서버에는 **64개의 에이전트 가시 도구**와 **4개의 Webview 앱 전용 도구**가 등록되어 있습니다.
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -156,7 +156,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 └─────────────────┴──────────────────────┴────────────────────┘
 ```
 
-👉 **[전체 67개 도구 상세 인덱스 보기 (docs/tools/README.md)](docs/tools/README.md)**
+👉 **[전체 68개 도구 상세 인덱스 보기 (docs/tools/README.md)](docs/tools/README.md)**
 
 ---
 
@@ -298,7 +298,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ## 7. 문서 내비게이션 (Documentation)
 
-- 🛠️ **[전체 67개 도구 상세 인덱스 (docs/tools/README.md)](docs/tools/README.md)**
+- 🛠️ **[전체 68개 도구 상세 인덱스 (docs/tools/README.md)](docs/tools/README.md)**
 - ⚡ **[3D 생성 도구 상세 가이드 (docs/tools/generation.md)](docs/tools/generation.md)**
 - 🔧 **[메쉬 및 텍스처 도구 가이드 (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**
 - 🦴 **[본 리깅 및 AI 모션 가이드 (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**

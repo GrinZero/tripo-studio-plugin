@@ -1,8 +1,8 @@
-# Tool inventory — 67 MCP tools (0.3.3)
+# Tool inventory — 68 MCP tools (0.3.4)
 
 [README](README.md) · [Usage guide](docs/USAGE.md) · [Agent guide](skills/tripo-studio/SKILL.md)
 
-The server registers 63 agent-visible tools and 4 app-only tools. Parameter names, types, enums and defaults come from the current MCP `tools/list` schemas; `tripo_list_operations` returns operation descriptions and credit flags, not input schemas.
+The server registers 64 agent-visible tools and 4 app-only tools. Parameter names, types, enums and defaults come from the current MCP `tools/list` schemas; `tripo_list_operations` returns operation descriptions and credit flags, not input schemas.
 
 ## Workbench
 
@@ -84,7 +84,7 @@ These tools manage local, account-scoped membership shared with the workbench. T
 
 See [asset-group workflows](skills/tripo-studio/references/asset-groups.md) for exact references, pagination and merging.
 
-## Tasks (9)
+## Tasks (10)
 
 | Tool | Purpose |
 |---|---|
@@ -94,6 +94,7 @@ See [asset-group workflows](skills/tripo-studio/references/asset-groups.md) for 
 | `tripo_task_cancel` | Cancel staged work only |
 | `tripo_task_reconcile` | Adopt observed remote IDs after an ambiguous write |
 | `tripo_list_tasks` | Filter persisted tasks |
+| `tripo_get_configuration_review` | Follow a stable configuration card; exposes a task ID only after the submission receipt |
 | `tripo_get_task` | Frozen settings, provenance, lineage, results and events |
 | `tripo_list_task_groups` | Character groups and retained task counts |
 | `tripo_set_task_character` | Correct local task character metadata; existing descendants retain their group |

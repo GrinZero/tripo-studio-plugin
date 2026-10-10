@@ -20,7 +20,7 @@
   <a href="#2-インストールとクイックスタート-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
   <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.4-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
-  <a href="#3-ツールマトリクスと機能一覧-67-mcp-tools"><img src="https://img.shields.io/badge/DOCS-67%20TOOLS-2563EB?style=for-the-badge" alt="67 Tools" /></a>
+  <a href="#3-ツールマトリクスと機能一覧-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
   <img src="https://img.shields.io/badge/models-H3.1%20%C2%B7%20Smart%20Mesh%20%C2%B7%20Rig%20V3-1f2937?style=flat-square" alt="Models" />
   <img src="https://img.shields.io/badge/credits-BYO%20Account%20%C2%B7%20Zero%20Markup-ff5722?style=flat-square" alt="BYO Account" />
   <img src="https://img.shields.io/badge/local%20engine-Blender%20Integrated-e87d0d?style=flat-square&logo=blender&logoColor=white" alt="Blender Integrated" />
-  <img src="https://img.shields.io/badge/tools-67%20MCP%20Tools-10b981?style=flat-square" alt="67 MCP Tools" />
+  <img src="https://img.shields.io/badge/tools-68%20MCP%20Tools-10b981?style=flat-square" alt="68 MCP Tools" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10b981?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/i18n-%E7%AE%80%E4%BD%93%20%C2%B7%20%E7%B9%81%E9%AB%94%20%C2%B7%20EN%20%C2%B7%20%E6%97%A5%E6%9C%AC%E8%AA%9E%20%C2%B7%20%ED%95%9C%EA%B5%AD%EC%96%B4-8b5cf6?style=flat-square" alt="Multi-language" />
 </p>
@@ -36,7 +36,7 @@
 <p align="center">
   <a href="#1-tripo-studio-for-codex-とは-what-it-is"><b>💡 本プラグインとは</b></a> ·
   <a href="#2-インストールとクイックスタート-quick-start"><b>🚀 クイックスタート</b></a> ·
-  <a href="#3-ツールマトリクスと機能一覧-67-mcp-tools"><b>🛠️ 67 ツール一覧</b></a> ·
+  <a href="#3-ツールマトリクスと機能一覧-68-mcp-tools"><b>🛠️ 68 ツール一覧</b></a> ·
   <a href="#4-プロンプト例と対話パターン-showcase--prompts"><b>💬 プロンプト例</b></a> ·
   <a href="#5-ギャラリー-showcase-gallery"><b>🖼️ ギャラリー</b></a> ·
   <a href="#6-制限事項と設計境界-engineering-boundaries"><b>📐 設計境界</b></a> ·
@@ -48,7 +48,7 @@
 ---
 
 > [!NOTE]
-> 🚀 **API キー不要 · 既存 Studio アカウント直通**：Web 版 Tripo Studio の既存メンバーシップアカウントを直接連携。高価な API トークンを別途購入する必要はありません。67 個の MCP ツールと対話型 MCP Apps ワークベンチを内蔵し、透明性の高いクレジット見積もりと完全無料のローカル Blender 連携を実現！
+> 🚀 **API キー不要 · 既存 Studio アカウント直通**：Web 版 Tripo Studio の既存メンバーシップアカウントを直接連携。高価な API トークンを別途購入する必要はありません。68 個の MCP ツールと対話型 MCP Apps ワークベンチを内蔵し、透明性の高いクレジット見積もりと完全無料のローカル Blender 連携を実現！
 
 ---
 
@@ -137,9 +137,9 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ---
 
-## 3. ツールマトリクスと機能一覧 (67 MCP Tools)
+## 3. ツールマトリクスと機能一覧 (68 MCP Tools)
 
-プラグインには **63 個のエージェント可視ツール** と **4 個の Webview 専用ツール** が登録されています。
+プラグインには **64 個のエージェント可視ツール** と **4 個の Webview 専用ツール** が登録されています。
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -156,7 +156,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 └─────────────────┴──────────────────────┴────────────────────┘
 ```
 
-👉 **[全 67 ツール詳細インデックス (docs/tools/README.md)](docs/tools/README.md)**
+👉 **[全 68 ツール詳細インデックス (docs/tools/README.md)](docs/tools/README.md)**
 
 ---
 
@@ -298,7 +298,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ## 7. ドキュメント一覧 (Documentation)
 
-- 🛠️ **[全 67 ツール詳細インデックス (docs/tools/README.md)](docs/tools/README.md)**
+- 🛠️ **[全 68 ツール詳細インデックス (docs/tools/README.md)](docs/tools/README.md)**
 - ⚡ **[3D 生成ツール詳細マニュアル (docs/tools/generation.md)](docs/tools/generation.md)**
 - 🔧 **[メッシュ・テクスチャ詳細マニュアル (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**
 - 🦴 **[リギングとアニメーション詳細マニュアル (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**

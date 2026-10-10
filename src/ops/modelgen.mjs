@@ -9,7 +9,7 @@ import {
   SMART_MESH_MODEL_VERSIONS,
   TEXT_IMAGE_MODEL_VERSION
 } from "../constants.mjs";
-import { stageLocalImage, stageLocalModelFile } from "./images.mjs";
+import { pendingInputWire, stageLocalImage, stageLocalModelFile } from "./images.mjs";
 import { assertLocalPathSpecifier } from "../security/path-policy.mjs";
 import { inspectModel } from "../util/model-inspect.mjs";
 
@@ -263,6 +263,7 @@ export const modelOperations = {
           }
           assertLocalPathSpecifier(filePath, "model_generation_input_policy");
           const staged = await stageLocalImage(ctx.config, ctx.gateway, ctx.uploader, filePath, true, {
+            deferUpload: ctx.deferUploads,
             index: snapshots.length + 1,
             label: `${slot} view`,
             slot,
@@ -299,7 +300,10 @@ export const modelOperations = {
       if (settings.model_version === NEXUS_V2_MODEL_VERSION) {
         const reference = Array.isArray(body.image) ? body.image.find(Boolean) : body.image;
         if (input.symmetry !== undefined) body.symmetry = input.symmetry;
-        else if (reference) body.symmetry = await ctx.gateway.checkSymmetry(reference);
+        else if (reference) {
+          if (ctx.deferUploads) metadata.pending_symmetry = true;
+          else body.symmetry = await ctx.gateway.checkSymmetry(reference);
+        }
       } else if (input.symmetry !== undefined) throw new TripoError("INVALID_INPUT", "symmetry is a P2.0 setting.");
       return { metadata, payload: { body, mode: settingsMode }, settings, snapshots };
     },
@@ -332,8 +336,8 @@ export const modelOperations = {
       const matrix = normalizeMatrix(input.transform_matrix);
       const name = (input.name ?? staged.metadata.source_name).replace(/[\u0000-\u001f\u007f]/g, " ").trim();
       if (!name || name.length > 255) throw new TripoError("INVALID_INPUT", "The model name must be 1-255 safe characters.", { stage: "model_import_prepare" });
-      const token = await ctx.gateway.requestTemporaryToken(inspected.format);
-      const uploaded = await ctx.uploader.upload(staged.path, token);
+      if (ctx.deferUploads) staged.provenance.pending_upload = true;
+      const uploaded = ctx.deferUploads ? pendingInputWire(staged.provenance) : await ctx.uploader.upload(staged.path, await ctx.gateway.requestTemporaryToken(inspected.format));
       return {
         metadata: {
           face_count: inspected.faceCount,

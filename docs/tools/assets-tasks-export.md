@@ -26,6 +26,7 @@
 | `tripo_task_cancel` | 否 | 取消处于排队或草稿确认阶段的任务 |
 | `tripo_task_reconcile` | 否 | **异常对账**：当网络闪断导致状态不明 (`outcome_unknown`) 时对账远端 ID 并安全恢复 |
 | `tripo_list_tasks` | 否 | 分页过滤本地持久化的全部历史任务列表 |
+| `tripo_get_configuration_review` | 否 | 按稳定卡片 ID 查询当前配置；提交回执后才返回最终任务 ID。 |
 | `tripo_get_task` | 否 | **血统溯源**：读取冻结参数、输入源文件哈希、关联上游父任务与完整执行日志 |
 | `tripo_list_task_groups` | 否 | 按角色名称统计历史任务归属与数量 |
 | `tripo_set_task_character` | 否 | 纠正或补充任务所属的角色名称标记 |

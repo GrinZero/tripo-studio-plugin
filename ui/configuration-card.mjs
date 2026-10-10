@@ -90,7 +90,7 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
   const countdown=document.createElement('div');countdown.className='countdown';footer.append(countdown);
   const clock=document.createElement('span');clock.className='clock-icon';setText(clock, () => '◷');clock.setAttribute('aria-hidden','true');
   const notice=document.createElement('span');notice.className='config-notice';notice.setAttribute('role','status');
-  const helper=document.createElement('span');helper.className='countdown-helper';setText(helper, () => tr("修改配置会暂停计时"));countdown.append(clock,notice,helper);
+  const helper=document.createElement('span');helper.className='countdown-helper';setText(helper, () => tr("图片在后台准备，修改参数不会重新上传"));countdown.append(clock,notice,helper);
   const track=document.createElement('div');track.className='countdown-track';const progress=document.createElement('span');track.append(progress);footer.append(track);
   let current=review,editingRequest,working=false,disposed=false,saving=false;
   function busy(value){working=value;cancel.disabled=value;save.disabled=value;confirm.disabled=value||current.status!=='pending';}
@@ -99,7 +99,7 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
     busy(true);if(name!=='edit')freeze(true);
     if(name==='save'){
       saving=true;setText(save, () => tr("正在保存并更新报价…"));form.setAttribute('aria-busy','true');
-      setText(notice, () => tr("正在保存配置并更新报价…"));setText(helper, () => tr("准备输入素材与查询费用中，完成后重新计时"));
+      setText(notice, () => tr("正在保存配置并更新报价…"));setText(helper, () => tr("正在本地保存参数与计算费用，完成后重新计时"));
     }
     try{const result=await action(name,current.revision,input);current=result.review;return result;}
     catch(e){if(name==='save'&&!disposed){setText(notice, () => tr("保存失败，请重试"));setText(helper, () => tr("自动提交已暂停"));}onError(e);throw e;}

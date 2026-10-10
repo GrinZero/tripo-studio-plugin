@@ -3,7 +3,7 @@ import { App, applyDocumentTheme, applyHostStyleVariables } from '@modelcontextp
 import { OpenAIExtensions } from '@openai/mcp-extensions/app';
 import { mountModel } from './viewer.mjs';
 import { mountConfiguration } from './configuration-card.mjs';
-import { cardItems, operationGroups } from './card-model.mjs';
+import { cardItems, operationGroups, taskContextSummary } from './card-model.mjs';
 import { mountQuote } from './quote-card.mjs';
 const app = new App({name:'Tripo Studio',version:'0.3.4'}, {}, {autoResize:true});
 new OpenAIExtensions(app);
@@ -90,6 +90,7 @@ async function render(result) {
   $('message').classList.toggle('error',!!result.isError);
   setText($('message'), () => result.structuredContent?.project_id ? tr("模型已准备就绪 · 拖动旋转，滚轮缩放") : result.content?.filter(c=>c.type==='text').map(c=>c.text).join('\n') ?? '');
   const data=result.structuredContent ?? {};
+  if(data.review)app.updateModelContext({content:[{type:'text',text:taskContextSummary(data)}]}).catch(()=>{});
   if (!result.isError && data.quote) {
     setText($('message'), () => '');
     quoteView=mountQuote($('items'),data.quote,status=>{setText($('status'), () => status);});return;
@@ -125,6 +126,7 @@ async function render(result) {
         const updated=await call('tripo_ui_review',{review_id:data.review.review_id,action,revision,...(input?{input}:{})});
         if(current===epoch){
           latest=updated;
+          if(action==='edit'||action==='ready')app.updateModelContext({content:[{type:'text',text:taskContextSummary(updated.structuredContent)}]}).catch(()=>{});
           // Keep the existing fields alive while the user edits.
           if(action==='edit'||action==='ready')configuration?.update(updated.structuredContent.review);
           else render(updated);
@@ -147,7 +149,6 @@ async function render(result) {
     poll();return;
   }
   if(data.review){
-    app.updateModelContext({content:[{type:'text',text:JSON.stringify({review:data.review,task:data.task})}]}).catch(()=>{});
     setText($('status'), () => data.review.status==='canceled'?tr("已取消"):data.review.status==='failed'?tr("提交失败"):tr("已提交"));setText($('message'), () => data.review.error?.message ?? (data.review.status==='canceled'?tr("本次请求已取消。"):tr("任务已提交，可刷新查看结果。")));}
   // Errors can carry a task, but must not fetch a possibly stale output.
   if(data.task && ['queued','running','dispatching','waiting_for_auth'].includes(data.task.status)){
