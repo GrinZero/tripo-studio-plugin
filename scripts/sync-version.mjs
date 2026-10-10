@@ -22,7 +22,10 @@ const replacements = {
   "ui/workbench.mjs": text => text.replace(/(name: 'Tripo Studio', version: ')[^']+/, `$1${version}`),
   "ui/result-card.mjs": text => text.replace(/(name:'Tripo Studio',version:')[^']+/, `$1${version}`),
   "skills/tripo-studio/SKILL.md": text => text.replace(/^# Tripo Studio [\d.]+/m, `# Tripo Studio ${version}`),
-  "README.md": text => text.replace(/version-v[\d.]+-blue/, `version-v${version}-blue`).replace(/alt="Version [\d.]+"/, `alt="Version ${version}"`)
+  "TOOL_INVENTORY.md": text => text.replace(/^(# Tool inventory — \d+ MCP tools \()[\d.]+(\))/m, `$1${version}$2`)
 };
+for (const relative of ["README.md", "README.en.md", "README.zh-TW.md", "README.ja.md", "README.ko.md"]) {
+  replacements[relative] = text => text.replace(/NPM-v[\d.]+-CB3837/, `NPM-v${version}-CB3837`).replace(/version-v[\d.]+-blue/, `version-v${version}-blue`).replace(/alt="Version [\d.]+"/, `alt="Version ${version}"`);
+}
 for (const [relative, replace] of Object.entries(replacements)) await save(relative, replace(await read(relative)));
 console.log(`version: plugin, marketplace and runtime synchronized to ${version}`);

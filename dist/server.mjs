@@ -89796,7 +89796,7 @@ function errorSnapshot(error113) {
 
 // src/constants.mjs
 var SERVER_NAME = "tripo-studio-plugin";
-var SERVER_VERSION = "0.3.4";
+var SERVER_VERSION = "0.3.5";
 var STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 var STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
 var STUDIO_WORKSPACE_URL = `${STUDIO_ORIGIN}/workspace/generate`;
@@ -89841,7 +89841,7 @@ var STUDIO_IMAGE_RATIOS = ["1:1", "16:9", "9:16", "4:3", "3:4"];
 var STUDIO_IMAGE_RESOLUTIONS = ["1K", "4K"];
 var RIG_TYPES = ["aquatic", "avian", "biped", "hexapod", "octopod", "quadruped", "serpentine", "others"];
 var RETARGET_RIG_TYPES = RIG_TYPES.filter((t8) => t8 !== "others");
-var WORKBENCH_RESOURCE_URI = "ui://tripo-studio/workbench-v0.3.4.html";
+var WORKBENCH_RESOURCE_URI = "ui://tripo-studio/workbench-v0.3.5.html";
 var RESULT_CARD_RESOURCE_URI = "ui://tripo-studio/result-card-v2.html";
 
 // src/ops/animation-presets.mjs
