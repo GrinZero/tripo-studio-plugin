@@ -93,7 +93,7 @@ Tripo Studio for Codex プラグインをインストールしてください。
 
 まず Node.js ≥ 22、npm / npx、プラグイン対応の Codex CLI があるか確認し、不足があればインストールや設定を手伝ってください。
 次に以下のコマンドを実行してください：
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 
 マーケットプレイスが追加済みなら再利用し、更新が必要なら codex plugin marketplace upgrade tripo-studio-plugins を実行してください。
@@ -104,9 +104,11 @@ codex plugin add tripo-studio-plugin@tripo-studio-plugins
 手動でインストールする場合は、ターミナルで以下のコマンドを実行します：
 
 ```bash
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 ```
+
+最初のコマンドはリポジトリの `main` ブランチから `tripo-studio-plugins` マーケットプレイスを追加し、次のコマンドはそのプラグインをインストールします。Codex は短縮形もサポートしています：`codex plugin marketplace add GrinZero/tripo-studio-plugin --ref main`。
 
 インストール後、Codex で新しいチャットを開始してください。リポジトリの手動クローンやビルド、MCP の手動登録は一切不要です。
 

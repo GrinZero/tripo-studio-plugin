@@ -93,7 +93,7 @@ Repository: https://github.com/GrinZero/tripo-studio-plugin
 
 First check for Node.js ≥ 22, npm / npx, and a Codex CLI with plugin support. Help install or configure anything missing.
 Then run:
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 
 If the marketplace is already added, reuse it; refresh it with codex plugin marketplace upgrade tripo-studio-plugins if needed.
@@ -104,9 +104,11 @@ send "Check my Tripo Studio login status, and log in if needed," then send "Open
 For manual installation, run these commands in your terminal:
 
 ```bash
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 ```
+
+The first command adds the `tripo-studio-plugins` marketplace from the repository's `main` branch; the second installs the plugin from that marketplace. Codex also accepts the shorthand: `codex plugin marketplace add GrinZero/tripo-studio-plugin --ref main`.
 
 Open a new conversation in Codex after installation. The marketplace bundle fetches the full plugin from npm (including skills, MCP configuration, and web UI); no manual git cloning or local building is required.
 

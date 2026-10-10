@@ -4,7 +4,7 @@
 
 ## 分发链路
 
-用户通过 `codex plugin marketplace add GrinZero/tripo-studio-plugin` 添加 Git 市场，再通过 `codex plugin add tripo-studio-plugin@tripo-studio-plugins` 安装。仓库的 `.agents/plugins/marketplace.json` 使用 Codex 支持的 npm 来源，指定完整插件包的精确版本；它是独立市场，尚未在官方公共插件目录上架。
+用户通过 `codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main` 从 `main` 分支添加 Git 市场，再通过 `codex plugin add tripo-studio-plugin@tripo-studio-plugins` 安装。Codex 也支持简写 `codex plugin marketplace add GrinZero/tripo-studio-plugin --ref main`。仓库的 `.agents/plugins/marketplace.json` 使用 Codex 支持的 npm 来源，指定完整插件包的精确版本；它是独立市场，尚未在官方公共插件目录上架。
 
 Codex 下载插件包不会运行 npm 生命周期脚本，也不能假定会为包安装运行时依赖。因此 `.mcp.json` 通过 `npx --yes --ignore-scripts --prefix=./mcp --package=tripo-studio-plugin@<精确版本> tripo-studio` 启动服务。显式 prefix 防止 npx 把插件根目录的同名 package.json 误认为已经安装的运行时。npm 下载完整运行包并复用缓存；图片处理所需的 JavaScript 和 WASM 随包提供，不安装平台原生依赖。首次需要网络、Node.js ≥ 22 和 npm / npx；不需要用户手动执行 `npm install`。
 

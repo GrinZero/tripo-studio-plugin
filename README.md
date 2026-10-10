@@ -93,7 +93,7 @@
 
 请先检查本机是否有 Node.js ≥ 22、npm / npx 和支持插件的 Codex CLI，缺少时帮我安装或配置。
 然后执行以下命令：
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 
 如果市场已经添加，请复用它；需要刷新时执行 codex plugin marketplace upgrade tripo-studio-plugins。
@@ -104,9 +104,11 @@ codex plugin add tripo-studio-plugin@tripo-studio-plugins
 需要自己安装时，也可以在终端中执行：
 
 ```bash
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 ```
+
+第一条命令从仓库的 `main` 分支添加 `tripo-studio-plugins` 市场，第二条命令安装其中的插件。Codex 也支持简写：`codex plugin marketplace add GrinZero/tripo-studio-plugin --ref main`。
 
 安装后在 Codex 中开启新聊天。市场清单从 npm 获取对应版本的完整插件，包含技能、MCP 配置和工作台；无需手动克隆仓库、运行构建或注册 MCP。
 

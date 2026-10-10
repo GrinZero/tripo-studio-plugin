@@ -93,7 +93,7 @@ Tripo Studio for Codex 플러그인을 설치해 주세요.
 
 먼저 Node.js ≥ 22, npm / npx, 플러그인을 지원하는 Codex CLI가 있는지 확인하고, 없으면 설치나 설정을 도와주세요.
 그런 다음 아래 명령을 실행해 주세요:
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 
 마켓플레이스가 이미 추가되어 있으면 그대로 사용하고, 갱신이 필요하면 codex plugin marketplace upgrade tripo-studio-plugins를 실행해 주세요.
@@ -104,9 +104,11 @@ codex plugin add tripo-studio-plugin@tripo-studio-plugins
 직접 설치하려면 터미널에서 아래 명령을 실행하세요:
 
 ```bash
-codex plugin marketplace add GrinZero/tripo-studio-plugin
+codex plugin marketplace add https://github.com/GrinZero/tripo-studio-plugin.git --ref main
 codex plugin add tripo-studio-plugin@tripo-studio-plugins
 ```
+
+첫 번째 명령은 저장소의 `main` 브랜치에서 `tripo-studio-plugins` 마켓플레이스를 추가하고, 두 번째 명령은 해당 플러그인을 설치합니다. Codex는 축약형도 지원합니다: `codex plugin marketplace add GrinZero/tripo-studio-plugin --ref main`.
 
 설치 후 Codex에서 새 대화를 시작하세요. npm에서 완성된 플러그인을 가져오므로 수동 빌드나 복잡한 등록 과정이 필요하지 않습니다.
 
