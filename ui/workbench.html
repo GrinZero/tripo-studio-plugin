@@ -489,6 +489,24 @@ svg {
 }
 
 /* Segmented Capsule Tabs */
+.module-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.app-version {
+  display: inline-flex;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font: 11px/1.5 var(--mono);
+  white-space: nowrap;
+}
+
 .tabs {
   display: inline-flex;
   align-items: center;
@@ -2196,11 +2214,41 @@ body.asset-detail-page {
 /* ==========================================================================
    Tasks Tab (Master-Detail View)
    ========================================================================== */
+body.tasks-page {
+  height: var(--workbench-height, 100dvh);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tasks-page > .appbar,
+.tasks-page > .notice { flex-shrink: 0; }
+
+.tasks-page > .page,
+html[data-host="codex"] body.tasks-page > .page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 24px 20px;
+  overflow: hidden;
+}
+
+.tasks-page .page-title {
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
 .tasks-layout {
   display: grid;
-  grid-template-columns: minmax(280px, 34%) minmax(0, 1fr);
+  grid-template-columns: minmax(270px, 34%) minmax(0, 1fr);
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
 }
 
 .task-master {
@@ -2208,10 +2256,14 @@ body.asset-detail-page {
   flex-direction: column;
   gap: 10px;
   min-width: 0;
+  min-height: 0;
 }
 
 .task-detail {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  min-height: 0;
 }
 
 .task-filters-card {
@@ -2223,6 +2275,7 @@ body.asset-detail-page {
   flex-direction: column;
   gap: 8px;
   box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
 }
 
 .task-filters-card .search input {
@@ -2288,10 +2341,30 @@ body.asset-detail-page {
 .task-list {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-height: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--surface);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.task-master > .empty {
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+  padding: 24px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  overflow-y: auto;
+}
+
+.task-master > .pagination {
+  flex-shrink: 0;
+  margin: 0;
 }
 
 .asset-character-filter {
@@ -2369,6 +2442,7 @@ body.asset-detail-page {
   min-height: auto;
   transition: all 0.16s ease;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .task-row:first-child {
@@ -2436,19 +2510,35 @@ body.asset-detail-page {
 }
 
 /* Right Task Detail */
+.task-detail > .empty {
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow-y: auto;
+}
+
 .task-detail-card {
-  padding: 16px 20px;
+  flex: 1;
+  min-height: 0;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  overflow: hidden;
 }
 
 .task-detail-header {
-  margin-bottom: 2px;
+  padding: 14px 20px 12px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+  overflow-wrap: anywhere;
 }
 
 .task-detail-header h2 {
@@ -2456,6 +2546,47 @@ body.asset-detail-page {
   font-weight: 650;
   margin-bottom: 2px;
   line-height: 1.35;
+}
+
+.task-detail-body {
+  flex: 1;
+  min-height: 0;
+  padding: 14px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+html[data-host="codex"] .tasks-page .task-detail-body {
+  padding-bottom: max(18px, calc(var(--host-safe-bottom, 56px) + 12px));
+}
+
+.task-detail-body > * {
+  flex-shrink: 0;
+}
+
+.task-detail-card .empty {
+  padding: 18px 16px;
+  gap: 6px;
+  background: var(--surface-raised);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+}
+
+.task-detail-card .empty svg {
+  width: 28px;
+  height: 28px;
+}
+
+.task-detail-card .empty h2 {
+  font-size: 14px;
+}
+
+.task-detail-card .empty p {
+  font-size: 12px;
 }
 
 .character-editor-box {
@@ -2469,6 +2600,7 @@ body.asset-detail-page {
   display: flex;
   align-items: flex-end;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .character-editor .field label {
@@ -2507,6 +2639,8 @@ body.asset-detail-page {
 }
 
 .task-preview img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -2523,6 +2657,10 @@ body.asset-detail-page {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 2px;
+}
+
+.task-actions-row:empty {
+  display: none;
 }
 
 .task-actions-row button {
@@ -2618,7 +2756,7 @@ body.asset-detail-page {
 }
 
 .task-detail-card .section-divider {
-  margin: 12px 0;
+  margin: 4px 0;
 }
 
 .task-detail-card h3 {
@@ -2629,14 +2767,14 @@ body.asset-detail-page {
 }
 
 .task-detail-card .kv {
-  grid-template-columns: 100px 1fr;
-  gap: 6px 12px;
+  grid-template-columns: minmax(84px, max-content) minmax(0, 1fr) minmax(84px, max-content) minmax(0, 1fr);
+  gap: 6px 14px;
   font-size: 12.5px;
-  margin: 4px 0;
+  margin: 2px 0;
 }
 
 .task-detail-card .timeline {
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   gap: 10px;
 }
 
@@ -2795,11 +2933,15 @@ dialog .actions {
 @media (max-width: 1200px) {
   .appbar { height: auto; min-height: 64px; flex-wrap: wrap; padding: 10px 16px; gap: 12px; }
   .bar-tools { flex-wrap: wrap; max-width: 100%; }
+  .task-detail-card .kv { grid-template-columns: 100px minmax(0, 1fr); }
 }
 
 @media (max-width: 960px) {
-  .create-layout, .detail-layout, .tasks-layout {
+  .create-layout, .detail-layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .tasks-layout {
+    grid-template-columns: minmax(240px, 36%) minmax(0, 1fr);
   }
   .appbar { height: auto; min-height: 64px; flex-wrap: wrap; padding: 10px 16px; gap: 12px; }
   .page { padding: 20px 16px; }
@@ -2808,6 +2950,37 @@ dialog .actions {
   .asset-detail-page .viewer-section > .viewport { flex: none; height: clamp(220px, 42dvh, 420px); }
   .asset-detail-page .source-record { max-height: none; }
   .asset-detail-page .inspector { overflow: visible; }
+}
+
+@media (max-width: 760px) {
+  .tasks-page > .page,
+  html[data-host="codex"] body.tasks-page > .page {
+    padding: 12px 14px 14px;
+  }
+  .tasks-page .page-title {
+    margin-bottom: 8px;
+  }
+  .tasks-page .page-heading p {
+    display: none;
+  }
+  .tasks-page .tasks-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(150px, 42%) minmax(0, 1fr);
+    gap: 10px;
+  }
+  .tasks-page .task-master {
+    gap: 6px;
+  }
+  .tasks-page .task-filters-card {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .tasks-page .task-detail-header {
+    padding: 10px 14px;
+  }
+  .tasks-page .task-detail-body {
+    padding: 12px 14px 14px;
+  }
 }
 
 @media (max-width: 680px) {
@@ -2842,11 +3015,18 @@ dialog .actions {
   .brand-badge { display: none; }
   .appbar { gap: 14px; }
   .tabs button { padding: 5px 10px; font-size: 12px; }
+  .app-version { flex-direction: column; padding: 3px 6px; font-size: 10px; }
   .bar-tools { flex-wrap: wrap; max-width: 100%; }
   .asset-detail-page .breadcrumb { flex-wrap: wrap; gap: 8px; }
   .asset-detail-page .asset-title-crumb { font-size: 15px; }
   .asset-detail-page .breadcrumb > [data-action="export"] { margin-left: auto; }
   .asset-detail-page .viewport-tools { top: 10px; left: 10px; right: 10px; flex-wrap: wrap; }
+}
+
+@media (max-width: 400px) {
+  .module-nav { gap: 8px; }
+  .tabs button { padding: 5px 4px; font-size: 11px; }
+  .app-version { padding: 3px 4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2872,11 +3052,14 @@ dialog .actions {
       <span class="brand-badge">STUDIO</span>
     </div>
   </div>
-  <nav class="tabs" aria-label="工作台模块" data-i18n-aria-label="工作台模块" role="tablist">
-    <button data-view="assets" disabled role="tab" aria-selected="true" data-i18n="资产">资产</button>
-    <button data-view="tasks" disabled role="tab" aria-selected="false" data-i18n="任务">任务</button>
-    <button data-view="create" disabled role="tab" aria-selected="false" data-i18n="创建">创建</button>
-  </nav>
+  <div class="module-nav">
+    <nav class="tabs" aria-label="工作台模块" data-i18n-aria-label="工作台模块" role="tablist">
+      <button data-view="assets" disabled role="tab" aria-selected="true" data-i18n="资产">资产</button>
+      <button data-view="tasks" disabled role="tab" aria-selected="false" data-i18n="任务">任务</button>
+      <button data-view="create" disabled role="tab" aria-selected="false" data-i18n="创建">创建</button>
+    </nav>
+    <span id="appVersion" class="app-version"><span id="appVersionNumber"></span><span id="appVersionTimestamp"></span></span>
+  </div>
   <div class="bar-tools">
     <select id="language" class="language-select" aria-label="Language"></select>
     <span id="sessionStatus" class="status">连接中</span>

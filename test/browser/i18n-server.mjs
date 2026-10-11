@@ -7,7 +7,9 @@ import { build } from 'esbuild';
 import { operationCatalog } from '../../src/ops/registry.mjs';
 import { modelQuote } from '../fixtures/model-quote.mjs';
 import { fixtureGlb } from '../helpers/glb-fixture.mjs';
+import { solidImage } from '../helpers/image-fixture.mjs';
 import { AssetLibrary } from '../../src/ui/asset-library.mjs';
+import { modelNodeNames } from '../../src/util/model-inspect.mjs';
 import { initializeImageMagick, ImageMagick, MagickFormat } from '@imagemagick/magick-wasm';
 await initializeImageMagick(await readFile(new URL(import.meta.resolve('@imagemagick/magick-wasm/magick.wasm'))));
 const root = new URL('../../', import.meta.url), dir = await mkdtemp(path.join(tmpdir(), 'tripo-i18n-host-'));
@@ -17,6 +19,9 @@ const pages = Object.fromEntries(await Promise.all(['workbench','result-card'].m
   return [name,html.replace(name==='workbench'?'<!-- WORKBENCH_SCRIPT -->':'<!-- CARD_SCRIPT -->',()=>`<script>${script.replace(/<\/script/gi,'<\\/script')}</script>`)];
 })));
 const image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aXioAAAAASUVORK5CYII=';
+const modelBytes = process.env.TRIPO_TEST_FBX ? await readFile(process.env.TRIPO_TEST_FBX) : fixtureGlb();
+const modelPreview = { data_url: `data:model/${process.env.TRIPO_TEST_FBX ? 'fbx' : 'gltf-binary'};base64,${modelBytes.toString('base64')}`,
+  mime_type: process.env.TRIPO_TEST_FBX ? 'model/fbx' : 'model/gltf-binary', part_names: modelNodeNames(modelBytes) };
 const initialInput = {mode:'multiview',tier:'high_detail',model_version:'v3.1-20260211',face_limit:60000,geometry_quality:'standard',texture:true,texture_quality:'detailed',pbr:true,delight:true,generate_parts:false,prompt:'用户提示 日本語',front_image_path:'/assets/正面.png',left_image_path:'/assets/左側.png'};
 const schema = {properties:{mode:{enum:['text','image','multiview']},tier:{enum:['high_detail','smart_mesh']},model_version:{enum:['v3.1-20260211','Nexus-v2.0-20260801']},face_limit:{type:'integer'},geometry_quality:{enum:['standard','detailed']},texture:{type:'boolean'},texture_quality:{enum:['standard','detailed','ultra']},pbr:{type:'boolean'},delight:{type:'boolean'},generate_parts:{type:'boolean'},prompt:{type:'string'},front_image_path:{type:'string'},left_image_path:{type:'string'},right_image_path:{type:'string'},back_image_path:{type:'string'},image_path:{type:'string'},t_pose:{type:'boolean'},amount:{type:'integer'}},required:['mode','tier','face_limit']};
 let review, calls = [], unknownCosts = false, groupedAssets = false;
@@ -24,7 +29,12 @@ const characters = [{id:'paimon',name:'派蒙'},{id:'traveler',name:'旅行者'}
 const models = Array.from({length:45},(_,i)=>({project_id:`model-${i}`,name:`模型 ${i}`,created_at:'2026-10-09T00:00:00Z',visibility:'private',character_group:i===44?null:characters[i%2]}));
 const images = Array.from({length:3},(_,i)=>({asset_id:`image-${i}`,input:{prompt:`图片 ${i}`},status:'success',output_count:1,character_group:i===2?null:characters[i]}));
 let library,fixtureAccount=0;
-const covers = await Promise.all(['#e4a24b','#6b94cc','#83ac91','#b989ac'].map(async color => 'data:image/png;base64,'+(ImageMagick.read(Buffer.from(`<svg width="320" height="256" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="256" fill="#eef0f4"/><ellipse cx="160" cy="222" rx="80" ry="12" fill="#d4d8e0"/><path d="M104 202V116Q104 92 128 92H192Q216 92 216 116V202Z" fill="${color}"/><circle cx="160" cy="65" r="38" fill="${color}"/><path d="M118 124H202M160 103V192" stroke="#fff" stroke-opacity=".35" stroke-width="4"/></svg>`), image => image.write(MagickFormat.Png, bytes => Buffer.from(bytes)))).toString('base64')));
+const covers = await Promise.all(['#e4a24b','#6b94cc','#83ac91','#b989ac'].map(async color => {
+  let pixels;
+  try { pixels = ImageMagick.read(Buffer.from(`<svg width="320" height="256" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="256" fill="#eef0f4"/><ellipse cx="160" cy="222" rx="80" ry="12" fill="#d4d8e0"/><path d="M104 202V116Q104 92 128 92H192Q216 92 216 116V202Z" fill="${color}"/><circle cx="160" cy="65" r="38" fill="${color}"/><path d="M118 124H202M160 103V192" stroke="#fff" stroke-opacity=".35" stroke-width="4"/></svg>`), image => image.write(MagickFormat.Png, bytes => Buffer.from(bytes))); }
+  catch { pixels = await solidImage({width:320,height:256,channels:3,background:color}); }
+  return 'data:image/png;base64,'+pixels.toString('base64');
+}));
 function reset() {
   calls=[];unknownCosts=false;groupedAssets=false;fixtureAccount++;
   const account=`fixture-${fixtureAccount}`;
@@ -48,11 +58,24 @@ const server = http.createServer(async (req,res) => {
     if (url.pathname==='/stats') return send({calls,review});
     if (url.pathname==='/result') {
       const kind=url.searchParams.get('kind');
+      if(kind==='source-model' || kind==='source-model-fallback') {
+        review={review_id:'review',revision:0,kind:'texture.pbr',status:'pending',input:{project_id:kind==='source-model'?'preview-model':'fallback-model',character_name:'云峰鹤'},schema:{properties:{project_id:{type:'string'},character_name:{type:'string'}},required:['project_id']},quote:{estimated_credits:5},deadline_at:null,timeout_seconds:60,sources:[]};
+        return send({content:[],structuredContent:{review}});
+      }
+      if(kind==='manual-draft') {
+        review={...review,auto_submit:false};
+        return send({content:[],structuredContent:{task:{task_id:'legacy-draft',kind:'model.generate',status:'staged',input_summary:{...initialInput}}}});
+      }
       return send({content:[],structuredContent:kind==='quote'?{quote:{...modelQuote,estimate_expires_at:new Date(Date.now()+60000).toISOString()}}:kind==='catalog'?{operations:operationCatalog()}: {review}});
     }
     if (url.pathname==='/rpc') {
       let body='';for await (const chunk of req) body+=chunk;
       const call=JSON.parse(body), args=call.arguments??{};calls.push(call);
+      if(call.name==='tripo_ui_preview' && ['preview-model','fallback-model','slow-model','broken-model','replacement-model'].includes(args.project_id)) {
+        if(args.project_id==='slow-model') await new Promise(resolve=>setTimeout(resolve,1200));
+        if(args.project_id==='broken-model' || args.project_id==='fallback-model' && args.type==='thumbnail')return send({isError:true,structuredContent:{error:{message:'Preview unavailable'}}});
+        return send({_meta:{tripo:{preview:{data_url:args.type==='model'?`data:model/gltf-binary;base64,${fixtureGlb().toString('base64')}`:covers[args.project_id==='replacement-model'?1:0]}}}});
+      }
       if(call.name==='tripo_auth_status')return send({structuredContent:{session:{authenticated:true}}});
       if(call.name==='tripo_get_payment')return send({structuredContent:{payment:{wallet:{total_credit:24180,expiring_credit:24180}}}});
       if(call.name==='tripo_ui_asset_library')return send({structuredContent:await (args.action==='assign'?library.assign(args):library.list(args))});
@@ -70,13 +93,17 @@ const server = http.createServer(async (req,res) => {
       if(call.name==='tripo_list_task_groups')return send({structuredContent:{groups:[{id:'character',name:'用户角色 日本語',total:1},{id:'ungrouped',name:'未分组',total:0}]}});
       if(call.name==='tripo_list_tasks')return send({structuredContent:{tasks:[{task_id:'task',kind:'model.generate',status:'staged',input_summary:{prompt:'用户提示 日本語'},created_at:'2026-10-09T00:00:00Z'}],next_offset:null}});
       if(call.name==='tripo_get_task')return send({structuredContent:{task:{task_id:'task',kind:'model.generate',status:'staged',consumes_credits:true,input_summary:{prompt:'用户提示 日本語',face_limit:60000}},events:[]}});
+      if(call.name==='tripo_run_workflow')return send({structuredContent:{tasks:[{task:{task_id:'task',kind:args.steps[0].operation,status:'staged',input_summary:args.steps[0].input}}]}});
       if(call.name==='tripo_get_model')return send({structuredContent:{project_id:'model',project_name:'用户模型 日本語',capabilities:{is_owner:true},parts:['Head','Body']}});
       if(call.name==='tripo_quote_operation')return send({structuredContent:{quote:{status:unknownCosts?'unknown':'estimated',estimated_credits:unknownCosts?null:40,estimate_expires_at:new Date(Date.now()+60000).toISOString()}}});
-      if(call.name==='tripo_ui_preview'||call.name==='tripo_ui_review'&&args.action==='preview')return send({_meta:{tripo:{preview:{data_url:args.type==='model' ? `data:model/gltf-binary;base64,${fixtureGlb().toString('base64')}` : groupedAssets ? covers[(Number((args.project_id??args.asset_id??'0').split('-').at(-1))||0)%covers.length] : image}}}});
+      if(call.name==='tripo_ui_preview'||call.name==='tripo_ui_review'&&args.action==='preview') {
+        const preview=args.type==='model' ? modelPreview : {data_url:groupedAssets ? covers[(Number((args.project_id??args.asset_id??'0').split('-').at(-1))||0)%covers.length] : image};
+        return send({_meta:{tripo:{preview}}});
+      }
       if(call.name==='tripo_ui_review') {
-        if(args.action==='ready'&&review.status==='pending'&&review.deadline_at===null)review={...review,deadline_at:Date.now()+60000};
+        if(args.action==='ready'&&review.auto_submit!==false&&review.status==='pending'&&review.deadline_at===null)review={...review,deadline_at:Date.now()+60000};
         if(args.action==='edit')review={...review,status:'editing',revision:review.revision+1,deadline_at:null};
-        if(args.action==='save') {await new Promise(resolve=>setTimeout(resolve,350));review={...review,input:args.input,status:'pending',revision:review.revision+1,deadline_at:null};}
+        if(args.action==='save') {await new Promise(resolve=>setTimeout(resolve,350));review={...review,input:args.input,status:'submitted',revision:review.revision+1,deadline_at:null};}
         if(args.action==='cancel')review={...review,status:'canceled',revision:review.revision+1};
         return send({content:[],structuredContent:{review}});
       }

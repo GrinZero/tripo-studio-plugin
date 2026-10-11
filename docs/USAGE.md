@@ -11,22 +11,21 @@
 | 多视图 | 本地固定视角图片或已有 Studio 多视图资产 | 同一物体的不同视角生成一个模型 |
 | 独立批量 | 最多 30 张独立图片，配合变体最多 120 个输出位 | 每张图片分别生成模型 |
 
-Smart Mesh 不接受 High Detail 的贴图、几何质量与分件参数。High Detail 的分件生成不能同时开启贴图或四边形拓扑；工具会校验受支持的组合。
+Smart Mesh 的完整材质链路为 **生成白模 → 生成颜色贴图 → 单独生成 PBR 贴图**，分别使用 `tripo_generate_model`、`tripo_generate_texture`、`tripo_generate_pbr`。每一步完成后才开始下一步，后两步复用同一模型的 `project_id`。颜色贴图不会自动带上独立 PBR 贴图组；已有颜色贴图而缺少 PBR 时，直接调用 `tripo_generate_pbr`，不重新生成网格或颜色贴图。
+
+Smart Mesh **生成网格阶段**不接受 High Detail 的贴图、去光、PBR、贴图质量、对齐、几何质量与分件参数；`texture`、`pbr` 即使传入 `false` 也应省略。颜色贴图阶段的 `quality`、`alignment`、`delight` 正常适用，去光属于这一步。仅请求白模或颜色贴图时，完成相应阶段即可；请求包含 PBR 时，须完成第三步并核查实际贴图通道。High Detail 的分件生成不能同时开启贴图或四边形拓扑；工具会校验受支持的组合。
 
 图片也可作为上游：生成／编辑参考图 → 四视图生成 → 建模。已接入 GPT Image 2.5 等图片模型，支持本地与 Studio 图片引用、重新生成、4K 放大及自动主体切出。
 
 ## 提交、报价与草稿
 
-| 调用方式 | 行为 |
-| --- | --- |
-| 单个生成／编辑工具，省略 `submit` 或设为 `false`，保持默认 `review:true` | 返回配置卡片；立即确认或卡片可见并获得显示确认后 60 秒自动提交，进入编辑暂停倒计时 |
-| `review:false, submit:false` | 仅准备草稿；用返回的精确确认信息调用 `tripo_submit_task` 执行 |
-| `submit:true` | 准备并直接执行，用于已授权的生成／编辑及连续批处理，无需额外要求“立即执行”或展开配置卡 |
-| `tripo_run_workflow` | `submit` 默认 `true`，执行到达的步骤；仅预览时设为 `false`，并确保步骤不覆盖此设置 |
+Agent 的生成／编辑工具只有一个入口：调用后显示配置表单；表单在可见页面显示后，60 秒无操作自动提交。进入编辑暂停倒计时，保存校验与更新费用后立即提交；用户也可以确认立即提交或取消。最终使用表单中最新保存的参数。
 
-Agent 应按用户意图显式选择提交模式：已授权执行用 `submit:true`，用户希望交互调参时使用配置卡，仅预览或要求提交前明确确认时用 `review:false, submit:false`。工具默认返回卡片不代表必须展开卡片才能执行。误建卡片时，读取当前配置和草稿；若仍待提交、参数符合已有授权且用户未要求审阅，使用当前确认信息提交同一草稿，不另建任务，也不要求用户展开卡片。正在编辑、已取消或提交结果不明时不得直接重发。
+Agent 创建表单后，应按回执的 `next_action` 调用 `tripo_get_configuration_review({review_id, wait_ms:60000})`，等待当前卡片提交；仍为 `pending`／`submitting` 时继续等待同一卡片。等待不会启动倒计时、点击界面或提交任务。`deadline_at:null` 表示等待表单显示，不代表缺少提交能力；用户编辑则暂停并等待保存或取消。取得最新提交回执与 `task_id` 后，再等待生成结果，不根据旧回执报告“尚未提交”或要求开放直接提交接口。
 
-配置卡片展示输入缩略图、模型版本、面数、几何质量、贴图、PBR 和费用预估。卡片先显示，展开后后台预上传图片。修改参数复用上传结果，并在本地重新校验与计算费用；保存修改后重启提交倒计时。保存更新同一份草稿，提交前仅返回 `draft_id`。用 `tripo_get_configuration_review(review_id)` 跟踪稳定卡片；收到最终提交回执后才返回 `task_id`，此后再查询／同步任务。工作台使用独立草稿与确认流程，配置修改会使旧报价失效，提交时展示本次冻结参数。
+工具不再提供 `submit`、`review` 参数。`tripo_submit_task` 与 `tripo_run_workflow` 仅供界面内部使用，不暴露给 Agent。只查询费用或讨论方案时使用只读报价／查询工具，不调用生成工具。只读本地分件检查无需生成表单。
+
+配置卡片展示输入缩略图、模型版本、面数、几何质量、贴图、PBR 和费用预估。卡片先显示，展开后后台预上传图片。修改参数复用上传结果，并在本地重新校验与计算费用；保存修改后立即提交。保存更新同一份草稿，提交前仅返回 `draft_id`。用 `tripo_get_configuration_review(review_id)` 跟踪稳定卡片；收到最终提交回执后才返回 `task_id`，此后再查询／同步任务。工作台使用独立草稿与确认流程，配置修改会使旧报价失效，提交时展示本次冻结参数。
 
 `tripo_get_payment` 查询账号积分与会员信息；`tripo_quote_operation` 估算指定操作或已暂存任务的费用，不提交生成任务。报价可以结合会员折扣和试用信息，最终扣费以 Studio 为准；`estimated_credits:null` 表示未知费用。通过 `tripo_list_operations` 查看每项操作的 `consumes_credits` 标记。
 
@@ -74,7 +73,7 @@ Agent 使用 `tripo_list_asset_groups`、`tripo_list_group_assets`、`tripo_crea
 
 操作记录稳定的本地任务 ID、实际参数、输入快照与哈希、远端项目／操作／资产关联、事件及下载。任务中心可查看进度与结果，插件重启后仍可读取既有记录。
 
-追查来源时，调用 `tripo_get_task` 并设置 `include_events:true`，沿已记录的 `parent_task_id` 查看上游。`tripo_run_workflow` 可衔接上游项目、动作资产、UV 候选、本地模型、渲染相机与烘焙贴图；`render_from_previous` 延续相机／视口参数，`textures_from_previous` 将烘焙结果传给贴图应用。依赖步骤需要上一步完成；相机传递不会自动提供编辑后的图片。
+追查来源时，调用 `tripo_get_task` 并设置 `include_events:true`，沿已记录的 `parent_task_id` 查看上游。Agent 按单个操作工具依次衔接上游项目、动作资产、UV 候选、本地模型、渲染相机与烘焙贴图；每一步通过配置表单提交，等待上一步完成后使用实际结果 ID 或路径继续。`tripo_run_workflow` 是界面内部工具。
 
 请求结果不明时记录为 `outcome_unknown`，需通过 `tripo_task_reconcile` 核对并采用远端 ID，不能自动重复提交。生成与下载完成分别记录，下载失败后可继续获取既有产物。后台账号查询、报价、同步与下载保留当前预览；需要主动展示已有结果时用 `tripo_show_result`。详见[预览持久化](PREVIEW_PERSISTENCE_2026-10-09.md)。
 

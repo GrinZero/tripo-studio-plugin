@@ -43,52 +43,63 @@ async function fixture() {
   } };
 }
 
-it('card mount preuploads images; parameter edits reuse them without submitting generation', async () => {
+async function waitForAudits(f, count) {
+  for(let attempt=0;attempt<200&&f.counts.audits<count;attempt++)await new Promise(resolve=>setTimeout(resolve,10));
+  assert.equal(f.counts.audits,count,'visibility must start background uploads and audit without another tool call');
+}
+
+it('visible form preuploads before generation; saving submits new parameters using those uploads', async () => {
   const f = await fixture();
   try {
     assert.equal(f.counts.uploads, 0);
     await f.reviews.action({review_id:f.initial.review.review_id, action:'ready'});
-    await f.runtime.service.preupload(f.initial.task.draft_id);
+    await waitForAudits(f,4);
     assert.equal(f.counts.uploads, 4);
     assert.equal(f.counts.submissions, 0);
     const saved = await f.save({ ...f.input, geometry_quality: 'detailed' });
-    await f.runtime.service.preupload(saved.task.draft_id);
     assert.equal(f.counts.uploads, 4, 'settings-only save must not re-upload the four images');
     assert.equal(f.counts.audits, 4);
     assert.equal(saved.review.quote.estimated_credits, 55);
-    assert.equal(saved.task.draft_id, f.initial.task.draft_id);
+    assert.equal(saved.review.status, 'submitted');
+    assert.equal(saved.review.deadline_at, null);
+    assert.equal(saved.task.task_id, f.initial.task.draft_id);
     assert.equal(saved.task.snapshots.length, 4);
-    assert.equal(saved.task.paid_request_sent, false);
-    assert.equal(saved.task.task_id, undefined);
-    assert.equal((await f.runtime.store.list({limit:100})).length, 1, 'saving edits cannot create extra task records');
-    const submitted = await f.reviews.action({review_id:f.initial.review.review_id, action:'confirm'});
-    assert.equal(submitted.task.task_id, f.initial.task.draft_id);
-    assert.equal(submitted.task.remote.operator_ids[0], 'operator');
-    const frozen=await f.runtime.store.get(submitted.task.task_id);
+    assert.equal(saved.task.remote.operator_ids[0], 'operator');
+    assert.equal((await f.runtime.store.list({limit:100})).length, 1);
+    const frozen=await f.runtime.store.get(saved.task.task_id);
     assert.ok(frozen.dispatch_payload.body.image.every(image=>image.bucket==='inputs'));
-    assert.equal(f.counts.uploads, 4);
     assert.equal(f.counts.submissions, 1);
   } finally { await f.close(); }
 });
 
-it('the 60-second deadline submits only the final configuration once when manual confirmation races it', async () => {
+it('editing before visibility still preuploads immediately without arming automatic submission', async () => {
   const f = await fixture();
   try {
-    await f.reviews.action({review_id:f.initial.review.review_id,action:'ready'});
-    await f.runtime.service.preupload(f.initial.task.draft_id);
-    const saved = await f.save({...f.input,face_limit:6000});
-    await f.reviews.action({review_id:f.initial.review.review_id,action:'ready'});
-    f.advance(59999);
-    const before = await f.reviews.action({review_id:f.initial.review.review_id,action:'confirm',automatic:true});
-    assert.equal(before.task.task_id,undefined);
+    const id=f.initial.review.review_id;
+    await f.reviews.action({review_id:id,action:'edit'});
+    const shown=await f.reviews.action({review_id:id,action:'ready'});
+    await waitForAudits(f,4);
+    assert.equal(shown.review.status,'editing');
+    assert.equal(shown.review.deadline_at,null);
+    assert.equal(f.counts.uploads,4);
     assert.equal(f.counts.submissions,0);
-    f.advance(1);
+  } finally { await f.close(); }
+});
+
+it('saving the final configuration dispatches once even when an old deadline races it', async () => {
+  const f = await fixture();
+  try {
+    const id=f.initial.review.review_id;
+    await f.reviews.action({review_id:id,action:'ready'});
+    const edit=await f.reviews.action({review_id:id,action:'edit'});
+    f.advance(60000);
     await Promise.all([
-      f.reviews.action({review_id:f.initial.review.review_id,action:'confirm',automatic:true}),
-      f.reviews.action({review_id:f.initial.review.review_id,action:'confirm'})
+      f.reviews.action({review_id:id,action:'save',revision:edit.review.revision,input:{...f.input,face_limit:6000}}),
+      f.reviews.action({review_id:id,action:'confirm',automatic:true})
     ]);
-    const final = await f.reviews.action({review_id:f.initial.review.review_id,action:'get'});
-    assert.equal(final.task.task_id,saved.task.draft_id);
+    await f.reviews.action({review_id:id,action:'confirm'});
+    const final = await f.reviews.action({review_id:id,action:'get'});
+    assert.equal(final.task.task_id,f.initial.task.draft_id);
     assert.equal(final.task.effective_settings.face_limit,6000);
     assert.equal(f.counts.uploads,4);
     assert.equal(f.counts.submissions,1);
@@ -96,24 +107,32 @@ it('the 60-second deadline submits only the final configuration once when manual
   } finally { await f.close(); }
 });
 
-it('saving while an upload is blocked returns promptly and confirmation shares the in-flight upload', async () => {
+it('saving starts submission immediately and shares an in-flight upload before remote dispatch', async () => {
   const f = await fixture();
-  let release;
+  let release, saving;
   const gate = new Promise(resolve => { release = resolve; });
   const original = f.runtime.uploader.upload;
   f.runtime.uploader.upload = async (...args) => { await gate; return original(...args); };
   try {
     await f.reviews.action({review_id:f.initial.review.review_id, action:'ready'});
     const background = f.runtime.service.preupload(f.initial.task.draft_id);
-    const saved = await f.save({...f.input, face_limit:6000});
-    assert.equal(saved.review.status, 'pending');
+    saving = f.save({...f.input, face_limit:6000});
+    // Wait for the persisted submission boundary, while the remote upload is blocked.
+    for(let attempt=0;attempt<200;attempt++){
+      if((await f.reviews.doc(f.initial.review.review_id).read()).status==='submitting')break;
+      await new Promise(resolve=>setTimeout(resolve,10));
+    }
+    const current=await f.reviews.action({review_id:f.initial.review.review_id,action:'get'});
+    assert.equal(current.review.status,'submitting');
+    assert.equal(current.review.deadline_at,null);
     assert.equal(f.counts.submissions, 0);
     release();
     await background.catch(() => {});
-    await f.reviews.action({review_id:f.initial.review.review_id, action:'confirm'});
+    const saved=await saving;
+    assert.equal(saved.review.status,'submitted');
     assert.equal(f.counts.uploads, 4);
     assert.equal(f.counts.submissions, 1);
-  } finally { release(); await f.close(); }
+  } finally { release(); await saving?.catch(()=>{}); await f.close(); }
 });
 
 it('replacing one view uploads only that view and durable cache survives a service restart', async () => {
@@ -121,11 +140,9 @@ it('replacing one view uploads only that view and durable cache survives a servi
   try {
     await f.runtime.service.preupload(f.initial.task.draft_id);
     await writeFile(f.input.left_image_path, await solidImage({width:16,height:16,channels:3,background:'#aabbcc'}));
-    const saved = await f.save({...f.input, face_limit:6000});
-    await f.runtime.service.preupload(saved.task.draft_id);
-    assert.equal(f.counts.uploads, 5);
     f.runtime.service = new OperationService(f.runtime);
-    await f.reviews.action({review_id:f.initial.review.review_id, action:'confirm'});
+    const saved = await f.save({...f.input, face_limit:6000});
+    assert.equal(saved.review.status,'submitted');
     assert.equal(f.counts.uploads, 5);
     assert.equal(f.counts.submissions, 1);
   } finally { await f.close(); }

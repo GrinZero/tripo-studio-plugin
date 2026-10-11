@@ -75,6 +75,9 @@ function publicTask(record) {
       width: s.width ?? null
     })),
     input_summary: redactDeep(record.input_summary ?? {}),
+    // Preserve the compact summary contract while letting result cards show
+    // the full saved prompt, including tasks staged by earlier versions.
+    ...(typeof record.configuration_input?.prompt === 'string' ? { input_prompt: redactDeep(record.configuration_input.prompt) } : {}),
     downloads: record.downloads ?? []
   };
   return output;
@@ -171,6 +174,8 @@ export class OperationService {
       events: draft ? [...draft.events, event('draft.settings_saved')] : [event("task.staged")],
       expires_at: new Date(Date.now() + this.#ctx.config.planTtlMs).toISOString(),
       input_summary: inputSummary(parsedInput),
+      // Keep the complete editable input private; the public summary is bounded.
+      configuration_input: validated,
       kind,
       metadata: built.metadata ?? {},
       parent_task_id: grouping.parentTaskId ?? draft?.parent_task_id ?? null,

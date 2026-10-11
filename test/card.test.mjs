@@ -1,10 +1,29 @@
 import assert from 'node:assert/strict';
 import { it } from 'node:test';
-import { cardItems, operationGroups, taskContextSummary } from '../ui/card-model.mjs';
+import { cardItems, operationGroups, shortenPath, taskContextSummary, resultInput } from '../ui/card-model.mjs';
 import { operationCatalog } from '../src/ops/registry.mjs';
 import { ok } from '../src/mcp/result.mjs';
 import { quoteCard } from '../ui/quote-model.mjs';
 import { modelQuote } from './fixtures/model-quote.mjs';
+it('keeps complete input text and sources attached to their own result cards', () => {
+  const prompt = '木质栏杆，保留柱子细节。\n'.repeat(60) + '<script>literal input</script>';
+  const task = { task_id: 'text', kind: 'model.generate', status: 'succeeded', input_summary: { prompt, tier: 'high_detail' }, effective_settings: { face_limit: 30000, texture: false } };
+  const input = cardItems({ task })[0].input;
+  assert.equal(input.prompt, prompt);
+  assert.ok(input.parameters.some(([label, value]) => label === '目标面数' && value === '30000'));
+  assert.ok(input.parameters.some(([label, value]) => label === '生成贴图' && value === '关闭'));
+  assert.ok(!input.parameters.some(([label]) => label === '描述'));
+  const image = { task_id: 'image', kind: 'model.generate', status: 'succeeded', snapshots: [{ slot: 'front', source_name: 'concept.png', format: 'png' }, { slot: 'back', source_name: 'back.png', format: 'png' }] };
+  const cards = cardItems({ tasks: [task, image] });
+  assert.equal(cards[0].input.prompt, prompt);
+  assert.deepEqual(cards[1].input.sources.map(s => s.preview), [{ task_id: 'image', input_slot: 'front', type: 'thumbnail' }, { task_id: 'image', input_slot: 'back', type: 'thumbnail' }]);
+  assert.equal(cards[1].input.sources[0].label, '正面');
+  assert.equal(resultInput(task, { input: { prompt: 'edited final prompt' } }).prompt, 'edited final prompt');
+  assert.equal(resultInput({ ...task, input_prompt: prompt, input_summary: { prompt: 'truncated…' } }, null).prompt, prompt);
+  assert.equal(resultInput({}), null);
+  const smart = resultInput({ kind: 'model.generate', input_summary: { tier: 'smart_mesh', texture: false, pbr: false } });
+  assert.ok(!smart.parameters.some(([label]) => ['生成贴图','PBR 材质'].includes(label)));
+});
 it('summarizes the completed character task with queryable ids instead of the configuration payload', () => {
   const data = {
     review: { kind: 'model.rig', status: 'submitted', input: { character_name: '云峰鹤' }, schema: { description: 'schema'.repeat(2000) } },
@@ -47,7 +66,7 @@ it('tracks the stable configuration card and hides task ids until submission', (
   assert.ok(!summary.includes('internal-draft'));
   assert.ok(!summary.includes('任务 ID'));
   const result=ok({review,task:{...draft,task_id:undefined,draft_id:'internal-draft'}});
-  assert.match(result.content[0].text,/尚未提交生成任务/);
+  assert.match(result.content[0].text,/自动提交已暂停/);
   assert.ok(!result.content[0].text.includes('internal-draft'));
   const submitted=taskContextSummary({review:{...review,status:'submitted'},task:{...draft,status:'queued',remote:{operator_id:'actual-operator'}}});
   assert.match(submitted,/任务 ID: internal-draft/);
@@ -60,9 +79,17 @@ it('shows successful downloads as file cards with previews of the saved artifact
   const [card]=cardItems(result.structuredContent);
   assert.equal(card.title,'9c60c1c9.glb');
   assert.equal(card.status,'下载完成');
+  assert.equal(card.badge,'GLB · 13.4 MB');
+  assert.equal(card.shortPath,'/assets');
+  assert.equal(card.shortFilePath,'/assets/9c60c1c9.glb');
+  assert.equal(card.blenderPath,download.blender_path);
   assert.deepEqual(card.preview,{local_path:download.path,type:'model'});
   assert.ok(card.details.some(([label,value])=>label==='文件大小' && value==='13.4 MB'));
   assert.ok(card.details.some(([label,value])=>label==='Blender 文件' && value===download.blender_path));
+  const [userDownload]=cardItems({download:{path:'/Users/bugyaluwang/Documents/TripoStudio/downloads/26670e60-2418-4089-9187-0dbaba757510.glb',format:'fbx',bytes:918938}});
+  assert.equal(userDownload.badge,'FBX · 897.4 KB');
+  assert.equal(userDownload.shortPath,'~/Documents/TripoStudio/downloads');
+  assert.equal(shortenPath(userDownload.path,{includeFile:true}),'~/…/TripoStudio/downloads/26670e60-241…757510.glb');
   assert.equal(cardItems({download:{path:'/assets/export.zip',bytes:10}})[0].preview,null);
   assert.deepEqual(cardItems({download:{path:'/assets/view.png',bytes:10},source:{output_index:2}})[0].preview,{local_path:'/assets/view.png',type:'image'});
   const failed=cardItems({download:{...download,blender_error:{message:'解码失败'}}})[0];
@@ -121,4 +148,21 @@ it('distinguishes expired, free, trial-discounted and unknown quotes', () => {
   const batch = quoteCard({...modelQuote,estimated_credits:12,base_credits:120,per_request_credits:30,request_count:4,discount_multiplier:0.2,free_requests_applied:2},Date.parse(modelQuote.quoted_at));
   assert.equal(batch.amount, '12');
   assert.deepEqual(batch.rows,[['请求数量','4'],['每次基础费用','30 积分'],['基础费用合计','120 积分'],['折扣系数','× 0.2'],['免费次数','2']]);
+});
+
+it('configuration tool text tells the Agent to wait for automatic submission and then follow the actual task',()=>{
+ const base={review_id:'same-card',kind:'model.generate',auto_submit:true};
+ for(const deadline_at of [null,Date.now()+60000]){
+  const text=ok({review:{...base,status:'pending',deadline_at},task:{draft_id:'draft',status:'staged'}}).content[0].text;
+  assert.match(text,/60 秒自动提交/);assert.match(text,/wait_ms:60000/);assert.match(text,/不要提前结束/);
+  assert.match(text,/无需代点表单、开放直接提交接口/);assert.ok(!text.includes('任务 ID：'));
+ }
+ const submitting=ok({review:{...base,status:'submitting'},task:{draft_id:'draft',status:'staged'}}).content[0].text;
+ assert.match(submitting,/等待提交回执/);assert.ok(!submitting.includes('尚未提交生成任务'));
+ const submitted=ok({review:{...base,status:'submitted'},task:{task_id:'actual',status:'queued'}}).content[0].text;
+ assert.match(submitted,/已提交/);assert.match(submitted,/任务 ID：actual/);assert.ok(!submitted.includes('wait_ms'));
+ const failed=ok({review:{...base,status:'failed',error:{message:'actual error'}}}).content[0].text;
+ assert.match(failed,/actual error/);assert.match(failed,/不要自动重试/);
+ const canceled=ok({review:{...base,status:'canceled'}}).content[0].text;
+ assert.match(canceled,/停止等待/);
 });

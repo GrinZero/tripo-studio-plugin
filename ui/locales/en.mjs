@@ -1,5 +1,23 @@
 // Authored UI copy only; interpolation values retain their original content.
 export default {
+  "生成输入": "Generation input",
+  "生成参数": "Generation settings",
+  "展开": "Expand",
+  "收起": "Collapse",
+  "模型 ID": "Model ID",
+  "源模型预览": "Source model preview",
+  "查看 3D 模型": "View 3D model",
+  "正在加载 3D 模型…": "Loading 3D model…",
+  "拖动旋转 · 滚轮缩放": "Drag to rotate · Scroll to zoom",
+  "3D 预览暂不可用，可重试或核对源模型 ID。": "3D preview is unavailable. Retry or check the source model ID.",
+  "重试 3D 预览": "Retry 3D preview",
+  "检查源模型外观，确认后开始处理。": "Check the source model, then confirm to start processing.",
+  "正在加载源模型预览…": "Loading source model preview…",
+  "Smart Mesh 分三步：先生成白模，再生成颜色贴图（可去光），最后单独生成 PBR 贴图。后两步沿用同一模型。": "Smart Mesh has three steps: an untextured mesh, color textures with optional Remove Lighting, then separate PBR maps. The last two steps use the same model.",
+  "草稿配置，确认后提交": "Draft settings · Confirm to submit",
+  "不会自动提交": "No automatic submission",
+  "保存后仍需确认提交": "Confirmation is still required after saving",
+
   "剩余积分": "Credits remaining",
   "加载中…": "Loading…",
   "暂不可用": "Unavailable",
@@ -574,4 +592,8 @@ export default {
   "进度: {0}%": "Progress: {0}%",
   "模型 ID: {0}": "Model ID: {0}",
   "错误: {0}": "Error: {0}",
+  "保存并提交": "Save and submit",
+  "正在保存并提交…": "Saving and submitting…",
+  "保存后立即提交": "Submit immediately after saving",
+  "校验通过后立即提交": "Submit immediately after validation",
 };

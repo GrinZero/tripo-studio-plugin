@@ -12,7 +12,7 @@ import { FileLock } from '../src/store/lock.mjs';
 const repository = fileURLToPath(new URL('../', import.meta.url));
 const marketplaceName = 'tripo-studio-local';
 const backendFiles = ['mcp/bootstrap.mjs', 'dist/server.mjs', 'dist/magick.wasm', 'scripts/blender-worker.py'];
-const uiFiles = ['dist/workbench.js', 'dist/result-card.js', 'ui/workbench.html', 'ui/result-card.html', 'ui/tripo-logo.png', 'ui/icon.svg'];
+const uiFiles = ['dist/workbench.js', 'dist/result-card.js', 'dist/build-info.json', 'ui/workbench.html', 'ui/result-card.html', 'ui/tripo-logo.png', 'ui/icon.svg'];
 const runtimeFiles = [...backendFiles, ...uiFiles, 'dist/THIRD_PARTY_NOTICES.txt', 'package.json'];
 const exists = file => readFile(file).then(() => true, error => { if (error.code === 'ENOENT') return false; throw error; });
 const json = async file => JSON.parse(await readFile(file, 'utf8'));
@@ -75,6 +75,7 @@ export async function installLocal({
     }
     const manifest = await json(path.join(root, '.codex-plugin/plugin.json'));
     const portableMcp = await json(path.join(root, '.mcp.json'));
+    const buildInfo = await json(path.join(root, 'dist/build-info.json'));
     const runtime = path.join(base, 'runtime');
     const plugin = path.join(base, 'plugins', manifest.name);
     const selector = `${manifest.name}@${marketplaceName}`;
@@ -94,7 +95,8 @@ export async function installLocal({
       await writeJson(path.join(nextPlugin, '.codex-plugin/plugin.json'), manifest);
       await writeJson(path.join(nextPlugin, '.mcp.json'), {
         mcpServers: { 'tripo-studio': { ...portableMcp.mcpServers['tripo-studio'],
-          command: node, args: [path.join(runtime, 'mcp/bootstrap.mjs')], cwd: runtime } }
+          command: node, args: [path.join(runtime, 'mcp/bootstrap.mjs')], cwd: runtime,
+          env: { ...portableMcp.mcpServers['tripo-studio'].env, TRIPO_BUILD_TIMESTAMP: buildInfo.timestamp } } }
       });
       const backendChanged = await digest(runtime, backendFiles) !== await digest(nextRuntime, backendFiles);
       const uiChanged = await digest(runtime, uiFiles) !== await digest(nextRuntime, uiFiles);
@@ -138,7 +140,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try {
     const result = await installLocal();
     console.log(`Local runtime: ${result.runtime}`);
-    if (result.requiresReconnect) console.log('本地安装／后端已更新：重连 Tripo MCP 或开启新聊天后生效。此后只改界面无需重装插件。');
+    if (result.requiresReconnect) console.log('插件构建／侧边栏资源已更新：重连 Tripo MCP 后关闭并重新打开侧边栏工作台。若侧边栏仍显示旧页面，请完全退出并重新打开 Codex。');
     else if (result.uiChanged) console.log('界面已更新：重新打开工作台／结果卡片即可，无需重装插件或重启 MCP。');
     else console.log('本地运行目录已同步，无需重连 MCP。');
   } catch (error) {

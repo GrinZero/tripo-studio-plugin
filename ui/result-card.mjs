@@ -5,7 +5,8 @@ import { mountModel } from './viewer.mjs';
 import { mountConfiguration } from './configuration-card.mjs';
 import { cardItems, operationGroups, taskContextSummary } from './card-model.mjs';
 import { mountQuote } from './quote-card.mjs';
-const app = new App({name:'Tripo Studio',version:'0.3.6'}, {}, {autoResize:true});
+import { parameterRows } from './model.mjs';
+const app = new App({name:'Tripo Studio',version:'0.3.7'}, {}, {autoResize:true});
 new OpenAIExtensions(app);
 const $ = id => document.getElementById(id);
 initializeI18n();
@@ -13,11 +14,72 @@ mountLanguageSelector($('language'));
 setText($('status'), () => tr('等待结果'));
 setText($('message'), () => tr('正在处理…'));
 let ready = false, latest, epoch = 0, viewers = [], dark = false, configuration, quoteView, reviewPoll, taskPoll, downloadPoll, downloadViews = [], polling = false;
+const expandedInputs = new Set();
+function attachInput(info, item, current) {
+  if (!item.input) return;
+  const { prompt, sources, parameters, summary: excerpt } = item.input;
+  const key = item.taskId ?? item.title;
+  const details = document.createElement('details'), summary = document.createElement('summary');
+  const label = document.createElement('span'), snippet = document.createElement('span'), action = document.createElement('span');
+  details.className = 'result-input'; details.open = expandedInputs.has(key);
+  label.className = 'result-input-label'; snippet.className = 'result-input-excerpt'; action.className = 'result-input-action';
+  setText(label, () => tr("生成输入")); setText(snippet, () => excerpt);
+  // The visible snippet is a preview; assistive technology gets a short toggle label.
+  snippet.setAttribute('aria-hidden', 'true');
+  const updateAction = () => setText(action, () => details.open ? tr("收起") : tr("展开"));
+  updateAction(); summary.append(label, snippet, action); details.append(summary);
+  const body = document.createElement('div'); body.className = 'result-input-body'; details.append(body);
+  if (prompt) {
+    const heading = document.createElement('h3'), text = document.createElement('p');
+    setText(heading, () => tr("描述")); text.className = 'result-input-prompt'; setText(text, () => prompt); body.append(heading, text);
+  }
+  const previews = [];
+  if (sources.length) {
+    const strip = document.createElement('div'); strip.className = 'result-input-sources';
+    for (const source of sources) {
+      const tile = document.createElement('figure'), caption = document.createElement('figcaption');
+      const label = document.createElement('span'), name = document.createElement('span');
+      setText(label, () => source.label); setText(name, () => source.name); name.title = source.name;
+      caption.append(label, name);
+      if (source.preview) {
+        const picture = document.createElement('div'); picture.className = 'result-input-picture';
+        setText(picture, () => tr("正在加载预览…")); tile.append(picture); previews.push({ source, picture });
+      }
+      tile.append(caption); strip.append(tile);
+    }
+    body.append(strip);
+  }
+  if (parameters.length) {
+    const heading = document.createElement('h3'), rows = document.createElement('dl');
+    setText(heading, () => tr("生成参数")); rows.className = 'result-input-parameters';
+    for (const [label, value] of parameters) {
+      const row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
+      setText(dt, () => label); setText(dd, () => value); row.append(dt, dd); rows.append(row);
+    }
+    body.append(heading, rows);
+  }
+  let loaded = false;
+  const load = () => {
+    if (loaded || !details.open) return; loaded = true;
+    for (const { source, picture } of previews) void call('tripo_ui_preview', source.preview).then(result => {
+      if (current !== epoch) return;
+      const url = result._meta?.tripo?.preview?.data_url;
+      if (!/^data:image\/(webp|png|jpeg);base64,/.test(url ?? '')) throw Error(tr("暂无预览"));
+      const image = document.createElement('img'); image.src = url; image.alt = source.label; picture.replaceChildren(image);
+    }).catch(() => { if (current === epoch) setText(picture, () => tr("暂无预览")); });
+  };
+  details.ontoggle = () => {
+    if (current !== epoch) return;
+    if (details.open) expandedInputs.add(key); else expandedInputs.delete(key);
+    updateAction(); load();
+  };
+  info.append(details); load();
+}
 function context(ctx) {
   setHostLocale(ctx?.locale);
   if (ctx?.styles?.variables) applyHostStyleVariables(ctx.styles.variables);
   const theme = ctx?.theme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  document.documentElement.dataset.theme=theme;applyDocumentTheme(theme); dark = theme === 'dark'; viewers.forEach(viewer => viewer.theme(dark));
+  document.documentElement.dataset.theme=theme;applyDocumentTheme(theme); dark = theme === 'dark'; viewers.forEach(viewer => viewer.theme(dark));configuration?.theme(dark);
 }
 app.onhostcontextchanged = context;
 // Configuration copy updates in place through bindings, retaining edits and deadlines.
@@ -44,24 +106,29 @@ function downloadMatches(target, source = {}) {
     && (target.output_index ?? 0) === (source.output_index ?? 0)
     && (!source.artifact || !target.artifact || source.artifact === target.artifact);
 }
-function attachDownload(info, item, current) {
-  const target=item.downloadTarget, section=document.createElement('div'), saved=document.createElement('div'), message=document.createElement('p'), button=document.createElement('button');
-  section.className='saved-artifact';message.setAttribute('role','status');setText(button, () => tr("下载到本地"));
-  section.append(button,message,saved);info.append(section);
+function attachDownload(info, item, current, onSaved) {
+  const target=item.downloadTarget, section=document.createElement('div'), saved=document.createElement('div'), message=document.createElement('span'), button=document.createElement('button');
+  section.className='saved-artifact';saved.className='saved-summary';message.className='saved-status';message.setAttribute('role','status');setText(button, () => tr("下载到本地"));
+  section.append(saved,message,button);info.append(section);
   let savedKey;
   const update=download=>{
     if(current!==epoch || !download?.path)return;
     const key=JSON.stringify(download);if(key===savedKey)return;savedKey=key;
-    saved.replaceChildren();setText(message, () => tr("已保存到本地"));message.className='';setText(button, () => tr("重新下载"));
-    const card=cardItems({download})[0],details=document.createElement('dl');details.className='download-details';
-    for(const [label,value] of card.details){const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');setText(dt, () => label);setText(dd, () => value);row.append(dt,dd);details.append(row);}
-    saved.append(details);
-    if(card.warning){const warning=document.createElement('p');warning.className='error';setText(warning, () => card.warning);saved.append(warning);}
+    saved.replaceChildren();setText(message, () => tr("已保存到本地"));message.className='saved-status';setText(button, () => tr("重新下载"));
+    const card=cardItems({download})[0],badge=document.createElement('span'),location=document.createElement('span');
+    badge.className='meta-pill';location.className='artifact-path';
+    setText(badge, () => card.badge);setText(location, () => card.shortFilePath);
+    location.title=card.blenderPath ? `${card.path}\n${tr("Blender 文件")}: ${card.blenderPath}` : card.path;
+    saved.append(badge);
+    if(card.blenderPath){const blender=document.createElement('span');blender.className='meta-pill meta-pill-subtle';setText(blender, () => tr("Blender 文件"));blender.title=card.blenderPath;saved.append(blender);}
+    saved.append(location);
+    if(card.warning){const warning=document.createElement('p');warning.className='error compact-warning';setText(warning, () => card.warning);saved.append(warning);}
+    if(card.preview)onSaved?.(card.preview);
   };
   button.onclick=async()=>{
-    button.disabled=true;setText(message, () => tr("正在保存…"));message.className='';
+    button.disabled=true;setText(message, () => tr("正在保存…"));message.className='saved-status';
     try{const result=await call('tripo_download',target);update(result.structuredContent.download);}
-    catch(error){if(current===epoch){setText(message, () => error.message);message.className='error';}}
+    catch(error){if(current===epoch){setText(message, () => error.message);message.className='saved-status error';}}
     finally{button.disabled=false;}
   };
   const view={target,update};downloadViews.push(view);
@@ -90,6 +157,18 @@ async function render(result) {
   $('message').classList.toggle('error',!!result.isError);
   setText($('message'), () => result.structuredContent?.project_id ? tr("模型已准备就绪 · 拖动旋转，滚轮缩放") : result.content?.filter(c=>c.type==='text').map(c=>c.text).join('\n') ?? '');
   const data=result.structuredContent ?? {};
+  // Old draft cards had no review object. Reopen the same saved configuration
+  // in manual mode, without staging another task or starting a countdown.
+  if(!result.isError && !data.review && data.task?.status==='staged') {
+    try {
+      const updated=await call('tripo_ui_review',{review_id:data.task.task_id ?? data.task.draft_id,action:'get'});
+      if(current!==epoch)return;
+      latest=updated;return render(updated);
+    } catch(error) {
+      if(current!==epoch)return;
+      setText($('message'), () => error.message);
+    }
+  }
   if(data.review)app.updateModelContext({content:[{type:'text',text:taskContextSummary(data)}]}).catch(()=>{});
   if (!result.isError && data.quote) {
     setText($('message'), () => '');
@@ -116,6 +195,8 @@ async function render(result) {
     setText($('status'), () => data.review.status==='submitting'?tr("提交中"):tr("等待确认"));
     setText($('message'), () => data.review.error?.message ?? '');
     if(data.review.status!=='submitting')configuration=mountConfiguration($('items'),data.review,{
+      previewModel:async(project_id,type)=>(await call('tripo_ui_preview',{project_id,type}))._meta?.tripo?.preview,
+      renderModel:mountModel,getDark:()=>dark,
       preview:async(slot,review)=>(await call('tripo_ui_review',{review_id:review.review_id,action:'preview',slot}))._meta?.tripo?.preview,
       importImage:async file=>{
         if(file.size>20*1024*1024 || !['image/png','image/jpeg','image/webp'].includes(file.type))throw Error(tr("请选择 20 MB 以内的 PNG、JPG 或 WebP 图片。"));
@@ -158,38 +239,93 @@ async function render(result) {
     },5000);
   }
   const items=cardItems(data);
+  if (!result.isError && data.task?.status === 'succeeded') {
+    setText($('status'), () => tr("已完成"));
+    setText($('message'), () => items[0]?.preview?.type === 'model' ? tr("模型已准备就绪 · 拖动旋转，滚轮缩放") : tr("已完成"));
+  }
   if (!result.isError && data.download?.path) {
     setText($('status'), () => tr("下载完成"));
     setText($('message'), () => items[0]?.preview?.type==='model' ? tr("模型已保存 · 拖动旋转，滚轮缩放") : '');
   }
   for (const item of items) {
+    let refreshPreview;
     const article=document.createElement('article'), info=document.createElement('div'), title=document.createElement('h2');
-    info.className='info'; setText(title, () => item.title); info.append(title);
-    if(item.status){const state=document.createElement('div');state.className='state';setText(state, () => item.status);info.append(state);}
-    if(item.details){
-      const details=document.createElement('dl');details.className='download-details';
-      for(const [label,value] of item.details){const row=document.createElement('div'),key=document.createElement('dt'),text=document.createElement('dd');setText(key, () => label);setText(text, () => value);row.append(key,text);details.append(row);}
-      info.append(details);
+    info.className='info'; setText(title, () => item.title); title.title=item.title;
+    if (item.path) {
+      info.classList.add('info-compact');
+      const bar=document.createElement('div'), primary=document.createElement('div'), badge=document.createElement('span'), location=document.createElement('span');
+      bar.className='info-bar'; primary.className='info-primary'; badge.className='meta-pill'; location.className='artifact-path';
+      setText(badge, () => item.badge); primary.append(title, badge);
+      if (item.blenderPath) {
+        const blender=document.createElement('span'); blender.className='meta-pill meta-pill-subtle';
+        setText(blender, () => tr("Blender 文件")); blender.title=item.blenderPath; primary.append(blender);
+      }
+      setText(location, () => item.shortPath);
+      location.title=item.blenderPath ? `${item.path}\n${tr("Blender 文件")}: ${item.blenderPath}` : item.path;
+      bar.append(primary, location); info.append(bar);
+      if(item.warning){const warning=document.createElement('p');warning.className='error compact-warning';setText(warning, () => item.warning);info.append(warning);}
+    } else if (item.downloadTarget && !result.isError && !item.details && !(data.task?.status==='staged' && !data.review)) {
+      info.classList.add('info-compact');
+      const bar=document.createElement('div'), primary=document.createElement('div');
+      bar.className='info-bar'; primary.className='info-primary'; primary.append(title);
+      if(item.status && !(items.length === 1 && data.task?.status === 'succeeded')){const state=document.createElement('div');state.className='state';setText(state, () => item.status);primary.append(state);}
+      bar.append(primary);
+      attachDownload(bar,item,current, preview => {
+        // A download can arrive after the first cloud preview failed or started.
+        // Keep this same result card and replace its preview with the saved file.
+        if(refreshPreview)void refreshPreview(preview);
+      });
+      info.append(bar);
+      if(item.warning){const warning=document.createElement('p');warning.className='error compact-warning';setText(warning, () => item.warning);info.append(warning);}
+    } else {
+      info.append(title);
+      if(item.status){const state=document.createElement('div');state.className='state';setText(state, () => item.status);info.append(state);}
+      if(data.task?.status==='staged' && !data.review){
+        const details=document.createElement('dl');details.className='download-details';
+        for(const [label,value] of parameterRows(data.task)){const row=document.createElement('div'),key=document.createElement('dt'),text=document.createElement('dd');setText(key, () => label);setText(text, () => value);row.append(key,text);details.append(row);}
+        info.append(details);
+      }
+      if(item.details){
+        const details=document.createElement('dl');details.className='download-details';
+        for(const [label,value] of item.details){const row=document.createElement('div'),key=document.createElement('dt'),text=document.createElement('dd');setText(key, () => label);setText(text, () => value);row.append(key,text);details.append(row);}
+        info.append(details);
+      }
+      if(item.warning){const warning=document.createElement('p');warning.className='error';setText(warning, () => item.warning);info.append(warning);}
+      if(item.downloadTarget && !result.isError)attachDownload(info,item,current, preview => {
+        if(refreshPreview)void refreshPreview(preview);
+      });
+      if(item.taskId && !item.downloadTarget){const refresh=document.createElement('button');setText(refresh, () => tr("刷新任务"));refresh.onclick=async()=>{refresh.disabled=true;try{const updated=await call('tripo_task_sync',{task_id:item.taskId});if(current===epoch){latest={...result,structuredContent:{...data,task:updated.structuredContent.task,tasks:undefined}};render(latest);}}catch(e){if(current===epoch)setText($('message'), () => e.message);}finally{refresh.disabled=false;}};info.append(refresh);}
     }
-    if(item.warning){const warning=document.createElement('p');warning.className='error';setText(warning, () => item.warning);info.append(warning);}
-    if(item.downloadTarget && !result.isError)attachDownload(info,item,current);
-    if(item.taskId && !item.downloadTarget){const refresh=document.createElement('button');setText(refresh, () => tr("刷新任务"));refresh.onclick=async()=>{refresh.disabled=true;try{const updated=await call('tripo_task_sync',{task_id:item.taskId});if(current===epoch){latest={...result,structuredContent:{...data,task:updated.structuredContent.task,tasks:undefined}};render(latest);}}catch(e){if(current===epoch)setText($('message'), () => e.message);}finally{refresh.disabled=false;}};info.append(refresh);}
+    attachInput(info, item, current);
     article.append(info);$('items').append(article);
     if(!item.preview || result.isError) continue;
     const stage=document.createElement('div');stage.className='preview';setText(stage, () => tr("正在加载预览…"));article.prepend(stage);
-    try {
-      const media=await call('tripo_ui_preview',item.preview);
-      if(current!==epoch) return;
-      const preview=media._meta?.tripo?.preview;
-      if(!preview?.data_url) throw Error(tr("暂无可用预览"));
-      stage.replaceChildren();
-      if(preview.mime_type==='model/gltf-binary'){
-        const viewer=await mountModel(stage,preview.data_url,{dark});
-        if(current!==epoch){viewer.dispose();return;}viewers.push(viewer);
-      }else if(/^data:image\/(webp|png|jpeg);base64,/.test(preview.data_url)){
-        const image=document.createElement('img');image.src=preview.data_url;image.alt=item.title;stage.append(image);
-      }else throw Error(tr("不支持此预览格式"));
-    }catch(e){if(current===epoch)setText(stage, () => e.message);}
+    let previewRevision = 0, activeViewer;
+    refreshPreview = async (input = item.preview) => {
+      const revision = ++previewRevision;
+      if(activeViewer){activeViewer.dispose();viewers=viewers.filter(viewer=>viewer!==activeViewer);activeViewer=null;}
+      stage.replaceChildren();setText(stage, () => tr("正在加载预览…"));
+      try {
+        const media=await call('tripo_ui_preview',input);
+        if(current!==epoch || revision!==previewRevision) return;
+        const preview=media._meta?.tripo?.preview;
+        if(!preview?.data_url) throw Error(tr("暂无可用预览"));
+        stage.replaceChildren();
+        if(['model/gltf-binary','model/fbx'].includes(preview.mime_type)){
+          const host=document.createElement('div');host.style.cssText='width:100%;height:100%';stage.append(host);
+          const viewer=await mountModel(host,preview.data_url,{dark});
+          if(current!==epoch || revision!==previewRevision){viewer.dispose();return;}activeViewer=viewer;viewers.push(viewer);
+        }else if(/^data:image\/(webp|png|jpeg);base64,/.test(preview.data_url)){
+          const image=document.createElement('img');image.src=preview.data_url;image.alt=item.title;stage.append(image);
+        }else throw Error(tr("不支持此预览格式"));
+      }catch(e){if(current===epoch && revision===previewRevision){
+        const failure=document.createElement('div');failure.className='preview-failure';
+        const message=document.createElement('p');message.setAttribute('role','status');setText(message, () => e.message);
+        const retry=document.createElement('button');retry.type='button';setText(retry, () => tr('重新加载'));retry.onclick=()=>void refreshPreview(input);
+        failure.append(message,retry);stage.replaceChildren(failure);
+      }}
+    };
+    await refreshPreview();
   }
   if(current===epoch)watchDownloads(current);
 }

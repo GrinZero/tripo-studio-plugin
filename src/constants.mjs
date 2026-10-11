@@ -1,5 +1,5 @@
 export const SERVER_NAME = "tripo-studio-plugin";
-export const SERVER_VERSION = "0.3.6";
+export const SERVER_VERSION = "0.3.7";
 
 export const STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 export const STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
@@ -104,7 +104,5 @@ export const TASK_PHASES = [
   "terminal"
 ];
 export const TERMINAL_STATES = new Set(["succeeded", "failed", "canceled", "outcome_unknown"]);
-
-export const WORKBENCH_RESOURCE_URI = "ui://tripo-studio/workbench-v0.3.6.html";
 
 export const RESULT_CARD_RESOURCE_URI = "ui://tripo-studio/result-card-v2.html";

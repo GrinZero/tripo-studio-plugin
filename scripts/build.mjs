@@ -5,8 +5,20 @@ import { build } from "esbuild";
 import { mkdir, readFile, writeFile, copyFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { browserPreviewOptions } from './browser-build-options.mjs';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const { version } = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
+const builtAt = new Date();
+const timestamp = new Intl.DateTimeFormat('en-GB', {
+  timeZone: 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit',
+  hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+}).formatToParts(builtAt);
+const part = type => timestamp.find(item => item.type === type).value;
+const buildInfo = {
+  version, timestamp: ['year', 'month', 'day', 'hour', 'minute', 'second'].map(part).join(''),
+  built_at: builtAt.toISOString(), time_zone: 'Asia/Taipei'
+};
 
 await mkdir(path.join(root, "dist"), { recursive: true });
 await copyFile(fileURLToPath(import.meta.resolve('@imagemagick/magick-wasm/magick.wasm')), path.join(root, 'dist', 'magick.wasm'));
@@ -25,6 +37,7 @@ const server = await build({
 });
 
 const workbench = await build({
+  ...browserPreviewOptions,
   bundle: true,
   entryPoints: [path.join(root, "ui", "workbench.mjs")],
   format: "iife",
@@ -32,10 +45,12 @@ const workbench = await build({
   metafile: true,
   outfile: path.join(root, "dist", "workbench.js"),
   platform: "browser",
-  target: "es2022"
+  target: "es2022",
+  define: { __TRIPO_BUILD_INFO__: JSON.stringify(buildInfo) }
 });
 
 const card = await build({
+  ...browserPreviewOptions,
   bundle: true, entryPoints: [path.join(root, "ui", "result-card.mjs")],
   format: "iife", minify: true, metafile: true, outfile: path.join(root, "dist", "result-card.js"),
   platform: "browser", target: "es2022"
@@ -75,4 +90,5 @@ for (const name of [...packages].sort()) {
 }
 await writeFile(path.join(root, "dist", "THIRD_PARTY_NOTICES.txt"), `Third-party code bundled with Tripo Studio for Codex\n\n${[...notices].map(([text, owners]) => `${owners.join("\n")}\n\n${text}`).join("\n\n---\n\n")}\n`);
 
-console.log("build: server, MCP Apps and image WASM ready (no external runtime dependencies)");
+await writeFile(path.join(root, 'dist', 'build-info.json'), `${JSON.stringify(buildInfo, null, 2)}\n`);
+console.log(`build: v${buildInfo.version}-${buildInfo.timestamp}, server, MCP Apps and image WASM ready (no external runtime dependencies)`);

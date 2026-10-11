@@ -65,6 +65,11 @@ export function assetGroups(assets) {
 export const PARAM_LABELS = localizedMap({ mode: "输入方式", tier: "生成类型", face_limit: "目标面数", geometry_quality: "几何质量", model_version: "模型版本", texture_quality: "贴图质量", quality: "贴图质量", texture: "生成贴图", pbr: "PBR 材质", delight: "去光", quad: "四边形", smart_poly: "Smart Poly", visibility: "可见性", prompt: "描述", format: "导出格式", texture_size: "贴图尺寸", part_name_list: "选择分件", part_names: "选择分件", rigging_type: "绑定类型", skeleton_preset: "骨架预设", t_pose: "T Pose", amount: "变体数量", with_animation: "包含动作", pack_uv: "打包 UV" });
 export function parameterRows(task) {
   const values = { ...task.input_summary, ...task.effective_settings };
+  // Older Smart Mesh tasks recorded unavailable controls as false. Do not
+  // present them as editable features or infer the current project's textures.
+  if (values.tier === 'smart_mesh' && (!task.kind || task.kind === 'model.generate')) {
+    for (const key of ['texture','pbr','delight','texture_quality','texture_alignment']) delete values[key];
+  }
   const localLabels = { left:tr("左边距"), top:tr("上边距"), width:tr("宽度"), height:tr("高度"), view:tr("视角"), viewport_width:tr("预览宽度"), viewport_height:tr("预览高度"), resolution:tr("分辨率") };
   const names = { ...PARAM_LABELS, ...localLabels };
   const labels = { mode: { text:tr("文字"), image:tr("图片"), multiview:tr("多视图"), batch:tr("独立批量"), studio_image:tr("Studio 图片"), studio_multiview:tr("Studio 多视图") }, tier:{high_detail:tr("高精度"),smart_mesh:"Smart Mesh"}, geometry_quality:{standard:tr("标准"),detailed:tr("精细")}, texture_quality:{standard:"2K",detailed:"4K",ultra:"8K"}, quality:{standard:"2K",detailed:"4K",ultra:"8K"}, visibility:{private:tr("私有"),public:tr("公开"),shareable:tr("可分享")}, rigging_type:{humanoid:tr("人形"),other:tr("动物 / 其他")}, model_version:{"v3.1-20260211":"H3.1","Nexus-v2.0-20260801":"P2.0","v3.0-20260909":"Rig V3"} };

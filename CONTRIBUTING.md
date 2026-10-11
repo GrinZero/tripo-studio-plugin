@@ -18,7 +18,7 @@ npm test
 npm run install:local
 ```
 
-脚本构建后同步到 `~/.local/share/codex-integrations/tripo-studio-local/runtime`，本地插件只携带技能、图标和指向该固定目录的 MCP 配置。首次安装或从旧缓存版迁移后，重连 Tripo MCP 或开启新聊天一次。之后只修改界面时，重新打开工作台／卡片即可读取新构建，无需重装插件；后端或工具定义变化需要重连 MCP，技能或插件配置变化会自动更新本地安装并提示重新加载。脚本会判断本次是否需要重连。
+脚本构建后同步到 `~/.local/share/codex-integrations/tripo-studio-local/runtime`，本地插件只携带技能、图标和指向该固定目录的 MCP 配置。每次构建都会刷新版本时间戳及工作台资源 URI，安装时同步 MCP 配置并重新注册插件。更新后重连 Tripo MCP，再关闭并重新打开侧边栏工作台；侧边栏仍显示旧页面时，需要完全退出并重新打开 Codex。仅刷新工作台里的资产列表不会重新加载页面资源。
 
 同步使用预先准备的完整构建，失败时保留或恢复旧目录。登录、任务、账号数据与下载文件继续使用原配置，不进入运行目录。此命令只更新 `tripo-studio-local` 本地安装，不修改固定 npm 版本的正式发布配置。
 

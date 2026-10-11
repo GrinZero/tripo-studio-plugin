@@ -17,7 +17,7 @@ const identifier = z.string().regex(/^[^\s\u0000-\u001f\u007f]{1,256}$/);
 const IDENTITY_MATRIX = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 
 const generationSettingsShape = {
-  delight: z.boolean().optional().describe("Remove lighting from generated textures; independent of PBR."),
+  delight: z.boolean().optional().describe("High Detail only: remove lighting from generated textures; requires texture=true. Not applicable during Smart Mesh generation."),
   amount: z.union([z.literal(1), z.literal(2), z.literal(4)]).optional().describe("Smart Mesh variants per input; default 1."),
   face_limits: z.array(z.number().int()).min(1).max(4).optional().describe("Smart Mesh per-variant budgets; length must match amount."),
   allow_sensitive: z.boolean().optional().describe("Permit a Studio image output marked 'sensitive' as an input."),
@@ -26,13 +26,13 @@ const generationSettingsShape = {
   generate_parts: z.boolean().optional().describe("Generate segmented parts (high_detail)."),
   geometry_quality: z.enum(["standard", "detailed"]).optional().describe("v3.1-20260211 only."),
   model_version: z.enum([...HIGH_DETAIL_MODEL_VERSIONS, ...SMART_MESH_MODEL_VERSIONS]).optional().describe("Tier-specific version; defaults H3.1 or P2.0."),
-  pbr: z.boolean().optional().describe("Generate PBR maps; requires texture=true. Defaults true when texture enabled."),
+  pbr: z.boolean().optional().describe("High Detail only: generate PBR maps; requires texture=true. Defaults true when texture enabled. Smart Mesh uses three separate stages: white mesh, tripo_generate_texture for color, then tripo_generate_pbr for PBR maps. If color textures already exist, go directly to tripo_generate_pbr."),
   quad: z.boolean().optional().describe("Quad-dominant topology; default true for Smart Mesh P2, false for high_detail."),
   segmentation_granularity: z.enum(["coarse", "balanced", "fine"]).optional(),
   smart_poly: z.boolean().optional().describe("Smart Poly low-poly mode (high_detail)."),
-  texture: z.boolean().optional().describe("Generate textures (high_detail)."),
-  texture_alignment: z.enum(["original_image", "geometry"]).optional(),
-  texture_quality: z.enum(["standard", "detailed", "ultra"]).optional().describe("standard=2K, detailed=4K, ultra=8K."),
+  texture: z.boolean().optional().describe("High Detail only. Smart Mesh generation produces geometry; omit all texture controls and texture the returned project separately."),
+  texture_alignment: z.enum(["original_image", "geometry"]).optional().describe("High Detail only; requires texture=true. Not applicable during Smart Mesh generation."),
+  texture_quality: z.enum(["standard", "detailed", "ultra"]).optional().describe("High Detail only: standard=2K, detailed=4K, ultra=8K; requires texture=true. Not applicable during Smart Mesh generation."),
   visibility: z.enum(["private", "public", "shareable"]).default("private")
 };
 
@@ -60,11 +60,11 @@ export function normalizeSettings(input, mode) {
       throw new TripoError("INVALID_INPUT", `Smart Mesh face_limit must be from ${NEXUS_MIN_FACES} through ${maximum}.`, { stage: "model_generation_prepare" });
     }
     if (
-      input.generate_parts === true || input.smart_poly === true || input.texture === true || input.pbr === true || input.delight !== undefined ||
+      input.generate_parts === true || input.smart_poly === true || input.texture !== undefined || input.pbr !== undefined || input.delight !== undefined ||
       input.enable_image_autofix === true || input.geometry_quality !== undefined ||
       input.segmentation_granularity !== undefined || input.texture_alignment !== undefined || input.texture_quality !== undefined
     ) {
-      throw new TripoError("INVALID_INPUT", "Smart Mesh supports face budgets, variants, quad topology, version, symmetry, and visibility; high-detail texture/geometry/parts options are unavailable.", { stage: "model_generation_prepare" });
+      throw new TripoError("INVALID_INPUT", "Smart Mesh supports face budgets, variants, quad topology, version, symmetry, and visibility; high-detail texture/geometry/parts options are unavailable during generation. Omit texture, pbr, delight, texture_quality, and texture_alignment (even false values). This stage produces a white mesh. Next use tripo_generate_texture for color textures, then tripo_generate_pbr separately for requested PBR maps on the same project_id. If color textures already exist, go directly to PBR; do not regenerate geometry to add textures or PBR.", { stage: "model_generation_prepare" });
     }
     return {
       allow_sensitive: allowSensitive,
@@ -74,10 +74,8 @@ export function normalizeSettings(input, mode) {
       model_version: version,
       amount,
       face_limits: budgets,
-      pbr: false,
       quad: input.quad ?? (version === NEXUS_V2_MODEL_VERSION),
       smart_poly: false,
-      texture: false,
       visibility
     };
   }
@@ -216,7 +214,7 @@ export const modelOperations = {
     category: "model",
     consumesCredits: true,
     description:
-      "Generate 3D from text, an image, actual multiview, existing Studio outputs, or a batch of up to 30 independent images. Smart Mesh P2 supports quad topology and 1/2/4 budget variants; high_detail supports independent geometry quality, texture, delight, PBR and parts.",
+      "Generate new 3D geometry from text, an image, actual multiview, existing Studio outputs, or a batch of up to 30 independent images. Smart Mesh P2 supports quad topology and 1/2/4 budget variants. Its full textured/PBR chain is three separate operations: this tool produces an untextured white mesh, tripo_generate_texture adds color textures, then tripo_generate_pbr generates PBR maps on the same project. Omit texture, delight, pbr, texture_quality and texture_alignment during Smart Mesh generation. For existing geometry, start at color texturing; if color textures already exist and only PBR is missing, call tripo_generate_pbr directly. high_detail supports independent geometry quality, texture, delight, PBR and parts.",
     inputShape: {
       ...generationSettingsShape,
       back_image_path: z.string().optional(),

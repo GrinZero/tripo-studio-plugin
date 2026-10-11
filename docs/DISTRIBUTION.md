@@ -14,7 +14,7 @@ Codex 下载插件包不会运行 npm 生命周期脚本，也不能假定会为
 
 ## npm 发布包
 
-仓库开发时使用 `npm run install:local`，在独立的 `tripo-studio-local` 本地市场安装固定运行目录版。首次迁移需要重连 MCP；之后界面更新只需再次执行该命令并重新打开界面，后端更新仍需重连。详情见[本地开发](../CONTRIBUTING.md#本地开发)。下面的 npm 发布流程用于正式版本分发。
+仓库开发时使用 `npm run install:local`，在独立的 `tripo-studio-local` 本地市场安装固定运行目录版。每次更新后重连 MCP，再关闭并重新打开侧边栏工作台；仍显示旧页面时完全退出并重新打开 Codex。详情见[本地开发](../CONTRIBUTING.md#本地开发)。下面的 npm 发布流程用于正式版本分发。
 
 `package.json` 的 `files` 白名单包含插件清单、MCP 配置、启动入口、构建产物、HTML 与图标、技能及引用、本地 Blender worker 和用户文档。README 的截图也随包分发。源码、测试、设计稿、开发依赖和本地账号数据不会进入 tarball。
 
@@ -66,6 +66,8 @@ Release 附件上传使用 GitHub Actions 自动提供的 `GITHUB_TOKEN`，仅�
 2. 执行 `npm run build`、`npm test` 和 `npm run test:package`，提交版本修改与构建产物，然后推送到 GitHub。
 3. 创建对应的 `v0.3.5` 标签，并发布该标签的 GitHub Release。发布稳定版本；当前工作流跳过 prerelease，拒绝标签与包版本不一致。
 4. 等待 **Publish npm plugin** 工作流中的验证、**Upload tested package to Release** 和 npm 发布任务成功，确认 Release 的 Assets 中出现 `tripo-studio-plugin-<版本>.tgz`，再通知用户更新。npm 发布版本不可覆盖；失败重试前先确认该版本是否已在注册表中。
+
+每次插件更新（包括功能、修复、界面、技能和文档修改）都必须重新构建并提交构建产物。`npm run build` 自动生成 `dist/build-info.json`，工作台三个 tab 右侧显示 `v<package.json 版本>-YYYYMMDDHHmmss`，时间戳使用台北时间（`Asia/Taipei`）。即使 npm 版本不变，重新构建也会刷新时间戳；打开同一个构建时标记保持固定。工作台资源 URI 也包含此时间戳，避免侧边栏复用旧版本缓存。本地安装会刷新 MCP 配置并重新注册插件；更新后重连 Tripo MCP，关闭并重新打开侧边栏工作台，仍显示旧页面时完全退出并重新打开 Codex。`npm run install:local` 和 npm 打包流程都会自动执行构建，版本检查会验证标记与工作台构建一致。
 
 Action 会在 Linux、macOS、Windows 上验收发布包，Release 附件与 npm 发布复用同一个 Linux Node 22 验收后保存的 tarball，不会重新打包。PR 和 `main` 的 push 只触发验证，不会上传 Release 附件或发布 npm。
 

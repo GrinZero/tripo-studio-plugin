@@ -8,7 +8,9 @@ import { assertDownloadUrl, resolveOutputPath } from "../security/path-policy.mj
 import { ok, fail } from "../mcp/result.mjs";
 import { localArtifact } from "../studio/local-artifacts.mjs";
 import { decodeMeshoptGlb } from "../util/glb-decode.mjs";
-import { glbNodeNames } from "../util/model-inspect.mjs";
+import { modelNodeNames } from "../util/model-inspect.mjs";
+import { binaryModelFormat } from "../util/model-format.mjs";
+import { verifySnapshot } from '../ops/images.mjs';
 
 const MAX_IMAGE = 20 * 1024 * 1024;
 const MAX_MODEL = 32 * 1024 * 1024;
@@ -104,7 +106,8 @@ export function createWorkbenchMedia(runtime) {
     },
     async preview(input) {
       if ([input.project_id, input.asset_id, input.task_id, input.input_id, input.local_path].filter(Boolean).length !== 1) throw unavailable("请选择一个模型、图片、任务或已下载文件。");
-      let projectId = input.project_id, assetId = input.asset_id, operatorId, file;
+      if (input.input_slot && (!input.task_id || input.type === 'model')) throw unavailable('Input previews require a task and an image type.');
+      let projectId = input.project_id, assetId = input.asset_id, operatorId, file, bytes;
       const model = input.type === "model";
       if (input.local_path) {
         if (!path.isAbsolute(input.local_path)) throw unavailable("请提供已下载文件的绝对路径。");
@@ -114,24 +117,44 @@ export function createWorkbenchMedia(runtime) {
       if (input.task_id) {
         const task = await store.get(input.task_id);
         if (!task.kind.startsWith("local.") && task.account_fingerprint !== await session.accountFingerprint()) throw unavailable("任务属于另一个账号。");
-        if (task.kind.startsWith("local.") && task.status === "succeeded") {
-          file = localArtifact(task, model ? "model" : task.kind === "local.render" ? "render" : task.kind === "local.project_texture" ? "texture" : "image", input.output_index ?? 0);
-        } else {
-          const result = task.result ?? {};
-          if (model && result.models) {
-            const selected = result.models[input.output_index ?? 0];
-            if (!selected?.project_id || selected.status !== 'succeeded') throw unavailable("所选模型输出尚未完成。");
-            projectId = selected.project_id;
-            operatorId = selected.operator_id;
+        if (input.input_slot) {
+          const snapshot = task.snapshots?.find(s => s.slot === input.input_slot && ['png','jpeg','jpg','webp'].includes(s.format));
+          if (!snapshot) throw unavailable('The task has no image in this input slot.');
+          const source = await verifySnapshot(config, task.task_id, snapshot);
+          if ((await stat(source)).size > MAX_IMAGE) throw unavailable("文件超过交互预览大小限制。");
+          return imagePayload(await readFile(source));
+        }
+        // A completed task may already have the exact artifact on disk. Do not
+        // depend on its signed cloud URL a second time just to show the card.
+        const saved = task.status === 'succeeded' && (task.downloads ?? []).findLast(download => {
+          const format = (download.format ?? path.extname(download.path ?? '').slice(1)).toLowerCase();
+          return download.path && (download.output_index ?? 0) === (input.output_index ?? 0)
+            && (model ? ['glb', 'fbx'].includes(format) && (!download.artifact || download.artifact === 'model')
+              : input.type === 'image' && ['png', 'jpg', 'jpeg', 'webp'].includes(format));
+        });
+        if (saved) {
+          try { bytes = await fromDisk(saved.path, model ? MAX_MODEL : MAX_IMAGE, config.outputRoots); }
+          catch (error) { if (error.code !== 'ENOENT') throw error; }
+        }
+        if (!bytes) {
+          if (task.kind.startsWith("local.") && task.status === "succeeded") {
+            file = localArtifact(task, model ? "model" : task.kind === "local.render" ? "render" : task.kind === "local.project_texture" ? "texture" : "image", input.output_index ?? 0);
           } else {
-            projectId = result.project_id ?? task.remote?.project_id ?? task.input_summary?.project_id;
-            operatorId = model ? task.remote?.operator_id : undefined;
+            const result = task.result ?? {};
+            if (model && result.models) {
+              const selected = result.models[input.output_index ?? 0];
+              if (!selected?.project_id || selected.status !== 'succeeded') throw unavailable("所选模型输出尚未完成。");
+              projectId = selected.project_id;
+              operatorId = selected.operator_id;
+            } else {
+              projectId = result.project_id ?? task.remote?.project_id ?? task.input_summary?.project_id;
+              operatorId = model ? task.remote?.operator_id : undefined;
+            }
+            assetId = result.asset_id ?? task.remote?.asset_id;
+            if (!projectId && !assetId) throw unavailable("任务暂时没有可预览的输出。");
           }
-          assetId = result.asset_id ?? task.remote?.asset_id;
-          if (!projectId && !assetId) throw unavailable("任务暂时没有可预览的输出。");
         }
       }
-      let bytes;
       if (file) bytes = await fromDisk(file, model ? MAX_MODEL : MAX_IMAGE, input.local_path ? config.outputRoots : undefined);
       else if (projectId) {
         const account = await session.accountFingerprint();
@@ -152,8 +175,11 @@ export function createWorkbenchMedia(runtime) {
       }
       if (!bytes) throw unavailable("没有可用预览。");
       if (!model) return imagePayload(bytes, input.type === "image");
+      if (binaryModelFormat(bytes) === 'fbx') {
+        return { data_url: `data:model/fbx;base64,${bytes.toString('base64')}`, mime_type: 'model/fbx', bytes: bytes.length, part_names: modelNodeNames(bytes).slice(0,500) };
+      }
       bytes = await decodePreviewGlb(bytes);
-      return { data_url: `data:model/gltf-binary;base64,${bytes.toString("base64")}`, mime_type: "model/gltf-binary", bytes: bytes.length, part_names: glbNodeNames(bytes).slice(0,500) };
+      return { data_url: `data:model/gltf-binary;base64,${bytes.toString("base64")}`, mime_type: "model/gltf-binary", bytes: bytes.length, part_names: modelNodeNames(bytes).slice(0,500) };
     }
   };
 }
@@ -161,9 +187,9 @@ export function createWorkbenchMedia(runtime) {
 export function registerWorkbenchMedia(server, media) {
   const meta = { ui: { visibility: ["app"] } };
   server.registerTool("tripo_ui_preview", {
-    description: "Workbench-only bounded image or self-contained GLB preview. Signed URLs remain private; bytes go in app metadata only.",
+    description: "Workbench-only bounded image, GLB or binary FBX preview. Signed URLs remain private; bytes go in app metadata only.",
     _meta: meta, annotations: { readOnlyHint: true },
-    inputSchema: { project_id: id.optional(), asset_id: id.optional(), task_id: z.string().uuid().optional(), input_id: z.string().uuid().optional(), local_path: z.string().min(1).max(4096).optional().describe("Saved file inside a configured output root; preview the exact downloaded artifact."), output_index: z.number().int().min(0).max(15).default(0), type: z.enum(["thumbnail", "image", "model"]).default("thumbnail") }
+    inputSchema: { project_id: id.optional(), asset_id: id.optional(), task_id: z.string().uuid().optional(), input_slot: z.string().min(1).max(100).optional().describe("Preview a retained task input image by snapshot slot, rather than the generated output."), input_id: z.string().uuid().optional(), local_path: z.string().min(1).max(4096).optional().describe("Saved file inside a configured output root; preview the exact downloaded artifact."), output_index: z.number().int().min(0).max(15).default(0), type: z.enum(["thumbnail", "image", "model"]).default("thumbnail") }
   }, async input => {
     try { const preview = await media.preview(input); return { ...ok({ mime_type: preview.mime_type, bytes: preview.bytes }, "预览已准备就绪。"), _meta: { tripo: { preview } } }; } catch (error) { return fail(error); }
   });

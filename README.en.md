@@ -18,7 +18,7 @@
 
 <p align="center">
   <a href="#2-installation--quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.6-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-tool-matrix--capabilities-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -228,7 +228,7 @@ The server registers **64 agent-visible tools** and **4 app-only streaming tools
 - **Dedicated Guide**: 👉 **[Assets, Tasks & Export Guide (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **Included Tools**:
   - Asset Groups: `tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
-  - Task Engine: `tripo_submit_task`, `tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
+  - Task Engine: `tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
   - Delivery: `tripo_export_model`, `tripo_download`, `tripo_show_result`, `tripo_quote_operation`
 - **Key Capabilities**:
   - **Multi-Select & Asset Cards**: Group models and reference images locally with cross-page selection.
@@ -257,14 +257,14 @@ Interact with Codex directly using conversational prompts:
 ```text
 Generate a "Mecha Fox" model using this reference image:
 - Architecture: H3.1, standard geometry, 60,000 faces, 4K PBR textures.
-- Prepare a draft first with review:false, submit:false. Do not submit yet.
+- Show the configuration form; I can edit it, or it submits after 60 seconds without interaction.
 ```
 
 ### Prompt Patterns
 
 | Scenario | What to say to Codex | Capabilities Involved |
 | --- | --- | --- |
-| **🎮 Strict Polycount Budget** | "Create a Smart Mesh P2 model from this image with 5,000 and 10,000 face variants. Draft only." | Smart Mesh P2, multi-variant budgets |
+| **🎮 Strict Polycount Budget** | "Create a Smart Mesh P2 model from this image with 5,000 and 10,000 face variants. Quote the cost first without creating a generation task." | Smart Mesh P2, multi-variant budgets |
 | **📐 Multiview Alignment** | "These 4 images are front, left, back, and right views. Generate one model matching all views." | Multiview 3D synthesis |
 | **🏃 Rigging & Motion** | "Check the biped rigging compatibility of this model, rig it with UE skeleton, and apply a walk animation." | Rig V3, skeleton presets, AI Motion |
 | **📦 Asset Organization** | "Bundle selected reference images and models into a new group named 'Mecha Fox Game Assets'." | Local asset groups, batch operations |

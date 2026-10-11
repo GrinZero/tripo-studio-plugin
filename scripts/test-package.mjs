@@ -96,6 +96,14 @@ async function handshake(tarball, offline) {
     proc.stdin.write(`${JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" })}\n`);
     const tools = (await request("tools/list", {})).tools;
     assert.equal(tools.length, 68);
+    const agentTools=tools.filter(tool=>tool._meta.ui.visibility.includes('model'));
+    assert.equal(agentTools.length,62);
+    for(const tool of agentTools){
+      assert.equal(tool.inputSchema.properties.submit,undefined);
+      assert.equal(tool.inputSchema.properties.review,undefined);
+    }
+    for(const name of ['tripo_submit_task','tripo_run_workflow'])
+      assert.deepEqual(tools.find(tool=>tool.name===name)._meta.ui.visibility,['app']);
     const workbench = tools.find(tool => tool.name === "tripo_open_workbench");
     assert.ok(workbench.icons[0].src.startsWith("data:image/png;base64,"));
     const resources = (await request("resources/list", {})).resources;
@@ -116,10 +124,11 @@ async function handshake(tarball, offline) {
       assert.equal(image.structuredContent.width, 16);
       assert.equal(image.structuredContent.height, 12);
     }
-    const crop = await call("tripo_crop_image", { image_path: imported.structuredContent.file_path, left: 0, top: 0, width: 8, height: 6, submit: true });
-    const done = await call("tripo_task_wait", { task_id: crop.structuredContent.task.task_id, timeout_seconds: 10, poll_seconds: 1 });
+    const crop = await call("tripo_crop_image", { image_path: imported.structuredContent.file_path, left: 0, top: 0, width: 8, height: 6 });
+    const confirmed = await call("tripo_ui_review", {review_id:crop.structuredContent.review.review_id,action:"confirm"});
+    const done = await call("tripo_task_wait", { task_id: confirmed.structuredContent.task.task_id, timeout_seconds: 10, poll_seconds: 1 });
     assert.equal(done.structuredContent.task.status, "succeeded");
-    const preview = await call("tripo_ui_preview", { task_id: crop.structuredContent.task.task_id, type: "image" });
+    const preview = await call("tripo_ui_preview", { task_id: confirmed.structuredContent.task.task_id, type: "image" });
     assert.equal(preview._meta.tripo.preview.width, 8);
     assert.equal(preview._meta.tripo.preview.height, 6);
     console.log(`package: ${offline ? "offline cached" : "fresh npx"} startup, 68 tools, MCP Apps and WASM image processing passed`);

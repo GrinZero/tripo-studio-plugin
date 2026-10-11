@@ -45,6 +45,30 @@ it('installs a thin local plugin pointing to an independent, dependency-free run
   assert.ok(calls.some(args => args.join(' ') === 'plugin add tripo-studio-plugin@tripo-studio-local --json'));
 });
 
+it('uses the installed build marker as the workbench cache key and refreshes registration on rebuild', async t => {
+  const { options, root } = await fixture(t);
+  const result = await installLocal(options);
+  const info = JSON.parse(await readFile(path.join(root, 'dist/build-info.json'), 'utf8'));
+  const client = new Client({ name: 'workbench-version-test', version: '1' });
+  const data = path.join(result.runtime, 'test-data');
+  try {
+    await client.connect(new StdioClientTransport({ command: process.execPath,
+      args: [path.join(result.runtime, 'mcp/bootstrap.mjs')],
+      env: { ...process.env, TRIPO_PLUGIN_DATA_DIR: data, TRIPO_ASSET_ROOT: path.join(data, 'assets') }, stderr: 'pipe' }));
+    const tool = (await client.listTools()).tools.find(tool => tool.name === 'tripo_open_workbench');
+    assert.equal(tool._meta.ui.resourceUri, `ui://tripo-studio/workbench-v${info.version}-${info.timestamp}.html`);
+    const html = (await client.readResource({ uri: tool._meta.ui.resourceUri })).contents[0].text;
+    assert.ok(html.includes('id="appVersion"') && html.includes(info.timestamp));
+  } finally { await client.close(); }
+  const next = { ...info, timestamp: info.timestamp === '20990101000000' ? '20990101000001' : '20990101000000' };
+  await writeFile(path.join(root, 'dist/build-info.json'), JSON.stringify(next));
+  const updated = await installLocal(options);
+  assert.equal(updated.registrationRequired, true);
+  assert.equal(updated.requiresReconnect, true);
+  const config = JSON.parse(await readFile(path.join(updated.plugin, '.mcp.json'), 'utf8'));
+  assert.equal(config.mcpServers['tripo-studio'].env.TRIPO_BUILD_TIMESTAMP, next.timestamp);
+});
+
 it('serves a UI update through the same live MCP connection without reinstalling the plugin', async t => {
   const { options, root, base, calls } = await fixture(t);
   const result = await installLocal(options);

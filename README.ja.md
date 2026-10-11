@@ -18,7 +18,7 @@
 
 <p align="center">
   <a href="#2-インストールとクイックスタート-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.6-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-ツールマトリクスと機能一覧-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -223,7 +223,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 - **詳細ガイド**：👉 **[アセット・タスク・エクスポート詳細マニュアル (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **ツール一覧**：
   - グループ管理：`tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
-  - タスク追跡：`tripo_submit_task`, `tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
+  - タスク追跡：`tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
   - エクスポート：`tripo_export_model`, `tripo_download`, `tripo_show_result`, `tripo_quote_operation`
 
 <table width="100%">
@@ -246,12 +246,12 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ```text
 この参考画像から「メカフォックス」の 3D モデルを生成して：
 - アーキテクチャ: H3.1、標準ジオメトリ、60,000 面、4K PBR テクスチャ
-- review:false, submit:false で下書きを作成し、まだ送信しないでください。
+- 設定フォームを表示してください。編集しなければ 60 秒後に自動送信されます。
 ```
 
 | 実践シナリオ | Codex への指示内容 | 利用される機能 |
 | --- | --- | --- |
-| **🎮 厳格なポリゴン予算** | 「この画像から Smart Mesh P2 を使い、5,000 面と 10,000 面の 2 種類のバリアントの下書きを作って。」 | Smart Mesh P2、複数バリアント |
+| **🎮 厳格なポリゴン予算** | 「この画像から Smart Mesh P2 を使い、5,000 面と 10,000 面の 2 種類のバリアントを作り、設定フォームを表示して。」 | Smart Mesh P2、複数バリアント |
 | **📐 4 視点の一致生成** | 「添付の 4 枚は正面・左・背面・右です。これらを組み合わせて単一のモデルを生成して。」 | マルチビューモデリング |
 | **🏃 リギングとモーション** | 「このモデルに二足歩行リギングを行い、Unity 互換ボーンを入れて歩行モーションを適用して。」 | Rig V3、骨格プリセット、モーション |
 | **📦 アセットのグループ整理** | 「選択したモデルと画像を『メカフォックス · ゲームアセット』というグループにまとめて。」 | ローカルグループ管理 |

@@ -28499,8 +28499,8 @@ var init_poller = __esm({
       if (attempt > attemptCountCeiling) {
         return maxDelayMs;
       }
-      const delay2 = minDelayMs * 2 ** (attempt - 1);
-      const capped = Math.min(delay2, maxDelayMs);
+      const delay3 = minDelayMs * 2 ** (attempt - 1);
+      const capped = Math.min(delay3, maxDelayMs);
       const waitFor = randomInRange(minDelayMs, capped);
       if (Date.now() + waitFor > waitUntil) {
         const timeRemaining = waitUntil - Date.now();
@@ -37879,10 +37879,10 @@ function bindRetryMiddleware(isStreamingPayload2) {
             throw lastError;
           }
           attempts = retryToken.getRetryCount();
-          const delay2 = retryToken.getRetryDelay();
-          totalRetryDelay += (retryToken?.$retryLog?.acquisitionDelay ?? 0) + delay2;
-          if (delay2 > 0) {
-            await cooldown(delay2);
+          const delay3 = retryToken.getRetryDelay();
+          totalRetryDelay += (retryToken?.$retryLog?.acquisitionDelay ?? 0) + delay3;
+          if (delay3 > 0) {
+            await cooldown(delay3);
           }
         }
       }
@@ -37951,7 +37951,7 @@ var init_DefaultRateLimiter = __esm({
   "node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRateLimiter.js"() {
     init_service_error_classification();
     DefaultRateLimiter = class _DefaultRateLimiter {
-      static setTimeoutFn = (fn, delay2) => setTimeout(fn, delay2);
+      static setTimeoutFn = (fn, delay3) => setTimeout(fn, delay3);
       beta;
       minCapacity;
       minFillRate;
@@ -38010,8 +38010,8 @@ var init_DefaultRateLimiter = __esm({
         }
         this.refillTokenBucket();
         while (amount > this.availableTokens) {
-          const delay2 = (amount - this.availableTokens) / this.fillRate * 1e3;
-          await new Promise((resolve) => _DefaultRateLimiter.setTimeoutFn(resolve, delay2));
+          const delay3 = (amount - this.availableTokens) / this.fillRate * 1e3;
+          await new Promise((resolve) => _DefaultRateLimiter.setTimeoutFn(resolve, delay3));
           this.refillTokenBucket();
         }
         this.availableTokens = this.availableTokens - amount;
@@ -38101,8 +38101,8 @@ var init_DefaultRetryBackoffStrategy = __esm({
         const t_i = b9 * Math.min(this.x * r7 ** i5, MAXIMUM_RETRY_DELAY);
         return Math.floor(t_i);
       }
-      setDelayBase(delay2) {
-        this.x = delay2;
+      setDelayBase(delay3) {
+        this.x = delay3;
       }
     };
   }
@@ -38121,8 +38121,8 @@ var init_DefaultRetryToken = __esm({
       $retryLog = {
         acquisitionDelay: 0
       };
-      constructor(delay2, count, cost, longPoll) {
-        this.delay = delay2;
+      constructor(delay3, count, cost, longPoll) {
+        this.delay = delay3;
         this.count = count;
         this.cost = cost;
         this.longPoll = longPoll;
@@ -38447,9 +38447,9 @@ var init_StandardRetryStrategy2 = __esm({
               retryTokenAmount = this.retryQuota.retrieveRetryTokens(err2);
               const delayFromDecider = this.delayDecider(isThrottlingError(err2) ? THROTTLING_RETRY_DELAY_BASE : DEFAULT_RETRY_DELAY_BASE, attempts);
               const delayFromResponse = getDelayFromRetryAfterHeader(err2.$response);
-              const delay2 = Math.max(delayFromResponse || 0, delayFromDecider);
-              totalDelay += delay2;
-              await new Promise((resolve) => setTimeout(resolve, delay2));
+              const delay3 = Math.max(delayFromResponse || 0, delayFromDecider);
+              totalDelay += delay3;
+              await new Promise((resolve) => setTimeout(resolve, delay3));
               continue;
             }
             if (!err2.$metadata) {
@@ -89796,7 +89796,7 @@ function errorSnapshot(error113) {
 
 // src/constants.mjs
 var SERVER_NAME = "tripo-studio-plugin";
-var SERVER_VERSION = "0.3.6";
+var SERVER_VERSION = "0.3.7";
 var STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 var STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
 var STUDIO_WORKSPACE_URL = `${STUDIO_ORIGIN}/workspace/generate`;
@@ -89841,7 +89841,6 @@ var STUDIO_IMAGE_RATIOS = ["1:1", "16:9", "9:16", "4:3", "3:4"];
 var STUDIO_IMAGE_RESOLUTIONS = ["1K", "4K"];
 var RIG_TYPES = ["aquatic", "avian", "biped", "hexapod", "octopod", "quadruped", "serpentine", "others"];
 var RETARGET_RIG_TYPES = RIG_TYPES.filter((t8) => t8 !== "others");
-var WORKBENCH_RESOURCE_URI = "ui://tripo-studio/workbench-v0.3.6.html";
 var RESULT_CARD_RESOURCE_URI = "ui://tripo-studio/result-card-v2.html";
 
 // src/ops/animation-presets.mjs
@@ -90702,13 +90701,13 @@ async function stageLocalImage(config3, gateway, uploader, inputPath, audit, ret
 }
 async function stageLocalModelFile(config3, inputPath, retain) {
   assertLocalPathSpecifier(inputPath, "import_input_policy");
-  const { realpath: realpath5, stat: stat11, readFile: readFile16 } = await import("node:fs/promises");
+  const { realpath: realpath5, stat: stat12, readFile: readFile16 } = await import("node:fs/promises");
   const { createHash: createHash16 } = await import("node:crypto");
   const resolved = path5.resolve(inputPath);
   const canonical = await realpath5(resolved).catch((error113) => {
     throw new TripoError("FILE_INVALID", `Model file does not exist: ${resolved}`, { cause: error113, stage: "prepare" });
   });
-  const metadata = await stat11(canonical);
+  const metadata = await stat12(canonical);
   if (!metadata.isFile()) throw new TripoError("FILE_INVALID", "Model path must point to a regular file.", { stage: "prepare" });
   const directory = snapshotDirectory(config3, retain.taskId);
   await mkdir3(directory, { recursive: true, mode: 448 });
@@ -90756,9 +90755,10 @@ import { createHash as createHash4 } from "node:crypto";
 import { createReadStream } from "node:fs";
 import { readFile as readFile5, realpath as realpath3, stat as stat4 } from "node:fs/promises";
 import path6 from "node:path";
+import { inflateSync } from "node:zlib";
 var GLB_MAGIC = 1179937895;
 var GLB_JSON_CHUNK = 1313821514;
-var FBX_BINARY_MAGIC = Buffer.from("Kaydara FBX Binary  \0\0", "binary");
+var FBX_BINARY_MAGIC = Buffer.from("Kaydara FBX Binary  \0\0", "binary");
 var MAX_TEXT_LINE_BYTES = 1024 * 1024;
 var MAX_FBX_INDEX_BYTES = 64 * 1024 * 1024;
 function invalid(message, details) {
@@ -90888,6 +90888,133 @@ function inspectStl(bytes) {
   assertFaceLimit(facets);
   return { faceCount: facets, isUvMapped: false };
 }
+function readSafeUInt64(bytes, offset) {
+  const value = bytes.readBigUInt64LE(offset);
+  if (value > BigInt(Number.MAX_SAFE_INTEGER)) throw invalid("The FBX contains an unsupported 64-bit offset.");
+  return Number(value);
+}
+function fbxArray(bytes, propertyOffset) {
+  if (propertyOffset + 13 > bytes.length) throw invalid("The FBX array property is truncated.");
+  const length = bytes.readUInt32LE(propertyOffset + 1);
+  const encoding = bytes.readUInt32LE(propertyOffset + 5);
+  const compressedLength = bytes.readUInt32LE(propertyOffset + 9);
+  const start = propertyOffset + 13;
+  const end = start + compressedLength;
+  const outputBytes = length * 4;
+  if (!Number.isSafeInteger(outputBytes) || outputBytes > MAX_FBX_INDEX_BYTES || end > bytes.length) throw invalid("The FBX polygon index array exceeds safe bounds.");
+  let data;
+  if (encoding === 0) data = bytes.subarray(start, end);
+  else if (encoding === 1) {
+    try {
+      data = inflateSync(bytes.subarray(start, end), { maxOutputLength: outputBytes });
+    } catch (error113) {
+      throw new TripoError("FILE_INVALID", "The compressed FBX polygon index array is invalid.", { cause: error113, stage: "model_inspect" });
+    }
+  } else throw invalid("The FBX uses an unsupported array encoding.");
+  if (data.length !== outputBytes) throw invalid("The FBX polygon index array length is inconsistent.");
+  return { data, next: end };
+}
+function inspectBinaryFbx(bytes, onNode) {
+  if (bytes.length < 27 || !bytes.subarray(0, FBX_BINARY_MAGIC.length).equals(FBX_BINARY_MAGIC)) throw invalid("The binary FBX header is invalid.");
+  const version3 = bytes.readUInt32LE(23);
+  if (version3 < 6e3 || version3 > 9e3) throw invalid("The FBX version is outside the supported binary range.");
+  const wide = version3 >= 7500;
+  const headerSize = wide ? 25 : 13;
+  const nullSize = headerSize;
+  let faceCount = 0;
+  let isUvMapped = false;
+  let nodeCount = 0;
+  const visitNode = (offset2, parentEnd) => {
+    if (offset2 + headerSize > parentEnd || offset2 + headerSize > bytes.length) return parentEnd;
+    const endOffset = wide ? readSafeUInt64(bytes, offset2) : bytes.readUInt32LE(offset2);
+    const propertyCount = wide ? readSafeUInt64(bytes, offset2 + 8) : bytes.readUInt32LE(offset2 + 4);
+    const propertyBytes = wide ? readSafeUInt64(bytes, offset2 + 16) : bytes.readUInt32LE(offset2 + 8);
+    const nameLength = bytes[offset2 + (wide ? 24 : 12)];
+    if (endOffset === 0 && propertyCount === 0 && propertyBytes === 0 && nameLength === 0) return offset2 + nullSize;
+    nodeCount += 1;
+    if (nodeCount > 1e6) throw invalid("The FBX contains too many nodes.");
+    const nameStart = offset2 + headerSize;
+    const nameEnd = nameStart + nameLength;
+    const propertyStart = nameEnd;
+    const propertyEnd = propertyStart + propertyBytes;
+    if (endOffset <= offset2 || endOffset > parentEnd || endOffset > bytes.length || propertyEnd > endOffset) {
+      throw invalid("The FBX node offsets are inconsistent.");
+    }
+    const name = bytes.subarray(nameStart, nameEnd).toString("utf8");
+    onNode?.(name, propertyStart, propertyEnd, propertyCount);
+    if (name === "LayerElementUV" || name === "UV" || name === "UVIndex") isUvMapped = true;
+    if (name === "PolygonVertexIndex") {
+      if (propertyCount < 1 || propertyStart >= propertyEnd || String.fromCharCode(bytes[propertyStart]) !== "i") {
+        throw invalid("The FBX PolygonVertexIndex property is not an Int32 array.");
+      }
+      const array3 = fbxArray(bytes, propertyStart).data;
+      let polygonVertices = 0;
+      for (let index = 0; index < array3.length; index += 4) {
+        const value = array3.readInt32LE(index);
+        polygonVertices += 1;
+        if (value < 0) {
+          if (polygonVertices < 3) throw invalid("The FBX contains a polygon with fewer than three vertices.");
+          faceCount += polygonVertices - 2;
+          polygonVertices = 0;
+          if (faceCount > MAX_IMPORT_MODEL_FACES) assertFaceLimit(faceCount);
+        }
+      }
+      if (polygonVertices !== 0) throw invalid("The FBX polygon index array ends mid-polygon.");
+    }
+    let child = propertyEnd;
+    const childLimit = endOffset - nullSize;
+    while (child + headerSize <= childLimit) {
+      const next = visitNode(child, endOffset);
+      if (next <= child) throw invalid("The FBX node traversal made no progress.");
+      child = next;
+    }
+    return endOffset;
+  };
+  let offset = 27;
+  while (offset + headerSize <= bytes.length) {
+    const next = visitNode(offset, bytes.length);
+    if (next === offset + nullSize && bytes.subarray(offset, next).every((value) => value === 0)) break;
+    if (next <= offset) throw invalid("The FBX top-level traversal made no progress.");
+    offset = next;
+  }
+  assertFaceLimit(faceCount);
+  return { faceCount, isUvMapped };
+}
+function inspectAsciiFbx(bytes) {
+  if (bytes.includes(0)) throw invalid("The ASCII FBX contains NUL bytes.");
+  const text = bytes.toString("utf8");
+  if (!/FBXHeaderExtension\s*:/i.test(text) || !/Objects\s*:/i.test(text)) throw invalid("The ASCII FBX header is invalid.");
+  const marker = /PolygonVertexIndex\s*:\s*\*\d+\s*\{\s*a\s*:/gi;
+  let faceCount = 0;
+  let found = false;
+  for (let match = marker.exec(text); match; match = marker.exec(text)) {
+    found = true;
+    const start = marker.lastIndex;
+    const end = text.indexOf("}", start);
+    if (end < 0) throw invalid("The ASCII FBX polygon array is incomplete.");
+    const values = text.slice(start, end).match(/-?\d+/g) ?? [];
+    let polygonVertices = 0;
+    for (const raw of values) {
+      const value = Number(raw);
+      if (!Number.isSafeInteger(value)) throw invalid("The ASCII FBX contains an invalid polygon index.");
+      polygonVertices += 1;
+      if (value < 0) {
+        if (polygonVertices < 3) throw invalid("The ASCII FBX contains a polygon with fewer than three vertices.");
+        faceCount += polygonVertices - 2;
+        polygonVertices = 0;
+        if (faceCount > MAX_IMPORT_MODEL_FACES) assertFaceLimit(faceCount);
+      }
+    }
+    if (polygonVertices !== 0) throw invalid("The ASCII FBX polygon index array ends mid-polygon.");
+    marker.lastIndex = end + 1;
+  }
+  if (!found) throw invalid("The ASCII FBX contains no PolygonVertexIndex geometry.");
+  assertFaceLimit(faceCount);
+  return { faceCount, isUvMapped: /LayerElementUV\s*:/i.test(text) };
+}
+function inspectFbx(bytes) {
+  return bytes.subarray(0, FBX_BINARY_MAGIC.length).equals(FBX_BINARY_MAGIC) ? inspectBinaryFbx(bytes) : inspectAsciiFbx(bytes);
+}
 function formatFromPath(filePath) {
   const extension = path6.extname(filePath).slice(1).toLowerCase();
   if (!["fbx", "glb", "obj", "stl"].includes(extension)) throw invalid("Model filename must end in .glb, .obj, .fbx, or .stl.");
@@ -90956,12 +91083,42 @@ function glbNodeNames(bytes) {
   }
   return names;
 }
+function modelNodeNames(bytes) {
+  if (!bytes.subarray(0, FBX_BINARY_MAGIC.length).equals(FBX_BINARY_MAGIC)) return glbNodeNames(bytes);
+  const names = [];
+  inspectBinaryFbx(bytes, (node2, start, end, count) => {
+    if (node2 !== "Model") return;
+    const properties = [];
+    let offset = start;
+    for (let index = 0; index < Math.min(count, 3); index++) {
+      if (offset >= end) throw invalid("The FBX Model property is truncated.");
+      const type = String.fromCharCode(bytes[offset++]);
+      const scalarSize = { Y: 2, C: 1, I: 4, F: 4, D: 8, L: 8 }[type];
+      if (scalarSize) {
+        offset += scalarSize;
+        properties.push(null);
+      } else if (type === "S") {
+        if (offset + 4 > end) throw invalid("The FBX Model string is truncated.");
+        const length = bytes.readUInt32LE(offset);
+        offset += 4;
+        if (offset + length > end) throw invalid("The FBX Model string exceeds its property bounds.");
+        properties.push(bytes.toString("utf8", offset, offset + length));
+        offset += length;
+      } else throw invalid("The FBX Model property type is unsupported.");
+      if (offset > end) throw invalid("The FBX Model property exceeds its bounds.");
+    }
+    if (properties[2] !== "Mesh" || typeof properties[1] !== "string") return;
+    const name = properties[1].split("\0")[0].replace(/^Model::/, "").trim();
+    if (name) names.push(name);
+  });
+  return [...new Set(names)];
+}
 
 // src/ops/modelgen.mjs
 var identifier = external_exports.string().regex(/^[^\s\u0000-\u001f\u007f]{1,256}$/);
 var IDENTITY_MATRIX = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 var generationSettingsShape = {
-  delight: external_exports.boolean().optional().describe("Remove lighting from generated textures; independent of PBR."),
+  delight: external_exports.boolean().optional().describe("High Detail only: remove lighting from generated textures; requires texture=true. Not applicable during Smart Mesh generation."),
   amount: external_exports.union([external_exports.literal(1), external_exports.literal(2), external_exports.literal(4)]).optional().describe("Smart Mesh variants per input; default 1."),
   face_limits: external_exports.array(external_exports.number().int()).min(1).max(4).optional().describe("Smart Mesh per-variant budgets; length must match amount."),
   allow_sensitive: external_exports.boolean().optional().describe("Permit a Studio image output marked 'sensitive' as an input."),
@@ -90970,13 +91127,13 @@ var generationSettingsShape = {
   generate_parts: external_exports.boolean().optional().describe("Generate segmented parts (high_detail)."),
   geometry_quality: external_exports.enum(["standard", "detailed"]).optional().describe("v3.1-20260211 only."),
   model_version: external_exports.enum([...HIGH_DETAIL_MODEL_VERSIONS, ...SMART_MESH_MODEL_VERSIONS]).optional().describe("Tier-specific version; defaults H3.1 or P2.0."),
-  pbr: external_exports.boolean().optional().describe("Generate PBR maps; requires texture=true. Defaults true when texture enabled."),
+  pbr: external_exports.boolean().optional().describe("High Detail only: generate PBR maps; requires texture=true. Defaults true when texture enabled. Smart Mesh uses three separate stages: white mesh, tripo_generate_texture for color, then tripo_generate_pbr for PBR maps. If color textures already exist, go directly to tripo_generate_pbr."),
   quad: external_exports.boolean().optional().describe("Quad-dominant topology; default true for Smart Mesh P2, false for high_detail."),
   segmentation_granularity: external_exports.enum(["coarse", "balanced", "fine"]).optional(),
   smart_poly: external_exports.boolean().optional().describe("Smart Poly low-poly mode (high_detail)."),
-  texture: external_exports.boolean().optional().describe("Generate textures (high_detail)."),
-  texture_alignment: external_exports.enum(["original_image", "geometry"]).optional(),
-  texture_quality: external_exports.enum(["standard", "detailed", "ultra"]).optional().describe("standard=2K, detailed=4K, ultra=8K."),
+  texture: external_exports.boolean().optional().describe("High Detail only. Smart Mesh generation produces geometry; omit all texture controls and texture the returned project separately."),
+  texture_alignment: external_exports.enum(["original_image", "geometry"]).optional().describe("High Detail only; requires texture=true. Not applicable during Smart Mesh generation."),
+  texture_quality: external_exports.enum(["standard", "detailed", "ultra"]).optional().describe("High Detail only: standard=2K, detailed=4K, ultra=8K; requires texture=true. Not applicable during Smart Mesh generation."),
   visibility: external_exports.enum(["private", "public", "shareable"]).default("private")
 };
 function normalizeSettings(input2, mode) {
@@ -91002,8 +91159,8 @@ function normalizeSettings(input2, mode) {
     if (budgets.some((budget) => !Number.isSafeInteger(budget) || budget < NEXUS_MIN_FACES || budget > maximum)) {
       throw new TripoError("INVALID_INPUT", `Smart Mesh face_limit must be from ${NEXUS_MIN_FACES} through ${maximum}.`, { stage: "model_generation_prepare" });
     }
-    if (input2.generate_parts === true || input2.smart_poly === true || input2.texture === true || input2.pbr === true || input2.delight !== void 0 || input2.enable_image_autofix === true || input2.geometry_quality !== void 0 || input2.segmentation_granularity !== void 0 || input2.texture_alignment !== void 0 || input2.texture_quality !== void 0) {
-      throw new TripoError("INVALID_INPUT", "Smart Mesh supports face budgets, variants, quad topology, version, symmetry, and visibility; high-detail texture/geometry/parts options are unavailable.", { stage: "model_generation_prepare" });
+    if (input2.generate_parts === true || input2.smart_poly === true || input2.texture !== void 0 || input2.pbr !== void 0 || input2.delight !== void 0 || input2.enable_image_autofix === true || input2.geometry_quality !== void 0 || input2.segmentation_granularity !== void 0 || input2.texture_alignment !== void 0 || input2.texture_quality !== void 0) {
+      throw new TripoError("INVALID_INPUT", "Smart Mesh supports face budgets, variants, quad topology, version, symmetry, and visibility; high-detail texture/geometry/parts options are unavailable during generation. Omit texture, pbr, delight, texture_quality, and texture_alignment (even false values). This stage produces a white mesh. Next use tripo_generate_texture for color textures, then tripo_generate_pbr separately for requested PBR maps on the same project_id. If color textures already exist, go directly to PBR; do not regenerate geometry to add textures or PBR.", { stage: "model_generation_prepare" });
     }
     return {
       allow_sensitive: allowSensitive,
@@ -91013,10 +91170,8 @@ function normalizeSettings(input2, mode) {
       model_version: version3,
       amount,
       face_limits: budgets,
-      pbr: false,
       quad: input2.quad ?? version3 === NEXUS_V2_MODEL_VERSION,
       smart_poly: false,
-      texture: false,
       visibility
     };
   }
@@ -91146,7 +91301,7 @@ var modelOperations = {
   "model.generate": {
     category: "model",
     consumesCredits: true,
-    description: "Generate 3D from text, an image, actual multiview, existing Studio outputs, or a batch of up to 30 independent images. Smart Mesh P2 supports quad topology and 1/2/4 budget variants; high_detail supports independent geometry quality, texture, delight, PBR and parts.",
+    description: "Generate new 3D geometry from text, an image, actual multiview, existing Studio outputs, or a batch of up to 30 independent images. Smart Mesh P2 supports quad topology and 1/2/4 budget variants. Its full textured/PBR chain is three separate operations: this tool produces an untextured white mesh, tripo_generate_texture adds color textures, then tripo_generate_pbr generates PBR maps on the same project. Omit texture, delight, pbr, texture_quality and texture_alignment during Smart Mesh generation. For existing geometry, start at color texturing; if color textures already exist and only PBR is missing, call tripo_generate_pbr directly. high_detail supports independent geometry quality, texture, delight, PBR and parts.",
     inputShape: {
       ...generationSettingsShape,
       back_image_path: external_exports.string().optional(),
@@ -91565,16 +91720,16 @@ var postprocessOperations = {
   "texture.generate": {
     category: "postprocess",
     consumesCredits: true,
-    description: "Generate textures for a project: mode=text (prompt), mode=image (local reference image), or mode=multiview (front plus optional left/back/right). Optionally a built-in style (heritage|mecha|mecha_pop|wood) or a local style image \u2014 styles are incompatible with multiview mode.",
+    description: "Generate color textures for an existing project, preserving its geometry. Smart Mesh stage 2 of 3: white mesh (tripo_generate_model) \u2192 color textures (this tool) \u2192 separate PBR maps (tripo_generate_pbr). This tool does not automatically generate the separate PBR map set. If PBR maps are requested, wait for color-texture success then call tripo_generate_pbr on the same project; if color textures already exist and only PBR is missing, skip this tool. mode=text (prompt), mode=image (local reference image), or mode=multiview (front plus optional left/back/right). quality, alignment and delight apply in this stage. Omit part_names or pass [] for the whole model; use raw hierarchy names for selected parts. Built-in styles (heritage|mecha|mecha_pop|wood) or a local style image are incompatible with multiview mode.",
     inputShape: {
       alignment: external_exports.enum(["original_image", "geometry"]).default("original_image"),
-      delight: external_exports.boolean().default(true).describe("Remove lighting independently of PBR."),
+      delight: external_exports.boolean().default(true).describe("Remove lighting during color-texture generation, including for an existing Smart Mesh. This does not generate PBR maps; use tripo_generate_pbr afterward when requested."),
       back_image_path: external_exports.string().optional(),
       front_image_path: external_exports.string().optional(),
       image_path: external_exports.string().optional().describe("Local reference image for mode=image."),
       left_image_path: external_exports.string().optional(),
       mode: external_exports.enum(["text", "image", "multiview"]).describe("Texture source mode."),
-      part_names: partNames,
+      part_names: external_exports.array(external_exports.string().regex(PART_NAME)).max(MAX_PARTS).optional().describe("Raw hierarchy names for selected parts. Omit or pass [] for the whole model; segmentation is not required."),
       project_id: projectId,
       prompt: external_exports.string().optional().describe("Required for mode=text."),
       quality: external_exports.enum(["standard", "detailed", "ultra"]).default("detailed"),
@@ -91597,7 +91752,7 @@ var postprocessOperations = {
       const payload = {
         model_version: TEXTURE_MODEL_VERSION,
         delight: input2.delight,
-        part_names: validatePartNames(input2.part_names),
+        ...input2.part_names?.length ? { part_names: validatePartNames(input2.part_names) } : {},
         project_id: input2.project_id,
         texture_alignment: input2.alignment,
         texture_quality: input2.quality
@@ -91770,7 +91925,7 @@ var postprocessOperations = {
   "texture.pbr": {
     category: "postprocess",
     consumesCredits: true,
-    description: "Generate PBR material maps for an already-textured project.",
+    description: "Generate separate PBR material maps (Normal, Roughness and Metallic) for an already color-textured project, preserving its geometry and color textures. Smart Mesh stage 3 of 3: white mesh \u2192 color textures \u2192 PBR maps. If color textures already exist and only PBR is missing, call this tool directly on that project's project_id; do not regenerate the model or color textures. Wait for success, then export/download and verify the actual channels, including packed maps. A PBR material with scalar factors alone does not prove PBR maps exist.",
     inputShape: { project_id: projectId, submit: external_exports.boolean().optional() },
     internalKind: "pbr",
     title: "Generate PBR maps",
@@ -100417,7 +100572,7 @@ var wbytes = function(d6, b9, v3) {
 function deflateSync(data, opts) {
   return dopt(data, opts || {}, 0, 0);
 }
-function inflateSync(data, opts) {
+function inflateSync2(data, opts) {
   return inflt(data, { i: 2 }, opts && opts.out, opts && opts.dictionary);
 }
 var fltn = function(d6, p5, t8, o3) {
@@ -100667,7 +100822,7 @@ function unzipSync(data, opts) {
       if (!c_2)
         files[fn] = slc(data, b9, b9 + sc);
       else if (c_2 == 8)
-        files[fn] = inflateSync(data.subarray(b9, b9 + sc), { out: new u8(su) });
+        files[fn] = inflateSync2(data.subarray(b9, b9 + sc), { out: new u8(su) });
       else
         err(14, "unknown compression type " + c_2);
     }
@@ -101079,7 +101234,7 @@ var studioExtraOperations = {
 };
 
 // src/server.mjs
-import { readFile as readFile15 } from "node:fs/promises";
+import { readFile as readFile15, stat as stat11 } from "node:fs/promises";
 import path23 from "node:path";
 import { fileURLToPath as fileURLToPath2 } from "node:url";
 
@@ -101104,7 +101259,15 @@ function fail2(error113) {
 function summarize(value) {
   if (value?.review) {
     const r7 = value.review;
-    return `\u914D\u7F6E\u5361\u7247 ${r7.review_id}\uFF1A${r7.status}\u3002${value.task?.task_id ? `\u4EFB\u52A1 ID\uFF1A${value.task.task_id}` : "\u5C1A\u672A\u63D0\u4EA4\u751F\u6210\u4EFB\u52A1\uFF1B\u901A\u8FC7\u5361\u7247\u6807\u8BC6\u67E5\u8BE2\u5F53\u524D\u914D\u7F6E\u4E0E\u63D0\u4EA4\u72B6\u6001\u3002"}`;
+    const prefix = `\u914D\u7F6E\u5361\u7247 ${r7.review_id}\uFF1A${r7.status}\u3002`;
+    const follow = `\u7EE7\u7EED\u8C03\u7528 tripo_get_configuration_review({review_id:"${r7.review_id}",wait_ms:60000}) \u7B49\u5F85\u5E76\u8BFB\u53D6\u6700\u65B0\u72B6\u6001\uFF1B\u4ECD\u4E3A pending/submitting \u65F6\u7EE7\u7EED\u7B49\u5F85\uFF0C\u4E0D\u8981\u63D0\u524D\u7ED3\u675F\u3002\u65E0\u9700\u4EE3\u70B9\u8868\u5355\u3001\u5F00\u653E\u76F4\u63A5\u63D0\u4EA4\u63A5\u53E3\u6216\u91CD\u65B0\u521B\u5EFA\u4EFB\u52A1\u3002`;
+    if (r7.status === "pending" && r7.auto_submit !== false) return prefix + (Number.isFinite(r7.deadline_at) ? "\u6B63\u5728\u7B49\u5F85\u914D\u7F6E\u8868\u5355\u7684 60 \u79D2\u81EA\u52A8\u63D0\u4EA4\uFF1B\u7528\u6237\u7F16\u8F91\u4F1A\u6682\u505C\uFF0C\u4FDD\u5B58\u540E\u76F4\u63A5\u63D0\u4EA4\u3002" : "\u6B63\u5728\u7B49\u5F85\u914D\u7F6E\u8868\u5355\u663E\u793A\uFF1B\u663E\u793A\u540E 60 \u79D2\u81EA\u52A8\u63D0\u4EA4\u3002\u8FD9\u662F\u6B63\u5E38\u7B49\u5F85\u72B6\u6001\uFF0C\u4E0D\u662F\u63D0\u4EA4\u80FD\u529B\u7F3A\u5931\u3002") + follow;
+    if (r7.status === "submitting") return prefix + "\u6B63\u5728\u4E0A\u4F20\u6216\u7B49\u5F85\u63D0\u4EA4\u56DE\u6267\uFF1B\u5C1A\u65E0\u6700\u7EC8\u4EFB\u52A1 ID \u4E0D\u4EE3\u8868\u672A\u53D1\u8D77\u63D0\u4EA4\u3002" + follow;
+    if (r7.status === "editing") return prefix + "\u7528\u6237\u6B63\u5728\u4FEE\u6539\u914D\u7F6E\uFF0C\u81EA\u52A8\u63D0\u4EA4\u5DF2\u6682\u505C\uFF1B\u4FDD\u5B58\u6821\u9A8C\u901A\u8FC7\u540E\u76F4\u63A5\u63D0\u4EA4\u3002\u7B49\u5F85\u7528\u6237\u4FDD\u5B58\u6216\u53D6\u6D88\uFF0C\u4E0D\u8981\u7ED5\u8FC7\u8868\u5355\u6216\u91CD\u590D\u521B\u5EFA\u4EFB\u52A1\u3002";
+    if (r7.status === "submitted") return prefix + (value.task?.task_id ? `\u5DF2\u63D0\u4EA4\u3002\u4EFB\u52A1 ID\uFF1A${value.task.task_id}\uFF1B\u7EE7\u7EED\u67E5\u8BE2/\u7B49\u5F85\u8FD9\u4E2A\u4EFB\u52A1\u7684\u751F\u6210\u7ED3\u679C\u3002` : "\u5DF2\u63D0\u4EA4\uFF0C\u7EE7\u7EED\u67E5\u8BE2\u5F53\u524D\u5361\u7247\u83B7\u53D6\u6700\u7EC8\u4EFB\u52A1 ID\u3002");
+    if (r7.status === "failed") return prefix + `\u63D0\u4EA4\u5931\u8D25\uFF1A${r7.error?.message ?? "\u8BF7\u67E5\u770B\u4EFB\u52A1\u9519\u8BEF\u3002"} \u4E0D\u8981\u81EA\u52A8\u91CD\u8BD5\u751F\u6210\u3002`;
+    if (r7.status === "canceled") return prefix + "\u7528\u6237\u5DF2\u53D6\u6D88\uFF0C\u505C\u6B62\u7B49\u5F85\uFF0C\u4E0D\u8981\u63D0\u4EA4\u6216\u91CD\u65B0\u521B\u5EFA\u4EFB\u52A1\u3002";
+    return prefix + "\u7B49\u5F85\u7528\u6237\u5728\u73B0\u6709\u914D\u7F6E\u8868\u5355\u4E2D\u786E\u8BA4\u63D0\u4EA4\uFF0C\u4E0D\u8981\u91CD\u590D\u521B\u5EFA\u4EFB\u52A1\u3002";
   }
   if (value?.download?.path) return `\u4E0B\u8F7D\u5B8C\u6210\uFF0C\u6587\u4EF6\u5DF2\u4FDD\u5B58\u5230 ${value.download.path}\u3002${value.download.blender_error ? "Blender \u517C\u5BB9\u5904\u7406\u5931\u8D25\uFF0C\u8BF7\u67E5\u770B\u5361\u7247\u4E2D\u7684\u63D0\u793A\u3002" : ""}`;
   if (value?.quote) {
@@ -101351,8 +101514,8 @@ import path10 from "node:path";
 
 // node_modules/three/examples/jsm/libs/meshopt_decoder.module.js
 var MeshoptDecoder = (function() {
-  var wasm_base = "b9H79Tebbbe8Fv9Gbb9Gvuuuuueu9Giuuub9Geueu9Giuuueuikqbeeedddillviebeoweuec:q:Odkr;leDo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbeY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVbdE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbiL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtblK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949Wbol79IV9Rbrq;w8Wqdbk;esezu8Jjjjjbcj;eb9Rgv8Kjjjjbc9:hodnadcefal0mbcuhoaiRbbc:Ge9hmbavaialfgrad9Radz1jjjbhwcj;abad9Uc;WFbGgocjdaocjd6EhDaicefhocbhqdnindndndnaeaq9nmbaDaeaq9RaqaDfae6Egkcsfglcl4cifcd4hxalc9WGgmTmecbhPawcjdfhsaohzinaraz9Rax6mvarazaxfgo9RcK6mvczhlcbhHinalgic9WfgOawcj;cbffhldndndndndnazaOco4fRbbaHcoG4ciGPlbedibkal9cb83ibalcwf9cb83ibxikalaoRblaoRbbgOco4gAaAciSgAE86bbawcj;cbfaifglcGfaoclfaAfgARbbaOcl4ciGgCaCciSgCE86bbalcVfaAaCfgARbbaOcd4ciGgCaCciSgCE86bbalc7faAaCfgARbbaOciGgOaOciSgOE86bbalctfaAaOfgARbbaoRbegOco4gCaCciSgCE86bbalc91faAaCfgARbbaOcl4ciGgCaCciSgCE86bbalc4faAaCfgARbbaOcd4ciGgCaCciSgCE86bbalc93faAaCfgARbbaOciGgOaOciSgOE86bbalc94faAaOfgARbbaoRbdgOco4gCaCciSgCE86bbalc95faAaCfgARbbaOcl4ciGgCaCciSgCE86bbalc96faAaCfgARbbaOcd4ciGgCaCciSgCE86bbalc97faAaCfgARbbaOciGgOaOciSgOE86bbalc98faAaOfgORbbaoRbigoco4gAaAciSgAE86bbalc99faOaAfgORbbaocl4ciGgAaAciSgAE86bbalc9:faOaAfgORbbaocd4ciGgAaAciSgAE86bbalcufaOaAfglRbbaociGgoaociSgoE86bbalaofhoxdkalaoRbwaoRbbgOcl4gAaAcsSgAE86bbawcj;cbfaifglcGfaocwfaAfgARbbaOcsGgOaOcsSgOE86bbalcVfaAaOfgORbbaoRbegAcl4gCaCcsSgCE86bbalc7faOaCfgORbbaAcsGgAaAcsSgAE86bbalctfaOaAfgORbbaoRbdgAcl4gCaCcsSgCE86bbalc91faOaCfgORbbaAcsGgAaAcsSgAE86bbalc4faOaAfgORbbaoRbigAcl4gCaCcsSgCE86bbalc93faOaCfgORbbaAcsGgAaAcsSgAE86bbalc94faOaAfgORbbaoRblgAcl4gCaCcsSgCE86bbalc95faOaCfgORbbaAcsGgAaAcsSgAE86bbalc96faOaAfgORbbaoRbvgAcl4gCaCcsSgCE86bbalc97faOaCfgORbbaAcsGgAaAcsSgAE86bbalc98faOaAfgORbbaoRbogAcl4gCaCcsSgCE86bbalc99faOaCfgORbbaAcsGgAaAcsSgAE86bbalc9:faOaAfgORbbaoRbrgocl4gAaAcsSgAE86bbalcufaOaAfglRbbaocsGgoaocsSgoE86bbalaofhoxekalao8Pbb83bbalcwfaocwf8Pbb83bbaoczfhokdnaiam9pmbaHcdfhHaiczfhlarao9RcL0mekkaiam6mvaoTmvdnakTmbawaPfRbbhHawcj;cbfhlashiakhOinaialRbbgzce4cbazceG9R7aHfgH86bbaiadfhialcefhlaOcufgOmbkkascefhsaohzaPcefgPad9hmbxikkcbc99arao9Radcaadca0ESEhoxlkaoaxad2fhCdnakmbadhlinaoTmlarao9Rax6mlaoaxfhoalcufglmbkaChoxekcbhmawcjdfhAinarao9Rax6miawamfRbbhHawcj;cbfhlaAhiakhOinaialRbbgzce4cbazceG9R7aHfgH86bbaiadfhialcefhlaOcufgOmbkaAcefhAaoaxfhoamcefgmad9hmbkaChokabaqad2fawcjdfakad2z1jjjb8Aawawcjdfakcufad2fadz1jjjb8Aakaqfhqaombkc9:hoxekc9:hokavcj;ebf8Kjjjjbaok;cseHu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnaeci9UgrcHfal0mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgwce0mbavc;abfcFecjez:jjjjb8AavcUf9cu83ibavc8Wf9cu83ibavcyf9cu83ibavcaf9cu83ibavcKf9cu83ibavczf9cu83ibav9cu83iwav9cu83ibaialfc9WfhDaicefgqarfhidnaeTmbcmcsawceSEhkcbhxcbhmcbhPcbhwcbhlindnaiaD9nmbc9:hoxikdndnaqRbbgoc;Ve0mbavc;abfalaocu7gscl4fcsGcitfgzydlhrazydbhzdnaocsGgHak9pmbavawasfcsGcdtfydbaxaHEhoaHThsdndnadcd9hmbabaPcetfgHaz87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHazBdbaHcwfaoBdbaHclfarBdbkaxasfhxcdhHavawcdtfaoBdbawasfhwcehsalhOxdkdndnaHcsSmbaHc987aHamffcefhoxekaicefhoai8SbbgHcFeGhsdndnaHcu9mmbaohixekaicvfhiascFbGhscrhHdninao8SbbgOcFbGaHtasVhsaOcu9kmeaocefhoaHcrfgHc8J9hmbxdkkaocefhikasce4cbasceG9R7amfhokdndnadcd9hmbabaPcetfgHaz87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHazBdbaHcwfaoBdbaHclfarBdbkcdhHavawcdtfaoBdbcehsawcefhwalhOaohmxekdnaocpe0mbaxcefgHavawaDaocsGfRbbgocl49RcsGcdtfydbaocz6gzEhravawao9RcsGcdtfydbaHazfgAaocsGgHEhoaHThCdndnadcd9hmbabaPcetfgHax87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHaxBdbaHcwfaoBdbaHclfarBdbkcdhsavawcdtfaxBdbavawcefgwcsGcdtfarBdbcihHavc;abfalcitfgOaxBdlaOarBdbavawazfgwcsGcdtfaoBdbalcefcsGhOawaCfhwaxhzaAaCfhxxekaxcbaiRbbgOEgzaoc;:eSgHfhraOcsGhCaOcl4hAdndnaOcs0mbarcefhoxekarhoavawaA9RcsGcdtfydbhrkdndnaCmbaocefhxxekaohxavawaO9RcsGcdtfydbhokdndnaHTmbaicefhHxekaicdfhHai8SbegscFeGhzdnascu9kmbaicofhXazcFbGhzcrhidninaH8SbbgscFbGaitazVhzascu9kmeaHcefhHaicrfgic8J9hmbkaXhHxekaHcefhHkazce4cbazceG9R7amfgmhzkdndnaAcsSmbaHhsxekaHcefhsaH8SbbgicFeGhrdnaicu9kmbaHcvfhXarcFbGhrcrhidninas8SbbgHcFbGaitarVhraHcu9kmeascefhsaicrfgic8J9hmbkaXhsxekascefhskarce4cbarceG9R7amfgmhrkdndnaCcsSmbashixekascefhias8SbbgocFeGhHdnaocu9kmbascvfhXaHcFbGhHcrhodninai8SbbgscFbGaotaHVhHascu9kmeaicefhiaocrfgoc8J9hmbkaXhixekaicefhikaHce4cbaHceG9R7amfgmhokdndnadcd9hmbabaPcetfgHaz87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHazBdbaHcwfaoBdbaHclfarBdbkcdhsavawcdtfazBdbavawcefgwcsGcdtfarBdbcihHavc;abfalcitfgXazBdlaXarBdbavawaOcz6aAcsSVfgwcsGcdtfaoBdbawaCTaCcsSVfhwalcefcsGhOkaqcefhqavc;abfaOcitfgOarBdlaOaoBdbavc;abfalasfcsGcitfgraoBdlarazBdbawcsGhwalaHfcsGhlaPcifgPae6mbkkcbc99aiaDSEhokavc;aef8Kjjjjbaok:flevu8Jjjjjbcz9Rhvc9:hodnaecvfal0mbcuhoaiRbbc;:eGc;qe9hmbav9cb83iwaicefhraialfc98fhwdnaeTmbdnadcdSmbcbhDindnaraw6mbc9:skarcefhoar8SbbglcFeGhidndnalcu9mmbaohrxekarcvfhraicFbGhicrhldninao8SbbgdcFbGaltaiVhiadcu9kmeaocefhoalcrfglc8J9hmbxdkkaocefhrkabaDcdtfaic8Etc8F91aicd47avcwfaiceGcdtVgoydbfglBdbaoalBdbaDcefgDae9hmbxdkkcbhDindnaraw6mbc9:skarcefhoar8SbbglcFeGhidndnalcu9mmbaohrxekarcvfhraicFbGhicrhldninao8SbbgdcFbGaltaiVhiadcu9kmeaocefhoalcrfglc8J9hmbxdkkaocefhrkabaDcetfaic8Etc8F91aicd47avcwfaiceGcdtVgoydbfgl87ebaoalBdbaDcefgDae9hmbkkcbc99arawSEhokaok:Lvoeue99dud99eud99dndnadcl9hmbaeTmeindndnabcdfgd8Sbb:Yab8Sbbgi:Ygl:l:tabcefgv8Sbbgo:Ygr:l:tgwJbb;:9cawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai86bbdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad86bbdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad86bbabclfhbaecufgembxdkkaeTmbindndnabclfgd8Ueb:Yab8Uebgi:Ygl:l:tabcdfgv8Uebgo:Ygr:l:tgwJb;:FSawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai87ebdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad87ebdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad87ebabcwfhbaecufgembkkk;oiliui99iue99dnaeTmbcbhiabhlindndnJ;Zl81Zalcof8UebgvciV:Y:vgoal8Ueb:YNgrJb;:FSNJbbbZJbbb:;arJbbbb9GEMgw:lJbbb9p9DTmbaw:OhDxekcjjjj94hDkalclf8Uebhqalcdf8UebhkabaiavcefciGfcetfaD87ebdndnaoak:YNgwJb;:FSNJbbbZJbbb:;awJbbbb9GEMgx:lJbbb9p9DTmbax:OhDxekcjjjj94hDkabaiavciGfgkcd7cetfaD87ebdndnaoaq:YNgoJb;:FSNJbbbZJbbb:;aoJbbbb9GEMgx:lJbbb9p9DTmbax:OhDxekcjjjj94hDkabaiavcufciGfcetfaD87ebdndnJbbjZararN:tawawN:taoaoN:tgrJbbbbarJbbbb9GE:rJb;:FSNJbbbZMgr:lJbbb9p9DTmbar:Ohvxekcjjjj94hvkabakcetfav87ebalcwfhlaiclfhiaecufgembkkk9mbdnadcd4ae2gdTmbinababydbgecwtcw91:Yaece91cjjj98Gcjjj;8if::NUdbabclfhbadcufgdmbkkk9teiucbcbydj1jjbgeabcifc98GfgbBdj1jjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaik;LeeeudndnaeabVciGTmbabhixekdndnadcz9pmbabhixekabhiinaiaeydbBdbaiclfaeclfydbBdbaicwfaecwfydbBdbaicxfaecxfydbBdbaeczfheaiczfhiadc9Wfgdcs0mbkkadcl6mbinaiaeydbBdbaeclfheaiclfhiadc98fgdci0mbkkdnadTmbinaiaeRbb86bbaicefhiaecefheadcufgdmbkkabk;aeedudndnabciGTmbabhixekaecFeGc:b:c:ew2hldndnadcz9pmbabhixekabhiinaialBdbaicxfalBdbaicwfalBdbaiclfalBdbaiczfhiadc9Wfgdcs0mbkkadcl6mbinaialBdbaiclfhiadc98fgdci0mbkkdnadTmbinaiae86bbaicefhiadcufgdmbkkabkkkebcjwklzNbb";
-  var wasm_simd = "b9H79TebbbeKl9Gbb9Gvuuuuueu9Giuuub9Geueuikqbbebeedddilve9Weeeviebeoweuec:q:6dkr;leDo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbdY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVblE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtboK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbrL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949Wbwl79IV9RbDq:p9sqlbzik9:evu8Jjjjjbcz9Rhbcbheincbhdcbhiinabcwfadfaicjuaead4ceGglE86bbaialfhiadcefgdcw9hmbkaec:q:yjjbfai86bbaecitc:q1jjbfab8Piw83ibaecefgecjd9hmbkk:N8JlHud97euo978Jjjjjbcj;kb9Rgv8Kjjjjbc9:hodnadcefal0mbcuhoaiRbbc:Ge9hmbavaialfgrad9Rad;8qbbcj;abad9UhlaicefhodnaeTmbadTmbalc;WFbGglcjdalcjd6EhwcbhDinawaeaD9RaDawfae6Egqcsfglc9WGgkci2hxakcethmalcl4cifcd4hPabaDad2fhsakc;ab6hzcbhHincbhOaohAdndninaraA9RaP6meavcj;cbfaOak2fhCaAaPfhocbhidnazmbarao9Rc;Gb6mbcbhlinaCalfhidndndndndnaAalco4fRbbgXciGPlbedibkaipxbbbbbbbbbbbbbbbbpklbxikaiaopbblaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLgQcdp:meaQpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogLpxiiiiiiiiiiiiiiiip8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spklbaoclfaYpQbfaKc:q:yjjbfRbbfhoxdkaiaopbbwaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogLpxssssssssssssssssp8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spklbaocwfaYpQbfaKc:q:yjjbfRbbfhoxekaiaopbbbpklbaoczfhokdndndndndnaXcd4ciGPlbedibkaipxbbbbbbbbbbbbbbbbpklzxikaiaopbblaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLgQcdp:meaQpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogLpxiiiiiiiiiiiiiiiip8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spklzaoclfaYpQbfaKc:q:yjjbfRbbfhoxdkaiaopbbwaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogLpxssssssssssssssssp8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spklzaocwfaYpQbfaKc:q:yjjbfRbbfhoxekaiaopbbbpklzaoczfhokdndndndndnaXcl4ciGPlbedibkaipxbbbbbbbbbbbbbbbbpklaxikaiaopbblaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLgQcdp:meaQpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogLpxiiiiiiiiiiiiiiiip8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spklaaoclfaYpQbfaKc:q:yjjbfRbbfhoxdkaiaopbbwaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogLpxssssssssssssssssp8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spklaaocwfaYpQbfaKc:q:yjjbfRbbfhoxekaiaopbbbpklaaoczfhokdndndndndnaXco4Plbedibkaipxbbbbbbbbbbbbbbbbpkl8WxikaiaopbblaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLgQcdp:meaQpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogLpxiiiiiiiiiiiiiiiip8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgXcitc:q1jjbfpbibaXc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgXcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spkl8WaoclfaYpQbfaXc:q:yjjbfRbbfhoxdkaiaopbbwaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogLpxssssssssssssssssp8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgXcitc:q1jjbfpbibaXc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgXcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spkl8WaocwfaYpQbfaXc:q:yjjbfRbbfhoxekaiaopbbbpkl8Waoczfhokalc;abfhialcjefak0meaihlarao9Rc;Fb0mbkkdnaiak9pmbaici4hlinarao9RcK6miaCaifhXdndndndndnaAaico4fRbbalcoG4ciGPlbedibkaXpxbbbbbbbbbbbbbbbbpkbbxikaXaopbblaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLgQcdp:meaQpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogLpxiiiiiiiiiiiiiiiip8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spkbbaoclfaYpQbfaKc:q:yjjbfRbbfhoxdkaXaopbbwaopbbbgQclp:meaQpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogLpxssssssssssssssssp8JgQp5b9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibaKc:q:yjjbfpbbbgYaYpmbbbbbbbbbbbbbbbbaQp5e9cjF;8;4;W;G;ab9:9cU1:NgKcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPaLaQp9spkbbaocwfaYpQbfaKc:q:yjjbfRbbfhoxekaXaopbbbpkbbaoczfhokalcdfhlaiczfgiak6mbkkaoTmeaohAaOcefgOclSmdxbkkc9:hoxlkdnakTmbavcjdfaHfhiavaHfpbdbhYcbhXinaiavcj;cbfaXfglpblbgLcep9TaLpxeeeeeeeeeeeeeeeegQp9op9Hp9rgLalakfpblbg8Acep9Ta8AaQp9op9Hp9rg8ApmbzeHdOiAlCvXoQrLgEalamfpblbg3cep9Ta3aQp9op9Hp9rg3alaxfpblbg5cep9Ta5aQp9op9Hp9rg5pmbzeHdOiAlCvXoQrLg8EpmbezHdiOAlvCXorQLgQaQpmbedibedibedibediaYp9UgYp9AdbbaiadfglaYaQaQpmlvorlvorlvorlvorp9UgYp9AdbbaladfglaYaQaQpmwDqkwDqkwDqkwDqkp9UgYp9AdbbaladfglaYaQaQpmxmPsxmPsxmPsxmPsp9UgYp9AdbbaladfglaYaEa8EpmwDKYqk8AExm35Ps8E8FgQaQpmbedibedibedibedip9UgYp9AdbbaladfglaYaQaQpmlvorlvorlvorlvorp9UgYp9AdbbaladfglaYaQaQpmwDqkwDqkwDqkwDqkp9UgYp9AdbbaladfglaYaQaQpmxmPsxmPsxmPsxmPsp9UgYp9AdbbaladfglaYaLa8ApmwKDYq8AkEx3m5P8Es8FgLa3a5pmwKDYq8AkEx3m5P8Es8Fg8ApmbezHdiOAlvCXorQLgQaQpmbedibedibedibedip9UgYp9AdbbaladfglaYaQaQpmlvorlvorlvorlvorp9UgYp9AdbbaladfglaYaQaQpmwDqkwDqkwDqkwDqkp9UgYp9AdbbaladfglaYaQaQpmxmPsxmPsxmPsxmPsp9UgYp9AdbbaladfglaYaLa8ApmwDKYqk8AExm35Ps8E8FgQaQpmbedibedibedibedip9UgYp9AdbbaladfglaYaQaQpmlvorlvorlvorlvorp9UgYp9AdbbaladfglaYaQaQpmwDqkwDqkwDqkwDqkp9UgYp9AdbbaladfglaYaQaQpmxmPsxmPsxmPsxmPsp9UgYp9AdbbaladfhiaXczfgXak6mbkkaHclfgHad6mbkasavcjdfaqad2;8qbbavavcjdfaqcufad2fad;8qbbaqaDfgDae6mbkkcbc99arao9Radcaadca0ESEhokavcj;kbf8Kjjjjbaokwbz:bjjjbk::seHu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnaeci9UgrcHfal0mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgwce0mbavc;abfcFecje;8kbavcUf9cu83ibavc8Wf9cu83ibavcyf9cu83ibavcaf9cu83ibavcKf9cu83ibavczf9cu83ibav9cu83iwav9cu83ibaialfc9WfhDaicefgqarfhidnaeTmbcmcsawceSEhkcbhxcbhmcbhPcbhwcbhlindnaiaD9nmbc9:hoxikdndnaqRbbgoc;Ve0mbavc;abfalaocu7gscl4fcsGcitfgzydlhrazydbhzdnaocsGgHak9pmbavawasfcsGcdtfydbaxaHEhoaHThsdndnadcd9hmbabaPcetfgHaz87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHazBdbaHcwfaoBdbaHclfarBdbkaxasfhxcdhHavawcdtfaoBdbawasfhwcehsalhOxdkdndnaHcsSmbaHc987aHamffcefhoxekaicefhoai8SbbgHcFeGhsdndnaHcu9mmbaohixekaicvfhiascFbGhscrhHdninao8SbbgOcFbGaHtasVhsaOcu9kmeaocefhoaHcrfgHc8J9hmbxdkkaocefhikasce4cbasceG9R7amfhokdndnadcd9hmbabaPcetfgHaz87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHazBdbaHcwfaoBdbaHclfarBdbkcdhHavawcdtfaoBdbcehsawcefhwalhOaohmxekdnaocpe0mbaxcefgHavawaDaocsGfRbbgocl49RcsGcdtfydbaocz6gzEhravawao9RcsGcdtfydbaHazfgAaocsGgHEhoaHThCdndnadcd9hmbabaPcetfgHax87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHaxBdbaHcwfaoBdbaHclfarBdbkcdhsavawcdtfaxBdbavawcefgwcsGcdtfarBdbcihHavc;abfalcitfgOaxBdlaOarBdbavawazfgwcsGcdtfaoBdbalcefcsGhOawaCfhwaxhzaAaCfhxxekaxcbaiRbbgOEgzaoc;:eSgHfhraOcsGhCaOcl4hAdndnaOcs0mbarcefhoxekarhoavawaA9RcsGcdtfydbhrkdndnaCmbaocefhxxekaohxavawaO9RcsGcdtfydbhokdndnaHTmbaicefhHxekaicdfhHai8SbegscFeGhzdnascu9kmbaicofhXazcFbGhzcrhidninaH8SbbgscFbGaitazVhzascu9kmeaHcefhHaicrfgic8J9hmbkaXhHxekaHcefhHkazce4cbazceG9R7amfgmhzkdndnaAcsSmbaHhsxekaHcefhsaH8SbbgicFeGhrdnaicu9kmbaHcvfhXarcFbGhrcrhidninas8SbbgHcFbGaitarVhraHcu9kmeascefhsaicrfgic8J9hmbkaXhsxekascefhskarce4cbarceG9R7amfgmhrkdndnaCcsSmbashixekascefhias8SbbgocFeGhHdnaocu9kmbascvfhXaHcFbGhHcrhodninai8SbbgscFbGaotaHVhHascu9kmeaicefhiaocrfgoc8J9hmbkaXhixekaicefhikaHce4cbaHceG9R7amfgmhokdndnadcd9hmbabaPcetfgHaz87ebaHclfao87ebaHcdfar87ebxekabaPcdtfgHazBdbaHcwfaoBdbaHclfarBdbkcdhsavawcdtfazBdbavawcefgwcsGcdtfarBdbcihHavc;abfalcitfgXazBdlaXarBdbavawaOcz6aAcsSVfgwcsGcdtfaoBdbawaCTaCcsSVfhwalcefcsGhOkaqcefhqavc;abfaOcitfgOarBdlaOaoBdbavc;abfalasfcsGcitfgraoBdlarazBdbawcsGhwalaHfcsGhlaPcifgPae6mbkkcbc99aiaDSEhokavc;aef8Kjjjjbaok:flevu8Jjjjjbcz9Rhvc9:hodnaecvfal0mbcuhoaiRbbc;:eGc;qe9hmbav9cb83iwaicefhraialfc98fhwdnaeTmbdnadcdSmbcbhDindnaraw6mbc9:skarcefhoar8SbbglcFeGhidndnalcu9mmbaohrxekarcvfhraicFbGhicrhldninao8SbbgdcFbGaltaiVhiadcu9kmeaocefhoalcrfglc8J9hmbxdkkaocefhrkabaDcdtfaic8Etc8F91aicd47avcwfaiceGcdtVgoydbfglBdbaoalBdbaDcefgDae9hmbxdkkcbhDindnaraw6mbc9:skarcefhoar8SbbglcFeGhidndnalcu9mmbaohrxekarcvfhraicFbGhicrhldninao8SbbgdcFbGaltaiVhiadcu9kmeaocefhoalcrfglc8J9hmbxdkkaocefhrkabaDcetfaic8Etc8F91aicd47avcwfaiceGcdtVgoydbfgl87ebaoalBdbaDcefgDae9hmbkkcbc99arawSEhokaok:wPliuo97eue978Jjjjjbca9Rhiaec98Ghldndnadcl9hmbdnalTmbcbhvabhdinadadpbbbgocKp:RecKp:Sep;6egraocwp:RecKp:Sep;6earp;Geaoczp:RecKp:Sep;6egwp;Gep;Kep;LegDpxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgkp9op9rp;Kegrpxbb;:9cbb;:9cbb;:9cbb;:9cararp;MeaDaDp;Meawaqawakp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFbbbFbbbFbbbFbbbp9oaopxbbbFbbbFbbbFbbbFp9op9qarawp;Meaqp;Kecwp:RepxbFbbbFbbbFbbbFbbp9op9qaDawp;Meaqp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qpkbbadczfhdavclfgval6mbkkalaeSmeaipxbbbbbbbbbbbbbbbbgqpklbaiabalcdtfgdaeciGglcdtgv;8qbbdnalTmbaiaipblbgocKp:RecKp:Sep;6egraocwp:RecKp:Sep;6earp;Geaoczp:RecKp:Sep;6egwp;Gep;Kep;LegDaqp:2egqarpxbbbjbbbjbbbjbbbjgkp9op9rp;Kegrpxbb;:9cbb;:9cbb;:9cbb;:9cararp;MeaDaDp;Meawaqawakp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFbbbFbbbFbbbFbbbp9oaopxbbbFbbbFbbbFbbbFp9op9qarawp;Meaqp;Kecwp:RepxbFbbbFbbbFbbbFbbp9op9qaDawp;Meaqp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qpklbkadaiav;8qbbskdnalTmbcbhvabhdinadczfgxaxpbbbgopxbbbbbbFFbbbbbbFFgkp9oadpbbbgDaopmbediwDqkzHOAKY8AEgwczp:Reczp:Sep;6egraDaopmlvorxmPsCXQL358E8FpxFubbFubbFubbFubbp9op;6eawczp:Sep;6egwp;Gearp;Gep;Kep;Legopxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgmp9op9rp;Kegrpxb;:FSb;:FSb;:FSb;:FSararp;Meaoaop;Meawaqawamp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFFbbFFbbFFbbFFbbp9oaoawp;Meaqp;Keczp:Rep9qgoarawp;Meaqp;KepxFFbbFFbbFFbbFFbbp9ogrpmwDKYqk8AExm35Ps8E8Fp9qpkbbadaDakp9oaoarpmbezHdiOAlvCXorQLp9qpkbbadcafhdavclfgval6mbkkalaeSmbaiaeciGgvcitgdfcbcaad9R;8kbaiabalcitfglad;8qbbdnavTmbaiaipblzgopxbbbbbbFFbbbbbbFFgkp9oaipblbgDaopmbediwDqkzHOAKY8AEgwczp:Reczp:Sep;6egraDaopmlvorxmPsCXQL358E8FpxFubbFubbFubbFubbp9op;6eawczp:Sep;6egwp;Gearp;Gep;Kep;Legopxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgmp9op9rp;Kegrpxb;:FSb;:FSb;:FSb;:FSararp;Meaoaop;Meawaqawamp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFFbbFFbbFFbbFFbbp9oaoawp;Meaqp;Keczp:Rep9qgoarawp;Meaqp;KepxFFbbFFbbFFbbFFbbp9ogrpmwDKYqk8AExm35Ps8E8Fp9qpklzaiaDakp9oaoarpmbezHdiOAlvCXorQLp9qpklbkalaiad;8qbbkk;4wllue97euv978Jjjjjbc8W9Rhidnaec98GglTmbcbhvabhoinaiaopbbbgraoczfgwpbbbgDpmlvorxmPsCXQL358E8Fgqczp:Segkclp:RepklbaopxbbjZbbjZbbjZbbjZpx;Zl81Z;Zl81Z;Zl81Z;Zl81Zakpxibbbibbbibbbibbbp9qp;6ep;NegkaraDpmbediwDqkzHOAKY8AEgrczp:Reczp:Sep;6ep;MegDaDp;Meakarczp:Sep;6ep;Megxaxp;Meakaqczp:Reczp:Sep;6ep;Megqaqp;Mep;Kep;Kep;Lepxbbbbbbbbbbbbbbbbp:4ep;Jepxb;:FSb;:FSb;:FSb;:FSgkp;Mepxbbn0bbn0bbn0bbn0grp;KepxFFbbFFbbFFbbFFbbgmp9oaxakp;Mearp;Keczp:Rep9qgxaDakp;Mearp;Keamp9oaqakp;Mearp;Keczp:Rep9qgkpmbezHdiOAlvCXorQLgrp5baipblbpEb:T:j83ibaocwfarp5eaipblbpEe:T:j83ibawaxakpmwDKYqk8AExm35Ps8E8Fgkp5baipblbpEd:T:j83ibaocKfakp5eaipblbpEi:T:j83ibaocafhoavclfgval6mbkkdnalaeSmbaiaeciGgvcitgofcbcaao9R;8kbaiabalcitfgwao;8qbbdnavTmbaiaipblbgraipblzgDpmlvorxmPsCXQL358E8Fgqczp:Segkclp:RepklaaipxbbjZbbjZbbjZbbjZpx;Zl81Z;Zl81Z;Zl81Z;Zl81Zakpxibbbibbbibbbibbbp9qp;6ep;NegkaraDpmbediwDqkzHOAKY8AEgrczp:Reczp:Sep;6ep;MegDaDp;Meakarczp:Sep;6ep;Megxaxp;Meakaqczp:Reczp:Sep;6ep;Megqaqp;Mep;Kep;Kep;Lepxbbbbbbbbbbbbbbbbp:4ep;Jepxb;:FSb;:FSb;:FSb;:FSgkp;Mepxbbn0bbn0bbn0bbn0grp;KepxFFbbFFbbFFbbFFbbgmp9oaxakp;Mearp;Keczp:Rep9qgxaDakp;Mearp;Keamp9oaqakp;Mearp;Keczp:Rep9qgkpmbezHdiOAlvCXorQLgrp5baipblapEb:T:j83ibaiarp5eaipblapEe:T:j83iwaiaxakpmwDKYqk8AExm35Ps8E8Fgkp5baipblapEd:T:j83izaiakp5eaipblapEi:T:j83iKkawaiao;8qbbkk:Pddiue978Jjjjjbc;ab9Rhidnadcd4ae2glc98GgvTmbcbheabhdinadadpbbbgocwp:Recwp:Sep;6eaocep:SepxbbjFbbjFbbjFbbjFp9opxbbjZbbjZbbjZbbjZp:Uep;Mepkbbadczfhdaeclfgeav6mbkkdnavalSmbaialciGgecdtgdVcbc;abad9R;8kbaiabavcdtfgvad;8qbbdnaeTmbaiaipblbgocwp:Recwp:Sep;6eaocep:SepxbbjFbbjFbbjFbbjFp9opxbbjZbbjZbbjZbbjZp:Uep;Mepklbkavaiad;8qbbkk9teiucbcbydj1jjbgeabcifc98GfgbBdj1jjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaikkkebcjwklz:Dbb";
+  var wasm_base = "b9H79Tebbbe8Fv9Gbb9Gvuuuuueu9Giuuub9Geueu9Giuuueuixkbeeeddddillviebeoweuec:W:Odkr;Neqo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbeY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVbdE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbiL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtblK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949WboY9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVJ9V29VVbrl79IV9Rbwq;lZkdbk;jYi5ud9:du8Jjjjjbcj;kb9Rgv8Kjjjjbc9:hodnalTmbcuhoaiRbbgrc;WeGc:Ge9hmbarcsGgwce0mbc9:hoalcufadcd4cbawEgDadfgrcKcaawEgqaraq0Egk6mbaicefhxcj;abad9Uc;WFbGcjdadca0EhmaialfgPar9Rgoadfhsavaoadz:jjjjbgzceVhHcbhOdndninaeaO9nmeaPax9RaD6mdamaeaO9RaOamfgoae6EgAcsfglc9WGhCabaOad2fhXaAcethQaxaDfhiaOaeaoaeao6E9RhLalcl4cifcd4hKazcj;cbfaAfhYcbh8AazcjdfhEaHh3incbhodnawTmbaxa8Acd4fRbbhokaocFeGh5cbh8Eazcj;cbfhqinaih8Fdndndndna5a8Ecet4ciGgoc9:fPdebdkaPa8F9RaA6mrazcj;cbfa8EaA2fa8FaAz:jjjjb8Aa8FaAfhixdkazcj;cbfa8EaA2fcbaAz:kjjjb8Aa8FhixekaPa8F9RaK6mva8FaKfhidnaCTmbaPai9RcK6mbaocdtc:q1jjbfcj1jjbawEhaczhrcbhlinargoc9Wfghaqfhrdndndndndndnaaa8Fahco4fRbbalcoG4ciGcdtfydbPDbedvivvvlvkar9cb83bbarcwf9cb83bbxlkarcbaiRbdai8Xbb9c:c:qj:bw9:9c:q;c1:I1e:d9c:b:c:e1z9:gg9cjjjjjz:dg8J9qE86bbaqaofgrcGfag9c8F1:NghcKtc8F91aicdfa8J9c8N1:Nfg8KRbbG86bbarcVfcba8KahcjeGcr4fghRbbag9cjjjjjl:dg8J9qE86bbarc7fcbaha8J9c8L1:NfghRbbag9cjjjjjd:dg8J9qE86bbarctfcbaha8J9c8K1:NfghRbbag9cjjjjje:dg8J9qE86bbarc91fcbaha8J9c8J1:NfghRbbag9cjjjj;ab:dg8J9qE86bbarc4fcbaha8J9cg1:NfghRbbag9cjjjja:dg8J9qE86bbarc93fcbaha8J9ch1:NfghRbbag9cjjjjz:dgg9qE86bbarc94fcbahag9ca1:NfghRbbai8Xbe9c:c:qj:bw9:9c:q;c1:I1e:d9c:b:c:e1z9:gg9cjjjjjz:dg8J9qE86bbarc95fag9c8F1:NgicKtc8F91aha8J9c8N1:NfghRbbG86bbarc96fcbahaicjeGcr4fgiRbbag9cjjjjjl:dg8J9qE86bbarc97fcbaia8J9c8L1:NfgiRbbag9cjjjjjd:dg8J9qE86bbarc98fcbaia8J9c8K1:NfgiRbbag9cjjjjje:dg8J9qE86bbarc99fcbaia8J9c8J1:NfgiRbbag9cjjjj;ab:dg8J9qE86bbarc9:fcbaia8J9cg1:NfgiRbbag9cjjjja:dg8J9qE86bbarcufcbaia8J9ch1:NfgiRbbag9cjjjjz:dgg9qE86bbaiag9ca1:NfhixikaraiRblaiRbbghco4g8Ka8KciSg8KE86bbaqaofgrcGfaiclfa8Kfg8KRbbahcl4ciGg8La8LciSg8LE86bbarcVfa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc7fa8Ka8Lfg8KRbbahciGghahciSghE86bbarctfa8Kahfg8KRbbaiRbeghco4g8La8LciSg8LE86bbarc91fa8Ka8Lfg8KRbbahcl4ciGg8La8LciSg8LE86bbarc4fa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc93fa8Ka8Lfg8KRbbahciGghahciSghE86bbarc94fa8Kahfg8KRbbaiRbdghco4g8La8LciSg8LE86bbarc95fa8Ka8Lfg8KRbbahcl4ciGg8La8LciSg8LE86bbarc96fa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc97fa8Ka8Lfg8KRbbahciGghahciSghE86bbarc98fa8KahfghRbbaiRbigico4g8Ka8KciSg8KE86bbarc99faha8KfghRbbaicl4ciGg8Ka8KciSg8KE86bbarc9:faha8KfghRbbaicd4ciGg8Ka8KciSg8KE86bbarcufaha8KfgrRbbaiciGgiaiciSgiE86bbaraifhixdkaraiRbwaiRbbghcl4g8Ka8KcsSg8KE86bbaqaofgrcGfaicwfa8Kfg8KRbbahcsGghahcsSghE86bbarcVfa8KahfghRbbaiRbeg8Kcl4g8La8LcsSg8LE86bbarc7faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarctfaha8KfghRbbaiRbdg8Kcl4g8La8LcsSg8LE86bbarc91faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc4faha8KfghRbbaiRbig8Kcl4g8La8LcsSg8LE86bbarc93faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc94faha8KfghRbbaiRblg8Kcl4g8La8LcsSg8LE86bbarc95faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc96faha8KfghRbbaiRbvg8Kcl4g8La8LcsSg8LE86bbarc97faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc98faha8KfghRbbaiRbog8Kcl4g8La8LcsSg8LE86bbarc99faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc9:faha8KfghRbbaiRbrgicl4g8Ka8KcsSg8KE86bbarcufaha8KfgrRbbaicsGgiaicsSgiE86bbaraifhixekarai8Pbb83bbarcwfaicwf8Pbb83bbaiczfhikdnaoaC9pmbalcdfhlaoczfhraPai9RcL0mekkaoaC6moaimexokaCmva8FTmvkaqaAfhqa8Ecefg8Ecl9hmbkdndndndnawTmbasa8Acd4fRbbgociGPlbedrbkaATmdaza8Afh8Fazcj;cbfhhcbh8EaEhaina8FRbbhraahocbhlinaoahalfRbbgqce4cbaqceG9R7arfgr86bbaoadfhoaAalcefgl9hmbkaacefhaa8Fcefh8FahaAfhha8Ecefg8Ecl9hmbxikkaATmeaza8Afhaazcj;cbfhhcbhoceh8EaYh8FinaEaofhlaa8Vbbhrcbhoinala8FaofRbbcwtahaofRbbgqVc;:FiGce4cbaqceG9R7arfgr87bbaladfhlaLaocefgofmbka8FaQfh8FcdhoaacdfhaahaQfhha8EceGhlcbh8EalmbxdkkaATmbcbaocl49Rh8Eaza8AfRbbhqcwhoa3hlinalRbbaotaqVhqalcefhlaocwfgoca9hmbkcbhhaEh8FaYhainazcj;cbfahfRbbhrcwhoaahlinalRbbaotarVhralaAfhlaocwfgoca9hmbkara8E93aq7hqcbhoa8Fhlinalaqao486bbalcefhlaocwfgoca9hmbka8Fadfh8FaacefhaahcefghaA9hmbkkaEclfhEa3clfh3a8Aclfg8Aad6mbkaXazcjdfaAad2z:jjjjb8AazazcjdfaAcufad2fadz:jjjjb8AaAaOfhOaihxaimbkc9:hoxdkcbc99aPax9RakSEhoxekc9:hokavcj;kbf8Kjjjjbaok:XseHu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnaeci9UgrcHfal0mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgDce0mbavc;abfcFecjez:kjjjb8AavcUf9cu83ibavc8Wf9cu83ibavcyf9cu83ibavcaf9cu83ibavcKf9cu83ibavczf9cu83ibav9cu83iwav9cu83ibaialfc9WfhqaicefgwarfhldnaeTmbcmcsaDceSEhkcbhxcbhmcbhrcbhicbhoindnalaq9nmbc9:hoxikdndnawRbbgDc;Ve0mbavc;abfaoaDcu7gPcl4fcsGcitfgsydlhzasydbhHdndnaDcsGgsak9pmbavaiaPfcsGcdtfydbaxasEhDaxasTgOfhxxekdndnascsSmbcehOasc987asamffcefhDxekalcefhDal8SbbgscFeGhPdndnascu9mmbaDhlxekalcvfhlaPcFbGhPcrhsdninaD8SbbgOcFbGastaPVhPaOcu9kmeaDcefhDascrfgsc8J9hmbxdkkaDcefhlkcehOaPce4cbaPceG9R7amfhDkaDhmkavc;abfaocitfgsaDBdbasazBdlavaicdtfaDBdbavc;abfaocefcsGcitfgsaHBdbasaDBdlaocdfhoaOaifhidnadcd9hmbabarcetfgsaH87ebasclfaD87ebascdfaz87ebxdkabarcdtfgsaHBdbascwfaDBdbasclfazBdbxekdnaDcpe0mbaxcefgOavaiaqaDcsGfRbbgscl49RcsGcdtfydbascz6gPEhDavaias9RcsGcdtfydbaOaPfgzascsGgOEhsaOThOdndnadcd9hmbabarcetfgHax87ebaHclfas87ebaHcdfaD87ebxekabarcdtfgHaxBdbaHcwfasBdbaHclfaDBdbkavaicdtfaxBdbavc;abfaocitfgHaDBdbaHaxBdlavaicefgicsGcdtfaDBdbavc;abfaocefcsGcitfgHasBdbaHaDBdlavaiaPfgicsGcdtfasBdbavc;abfaocdfcsGcitfgDaxBdbaDasBdlaocifhoaiaOfhiazaOfhxxekaxcbalRbbgHEgAaDc;:eSgDfhzaHcsGhCaHcl4hXdndnaHcs0mbazcefhOxekazhOavaiaX9RcsGcdtfydbhzkdndnaCmbaOcefhxxekaOhxavaiaH9RcsGcdtfydbhOkdndnaDTmbalcefhDxekalcdfhDal8SbegPcFeGhsdnaPcu9kmbalcofhAascFbGhscrhldninaD8SbbgPcFbGaltasVhsaPcu9kmeaDcefhDalcrfglc8J9hmbkaAhDxekaDcefhDkasce4cbasceG9R7amfgmhAkdndnaXcsSmbaDhsxekaDcefhsaD8SbbglcFeGhPdnalcu9kmbaDcvfhzaPcFbGhPcrhldninas8SbbgDcFbGaltaPVhPaDcu9kmeascefhsalcrfglc8J9hmbkazhsxekascefhskaPce4cbaPceG9R7amfgmhzkdndnaCcsSmbashlxekascefhlas8SbbgDcFeGhPdnaDcu9kmbascvfhOaPcFbGhPcrhDdninal8SbbgscFbGaDtaPVhPascu9kmealcefhlaDcrfgDc8J9hmbkaOhlxekalcefhlkaPce4cbaPceG9R7amfgmhOkdndnadcd9hmbabarcetfgDaA87ebaDclfaO87ebaDcdfaz87ebxekabarcdtfgDaABdbaDcwfaOBdbaDclfazBdbkavc;abfaocitfgDazBdbaDaABdlavaicdtfaABdbavc;abfaocefcsGcitfgDaOBdbaDazBdlavaicefgicsGcdtfazBdbavc;abfaocdfcsGcitfgDaABdbaDaOBdlavaiaHcz6aXcsSVfgicsGcdtfaOBdbaiaCTaCcsSVfhiaocifhokawcefhwaocsGhoaicsGhiarcifgrae6mbkkcbc99alaqSEhokavc;aef8Kjjjjbaok:clevu8Jjjjjbcz9Rhvdnaecvfal9nmbc9:skdnaiRbbc;:eGc;qeSmbcuskav9cb83iwaicefhoaialfc98fhrdnaeTmbdnadcdSmbcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcdtfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgiBdbalaiBdbawcefgwae9hmbxdkkcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcetfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgi87ebalaiBdbawcefgwae9hmbkkcbc99aoarSEk:Lvoeue99dud99eud99dndnadcl9hmbaeTmeindndnabcdfgd8Sbb:Yab8Sbbgi:Ygl:l:tabcefgv8Sbbgo:Ygr:l:tgwJbb;:9cawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai86bbdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad86bbdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad86bbabclfhbaecufgembxdkkaeTmbindndnabclfgd8Ueb:Yab8Uebgi:Ygl:l:tabcdfgv8Uebgo:Ygr:l:tgwJb;:FSawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai87ebdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad87ebdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad87ebabcwfhbaecufgembkkk::ioiue99dud99dud99dnaeTmbcbhiabhlindndnal8Uebgv:YgoJ:ji:1Salcof8UebgrciVgw:Y:vgDNJbbbZJbbb:;avcu9kEMgq:lJbbb9p9DTmbaq:Ohkxekcjjjj94hkkalclf8Uebhvalcdf8UebhxabaiarcefciGfcetfak87ebdndnax:YgqaDNJbbbZJbbb:;axcu9kEMgm:lJbbb9p9DTmbam:Ohxxekcjjjj94hxkabaiarciGfgkcd7cetfax87ebdndnav:YgmaDNJbbbZJbbb:;avcu9kEMgP:lJbbb9p9DTmbaP:Ohvxekcjjjj94hvkabaiarcufciGfcetfav87ebdndnawaw2:ZgPaPMaoaoN:taqaqN:tamamN:tgoJbbbbaoJbbbb9GE:raDNJbbbZMgD:lJbbb9p9DTmbaD:Ohrxekcjjjj94hrkabakcetfar87ebalcwfhlaiclfhiaecufgembkkk9mbdnadcd4ae2gdTmbinababydbgecwtcw91:Yaece91cjjj98Gcjjj;8if::NUdbabclfhbadcufgdmbkkk:Tvirud99eudndnadcl9hmbaeTmeindndnabRbbgiabcefgl8Sbbgvabcdfgo8Sbbgrf9R:YJbbuJabcifgwRbbgdce4adVgDcd4aDVgDcl4aDVgD:Z:vgqNJbbbZMgk:lJbbb9p9DTmbak:Ohxxekcjjjj94hxkaoax86bbdndnaraif:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohoxekcjjjj94hokalao86bbdndnavaifar9R:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohixekcjjjj94hikabai86bbdndnaDadcetGadceGV:ZaqNJbbbZMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkawad86bbabclfhbaecufgembxdkkaeTmbindndnab8Vebgiabcdfgl8Uebgvabclfgo8Uebgrf9R:YJbFu9habcofgw8Vebgdce4adVgDcd4aDVgDcl4aDVgDcw4aDVgD:Z:vgqNJbbbZMgk:lJbbb9p9DTmbak:Ohxxekcjjjj94hxkaoax87ebdndnaraif:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohoxekcjjjj94hokalao87ebdndnavaifar9R:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohixekcjjjj94hikabai87ebdndnaDadcetGadceGV:ZaqNJbbbZMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkawad87ebabcwfhbaecufgembkkk9teiucbcbyd:K1jjbgeabcifc98GfgbBd:K1jjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaik;teeeudndnaeabVciGTmbabhixekdndnadcz9pmbabhixekabhiinaiaeydbBdbaiaeydlBdlaiaeydwBdwaiaeydxBdxaeczfheaiczfhiadc9Wfgdcs0mbkkadcl6mbinaiaeydbBdbaeclfheaiclfhiadc98fgdci0mbkkdnadTmbinaiaeRbb86bbaicefhiaecefheadcufgdmbkkabk:3eedudndnabciGTmbabhixekaecFeGc:b:c:ew2hldndnadcz9pmbabhixekabhiinaialBdxaialBdwaialBdlaialBdbaiczfhiadc9Wfgdcs0mbkkadcl6mbinaialBdbaiclfhiadc98fgdci0mbkkdnadTmbinaiae86bbaicefhiadcufgdmbkkabkk81dbcjwk8Kbbbbdbbblbbbwbbbbbbbebbbdbbblbbbwbbbbc:Kwkl8WNbb";
+  var wasm_simd = "b9H79TebbbeKl9Gbb9Gvuuuuueu9Giuuub9Geueuixkbbebeeddddilve9Weeeviebeoweuec:q:6dkr;Neqo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbdY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVblE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtboK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbrL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949WbwY9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVJ9V29VVbDl79IV9Rbqq:Ctklbzik9:evu8Jjjjjbcz9Rhbcbheincbhdcbhiinabcwfadfaicjuaead4ceGglE86bbaialfhiadcefgdcw9hmbkaec:q:yjjbfai86bbaecitc:q1jjbfab8Piw83ibaecefgecjd9hmbkk:183lYud97dur978Jjjjjbcj;kb9Rgv8Kjjjjbc9:hodnalTmbcuhoaiRbbgrc;WeGc:Ge9hmbarcsGgwce0mbc9:hoalcufadcd4cbawEgDadfgrcKcaawEgqaraq0Egk6mbaicefhxavaialfgmar9Rgoad;8qbbcj;abad9Uc;WFbGcjdadca0EhPdndndnadTmbaoadfhscbhzinaeaz9nmdamax9RaD6miabazad2fhHaxaDfhOaPaeaz9RazaPfae6EgAcsfgocl4cifcd4hCavcj;cbfaoc9WGgXcetfhQavcj;cbfaXci2fhLavcj;cbfaXfhKcbhYaoc;ab6h8AincbhodnawTmbaxaYcd4fRbbhokaocFeGhEcbh3avcj;cbfh5indndndndnaEa3cet4ciGgoc9:fPdebdkamaO9RaX6mwavcj;cbfa3aX2faOaX;8qbbaOaAfhOxdkavcj;cbfa3aX2fcbaX;8kbxekamaO9RaC6moaoclVcbawEhraOaCfhocbhidna8Ambamao9Rc;Gb6mbcbhlina5alfhidndndndndndnaOalco4fRbbgqciGarfPDbedibledibkaipxbbbbbbbbbbbbbbbbpklbxlkaiaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaoclffahc:q:yjjbfRbbfhoxikaiaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaocwffahc:q:yjjbfRbbfhoxdkaiaopbbbpklbaoczfhoxekaiaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaaaocdffahc:q:yjjbfRbbfhokdndndndndndnaqcd4ciGarfPDbedibledibkaiczfpxbbbbbbbbbbbbbbbbpklbxlkaiczfaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaoclffahc:q:yjjbfRbbfhoxikaiczfaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaocwffahc:q:yjjbfRbbfhoxdkaiczfaopbbbpklbaoczfhoxekaiczfaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaaaocdffahc:q:yjjbfRbbfhokdndndndndndnaqcl4ciGarfPDbedibledibkaicafpxbbbbbbbbbbbbbbbbpklbxlkaicafaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaoclffahc:q:yjjbfRbbfhoxikaicafaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaocwffahc:q:yjjbfRbbfhoxdkaicafaopbbbpklbaoczfhoxekaicafaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaaaocdffahc:q:yjjbfRbbfhokdndndndndndnaqco4arfPDbedibledibkaic8Wfpxbbbbbbbbbbbbbbbbpklbxlkaic8Wfaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngicitc:q1jjbfpbibaic:q:yjjbfRbbgipsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Ngqcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaiaoclffaqc:q:yjjbfRbbfhoxikaic8Wfaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngicitc:q1jjbfpbibaic:q:yjjbfRbbgipsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Ngqcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaiaocwffaqc:q:yjjbfRbbfhoxdkaic8Wfaopbbbpklbaoczfhoxekaic8WfaopbbdaoRbbgicitc:q1jjbfpbibaic:q:yjjbfRbbgipsaoRbegqcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaiaocdffaqc:q:yjjbfRbbfhokalc;abfhialcjefaX0meaihlamao9Rc;Fb0mbkkdnaiaX9pmbaici4hlinamao9RcK6mwa5aifhqdndndndndndnaOaico4fRbbalcoG4ciGarfPDbedibledibkaqpxbbbbbbbbbbbbbbbbpkbbxlkaqaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spkbbaaaoclffahc:q:yjjbfRbbfhoxikaqaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spkbbaaaocwffahc:q:yjjbfRbbfhoxdkaqaopbbbpkbbaoczfhoxekaqaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpkbbaaaocdffahc:q:yjjbfRbbfhokalcdfhlaiczfgiaX6mbkkaohOaoTmoka5aXfh5a3cefg3cl9hmbkdndndndnawTmbasaYcd4fRbbglciGPlbedwbkaXTmdavcjdfaYfhlavaYfpbdbhgcbhoinalavcj;cbfaofpblbg8JaKaofpblbg8KpmbzeHdOiAlCvXoQrLg8LaQaofpblbg8MaLaofpblbg8NpmbzeHdOiAlCvXoQrLgypmbezHdiOAlvCXorQLg8Ecep9Ta8Epxeeeeeeeeeeeeeeeeg8Fp9op9Hp9rg8Eagp9Uggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp9Uggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp9Uggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9Abbbaladfglaga8LaypmwDKYqk8AExm35Ps8E8Fg8Ecep9Ta8Ea8Fp9op9Hp9rg8Ep9Uggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp9Uggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp9Uggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9Abbbaladfglaga8Ja8KpmwKDYq8AkEx3m5P8Es8Fg8Ja8Ma8NpmwKDYq8AkEx3m5P8Es8Fg8KpmbezHdiOAlvCXorQLg8Ecep9Ta8Ea8Fp9op9Hp9rg8Ep9Uggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp9Uggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp9Uggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9Abbbaladfglaga8Ja8KpmwDKYqk8AExm35Ps8E8Fg8Ecep9Ta8Ea8Fp9op9Hp9rg8Ep9Ug8Fp9Abbbaladfgla8Fa8Ea8Epmlvorlvorlvorlvorp9Ug8Fp9Abbbaladfgla8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9Ug8Fp9Abbbaladfgla8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9AbbbaladfhlaoczfgoaX6mbxikkaXTmeavcjdfaYfhlavaYfpbdbhgcbhoinalavcj;cbfaofpblbg8JaKaofpblbg8KpmbzeHdOiAlCvXoQrLg8LaQaofpblbg8MaLaofpblbg8NpmbzeHdOiAlCvXoQrLgypmbezHdiOAlvCXorQLg8Ecep:nea8Epxebebebebebebebebg8Fp9op:bep9rg8Eagp:oeggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp:oeggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp:oeggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9Abbbaladfglaga8LaypmwDKYqk8AExm35Ps8E8Fg8Ecep:nea8Ea8Fp9op:bep9rg8Ep:oeggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp:oeggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp:oeggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9Abbbaladfglaga8Ja8KpmwKDYq8AkEx3m5P8Es8Fg8Ja8Ma8NpmwKDYq8AkEx3m5P8Es8Fg8KpmbezHdiOAlvCXorQLg8Ecep:nea8Ea8Fp9op:bep9rg8Ep:oeggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp:oeggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp:oeggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9Abbbaladfglaga8Ja8KpmwDKYqk8AExm35Ps8E8Fg8Ecep:nea8Ea8Fp9op:bep9rg8Ep:oeg8Fp9Abbbaladfgla8Fa8Ea8Epmlvorlvorlvorlvorp:oeg8Fp9Abbbaladfgla8Fa8Ea8EpmwDqkwDqkwDqkwDqkp:oeg8Fp9Abbbaladfgla8Fa8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9AbbbaladfhlaoczfgoaX6mbxdkkaXTmbcbhocbalcl4gl9Rc8FGhiavcjdfaYfhravaYfpbdbh8Finaravcj;cbfaofpblbggaKaofpblbg8JpmbzeHdOiAlCvXoQrLg8KaQaofpblbg8LaLaofpblbg8MpmbzeHdOiAlCvXoQrLg8NpmbezHdiOAlvCXorQLg8Eaip:Rea8Ealp:Sep9qg8Ea8Fp9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9Abbbaradfgra8Fa8Ka8NpmwDKYqk8AExm35Ps8E8Fg8Eaip:Rea8Ealp:Sep9qg8Ep9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9Abbbaradfgra8Faga8JpmwKDYq8AkEx3m5P8Es8Fgga8La8MpmwKDYq8AkEx3m5P8Es8Fg8JpmbezHdiOAlvCXorQLg8Eaip:Rea8Ealp:Sep9qg8Ep9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9Abbbaradfgra8Faga8JpmwDKYqk8AExm35Ps8E8Fg8Eaip:Rea8Ealp:Sep9qg8Ep9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9AbbbaradfhraoczfgoaX6mbkkaYclfgYad6mbkaHavcjdfaAad2;8qbbavavcjdfaAcufad2fad;8qbbaAazfhzc9:hoaOhxaOmbxlkkaeTmbaDalfhrcbhocuhlinaralaD9RglfaD6mdaPaeao9RaoaPfae6Eaofgoae6mbkaial9Rhxkcbc99amax9RakSEhoxekc9:hokavcj;kbf8Kjjjjbaokwbz:bjjjbk:TseHu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnaeci9UgrcHfal0mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgDce0mbavc;abfcFecje;8kbavcUf9cu83ibavc8Wf9cu83ibavcyf9cu83ibavcaf9cu83ibavcKf9cu83ibavczf9cu83ibav9cu83iwav9cu83ibaialfc9WfhqaicefgwarfhldnaeTmbcmcsaDceSEhkcbhxcbhmcbhrcbhicbhoindnalaq9nmbc9:hoxikdndnawRbbgDc;Ve0mbavc;abfaoaDcu7gPcl4fcsGcitfgsydlhzasydbhHdndnaDcsGgsak9pmbavaiaPfcsGcdtfydbaxasEhDaxasTgOfhxxekdndnascsSmbcehOasc987asamffcefhDxekalcefhDal8SbbgscFeGhPdndnascu9mmbaDhlxekalcvfhlaPcFbGhPcrhsdninaD8SbbgOcFbGastaPVhPaOcu9kmeaDcefhDascrfgsc8J9hmbxdkkaDcefhlkcehOaPce4cbaPceG9R7amfhDkaDhmkavc;abfaocitfgsaDBdbasazBdlavaicdtfaDBdbavc;abfaocefcsGcitfgsaHBdbasaDBdlaocdfhoaOaifhidnadcd9hmbabarcetfgsaH87ebasclfaD87ebascdfaz87ebxdkabarcdtfgsaHBdbascwfaDBdbasclfazBdbxekdnaDcpe0mbaxcefgOavaiaqaDcsGfRbbgscl49RcsGcdtfydbascz6gPEhDavaias9RcsGcdtfydbaOaPfgzascsGgOEhsaOThOdndnadcd9hmbabarcetfgHax87ebaHclfas87ebaHcdfaD87ebxekabarcdtfgHaxBdbaHcwfasBdbaHclfaDBdbkavaicdtfaxBdbavc;abfaocitfgHaDBdbaHaxBdlavaicefgicsGcdtfaDBdbavc;abfaocefcsGcitfgHasBdbaHaDBdlavaiaPfgicsGcdtfasBdbavc;abfaocdfcsGcitfgDaxBdbaDasBdlaocifhoaiaOfhiazaOfhxxekaxcbalRbbgHEgAaDc;:eSgDfhzaHcsGhCaHcl4hXdndnaHcs0mbazcefhOxekazhOavaiaX9RcsGcdtfydbhzkdndnaCmbaOcefhxxekaOhxavaiaH9RcsGcdtfydbhOkdndnaDTmbalcefhDxekalcdfhDal8SbegPcFeGhsdnaPcu9kmbalcofhAascFbGhscrhldninaD8SbbgPcFbGaltasVhsaPcu9kmeaDcefhDalcrfglc8J9hmbkaAhDxekaDcefhDkasce4cbasceG9R7amfgmhAkdndnaXcsSmbaDhsxekaDcefhsaD8SbbglcFeGhPdnalcu9kmbaDcvfhzaPcFbGhPcrhldninas8SbbgDcFbGaltaPVhPaDcu9kmeascefhsalcrfglc8J9hmbkazhsxekascefhskaPce4cbaPceG9R7amfgmhzkdndnaCcsSmbashlxekascefhlas8SbbgDcFeGhPdnaDcu9kmbascvfhOaPcFbGhPcrhDdninal8SbbgscFbGaDtaPVhPascu9kmealcefhlaDcrfgDc8J9hmbkaOhlxekalcefhlkaPce4cbaPceG9R7amfgmhOkdndnadcd9hmbabarcetfgDaA87ebaDclfaO87ebaDcdfaz87ebxekabarcdtfgDaABdbaDcwfaOBdbaDclfazBdbkavc;abfaocitfgDazBdbaDaABdlavaicdtfaABdbavc;abfaocefcsGcitfgDaOBdbaDazBdlavaicefgicsGcdtfazBdbavc;abfaocdfcsGcitfgDaABdbaDaOBdlavaiaHcz6aXcsSVfgicsGcdtfaOBdbaiaCTaCcsSVfhiaocifhokawcefhwaocsGhoaicsGhiarcifgrae6mbkkcbc99alaqSEhokavc;aef8Kjjjjbaok:clevu8Jjjjjbcz9Rhvdnaecvfal9nmbc9:skdnaiRbbc;:eGc;qeSmbcuskav9cb83iwaicefhoaialfc98fhrdnaeTmbdnadcdSmbcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcdtfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgiBdbalaiBdbawcefgwae9hmbxdkkcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcetfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgi87ebalaiBdbawcefgwae9hmbkkcbc99aoarSEk:2Pliur97eue978Jjjjjbc8W9Rhiaec98Ghldndnadcl9hmbdnalTmbcbhvabhdinadadpbbbgocKp:RecKp:Sep;6egraocwp:RecKp:Sep;6earp;Geaoczp:RecKp:Sep;6egwp;Gep;Kep;LegDpxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgkp9op9rp;Kegrpxbb;:9cbb;:9cbb;:9cbb;:9cararp;MeaDaDp;Meawaqawakp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFbbbFbbbFbbbFbbbp9oaopxbbbFbbbFbbbFbbbFp9op9qarawp;Meaqp;Kecwp:RepxbFbbbFbbbFbbbFbbp9op9qaDawp;Meaqp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qpkbbadczfhdavclfgval6mbkkalaeSmeaipxbbbbbbbbbbbbbbbbgqpklbaiabalcdtfgdaeciGglcdtgv;8qbbdnalTmbaiaipblbgocKp:RecKp:Sep;6egraocwp:RecKp:Sep;6earp;Geaoczp:RecKp:Sep;6egwp;Gep;Kep;LegDaqp:2egqarpxbbbjbbbjbbbjbbbjgkp9op9rp;Kegrpxbb;:9cbb;:9cbb;:9cbb;:9cararp;MeaDaDp;Meawaqawakp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFbbbFbbbFbbbFbbbp9oaopxbbbFbbbFbbbFbbbFp9op9qarawp;Meaqp;Kecwp:RepxbFbbbFbbbFbbbFbbp9op9qaDawp;Meaqp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qpklbkadaiav;8qbbskaipxFubbFubbFubbFubbgxpklbdnalTmbcbhvabhdinadczfgmampbbbgopxbbbbbbFFbbbbbbFFgkp9oadpbbbgDaopmbediwDqkzHOAKY8AEgwczp:Reczp:Sep;6egraipblbaDaopmlvorxmPsCXQL358E8Fp9op;6eawczp:Sep;6egwp;Gearp;Gep;Kep;Legopxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgPp9op9rp;Kegrpxb;:FSb;:FSb;:FSb;:FSararp;Meaoaop;MeawaqawaPp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFFbbFFbbFFbbFFbbp9oaoawp;Meaqp;Keczp:Rep9qgoarawp;Meaqp;KepxFFbbFFbbFFbbFFbbp9ogrpmwDKYqk8AExm35Ps8E8Fp9qpkbbadaDakp9oaoarpmbezHdiOAlvCXorQLp9qpkbbadcafhdavclfgval6mbkkalaeSmbaiczfpxbbbbbbbbbbbbbbbbgopklbaiaopklbaiabalcitfgdaeciGglcitgv;8qbbaiaxpkladnalTmbaiaipblzgopxbbbbbbFFbbbbbbFFgkp9oaipblbgDaopmbediwDqkzHOAKY8AEgwczp:Reczp:Sep;6egraipblaaDaopmlvorxmPsCXQL358E8Fp9op;6eawczp:Sep;6egwp;Gearp;Gep;Kep;Legopxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgPp9op9rp;Kegrpxb;:FSb;:FSb;:FSb;:FSararp;Meaoaop;MeawaqawaPp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFFbbFFbbFFbbFFbbp9oaoawp;Meaqp;Keczp:Rep9qgoarawp;Meaqp;KepxFFbbFFbbFFbbFFbbp9ogrpmwDKYqk8AExm35Ps8E8Fp9qpklzaiaDakp9oaoarpmbezHdiOAlvCXorQLp9qpklbkadaiav;8qbbkk:Iwllue97euo978Jjjjjbca9Rhidnaec98GglTmbcbhvabhoinaocKfpx:ji:1S:ji:1S:ji:1S:ji:1SaopbbbgraoczfgwpbbbgDpmlvorxmPsCXQL358E8Fgqczp:Segkpxibbbibbbibbbibbbp9qgxp;6ep;Negmaxaxp:1ep;7egxaxp;KearaDpmbediwDqkzHOAKY8AEgxczp:Reczp:Sep;6egrarp;Meaxczp:Sep;6egDaDp;Meaqczp:Reczp:Sep;6egqaqp;Mep;Kep;Kep;Lepxbbbbbbbbbbbbbbbbp:4ep;Jep;Mepxbbn0bbn0bbn0bbn0gxp;KepxFFbbFFbbFFbbFFbbgPp9oamaDp;Meaxp;Keczp:Rep9qgDamarp;Meaxp;KeaPp9oamaqp;Meaxp;Keczp:Rep9qgxpmwDKYqk8AExm35Ps8E8Fgrp5eakclp:RegmpEi:T:j83ibawarp5bampEd:T:j83ibaocwfaDaxpmbezHdiOAlvCXorQLgxp5eampEe:T:j83ibaoaxp5bampEb:T:j83ibaocafhoavclfgval6mbkkdnalaeSmbaiczfpxbbbbbbbbbbbbbbbbgmpklbaiampklbaiabalcitfgoaeciGgvcitgw;8qbbdnavTmbaipx:ji:1S:ji:1S:ji:1S:ji:1SaipblbgraipblzgDpmlvorxmPsCXQL358E8Fgqczp:Segkpxibbbibbbibbbibbbp9qgxp;6ep;Negmaxaxp:1ep;7egxaxp;KearaDpmbediwDqkzHOAKY8AEgxczp:Reczp:Sep;6egrarp;Meaxczp:Sep;6egDaDp;Meaqczp:Reczp:Sep;6egqaqp;Mep;Kep;Kep;Lepxbbbbbbbbbbbbbbbbp:4ep;Jep;Mepxbbn0bbn0bbn0bbn0gxp;KepxFFbbFFbbFFbbFFbbgPp9oamaDp;Meaxp;Keczp:Rep9qgDamarp;Meaxp;KeaPp9oamaqp;Meaxp;Keczp:Rep9qgxpmwDKYqk8AExm35Ps8E8Fgrp5eakclp:RegmpEi:T:j83iKaiarp5bampEd:T:j83izaiaDaxpmbezHdiOAlvCXorQLgxp5eampEe:T:j83iwaiaxp5bampEb:T:j83ibkaoaiaw;8qbbkk;uddiue978Jjjjjbc;ab9Rhidnadcd4ae2glc98GgvTmbcbheabhdinadadpbbbgocwp:Recwp:Sep;6eaocep:SepxbbjFbbjFbbjFbbjFp9opxbbjZbbjZbbjZbbjZp:Uep;Mepkbbadczfhdaeclfgeav6mbkkdnavalSmbaic8WfpxbbbbbbbbbbbbbbbbgopklbaicafaopklbaiczfaopklbaiaopklbaiabavcdtfgdalciGgecdtgv;8qbbdnaeTmbaiaipblbgocwp:Recwp:Sep;6eaocep:SepxbbjFbbjFbbjFbbjFp9opxbbjZbbjZbbjZbbjZp:Uep;Mepklbkadaiav;8qbbkk:CPvdue97euw97eu8Jjjjjbc8W9Rhiaec98Ghldndnadcl9hmbaipxbbbbbbbbbbbbbbbbgvpklbdnalTmbcbhoabhdinadpbbbhradpxbbuJbbuJbbuJbbuJaipblbarcKp:Tep9qgwcep:Seawp9qgDcdp:SeaDp9qgDclp:SeaDp9qgqp;6ep;NegDarcwp:RecKp:SegkarpxFbbbFbbbFbbbFbbbgxp9ogmp:Uep;6ep;Mepxbbn0bbn0bbn0bbn0gPp;Kecwp:RepxbFbbbFbbbFbbbFbbp9oaDamakp:Xearczp:RecKp:Segrp:Uep;6ep;MeaPp;Keaxp9op9qaDamakarp:Uep:Xep;6ep;MeaPp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qaDaqawcep:Rep9oawpxebbbebbbebbbebbbp9op9qp;6ep;MeaPp;KecKp:Rep9qpkbbadczfhdaoclfgoal6mbkkalaeSmeaiavpklaaicafabalcdtfgdaeciGglcdtgo;8qbbaiavpklbdnalTmbaipblahraipxbbuJbbuJbbuJbbuJaipblbarcKp:Tep9qgwcep:Seawp9qgDcdp:SeaDp9qgDclp:SeaDp9qgqp;6ep;NegDarcwp:RecKp:SegkarpxFbbbFbbbFbbbFbbbgxp9ogmp:Uep;6ep;Mepxbbn0bbn0bbn0bbn0gPp;Kecwp:RepxbFbbbFbbbFbbbFbbp9oaDamakp:Xearczp:RecKp:Segrp:Uep;6ep;MeaPp;Keaxp9op9qaDamakarp:Uep:Xep;6ep;MeaPp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qaDaqawcep:Rep9oawpxebbbebbbebbbebbbp9op9qp;6ep;MeaPp;KecKp:Rep9qpklakadaicafao;8qbbskaipxbbbbbbbbbbbbbbbbgvpklbdnalTmbcbhoabhdinadczfgspxbFu9hbFu9hbFu9hbFu9hadpbbbgDaspbbbgPpmlvorxmPsCXQL358E8Fgmczp:Teaipblbp9qgrcep:Searp9qgwcdp:Seawp9qgwclp:Seawp9qgwcwp:Seawp9qgqp;6ep;NegwaDaPpmbediwDqkzHOAKY8AEgDpxFFbbFFbbFFbbFFbbgPp9ogkaDczp:Segxp:Ueamczp:Reczp:Segmp:Xep;6ep;Mepxbbn0bbn0bbn0bbn0gDp;KeaPp9oawakaxamp:Uep:Xep;6ep;MeaDp;Keczp:Rep9qgxawaqarcep:Rep9oarpxebbbebbbebbbebbbp9op9qp;6ep;MeaDp;Keczp:Reawamakp:Uep;6ep;MeaDp;KeaPp9op9qgrpmwDKYqk8AExm35Ps8E8FpkbbadaxarpmbezHdiOAlvCXorQLpkbbadcafhdaoclfgoal6mbkkalaeSmbaiczfpxbbbbbbbbbbbbbbbbgrpklbaiarpklbaiabalcitfgdaeciGglcitgo;8qbbaiavpkladnalTmbaipxbFu9hbFu9hbFu9hbFu9haipblbgDaipblzgPpmlvorxmPsCXQL358E8Fgmczp:Teaipblap9qgrcep:Searp9qgwcdp:Seawp9qgwclp:Seawp9qgwcwp:Seawp9qgqp;6ep;NegwaDaPpmbediwDqkzHOAKY8AEgDpxFFbbFFbbFFbbFFbbgPp9ogkaDczp:Segxp:Ueamczp:Reczp:Segmp:Xep;6ep;Mepxbbn0bbn0bbn0bbn0gDp;KeaPp9oawakaxamp:Uep:Xep;6ep;MeaDp;Keczp:Rep9qgxawaqarcep:Rep9oarpxebbbebbbebbbebbbp9op9qp;6ep;MeaDp;Keczp:Reawamakp:Uep;6ep;MeaDp;KeaPp9op9qgrpmwDKYqk8AExm35Ps8E8FpklzaiaxarpmbezHdiOAlvCXorQLpklbkadaiao;8qbbkk9teiucbcbydj1jjbgeabcifc98GfgbBdj1jjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaikkkebcjwklz:Dbb";
   var detector = new Uint8Array([
     0,
     97,
@@ -101512,7 +101675,8 @@ var MeshoptDecoder = (function() {
     NONE: "",
     OCTAHEDRAL: "meshopt_decodeFilterOct",
     QUATERNION: "meshopt_decodeFilterQuat",
-    EXPONENTIAL: "meshopt_decodeFilterExp"
+    EXPONENTIAL: "meshopt_decodeFilterExp",
+    COLOR: "meshopt_decodeFilterColor"
   };
   var decoders = {
     ATTRIBUTES: "meshopt_decodeVertexBuffer",
@@ -102045,6 +102209,9 @@ function publicTask(record3) {
       width: s2.width ?? null
     })),
     input_summary: redactDeep(record3.input_summary ?? {}),
+    // Preserve the compact summary contract while letting result cards show
+    // the full saved prompt, including tasks staged by earlier versions.
+    ...typeof record3.configuration_input?.prompt === "string" ? { input_prompt: redactDeep(record3.configuration_input.prompt) } : {},
     downloads: record3.downloads ?? []
   };
   return output2;
@@ -102128,6 +102295,8 @@ var OperationService = class {
       events: draft ? [...draft.events, event("draft.settings_saved")] : [event("task.staged")],
       expires_at: new Date(Date.now() + this.#ctx.config.planTtlMs).toISOString(),
       input_summary: inputSummary(parsedInput),
+      // Keep the complete editable input private; the public summary is bounded.
+      configuration_input: validated,
       kind,
       metadata: built.metadata ?? {},
       parent_task_id: grouping.parentTaskId ?? draft?.parent_task_id ?? null,
@@ -104393,9 +104562,42 @@ async function copyLocalArtifact(config3, sourcePath, requestedPath, defaultName
 }
 
 // src/studio/model-download.mjs
+import { open as open6, rename as rename2 } from "node:fs/promises";
+
+// src/util/model-format.mjs
+var FBX_MAGIC = Buffer.from("Kaydara FBX Binary  \0\0", "binary");
+function binaryModelFormat(bytes) {
+  if (bytes.length >= 27 && bytes.subarray(0, 23).equals(FBX_MAGIC) && bytes.readUInt32LE(23) >= 6400) return "fbx";
+  if (bytes.length >= 12 && bytes.toString("ascii", 0, 4) === "glTF") return "glb";
+  return null;
+}
+function nativeModelName(name, url3) {
+  if (!/\.glb$/i.test(name) || !url3) return name;
+  return /\.fbx$/i.test(new URL(url3).pathname) ? name.replace(/\.glb$/i, ".fbx") : name;
+}
+
+// src/studio/model-download.mjs
 async function downloadResolvedArtifact(config3, resolved, requestedPath, fetchImpl = fetch) {
-  const download = resolved.localPath ? await copyLocalArtifact(config3, resolved.localPath, requestedPath, resolved.defaultName) : await downloadArtifact(config3, resolved.url, requestedPath, resolved.defaultName, fetchImpl);
-  if (path19.extname(resolved.defaultName).toLowerCase() === ".glb") {
+  const defaultName = nativeModelName(resolved.defaultName, resolved.url);
+  const download = resolved.localPath ? await copyLocalArtifact(config3, resolved.localPath, requestedPath, defaultName) : await downloadArtifact(config3, resolved.url, requestedPath, defaultName, fetchImpl);
+  if (/\.(glb|fbx)$/i.test(defaultName)) {
+    const file3 = await open6(download.path, "r");
+    let format3;
+    try {
+      const header = Buffer.alloc(27);
+      const { bytesRead } = await file3.read(header, 0, header.length, 0);
+      format3 = binaryModelFormat(header.subarray(0, bytesRead));
+    } finally {
+      await file3.close();
+    }
+    if (format3) download.format = format3;
+    if (format3 === "fbx" && !resolved.localPath && !requestedPath && /\.glb$/i.test(download.path)) {
+      const target = download.path.replace(/\.glb$/i, ".fbx");
+      await rename2(download.path, target);
+      download.path = target;
+    }
+  }
+  if (download.format !== "fbx" && path19.extname(defaultName).toLowerCase() === ".glb") {
     try {
       Object.assign(download, await prepareGlbForBlender(config3, download.path));
     } catch (error113) {
@@ -104501,7 +104703,8 @@ function createWorkbenchMedia(runtime) {
     },
     async preview(input2) {
       if ([input2.project_id, input2.asset_id, input2.task_id, input2.input_id, input2.local_path].filter(Boolean).length !== 1) throw unavailable("\u8BF7\u9009\u62E9\u4E00\u4E2A\u6A21\u578B\u3001\u56FE\u7247\u3001\u4EFB\u52A1\u6216\u5DF2\u4E0B\u8F7D\u6587\u4EF6\u3002");
-      let projectId2 = input2.project_id, assetId = input2.asset_id, operatorId, file3;
+      if (input2.input_slot && (!input2.task_id || input2.type === "model")) throw unavailable("Input previews require a task and an image type.");
+      let projectId2 = input2.project_id, assetId = input2.asset_id, operatorId, file3, bytes;
       const model = input2.type === "model";
       if (input2.local_path) {
         if (!path20.isAbsolute(input2.local_path)) throw unavailable("\u8BF7\u63D0\u4F9B\u5DF2\u4E0B\u8F7D\u6587\u4EF6\u7684\u7EDD\u5BF9\u8DEF\u5F84\u3002");
@@ -104511,24 +104714,43 @@ function createWorkbenchMedia(runtime) {
       if (input2.task_id) {
         const task = await store.get(input2.task_id);
         if (!task.kind.startsWith("local.") && task.account_fingerprint !== await session.accountFingerprint()) throw unavailable("\u4EFB\u52A1\u5C5E\u4E8E\u53E6\u4E00\u4E2A\u8D26\u53F7\u3002");
-        if (task.kind.startsWith("local.") && task.status === "succeeded") {
-          file3 = localArtifact(task, model ? "model" : task.kind === "local.render" ? "render" : task.kind === "local.project_texture" ? "texture" : "image", input2.output_index ?? 0);
-        } else {
-          const result = task.result ?? {};
-          if (model && result.models) {
-            const selected = result.models[input2.output_index ?? 0];
-            if (!selected?.project_id || selected.status !== "succeeded") throw unavailable("\u6240\u9009\u6A21\u578B\u8F93\u51FA\u5C1A\u672A\u5B8C\u6210\u3002");
-            projectId2 = selected.project_id;
-            operatorId = selected.operator_id;
-          } else {
-            projectId2 = result.project_id ?? task.remote?.project_id ?? task.input_summary?.project_id;
-            operatorId = model ? task.remote?.operator_id : void 0;
+        if (input2.input_slot) {
+          const snapshot = task.snapshots?.find((s2) => s2.slot === input2.input_slot && ["png", "jpeg", "jpg", "webp"].includes(s2.format));
+          if (!snapshot) throw unavailable("The task has no image in this input slot.");
+          const source = await verifySnapshot(config3, task.task_id, snapshot);
+          if ((await stat9(source)).size > MAX_IMAGE) throw unavailable("\u6587\u4EF6\u8D85\u8FC7\u4EA4\u4E92\u9884\u89C8\u5927\u5C0F\u9650\u5236\u3002");
+          return imagePayload(await readFile13(source));
+        }
+        const saved = task.status === "succeeded" && (task.downloads ?? []).findLast((download) => {
+          const format3 = (download.format ?? path20.extname(download.path ?? "").slice(1)).toLowerCase();
+          return download.path && (download.output_index ?? 0) === (input2.output_index ?? 0) && (model ? ["glb", "fbx"].includes(format3) && (!download.artifact || download.artifact === "model") : input2.type === "image" && ["png", "jpg", "jpeg", "webp"].includes(format3));
+        });
+        if (saved) {
+          try {
+            bytes = await fromDisk(saved.path, model ? MAX_MODEL : MAX_IMAGE, config3.outputRoots);
+          } catch (error113) {
+            if (error113.code !== "ENOENT") throw error113;
           }
-          assetId = result.asset_id ?? task.remote?.asset_id;
-          if (!projectId2 && !assetId) throw unavailable("\u4EFB\u52A1\u6682\u65F6\u6CA1\u6709\u53EF\u9884\u89C8\u7684\u8F93\u51FA\u3002");
+        }
+        if (!bytes) {
+          if (task.kind.startsWith("local.") && task.status === "succeeded") {
+            file3 = localArtifact(task, model ? "model" : task.kind === "local.render" ? "render" : task.kind === "local.project_texture" ? "texture" : "image", input2.output_index ?? 0);
+          } else {
+            const result = task.result ?? {};
+            if (model && result.models) {
+              const selected = result.models[input2.output_index ?? 0];
+              if (!selected?.project_id || selected.status !== "succeeded") throw unavailable("\u6240\u9009\u6A21\u578B\u8F93\u51FA\u5C1A\u672A\u5B8C\u6210\u3002");
+              projectId2 = selected.project_id;
+              operatorId = selected.operator_id;
+            } else {
+              projectId2 = result.project_id ?? task.remote?.project_id ?? task.input_summary?.project_id;
+              operatorId = model ? task.remote?.operator_id : void 0;
+            }
+            assetId = result.asset_id ?? task.remote?.asset_id;
+            if (!projectId2 && !assetId) throw unavailable("\u4EFB\u52A1\u6682\u65F6\u6CA1\u6709\u53EF\u9884\u89C8\u7684\u8F93\u51FA\u3002");
+          }
         }
       }
-      let bytes;
       if (file3) bytes = await fromDisk(file3, model ? MAX_MODEL : MAX_IMAGE, input2.local_path ? config3.outputRoots : void 0);
       else if (projectId2) {
         const account = await session.accountFingerprint();
@@ -104549,18 +104771,21 @@ function createWorkbenchMedia(runtime) {
       }
       if (!bytes) throw unavailable("\u6CA1\u6709\u53EF\u7528\u9884\u89C8\u3002");
       if (!model) return imagePayload(bytes, input2.type === "image");
+      if (binaryModelFormat(bytes) === "fbx") {
+        return { data_url: `data:model/fbx;base64,${bytes.toString("base64")}`, mime_type: "model/fbx", bytes: bytes.length, part_names: modelNodeNames(bytes).slice(0, 500) };
+      }
       bytes = await decodePreviewGlb(bytes);
-      return { data_url: `data:model/gltf-binary;base64,${bytes.toString("base64")}`, mime_type: "model/gltf-binary", bytes: bytes.length, part_names: glbNodeNames(bytes).slice(0, 500) };
+      return { data_url: `data:model/gltf-binary;base64,${bytes.toString("base64")}`, mime_type: "model/gltf-binary", bytes: bytes.length, part_names: modelNodeNames(bytes).slice(0, 500) };
     }
   };
 }
 function registerWorkbenchMedia(server, media) {
   const meta5 = { ui: { visibility: ["app"] } };
   server.registerTool("tripo_ui_preview", {
-    description: "Workbench-only bounded image or self-contained GLB preview. Signed URLs remain private; bytes go in app metadata only.",
+    description: "Workbench-only bounded image, GLB or binary FBX preview. Signed URLs remain private; bytes go in app metadata only.",
     _meta: meta5,
     annotations: { readOnlyHint: true },
-    inputSchema: { project_id: id2.optional(), asset_id: id2.optional(), task_id: external_exports.string().uuid().optional(), input_id: external_exports.string().uuid().optional(), local_path: external_exports.string().min(1).max(4096).optional().describe("Saved file inside a configured output root; preview the exact downloaded artifact."), output_index: external_exports.number().int().min(0).max(15).default(0), type: external_exports.enum(["thumbnail", "image", "model"]).default("thumbnail") }
+    inputSchema: { project_id: id2.optional(), asset_id: id2.optional(), task_id: external_exports.string().uuid().optional(), input_slot: external_exports.string().min(1).max(100).optional().describe("Preview a retained task input image by snapshot slot, rather than the generated output."), input_id: external_exports.string().uuid().optional(), local_path: external_exports.string().min(1).max(4096).optional().describe("Saved file inside a configured output root; preview the exact downloaded artifact."), output_index: external_exports.number().int().min(0).max(15).default(0), type: external_exports.enum(["thumbnail", "image", "model"]).default("thumbnail") }
   }, async (input2) => {
     try {
       const preview = await media.preview(input2);
@@ -104586,6 +104811,7 @@ function registerWorkbenchMedia(server, media) {
 // src/ui/reviews.mjs
 import path21 from "node:path";
 import { readdir as readdir2, readFile as readFile14, stat as stat10 } from "node:fs/promises";
+import { setTimeout as delay2 } from "node:timers/promises";
 var idPattern = /^[0-9a-f-]{36}$/i;
 var editableStates = /* @__PURE__ */ new Set(["pending", "editing"]);
 var ConfigurationReviews = class {
@@ -104620,7 +104846,7 @@ var ConfigurationReviews = class {
   }
   arm(record3) {
     this.stop(record3.review_id);
-    if (record3.status !== "pending" || !Number.isFinite(record3.deadline_at)) return;
+    if (record3.auto_submit === false || record3.status !== "pending" || !Number.isFinite(record3.deadline_at)) return;
     const timer = this.schedule(() => {
       this.timers.delete(record3.review_id);
       this.action({ review_id: record3.review_id, action: "confirm", automatic: true }).catch(async (error113) => {
@@ -104684,25 +104910,49 @@ var ConfigurationReviews = class {
       visibleTask.draft_id = record3.task_id;
       delete visibleTask.task_id;
     }
+    const { submit, ...visibleInput } = record3.input;
+    const waiting = record3.status === "submitting" || record3.status === "pending" && record3.auto_submit !== false;
+    const nextAction = waiting ? { tool: "tripo_get_configuration_review", arguments: { review_id: record3.review_id, wait_ms: 6e4 }, requires_user_action: false } : record3.status === "submitted" && visibleTask.task_id ? { tool: "tripo_task_wait", arguments: { task_id: visibleTask.task_id, timeout_seconds: 60 }, requires_user_action: false } : editableStates.has(record3.status) ? { tool: "tripo_get_configuration_review", arguments: { review_id: record3.review_id }, requires_user_action: true } : null;
     return { review: {
       review_id: record3.review_id,
       kind: record3.kind,
       status: record3.status,
       revision: record3.revision,
+      auto_submit: record3.auto_submit !== false,
       deadline_at: record3.deadline_at,
       timeout_seconds: this.timeoutMs / 1e3,
-      input: record3.input,
+      input: visibleInput,
       sources: [...task.snapshots?.filter((s2) => ["png", "jpeg", "jpg", "webp"].includes(s2.format)).map((s2) => ({ slot: s2.slot, name: s2.source_name, label: s2.label })) ?? [], ...task.metadata?.studio_inputs?.map((s2) => ({ slot: s2.slot, name: s2.slot, label: s2.slot })) ?? []],
-      schema: external_exports.toJSONSchema(this.schema(record3.kind), { io: "input", unrepresentable: "any" }),
+      schema: external_exports.toJSONSchema(this.schema(record3.kind).omit({ submit: true }), { io: "input", unrepresentable: "any" }),
       quote: task.cost_estimate,
       error: record3.error ?? null
-    }, task: visibleTask };
+    }, task: visibleTask, next_action: nextAction };
   }
-  async create(kind, input2, prepared) {
+  async wait(reviewId, waitMs = 0) {
+    if (!Number.isInteger(waitMs) || waitMs < 0 || waitMs > 6e4) throw new TripoError("INVALID_INPUT", "wait_ms must be an integer from 0 to 60000.");
+    const until = performance.now() + waitMs;
+    let result = await this.action({ review_id: reviewId, action: "get" });
+    while (result.next_action?.requires_user_action === false && ["pending", "submitting"].includes(result.review.status)) {
+      const remaining2 = until - performance.now();
+      if (remaining2 <= 0) break;
+      await delay2(Math.min(500, remaining2));
+      result = await this.action({ review_id: reviewId, action: "get" });
+    }
+    return result;
+  }
+  async create(kind, input2, prepared, { autoSubmit = true } = {}) {
     const id3 = prepared.task.task_id;
     const record3 = await this.lock.withLock(`review-${id3}`, async () => {
       const old = await this.doc(id3).read();
-      if (old) return this.owned(old);
+      if (old) {
+        await this.owned(old);
+        if (old.auto_submit !== false !== autoSubmit && editableStates.has(old.status)) {
+          const updated = { ...old, auto_submit: autoSubmit, deadline_at: null, revision: old.revision + 1 };
+          await this.doc(id3).write(updated);
+          return updated;
+        }
+        return old;
+      }
       const parsed = this.schema(kind).parse({ ...input2, submit: false });
       for (const [key, value] of Object.entries(prepared.task.effective_settings ?? {}))
         if (key in this.schema(kind).shape && parsed[key] === void 0 && value !== void 0) parsed[key] = value;
@@ -104712,6 +104962,7 @@ var ConfigurationReviews = class {
         kind,
         input: parsed,
         account_fingerprint: prepared.task.account_fingerprint,
+        auto_submit: autoSubmit,
         status: "pending",
         revision: 0,
         deadline_at: null
@@ -104722,19 +104973,34 @@ var ConfigurationReviews = class {
     this.arm(record3);
     return { ...prepared, ...await this.output(record3) };
   }
+  async openDraft(id3) {
+    const existing = await this.doc(id3).read();
+    if (existing) return this.output(await this.owned(existing));
+    const task = await this.owned(await this.runtime.store.get(id3));
+    if (task.status !== "staged" || task.dispatch_started_at)
+      throw new TripoError("STAGING_REQUIRED", "\u53EA\u6709\u672A\u63D0\u4EA4\u7684\u8349\u7A3F\u53EF\u4EE5\u6253\u5F00\u914D\u7F6E\u8868\u5355\u3002");
+    const input2 = task.configuration_input ?? task.input_summary;
+    if (!task.configuration_input && Object.values(input2 ?? {}).some((value) => typeof value === "string" && (value.length === 301 && value.endsWith("\u2026") || /^\d+ items$/.test(value))))
+      throw new TripoError("DRAFT_CONFIGURATION_UNAVAILABLE", "\u65E7\u8349\u7A3F\u672A\u4FDD\u5B58\u5B8C\u6574\u8F93\u5165\uFF0C\u53EF\u67E5\u770B\u51BB\u7ED3\u53C2\u6570\uFF0C\u4F46\u65E0\u6CD5\u6062\u590D\u7F16\u8F91\u8868\u5355\u3002");
+    return this.create(task.kind, {
+      ...input2,
+      ...task.character_group ? { character_name: task.character_group.name } : {},
+      ...task.parent_task_id ? { parent_task_id: task.parent_task_id } : {}
+    }, await this.runtime.service.get(id3), { autoSubmit: false });
+  }
   async action({ review_id, action, revision, input: input2, automatic = false }) {
     let dispatch;
     const record3 = await this.lock.withLock(`review-${review_id}`, async () => {
       let r7 = await this.owned(await this.doc(review_id).read());
       if (action === "get") return r7;
-      if (automatic && (r7.status !== "pending" || !Number.isFinite(r7.deadline_at) || r7.deadline_at > this.now())) {
+      if (automatic && (r7.auto_submit === false || r7.status !== "pending" || !Number.isFinite(r7.deadline_at) || r7.deadline_at > this.now())) {
         this.arm(r7);
         return r7;
       }
       if (revision !== void 0 && revision !== r7.revision) throw new TripoError("PLAN_MISMATCH", "\u914D\u7F6E\u5DF2\u66F4\u65B0\uFF0C\u8BF7\u5237\u65B0\u5361\u7247\u3002");
       if (!editableStates.has(r7.status)) return r7;
       if (action === "ready") {
-        if (r7.status !== "pending" || Number.isFinite(r7.deadline_at)) return r7;
+        if (r7.status !== "pending" || Number.isFinite(r7.deadline_at) || r7.auto_submit === false) return r7;
         r7.deadline_at = this.now() + this.timeoutMs;
         await this.doc(review_id).write(r7);
         this.arm(r7);
@@ -104754,10 +105020,12 @@ var ConfigurationReviews = class {
         if (prepared.deduplicated && this.runtime.pricing && this.runtime.store) {
           const frozen = await this.runtime.store.get(prepared.task.task_id);
           const quote = await this.runtime.pricing.quote(r7.kind, {}, { task: frozen, offline: true });
-          await this.runtime.store.update(frozen.task_id, (task) => ({ ...task, cost_estimate: quote }));
+          await this.runtime.store.update(frozen.task_id, (task2) => ({ ...task2, cost_estimate: quote }));
         }
         if (prepared.task.task_id !== r7.task_id) await this.runtime.service.cancel(r7.task_id);
-        r7 = { ...r7, input: parsed, task_id: prepared.task.task_id, status: "pending", deadline_at: null, error: null };
+        const { task } = await this.runtime.service.get(prepared.task.task_id);
+        r7 = { ...r7, input: parsed, task_id: task.task_id, status: "submitting", submitting_pid: process.pid, deadline_at: null, error: null };
+        dispatch = { task_id: r7.task_id, confirmation: task.confirmation, requestHash: task.request_hash };
       } else if (action === "confirm") {
         if (r7.status === "editing") throw new TripoError("STAGING_REQUIRED", "\u8BF7\u5148\u4FDD\u5B58\u914D\u7F6E\u5E76\u66F4\u65B0\u62A5\u4EF7\u3002");
         const { task } = await this.runtime.service.get(r7.task_id);
@@ -104793,7 +105061,6 @@ var ConfigurationReviews = class {
       return this.output(await this.doc(review_id).read());
     }
     if (action === "ready" && editableStates.has(record3.status)) this.preupload(record3);
-    if (action === "save" && record3.status === "pending") this.preupload(record3);
     return this.output(record3);
   }
 };
@@ -105174,6 +105441,9 @@ var OPERATION_TOOLS = {
   "texture.upscale": "tripo_upscale_texture"
 };
 async function main() {
+  const buildInfo = JSON.parse(await readFile15(new URL("../dist/build-info.json", import.meta.url), "utf8"));
+  if (buildInfo.version !== SERVER_VERSION || !/^\d{14}$/.test(buildInfo.timestamp)) throw Error("Workbench build marker is invalid; run npm run build.");
+  const WORKBENCH_RESOURCE_URI = `ui://tripo-studio/workbench-v${SERVER_VERSION}-${buildInfo.timestamp}.html`;
   const runtime = await createRuntime();
   const { auth, config: config3, gateway, service, session, store, pricing } = runtime;
   const icon = await readFile15(path23.join(path23.dirname(fileURLToPath2(import.meta.url)), "..", "ui", "tripo-logo.png"));
@@ -105203,11 +105473,12 @@ async function main() {
   const reviews = new ConfigurationReviews({ ...runtime, media });
   await reviews.recover();
   server.registerTool("tripo_ui_review", {
-    description: "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save and requote, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
+    description: "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save/requote and immediately submit, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
     _meta: { ui: { visibility: ["app"] } },
     inputSchema: { review_id: taskIdShape, action: external_exports.enum(["get", "ready", "edit", "save", "confirm", "cancel", "preview"]), slot: external_exports.string().max(100).optional(), revision: external_exports.number().int().optional(), input: external_exports.record(external_exports.string(), external_exports.unknown()).optional() }
   }, async (input2) => {
     try {
+      if (input2.action === "get") return ok(await reviews.openDraft(input2.review_id));
       if (input2.action === "preview") {
         const preview = await reviews.preview(input2.review_id, input2.slot);
         return { ...ok({ mime_type: preview.mime_type, bytes: preview.bytes }), _meta: { tripo: { preview } } };
@@ -105217,7 +105488,7 @@ async function main() {
       return fail2(error113);
     }
   });
-  const tool = (name, { card = false, ...meta5 }, handler) => K3(server, name, { ...meta5, _meta: { ui: { ...card ? { resourceUri: RESULT_CARD_RESOURCE_URI } : {}, visibility: name === "tripo_auth_import" ? ["model"] : ["model", "app"] } } }, async (input2) => {
+  const tool = (name, { card = false, visibility, ...meta5 }, handler) => K3(server, name, { ...meta5, _meta: { ui: { ...card ? { resourceUri: RESULT_CARD_RESOURCE_URI } : {}, visibility: visibility ?? (name === "tripo_auth_import" ? ["model"] : ["model", "app"]) } } }, async (input2) => {
     let result;
     try {
       result = await handler(input2);
@@ -105323,7 +105594,7 @@ async function main() {
   tool(
     "tripo_get_model",
     {
-      description: "Project detail for one Studio model: capability flags (textured/segmented/rigged/rig_type/\u2026), optional animation presets, and optional GLB part names. include: capabilities (default), animation_presets, parts, operator_detail.",
+      description: "Project detail for one Studio model: capability flags (textured/segmented/rigged/rig_type/\u2026), optional animation presets, and optional GLB/FBX part names. include: capabilities (default), animation_presets, parts, operator_detail.",
       inputSchema: {
         include: external_exports.array(external_exports.enum(["capabilities", "animation_presets", "parts", "operator_detail"])).default(["capabilities"]),
         project_id: identifier4
@@ -105462,30 +105733,33 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
     return ok({ quote: await pricing.quote(kind, input2 ?? {}, { refresh }) });
   });
   tool("tripo_get_configuration_review", {
-    description: "Read the current configuration card by its stable review_id. Before submission returns a draft_id, not a submitted task_id. After the final Tripo submission receipt returns the actual task_id and remote IDs. Always follow this card when users edit settings; do not monitor an earlier draft or bypass its confirmation/countdown.",
-    inputSchema: { review_id: taskIdShape },
+    description: "Read or wait for the existing configuration form by its stable review_id. After creation call with wait_ms:60000 and keep following next_action until submitted, canceled, failed, or the user is editing. Pending or deadline_at:null means waiting for visible display/countdown, not a missing submission capability. The visible form submits automatically after 60 seconds; do not click the UI, request a direct-submit tool, recreate the task, or report blocked during normal waiting. Waiting is read-only and never starts or bypasses submission. After the receipt returns the actual task_id and remote IDs, follow that task.",
+    inputSchema: { review_id: taskIdShape, wait_ms: external_exports.number().int().min(0).max(6e4).default(0).describe("Use 60000 after creation to wait for the app-owned automatic submission. Returns earlier on submission, cancellation, failure, or editing. Repeat if still pending/submitting; zero reads immediately.") },
     annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false }
-  }, async ({ review_id }) => ok(await reviews.action({ review_id, action: "get" })));
+  }, async ({ review_id, wait_ms }) => ok(await reviews.wait(review_id, wait_ms)));
   for (const [kind, toolName] of Object.entries(OPERATION_TOOLS)) {
     const operation2 = getOperation(kind);
+    const { submit: internalSubmit, ...operationShape } = operation2.inputShape;
+    const inputShape = { ...operationShape, ...taskContextShape };
     tool(
       toolName,
       {
         card: kind !== "local.inspect_parts",
-        description: `${operation2.description}${operation2.consumesCredits ? " Consumes Studio credits." : ""} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
-        inputSchema: { ...operation2.inputShape, ...taskContextShape, review: external_exports.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Use submit=true for already authorized execution without waiting for card visibility. Use review=false, submit=false for draft-only or explicit-approval flows.") }
+        description: `${operation2.description}${operation2.consumesCredits ? " Consumes Studio credits." : ""}${kind === "local.inspect_parts" ? "" : " Always opens an editable configuration form. Submit through the form: 60 seconds after visible display if untouched; editing pauses it, and saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode."} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
+        inputSchema: inputShape
       },
       async (input2) => {
-        const { review, ...operationInput } = input2;
+        const operationInput = { ...external_exports.object(inputShape).strict().parse(input2), submit: kind === "local.inspect_parts" };
         const prepared = await service.prepare(kind, operationInput);
-        const result = review !== false && prepared.task.status === "staged" ? await reviews.create(kind, operationInput, prepared) : prepared;
-        return ok(result, result.review ? "\u914D\u7F6E\u5361\u7247\u5DF2\u51C6\u5907\u5C31\u7EEA\uFF1A\u53EF\u4FEE\u6539\u3001\u786E\u8BA4\u6216\u53D6\u6D88\uFF1B60 \u79D2\u540E\u81EA\u52A8\u63D0\u4EA4\uFF0C\u7F16\u8F91\u65F6\u6682\u505C\u3002" : `${toolName} \u2192 task ${prepared.task.task_id} (${prepared.task.status})${prepared.deduplicated ? " [deduplicated]" : ""}`);
+        const result = prepared.task.status === "staged" ? await reviews.create(kind, operationInput, prepared) : prepared;
+        return ok(result, result.review ? void 0 : `${toolName} \u2192 task ${prepared.task.task_id} (${prepared.task.status})${prepared.deduplicated ? " [deduplicated]" : ""}`);
       }
     );
   }
   tool(
     "tripo_submit_task",
     {
+      visibility: ["app"],
       description: "Dispatch a previously staged task to Studio. Requires the exact confirmation string returned at staging; the paid write crosses the durable boundary exactly once.",
       inputSchema: { confirmation: external_exports.string(), request_hash: external_exports.string().length(64).optional(), task_id: taskIdShape }
     },
@@ -105544,13 +105818,13 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
   );
   tool("tripo_show_result", {
     card: true,
-    description: "Show a task, Studio model/image, or saved GLB/image in a persistent result preview card. Use once when presenting a completed artifact if no creation card is already following that task, or when the user asks to view an existing result. Background get/list/sync/wait/quote/download tools return data only and must not be followed by repeated presentation calls for the same artifact. Does not submit generation or consume credits.",
+    description: "Show a task, Studio model/image, or saved GLB/FBX/image in a persistent result preview card. Use once when presenting a completed artifact if no creation card is already following that task, or when the user asks to view an existing result. Background get/list/sync/wait/quote/download tools return data only and must not be followed by repeated presentation calls for the same artifact. Does not submit generation or consume credits.",
     annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: true },
     inputSchema: {
       task_id: taskIdShape.optional(),
       project_id: identifier4.optional(),
       asset_id: identifier4.optional(),
-      local_path: external_exports.string().optional().describe("Saved GLB, PNG, JPEG or WebP inside an allowed output root."),
+      local_path: external_exports.string().optional().describe("Saved GLB, binary FBX, PNG, JPEG or WebP inside an allowed output root."),
       output_index: external_exports.number().int().min(0).max(119).default(0)
     }
   }, async (input2) => {
@@ -105571,10 +105845,11 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
       preview = { asset_id: input2.asset_id, type: "image", output_index: input2.output_index };
     } else {
       const extension = path23.extname(input2.local_path).toLowerCase();
-      if (![".glb", ".png", ".jpg", ".jpeg", ".webp"].includes(extension)) throw new TripoError("INVALID_INPUT", "Only saved GLB, PNG, JPEG or WebP files can be previewed.");
-      preview = { local_path: input2.local_path, type: extension === ".glb" ? "model" : "image" };
-      await media.preview(preview);
-      data = { download: { path: input2.local_path } };
+      if (![".glb", ".fbx", ".png", ".jpg", ".jpeg", ".webp"].includes(extension)) throw new TripoError("INVALID_INPUT", "Only saved GLB, binary FBX, PNG, JPEG or WebP files can be previewed.");
+      preview = { local_path: input2.local_path, type: [".glb", ".fbx"].includes(extension) ? "model" : "image" };
+      const preparedPreview = await media.preview(preview);
+      const { size: bytes } = await stat11(input2.local_path);
+      data = { download: { path: input2.local_path, bytes, ...preview.type === "model" ? { format: preparedPreview.mime_type === "model/fbx" ? "fbx" : "glb" } : {} } };
     }
     return ok({ ...data, preview_target: preview }, "\u4EA7\u7269\u9884\u89C8\u5DF2\u51C6\u5907\u5C31\u7EEA\u3002");
   });
@@ -105601,8 +105876,8 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
       if (input2.task_id) {
         await store.update(input2.task_id, (record3) => {
           if (resolved.verification) record3.result = { ...record3.result, ...resolved.verification, export_model_path: resolved.localPath };
-          record3.downloads.push({ ...downloaded, output_index: input2.output_index ?? 0, artifact: input2.artifact, at: (/* @__PURE__ */ new Date()).toISOString(), name: resolved.defaultName });
-          record3.events.push({ at: (/* @__PURE__ */ new Date()).toISOString(), detail: { bytes: downloaded.bytes, name: resolved.defaultName }, type: "download.completed" });
+          record3.downloads.push({ ...downloaded, output_index: input2.output_index ?? 0, artifact: input2.artifact, at: (/* @__PURE__ */ new Date()).toISOString(), name: path23.basename(downloaded.path) });
+          record3.events.push({ at: (/* @__PURE__ */ new Date()).toISOString(), detail: { bytes: downloaded.bytes, name: path23.basename(downloaded.path) }, type: "download.completed" });
           return record3;
         }).catch(() => {
         });
@@ -105613,6 +105888,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
   tool(
     "tripo_run_workflow",
     {
+      visibility: ["app"],
       description: "Chain up to eight operations through the shared durable lifecycle. Copy previous project, motion asset, UV candidate, local model, render camera or baked textures with the corresponding *_from_previous flags. wait_between waits for success before dependencies.",
       inputSchema: {
         steps: external_exports.array(
@@ -105681,7 +105957,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
     _meta: { ui: { resourceUri: WORKBENCH_RESOURCE_URI, visibility: ["model", "app"] }, "openai/ui": { entrypoints: [{ type: "global" }, { type: "thread" }] } }
   }, async (input2) => ok({ ...input2, session: await session.status() }, "Tripo \u5DE5\u4F5C\u53F0\u5DF2\u51C6\u5907\u5C31\u7EEA\u3002"));
   const uiMeta = {
-    ui: { prefersBorder: true, csp: { connectDomains: [], resourceDomains: ["data:", "blob:"] } },
+    ui: { prefersBorder: true, csp: { connectDomains: ["data:", "blob:"], resourceDomains: ["data:", "blob:"] } },
     "openai/ui": { preferredDisplayMode: "fullscreen", availableDisplayModes: ["fullscreen", "inline"] }
   };
   N3(
@@ -105695,7 +105971,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
     }
   );
   const cardMeta = {
-    ui: { prefersBorder: true, csp: { connectDomains: [], resourceDomains: ["data:", "blob:"] } },
+    ui: { prefersBorder: true, csp: { connectDomains: ["data:", "blob:"], resourceDomains: ["data:", "blob:"] } },
     "openai/ui": { preferredDisplayMode: "inline", availableDisplayModes: ["inline"] }
   };
   N3(
@@ -105789,13 +106065,13 @@ async function resolveDownloadTarget(runtime, input2) {
   return { defaultName: `${projectId2}.glb`, source: { project_id: projectId2, task_id: record3.task_id }, url: detail.model_url };
 }
 async function loadPartNames(config3, gateway, projectId2, detail) {
-  if (!detail.model_url) throw new TripoError("INSUFFICIENT_EVIDENCE", "The project has no downloadable GLB to inspect.", { stage: "parts" });
+  if (!detail.model_url) throw new TripoError("INSUFFICIENT_EVIDENCE", "The project has no downloadable model to inspect.", { stage: "parts" });
   const cacheDir = path23.join(config3.dataDir, "model-cache");
   const target = path23.join(cacheDir, `${projectId2}.glb`);
   const downloaded = await downloadArtifact({ ...config3, outputRoots: [path23.join(config3.dataDir, "model-cache")] }, detail.model_url, target, `${projectId2}.glb`);
   const { readFile: readFile16 } = await import("node:fs/promises");
   const bytes = await readFile16(downloaded.path);
-  const names = glbNodeNames(bytes);
+  const names = modelNodeNames(bytes);
   return { part_names: names.slice(0, 500), truncated: names.length > 500 };
 }
 main().catch((error113) => {

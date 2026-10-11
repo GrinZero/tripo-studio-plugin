@@ -20,13 +20,13 @@
 ### 2. 任务调度与血统追踪 (Task Engine)
 | 工具名 | 消耗积分 | 功能概述 |
 | --- | :---: | --- |
-| `tripo_submit_task` | 否 | 立即确认并执行已暂存的配置草稿任务，严格比对安全哈希与报价单 |
+| `tripo_submit_task` | 仅界面内部 | 工作台确认配置后提交，不暴露给 Agent |
 | `tripo_task_sync` | 否 | 刷新单个任务执行进度、获取最新阶段信息与远端事件 |
 | `tripo_task_wait` | 否 | 设定超时阈值阻塞等待任务运行完成，自动提取最终输出产物 |
 | `tripo_task_cancel` | 否 | 取消处于排队或草稿确认阶段的任务 |
 | `tripo_task_reconcile` | 否 | **异常对账**：当网络闪断导致状态不明 (`outcome_unknown`) 时对账远端 ID 并安全恢复 |
 | `tripo_list_tasks` | 否 | 分页过滤本地持久化的全部历史任务列表 |
-| `tripo_get_configuration_review` | 否 | 按稳定卡片 ID 查询当前配置；提交回执后才返回最终任务 ID。 |
+| `tripo_get_configuration_review` | 否 | 按稳定卡片 ID 查询当前配置；`wait_ms:60000` 只读等待自动提交，按 `next_action` 继续；提交回执后才返回最终任务 ID。 |
 | `tripo_get_task` | 否 | **血统溯源**：读取冻结参数、输入源文件哈希、关联上游父任务与完整执行日志 |
 | `tripo_list_task_groups` | 否 | 按角色名称统计历史任务归属与数量 |
 | `tripo_set_task_character` | 否 | 纠正或补充任务所属的角色名称标记 |
@@ -36,7 +36,7 @@
 | --- | :---: | --- |
 | `tripo_export_model` | 否 | 自有项目工业格式导出：支持 GLB、FBX (Blender 预设)、OBJ、USDZ、STL、3MF |
 | `tripo_download` | 否 | 产物安全下载：将模型、贴图包 ZIP 或渲染图下载至本地，自动生成 Blender 适用的 meshopt 解码副本 |
-| `tripo_show_result` | 否 | 在对话流中唤起可旋转缩放的 3D GLB 预览与下载结果卡片 |
+| `tripo_show_result` | 否 | 在对话流中唤起可旋转缩放的 GLB / FBX 模型预览与下载结果卡片 |
 
 ---
 
@@ -87,7 +87,7 @@ flowchart LR
 
 ## 结果卡片与工业交付
 
-生成完成后，对话流与工作台均提供可实时旋转、缩放检视的 3D GLB 结果卡片，并自动生成兼容 Blender 的 meshopt 解码版本：
+生成完成后，对话流与工作台使用 Google `<model-viewer>` 提供可实时旋转、缩放检视的模型预览。GLB 的 Meshopt 压缩在服务端解码；Smart Mesh 四边面结果可能是原生 FBX，下载保留 `.fbx` 格式，预览时在浏览器内存中转换为 GLB，不需要 Blender。旧版误存为 `.glb` 的 FBX 也会按文件内容识别。GLB 下载继续自动生成兼容 Blender 的 Meshopt 解码版本：
 
 <div align="center">
   <img src="../images/model-preview-download.png" alt="模型结果卡片：可交互 GLB、下载记录与 Blender 兼容副本" width="85%" />

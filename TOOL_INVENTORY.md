@@ -1,8 +1,8 @@
-# Tool inventory — 68 MCP tools (0.3.6)
+# Tool inventory — 68 MCP tools (0.3.7)
 
 [README](README.md) · [Usage guide](docs/USAGE.md) · [Agent guide](skills/tripo-studio/SKILL.md)
 
-The server registers 64 agent-visible tools and 4 app-only tools. Parameter names, types, enums and defaults come from the current MCP `tools/list` schemas; `tripo_list_operations` returns operation descriptions and credit flags, not input schemas.
+The server registers 62 agent-visible tools and 6 app-only tools. Parameter names, types, enums and defaults come from the current MCP `tools/list` schemas; `tripo_list_operations` returns operation descriptions and credit flags, not input schemas.
 
 ## Workbench
 
@@ -37,7 +37,7 @@ The server registers 64 agent-visible tools and 4 app-only tools. Parameter name
 
 ## Operations (28)
 
-Individual operation tools default to an editable configuration card (`review:true`): confirmation or the 60-second deadline submits the staged task. Editing pauses the deadline; saving validates/requotes and restarts it. Use `review:false, submit:false` for a draft only, or `submit:true` for explicit immediate execution. Only entries marked yes below can consume Studio credits. Local operations use Blender/ImageMagick WASM and require no account. See [submission behavior](docs/USAGE.md#提交报价与草稿).
+Agent-facing creation/editing tools always open an editable configuration form: confirmation or 60 seconds after visible display submits the saved settings. Editing pauses the deadline; saving validates/requotes and immediately submits the updated settings. There are no public `submit` or `review` parameters. Read-only local inspection executes immediately. Only entries marked yes below can consume Studio credits. See [submission behavior](docs/USAGE.md#提交报价与草稿).
 
 | Tool | Kind | Credits |
 |---|---|---|
@@ -84,28 +84,26 @@ These tools manage local, account-scoped membership shared with the workbench. T
 
 See [asset-group workflows](skills/tripo-studio/references/asset-groups.md) for exact references, pagination and merging.
 
-## Tasks (10)
+## Tasks (9)
 
 | Tool | Purpose |
 |---|---|
-| `tripo_submit_task` | Execute a staged task with its exact confirmation |
 | `tripo_task_sync` | Refresh task progress |
 | `tripo_task_wait` | Bounded wait for completion |
 | `tripo_task_cancel` | Cancel staged work only |
 | `tripo_task_reconcile` | Adopt observed remote IDs after an ambiguous write |
 | `tripo_list_tasks` | Filter persisted tasks |
-| `tripo_get_configuration_review` | Follow a stable configuration card; exposes a task ID only after the submission receipt |
+| `tripo_get_configuration_review` | Read/wait up to 60 seconds on a stable form; follow `next_action` until its submission receipt, then follow the final task ID |
 | `tripo_get_task` | Frozen settings, provenance, lineage, results and events |
 | `tripo_list_task_groups` | Character groups and retained task counts |
 | `tripo_set_task_character` | Correct local task character metadata; existing descendants retain their group |
 
-## Artifacts / workflow (4)
+## Artifacts (3)
 
 | Tool | Purpose |
 |---|---|
 | `tripo_download` | Remote artifacts or local copies within allowed output roots |
 | `tripo_show_result` | Explicitly present one task, project, image asset or saved local GLB/image |
-| `tripo_run_workflow` | Shared lifecycle with previous-result dependencies; `submit` defaults to `true` |
 | `tripo_open_in_studio` | Project deep link |
 
 The `ui://tripo-studio/workbench.html` resource provides the workbench. Download artifacts include model/UV layout/image/render/per-part texture selections; `output_index` selects independent batch results.
@@ -116,7 +114,7 @@ The `ui://tripo-studio/workbench.html` resource provides the workbench. Download
 |---|---|
 | `tripo_quote_operation` | Estimate an operation or staged task without submitting; unknown cost is not zero |
 
-## App-only tools (4)
+## App-only tools (6)
 
 These tools have `ui.visibility:["app"]` and are not exposed to the agent.
 
@@ -126,3 +124,6 @@ These tools have `ui.visibility:["app"]` and are not exposed to the agent.
 | `tripo_ui_import_image` | Import a user-selected local image for the workbench |
 | `tripo_ui_asset_library` | Aggregate/paginate asset and group cards; persist selections into groups |
 | `tripo_ui_review` | Configuration-card status, editing, requoting, confirmation and cancellation |
+
+| `tripo_submit_task` | Workbench-only dispatch of a confirmed saved configuration |
+| `tripo_run_workflow` | Workbench-only staging/execution through the shared lifecycle |

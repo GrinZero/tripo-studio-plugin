@@ -4,7 +4,7 @@ import { registerAppResource, registerAppTool, RESOURCE_MIME_TYPE } from "@model
 import { OpenAIExtensions } from "@openai/mcp-extensions/server";
 import { z } from "zod";
 import { uvContext } from "./ops/studio-extras.mjs";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { TripoError } from "./errors.mjs";
@@ -18,8 +18,8 @@ import { downloadArtifact } from "./studio/downloader.mjs";
 import { downloadResolvedArtifact } from "./studio/model-download.mjs";
 import { prepareExportDownload } from "./studio/export-resolution.mjs";
 import { localArtifact } from "./studio/local-artifacts.mjs";
-import { glbNodeNames } from "./util/model-inspect.mjs";
-import { SERVER_NAME, SERVER_VERSION, STUDIO_ORIGIN, WORKBENCH_RESOURCE_URI, RESULT_CARD_RESOURCE_URI } from "./constants.mjs";
+import { modelNodeNames } from "./util/model-inspect.mjs";
+import { SERVER_NAME, SERVER_VERSION, STUDIO_ORIGIN, RESULT_CARD_RESOURCE_URI } from "./constants.mjs";
 import { createWorkbenchMedia, registerWorkbenchMedia } from "./ui/media.mjs";
 import { ConfigurationReviews } from "./ui/reviews.mjs";
 import { characterName, taskContextShape } from './ops/task-groups.mjs';
@@ -64,6 +64,9 @@ const OPERATION_TOOLS = {
 };
 
 async function main() {
+  const buildInfo = JSON.parse(await readFile(new URL('../dist/build-info.json', import.meta.url), 'utf8'));
+  if (buildInfo.version !== SERVER_VERSION || !/^\d{14}$/.test(buildInfo.timestamp)) throw Error('Workbench build marker is invalid; run npm run build.');
+  const WORKBENCH_RESOURCE_URI = `ui://tripo-studio/workbench-v${SERVER_VERSION}-${buildInfo.timestamp}.html`;
   const runtime = await createRuntime();
   const { auth, config, gateway, service, session, store, pricing } = runtime;
 
@@ -90,15 +93,15 @@ async function main() {
   const reviews = new ConfigurationReviews({ ...runtime, media });
   await reviews.recover();
   server.registerTool("tripo_ui_review", {
-    description: "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save and requote, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
+    description: "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save/requote and immediately submit, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
     _meta: { ui: { visibility: ["app"] } },
     inputSchema: { review_id: taskIdShape, action: z.enum(["get", "ready", "edit", "save", "confirm", "cancel", "preview"]), slot: z.string().max(100).optional(), revision: z.number().int().optional(), input: z.record(z.string(), z.unknown()).optional() }
-  }, async input => { try { if(input.action==="preview") { const preview=await reviews.preview(input.review_id,input.slot);return {...ok({mime_type:preview.mime_type,bytes:preview.bytes}),_meta:{tripo:{preview}}}; } return ok(await reviews.action(input)); } catch (error) { return fail(error); } });
+  }, async input => { try { if(input.action==="get")return ok(await reviews.openDraft(input.review_id)); if(input.action==="preview") { const preview=await reviews.preview(input.review_id,input.slot);return {...ok({mime_type:preview.mime_type,bytes:preview.bytes}),_meta:{tripo:{preview}}}; } return ok(await reviews.action(input)); } catch (error) { return fail(error); } });
 
   // Data tools must not replace the user's current preview. Only creation
   // cards and the explicit presentation tool opt into a UI resource.
-  const tool = (name, { card = false, ...meta }, handler) =>
-    registerAppTool(server, name, { ...meta, _meta: { ui: { ...(card ? { resourceUri: RESULT_CARD_RESOURCE_URI } : {}), visibility: name === "tripo_auth_import" ? ["model"] : ["model", "app"] } } }, async (input) => {
+  const tool = (name, { card = false, visibility, ...meta }, handler) =>
+    registerAppTool(server, name, { ...meta, _meta: { ui: { ...(card ? { resourceUri: RESULT_CARD_RESOURCE_URI } : {}), visibility: visibility ?? (name === "tripo_auth_import" ? ["model"] : ["model", "app"]) } } }, async (input) => {
       let result;
       try {
         result = await handler(input);
@@ -209,7 +212,7 @@ async function main() {
     "tripo_get_model",
     {
       description:
-        "Project detail for one Studio model: capability flags (textured/segmented/rigged/rig_type/…), optional animation presets, and optional GLB part names. include: capabilities (default), animation_presets, parts, operator_detail.",
+        "Project detail for one Studio model: capability flags (textured/segmented/rigged/rig_type/…), optional animation presets, and optional GLB/FBX part names. include: capabilities (default), animation_presets, parts, operator_detail.",
       inputSchema: {
         include: z.array(z.enum(["capabilities", "animation_presets", "parts", "operator_detail"])).default(["capabilities"]),
         project_id: identifier
@@ -350,24 +353,26 @@ async function main() {
 
   // ---- Operation tools (shared registry) ---------------------------------
   tool('tripo_get_configuration_review', {
-    description: 'Read the current configuration card by its stable review_id. Before submission returns a draft_id, not a submitted task_id. After the final Tripo submission receipt returns the actual task_id and remote IDs. Always follow this card when users edit settings; do not monitor an earlier draft or bypass its confirmation/countdown.',
-    inputSchema: {review_id:taskIdShape},
+    description: 'Read or wait for the existing configuration form by its stable review_id. After creation call with wait_ms:60000 and keep following next_action until submitted, canceled, failed, or the user is editing. Pending or deadline_at:null means waiting for visible display/countdown, not a missing submission capability. The visible form submits automatically after 60 seconds; do not click the UI, request a direct-submit tool, recreate the task, or report blocked during normal waiting. Waiting is read-only and never starts or bypasses submission. After the receipt returns the actual task_id and remote IDs, follow that task.',
+    inputSchema: {review_id:taskIdShape,wait_ms:z.number().int().min(0).max(60000).default(0).describe('Use 60000 after creation to wait for the app-owned automatic submission. Returns earlier on submission, cancellation, failure, or editing. Repeat if still pending/submitting; zero reads immediately.')},
     annotations: {readOnlyHint:true, destructiveHint:false, openWorldHint:false}
-  }, async ({review_id}) => ok(await reviews.action({review_id,action:'get'})));
+  }, async ({review_id,wait_ms}) => ok(await reviews.wait(review_id,wait_ms)));
   for (const [kind, toolName] of Object.entries(OPERATION_TOOLS)) {
     const operation = getOperation(kind);
+    const { submit: internalSubmit, ...operationShape } = operation.inputShape;
+    const inputShape = { ...operationShape, ...taskContextShape };
     tool(
       toolName,
       {
         card: kind !== "local.inspect_parts",
-        description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
-        inputSchema: { ...operation.inputShape, ...taskContextShape, review: z.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Use submit=true for already authorized execution without waiting for card visibility. Use review=false, submit=false for draft-only or explicit-approval flows.") }
+        description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""}${kind === 'local.inspect_parts' ? '' : ' Always opens an editable configuration form. Submit through the form: 60 seconds after visible display if untouched; editing pauses it, and saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode.'} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
+        inputSchema: inputShape
       },
       async (input) => {
-        const { review, ...operationInput } = input;
+        const operationInput = {...z.object(inputShape).strict().parse(input), submit:kind === 'local.inspect_parts'};
         const prepared = await service.prepare(kind, operationInput);
-        const result = review !== false && prepared.task.status === "staged" ? await reviews.create(kind, operationInput, prepared) : prepared;
-        return ok(result, result.review ? "配置卡片已准备就绪：可修改、确认或取消；60 秒后自动提交，编辑时暂停。" : `${toolName} → task ${prepared.task.task_id} (${prepared.task.status})${prepared.deduplicated ? " [deduplicated]" : ""}`);
+        const result = prepared.task.status === "staged" ? await reviews.create(kind, operationInput, prepared) : prepared;
+        return ok(result, result.review ? undefined : `${toolName} → task ${prepared.task.task_id} (${prepared.task.status})${prepared.deduplicated ? " [deduplicated]" : ""}`);
       }
     );
   }
@@ -376,6 +381,7 @@ async function main() {
   tool(
     "tripo_submit_task",
     {
+      visibility: ["app"],
       description: "Dispatch a previously staged task to Studio. Requires the exact confirmation string returned at staging; the paid write crosses the durable boundary exactly once.",
       inputSchema: { confirmation: z.string(), request_hash: z.string().length(64).optional(), task_id: taskIdShape }
     },
@@ -438,11 +444,11 @@ async function main() {
 
   tool("tripo_show_result", {
     card: true,
-    description: "Show a task, Studio model/image, or saved GLB/image in a persistent result preview card. Use once when presenting a completed artifact if no creation card is already following that task, or when the user asks to view an existing result. Background get/list/sync/wait/quote/download tools return data only and must not be followed by repeated presentation calls for the same artifact. Does not submit generation or consume credits.",
+    description: "Show a task, Studio model/image, or saved GLB/FBX/image in a persistent result preview card. Use once when presenting a completed artifact if no creation card is already following that task, or when the user asks to view an existing result. Background get/list/sync/wait/quote/download tools return data only and must not be followed by repeated presentation calls for the same artifact. Does not submit generation or consume credits.",
     annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: true },
     inputSchema: {
       task_id: taskIdShape.optional(), project_id: identifier.optional(), asset_id: identifier.optional(),
-      local_path: z.string().optional().describe("Saved GLB, PNG, JPEG or WebP inside an allowed output root."),
+      local_path: z.string().optional().describe("Saved GLB, binary FBX, PNG, JPEG or WebP inside an allowed output root."),
       output_index: z.number().int().min(0).max(119).default(0)
     }
   }, async input => {
@@ -463,11 +469,12 @@ async function main() {
       preview = { asset_id: input.asset_id, type: "image", output_index: input.output_index };
     } else {
       const extension = path.extname(input.local_path).toLowerCase();
-      if (![".glb", ".png", ".jpg", ".jpeg", ".webp"].includes(extension)) throw new TripoError("INVALID_INPUT", "Only saved GLB, PNG, JPEG or WebP files can be previewed.");
-      preview = { local_path: input.local_path, type: extension === ".glb" ? "model" : "image" };
+      if (![".glb", ".fbx", ".png", ".jpg", ".jpeg", ".webp"].includes(extension)) throw new TripoError("INVALID_INPUT", "Only saved GLB, binary FBX, PNG, JPEG or WebP files can be previewed.");
+      preview = { local_path: input.local_path, type: [".glb", ".fbx"].includes(extension) ? "model" : "image" };
       // Validate containment and the actual file before opening a local preview.
-      await media.preview(preview);
-      data = { download: { path: input.local_path } };
+      const preparedPreview = await media.preview(preview);
+      const { size: bytes } = await stat(input.local_path);
+      data = { download: { path: input.local_path, bytes, ...(preview.type === 'model' ? { format: preparedPreview.mime_type === 'model/fbx' ? 'fbx' : 'glb' } : {}) } };
     }
     return ok({ ...data, preview_target: preview }, "产物预览已准备就绪。");
   });
@@ -499,8 +506,8 @@ async function main() {
         await store
           .update(input.task_id, (record) => {
             if (resolved.verification) record.result = { ...record.result, ...resolved.verification, export_model_path: resolved.localPath };
-            record.downloads.push({ ...downloaded, output_index: input.output_index ?? 0, artifact: input.artifact, at: new Date().toISOString(), name: resolved.defaultName });
-            record.events.push({ at: new Date().toISOString(), detail: { bytes: downloaded.bytes, name: resolved.defaultName }, type: "download.completed" });
+            record.downloads.push({ ...downloaded, output_index: input.output_index ?? 0, artifact: input.artifact, at: new Date().toISOString(), name: path.basename(downloaded.path) });
+            record.events.push({ at: new Date().toISOString(), detail: { bytes: downloaded.bytes, name: path.basename(downloaded.path) }, type: "download.completed" });
             return record;
           })
           .catch(() => {});
@@ -513,6 +520,7 @@ async function main() {
   tool(
     "tripo_run_workflow",
     {
+      visibility: ["app"],
       description:
         "Chain up to eight operations through the shared durable lifecycle. Copy previous project, motion asset, UV candidate, local model, render camera or baked textures with the corresponding *_from_previous flags. wait_between waits for success before dependencies.",
       inputSchema: {
@@ -587,7 +595,7 @@ async function main() {
     _meta: { ui: { resourceUri: WORKBENCH_RESOURCE_URI, visibility: ["model", "app"] }, "openai/ui": { entrypoints: [{ type: "global" }, { type: "thread" }] } }
   }, async (input) => ok({ ...input, session: await session.status() }, "Tripo 工作台已准备就绪。"));
   const uiMeta = {
-    ui: { prefersBorder: true, csp: { connectDomains: [], resourceDomains: ["data:", "blob:"] } },
+    ui: { prefersBorder: true, csp: { connectDomains: ["data:", "blob:"], resourceDomains: ["data:", "blob:"] } },
     "openai/ui": { preferredDisplayMode: "fullscreen", availableDisplayModes: ["fullscreen", "inline"] }
   };
   registerAppResource(
@@ -602,7 +610,7 @@ async function main() {
   );
 
   const cardMeta = {
-    ui: { prefersBorder: true, csp: { connectDomains: [], resourceDomains: ["data:", "blob:"] } },
+    ui: { prefersBorder: true, csp: { connectDomains: ["data:", "blob:"], resourceDomains: ["data:", "blob:"] } },
     "openai/ui": { preferredDisplayMode: "inline", availableDisplayModes: ["inline"] }
   };
   registerAppResource(server, "result-card", RESULT_CARD_RESOURCE_URI,
@@ -693,16 +701,16 @@ async function resolveDownloadTarget(runtime, input) {
   return { defaultName: `${projectId}.glb`, source: { project_id: projectId, task_id: record.task_id }, url: detail.model_url };
 }
 
-// GLB part names: download the model into a private cache (bounded), extract
+// GLB/FBX part names: download the model into a private cache (bounded), extract
 // node names. Part names feed model.complete_parts / remesh / texture ops.
 async function loadPartNames(config, gateway, projectId, detail) {
-  if (!detail.model_url) throw new TripoError("INSUFFICIENT_EVIDENCE", "The project has no downloadable GLB to inspect.", { stage: "parts" });
+  if (!detail.model_url) throw new TripoError("INSUFFICIENT_EVIDENCE", "The project has no downloadable model to inspect.", { stage: "parts" });
   const cacheDir = path.join(config.dataDir, "model-cache");
   const target = path.join(cacheDir, `${projectId}.glb`);
   const downloaded = await downloadArtifact({ ...config, outputRoots: [path.join(config.dataDir, "model-cache")] }, detail.model_url, target, `${projectId}.glb`);
   const { readFile } = await import("node:fs/promises");
   const bytes = await readFile(downloaded.path);
-  const names = glbNodeNames(bytes);
+  const names = modelNodeNames(bytes);
   return { part_names: names.slice(0, 500), truncated: names.length > 500 };
 }
 

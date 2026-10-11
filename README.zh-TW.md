@@ -18,7 +18,7 @@
 
 <p align="center">
   <a href="#2-安裝與快速上手-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.6-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-完整工具矩陣與功能清單-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -232,7 +232,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 - **專題指南**：👉 **[資產、任務與導出工具詳細指南 (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **包含工具**：
   - 資產分組：`tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
-  - 任務調度：`tripo_submit_task`, `tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
+  - 任務調度：`tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
   - 導出交付：`tripo_export_model`, `tripo_download`, `tripo_show_result`, `tripo_quote_operation`
 - **核心能力**：
   - **資產卡片與跨頁多選**：支援模型與圖片混合分組，跨頁勾選批次整理。
@@ -260,15 +260,15 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ```text
 用這張參考圖生成「機械狐」模型：H3.1、標準幾何、60,000 面、4K PBR 貼圖。
-只準備配置草稿，設置 review:false、submit:false，先不要提交。
+呼叫後顯示設定表單；我可以修改參數，無操作則 60 秒後自動提交。
 ```
 
 ### 常用實戰場景與指令表
 
 | 實戰場景 | 對 Codex 說 | 涉及能力 |
 | --- | --- | --- |
-| **🎮 嚴格網格預算** | “用這張圖做 Smart Mesh P2 模型，給我 5,000 和 10,000 面兩個變體，只準備草稿。” | Smart Mesh P2、多變體預算 |
-| **📐 多視圖一致建模** | “這四張圖依次是正面、左側、背面、右側，用它們生成同一個模型，只準備草稿。” | 多視角建模、四視圖對齊 |
+| **🎮 嚴格網格預算** | “用這張圖做 Smart Mesh P2 模型，給我 5,000 和 10,000 面兩個變體，先估算費用，不建立生成任務。” | Smart Mesh P2、多變體預算 |
+| **📐 多視圖一致建模** | “這四張圖依次是正面、左側、背面、右側，用它們生成同一個模型，先估算費用，不建立生成任務。” | 多視角建模、四視圖對齊 |
 | **🏃 角色骨骼與動作** | “檢查機械狐模型的綁定能力，使用適合它的骨架，再應用一個可用的走路動畫。” | Rig V3、骨骼綁定、AI Motion |
 | **📦 資產分組與歸檔** | “把選中的參考圖和模型收進一個組，命名為「機械狐 · 遊戲資產」，檢查組內數量。” | 本地資產分組、多選整理 |
 | **🔍 全鏈路來源溯源** | “查看這個模型的來源任務、輸入圖片與實際生成參數。” | 任務血統追蹤、輸入回溯 |

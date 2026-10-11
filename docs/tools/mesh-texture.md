@@ -68,6 +68,8 @@ flowchart TD
 - 开发者与 Agent 可以先下载候选 GLB，确认无畸变与重叠后再调用 `tripo_apply_uv` 正式生效。
 
 ### 4. 8K PBR 与贴图局部微调
+- **Smart Mesh 三阶段**：`tripo_generate_model` 生成白模 → `tripo_generate_texture` 生成颜色贴图 → `tripo_generate_pbr` 单独生成 PBR 贴图，后两步复用同一模型的 `project_id`。白模生成阶段的贴图、去光和 PBR 参数不适用；颜色贴图阶段的 `quality`、`alignment`、`delight` 可正常使用。颜色贴图不会自动生成独立 PBR 贴图组；用户请求 PBR 时，颜色贴图完成后还须执行第三步。已有颜色贴图时直接补 PBR，不重生成模型或颜色贴图。固定粗糙度／金属度数值的 PBR 材质不等于已经存在独立贴图组，须核查实际通道（包括打包通道）。
+- **整模贴图**：`tripo_generate_texture` 可省略 `part_names` 或传入 `[]`，无需先分件。仅处理指定部件时传入真实层级名称；`tripo_get_model` 的 `include:["parts"]` 支持读取 GLB 与智能拓扑原生 FBX 的部件名。
 - **PBR 通道支持**：自动烘焙真实物理光照所需的法线贴图（Normal Map）、粗糙度贴图（Roughness Map）与金属度贴图（Metallic Map），导出后可直接放入 Blender Eevee/Cycles、Unreal Engine 5 Lumen 或 Unity HDRP。
 - **无损升格**：通过 `tripo_upscale_texture`，即便初始贴图为 1024/2048，也能通过专用 AI 卷积超分网络重构出 4096 / 8192 极清纹理。
 

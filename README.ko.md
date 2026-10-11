@@ -18,7 +18,7 @@
 
 <p align="center">
   <a href="#2-설치-및-빠른-시작-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.6-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-전체-도구-매트릭스-및-기능-목록-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -223,7 +223,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 - **상세 가이드**: 👉 **[에셋, 작업 및 내보내기 상세 가이드 (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **포함 도구**:
   - 에셋 그룹: `tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
-  - 작업 엔진: `tripo_submit_task`, `tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
+  - 작업 엔진: `tripo_task_sync`, `tripo_task_wait`, `tripo_task_cancel`, `tripo_task_reconcile`, `tripo_list_tasks`, `tripo_get_task`, `tripo_list_task_groups`, `tripo_set_task_character`
   - 내보내기: `tripo_export_model`, `tripo_download`, `tripo_show_result`, `tripo_quote_operation`
 
 <table width="100%">
@@ -246,12 +246,12 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ```text
 첨부된 참고 이미지를 사용하여 "메카 폭스" 3D 모델을 생성해 줘:
 - 아키텍처: H3.1, 표준 지오메트리, 60,000면, 4K PBR 텍스처
-- review:false, submit:false 로 초안만 먼저 준비하고 아직 실행하지 마.
+- 설정 양식을 표시해 줘. 조작이 없으면 60초 후 자동 제출해 줘.
 ```
 
 | 시나리오 | Codex에게 할 말 | 관련 기능 |
 | --- | --- | --- |
-| **🎮 엄격한 폴리곤 예산** | "이 이미지로 Smart Mesh P2 모델을 만들고 5,000면과 10,000면 변형 모델 초안을 준비해 줘." | Smart Mesh P2, 다중 변형 |
+| **🎮 엄격한 폴리곤 예산** | "이 이미지로 Smart Mesh P2 모델을 만들고 5,000면과 10,000면 변형 모델의 설정 양식을 표시해 줘." | Smart Mesh P2, 다중 변형 |
 | **📐 다각도 일관 생성** | "첨부한 4장의 앞/뒤/좌/우 뷰 이미지를 사용해 단일 모델로 정합 생성해 줘." | 멀티뷰 3D 생성 |
 | **🏃 본 리깅 및 모션** | "이 모델의 리깅 적합도를 확인하고, 언리얼 호환 본을 적용한 후 걷기 모션을 입혀줘." | Rig V3, 프리셋 모션 |
 | **📦 에셋 그룹 정리** | "선택한 참고 이미지와 모델을 묶어서 '메카 폭스 · 게임 에셋' 그룹으로 정리해 줘." | 로컬 에셋 그룹화 |

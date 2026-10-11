@@ -84,13 +84,17 @@ describe("mcp handshake", () => {
         "tripo_remesh_model", "tripo_generate_texture", "tripo_preview_texture_edit",
         "tripo_apply_texture_edits", "tripo_upscale_texture", "tripo_generate_pbr",
         "tripo_rig_model", "tripo_animate_model",
-        "tripo_submit_task", "tripo_task_sync", "tripo_task_wait", "tripo_task_cancel",
+        "tripo_task_sync", "tripo_task_wait", "tripo_task_cancel",
         "tripo_task_reconcile", "tripo_list_tasks", "tripo_get_task",
-        "tripo_download", "tripo_run_workflow", "tripo_open_in_studio"
+        "tripo_download", "tripo_open_in_studio"
       ]) {
         assert.ok(names.includes(expected), `missing tool ${expected}`);
       }
       assert.equal(names.length, 68);
+      const texture = tools.tools.find(t => t.name === 'tripo_generate_texture');
+      assert.ok(!texture.inputSchema.required.includes('part_names'));
+      assert.equal(texture.inputSchema.properties.part_names.minItems ?? 0, 0);
+      assert.equal(texture.inputSchema.properties.part_names.maxItems, 200);
       for(const name of ['tripo_list_asset_groups','tripo_list_group_assets','tripo_create_asset_group','tripo_set_asset_group','tripo_rename_asset_group']) {
         const registered=tools.tools.find(t=>t.name===name);
         assert.ok(registered,`missing agent asset group tool ${name}`);
@@ -100,8 +104,8 @@ describe("mcp handshake", () => {
       assert.ok(names.includes("tripo_quote_operation"));
       for (const name of ["tripo_generate_uv", "tripo_apply_uv", "tripo_export_model", "tripo_generate_motion", "tripo_apply_motion", "tripo_get_uv_context", "tripo_list_motions", "tripo_get_motion", "tripo_upscale_image", "tripo_split_image", "tripo_render_model", "tripo_edit_parts", "tripo_bake_texture_projection", "tripo_paint_texture", "tripo_crop_image", "tripo_inspect_local_parts"]) assert.ok(names.includes(name), `missing tool ${name}`);
       assert.equal(init.serverInfo.version, version);
-      for (const name of ["tripo_ui_preview", "tripo_ui_import_image", "tripo_ui_review", "tripo_ui_asset_library"]) assert.deepEqual(tools.tools.find(t => t.name === name)._meta.ui.visibility, ["app"]);
-      for (const name of ['tripo_auth_login','tripo_auth_status','tripo_auth_logout','tripo_get_payment','tripo_quote_operation','tripo_list_operations','tripo_list_models','tripo_get_model','tripo_list_image_assets','tripo_get_image_asset','tripo_submit_task','tripo_task_sync','tripo_task_wait','tripo_task_cancel','tripo_task_reconcile','tripo_list_tasks','tripo_get_task','tripo_get_configuration_review','tripo_download','tripo_list_task_groups','tripo_set_task_character','tripo_inspect_local_parts','tripo_run_workflow','tripo_open_in_studio']) {
+      for (const name of ["tripo_ui_preview", "tripo_ui_import_image", "tripo_ui_review", "tripo_ui_asset_library", "tripo_submit_task", "tripo_run_workflow"]) assert.deepEqual(tools.tools.find(t => t.name === name)._meta.ui.visibility, ["app"]);
+      for (const name of ['tripo_auth_login','tripo_auth_status','tripo_auth_logout','tripo_get_payment','tripo_quote_operation','tripo_list_operations','tripo_list_models','tripo_get_model','tripo_list_image_assets','tripo_get_image_asset','tripo_task_sync','tripo_task_wait','tripo_task_cancel','tripo_task_reconcile','tripo_list_tasks','tripo_get_task','tripo_get_configuration_review','tripo_download','tripo_list_task_groups','tripo_set_task_character','tripo_inspect_local_parts','tripo_open_in_studio']) {
         const t=tools.tools.find(t=>t.name===name);
         assert.equal(t._meta.ui.resourceUri, undefined, `${name} must preserve the current preview`);
         assert.deepEqual(t._meta.ui.visibility,['model','app']);
@@ -146,9 +150,13 @@ describe("mcp handshake", () => {
       assert.ok(model.inputSchema.properties.parent_task_id);
       assert.ok(names.includes('tripo_list_task_groups'));
       assert.ok(names.includes('tripo_set_task_character'));
-      const groupedCrop = await client.request('tools/call',{name:'tripo_crop_image',arguments:{image_path:imported.structuredContent.file_path,left:0,top:0,width:16,height:16,character_name:'派蒙',submit:true}});
+      const groupedCrop = await client.request('tools/call',{name:'tripo_crop_image',arguments:{image_path:imported.structuredContent.file_path,left:0,top:0,width:16,height:16,character_name:'派蒙'}});
       assert.equal(groupedCrop.isError,undefined);
       assert.equal(groupedCrop.structuredContent.task.character_group.name,'派蒙');
+      assert.equal(groupedCrop.structuredContent.task.remote,null);
+      assert.equal(groupedCrop.structuredContent.review.auto_submit,true);
+      const confirmedCrop=await client.request('tools/call',{name:'tripo_ui_review',arguments:{review_id:groupedCrop.structuredContent.review.review_id,action:'confirm'}});
+      groupedCrop.structuredContent.task=confirmedCrop.structuredContent.task;
       const completedCrop = await client.request('tools/call',{name:'tripo_task_wait',arguments:{task_id:groupedCrop.structuredContent.task.task_id,timeout_seconds:10,poll_seconds:1}});
       assert.equal(completedCrop.structuredContent.task.status,'succeeded');
       assert.equal(completedCrop._meta.tripo.presentation,'data');
@@ -176,6 +184,14 @@ describe("mcp handshake", () => {
       const savedCard=await client.request('tools/call',{name:'tripo_show_result',arguments:{local_path:savedCrop.structuredContent.download.path}});
       assert.equal(savedCard.isError,undefined);
       assert.equal(savedCard.structuredContent.preview_target.type,'image');
+      const fbxPath=path.join(dataDir,'assets','native-quad.fbx');
+      await writeFile(fbxPath,await readFile(new URL('./fixtures/quad-cube.fbx',import.meta.url)));
+      const fbxCard=await client.request('tools/call',{name:'tripo_show_result',arguments:{local_path:fbxPath}});
+      assert.equal(fbxCard.isError,undefined);
+      assert.equal(fbxCard.structuredContent.preview_target.type,'model');
+      assert.equal(fbxCard.structuredContent.download.format,'fbx');
+      const fbxPreview=await client.request('tools/call',{name:'tripo_ui_preview',arguments:{local_path:fbxPath,type:'model'}});
+      assert.equal(fbxPreview._meta.tripo.preview.mime_type,'model/fbx');
       const forbiddenCard=await client.request('tools/call',{name:'tripo_show_result',arguments:{local_path:'/tmp/escape.png'}});
       assert.equal(forbiddenCard.isError,true);
       const groupList = await client.request('tools/call',{name:'tripo_list_task_groups',arguments:{}});
@@ -211,12 +227,51 @@ describe("mcp handshake", () => {
       assert.equal(draftCard.isError,undefined);
       assert.equal(draftCard.structuredContent.task.task_id,undefined);
       const reviewId=draftCard.structuredContent.review.review_id;
-      const currentCard = await client.request('tools/call',{name:'tripo_get_configuration_review',arguments:{review_id:reviewId}});
+      const currentCard = await client.request('tools/call',{name:'tripo_get_configuration_review',arguments:{review_id:reviewId,wait_ms:50}});
       assert.equal(currentCard._meta.tripo.presentation,'data');
       assert.equal(currentCard.structuredContent.task.draft_id,draftCard.structuredContent.task.draft_id);
       assert.equal(currentCard.structuredContent.task.task_id,undefined);
       assert.equal(currentCard.structuredContent.review.status,'pending');
       assert.equal(currentCard.structuredContent.review.deadline_at,null,'read-only monitoring must not start submission');
+      assert.deepEqual(currentCard.structuredContent.next_action,{tool:'tripo_get_configuration_review',arguments:{review_id:reviewId,wait_ms:60000},requires_user_action:false});
+      assert.match(draftCard.content[0].text,/wait_ms:60000/);
+      assert.match(currentCard.content[0].text,/不是提交能力缺失/);
+      // The Agent surface has one form-based route and no submission switches.
+      const agentTools=tools.tools.filter(t=>t._meta.ui.visibility.includes('model'));
+      assert.equal(agentTools.length,62);
+      assert.ok(!agentTools.some(t=>['tripo_submit_task','tripo_run_workflow','tripo_ui_review'].includes(t.name)));
+      for(const t of agentTools){
+        assert.equal(t.inputSchema.properties.submit,undefined,`${t.name}: no direct-submit parameter`);
+        assert.equal(t.inputSchema.properties.review,undefined,`${t.name}: no manual-draft parameter`);
+      }
+      const automaticDraft=await client.request('tools/call',{name:'tripo_crop_image',arguments:{image_path:imported.structuredContent.file_path,left:0,top:0,width:12,height:12}});
+      assert.equal(automaticDraft.structuredContent.review.auto_submit,true);
+      assert.equal(automaticDraft.structuredContent.review.schema.properties.submit,undefined);
+      assert.equal(automaticDraft.structuredContent.review.input.submit,undefined);
+      const automaticId=automaticDraft.structuredContent.review.review_id;
+      const visible=await client.request('tools/call',{name:'tripo_ui_review',arguments:{review_id:automaticId,action:'ready'}});
+      assert.ok(visible.structuredContent.review.deadline_at>Date.now());
+      const observing=client.request('tools/call',{name:'tripo_get_configuration_review',arguments:{review_id:automaticId,wait_ms:2000}});
+      const editing=await client.request('tools/call',{name:'tripo_ui_review',arguments:{review_id:automaticId,action:'edit'}});
+      const saved=await client.request('tools/call',{name:'tripo_ui_review',arguments:{review_id:automaticId,action:'save',revision:editing.structuredContent.review.revision,input:{...editing.structuredContent.review.input,width:10}}});
+      const observed=await observing;
+      assert.ok(['editing','submitting','submitted'].includes(observed.structuredContent.review.status),'read-only wait returns the current transition rather than the old pending state');
+      assert.equal(saved.structuredContent.task.task_id,automaticId);
+      assert.equal(saved.structuredContent.review.auto_submit,true);
+      assert.equal(saved.structuredContent.review.input.width,10);
+      assert.equal(saved.structuredContent.review.deadline_at,null,'saving does not restart the edit window');
+      assert.equal(saved.structuredContent.review.status,'submitted');
+      assert.notEqual(saved.structuredContent.task.status,'staged');
+      await client.request('tools/call',{name:'tripo_ui_review',arguments:{review_id:automaticId,action:'confirm'}});
+      for(const flags of [{submit:true},{submit:false,review:false}]){
+        const attempted=await client.request('tools/call',{name:'tripo_crop_image',arguments:{image_path:imported.structuredContent.file_path,left:0,top:0,width:11,height:11,...flags}});
+        assert.ok(attempted.isError || attempted.structuredContent.review?.auto_submit===true,'legacy flags cannot bypass the configuration form');
+        if(!attempted.isError)assert.equal(attempted.structuredContent.task.remote,null);
+      }
+      // Workbench draft staging and confirmation remain app-only.
+      const appDraft=await client.request('tools/call',{name:'tripo_run_workflow',arguments:{submit:false,steps:[{operation:'local.crop',input:{image_path:imported.structuredContent.file_path,left:0,top:0,width:9,height:9}}]}});
+      assert.equal(appDraft.structuredContent.tasks[0].task.status,'staged');
+      assert.equal(appDraft.structuredContent.tasks[0].task.remote,null);
       const result = await client.request("tools/call", { arguments: {}, name: "tripo_auth_status" });
       assert.equal(result.structuredContent.session.authenticated, false);
       // Exercise the distributed worker lookup, not only the source implementation.
@@ -224,7 +279,7 @@ describe("mcp handshake", () => {
       if (blender && await access(blender).then(() => true, () => false)) {
         const modelPath = path.join(dataDir, "fixture.glb");
         await writeFile(modelPath, await readFile(new URL('./fixtures/meshopt-planes.glb', import.meta.url)));
-        const staged = await client.request("tools/call", { name: "tripo_inspect_local_parts", arguments: { model_path: modelPath, submit: true } });
+        const staged = await client.request("tools/call", { name: "tripo_inspect_local_parts", arguments: { model_path: modelPath } });
         assert.equal(staged.isError, undefined);
         assert.equal(staged.structuredContent.paid_request_sent, false);
         assert.equal(staged.structuredContent.task.cost_estimate.estimated_credits, 0);

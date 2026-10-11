@@ -8,6 +8,8 @@ import {generationInput,quoteCurrent,artifactFor} from '../ui/model.mjs';
 import {createWorkbenchMedia,readPreviewUrl,validatePreviewGlb} from '../src/ui/media.mjs';
 import {fixtureGlb} from './helpers/glb-fixture.mjs';
 import {makeConfig,makeRuntime} from './helpers/runtime.mjs';
+import { snapshotDirectory } from '../src/ops/images.mjs';
+import { inspectImage } from '../src/util/image.mjs';
 
 describe('workbench input and pricing boundary',()=>{
  const base={mode:'text',tier:'high_detail',faces:60000,prompt:'ceramic fox',geometry:'standard',texture:true,textureQuality:'detailed',pbr:true,delight:true};
@@ -27,6 +29,24 @@ describe('workbench input and pricing boundary',()=>{
  });
 });
 describe('workbench media isolation',()=>{
+ it('previews a verified retained input, checks ownership and never substitutes generated output', async t => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'tripo-input-preview-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  const config = makeConfig(dir), task_id = crypto.randomUUID();
+  const folder = snapshotDirectory(config, task_id); await mkdir(folder, { recursive: true });
+  const file = path.join(folder, 'front.png'); await writeFile(file, await solidImage({ width: 13, height: 7, channels: 3, background: '#aabbcc' }));
+  const image = await inspectImage(file);
+  const task = { task_id, kind: 'model.generate', account_fingerprint: 'account', status: 'succeeded', snapshots: [{ slot: 'front', relative_path: 'front.png', format: image.format, width: image.width, height: image.height, size_bytes: image.size, sha256: image.sha256 }] };
+  let account = 'account';
+  const media = createWorkbenchMedia({ config, store: { get: async () => task }, session: { accountFingerprint: async () => account }, gateway: { getProject: async () => assert.fail('input preview must not load output') } });
+  const preview = await media.preview({ task_id, input_slot: 'front', type: 'thumbnail' });
+  assert.equal(preview.width, 13); assert.equal(preview.mime_type, 'image/webp');
+  await assert.rejects(media.preview({ task_id, input_slot: 'back', type: 'thumbnail' }), /no image/);
+  await assert.rejects(media.preview({ task_id, input_slot: 'front', type: 'model' }), /image type/);
+  account = 'other'; await assert.rejects(media.preview({ task_id, input_slot: 'front', type: 'thumbnail' }), /另一个账号/);
+  account = 'account'; await writeFile(file, await solidImage({ width: 14, height: 7, channels: 3, background: '#aabbcc' }));
+  await assert.rejects(media.preview({ task_id, input_slot: 'front', type: 'thumbnail' }), /provenance/);
+ });
  it('previews the selected completed model output and recorded operator rather than the first/current project',async t=>{
   const calls=[];
   const task={kind:'model.generate',status:'succeeded',account_fingerprint:'account',remote:{project_id:'first',operator_id:'old'},result:{models:[{project_id:'first',operator_id:'one',status:'succeeded'},{project_id:'second',operator_id:'two',status:'succeeded'}]}};

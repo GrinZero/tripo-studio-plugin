@@ -32,6 +32,17 @@ describe("session", () => {
 });
 
 describe("task lifecycle", () => {
+  it('returns the saved full prompt when an older public summary was truncated', async () => {
+    const { service, store } = await makeRuntime();
+    const prepared = await service.prepare('texture.generate', { project_id: 'proj-1', mode: 'text', prompt: 'weathered wood '.repeat(60) });
+    const prompt = 'weathered wood '.repeat(60);
+    assert.equal(prepared.task.input_prompt, prompt);
+    assert.notEqual(prepared.task.input_summary.prompt, prompt);
+    await store.update(prepared.task.task_id, record => ({ ...record, input_summary: { ...record.input_summary, prompt: prompt.slice(0, 300) + '…' } }));
+    assert.equal((await service.get(prepared.task.task_id)).task.input_prompt, prompt);
+    assert.equal((await service.list()).tasks[0].input_prompt, prompt);
+    assert.ok(!Object.hasOwn(prepared.task, 'configuration_input'));
+  });
   it("prepares, dedupes, submits and succeeds a postprocess task", async () => {
     const { service, gateway } = await makeRuntime();
     const prepared = await service.prepare("model.segment", { project_id: "proj-1", segmentation_granularity: "balanced" });

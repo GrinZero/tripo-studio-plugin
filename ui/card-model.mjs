@@ -1,5 +1,26 @@
 import { t as tr } from './i18n.mjs';
-import { artifactFor, taskTitle, taskProject, STATUS, KINDS } from './model.mjs';
+import { artifactFor, taskTitle, taskProject, parameterRows, STATUS, KINDS } from './model.mjs';
+
+export function resultInput(task = {}, review = {}) {
+  const input = { ...task.input_summary, ...review?.input };
+  const prompt = review?.input?.prompt ?? task.input_prompt ?? task.metadata?.prompt ?? (typeof input.prompt === 'string' ? input.prompt : '');
+  const slots = { image: tr("参考图片"), front: tr("正面"), left: tr("左侧"), back: tr("背面"), right: tr("右侧"), model: tr("源模型") };
+  const sources = (task.snapshots ?? []).map(s => ({
+    label: slots[s.slot] ?? tr("参考图片"), name: s.source_name ?? s.label ?? s.slot,
+    preview: task.task_id && ['png','jpeg','jpg','webp'].includes(s.format) ? { task_id: task.task_id, input_slot: s.slot, type: 'thumbnail' } : null
+  }));
+  for (const s of task.metadata?.studio_inputs ?? []) sources.push({ label: slots[s.slot] ?? tr("参考图片"), name: s.asset_id,
+    preview: { asset_id: s.asset_id, output_index: s.output_index ?? 0, type: 'thumbnail' } });
+  for (const s of task.metadata?.studio_references ?? input.studio_references ?? []) sources.push({ label: tr("参考图片"), name: s.asset_id,
+    preview: { asset_id: s.asset_id, output_index: s.output_index ?? 0, type: 'thumbnail' } });
+  const parameters = parameterRows({ ...task, input_summary: input }).filter(([label]) => label !== tr("描述"));
+  const paths = { image_path: tr("参考图片"), front_image_path: tr("正面"), left_image_path: tr("左侧"), back_image_path: tr("背面"), right_image_path: tr("右侧"), model_path: tr("源模型") };
+  for (const [key, label] of Object.entries(paths)) if (input[key]) parameters.push([label, input[key]]);
+  if (!sources.length && Array.isArray(input.image_paths)) for (const file of input.image_paths) parameters.push([tr("参考图片"), file]);
+  if (input.project_id) parameters.push([tr("模型 ID"), input.project_id]);
+  if (!prompt && !sources.length && !parameters.length) return null;
+  return { prompt, sources, parameters, summary: String(prompt || sources.map(s => s.name).join(' · ') || parameters.map(([label, value]) => `${label}: ${value}`).join(' · ')).replace(/\s+/g, ' ').trim() };
+}
 
 // Keep model context readable and small; full configuration stays in the card.
 export function taskContextSummary({ review = {}, task = {} } = {}) {
@@ -40,21 +61,46 @@ export function operationGroups(operations) {
   }
   return [...groups.values()];
 }
+export function shortenPath(filePath, { includeFile = false } = {}) {
+  const raw = String(filePath ?? '').trim();
+  if (!raw) return '';
+  const normalized = raw.replace(/\\/g, '/').replace(/^(?:\/Users\/[^/]+|\/home\/[^/]+|[A-Za-z]:\/Users\/[^/]+)(?=\/|$)/, '~');
+  const slash = normalized.lastIndexOf('/');
+  if (!includeFile && slash > 0) {
+    const dir = normalized.slice(0, slash);
+    const parts = dir.split('/');
+    return parts.length > 4 ? `${parts[0] === '~' ? '~' : ''}/…/${parts.slice(-2).join('/')}` : dir;
+  }
+  const parts = normalized.split('/');
+  const file = parts.at(-1) ?? normalized;
+  const shortFile = file.length > 28 ? `${file.slice(0, 12)}…${file.slice(-10)}` : file;
+  if (parts.length <= 2) return parts.length === 2 ? `${parts[0]}/${shortFile}` : shortFile;
+  const dirParts = parts.slice(0, -1);
+  const dir = dirParts.length > 3 ? `${dirParts[0] === '~' ? '~' : ''}/…/${dirParts.slice(-2).join('/')}` : dirParts.join('/');
+  return `${dir}/${shortFile}`;
+}
 export function cardItems(data = {}) {
   if (data.download?.path) {
-    const download=data.download, title=download.path.split(/[\\/]/).pop(), extension=title.split('.').pop().toLowerCase();
-    const type=extension==='glb' ? 'model' : ['png','jpg','jpeg','webp'].includes(extension) ? 'image' : null;
-    const details=[[tr("文件格式"),extension.toUpperCase()]];
+    const download=data.download, title=download.path.split(/[\\/]/).pop(), extension=download.format ?? title.split('.').pop().toLowerCase();
+    const type=['glb','fbx'].includes(extension) ? 'model' : ['png','jpg','jpeg','webp'].includes(extension) ? 'image' : null;
+    const format=extension.toUpperCase(), details=[[tr("文件格式"),format]];
+    let size=null;
     if (Number.isFinite(download.bytes)) {
       const bytes=download.bytes;
-      details.push([tr("文件大小"),bytes>=1048576 ? `${(bytes/1048576).toFixed(1)} MB` : bytes>=1024 ? `${(bytes/1024).toFixed(1)} KB` : `${bytes} B`]);
+      size=bytes>=1048576 ? `${(bytes/1048576).toFixed(1)} MB` : bytes>=1024 ? `${(bytes/1024).toFixed(1)} KB` : `${bytes} B`;
+      details.push([tr("文件大小"),size]);
     }
     details.push([tr("保存位置"),download.path]);
-    if (download.blender_path && download.blender_path!==download.path) details.push([tr("Blender 文件"),download.blender_path]);
-    return [{title,status:tr("下载完成"),details,warning:download.blender_error ? tr("文件已保存，Blender 兼容处理失败：{0}", { "0": download.blender_error.message }) : null,
+    const blenderPath=download.blender_path && download.blender_path!==download.path ? download.blender_path : null;
+    if (blenderPath) details.push([tr("Blender 文件"),blenderPath]);
+    const badge=size ? `${format} · ${size}` : format;
+    return [{title,status:tr("下载完成"),badge,format,size,path:download.path,shortPath:shortenPath(download.path),
+      shortFilePath:shortenPath(download.path,{includeFile:true}),blenderPath,details,
+      warning:download.blender_error ? tr("文件已保存，Blender 兼容处理失败：{0}", { "0": download.blender_error.message }) : null,
       preview:type ? {local_path:download.path,type} : null}];
   }
   const taskItem = task => ({ title:taskTitle(task), status:STATUS[task.status] ?? task.status, taskId:task.task_id,
+    input: resultInput(task, data.task === task ? data.review : undefined),
     downloads:task.downloads ?? [],
     downloadTarget:task.status === 'succeeded' ? {task_id:task.task_id,artifact:artifactFor(task) === 'motion' ? 'model' : artifactFor(task),output_index:data.preview_target?.output_index ?? 0} : null,
     preview:task.status === 'succeeded' ? data.preview_target ?? { task_id:task.task_id, type:['model','motion'].includes(artifactFor(task)) ? 'model' : 'image' } : null });

@@ -8,7 +8,7 @@ import { MAX_IMPORT_MODEL_BYTES, MAX_IMPORT_MODEL_FACES } from "../constants.mjs
 
 const GLB_MAGIC = 1179937895;
 const GLB_JSON_CHUNK = 1313821514;
-const FBX_BINARY_MAGIC = Buffer.from("Kaydara FBX Binary  \0\0", "binary");
+const FBX_BINARY_MAGIC = Buffer.from("Kaydara FBX Binary  \0\x1a\0", "binary");
 const MAX_TEXT_LINE_BYTES = 1024 * 1024;
 const MAX_FBX_INDEX_BYTES = 64 * 1024 * 1024;
 
@@ -174,7 +174,7 @@ function fbxArray(bytes, propertyOffset) {
   return { data, next: end };
 }
 
-function inspectBinaryFbx(bytes) {
+function inspectBinaryFbx(bytes, onNode) {
   if (bytes.length < 27 || !bytes.subarray(0, FBX_BINARY_MAGIC.length).equals(FBX_BINARY_MAGIC)) throw invalid("The binary FBX header is invalid.");
   const version = bytes.readUInt32LE(23);
   if (version < 6000 || version > 9000) throw invalid("The FBX version is outside the supported binary range.");
@@ -201,6 +201,7 @@ function inspectBinaryFbx(bytes) {
       throw invalid("The FBX node offsets are inconsistent.");
     }
     const name = bytes.subarray(nameStart, nameEnd).toString("utf8");
+    onNode?.(name, propertyStart, propertyEnd, propertyCount);
     if (name === "LayerElementUV" || name === "UV" || name === "UVIndex") isUvMapped = true;
     if (name === "PolygonVertexIndex") {
       if (propertyCount < 1 || propertyStart >= propertyEnd || String.fromCharCode(bytes[propertyStart]) !== "i") {
@@ -271,6 +272,10 @@ function inspectAsciiFbx(bytes) {
   if (!found) throw invalid("The ASCII FBX contains no PolygonVertexIndex geometry.");
   assertFaceLimit(faceCount);
   return { faceCount, isUvMapped: /LayerElementUV\s*:/i.test(text) };
+}
+
+function inspectFbx(bytes) {
+  return bytes.subarray(0, FBX_BINARY_MAGIC.length).equals(FBX_BINARY_MAGIC) ? inspectBinaryFbx(bytes) : inspectAsciiFbx(bytes);
 }
 
 function formatFromPath(filePath) {
@@ -347,4 +352,39 @@ export function glbNodeNames(bytes) {
     if (node && typeof node.name === "string" && node.name.trim()) names.push(node.name.trim());
   }
   return names;
+}
+
+// Native quad Smart Mesh artifacts are binary FBX, including some URLs and
+// cached files labeled .glb. Read Model names without loading images or
+// sanitizing hierarchy identifiers as a rendering loader would.
+export function modelNodeNames(bytes) {
+  if (!bytes.subarray(0, FBX_BINARY_MAGIC.length).equals(FBX_BINARY_MAGIC)) return glbNodeNames(bytes);
+  const names = [];
+  inspectBinaryFbx(bytes, (node, start, end, count) => {
+    if (node !== 'Model') return;
+    // FBX Model properties: object ID, raw name, object type.
+    const properties = [];
+    let offset = start;
+    for (let index = 0; index < Math.min(count, 3); index++) {
+      if (offset >= end) throw invalid('The FBX Model property is truncated.');
+      const type = String.fromCharCode(bytes[offset++]);
+      const scalarSize = { Y: 2, C: 1, I: 4, F: 4, D: 8, L: 8 }[type];
+      if (scalarSize) {
+        offset += scalarSize;
+        properties.push(null);
+      } else if (type === 'S') {
+        if (offset + 4 > end) throw invalid('The FBX Model string is truncated.');
+        const length = bytes.readUInt32LE(offset);
+        offset += 4;
+        if (offset + length > end) throw invalid('The FBX Model string exceeds its property bounds.');
+        properties.push(bytes.toString('utf8', offset, offset + length));
+        offset += length;
+      } else throw invalid('The FBX Model property type is unsupported.');
+      if (offset > end) throw invalid('The FBX Model property exceeds its bounds.');
+    }
+    if (properties[2] !== 'Mesh' || typeof properties[1] !== 'string') return;
+    const name = properties[1].split('\0')[0].replace(/^Model::/, '').trim();
+    if (name) names.push(name);
+  });
+  return [...new Set(names)];
 }

@@ -28,12 +28,12 @@ async page => {
   await frame.locator('.countdown-helper').filter({hasText:'自动提交已暂停'}).waitFor();
   const edited = await (await page.request.get(`${base}/stats`)).json();
   assert(edited.review.status === 'editing' && edited.review.deadline_at === null, 'editing must pause server submission');
-  await frame.getByRole('button', {name:'保存并更新报价',exact:true}).click();
-  await frame.locator('.config-notice').filter({hasText:/\d+ 秒后自动提交/}).waitFor();
+  await frame.getByRole('button', {name:'保存并提交',exact:true}).click();
+  await frame.getByText('任务已提交，可刷新查看结果。',{exact:true}).waitFor();
   const saved = await (await page.request.get(`${base}/stats`)).json();
   assert(saved.review.input.face_limit === 24000, 'save must preserve the user selection');
-  assert(saved.review.deadline_at - Date.now() > 55000, 'displayed saved card must restart a full edit window');
-  assert(saved.calls.filter(call => call.arguments?.action === 'ready').length === 2, 'saved card must acknowledge the updated display');
+  assert(saved.review.status === 'submitted' && saved.review.deadline_at === null, 'save must submit immediately without a new edit window');
+  assert(saved.calls.filter(call => call.arguments?.action === 'ready').length === 1, 'saving must not start another visibility/countdown window');
   assert(errors.length === 0, errors.join('\n'));
-  console.log('PASS: hidden mount waits, displayed card gets 60 seconds, edit pauses, save restarts after display.');
+  console.log('PASS: hidden mount waits, displayed card gets 60 seconds, edit pauses, save submits immediately.');
 }

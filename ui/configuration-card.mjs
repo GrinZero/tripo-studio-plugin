@@ -1,6 +1,7 @@
 import { t as tr, localizedMap, setText, setAttributeText } from './i18n.mjs';
 import { KINDS, PARAM_LABELS } from './model.mjs';
 import { watchConfigurationVisibility } from './configuration-visibility.mjs';
+import { mountConfigurationModelPreview } from './configuration-model-preview.mjs';
 export const LABELS = localizedMap({ ...PARAM_LABELS, tier:'生成类型', mode:'输入方式', model_version:'模型版本', geometry_quality:'超清几何', texture_quality:'贴图分辨率', generate_parts:'分件生成', quad:'四边形', t_pose:'T Pose', character_name:'角色名称', front_image_path:'正面', left_image_path:'左侧', back_image_path:'背面', right_image_path:'右侧', image_path:'参考图片', image_paths:'批量图片', studio_image_asset_id:'Studio 图片', studio_multiview_asset_id:'Studio 多视图', project_id:'源模型', parent_task_id:'上游任务', output_index:'输出编号', allow_sensitive:'允许敏感输入', enable_image_autofix:'自动修复图片' });
 export const VALUES = localizedMap({high_detail:'高精度 · H3.1',smart_mesh:'Smart Mesh',standard:'标准',detailed:'精细',ultra:'超清',text:'文字',image:'图片',multiview:'四视图',batch:'独立批量',studio_image:'Studio 图片',studio_multiview:'Studio 多视图',private:'私有',public:'公开',shareable:'可分享'});
 const order=['mode','tier','model_version','face_limit','geometry_quality','texture','texture_quality','delight','pbr','quad','generate_parts','amount','prompt','t_pose','visibility','front_image_path','left_image_path','back_image_path','right_image_path'];
@@ -31,10 +32,12 @@ export function readConfiguration(form,review) {
   if(input.tier==='smart_mesh')for(const key of ['geometry_quality','texture','texture_quality','delight','pbr','generate_parts','smart_poly','enable_image_autofix','segmentation_granularity','texture_alignment'])delete input[key];
   return input;
 }
-export function mountConfiguration(root,review,{action,onError,preview,importImage}) {
+export function mountConfiguration(root,review,{action,onError,preview,importImage,previewModel,renderModel,getDark}) {
   const form=document.createElement('form');form.className='configuration';form.noValidate=false;
   const heading=document.createElement('h2');form.append(heading);
   const intro=document.createElement('p');intro.className='config-intro';form.append(intro);
+  const smartMeshNote=document.createElement('p');smartMeshNote.className='config-intro';smartMeshNote.hidden=true;
+  setText(smartMeshNote, () => tr("Smart Mesh 分三步：先生成白模，再生成颜色贴图（可去光），最后单独生成 PBR 贴图。后两步沿用同一模型。"));form.append(smartMeshNote);
   const hero=document.createElement('div');hero.className='source-strip';form.append(hero);
   const grid=document.createElement('div');grid.className='configuration-controls';form.append(grid);
   function section(title){const el=document.createElement('section');el.className='config-section';const h=document.createElement('h3');setText(h, () => tr(title));el.append(h);grid.append(el);return el;}
@@ -53,7 +56,7 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
     else if(['object','array'].includes(valueType)){node=document.createElement('textarea');node.value=field.value===undefined?'':JSON.stringify(field.value,null,2);node.dataset.valueType='json';label.classList.add('wide');}
     else {node=document.createElement(field.key==='prompt'?'textarea':'input');if(node.tagName==='INPUT'){node.type=['integer','number'].includes(valueType)?'number':'text';if(node.type==='number'){node.dataset.valueType='number';node.step=valueType==='integer'?'1':'any';if(field.schema.minimum!==undefined)node.min=field.schema.minimum;if(field.schema.maximum!==undefined)node.max=field.schema.maximum;}}node.value=field.value??'';if(field.key==='prompt')label.classList.add('wide');}
     node.dataset.field=field.key;node.dataset.unset=String(field.value===undefined);node.required=review.schema.required?.includes(field.key) ?? false;
-    node.addEventListener('input',()=>{pause();node.dataset.touched='true';save.hidden=false;confirm.hidden=true;confirm.disabled=true;setText(notice, () => tr("配置已修改"));setText(helper, () => tr("保存后更新报价与倒计时"));});
+    node.addEventListener('input',()=>{pause();node.dataset.touched='true';save.hidden=false;confirm.hidden=true;confirm.disabled=true;setText(notice, () => tr("配置已修改"));setText(helper, () => tr("保存后立即提交"));});
     label.append(node);
     if(review.kind==='model.generate' && ['model_version','face_limit','geometry_quality','generate_parts'].includes(field.key))generationGrid.append(label);
     else if(review.kind==='model.generate' && field.key==='texture_quality')textureGrid.prepend(label);
@@ -85,7 +88,7 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
   const billing=document.createElement('small');setText(billing, () => tr("最终以服务扣费为准"));cost.append(costMain,billing);actionRow.append(cost);
   const buttons=document.createElement('div');buttons.className='config-actions';actionRow.append(buttons);
   const cancel=document.createElement('button');cancel.type='button';setText(cancel, () => tr("取消"));
-  const save=document.createElement('button');save.type='submit';save.className='primary';setText(save, () => tr("保存并更新报价"));save.hidden=review.status!=='editing';
+  const save=document.createElement('button');save.type='submit';save.className='primary';setText(save, () => tr("保存并提交"));save.hidden=review.status!=='editing';
   const confirm=document.createElement('button');confirm.type='button';confirm.className='primary';setText(confirm, () => review.kind==='model.generate'?tr("确认并生成  →"):tr("确认并提交  →"));confirm.disabled=review.status!=='pending';confirm.hidden=review.status==='editing';buttons.append(cancel,save,confirm);
   const countdown=document.createElement('div');countdown.className='countdown';footer.append(countdown);
   const clock=document.createElement('span');clock.className='clock-icon';setText(clock, () => '◷');clock.setAttribute('aria-hidden','true');
@@ -98,17 +101,17 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
   async function run(name,input){
     busy(true);if(name!=='edit')freeze(true);
     if(name==='save'){
-      saving=true;setText(save, () => tr("正在保存并更新报价…"));form.setAttribute('aria-busy','true');
-      setText(notice, () => tr("正在保存配置并更新报价…"));setText(helper, () => tr("正在本地保存参数与计算费用，完成后重新计时"));
+      saving=true;setText(save, () => tr("正在保存并提交…"));form.setAttribute('aria-busy','true');
+      setText(notice, () => tr("正在保存并提交…"));setText(helper, () => tr("校验通过后立即提交"));
     }
     try{const result=await action(name,current.revision,input);current=result.review;return result;}
     catch(e){if(name==='save'&&!disposed){setText(notice, () => tr("保存失败，请重试"));setText(helper, () => tr("自动提交已暂停"));}onError(e);throw e;}
-    finally{if(name==='save'){saving=false;if(!disposed){setText(save, () => tr("保存并更新报价"));form.removeAttribute('aria-busy');}}if(!disposed){busy(false);freeze(false);tick();}}
+    finally{if(name==='save'){saving=false;if(!disposed){setText(save, () => tr("保存并提交"));form.removeAttribute('aria-busy');}}if(!disposed){busy(false);freeze(false);tick();}}
   }
   function pause(){
     if(current.status!=='pending'||editingRequest)return;
     // Pause on focus, before the first edit; persist the pause on the server.
-    current={...current,status:'editing'};save.hidden=false;confirm.hidden=true;confirm.disabled=true;setText(notice, () => tr("编辑中"));setText(helper, () => tr("自动提交已暂停"));
+    current={...current,status:'editing'};save.hidden=false;confirm.hidden=true;confirm.disabled=true;setText(notice, () => tr("编辑中"));setText(helper, () => current.auto_submit===false?tr("保存后立即提交"):tr("自动提交已暂停"));
     editingRequest=run('edit').catch(()=>null).finally(()=>{editingRequest=null;});
   }
   const node=key=>grid.querySelector(`[data-field="${key}"]`);
@@ -124,8 +127,9 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
     function visibility(){
       const mode=node('mode')?.value,tier=node('tier')?.value,texture=node('texture')?.checked;
       for(const key of sourceKeys)if(node(key))node(key).closest('label').hidden=!(sources[mode]??[]).includes(key);
-      for(const key of ['geometry_quality','texture','texture_quality','delight','pbr','generate_parts'])if(node(key))node(key).closest('label').hidden=tier==='smart_mesh'||(key==='geometry_quality'&&node('model_version')?.value!=='v3.1-20260211')||(!texture&&['texture_quality','delight','pbr'].includes(key));
+      for(const key of ['geometry_quality','texture','texture_quality','texture_alignment','delight','pbr','generate_parts'])if(node(key))node(key).closest('label').hidden=tier==='smart_mesh'||(key==='geometry_quality'&&node('model_version')?.value!=='v3.1-20260211')||(!texture&&['texture_quality','texture_alignment','delight','pbr'].includes(key));
       textures.hidden=tier==='smart_mesh';
+      smartMeshNote.hidden=tier!=='smart_mesh';
       if(node('amount'))node('amount').closest('label').hidden=tier!=='smart_mesh';
       if(node('model_version'))for(const option of node('model_version').options)option.hidden=tier==='smart_mesh'?!option.value.startsWith('Nexus'):option.value.startsWith('Nexus');
     }
@@ -157,18 +161,29 @@ export function mountConfiguration(root,review,{action,onError,preview,importIma
     }
   }
   const observers=[];updateTitle();hydrateSources();
+  let sourceModel;
+  if(node('project_id') && previewModel && renderModel){
+    const modelRoot=document.createElement('div');hero.before(modelRoot);
+    sourceModel=mountConfigurationModelPreview(modelRoot,node('project_id'),{preview:previewModel,renderModel,getDark,beforeInspect:pauseBeforeChange,onError});
+    setText(helper, () => tr('检查源模型外观，确认后开始处理。'));
+  }
   grid.addEventListener('focusin',event=>{if(event.target.matches('input,select,textarea,.segments button'))pause();});
   form.onsubmit=async event=>{event.preventDefault();if(working||disposed)return;await editingRequest;if(disposed)return;try{await run('save',readConfiguration(form,current));}catch{}};
   confirm.onclick=async()=>{if(!working)try{await run('confirm');}catch{}};
   cancel.onclick=async()=>{if(!working)try{await editingRequest;await run('cancel');}catch{}};
-  function tick(){if(disposed||saving)return;if(current.status==='pending'){const waiting=!Number.isFinite(current.deadline_at);const seconds=waiting?(current.timeout_seconds??60):Math.max(0,Math.ceil((current.deadline_at-Date.now())/1000));setText(notice, () => waiting?tr("正在准备编辑窗口…"):seconds?tr("{0} 秒后自动提交", { "0": seconds }):tr("正在自动提交…"));progress.style.transform=`scaleX(${seconds/(current.timeout_seconds??60)})`;}else if(current.status==='editing'){progress.style.transform='scaleX(0)';}
+  function tick(){if(disposed||saving)return;
+    track.hidden=current.auto_submit===false;clock.hidden=current.auto_submit===false;
+    if(current.auto_submit===false){setText(notice, () => current.status==='editing'?tr("编辑中"):tr("草稿配置，确认后提交"));setText(helper, () => current.status==='editing'?tr("保存后立即提交"):tr("不会自动提交"));return;}
+    if(current.status==='pending'){const waiting=!Number.isFinite(current.deadline_at);const seconds=waiting?(current.timeout_seconds??60):Math.max(0,Math.ceil((current.deadline_at-Date.now())/1000));setText(notice, () => waiting?tr("正在准备编辑窗口…"):seconds?tr("{0} 秒后自动提交", { "0": seconds }):tr("正在自动提交…"));progress.style.transform=`scaleX(${seconds/(current.timeout_seconds??60)})`;}else if(current.status==='editing'){progress.style.transform='scaleX(0)';}
     if(current.status==='editing'){if(!notice.textContent)setText(notice, () => tr("编辑中"));setText(helper, () => tr("自动提交已暂停"));}}
   tick();const timer=setInterval(tick,250);root.append(form);
   const visibility=watchConfigurationVisibility(form,async()=>{
-    if(current.status!=='pending'||Number.isFinite(current.deadline_at))return;
+    // Visibility starts pre-upload even if the user immediately begins editing.
+    // The server arms a deadline only for an untouched automatic form.
+    if(!['pending','editing'].includes(current.status)||Number.isFinite(current.deadline_at))return;
     try{const result=await action('ready');if(!disposed&&current.status==='pending'&&result.review.revision>=current.revision){current=result.review;tick();}}
     catch(error){if(!disposed)onError(error);throw error;}
   });
   const close=document.getElementById('closeCard');if(close){close.hidden=false;close.onclick=()=>cancel.click();}
-  return {dispose(){disposed=true;visibility.dispose();clearInterval(timer);observers.forEach(observer=>observer.disconnect());if(close){close.hidden=true;close.onclick=null;}},update(record){if(record.revision<current.revision || current.status==='editing'&&record.status==='pending'&&record.revision===current.revision)return;current=record;confirm.disabled=working||record.status!=='pending';visibility.check();}};
+  return {theme(value){sourceModel?.theme(value);},dispose(){disposed=true;sourceModel?.dispose();visibility.dispose();clearInterval(timer);observers.forEach(observer=>observer.disconnect());if(close){close.hidden=true;close.onclick=null;}},update(record){if(record.revision<current.revision || current.status==='editing'&&record.status==='pending'&&record.revision===current.revision)return;current=record;confirm.disabled=working||record.status!=='pending';visibility.check();}};
 }

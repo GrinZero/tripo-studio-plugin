@@ -259,16 +259,16 @@ export const postprocessOperations = {
     category: "postprocess",
     consumesCredits: true,
     description:
-      "Generate textures for a project: mode=text (prompt), mode=image (local reference image), or mode=multiview (front plus optional left/back/right). Optionally a built-in style (heritage|mecha|mecha_pop|wood) or a local style image — styles are incompatible with multiview mode.",
+      "Generate color textures for an existing project, preserving its geometry. Smart Mesh stage 2 of 3: white mesh (tripo_generate_model) → color textures (this tool) → separate PBR maps (tripo_generate_pbr). This tool does not automatically generate the separate PBR map set. If PBR maps are requested, wait for color-texture success then call tripo_generate_pbr on the same project; if color textures already exist and only PBR is missing, skip this tool. mode=text (prompt), mode=image (local reference image), or mode=multiview (front plus optional left/back/right). quality, alignment and delight apply in this stage. Omit part_names or pass [] for the whole model; use raw hierarchy names for selected parts. Built-in styles (heritage|mecha|mecha_pop|wood) or a local style image are incompatible with multiview mode.",
     inputShape: {
       alignment: z.enum(["original_image", "geometry"]).default("original_image"),
-      delight: z.boolean().default(true).describe("Remove lighting independently of PBR."),
+      delight: z.boolean().default(true).describe("Remove lighting during color-texture generation, including for an existing Smart Mesh. This does not generate PBR maps; use tripo_generate_pbr afterward when requested."),
       back_image_path: z.string().optional(),
       front_image_path: z.string().optional(),
       image_path: z.string().optional().describe("Local reference image for mode=image."),
       left_image_path: z.string().optional(),
       mode: z.enum(["text", "image", "multiview"]).describe("Texture source mode."),
-      part_names: partNames,
+      part_names: z.array(z.string().regex(PART_NAME)).max(MAX_PARTS).optional().describe("Raw hierarchy names for selected parts. Omit or pass [] for the whole model; segmentation is not required."),
       project_id: projectId,
       prompt: z.string().optional().describe("Required for mode=text."),
       quality: z.enum(["standard", "detailed", "ultra"]).default("detailed"),
@@ -291,7 +291,7 @@ export const postprocessOperations = {
       const payload = {
         model_version: TEXTURE_MODEL_VERSION,
         delight: input.delight,
-        part_names: validatePartNames(input.part_names),
+        ...(input.part_names?.length ? { part_names: validatePartNames(input.part_names) } : {}),
         project_id: input.project_id,
         texture_alignment: input.alignment,
         texture_quality: input.quality
@@ -474,7 +474,7 @@ export const postprocessOperations = {
   "texture.pbr": {
     category: "postprocess",
     consumesCredits: true,
-    description: "Generate PBR material maps for an already-textured project.",
+    description: "Generate separate PBR material maps (Normal, Roughness and Metallic) for an already color-textured project, preserving its geometry and color textures. Smart Mesh stage 3 of 3: white mesh → color textures → PBR maps. If color textures already exist and only PBR is missing, call this tool directly on that project's project_id; do not regenerate the model or color textures. Wait for success, then export/download and verify the actual channels, including packed maps. A PBR material with scalar factors alone does not prove PBR maps exist.",
     inputShape: { project_id: projectId, submit: z.boolean().optional() },
     internalKind: "pbr",
     title: "Generate PBR maps",

@@ -4,8 +4,13 @@ import { OpenAIExtensions } from '@openai/mcp-extensions/app';
 import { HostInfoTransport, isCodexHost } from './host-layout.mjs';
 import { mountModel } from './viewer.mjs';
 import { STATUS, KINDS, ACTIVE, taskProject, taskTitle, artifactFor, quoteCurrent, generationInput, parameterRows, modelBadge } from './model.mjs';
+import { SERVER_VERSION } from '../src/constants.mjs';
 
 const $ = id => document.getElementById(id);
+const buildInfo = __TRIPO_BUILD_INFO__;
+$('appVersionNumber').textContent = `v${buildInfo.version}-`;
+$('appVersionTimestamp').textContent = buildInfo.timestamp;
+$('appVersion').title = `Tripo Studio v${buildInfo.version}-${buildInfo.timestamp} (${buildInfo.time_zone})`;
 initializeI18n();
 mountLanguageSelector($('language'));
 setText($('sessionStatus'), () => tr('连接中'));
@@ -100,7 +105,7 @@ const state = {
 let assetSearchTimer;
 let hostTheme, theme = 'system', viewer, viewEpoch = 0, assetEpoch = 0, taskEpoch = 0, detailEpoch = 0, quoteEpoch = 0, quoteTimer, toastTimer, selectionSlot = 'front';
 try { theme = localStorage.getItem('tripo.theme') || 'system'; } catch {}
-const app = new App({ name: 'Tripo Studio', version: '0.3.6' }, {}, { autoResize: true });
+const app = new App({ name: 'Tripo Studio', version: SERVER_VERSION }, {}, { autoResize: true });
 new OpenAIExtensions(app);
 
 let hostInfo, layoutContext = {};
@@ -225,16 +230,31 @@ function disposeViewer() {
   viewer = null;
 }
 
-let renderedPage;
+let renderedPage, taskListScroll = 0, taskDetailScroll = 0, renderedTaskId = null;
 function setMain(html) {
+  if (state.view === 'tasks') {
+    const list = document.querySelector('.task-list');
+    if (list) taskListScroll = list.scrollTop;
+    const detail = document.querySelector('.task-detail-body');
+    if (detail) taskDetailScroll = detail.scrollTop;
+  }
   disposeViewer();
   document.body.classList.toggle('asset-detail-page', state.view === 'assets' && !!state.detail);
+  document.body.classList.toggle('tasks-page', state.view === 'tasks');
   $('main').innerHTML = html;
-  const page = `${state.view}:${state.view === 'assets' ? state.detail?.project_id ?? `${state.assetType}:${state.assetGroup}:${state.assetOffset}` : ''}`;
+  const page = `${state.view}:${state.view === 'assets' ? state.detail?.project_id ?? `${state.assetType}:${state.assetGroup}:${state.assetOffset}` : state.view === 'tasks' ? `${state.taskFilter}:${state.taskOffset}:${state.taskSearch}` : ''}`;
   if (renderedPage !== page) {
     $('main').scrollTop = 0;
     window.scrollTo(0, 0);
+    taskListScroll = 0;
     renderedPage = page;
+  }
+  if (state.view === 'tasks') {
+    const list = document.querySelector('.task-list');
+    if (list) list.scrollTop = taskListScroll;
+    const detail = document.querySelector('.task-detail-body');
+    if (detail) detail.scrollTop = renderedTaskId === state.taskId ? taskDetailScroll : 0;
+    renderedTaskId = state.taskId;
   }
 }
 
@@ -610,7 +630,7 @@ async function loadViewer(projectId) {
     viewer = mounted;
     node.querySelector('.viewport-cover')?.remove();
     message?.classList.add('hidden');
-    setText($('viewerMeta'), () => tr("{0} 面 · GLB", { "0": formatNumber(mounted.triangles) }));
+    setText($('viewerMeta'), () => tr("{0} 面 · GLB", { "0": formatNumber(mounted.triangles) }).replace('GLB', p.mime_type === 'model/fbx' ? 'FBX' : 'GLB'));
   } catch (e) {
     if (message?.isConnected) message.innerHTML = `<p>${esc(e.message)}</p>${button(tr("重新加载"), 'reloadViewer', 'secondary')}`;
   }
@@ -707,7 +727,7 @@ function operationRequest() {
     return { kind: 'model.remesh', tool: 'tripo_remesh_model', input: { project_id, part_name_list: parts, face_limit: Number(f.faces), quad: f.quad, smart_poly: f.smartPoly, submit: false } };
   }
   if (state.op === 'texture') {
-    if (!parts.length) throw Error(tr("请至少选择一个分件。"));
+    if (!parts.length && state.detail.parts?.length) throw Error(tr("请至少选择一个分件。"));
     if (!f.prompt.trim()) throw Error(tr("请输入贴图描述。"));
     return { kind: 'texture.generate', tool: 'tripo_generate_texture', input: { project_id, part_names: parts, mode: 'text', prompt: f.prompt.trim(), quality: f.quality, alignment: 'original_image', delight: true, submit: false } };
   }
@@ -811,6 +831,36 @@ function renderTasks() {
     </section>
   </div>`);
   hydratePreviews();
+  if ($('taskPreviewMedia')) void loadTaskPreview(state.taskDetail.task);
+}
+
+function taskPreviewArgs(task) {
+  return { task_id: task.task_id, type: ['model', 'motion'].includes(artifactFor(task)) ? 'model' : 'image' };
+}
+
+async function loadTaskPreview(task) {
+  const node = $('taskPreviewMedia'), message = $('taskPreviewMessage');
+  const args = taskPreviewArgs(task);
+  try {
+    const p = await preview(args);
+    if (!node.isConnected) return;
+    if (args.type === 'model') {
+      const mounted = await mountModel(node, p.data_url, { dark: isDark() });
+      if (!node.isConnected) { mounted.dispose(); return; }
+      disposeViewer();
+      viewer = mounted;
+    } else {
+      const image = document.createElement('img');
+      image.alt = tr('预览');
+      image.src = p.data_url;
+      await image.decode();
+      if (!node.isConnected) return;
+      node.replaceChildren(image);
+    }
+    message.classList.add('hidden');
+  } catch (error) {
+    if (message.isConnected) message.innerHTML = `<p>${esc(error.message)}</p>${button(tr('重新加载'), 'reloadTaskPreview', 'secondary')}`;
+  }
 }
 
 async function selectTask(taskId) {
@@ -843,48 +893,58 @@ function renderTaskDetail() {
   return `
   <div class="task-detail-card">
     <div class="task-detail-header row spread">
-      <div>
+      <div class="grow">
         <h2>${esc(taskTitle(t, state.models))}</h2>
         <span class="dim small mono">${t.remote || ['queued','running','succeeded','outcome_unknown'].includes(t.status) ? th("任务 ID: {0}", { "0": esc(t.task_id) }) : th("草稿标识: {0}", {"0":esc(t.task_id)})}</span>
       </div>
-      <div class="row" style="gap:10px; align-items:center">
+      <div class="row" style="gap:10px; align-items:center; flex-shrink:0">
         ${status(t.status)}
       </div>
     </div>
-    <div class="character-editor-box">
-      <div class="character-editor">
-        <div class="field" style="margin:0; flex:1">
-          <label for="taskCharacter">${th("角色归属")}</label>
-          <input id="taskCharacter" maxlength="80" list="characterNames" value="${esc(t.character_group?.name ?? '')}" placeholder="${th("未分组（输入角色名称）")}">
+    <div class="task-detail-body">
+      <div class="character-editor-box">
+        <div class="character-editor">
+          <div class="field" style="margin:0; flex:1">
+            <label for="taskCharacter">${th("角色归属")}</label>
+            <input id="taskCharacter" maxlength="80" list="characterNames" value="${esc(t.character_group?.name ?? '')}" placeholder="${th("未分组（输入角色名称）")}">
+          </div>
+          ${button(tr("保存角色"), 'setCharacter', 'secondary', `data-id="${t.task_id}"`, state.busy)}
         </div>
-        ${button(tr("保存角色"), 'setCharacter', 'secondary', `data-id="${t.task_id}"`, state.busy)}
+        ${characterNames()}
+        <p class="field-note muted small" style="margin-top:4px">${t.character_group?.assigned_by === 'inherited' ? tr("已沿用来源任务的角色分组。") : t.character_group?.assigned_by === 'inferred' ? tr("从描述中的角色名自动归组。") : t.character_group ? tr("后续二次处理将沿用此角色分组。") : tr("填写角色名可归组；留空并保存可移到未分组。")}</p>
       </div>
-      ${characterNames()}
-      <p class="field-note muted small" style="margin-top:4px">${t.character_group?.assigned_by === 'inherited' ? tr("已沿用来源任务的角色分组。") : t.character_group?.assigned_by === 'inferred' ? tr("从描述中的角色名自动归组。") : t.character_group ? tr("后续二次处理将沿用此角色分组。") : tr("填写角色名可归组；留空并保存可移到未分组。")}</p>
+      ${previewable ? `
+      <div class="task-viewport-wrap">
+        <div id="taskModelViewport" class="viewport">
+          <div id="taskPreviewMedia" class="task-preview"></div>
+          ${taskPreviewArgs(t).type === 'model' ? `<div class="viewport-tools">
+            ${button(tr('材质视图'), 'material', 'tool-pill active')}
+            ${button(tr('线框模式'), 'wireframe', 'tool-pill')}
+            ${button(icon('fit'), 'fit', 'icon-button fit-btn', `aria-label="${th('重置视角')}"`)}
+          </div>` : ''}
+          <div id="taskPreviewMessage" class="viewer-fallback"><span class="busy"></span><p>${th('正在加载预览…')}</p></div>
+        </div>
+      </div>` : empty(t.status === 'staged' ? tr("参数已保存为草稿") : t.status === 'canceled' ? tr("草稿已取消") : t.status === 'failed' ? tr("未生成可用输出") : tr("处理中，暂无预览"), t.status === 'staged' ? tr("提交前可在此核对冻结参数与预估费用。") : t.status === 'canceled' ? tr("这份草稿已标记取消，不会提交扣费。") : t.status === 'failed' ? tr("任务处理遇到异常，请查看下方报错。") : tr("任务完成后，结果将实时显示在此。"))}
+      ${t.error ? `<div class="error-card"><strong>${t.status === 'outcome_unknown' ? tr("提交结果待核实") : tr("处理失败")}</strong><p>${esc(t.error.message)}</p>${t.status === 'outcome_unknown' ? `<p class="muted">${th("请在 Studio 确认，避免重复扣费。")}</p>` : ''}</div>` : ''}
+      ${t.warnings?.length ? `<details class="warnings-details"><summary>${th("任务提示（{0}）", { "0": t.warnings.length })}</summary>${t.warnings.map(w => `<p class="field-note">${esc(w)}</p>`).join('')}</details>` : ''}
+      <div class="task-actions-row">${[
+        projectId ? button(tr("查看关联资产"), 'assetDetail', 'secondary', `data-id="${esc(projectId)}"`) : '',
+        t.status === 'succeeded' ? button(icon('download') + tr("下载模型文件"), 'taskDownload', 'primary', `data-id="${t.task_id}"`, state.busy) : '',
+        t.status === 'staged' ? button(tr("确认并提交"), 'submitDraft', 'primary', `data-id="${t.task_id}"`, state.busy) + button(tr("取消草稿"), 'cancelDraft', 'secondary', `data-id="${t.task_id}"`, state.busy) : ACTIVE.includes(t.status) ? button(icon('refresh') + tr("同步最新状态"), 'syncTask', 'secondary', `data-id="${t.task_id}"`, state.busy) : ''
+      ].filter(Boolean).join('')}</div>
+      <div class="section-divider"></div>
+      <h3>${th("本次冻结参数")}</h3>
+      ${kv(parameterRows(t))}
+      <div class="section-divider"></div>
+      <h3>${th("生命周期轨迹")}</h3>
+      <ol class="timeline">
+        ${events.map(e => `<li><div class="timeline-dot"></div><div class="timeline-content"><strong>${esc(eventLabels[e.type] ?? KINDS[e.type] ?? e.type)}</strong><span>${date(e.at)}</span></div></li>`).join('') || `<li><div class="timeline-dot"></div><div class="timeline-content">${th("暂无事件记录")}</div></li>`}
+      </ol>
+      <div class="section-divider"></div>
+      <h3>${th("输入来源快照")}</h3>
+      ${t.snapshots?.length ? kv(t.snapshots.map(s => [({ image: tr("源图片"), front: tr("正面"), left: tr("左侧"), back: tr("背面"), right: tr("右侧"), model: tr("源模型"), reference: tr("参考图片") })[s.slot] ?? s.slot, s.source_name ?? s.label])) : `<p class="field-note muted small">${th("没有本地输入快照。")}</p>`}
+      ${(t.downloads ?? []).map(d => `<div class="download-path">${th("{0} 本地已保存：{1}", { "0": icon('check'), "1": esc(d.path) })}</div>`).join('')}
     </div>
-    ${previewable ? `
-    <div class="task-viewport-wrap">
-      <div class="viewport">${previewPlaceholder({ task_id: t.task_id, type: 'image' }, 'task-preview')}</div>
-    </div>` : empty(t.status === 'staged' ? tr("参数已保存为草稿") : t.status === 'canceled' ? tr("草稿已取消") : t.status === 'failed' ? tr("未生成可用输出") : tr("处理中，暂无预览"), t.status === 'staged' ? tr("提交前可在此核对冻结参数与预估费用。") : t.status === 'canceled' ? tr("这份草稿已标记取消，不会提交扣费。") : t.status === 'failed' ? tr("任务处理遇到异常，请查看下方报错。") : tr("任务完成后，结果将实时显示在此。"))}
-    ${t.error ? `<div class="error-card"><strong>${t.status === 'outcome_unknown' ? tr("提交结果待核实") : tr("处理失败")}</strong><p>${esc(t.error.message)}</p>${t.status === 'outcome_unknown' ? `<p class="muted">${th("请在 Studio 确认，避免重复扣费。")}</p>` : ''}</div>` : ''}
-    ${t.warnings?.length ? `<details class="warnings-details"><summary>${th("任务提示（{0}）", { "0": t.warnings.length })}</summary>${t.warnings.map(w => `<p class="field-note">${esc(w)}</p>`).join('')}</details>` : ''}
-    <div class="task-actions-row">
-      ${projectId ? button(tr("查看关联资产"), 'assetDetail', 'secondary', `data-id="${esc(projectId)}"`) : ''}
-      ${t.status === 'succeeded' ? button(icon('download') + tr("下载模型文件"), 'taskDownload', 'primary', `data-id="${t.task_id}"`, state.busy) : ''}
-      ${t.status === 'staged' ? button(tr("确认并提交"), 'submitDraft', 'primary', `data-id="${t.task_id}"`, state.busy) + button(tr("取消草稿"), 'cancelDraft', 'secondary', `data-id="${t.task_id}"`, state.busy) : ACTIVE.includes(t.status) ? button(icon('refresh') + tr("同步最新状态"), 'syncTask', 'secondary', `data-id="${t.task_id}"`, state.busy) : ''}
-    </div>
-    <div class="section-divider"></div>
-    <h3>${th("本次冻结参数")}</h3>
-    ${kv(parameterRows(t))}
-    <div class="section-divider"></div>
-    <h3>${th("生命周期轨迹")}</h3>
-    <ol class="timeline">
-      ${events.map(e => `<li><div class="timeline-dot"></div><div class="timeline-content"><strong>${esc(eventLabels[e.type] ?? KINDS[e.type] ?? e.type)}</strong><span>${date(e.at)}</span></div></li>`).join('') || `<li><div class="timeline-dot"></div><div class="timeline-content">${th("暂无事件记录")}</div></li>`}
-    </ol>
-    <div class="section-divider"></div>
-    <h3>${th("输入来源快照")}</h3>
-    ${t.snapshots?.length ? kv(t.snapshots.map(s => [({ image: tr("源图片"), front: tr("正面"), left: tr("左侧"), back: tr("背面"), right: tr("右侧"), model: tr("源模型"), reference: tr("参考图片") })[s.slot] ?? s.slot, s.source_name ?? s.label])) : `<p class="field-note muted small">${th("没有本地输入快照。")}</p>`}
-    ${(t.downloads ?? []).map(d => `<div class="download-path">${th("{0} 本地已保存：{1}", { "0": icon('check'), "1": esc(d.path) })}</div>`).join('')}
   </div>`;
 }
 
@@ -1046,6 +1106,7 @@ function renderCreate() {
           <p class="tier-desc">${th("P2.0 规整四边面 · 轻量拓扑")}</p>
         </button>
       </div>
+      ${!high ? `<p class="field-note">${th("Smart Mesh 分三步：先生成白模，再生成颜色贴图（可去光），最后单独生成 PBR 贴图。后两步沿用同一模型。")}</p>` : ''}
 
       <div class="setting-block">
         <div class="row spread label-row">
@@ -1305,14 +1366,16 @@ async function stageCurrent(submit) {
   updateQuoteUI();
   document.querySelectorAll('[data-action="saveDraft"],[data-action="stageOperation"],[data-action="process"]').forEach(b => b.disabled = true);
   try {
-    const result = await data(req.tool, { ...req.input, submit: false, review: false });
-    if (!result.task) throw Error(tr("未收到任务记录。"));
+    // Workbench buttons own their confirmation UI; internal staging is app-only.
+    const result = await data('tripo_run_workflow', {steps:[{operation:req.kind,input:req.input}],submit:false});
+    const task = result.tasks?.[0]?.task;
+    if (!task) throw Error(tr("未收到任务记录。"));
     if (submit) {
       state.busy = false;
-      await confirmTask(result.task);
+      await confirmTask(task);
     } else {
       toast(tr("草稿已保存，可在“任务”中确认提交。"));
-      await showTask(result.task.task_id);
+      await showTask(task.task_id);
     }
   } catch (e) {
     toast(e.message, true);
@@ -1606,6 +1669,7 @@ $('main').addEventListener('click', async e => {
     }
     else if (action === 'fit') viewer?.reset();
     else if (action === 'reloadViewer') { previews.delete(JSON.stringify({ project_id: state.detail.project_id, type: 'model' })); await loadViewer(state.detail.project_id); }
+    else if (action === 'reloadTaskPreview') { previews.delete(JSON.stringify(taskPreviewArgs(state.taskDetail.task))); renderTasks(); }
     else if (action === 'projectTasks') { state.taskSearch = ''; await navigate('tasks'); }
     else if (action === 'task') await selectTask(id);
     else if (action === 'tasksReload') await loadTasks();

@@ -18,8 +18,7 @@ for (const relative of [".codex-plugin/plugin.json", ".mcp.json", ".agents/plugi
   await save(relative, `${JSON.stringify(doc, null, 2)}\n`);
 }
 const replacements = {
-  "src/constants.mjs": text => text.replace(/(SERVER_VERSION = ")[^"]+/, `$1${version}`).replace(/workbench-v[\d.]+\.html/, `workbench-v${version}.html`),
-  "ui/workbench.mjs": text => text.replace(/(name: 'Tripo Studio', version: ')[^']+/, `$1${version}`),
+  "src/constants.mjs": text => text.replace(/(SERVER_VERSION = ")[^"]+/, `$1${version}`),
   "ui/result-card.mjs": text => text.replace(/(name:'Tripo Studio',version:')[^']+/, `$1${version}`),
   "skills/tripo-studio/SKILL.md": text => text.replace(/^# Tripo Studio [\d.]+/m, `# Tripo Studio ${version}`),
   "TOOL_INVENTORY.md": text => text.replace(/^(# Tool inventory — \d+ MCP tools \()[\d.]+(\))/m, `$1${version}$2`)

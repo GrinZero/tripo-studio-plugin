@@ -9,7 +9,7 @@
         "--fetch-timeout=20000",
         "--fetch-retries=1",
         "--fetch-retry-mintimeout=1000",
-        "--package=tripo-studio-plugin@0.3.6",
+        "--package=tripo-studio-plugin@0.3.7",
         "tripo-studio"
       ],
       "cwd": ".",

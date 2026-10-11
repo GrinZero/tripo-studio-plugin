@@ -61,7 +61,7 @@ it('keeps variable content intact, formats values by locale, and falls back for 
 });
 
 it('includes every explicit UI message and static accessibility marker in the source catalog', async () => {
-  const names = ['workbench.mjs', 'workbench.html', 'result-card.mjs', 'result-card.html', 'model.mjs', 'card-model.mjs', 'configuration-card.mjs', 'quote-card.mjs', 'quote-model.mjs', 'viewer.mjs'];
+  const names = ['workbench.mjs', 'workbench.html', 'result-card.mjs', 'result-card.html', 'model.mjs', 'card-model.mjs', 'configuration-card.mjs', 'configuration-model-preview.mjs', 'quote-card.mjs', 'quote-model.mjs', 'viewer.mjs'];
   const sources = await Promise.all(names.map(name => readFile(new URL(`../ui/${name}`, import.meta.url), 'utf8')));
   for (let index = 0; index < sources.length; index++) {
     const patterns = [/\b(?:tr|th)\("([^"\n]+)"/g, /\b(?:tr|th)\('([^'\n]+)'/g, /data-i18n(?:-aria-label|-title|-placeholder)?="([^"]+)"/g];

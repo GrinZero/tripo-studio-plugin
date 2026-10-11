@@ -13,6 +13,8 @@ async page => {
       body.structuredContent.project_name='stone stepped platform 3d model '.repeat(12);
       body.structuredContent.parts=stressParts ? ['Head','Body_with_a_very_long_unbroken_name_for_overflow_verification'] : ['Head','Body'];
     }
+    if (call.name==='tripo_ui_preview' && call.arguments.type==='model')
+      body._meta.tripo.preview.part_names=stressParts ? ['Head','Body_with_a_very_long_unbroken_name_for_overflow_verification'] : ['Head','Body'];
     await route.fulfill({response,json:body});
   });
   await page.setViewportSize({width:1560,height:820});
@@ -30,7 +32,7 @@ async page => {
       const result = await frame.locator('html').evaluate(root => {
         const box = node => node.getBoundingClientRect();
         const inspector = document.querySelector('.inspector'), tabs = document.querySelector('.op-tabs');
-        const viewport = document.querySelector('#modelViewport'), canvas = viewport.querySelector('canvas');
+        const viewport = document.querySelector('#modelViewport'), canvas = viewport.querySelector('model-viewer');
         return {
           width:innerWidth,height:innerHeight,scrollWidth:root.scrollWidth,scrollHeight:root.scrollHeight,
           inspectorWidth:inspector.clientWidth,inspectorScrollWidth:inspector.scrollWidth,
@@ -53,7 +55,8 @@ async page => {
       // Bottom actions remain reachable in the actual scroll container.
       await frame.locator('[data-action=process]').scrollIntoViewIfNeeded();
       assert(await frame.locator('[data-action=process]').evaluate(node => {
-        const box=node.getBoundingClientRect();return box.top>=0 && box.bottom<=innerHeight;
+        // Browser scrolling rounds fractional CSS pixels to device pixels.
+        const box=node.getBoundingClientRect();return box.top>=-1 && box.bottom<=innerHeight+1;
       }), `${context}: process button unreachable`);
     }
   }
@@ -74,7 +77,8 @@ async page => {
     await frame.locator('[data-action=process]').scrollIntoViewIfNeeded();
   }
   stressParts = true;
-  await frame.locator('#refresh').click();
+  // Reload the fixture so its model preview cache contains the stress names.
+  await page.reload();
   await frame.locator('.part-pill').filter({hasText:'Body_with_a_very_long'}).waitFor();
   assert(await frame.locator('.inspector').evaluate(node => node.scrollWidth <= node.clientWidth), 'long part name overflows inspector');
   await page.setViewportSize({width:1560,height:820});
@@ -90,9 +94,26 @@ async page => {
   await frame.locator('#confirmCancel').click();
   await frame.locator('[data-action=assetsBack]').click();
   assert(!await frame.locator('body').evaluate(node => node.classList.contains('asset-detail-page')), 'detail shell leaked to assets');
+  await frame.locator('[data-view=tasks]').click();
+  await frame.locator('.task-detail-body').waitFor();
+  const tasksLayout = await frame.locator('html').evaluate(root => {
+    const main = document.getElementById('main'), list = document.querySelector('.task-list'), detail = document.querySelector('.task-detail-body');
+    return {
+      tasksPage: document.body.classList.contains('tasks-page'),
+      scrollWidth: root.scrollWidth,
+      scrollHeight: root.scrollHeight,
+      mainOverflow: main.scrollHeight > main.clientHeight,
+      listOverflowY: getComputedStyle(list).overflowY,
+      detailOverflowY: getComputedStyle(detail).overflowY
+    };
+  });
+  assert(tasksLayout.tasksPage && tasksLayout.scrollWidth <= 1560 && tasksLayout.scrollHeight <= 820 && !tasksLayout.mainOverflow, 'tasks page overflowed viewport');
+  assert(tasksLayout.listOverflowY === 'auto' && tasksLayout.detailOverflowY === 'auto', 'tasks components do not scroll internally');
+  await frame.locator('[data-view=assets]').click();
+  assert(!await frame.locator('body').evaluate(node => node.classList.contains('tasks-page')), 'tasks shell leaked to assets');
   const stats = await (await page.request.get('http://127.0.0.1:43911/stats')).json();
   assert(!stats.calls.some(call=>['tripo_submit_task','tripo_remesh_model','tripo_generate_texture','tripo_rig_model'].includes(call.name)), 'layout check submitted an operation');
   assert(errors.length===0, errors.join('\n'));
   await page.unroute('**/rpc');
-  console.log('PASS: 4 locales x 7 viewport sizes; tab bounds, switch, canvas resizing, internal scrolling, host height, history, locale preservation and export dialog.');
+  console.log('PASS: 4 locales x 7 viewport sizes; tab bounds, switch, canvas resizing, internal scrolling, tasks layout, host height, history, locale preservation and export dialog.');
 }
