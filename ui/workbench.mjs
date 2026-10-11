@@ -100,7 +100,7 @@ const state = {
 let assetSearchTimer;
 let hostTheme, theme = 'system', viewer, viewEpoch = 0, assetEpoch = 0, taskEpoch = 0, detailEpoch = 0, quoteEpoch = 0, quoteTimer, toastTimer, selectionSlot = 'front';
 try { theme = localStorage.getItem('tripo.theme') || 'system'; } catch {}
-const app = new App({ name: 'Tripo Studio', version: '0.3.5' }, {}, { autoResize: true });
+const app = new App({ name: 'Tripo Studio', version: '0.3.6' }, {}, { autoResize: true });
 new OpenAIExtensions(app);
 
 let hostInfo, layoutContext = {};

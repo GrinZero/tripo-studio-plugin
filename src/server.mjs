@@ -361,7 +361,7 @@ async function main() {
       {
         card: kind !== "local.inspect_parts",
         description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
-        inputSchema: { ...operation.inputShape, ...taskContextShape, review: z.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Set false only for draft-only/workbench flows.") }
+        inputSchema: { ...operation.inputShape, ...taskContextShape, review: z.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Use submit=true for already authorized execution without waiting for card visibility. Use review=false, submit=false for draft-only or explicit-approval flows.") }
       },
       async (input) => {
         const { review, ...operationInput } = input;

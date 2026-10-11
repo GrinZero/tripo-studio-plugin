@@ -89796,7 +89796,7 @@ function errorSnapshot(error113) {
 
 // src/constants.mjs
 var SERVER_NAME = "tripo-studio-plugin";
-var SERVER_VERSION = "0.3.5";
+var SERVER_VERSION = "0.3.6";
 var STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 var STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
 var STUDIO_WORKSPACE_URL = `${STUDIO_ORIGIN}/workspace/generate`;
@@ -89841,7 +89841,7 @@ var STUDIO_IMAGE_RATIOS = ["1:1", "16:9", "9:16", "4:3", "3:4"];
 var STUDIO_IMAGE_RESOLUTIONS = ["1K", "4K"];
 var RIG_TYPES = ["aquatic", "avian", "biped", "hexapod", "octopod", "quadruped", "serpentine", "others"];
 var RETARGET_RIG_TYPES = RIG_TYPES.filter((t8) => t8 !== "others");
-var WORKBENCH_RESOURCE_URI = "ui://tripo-studio/workbench-v0.3.5.html";
+var WORKBENCH_RESOURCE_URI = "ui://tripo-studio/workbench-v0.3.6.html";
 var RESULT_CARD_RESOURCE_URI = "ui://tripo-studio/result-card-v2.html";
 
 // src/ops/animation-presets.mjs
@@ -105473,7 +105473,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query)) return false;
       {
         card: kind !== "local.inspect_parts",
         description: `${operation2.description}${operation2.consumesCredits ? " Consumes Studio credits." : ""} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
-        inputSchema: { ...operation2.inputShape, ...taskContextShape, review: external_exports.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Set false only for draft-only/workbench flows.") }
+        inputSchema: { ...operation2.inputShape, ...taskContextShape, review: external_exports.boolean().default(true).describe("Render an editable configuration card; auto-submit 60 seconds after the card is displayed unless editing or canceled. Use submit=true for already authorized execution without waiting for card visibility. Use review=false, submit=false for draft-only or explicit-approval flows.") }
       },
       async (input2) => {
         const { review, ...operationInput } = input2;
