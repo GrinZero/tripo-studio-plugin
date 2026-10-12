@@ -232,6 +232,21 @@ const server = http.createServer(async (req, res) => {
         pages[url.pathname === "/card" ? "result-card" : "workbench"]
       );
     }
+    if (url.pathname === "/latest-workbench") {
+      const [html, script] = await Promise.all([
+        readFile(new URL("ui/workbench.html", root), "utf8"),
+        readFile(new URL("dist/workbench.js", root), "utf8"),
+      ]);
+      res.setHeader("content-type", "text/html");
+      res.setHeader("cache-control", "no-store");
+      return res.end(
+        html.replace(
+          "<!-- WORKBENCH_SCRIPT -->",
+          () =>
+            `<script>${script.replace(/<\/script/gi, "<\\/script")}</script>`
+        )
+      );
+    }
     if (url.pathname === "/host.js") {
       res.setHeader("content-type", "text/javascript");
       return res.end(await readFile(path.join(dir, "host.js")));
@@ -252,6 +267,22 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/stats") return send({ calls, review });
     if (url.pathname === "/result") {
       const kind = url.searchParams.get("kind");
+      if (kind === "texture-reference") {
+        review = {
+          ...review,
+          kind: "texture.generate",
+          input: { mode: "image", image_path: "/assets/road.png" },
+          schema: {
+            properties: {
+              mode: { enum: ["text", "image"] },
+              image_path: { type: "string" },
+            },
+            required: ["mode", "image_path"],
+          },
+          sources: [{ slot: "reference", name: "road.png" }],
+        };
+        return send({ content: [], structuredContent: { review } });
+      }
       if (kind === "source-model" || kind === "source-model-fallback") {
         review = {
           review_id: "review",
@@ -488,6 +519,15 @@ const server = http.createServer(async (req, res) => {
         call.name === "tripo_ui_preview" ||
         (call.name === "tripo_ui_review" && args.action === "preview")
       ) {
+        if (
+          call.name === "tripo_ui_review" &&
+          review.kind === "texture.generate" &&
+          !review.sources.some((source) => source.slot === args.slot)
+        )
+          return send({
+            isError: true,
+            content: [{ type: "text", text: "PREVIEW_UNAVAILABLE" }],
+          });
         const preview =
           args.type === "model"
             ? modelPreview

@@ -149,8 +149,23 @@
         margin-bottom: 20px;
       }
 
-      .language-select {
+      .card-header-controls {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
         margin-left: auto;
+      }
+
+      .card-version {
+        flex-shrink: 0;
+        color: var(--muted);
+        font-size: 10px;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+
+      .language-select {
         width: auto;
         max-width: 140px;
         min-width: 90px;
@@ -175,11 +190,6 @@
       .brand svg {
         width: 24px;
         height: 24px;
-        color: var(--accent);
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-        stroke-linejoin: round;
         flex-shrink: 0;
       }
 
@@ -1307,6 +1317,15 @@
           flex-wrap: wrap;
           gap: 8px;
         }
+        .card-version {
+          margin-left: auto;
+        }
+        .card-header-controls {
+          order: 1;
+          width: 100%;
+          gap: 8px;
+          justify-content: flex-end;
+        }
         .config-action-row,
         .config-actions,
         .countdown {
@@ -1372,24 +1391,34 @@
       <header class="card-header">
         <div class="brand">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10" />
+            <path
+              fill="currentColor"
+              d="m3.54 3.59 2.587 4.407.002.003 5.152 8.792c.472.806 1.654.806 2.126 0l5-8.532h3.755l-6.781 11.554c-1.35 2.3-4.724 2.3-6.074 0L2.475 8.174C1.5 6.512 2.11 4.551 3.541 3.59"
+            />
+            <path
+              fill="#F8CF00"
+              d="M7.496 6.19h5.435l-2.263 3.89a.85.85 0 00.005.865l.901 1.51a.884.884 0 001.515-.006l3.674-6.259h5.914a3.485 3.485 0 00-3.5-3.19H5.624z"
+            />
           </svg>
           <span>Tripo</span>
         </div>
-        <select
-          id="language"
-          class="language-select"
-          aria-label="Language"
-        ></select>
-        <span id="status" role="status">等待结果</span>
-        <button
-          id="closeCard"
-          aria-label="取消本次生成"
-          data-i18n-aria-label="取消本次生成"
-          hidden
-        >
-          ×
-        </button>
+        <div class="card-header-controls">
+          <select
+            id="language"
+            class="language-select"
+            aria-label="Language"
+          ></select>
+          <span id="status" role="status">等待结果</span>
+          <button
+            id="closeCard"
+            aria-label="取消本次生成"
+            data-i18n-aria-label="取消本次生成"
+            hidden
+          >
+            ×
+          </button>
+        </div>
+        <span id="cardVersion" class="card-version"></span>
       </header>
       <p id="message">正在处理…</p>
       <div id="items"></div>

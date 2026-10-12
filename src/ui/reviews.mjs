@@ -115,14 +115,10 @@ export class ConfigurationReviews {
     });
     for (const file of files.filter((f) => f.endsWith(".json"))) {
       const record = await new JsonDocument(path.join(this.dir, file)).read();
-      // A recovered process has no evidence that the card is still displayed.
-      // Require a new app visibility acknowledgement before restarting the window.
-      if (record.status === "pending")
-        await this.doc(record.review_id).update((r) =>
-          r.status === "pending"
-            ? { ...r, deadline_at: null, revision: r.revision + 1 }
-            : r
-        );
+      // The persisted deadline records the first visible display. Recover the
+      // remaining time, even if the card is currently hidden or unmounted.
+      // Unseen cards still have no deadline and cannot auto-submit.
+      this.arm(record);
       // A process may have died after dispatch. Read the durable task; never retry the write.
       if (
         record.status === "submitting" &&

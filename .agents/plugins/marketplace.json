@@ -9,7 +9,7 @@
       "source": {
         "source": "npm",
         "package": "tripo-studio-plugin",
-        "version": "0.3.9",
+        "version": "0.3.10",
         "registry": "https://registry.npmjs.org"
       },
       "policy": {

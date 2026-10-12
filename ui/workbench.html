@@ -604,6 +604,18 @@
         color: var(--text-secondary);
         font: 11px/1.5 var(--mono);
         white-space: nowrap;
+        cursor: pointer;
+      }
+      .app-version:hover:not(:disabled) {
+        color: var(--text);
+        border-color: var(--text-secondary);
+      }
+      .app-version:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+      .app-version:disabled {
+        cursor: wait;
       }
 
       .tabs {
@@ -3551,10 +3563,10 @@
             创建
           </button>
         </nav>
-        <span id="appVersion" class="app-version"
-          ><span id="appVersionNumber"></span
-          ><span id="appVersionTimestamp"></span
-        ></span>
+        <button id="appVersion" class="app-version" type="button" disabled>
+          <span id="appVersionNumber"></span
+          ><span id="appVersionTimestamp"></span>
+        </button>
       </div>
       <div class="bar-tools">
         <select

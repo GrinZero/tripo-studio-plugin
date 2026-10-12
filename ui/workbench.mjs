@@ -30,14 +30,20 @@ import {
   modelBadge,
 } from "./model.mjs";
 import { SERVER_VERSION } from "../src/constants.mjs";
+import { latestWorkbenchHtml, reloadDocument } from "./workbench-reload.mjs";
 
 const $ = (id) => document.getElementById(id);
 const buildInfo = __TRIPO_BUILD_INFO__;
 $("appVersionNumber").textContent = `v${buildInfo.version}-`;
 $("appVersionTimestamp").textContent = buildInfo.timestamp;
-$("appVersion").title =
-  `Tripo Studio v${buildInfo.version}-${buildInfo.timestamp} (${buildInfo.time_zone})`;
 initializeI18n();
+const updateReloadLabel = () => {
+  $("appVersion").title =
+    `Tripo Studio v${buildInfo.version}-${buildInfo.timestamp} (${buildInfo.time_zone}) · ${tr("点击重新加载工作台")}`;
+  $("appVersion").setAttribute("aria-label", tr("重新加载工作台"));
+};
+updateReloadLabel();
+onLocaleChange(updateReloadLabel);
 mountLanguageSelector($("language"));
 setText($("sessionStatus"), () => tr("连接中"));
 setText($("confirmTitle"), () => tr("确认提交"));
@@ -199,6 +205,9 @@ const app = new App(
   { autoResize: true }
 );
 new OpenAIExtensions(app);
+const reloadState = window.__TRIPO_RELOAD_STATE__;
+if (reloadState) Object.assign(state, reloadState);
+let restoringReload = !!reloadState;
 
 let hostInfo,
   layoutContext = {};
@@ -265,6 +274,7 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
 });
 
 function receiveOpenInput(input) {
+  if (restoringReload) return;
   state.openInput = { ...state.openInput, ...input };
   const route = JSON.stringify([
     state.openInput.view,
@@ -2400,6 +2410,46 @@ $("appearance").onclick = () => {
 };
 
 $("refresh").innerHTML = icon("refresh");
+$("appVersion").onclick = async () => {
+  if (!state.ready || $("appVersion").disabled) return;
+  if (state.busy || state.importing || $("confirmDialog").open) {
+    toast(tr("请等待当前操作完成后再重新加载。"), true);
+    return;
+  }
+  $("appVersion").disabled = true;
+  try {
+    if (state.view === "create") captureCreate();
+    else if (state.detail) captureOperation();
+    const html = await latestWorkbenchHtml(app);
+    reloadDocument(html, {
+      view: state.view,
+      openInput: {
+        view: state.view,
+        ...(state.view === "tasks" && state.taskId
+          ? { task_id: state.taskId }
+          : {}),
+        ...(state.view === "assets" && state.detail?.project_id
+          ? { project_id: state.detail.project_id }
+          : {}),
+      },
+      form: state.form,
+      op: state.op,
+      opForm: state.opForm,
+      assetType: state.assetType,
+      assetFilter: state.assetFilter,
+      assetGroup: state.assetGroup,
+      assetSearch: state.assetSearch,
+      assetSort: state.assetSort,
+      layout: state.layout,
+      taskFilter: state.taskFilter,
+      taskSearch: state.taskSearch,
+    });
+  } catch (error) {
+    $("appVersion").disabled = false;
+    toast(tr("重新加载失败，请重连 Tripo MCP 后重试。"), true);
+    console.error("Workbench reload failed", error);
+  }
+};
 $("refresh").onclick = async () => {
   if (!state.ready) return;
   try {
@@ -2790,11 +2840,13 @@ window.addEventListener("pagehide", () => {
     hostContext(app.getHostContext());
     await authStatus();
     state.ready = true;
+    $("appVersion").disabled = false;
     document
       .querySelectorAll("[data-view]")
       .forEach((b) => (b.disabled = false));
     $("connection").classList.add("hidden");
     await openInput();
+    restoringReload = false;
   } catch (e) {
     setText($("sessionStatus"), () => tr("未连接"));
     $("creditBalance").classList.add("hidden");

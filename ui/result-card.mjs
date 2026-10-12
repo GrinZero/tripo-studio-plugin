@@ -22,12 +22,16 @@ import {
 import { mountQuote } from "./quote-card.mjs";
 import { parameterRows } from "./model.mjs";
 const app = new App(
-  { name: "Tripo Studio", version: "0.3.9" },
+  { name: "Tripo Studio", version: "0.3.10" },
   {},
   { autoResize: true }
 );
 new OpenAIExtensions(app);
 const $ = (id) => document.getElementById(id);
+const buildInfo = __TRIPO_BUILD_INFO__;
+$("cardVersion").textContent = `v${buildInfo.version}-${buildInfo.timestamp}`;
+$("cardVersion").title =
+  `Tripo Studio v${buildInfo.version}-${buildInfo.timestamp} (${buildInfo.time_zone})`;
 initializeI18n();
 mountLanguageSelector($("language"));
 setText($("status"), () => tr("等待结果"));

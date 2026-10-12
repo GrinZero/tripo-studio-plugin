@@ -63,7 +63,13 @@ async function fixture() {
     now: () => time,
     schedule: (fn, delay) => {
       const token = randomUUID();
-      scheduled.set(token, { fn, delay });
+      scheduled.set(token, {
+        fn: () => {
+          scheduled.delete(token);
+          fn();
+        },
+        delay,
+      });
       return token;
     },
     unschedule: (token) => scheduled.delete(token),
@@ -437,7 +443,33 @@ it("only controls displayed in a visible document can start the server deadline"
     });
     assert.equal(shown.review.deadline_at, 181000);
     assert.equal(f.submits(), 0);
-    f.advance(59999);
+    intersect([{ target: element, isIntersecting: false }]);
+    doc.visibilityState = "hidden";
+    listener();
+    f.advance(30000);
+    doc.visibilityState = "visible";
+    listener();
+    intersect([{ target: element, isIntersecting: true }]);
+    await flush();
+    watch.dispose();
+    const remounted = watchConfigurationVisibility(
+      element,
+      () =>
+        f.reviews.action({
+          review_id: f.output.review.review_id,
+          action: "ready",
+        }),
+      { doc, Observer }
+    );
+    intersect([{ target: element, isIntersecting: true }]);
+    await flush();
+    remounted.dispose();
+    const reopened = await f.reviews.action({
+      review_id: f.output.review.review_id,
+      action: "get",
+    });
+    assert.equal(reopened.review.deadline_at, shown.review.deadline_at);
+    f.advance(29999);
     await f.reviews.action({
       review_id: f.output.review.review_id,
       action: "confirm",
@@ -530,13 +562,57 @@ it("cancel prevents the previously scheduled deadline from submitting", async ()
     await f.close();
   }
 });
-it("a restarted process waits for visible controls again and never retries interrupted submissions", async () => {
+it("reopening a card after server recovery preserves its original countdown", async () => {
+  const f = await fixture();
+  const restored = new ConfigurationReviews(f.runtime, f.opts);
+  try {
+    const id = f.output.review.review_id;
+    const shown = await f.reviews.action({ review_id: id, action: "ready" });
+    f.reviews.close();
+    f.advance(20000);
+    await restored.recover();
+    const reopened = await restored.action({ review_id: id, action: "ready" });
+    assert.equal(reopened.review.deadline_at, shown.review.deadline_at);
+    assert.equal(reopened.review.revision, shown.review.revision);
+    assert.equal(f.scheduled.size, 1);
+    assert.equal([...f.scheduled.values()][0].delay, 40000);
+    f.advance(40000);
+    [...f.scheduled.values()][0].fn();
+    const submitted = await restored.wait(id, 1000);
+    assert.equal(submitted.review.status, "submitted");
+    assert.equal(f.submits(), 1);
+  } finally {
+    restored.close();
+    await f.close();
+  }
+});
+it("recovery submits an elapsed visible deadline without reopening the card", async () => {
+  const f = await fixture();
+  const restored = new ConfigurationReviews(f.runtime, f.opts);
+  try {
+    const id = f.output.review.review_id;
+    await f.reviews.action({ review_id: id, action: "ready" });
+    f.reviews.close();
+    f.advance(120000);
+    await restored.recover();
+    assert.equal(f.scheduled.size, 1);
+    const timer = [...f.scheduled.values()][0];
+    assert.equal(timer.delay, 0);
+    timer.fn();
+    const submitted = await restored.wait(id, 1000);
+    assert.equal(submitted.review.status, "submitted");
+    assert.equal(f.submits(), 1);
+    await restored.recover();
+    assert.equal(f.scheduled.size, 0);
+    assert.equal(f.submits(), 1);
+  } finally {
+    restored.close();
+    await f.close();
+  }
+});
+it("recovery keeps unseen cards waiting for display and never retries interrupted submissions", async () => {
   const f = await fixture();
   try {
-    await f.reviews.action({
-      review_id: f.output.review.review_id,
-      action: "ready",
-    });
     f.reviews.close();
     const restored = new ConfigurationReviews(f.runtime, f.opts);
     f.advance(120000);

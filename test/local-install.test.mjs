@@ -162,6 +162,9 @@ it("serves a UI update through the same live MCP connection without reinstalling
   try {
     await client.connect(transport);
     const uri = "ui://tripo-studio/result-card-v2.html";
+    const workbenchUri = (await client.listResources()).resources.find(
+      (resource) => resource.name === "workbench"
+    ).uri;
     assert.ok(
       !(await client.readResource({ uri })).contents[0].text.includes(
         "local-hot-update-proof"
@@ -171,6 +174,11 @@ it("serves a UI update through the same live MCP connection without reinstalling
     await writeFile(
       script,
       (await readFile(script, "utf8")) + "\n/*local-hot-update-proof*/"
+    );
+    const workbench = path.join(root, "dist/workbench.js");
+    await writeFile(
+      workbench,
+      (await readFile(workbench, "utf8")) + "\n/*workbench-hot-update-proof*/"
     );
     const callsBefore = calls.length;
     const updated = await installLocal(options);
@@ -182,6 +190,11 @@ it("serves a UI update through the same live MCP connection without reinstalling
       (await client.readResource({ uri })).contents[0].text.includes(
         "local-hot-update-proof"
       )
+    );
+    assert.ok(
+      (
+        await client.readResource({ uri: workbenchUri })
+      ).contents[0].text.includes("workbench-hot-update-proof")
     );
     assert.equal(
       await readFile(path.join(data, "keep.txt"), "utf8"),

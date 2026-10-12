@@ -705,7 +705,13 @@ export function mountConfiguration(
               ["right", tr("右侧"), "right_image_path"],
             ]
           : ["image", "studio_image"].includes(mode)
-            ? [["image", tr("参考图片"), "image_path"]]
+            ? [
+                [
+                  review.kind === "texture.generate" ? "reference" : "image",
+                  tr("参考图片"),
+                  "image_path",
+                ],
+              ]
             : mode === "batch"
               ? (review.sources ?? [])
                   .slice(0, 4)

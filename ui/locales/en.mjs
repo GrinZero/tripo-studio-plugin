@@ -681,4 +681,10 @@ export default {
   "正在保存并提交…": "Saving and submitting…",
   保存后立即提交: "Submit immediately after saving",
   校验通过后立即提交: "Submit immediately after validation",
+  点击重新加载工作台: "Click to reload the workbench",
+  重新加载工作台: "Reload workbench",
+  "请等待当前操作完成后再重新加载。":
+    "Wait for the current operation to finish before reloading.",
+  "重新加载失败，请重连 Tripo MCP 后重试。":
+    "Reload failed. Reconnect Tripo MCP and try again.",
 };

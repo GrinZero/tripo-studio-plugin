@@ -89806,7 +89806,7 @@ function errorSnapshot(error113) {
 
 // src/constants.mjs
 var SERVER_NAME = "tripo-studio-plugin";
-var SERVER_VERSION = "0.3.9";
+var SERVER_VERSION = "0.3.10";
 var STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 var STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
 var STUDIO_WORKSPACE_URL = `${STUDIO_ORIGIN}/workspace/generate`;
@@ -108120,10 +108120,7 @@ var ConfigurationReviews = class {
     });
     for (const file3 of files.filter((f6) => f6.endsWith(".json"))) {
       const record3 = await new JsonDocument(path21.join(this.dir, file3)).read();
-      if (record3.status === "pending")
-        await this.doc(record3.review_id).update(
-          (r7) => r7.status === "pending" ? { ...r7, deadline_at: null, revision: r7.revision + 1 } : r7
-        );
+      this.arm(record3);
       if (record3.status === "submitting" && !this.processAlive(record3.submitting_pid))
         await this.doc(record3.review_id).update((r7) => ({
           ...r7,

@@ -1,4 +1,4 @@
-# Tool inventory — 68 MCP tools (0.3.9)
+# Tool inventory — 68 MCP tools (0.3.10)
 
 [README](README.md) · [Usage guide](docs/USAGE.md) · [Agent guide](skills/tripo-studio/SKILL.md)
 

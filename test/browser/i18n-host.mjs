@@ -48,6 +48,24 @@ window.appSizes = [];
 bridge.onsizechange = (size) => window.appSizes.push(size);
 bridge.oncalltool = async (call) =>
   (await fetch("/rpc", { method: "POST", body: JSON.stringify(call) })).json();
+bridge.onlistresources = async () => ({
+  resources: [
+    { name: "workbench", uri: "ui://tripo-studio/workbench-original.html" },
+  ],
+});
+bridge.onreadresource = async ({ uri }) => {
+  const response = await fetch("/latest-workbench");
+  if (!response.ok) throw Error("Workbench read failed.");
+  return {
+    contents: [
+      {
+        uri,
+        mimeType: "text/html;profile=mcp-app",
+        text: await response.text(),
+      },
+    ],
+  };
+};
 bridge.onloggingmessage = () => {};
 bridge.oninitialized = async () => {
   await bridge.sendToolInput({

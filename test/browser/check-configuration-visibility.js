@@ -50,6 +50,42 @@ async (page) => {
       1,
     "display must acknowledge once"
   );
+  // Cards can leave the viewport or be recreated when returning to the chat.
+  await page.locator("#app").evaluate((element) => {
+    element.style.marginTop = "200vh";
+  });
+  await page.waitForTimeout(1200);
+  await page.locator("#app").evaluate((element) => {
+    element.style.marginTop = "0";
+  });
+  await frame.locator(".configuration").waitFor({ state: "visible" });
+  const scrolled = await (await page.request.get(`${base}/stats`)).json();
+  assert(
+    scrolled.review.deadline_at === shown.review.deadline_at,
+    "scrolling back to the card must preserve its first deadline"
+  );
+  // The host may replay the original tool result, before visibility was acknowledged.
+  await page.route(`${base}/result?**`, async (route) => {
+    const response = await route.fetch();
+    const body = await response.json();
+    body.structuredContent.review.deadline_at = null;
+    await route.fulfill({ response, json: body });
+  });
+  await page.reload();
+  await frame
+    .locator(".config-notice")
+    .filter({ hasText: /\d+ 秒后自动提交/ })
+    .waitFor();
+  const reopened = await (await page.request.get(`${base}/stats`)).json();
+  assert(
+    reopened.review.deadline_at === shown.review.deadline_at,
+    "reopening the same card must preserve its first deadline"
+  );
+  const remaining = Number(
+    (await frame.locator(".config-notice").textContent()).match(/\d+/)[0]
+  );
+  assert(remaining < 60, "reopening must display the remaining time");
+  await page.unroute(`${base}/result?**`);
   // focus() emits trusted focus events too; mounting/restoring focus is not editing.
   await frame
     .getByRole("spinbutton", { name: "目标面数" })
@@ -117,7 +153,7 @@ async (page) => {
   );
   assert(
     saved.calls.filter((call) => call.arguments?.action === "ready").length ===
-      1,
+      reopened.calls.filter((call) => call.arguments?.action === "ready").length,
     "saving must not start another visibility/countdown window"
   );
   await page.request.get(`${base}/reset`);

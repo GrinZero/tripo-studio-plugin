@@ -76,6 +76,7 @@ const card = await build({
   outfile: path.join(root, "dist", "result-card.js"),
   platform: "browser",
   target: "es2022",
+  define: { __TRIPO_BUILD_INFO__: JSON.stringify(buildInfo) },
 });
 
 // Retain the licenses and notices for third-party code copied into the bundles.

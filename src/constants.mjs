@@ -1,5 +1,5 @@
 export const SERVER_NAME = "tripo-studio-plugin";
-export const SERVER_VERSION = "0.3.9";
+export const SERVER_VERSION = "0.3.10";
 
 export const STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 export const STUDIO_API_BASE_URL = "https://api.tripo3d.ai";

@@ -35,6 +35,15 @@ assert.ok(
     workbenchBundle.includes(buildInfo.built_at),
   "workbench must show the recorded build marker; run pnpm run build"
 );
+const cardBundle = await readFile(
+  path.join(root, "dist/result-card.js"),
+  "utf8"
+);
+assert.ok(
+  cardBundle.includes(buildInfo.timestamp) &&
+    cardBundle.includes(buildInfo.built_at),
+  "preview cards must show the recorded build marker; run pnpm run build"
+);
 const plugin = await json(".codex-plugin/plugin.json");
 const lockDocuments = parseAllDocuments(
   await readFile(path.join(root, "pnpm-lock.yaml"), "utf8")
