@@ -19,7 +19,13 @@ The following examples show argument shapes. Replace each bracketed value with a
 Create a group and collect selected model/image assets in one batch:
 
 ```json
-{"name":"派蒙素材","assets":[{"project_id":"<returned model project_id>"},{"asset_id":"<returned image asset_id>"}]}
+{
+  "name": "派蒙素材",
+  "assets": [
+    { "project_id": "<returned model project_id>" },
+    { "asset_id": "<returned image asset_id>" }
+  ]
+}
 ```
 
 Call `tripo_create_asset_group` with these arguments. Omit `assets` or pass `[]` to prepare an empty group. A name matching an existing group after NFKC, whitespace and case normalization reuses that group. Provided members move out of their old groups. A new manual group has a stable ID independent of its name; use the result's `group.id` for subsequent calls.
@@ -27,13 +33,16 @@ Call `tripo_create_asset_group` with these arguments. Omit `assets` or pass `[]`
 Add or move selected assets to an existing group with `tripo_set_asset_group`:
 
 ```json
-{"group_id":"<returned destination group id>","assets":[{"project_id":"<returned model project_id>"}]}
+{
+  "group_id": "<returned destination group id>",
+  "assets": [{ "project_id": "<returned model project_id>" }]
+}
 ```
 
 Remove selected members with the same tool:
 
 ```json
-{"group_id":null,"assets":[{"asset_id":"<returned image asset_id>"}]}
+{ "group_id": null, "assets": [{ "asset_id": "<returned image asset_id>" }] }
 ```
 
 Use JSON `null`, not `"null"` or `"ungrouped"`, for removal. The latter is only a read selector. Removal keeps the asset and saves an explicit ungrouped override so its original task lineage does not immediately restore membership.
@@ -45,7 +54,7 @@ Each `assets` entry must have exactly one of `project_id` or `asset_id`. Mixed b
 Rename with `tripo_rename_asset_group`:
 
 ```json
-{"group_id":"<returned group id>","name":"派蒙 · 角色资产"}
+{ "group_id": "<returned group id>", "name": "派蒙 · 角色资产" }
 ```
 
 Names must be readable single-line strings of 1–80 characters. Rename changes both model and image asset-page display names and preserves membership, including future outputs carrying the same automatic group identity. It does not rename Studio projects/images or change historical task `character_name` and parent links. Use task records and `parent_task_id` when continuing generation; an asset display name is not a replacement for recorded task identity.

@@ -23,7 +23,25 @@ export async function createRuntime(env = process.env) {
   const uploader = new AwsObjectUploader();
   const store = new TaskStore(config.dataDir);
   const pricing = new PricingService(gateway);
-  const service = new OperationService({ config, gateway, session, store, uploader, pricing });
+  const service = new OperationService({
+    config,
+    gateway,
+    session,
+    store,
+    uploader,
+    pricing,
+  });
   const recovered = await service.recover();
-  return { auth, config, gateway, http, recovered, service, session, store, uploader, pricing };
+  return {
+    auth,
+    config,
+    gateway,
+    http,
+    recovered,
+    service,
+    session,
+    store,
+    uploader,
+    pricing,
+  };
 }

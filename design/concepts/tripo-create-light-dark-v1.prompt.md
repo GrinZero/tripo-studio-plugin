@@ -18,4 +18,3 @@ Right parameter column: heading "生成设置". Two quality choices in segmented
 Below parameters a small restrained estimate area label "预计消耗" and value "计算中…" with subdued hint "确认参数后获取报价". Do not fabricate a credits number or show actual account balance. At the very bottom separated by fine border, two aligned buttons: outlined secondary "保存草稿", terracotta primary "确认并生成". Tiny subdued caption "提交后可在任务中查看进度". No fake progress bar or generated model output on this pre-submit page.
 
 Conversation left short user request "用这张图片生成模型", assistant reply "图片已准备好，请确认生成参数。", minimal composer. Board labels "创建 · 浅色" and "创建 · 深色". Exact short Chinese labels, legible restrained type, cohesive with previous concept. No gradients, no decorative dashboard cards, no marketing headlines, no watermark.
-

@@ -8,19 +8,19 @@
 
 ## 包含的 MCP 工具
 
-| 工具名 | 操作标识 | 消耗积分 | 功能概述 |
-| --- | --- | :---: | --- |
-| `tripo_segment_model` | `model.segment` | 是 | **语义分件**：将单一网格智能剖解为逻辑独立部件（头、身、手、武器等） |
-| `tripo_complete_parts` | `model.complete_parts` | 是 | **部件补全**：修复模型部件的隐蔽面、开孔与缺失几何，形成封闭流形体 |
-| `tripo_remesh_model` | `model.remesh` | 是 | **网格重拓扑**：规整多边形布线与流向，精确压降或优化网格面数 |
-| `tripo_generate_uv` | `model.uv_generate` | 是 | **Smart UV 候选生成**：智能生成并展开低拉伸、高利用率的 UV 岛 |
-| `tripo_apply_uv` | `model.uv_apply` | 否 | 将满意的 UV 候选方案固化并应用至模型（不消耗积分） |
-| `tripo_get_uv_context` | - | 否 | 检视当前模型的 UV 展开状态、算子信息与候选列表 |
-| `tripo_generate_texture` | `texture.generate` | 是 | **重新生成贴图**：根据新提示词或风格为现有模型重绘全套表面色彩 |
-| `tripo_preview_texture_edit` | `texture.edit_preview` | 是 | **贴图局部编辑预览**：选定局部区域进行重绘与微调，先看效果 |
-| `tripo_apply_texture_edits` | `texture.edit_apply` | 是 | 正式固化局部重绘的贴图修改结果 |
-| `tripo_upscale_texture` | `texture.upscale` | 是 | **贴图超分辨率**：将模型贴图无损放大至 4K 或 8K 超高清晰度 |
-| `tripo_generate_pbr` | `texture.pbr` | 是 | **PBR 材质通道生成**：提取法线 (Normal)、粗糙度 (Roughness)、金属度 (Metallic) 物理渲染贴图 |
+| 工具名                       | 操作标识               | 消耗积分 | 功能概述                                                                                    |
+| ---------------------------- | ---------------------- | :------: | ------------------------------------------------------------------------------------------- |
+| `tripo_segment_model`        | `model.segment`        |    是    | **语义分件**：将单一网格智能剖解为逻辑独立部件（头、身、手、武器等）                        |
+| `tripo_complete_parts`       | `model.complete_parts` |    是    | **部件补全**：修复模型部件的隐蔽面、开孔与缺失几何，形成封闭流形体                          |
+| `tripo_remesh_model`         | `model.remesh`         |    是    | **网格重拓扑**：规整多边形布线与流向，精确压降或优化网格面数                                |
+| `tripo_generate_uv`          | `model.uv_generate`    |    是    | **Smart UV 候选生成**：智能生成并展开低拉伸、高利用率的 UV 岛                               |
+| `tripo_apply_uv`             | `model.uv_apply`       |    否    | 将满意的 UV 候选方案固化并应用至模型（不消耗积分）                                          |
+| `tripo_get_uv_context`       | -                      |    否    | 检视当前模型的 UV 展开状态、算子信息与候选列表                                              |
+| `tripo_generate_texture`     | `texture.generate`     |    是    | **重新生成贴图**：根据新提示词或风格为现有模型重绘全套表面色彩                              |
+| `tripo_preview_texture_edit` | `texture.edit_preview` |    是    | **贴图局部编辑预览**：选定局部区域进行重绘与微调，先看效果                                  |
+| `tripo_apply_texture_edits`  | `texture.edit_apply`   |    是    | 正式固化局部重绘的贴图修改结果                                                              |
+| `tripo_upscale_texture`      | `texture.upscale`      |    是    | **贴图超分辨率**：将模型贴图无损放大至 4K 或 8K 超高清晰度                                  |
+| `tripo_generate_pbr`         | `texture.pbr`          |    是    | **PBR 材质通道生成**：提取法线 (Normal)、粗糙度 (Roughness)、金属度 (Metallic) 物理渲染贴图 |
 
 ---
 
@@ -41,33 +41,38 @@ flowchart TD
     M[原始生成模型 GLB] --> SEG[tripo_segment_model<br/>语义分件]
     SEG --> COMP[tripo_complete_parts<br/>隐藏几何闭合补全]
     COMP --> REMESH[tripo_remesh_model<br/>工业重拓扑]
-    
+
     REMESH --> UV[tripo_generate_uv<br/>Smart UV 展开计算]
     UV --> UV_APPLY[tripo_apply_uv<br/>固化最佳 UV 候选]
-    
+
     UV_APPLY --> TEX[tripo_generate_texture<br/>高清贴图重绘]
     TEX --> PBR[tripo_generate_pbr<br/>PBR 物理贴图烘焙]
     PBR --> UPSCALE[tripo_upscale_texture<br/>4K / 8K 超分辨率升格]
-    
+
     UPSCALE --> READY[高精度就绪资产]
 ```
 
 ### 1. 语义分件与几何补全 (Segmentation & Completion)
+
 以往 AI 生成的 3D 模型常常是“粘连”在一起的实心网格，难以给角色换装或单独制作部件动画。
+
 - **语义分件 (`tripo_segment_model`)** 能够依据几何特征识别角色躯干、护甲、披风、武器等不同组件，并切分为子网格 (Sub-meshes)。
 - **部件补全 (`tripo_complete_parts`)** 针对被遮挡面（如护甲下方贴着身体的内凹部分）进行形态推测与自动几何闭合封口，保证拆卸下来的每一个部件都是自封闭的完整模型。
 
 ### 2. 工业级重拓扑 (Retopology · Remesh)
+
 - 将混乱的三角面重新规整为四边形环线。
 - 可任意指定目标面数（例如将 80,000 面高模压降为 6,000 面轻量级游戏道具）。
 - 保证布线流向严格贴合模型的骨骼关节旋转轴。
 
 ### 3. Smart UV 机制
+
 - `tripo_generate_uv` 生成候选方案时**绝不会直接覆盖原有模型**。
 - 生成的候选方案包含直观的 2D UV Layout 图与贴图接缝分布。
 - 开发者与 Agent 可以先下载候选 GLB，确认无畸变与重叠后再调用 `tripo_apply_uv` 正式生效。
 
 ### 4. 8K PBR 与贴图局部微调
+
 - **Smart Mesh 三阶段**：`tripo_generate_model` 生成白模 → `tripo_generate_texture` 生成颜色贴图 → `tripo_generate_pbr` 单独生成 PBR 贴图，后两步复用同一模型的 `project_id`。白模生成阶段的贴图、去光和 PBR 参数不适用；颜色贴图阶段的 `quality`、`alignment`、`delight` 可正常使用。颜色贴图不会自动生成独立 PBR 贴图组；用户请求 PBR 时，颜色贴图完成后还须执行第三步。已有颜色贴图时直接补 PBR，不重生成模型或颜色贴图。固定粗糙度／金属度数值的 PBR 材质不等于已经存在独立贴图组，须核查实际通道（包括打包通道）。
 - **整模贴图**：`tripo_generate_texture` 可省略 `part_names` 或传入 `[]`，无需先分件。仅处理指定部件时传入真实层级名称；`tripo_get_model` 的 `include:["parts"]` 支持读取 GLB 与智能拓扑原生 FBX 的部件名。
 - **PBR 通道支持**：自动烘焙真实物理光照所需的法线贴图（Normal Map）、粗糙度贴图（Roughness Map）与金属度贴图（Metallic Map），导出后可直接放入 Blender Eevee/Cycles、Unreal Engine 5 Lumen 或 Unity HDRP。
@@ -78,6 +83,7 @@ flowchart TD
 ## 典型对白范例 (Prompts)
 
 ### 场景 1：模型分件与独立部件修复
+
 ```text
 请检视这个机械装甲模型：
 1. 帮我对它执行语义分件，把外甲、头盔与内部机械结构拆开。
@@ -85,6 +91,7 @@ flowchart TD
 ```
 
 ### 场景 2：游戏轻量化重拓扑
+
 ```text
 这个模型面数太高了（有 75,000 面），请调用 tripo_remesh_model：
 - 目标面数控制在 8,000 面左右
@@ -93,6 +100,7 @@ flowchart TD
 ```
 
 ### 场景 3：生成 4K PBR 次世代材质
+
 ```text
 给当前模型生成 PBR 贴图：
 - 分辨率设为 4K

@@ -1,3 +1,9 @@
-dist/* linguist-generated=true
-# Bundled upstream template literals contain intentional trailing spaces.
-dist/server.mjs whitespace=-blank-at-eol
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.glb binary
+*.fbx binary
+*.wasm binary
+dist/* linguist-generated=true whitespace=-blank-at-eol

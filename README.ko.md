@@ -14,11 +14,11 @@
 
 **당신만의 1인 3D 에셋 스튜디오. Codex 내에서 자연어 한마디로 컨셉부터 리깅까지 3D 에셋 전 과정을 제작하세요.**
 
-*Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language.*
+_Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language._
 
 <p align="center">
   <a href="#2-설치-및-빠른-시작-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.8-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-전체-도구-매트릭스-및-기능-목록-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -81,7 +81,7 @@ Codex에 자연어로 요청하기만 하면, 에이전트가 생성 파라미�
 - **Node.js ≥ 22** (npm / npx 포함, Codex 환경에서 접근 가능해야 함)
 - MCP Apps를 지원하는 Codex (플러그인 확장 기능 지원)
 - **Tripo Studio 계정** (브라우저 로그인 세션)
-- *(선택 사항)* **Blender** (로컬 메쉬 검사, 와이어프레임 렌더링 및 텍스처 프로젝션 베이킹용)
+- _(선택 사항)_ **Blender** (로컬 메쉬 검사, 와이어프레임 렌더링 및 텍스처 프로젝션 베이킹용)
 
 ### 2.2 AI에게 복사해서 설치 맡기기 (권장)
 
@@ -161,9 +161,10 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.1 🖥️ 상호작용형 워크벤치 (Workbench)
+
 - **주요 도구**: `tripo_open_workbench` (및 4개 앱 전용 스트리밍 도구).
 - **특징**: 에셋 관리, 작업 기록, 3D 생성이 하나로 통합된 UI. 다크/라이트 테마 자동 적응, 다국어 전환 지원.
-- **프롬프트 예시**: *"Tripo 워크벤치의 에셋 페이지를 열어줘."*
+- **프롬프트 예시**: _"Tripo 워크벤치의 에셋 페이지를 열어줘."_
 
 <div align="center">
   <img src="docs/images/workbench-create-dark.png" alt="3-in-1 워크벤치 생성 패널" width="85%" />
@@ -172,13 +173,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.2 ⚡ 클라우드 3D 생성 및 멀티모달 제작 (Generation)
+
 - **상세 가이드**: 👉 **[3D 생성 도구 상세 가이드 (docs/tools/generation.md)](docs/tools/generation.md)**
 - **포함 도구**: `tripo_generate_model`, `tripo_generate_image`, `tripo_generate_multiview`, `tripo_regenerate_image`, `tripo_upscale_image`, `tripo_split_image`, `tripo_import_model`, `tripo_list_image_templates`
 - **핵심 기능**:
   - **High Detail 파이프라인**: H3.1 세대 아키텍처, 독립 지오메트리 퀄리티, 2K/4K/8K PBR 텍스처.
   - **Smart Mesh P2**: 500~25,000면 쿼드(사각면) 게임 토폴로지, 단일 생성으로 1/2/4개 LOD 변형 모델 동시 출력.
   - **4뷰 다각도 이미지 기반 생성**: 앞/뒤/좌/우 레퍼런스 이미지를 정렬하여 왜곡 없는 3D 모델 생성.
-  - **60초 카운트다운 확인 카드**: 실행 전 예상 소모 포인트를 표시하며, 파라미터 편집 시 카운트다운이 자동 정지됩니다.
+  - **60초 카운트다운 확인 카드**: 실행 전 예상 소모 포인트를 표시하며, 파라미터가 실제로 변경된 경우에만 카운트다운이 정지됩니다. 포커스, 클릭, 미리보기 확인은 카운트다운을 멈추지 않습니다.
 
 <div align="center">
   <img src="docs/images/configuration-dark.png" alt="다크 모드 파라미터 확인 카드" width="70%" />
@@ -187,6 +189,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.3 🔧 메쉬 공방 및 🎨 텍스처 파이프라인 (Mesh & Texture)
+
 - **상세 가이드**: 👉 **[메쉬 및 텍스처 도구 상세 가이드 (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**
 - **포함 도구**:
   - 메쉬 편집: `tripo_segment_model` (의미론적 파츠 분할), `tripo_complete_parts` (파츠 형태 복원), `tripo_remesh_model` (리토폴로지), `tripo_generate_uv` (Smart UV 후보 생성), `tripo_apply_uv`, `tripo_get_uv_context`
@@ -199,6 +202,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.4 🦴 본 리깅 및 AI 모션 시스템 (Rigging & Animation)
+
 - **상세 가이드**: 👉 **[본 리깅 및 AI 모션 도구 상세 가이드 (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**
 - **포함 도구**: `tripo_rig_model`, `tripo_animate_model`, `tripo_list_animation_presets`, `tripo_generate_motion`, `tripo_apply_motion`, `tripo_list_motions`, `tripo_get_motion`
 - **핵심 기능**:
@@ -209,6 +213,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.5 🛠️ 로컬 Blender 산업용 도구함 (완전 무료 · 크레딧 소모 0)
+
 - **상세 가이드**: 👉 **[로컬 Blender 도구 상세 가이드 (docs/tools/local-blender.md)](docs/tools/local-blender.md)**
 - **포함 도구**: `tripo_render_model`, `tripo_inspect_local_parts`, `tripo_edit_parts`, `tripo_bake_texture_projection`, `tripo_paint_texture`, `tripo_crop_image`
 - **주요 장점**:
@@ -220,6 +225,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.6 📦 에셋 그룹, 작업 계통 및 다중 포맷 배포 (Assets, Tasks & Export)
+
 - **상세 가이드**: 👉 **[에셋, 작업 및 내보내기 상세 가이드 (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **포함 도구**:
   - 에셋 그룹: `tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
@@ -249,14 +255,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 - 설정 양식을 표시해 줘. 조작이 없으면 60초 후 자동 제출해 줘.
 ```
 
-| 시나리오 | Codex에게 할 말 | 관련 기능 |
-| --- | --- | --- |
+| 시나리오                  | Codex에게 할 말                                                                                 | 관련 기능                |
+| ------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------ |
 | **🎮 엄격한 폴리곤 예산** | "이 이미지로 Smart Mesh P2 모델을 만들고 5,000면과 10,000면 변형 모델의 설정 양식을 표시해 줘." | Smart Mesh P2, 다중 변형 |
-| **📐 다각도 일관 생성** | "첨부한 4장의 앞/뒤/좌/우 뷰 이미지를 사용해 단일 모델로 정합 생성해 줘." | 멀티뷰 3D 생성 |
-| **🏃 본 리깅 및 모션** | "이 모델의 리깅 적합도를 확인하고, 언리얼 호환 본을 적용한 후 걷기 모션을 입혀줘." | Rig V3, 프리셋 모션 |
-| **📦 에셋 그룹 정리** | "선택한 참고 이미지와 모델을 묶어서 '메카 폭스 · 게임 에셋' 그룹으로 정리해 줘." | 로컬 에셋 그룹화 |
-| **🔍 생성 계통 역추적** | "이 모델이 어떤 원본 이미지와 파라미터로 생성되었는지 부모 작업 정보를 보여줘." | 작업 계통 추적 |
-| **🚀 Blender 호환 배포** | "이 프로젝트를 Blender 프리셋, 2K 텍스처가 적용된 FBX로 내보내고 저장 경로를 알려줘." | FBX 내보내기, 패키징 |
+| **📐 다각도 일관 생성**   | "첨부한 4장의 앞/뒤/좌/우 뷰 이미지를 사용해 단일 모델로 정합 생성해 줘."                       | 멀티뷰 3D 생성           |
+| **🏃 본 리깅 및 모션**    | "이 모델의 리깅 적합도를 확인하고, 언리얼 호환 본을 적용한 후 걷기 모션을 입혀줘."              | Rig V3, 프리셋 모션      |
+| **📦 에셋 그룹 정리**     | "선택한 참고 이미지와 모델을 묶어서 '메카 폭스 · 게임 에셋' 그룹으로 정리해 줘."                | 로컬 에셋 그룹화         |
+| **🔍 생성 계통 역추적**   | "이 모델이 어떤 원본 이미지와 파라미터로 생성되었는지 부모 작업 정보를 보여줘."                 | 작업 계통 추적           |
+| **🚀 Blender 호환 배포**  | "이 프로젝트를 Blender 프리셋, 2K 텍스처가 적용된 FBX로 내보내고 저장 경로를 알려줘."           | FBX 내보내기, 패키징     |
 
 ---
 

@@ -11,3 +11,5 @@ output/
 !.env.example
 *.tgz
 artifacts/
+.husky/_/
+.pnpm-store/

@@ -14,19 +14,20 @@ Codex 下载插件包不会运行 npm 生命周期脚本，也不能假定会为
 
 ## npm 发布包
 
-仓库开发时使用 `npm run install:local`，在独立的 `tripo-studio-local` 本地市场安装固定运行目录版。每次更新后重连 MCP，再关闭并重新打开侧边栏工作台；仍显示旧页面时完全退出并重新打开 Codex。详情见[本地开发](../CONTRIBUTING.md#本地开发)。下面的 npm 发布流程用于正式版本分发。
+仓库开发时使用 `pnpm run install:local`，在独立的 `tripo-studio-local` 本地市场安装固定运行目录版。每次更新后重连 MCP，再关闭并重新打开侧边栏工作台；仍显示旧页面时完全退出并重新打开 Codex。详情见[本地开发](../CONTRIBUTING.md#本地开发)。下面的 npm 发布流程用于正式版本分发。
 
 `package.json` 的 `files` 白名单包含插件清单、MCP 配置、启动入口、构建产物、HTML 与图标、技能及引用、本地 Blender worker 和用户文档。README 的截图也随包分发。源码、测试、设计稿、开发依赖和本地账号数据不会进入 tarball。
 
-`npm pack` 的 `prepack` 会重新构建并检查分发配置。SDK、AWS 客户端、Zod、Three.js 等 JavaScript 依赖全部打进服务器或界面文件。图片处理使用固定版本的 `@imagemagick/magick-wasm`，其 JavaScript 打进服务器，约 15 MiB 的 WASM 复制到 `dist/magick.wasm`，首次处理图片时从本地懒加载。发布包没有外部运行时依赖，无需安装系统 ImageMagick。开发依赖不会安装到消费端。发布包没有 `install`、`postinstall` 或 `prepare` 构建步骤。
+开发与打包使用 `package.json` 固定的 pnpm，依赖通过 `pnpm-lock.yaml` 锁定；npm 注册表与用户的 npx 启动入口继续保留。`pnpm pack` 的 `prepack` 会重新构建并检查分发配置，pnpm 默认移除开发用的 packageManager 与发布生命周期（包括 Husky prepare）。SDK、AWS 客户端、Zod、Three.js 等 JavaScript 依赖全部打进服务器或界面文件。图片处理使用固定版本的 `@imagemagick/magick-wasm`，其 JavaScript 打进服务器，约 15 MiB 的 WASM 复制到 `dist/magick.wasm`，首次处理图片时从本地懒加载。发布包没有外部运行时依赖，无需安装系统 ImageMagick。开发依赖不会安装到消费端。发布包没有 `install`、`postinstall` 或 `prepare` 构建步骤。
 
 本地验收：
 
 ```bash
-npm ci
-npm run build
-npm test
-npm run test:package
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm run check
+pnpm test
+pnpm run test:package
 ```
 
 `test:package` 输出 tarball 到被 Git 忽略的 `artifacts/`，并从全新临时目录通过 npm exec 启动，安装时禁用生命周期脚本。它验证 MCP 握手、68 个工具、图标、工作台和结果卡片资源，以及使用包内 WASM 的图片导入、WebP 预览和裁剪；之后使用同一缓存、`--offline` 再次启动。验收不登录真实账号、不提交付费任务，临时数据与 npm 缓存自动清理。CI 的 Windows 和 Linux 结果仍需在 GitHub 上实际运行确认。
@@ -47,14 +48,14 @@ Release 附件上传使用 GitHub Actions 自动提供的 `GITHUB_TOKEN`，仅�
 
 推荐在包创建后配置 npm Trusted Publisher，使用 GitHub OIDC，避免维护长期发布 token。在 npm 包的 Settings → Trusted Publisher 中填写：
 
-| 设置 | 值 |
-| --- | --- |
-| Provider | GitHub Actions |
-| Organization or user | `GrinZero` |
-| Repository | `tripo-studio-plugin` |
-| Workflow filename | `publish.yml` |
-| Environment | 留空（工作流未指定 environment） |
-| Allowed actions | 允许直接 `npm publish` |
+| 设置                 | 值                               |
+| -------------------- | -------------------------------- |
+| Provider             | GitHub Actions                   |
+| Organization or user | `GrinZero`                       |
+| Repository           | `tripo-studio-plugin`            |
+| Workflow filename    | `publish.yml`                    |
+| Environment          | 留空（工作流未指定 environment） |
+| Allowed actions      | 允许直接 `npm publish`           |
 
 工作流已配置 `id-token: write`，使用 Node 24 与 npm 11。配置可信发布后，可以移除 `NPM_TOKEN`，npm 使用 OIDC；首次 token 配置与 OIDC 都需由有权限的维护者在对应平台完成。
 
@@ -62,12 +63,12 @@ Release 附件上传使用 GitHub Actions 自动提供的 `GITHUB_TOKEN`，仅�
 
 ## 发布新版本
 
-1. 在发布分支更新版本，例如 `npm version 0.3.5 --no-git-tag-version`。npm 的 `version` 钩子自动同步插件清单、市场版本、MCP 的 npm 版本、服务／界面版本和 README 徽章。
-2. 执行 `npm run build`、`npm test` 和 `npm run test:package`，提交版本修改与构建产物，然后推送到 GitHub。
+1. 在发布分支更新版本，例如 `pnpm version 0.3.8 --no-git-tag-version`。`version` 钩子自动同步插件清单、市场版本、MCP 的 npm 版本、服务／界面版本和 README 徽章。
+2. 执行 `pnpm run build`、`pnpm run check`、`pnpm test` 和 `pnpm run test:package`，提交版本修改与构建产物，然后推送到 GitHub。
 3. 创建对应的 `v0.3.5` 标签，并发布该标签的 GitHub Release。发布稳定版本；当前工作流跳过 prerelease，拒绝标签与包版本不一致。
 4. 等待 **Publish npm plugin** 工作流中的验证、**Upload tested package to Release** 和 npm 发布任务成功，确认 Release 的 Assets 中出现 `tripo-studio-plugin-<版本>.tgz`，再通知用户更新。npm 发布版本不可覆盖；失败重试前先确认该版本是否已在注册表中。
 
-每次插件更新（包括功能、修复、界面、技能和文档修改）都必须重新构建并提交构建产物。`npm run build` 自动生成 `dist/build-info.json`，工作台三个 tab 右侧显示 `v<package.json 版本>-YYYYMMDDHHmmss`，时间戳使用台北时间（`Asia/Taipei`）。即使 npm 版本不变，重新构建也会刷新时间戳；打开同一个构建时标记保持固定。工作台资源 URI 也包含此时间戳，避免侧边栏复用旧版本缓存。本地安装会刷新 MCP 配置并重新注册插件；更新后重连 Tripo MCP，关闭并重新打开侧边栏工作台，仍显示旧页面时完全退出并重新打开 Codex。`npm run install:local` 和 npm 打包流程都会自动执行构建，版本检查会验证标记与工作台构建一致。
+每次插件更新（包括功能、修复、界面、技能和文档修改）都必须重新构建并提交构建产物。`pnpm run build` 自动生成 `dist/build-info.json`，工作台三个 tab 右侧显示 `v<package.json 版本>-YYYYMMDDHHmmss`，时间戳使用台北时间（`Asia/Taipei`）。即使 npm 版本不变，重新构建也会刷新时间戳；打开同一个构建时标记保持固定。工作台资源 URI 也包含此时间戳，避免侧边栏复用旧版本缓存。本地安装会刷新 MCP 配置并重新注册插件；更新后重连 Tripo MCP，关闭并重新打开侧边栏工作台，仍显示旧页面时完全退出并重新打开 Codex。`pnpm run install:local` 和 npm 打包流程都会自动执行构建，版本检查会验证标记与工作台构建一致。
 
 Action 会在 Linux、macOS、Windows 上验收发布包，Release 附件与 npm 发布复用同一个 Linux Node 22 验收后保存的 tarball，不会重新打包。PR 和 `main` 的 push 只触发验证，不会上传 Release 附件或发布 npm。
 

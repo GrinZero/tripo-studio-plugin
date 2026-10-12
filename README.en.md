@@ -14,11 +14,11 @@
 
 **Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language.**
 
-*Your one-stop 3D AI studio inside Codex. Describe, sculpt, rig, and export 3D models with one sentence — powered by Tripo Studio & local Blender pipeline.*
+_Your one-stop 3D AI studio inside Codex. Describe, sculpt, rig, and export 3D models with one sentence — powered by Tripo Studio & local Blender pipeline._
 
 <p align="center">
   <a href="#2-installation--quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.8-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-tool-matrix--capabilities-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -81,7 +81,7 @@ Simply send a natural language prompt to Codex. Your agent drafts generation par
 - **Node.js ≥ 22** (including npm / npx accessible in Codex environment)
 - Codex host supporting MCP Apps (with plugin extension support)
 - A **Tripo Studio account** (browser login session)
-- *(Optional)* **Blender** (for offline mesh checks, wireframe renders, and projection baking)
+- _(Optional)_ **Blender** (for offline mesh checks, wireframe renders, and projection baking)
 
 ### 2.2 Copy This Prompt to AI and Let It Install (Recommended)
 
@@ -116,9 +116,9 @@ Open a new conversation in Codex after installation. The marketplace bundle fetc
 
 ### 2.3 Login & Launch Workbench
 
-1. **Check Authentication**: Say to Codex: *"Check my Tripo Studio login status, and log in if needed."*
+1. **Check Authentication**: Say to Codex: _"Check my Tripo Studio login status, and log in if needed."_
    - Existing browser sessions are automatically inherited; otherwise, the login page will open.
-2. **Open Workbench**: Say to Codex: *"Open Tripo workbench."*
+2. **Open Workbench**: Say to Codex: _"Open Tripo workbench."_
    - Access **Assets, Tasks, and Create** tabs with zero fee.
 3. **Start Creating**: Send your 3D prompt in chat or in the Create panel to begin generating models!
 
@@ -165,9 +165,10 @@ The server registers **64 agent-visible tools** and **4 app-only streaming tools
 ---
 
 ### 3.1 🖥️ Interactive Workbench (Workbench)
+
 - **Primary Tool**: `tripo_open_workbench` (plus 4 app-only tools: `tripo_ui_preview`, `tripo_ui_import_image`, `tripo_ui_asset_library`, `tripo_ui_review`).
 - **Features**: Seamless 3-in-1 UI covering Asset Library, Task Queue, and Creation panel. Adaptive dark/light themes with real-time multi-language switching (EN, ZH, JA).
-- **Prompt Example**: *"Open the Tripo workbench asset view."*
+- **Prompt Example**: _"Open the Tripo workbench asset view."_
 
 <div align="center">
   <img src="docs/images/workbench-create-dark.png" alt="Interactive 3-in-1 Workbench" width="85%" />
@@ -176,13 +177,14 @@ The server registers **64 agent-visible tools** and **4 app-only streaming tools
 ---
 
 ### 3.2 ⚡ Cloud 3D Generation (Generation)
+
 - **Dedicated Guide**: 👉 **[3D Generation Guide & Parameters (docs/tools/generation.md)](docs/tools/generation.md)**
 - **Included Tools**: `tripo_generate_model`, `tripo_generate_image`, `tripo_generate_multiview`, `tripo_regenerate_image`, `tripo_upscale_image`, `tripo_split_image`, `tripo_import_model`, `tripo_list_image_templates`
 - **Key Capabilities**:
   - **High Detail Pipeline**: H2.5 / H3.0 / H3.1 architecture, custom polygon counts, independent geometry quality, and 2K/4K/8K PBR textures.
   - **Smart Mesh P2**: Strict 500–25,000 quad polycount budget with simultaneous 1, 2, or 4 LOD variant outputs.
   - **Multiview Modeling**: Front/Back/Left/Right 4-view reference alignment.
-  - **60-Second Editable Safety Card**: Pre-estimates credits, pauses deadline on edit, and protects against unintended submissions.
+  - **60-Second Editable Safety Card**: Pre-estimates credits and pauses the deadline only when parameters actually change. Focus, clicks and preview inspection keep the countdown running.
 
 <div align="center">
   <img src="docs/images/configuration-dark.png" alt="Dark Confirmation Card" width="70%" />
@@ -191,11 +193,12 @@ The server registers **64 agent-visible tools** and **4 app-only streaming tools
 ---
 
 ### 3.3 🔧 Mesh Studio & 🎨 Texture Pipeline (Mesh & Texture)
+
 - **Dedicated Guide**: 👉 **[Mesh & Texture Tools Guide (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**
 - **Included Tools**:
   - Mesh Operations: `tripo_segment_model` (Semantic segmentation), `tripo_complete_parts` (Part closing & completion), `tripo_remesh_model` (Quad remeshing), `tripo_generate_uv` (Smart UV candidates), `tripo_apply_uv`, `tripo_get_uv_context`
   - Texture Pipeline: `tripo_generate_texture` (Repaint), `tripo_preview_texture_edit`, `tripo_apply_texture_edits`, `tripo_upscale_texture` (8K super-resolution), `tripo_generate_pbr` (PBR map baking)
-- **Prompt Example**: *"Remesh this armor model down to 8,000 faces and bake 4K PBR material maps."*
+- **Prompt Example**: _"Remesh this armor model down to 8,000 faces and bake 4K PBR material maps."_
 
 <div align="center">
   <img src="docs/images/model-detail.png" alt="Model Detail & Remesh Parameters" width="85%" />
@@ -204,6 +207,7 @@ The server registers **64 agent-visible tools** and **4 app-only streaming tools
 ---
 
 ### 3.4 🦴 Rigging & AI Motion System (Rigging & Animation)
+
 - **Dedicated Guide**: 👉 **[Rigging & Animation Tools Guide (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**
 - **Included Tools**: `tripo_rig_model`, `tripo_animate_model`, `tripo_list_animation_presets`, `tripo_generate_motion`, `tripo_apply_motion`, `tripo_list_motions`, `tripo_get_motion`
 - **Key Capabilities**:
@@ -214,6 +218,7 @@ The server registers **64 agent-visible tools** and **4 app-only streaming tools
 ---
 
 ### 3.5 🛠️ Local Blender Engine (Local Tools · Zero Credits)
+
 - **Dedicated Guide**: 👉 **[Local Blender Tools Guide (docs/tools/local-blender.md)](docs/tools/local-blender.md)**
 - **Included Tools**: `tripo_render_model`, `tripo_inspect_local_parts`, `tripo_edit_parts`, `tripo_bake_texture_projection`, `tripo_paint_texture`, `tripo_crop_image`
 - **Key Advantages**:
@@ -225,6 +230,7 @@ The server registers **64 agent-visible tools** and **4 app-only streaming tools
 ---
 
 ### 3.6 📦 Asset Groups, Lineage & Industrial Export (Assets, Tasks & Export)
+
 - **Dedicated Guide**: 👉 **[Assets, Tasks & Export Guide (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **Included Tools**:
   - Asset Groups: `tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
@@ -257,19 +263,19 @@ Interact with Codex directly using conversational prompts:
 ```text
 Generate a "Mecha Fox" model using this reference image:
 - Architecture: H3.1, standard geometry, 60,000 faces, 4K PBR textures.
-- Show the configuration form; I can edit it, or it submits after 60 seconds without interaction.
+- Show the configuration form; I can change its parameters, or it submits after 60 seconds if they remain unchanged.
 ```
 
 ### Prompt Patterns
 
-| Scenario | What to say to Codex | Capabilities Involved |
-| --- | --- | --- |
+| Scenario                       | What to say to Codex                                                                                                                         | Capabilities Involved                |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
 | **🎮 Strict Polycount Budget** | "Create a Smart Mesh P2 model from this image with 5,000 and 10,000 face variants. Quote the cost first without creating a generation task." | Smart Mesh P2, multi-variant budgets |
-| **📐 Multiview Alignment** | "These 4 images are front, left, back, and right views. Generate one model matching all views." | Multiview 3D synthesis |
-| **🏃 Rigging & Motion** | "Check the biped rigging compatibility of this model, rig it with UE skeleton, and apply a walk animation." | Rig V3, skeleton presets, AI Motion |
-| **📦 Asset Organization** | "Bundle selected reference images and models into a new group named 'Mecha Fox Game Assets'." | Local asset groups, batch operations |
-| **🔍 Provenance & Lineage** | "Show the source task, input images, and exact generation parameters for this model." | Task lineage tracking, source replay |
-| **🚀 Blender Export** | "Export this project to FBX using Blender preset and 2K textures. Show the downloaded file path." | Model export, texture packing |
+| **📐 Multiview Alignment**     | "These 4 images are front, left, back, and right views. Generate one model matching all views."                                              | Multiview 3D synthesis               |
+| **🏃 Rigging & Motion**        | "Check the biped rigging compatibility of this model, rig it with UE skeleton, and apply a walk animation."                                  | Rig V3, skeleton presets, AI Motion  |
+| **📦 Asset Organization**      | "Bundle selected reference images and models into a new group named 'Mecha Fox Game Assets'."                                                | Local asset groups, batch operations |
+| **🔍 Provenance & Lineage**    | "Show the source task, input images, and exact generation parameters for this model."                                                        | Task lineage tracking, source replay |
+| **🚀 Blender Export**          | "Export this project to FBX using Blender preset and 2K textures. Show the downloaded file path."                                            | Model export, texture packing        |
 
 ---
 

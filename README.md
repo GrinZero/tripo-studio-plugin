@@ -14,11 +14,11 @@
 
 **你的专属独立 3D 资产工坊。在 Codex 中，用一句话开启从概念到绑定的全流程 3D 资产生产。**
 
-*Your own one-person 3D studio. Everything you need to create 3D assets with AI, right inside Codex. Bring your own Tripo Studio account.*
+_Your own one-person 3D studio. Everything you need to create 3D assets with AI, right inside Codex. Bring your own Tripo Studio account._
 
 <p align="center">
   <a href="#2-安装与快速上手-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.8-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-完整工具矩阵与功能清单-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -81,7 +81,7 @@
 - **Node.js ≥ 22**（包含 npm / npx，Codex 需要能够找到这些命令）
 - 支持 MCP Apps 的 Codex（完整插件体验需要宿主支持 Plugin 扩展）
 - 自己的 **Tripo Studio 会员账号**（浏览器登录会话）
-- *（可选）* **Blender**：用于本地几何检查、线框渲染与投影烘焙；纯云端生成不依赖 Blender
+- _（可选）_ **Blender**：用于本地几何检查、线框渲染与投影烘焙；纯云端生成不依赖 Blender
 
 ### 2.2 复制给 AI，让它帮你安装（推荐）
 
@@ -169,6 +169,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.1 🖥️ 可视化工作台 (Workbench)
+
 - **核心工具**：`tripo_open_workbench`（以及 4 个 App 专属流工具 `tripo_ui_preview`, `tripo_ui_import_image`, `tripo_ui_asset_library`, `tripo_ui_review`）。
 - **能力**：一键唤起包含「资产中心」、「任务队列」与「创建面板」的三合一工作台，深浅主题自适应，支持简/繁/英/日多语言切换。
 - **对话示例**：“打开 Tripo 工作台的资产页面。”
@@ -180,13 +181,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.2 ⚡ 云端 3D 生成与多模态创作 (Generation)
+
 - **专题指南**：👉 **[3D 生成工具详细指南与参数规范 (docs/tools/generation.md)](docs/tools/generation.md)**
 - **包含工具**：`tripo_generate_model`, `tripo_generate_image`, `tripo_generate_multiview`, `tripo_regenerate_image`, `tripo_upscale_image`, `tripo_split_image`, `tripo_import_model`, `tripo_list_image_templates`
 - **核心能力**：
   - **High Detail**：H2.5 / H3.0 / H3.1 架构，支持指定面数、独立几何质量与 2K/4K/8K PBR 贴图。
   - **Smart Mesh P2**：控制在 500–25,000 面规整四边形网格，支持单次输出 1 / 2 / 4 个不同面数预算变体。
   - **多视角建模**：支持前/后/左/右四视角参考图统一对齐建模。
-  - **60 秒安全防手滑草稿卡片**：展示参数与积分预估，点击编辑即暂停倒计时，杜绝误操作。
+  - **60 秒安全防手滑草稿卡片**：展示参数与积分预估，参数实际变化才暂停倒计时；聚焦、点击或查看预览不会暂停。
 
 <div align="center">
   <img src="docs/images/configuration-dark.png" alt="深色安全参数配置卡片" width="70%" />
@@ -195,6 +197,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.3 🔧 网格工坊与 🎨 材质纹理管线 (Mesh & Texture)
+
 - **专题指南**：👉 **[网格与材质工具详细指南 (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**
 - **包含工具**：
   - 网格后处理：`tripo_segment_model` (语义分件), `tripo_complete_parts` (部件补全), `tripo_remesh_model` (工业重拓扑), `tripo_generate_uv` (Smart UV 候选), `tripo_apply_uv` (UV 应用), `tripo_get_uv_context`
@@ -208,6 +211,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.4 🦴 骨骼绑定与 AI 动作系统 (Rigging & Animation)
+
 - **专题指南**：👉 **[骨骼绑定与 AI 动作工具详细指南 (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**
 - **包含工具**：`tripo_rig_model`, `tripo_animate_model`, `tripo_list_animation_presets`, `tripo_generate_motion`, `tripo_apply_motion`, `tripo_list_motions`, `tripo_get_motion`
 - **核心能力**：
@@ -218,6 +222,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.5 🛠️ 本地 Blender 工业级工具箱 (Local Tools · 零积分消耗)
+
 - **专题指南**：👉 **[本地 Blender 工具详细指南 (docs/tools/local-blender.md)](docs/tools/local-blender.md)**
 - **包含工具**：`tripo_render_model`, `tripo_inspect_local_parts`, `tripo_edit_parts`, `tripo_bake_texture_projection`, `tripo_paint_texture`, `tripo_crop_image`
 - **核心优势**：
@@ -229,6 +234,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.6 📦 资产分组、任务血统与工业交付 (Assets, Tasks & Export)
+
 - **专题指南**：👉 **[资产、任务与导出工具详细指南 (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **包含工具**：
   - 资产分组：`tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
@@ -265,14 +271,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ### 常用实战场景与指令表
 
-| 实战场景 | 对 Codex 说 | 涉及能力 |
-| --- | --- | --- |
-| **🎮 严格网格预算** | “用这张图做 Smart Mesh P2 模型，给我 5,000 和 10,000 面两个变体，先估算费用，不创建生成任务。” | Smart Mesh P2、多变体预算 |
-| **📐 多视图一致建模** | “这四张图依次是正面、左侧、背面、右侧，用它们生成同一个模型，先估算费用，不创建生成任务。” | 多视角建模、四视图对齐 |
-| **🏃 角色骨骼与动作** | “检查机械狐模型的绑定能力，使用适合它的骨架，再应用一个可用的走路动画。” | Rig V3、骨骼绑定、AI Motion |
-| **📦 资产分组与归档** | “把选中的参考图和模型收进一个组，命名为「机械狐 · 游戏资产」，检查组内数量。” | 本地资产分组、多选整理 |
-| **🔍 全链路来源溯源** | “查看这个模型的来源任务、输入图片与实际生成参数。” | 任务血统追踪、输入回溯 |
-| **🚀 Blender 格式交付** | “导出这个自有项目为 FBX，使用 Blender 预设、2K 贴图，下载后展示文件位置。” | 模型导出、贴图打包、格式兼容 |
+| 实战场景                | 对 Codex 说                                                                                    | 涉及能力                     |
+| ----------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------- |
+| **🎮 严格网格预算**     | “用这张图做 Smart Mesh P2 模型，给我 5,000 和 10,000 面两个变体，先估算费用，不创建生成任务。” | Smart Mesh P2、多变体预算    |
+| **📐 多视图一致建模**   | “这四张图依次是正面、左侧、背面、右侧，用它们生成同一个模型，先估算费用，不创建生成任务。”     | 多视角建模、四视图对齐       |
+| **🏃 角色骨骼与动作**   | “检查机械狐模型的绑定能力，使用适合它的骨架，再应用一个可用的走路动画。”                       | Rig V3、骨骼绑定、AI Motion  |
+| **📦 资产分组与归档**   | “把选中的参考图和模型收进一个组，命名为「机械狐 · 游戏资产」，检查组内数量。”                  | 本地资产分组、多选整理       |
+| **🔍 全链路来源溯源**   | “查看这个模型的来源任务、输入图片与实际生成参数。”                                             | 任务血统追踪、输入回溯       |
+| **🚀 Blender 格式交付** | “导出这个自有项目为 FBX，使用 Blender 预设、2K 贴图，下载后展示文件位置。”                     | 模型导出、贴图打包、格式兼容 |
 
 ---
 
@@ -301,7 +307,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
   </tr>
 </table>
 
-*注：界面截图均取自当前版本真实运行环境与 Studio 资产。截图来源与数据哈希见 [截图来源记录](docs/images/README.md)。*
+_注：界面截图均取自当前版本真实运行环境与 Studio 资产。截图来源与数据哈希见 [截图来源记录](docs/images/README.md)。_
 
 ---
 

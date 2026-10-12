@@ -12,7 +12,9 @@ const source = path.join(root, "src", "server.mjs");
 
 const target = existsSync(bundled) ? bundled : source;
 if (!existsSync(target)) {
-  console.error("[tripo-studio-plugin] no server entry found; run `npm run build` or keep src/ alongside mcp/.");
+  console.error(
+    "[tripo-studio-plugin] no server entry found; run `pnpm run build` or keep src/ alongside mcp/."
+  );
   process.exit(1);
 }
 await import(pathToFileURL(target).href);

@@ -7,6 +7,8 @@ Third-party code bundled with Tripo Studio for Codex
 @aws-sdk/middleware-sdk-s3@3.972.77 (Apache-2.0)
 @aws-sdk/signature-v4-multi-region@3.996.47 (Apache-2.0)
 @smithy/core@3.35.1 (Apache-2.0)
+@smithy/core@3.35.1 (Apache-2.0)
+@smithy/types@4.19.0 (Apache-2.0)
 @smithy/types@4.19.0 (Apache-2.0)
 
 Apache License
@@ -224,6 +226,7 @@ Apache License
 @aws-sdk/token-providers@3.1138.0 (Apache-2.0)
 @aws-sdk/xml-builder@3.972.41 (Apache-2.0)
 @smithy/credential-provider-imds@4.5.2 (Apache-2.0)
+@smithy/node-http-handler@4.12.1 (Apache-2.0)
 @smithy/node-http-handler@4.12.1 (Apache-2.0)
 @smithy/signature-v4@5.7.4 (Apache-2.0)
 
@@ -6108,6 +6111,7 @@ THE SOFTWARE.
 
 ---
 
+zod@4.4.3 (MIT)
 zod@4.6.5 (MIT)
 
 MIT License

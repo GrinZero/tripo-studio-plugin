@@ -3,7 +3,7 @@ name: tripo-studio
 description: Generate, edit, rig, animate and export images or 3D models through the user's Tripo Studio member account without an API key. Smart Mesh generates a white mesh, then color textures, then separate PBR maps; resume existing models at the missing stage. Also use for browsing existing Studio assets, organizing models/images into groups or character collections, moving/removing members, renaming groups, and local Blender model or texture edits.
 ---
 
-# Tripo Studio 0.3.7
+# Tripo Studio 0.3.8
 
 Use the `tripo_*` MCP tools. Read `tripo_list_operations` for the available operation kinds, descriptions and `consumes_credits` flags. It does not return input schemas. Get parameter names, types, enums and defaults from the currently registered tool definitions (MCP `tools/list`), not from this catalog or the workbench's example JSON. If a required tool or parameter is missing, report the mismatch and reload/update the plugin connection before relying on it.
 
@@ -24,16 +24,18 @@ After installation/update, the host must reload the plugin connection to discove
 ## Authentication and submission
 
 1. Check `tripo_auth_status` before remote work; if needed use `tripo_auth_login`. It reuses a logged-in browser or opens the default browser once. Local tools do not require login.
-2. Every Agent-facing creation/editing tool opens the same editable configuration form. Supply only the operation inputs; `submit` and `review` are not public parameters. The form submits automatically 60 seconds after it is displayed visibly if the user does not interact. Editing pauses the countdown; saving validates/requotes and immediately submits the updated settings. The user may confirm immediately or cancel. Submission always uses the form's latest saved settings.
+2. Every Agent-facing creation/editing tool opens the same editable configuration form. Supply only the operation inputs; `submit` and `review` are not public parameters. The form submits automatically 60 seconds after it is displayed visibly if its parameters remain unchanged. Actual parameter changes pause the countdown; focus, clicks, selecting the current value and inspecting previews do not. Saving validates/requotes and immediately submits the updated settings. The user may confirm immediately or cancel. Submission always uses the form's latest saved settings.
 
    For a quote or discussion only, use `tripo_quote_operation` and other read-only tools instead of calling a creation tool. There is no Agent-facing draft-only or direct-submit mode. `tripo_submit_task`, `tripo_run_workflow` and configuration-card actions are app-only implementation tools; do not invoke them or use alternate code/CLI calls to bypass the form. Read-only local inspection executes without a generation form.
 
    Show actual inputs, model versions, defaults and known cost. Use `tripo_quote_operation` with `kind` + cost-related `input`, or `task_id` for frozen parameters; quotes never upload, stage or dispatch. Requote expired estimates. `estimated_credits:null` means unknown, not free. Quotes are reviewed frontend estimates with membership/trial lookups, not a billing guarantee. Only `consumes_credits=true` operations consume Studio credits.
+
 3. After creating the form, call `tripo_get_configuration_review` with the returned `review_id` and `wait_ms:60000`. This read-only wait returns earlier when submitted, canceled, failed, or editing; it never starts the clock or submits. Follow the returned `next_action`. If still `pending` or `submitting`, keep waiting on the **same** card and do not end the task as blocked. The form owns the 60-second automatic submission; the Agent does not need to operate any UI or obtain a direct-submit tool. `pending`, `deadline_at:null`, missing remote IDs, or an unavailable computer-use surface are not evidence of a missing submission capability. A null deadline means the form has not acknowledged visible display yet, so continue observing it. If visibility remains unacknowledged after a full wait, accurately explain that the card is waiting to be displayed; do not ask to expose a direct-submit interface. If the user is editing, wait for their save/cancel rather than requesting another approval. Report a failure only from the current card/task's actual error; report cancellation only from its canceled state.
 
    Preserve the stable `review_id`; before submission, `draft_id` is a local handle, not an executing task ID. Saving updates that draft in place. Follow the final `task_id` with `tripo_task_wait`/`tripo_task_sync` after the submission receipt, then continue the requested output/download/inspection work. Do not conclude "not submitted" from an old creation response after waiting; read the latest card. Never submit the original Agent parameters separately or create a duplicate job.
 
    The 60-second window begins only after a visible-page acknowledgement. Hidden cards, background queries and a restarted process do not start it. Card staging freezes source snapshots, settings, hash and cost estimate. Visible cards start background image pre-upload/audit; saves reuse uploads by account and file content, uploading only replaced inputs. Pre-uploading never generates. Initial/saved estimates use bundled rates; live discounts/trials are checked at confirmation.
+
 4. Sync/wait, then download or inspect local output paths. GLB downloads keep the original at `download.path`; use `download.blender_path` for Blender. Meshopt compression is decoded automatically to a separate copy, and local Blender tools also handle compressed GLB inputs automatically. If `download.blender_error` is present, the source was saved but no compatible copy is available; inspect the reported error. A task's success does not prove visual/structural quality.
 5. Never resubmit `outcome_unknown` writes. Reconcile observed remote IDs. Cancel works only for staged work.
 
@@ -43,14 +45,14 @@ The **Assets** page presents each group as one card with member previews and an 
 
 Use the five public asset-group tools directly for requests such as “把这些模型加入派蒙分组”, “新建一个角色素材组”, “把图片移出分组”, “修改分组名称” or “合并这两个分组”. These requests modify the Assets library; use task tools only when the user intends to correct task character metadata or inspect task history. A manual asset group may represent any user-selected collection, not only a character.
 
-| User intent | Tool and essential input |
-| --- | --- |
-| Find groups or their counts | `tripo_list_asset_groups`; returns `groups[].id`, `model_count`, `image_count`, `total`. |
-| Inspect members or find loose assets | `tripo_list_group_assets` with a returned `group_id`, or `group_id:"ungrouped"`; `type` defaults to `all`. |
-| Create a group and optionally collect assets | `tripo_create_asset_group` with `name` and optional `assets`; same normalized name reuses the existing group. |
-| Add or move assets into an existing group | `tripo_set_asset_group` with returned `group_id` and `assets`. |
-| Remove assets from their group | `tripo_set_asset_group` with `group_id:null` and `assets`; retains the assets and overrides automatic membership. |
-| Change a group name | `tripo_rename_asset_group` with returned `group_id` and `name`; preserves identity and members. |
+| User intent                                  | Tool and essential input                                                                                          |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Find groups or their counts                  | `tripo_list_asset_groups`; returns `groups[].id`, `model_count`, `image_count`, `total`.                          |
+| Inspect members or find loose assets         | `tripo_list_group_assets` with a returned `group_id`, or `group_id:"ungrouped"`; `type` defaults to `all`.        |
+| Create a group and optionally collect assets | `tripo_create_asset_group` with `name` and optional `assets`; same normalized name reuses the existing group.     |
+| Add or move assets into an existing group    | `tripo_set_asset_group` with returned `group_id` and `assets`.                                                    |
+| Remove assets from their group               | `tripo_set_asset_group` with `group_id:null` and `assets`; retains the assets and overrides automatic membership. |
+| Change a group name                          | `tripo_rename_asset_group` with returned `group_id` and `name`; preserves identity and members.                   |
 
 Resolve the destination by name with the group query when its ID is unknown. Resolve selected members from actual model/image catalog or group-member results, using exactly `{project_id}` for a model or `{asset_id}` for an image; do not substitute task IDs, output indexes, filenames or local paths. Follow each result's `next_offset` until null when collecting **all** members. Both asset types can share a group; keep the user's requested model/image scope, and use `type:all` for a complete cross-type collection. Move at most 500 references per call. Any invalid member rejects that batch without partial writes.
 
@@ -100,12 +102,12 @@ For a new Smart Mesh requested with textures and PBR, complete all three stages 
 
 For an existing Smart Mesh, read its latest state with `tripo_get_model` and consult the recorded tasks/artifacts, then resume at the first missing **requested** stage:
 
-| Current state | Next action for a request including PBR maps |
-| --- | --- |
-| White mesh, no color textures | Generate color textures, wait, then generate PBR maps. |
-| Color textures already generated, PBR maps missing | Call `tripo_generate_pbr` only; keep the existing mesh and color textures. |
-| PBR maps already generated and verified | Export/download the existing result; do not create another generation task. |
-| A required stage is running or has an uncertain result | Follow/reconcile that task before creating dependent or duplicate work. |
+| Current state                                          | Next action for a request including PBR maps                                |
+| ------------------------------------------------------ | --------------------------------------------------------------------------- |
+| White mesh, no color textures                          | Generate color textures, wait, then generate PBR maps.                      |
+| Color textures already generated, PBR maps missing     | Call `tripo_generate_pbr` only; keep the existing mesh and color textures.  |
+| PBR maps already generated and verified                | Export/download the existing result; do not create another generation task. |
+| A required stage is running or has an uncertain result | Follow/reconcile that task before creating dependent or duplicate work.     |
 
 Respect the requested scope: a white-mesh-only request ends after step 1; color textures only ends after step 2. A request to regenerate textures keeps the existing geometry and restarts at step 2; if PBR maps are also requested, generate them after the new color-texture task succeeds rather than treating maps from an earlier texture revision as the final result. If the user says color textures are already done and asks for PBR, proceed directly to step 3. Preserve cancellation: a canceled stage is not complete, and it must not be recreated without renewed user authorization.
 
@@ -123,7 +125,6 @@ Local render/mesh/projection tools require Blender and a self-contained GLB. The
 6. `tripo_apply_texture_edits` takes the inspected per-part textures for an existing Studio project. Do not apply textures after geometry/UV changes without checking compatibility.
 
 Continue dependent work through the individual Agent-facing operation tools after the previous form submits and its task succeeds. Use the actual returned project, motion, UV candidate or local artifact IDs/paths and `parent_task_id` for lineage. `tripo_run_workflow` is app-only. Signed URLs stay private and downloads use configured output roots.
-
 
 ## Results and provenance
 

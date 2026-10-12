@@ -14,11 +14,11 @@
 
 **你的專屬獨立 3D 資產工坊。在 Codex 中，用一句話開啟從概念到綁定的全流程 3D 資產製作。**
 
-*Your own one-person 3D studio. Everything you need to create 3D assets with AI, right inside Codex. Bring your own Tripo Studio account.*
+_Your own one-person 3D studio. Everything you need to create 3D assets with AI, right inside Codex. Bring your own Tripo Studio account._
 
 <p align="center">
   <a href="#2-安裝與快速上手-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.8-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-完整工具矩陣與功能清單-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -81,7 +81,7 @@
 - **Node.js ≥ 22**（包含 npm / npx，Codex 需要能夠找到這些命令）
 - 支援 MCP Apps 的 Codex（完整外掛體驗需要宿主支援 Plugin 擴充）
 - 自己的 **Tripo Studio 會員帳號**（瀏覽器登入會話）
-- *（可選）* **Blender**：用於本地幾何檢查、線框渲染與投影烘焙；純雲端生成不依賴 Blender
+- _（可選）_ **Blender**：用於本地幾何檢查、線框渲染與投影烘焙；純雲端生成不依賴 Blender
 
 ### 2.2 複製給 AI，讓它幫你安裝（推薦）
 
@@ -169,6 +169,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.1 🖥️ 視覺化工作台 (Workbench)
+
 - **核心工具**：`tripo_open_workbench`（以及 4 個 App 專屬串流工具 `tripo_ui_preview`, `tripo_ui_import_image`, `tripo_ui_asset_library`, `tripo_ui_review`）。
 - **能力**：一鍵喚起包含「資產中心」、「任務隊列」與「創建面板」的三合一工作台，深淺主題自適應，支援簡/繁/英/日多語言切換。
 - **對話範例**：“打開 Tripo 工作台的資產頁面。”
@@ -180,13 +181,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.2 ⚡ 雲端 3D 生成與多模態創作 (Generation)
+
 - **專題指南**：👉 **[3D 生成工具詳細指南與參數規範 (docs/tools/generation.md)](docs/tools/generation.md)**
 - **包含工具**：`tripo_generate_model`, `tripo_generate_image`, `tripo_generate_multiview`, `tripo_regenerate_image`, `tripo_upscale_image`, `tripo_split_image`, `tripo_import_model`, `tripo_list_image_templates`
 - **核心能力**：
   - **High Detail**：H2.5 / H3.0 / H3.1 架構，支援指定面數、獨立幾何質量與 2K/4K/8K PBR 貼圖。
   - **Smart Mesh P2**：控制在 500–25,000 面規整四邊形網格，支援單次輸出 1 / 2 / 4 個不同面數預算變體。
   - **多視角建模**：支援前/後/左/右四視角參考圖統相對齊建模。
-  - **60 秒安全防手滑草稿卡片**：展示參數與積分預估，點擊編輯即暫停倒數計時，杜絕誤操作。
+  - **60 秒安全防手滑草稿卡片**：展示參數與積分預估，參數實際變化才暫停倒數計時；聚焦、點擊或查看預覽不會暫停。
 
 <div align="center">
   <img src="docs/images/configuration-dark.png" alt="深色安全參數配置卡片" width="70%" />
@@ -195,6 +197,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.3 🔧 網格工坊與 🎨 材質紋理管線 (Mesh & Texture)
+
 - **專題指南**：👉 **[網格與材質工具詳細指南 (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**
 - **包含工具**：
   - 網格後處理：`tripo_segment_model` (語義分件), `tripo_complete_parts` (部件補全), `tripo_remesh_model` (工業重拓撲), `tripo_generate_uv` (Smart UV 候選), `tripo_apply_uv` (UV 應用), `tripo_get_uv_context`
@@ -208,6 +211,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.4 🦴 骨骼綁定與 AI 動作系統 (Rigging & Animation)
+
 - **專題指南**：👉 **[骨骼綁定與 AI 動作工具詳細指南 (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**
 - **包含工具**：`tripo_rig_model`, `tripo_animate_model`, `tripo_list_animation_presets`, `tripo_generate_motion`, `tripo_apply_motion`, `tripo_list_motions`, `tripo_get_motion`
 - **核心能力**：
@@ -218,6 +222,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.5 🛠️ 本地 Blender 工業級工具箱 (Local Tools · 零積分消耗)
+
 - **專題指南**：👉 **[本地 Blender 工具詳細指南 (docs/tools/local-blender.md)](docs/tools/local-blender.md)**
 - **包含工具**：`tripo_render_model`, `tripo_inspect_local_parts`, `tripo_edit_parts`, `tripo_bake_texture_projection`, `tripo_paint_texture`, `tripo_crop_image`
 - **核心優勢**：
@@ -229,6 +234,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.6 📦 資產分組、任務血統與工業交付 (Assets, Tasks & Export)
+
 - **專題指南**：👉 **[資產、任務與導出工具詳細指南 (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **包含工具**：
   - 資產分組：`tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
@@ -265,14 +271,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 
 ### 常用實戰場景與指令表
 
-| 實戰場景 | 對 Codex 說 | 涉及能力 |
-| --- | --- | --- |
-| **🎮 嚴格網格預算** | “用這張圖做 Smart Mesh P2 模型，給我 5,000 和 10,000 面兩個變體，先估算費用，不建立生成任務。” | Smart Mesh P2、多變體預算 |
-| **📐 多視圖一致建模** | “這四張圖依次是正面、左側、背面、右側，用它們生成同一個模型，先估算費用，不建立生成任務。” | 多視角建模、四視圖對齊 |
-| **🏃 角色骨骼與動作** | “檢查機械狐模型的綁定能力，使用適合它的骨架，再應用一個可用的走路動畫。” | Rig V3、骨骼綁定、AI Motion |
-| **📦 資產分組與歸檔** | “把選中的參考圖和模型收進一個組，命名為「機械狐 · 遊戲資產」，檢查組內數量。” | 本地資產分組、多選整理 |
-| **🔍 全鏈路來源溯源** | “查看這個模型的來源任務、輸入圖片與實際生成參數。” | 任務血統追蹤、輸入回溯 |
-| **🚀 Blender 格式交付** | “導出這個自有專案為 FBX，使用 Blender 預設、2K 貼圖，下載後展示檔案位置。” | 模型導出、貼圖打包、格式相容 |
+| 實戰場景                | 對 Codex 說                                                                                    | 涉及能力                     |
+| ----------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------- |
+| **🎮 嚴格網格預算**     | “用這張圖做 Smart Mesh P2 模型，給我 5,000 和 10,000 面兩個變體，先估算費用，不建立生成任務。” | Smart Mesh P2、多變體預算    |
+| **📐 多視圖一致建模**   | “這四張圖依次是正面、左側、背面、右側，用它們生成同一個模型，先估算費用，不建立生成任務。”     | 多視角建模、四視圖對齊       |
+| **🏃 角色骨骼與動作**   | “檢查機械狐模型的綁定能力，使用適合它的骨架，再應用一個可用的走路動畫。”                       | Rig V3、骨骼綁定、AI Motion  |
+| **📦 資產分組與歸檔**   | “把選中的參考圖和模型收進一個組，命名為「機械狐 · 遊戲資產」，檢查組內數量。”                  | 本地資產分組、多選整理       |
+| **🔍 全鏈路來源溯源**   | “查看這個模型的來源任務、輸入圖片與實際生成參數。”                                             | 任務血統追蹤、輸入回溯       |
+| **🚀 Blender 格式交付** | “導出這個自有專案為 FBX，使用 Blender 預設、2K 貼圖，下載後展示檔案位置。”                     | 模型導出、貼圖打包、格式相容 |
 
 ---
 

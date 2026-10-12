@@ -23,4 +23,3 @@ Render thumbnails exceptionally attractive and clear, each asset isolated and gr
 At very bottom a thin selected-item bar: small fox thumbnail, "已选择：机械狐", quiet actions "查看详情" "导出". Separate by fine rule, not a giant floating card.
 
 Codex chat request "查看我的模型资产", short reply "选择模型，查看详情或继续处理。", clean bottom composer. Board labels "资产总览 · 浅色" and "资产总览 · 深色". Beautiful finished native productivity interface, generous consistent spacing, calm hierarchy, accurate short Chinese text. Do not add inventory analytics, charts, balance numbers, marketing banners, fake dates, UUIDs, JSON or watermark.
-

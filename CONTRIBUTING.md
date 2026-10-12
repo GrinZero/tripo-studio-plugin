@@ -4,18 +4,34 @@
 
 ## 本地开发
 
-使用 Node.js ≥ 22，在仓库根目录执行：
+开发使用 Node.js 24（见 `.node-version`）与 `package.json` 固定的 pnpm 版本。插件运行时仍支持 Node.js ≥ 22。启用 Corepack 的 pnpm shim 后，在仓库根目录执行；也可用 `corepack pnpm` 代替下列 `pnpm`：
 
 ```bash
-npm ci
-npm run build
-npm test
+corepack enable pnpm
+corepack install
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm run check
+pnpm test
 ```
+
+提交 `pnpm-lock.yaml`，不使用 `package-lock.json`。安装依赖时，`prepare` 自动安装 Husky hooks。依赖构建脚本只允许 `pnpm-workspace.yaml` 中声明的 esbuild。
+
+## 代码质量与提交检查
+
+- `pnpm run lint` / `pnpm run lint:fix`：ESLint flat config 的 recommended 规则，分别声明 Node 与浏览器环境，警告也会导致检查失败。
+- `pnpm run format` / `pnpm run format:check`：Prettier 负责格式；ESLint 的格式规则通过 eslint-config-prettier 关闭。生成的 `dist/`、测试 fixtures 与第三方许可证文本不参与自动格式修改。`test/browser/*.js` 不参与 Prettier 格式化，以保留 playwright-cli `run-code --filename` 所需的函数表达式格式；这些文件仍接受 ESLint 检查，测试会验证其表达式语法。
+- `pnpm run check`：lint、格式检查与分发一致性检查。
+- Husky `pre-commit`：lint-staged 只修复暂存文件，再执行完整测试与分发检查。仓库是 JavaScript ESM，没有 TypeScript 编译或 typecheck 步骤。
+- Husky `commit-msg`：commitlint 校验 Conventional Commits，例如 `fix: pause submission only for changed parameters`、`chore: migrate development tooling to pnpm`。
+- CI 使用固定 pnpm 与 frozen lockfile，验证 lint、格式、提交消息、跨平台测试及真实发布包。CI 设置 `HUSKY=0`，通过显式检查代替 Git hooks。
+
+配置依据 [ESLint flat config](https://eslint.org/docs/latest/use/configure/configuration-files)、[Prettier 与 lint-staged](https://prettier.io/docs/precommit)、[Husky](https://typicode.github.io/husky/get-started.html) 和 [commitlint](https://commitlint.js.org/guides/local-setup.html) 的官方说明。
 
 本地插件的首次安装和后续更新统一使用：
 
 ```bash
-npm run install:local
+pnpm run install:local
 ```
 
 脚本构建后同步到 `~/.local/share/codex-integrations/tripo-studio-local/runtime`，本地插件只携带技能、图标和指向该固定目录的 MCP 配置。每次构建都会刷新版本时间戳及工作台资源 URI，安装时同步 MCP 配置并重新注册插件。更新后重连 Tripo MCP，再关闭并重新打开侧边栏工作台；侧边栏仍显示旧页面时，需要完全退出并重新打开 Codex。仅刷新工作台里的资产列表不会重新加载页面资源。
@@ -27,7 +43,7 @@ npm run install:local
 开发时可直接启动源码服务：
 
 ```bash
-npm run serve:src
+pnpm run serve:src
 ```
 
 它是 stdio MCP 服务，需要由 MCP 客户端连接。工作台与结果卡片仍加载 `dist/` 中的界面脚本，修改 `ui/` 后也要执行构建。
@@ -48,13 +64,13 @@ codex mcp add tripo-studio-dev -- node "$(pwd)/mcp/bootstrap.mjs"
 
 ## 分发
 
-仓库中的 `.agents/plugins/marketplace.json` 指向固定版本的 npm 插件包。`package.json` 使用发布文件白名单，`npm pack` 自动构建服务器和界面。JavaScript 依赖全部打进服务器文件；图片处理使用 ImageMagick WASM，构建时将固定版本的 WASM 复制到 `dist/magick.wasm`，没有外部运行时依赖或平台原生二进制。正式插件使用 npx 启动同版本运行时，不需要安装时构建脚本。
+仓库中的 `.agents/plugins/marketplace.json` 指向固定版本的 npm 插件包。开发与打包使用 pnpm；`package.json` 使用发布文件白名单，`pnpm pack` 自动构建服务器和界面，并移除开发用的 packageManager 与 prepare 生命周期。JavaScript 依赖全部打进服务器文件；图片处理使用 ImageMagick WASM，构建时将固定版本的 WASM 复制到 `dist/magick.wasm`，没有外部运行时依赖或平台原生二进制。正式插件使用 npx 启动同版本运行时，不需要安装时构建脚本。
 
 提交发布前执行：
 
 ```bash
-npm run check:distribution
-npm run test:package
+pnpm run check:distribution
+pnpm run test:package
 ```
 
 发布包验收从仓库外的临时目录、空 npm 缓存启动真实 npx，验证 MCP 握手、68 个工具、工作台与结果卡片、图片导入和裁剪，再验证缓存可离线启动。CI 在 Linux、macOS、Windows 的 Node 22 和 Linux Node 24 上运行发布包验收。

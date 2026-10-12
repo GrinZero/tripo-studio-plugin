@@ -21,7 +21,7 @@ export function toTripoError(error, stage) {
     cause: error,
     retryable: false,
     safeToRetryPaidOperation: false,
-    ...(stage === undefined ? {} : { stage })
+    ...(stage === undefined ? {} : { stage }),
   });
 }
 
@@ -30,12 +30,29 @@ export function toTripoError(error, stage) {
 // or a non-retryable 4xx. Ambiguous transport failures never qualify.
 export function isDefinitiveRemoteRejection(error) {
   if (!(error instanceof TripoError)) return false;
-  if (["AUTH_EXPIRED", "INSUFFICIENT_CREDITS", "REMOTE_API_ERROR", "CONTENT_AUDIT_REJECTED"].includes(error.code)) {
+  if (
+    [
+      "AUTH_EXPIRED",
+      "INSUFFICIENT_CREDITS",
+      "REMOTE_API_ERROR",
+      "CONTENT_AUDIT_REJECTED",
+    ].includes(error.code)
+  ) {
     return true;
   }
-  if (error.code !== "HTTP_ERROR" || typeof error.details?.http_status !== "number") return false;
+  if (
+    error.code !== "HTTP_ERROR" ||
+    typeof error.details?.http_status !== "number"
+  )
+    return false;
   const status = error.details.http_status;
-  return Number.isInteger(status) && status >= 400 && status < 500 && status !== 408 && status !== 425;
+  return (
+    Number.isInteger(status) &&
+    status >= 400 &&
+    status < 500 &&
+    status !== 408 &&
+    status !== 425
+  );
 }
 
 export function errorSnapshot(error) {
@@ -47,6 +64,8 @@ export function errorSnapshot(error) {
     safe_to_retry_paid_operation: normalized.safeToRetryPaidOperation,
     submission_state: normalized.submissionState,
     stage: normalized.stage ?? null,
-    ...(normalized.nextAction === undefined ? {} : { next_action: normalized.nextAction })
+    ...(normalized.nextAction === undefined
+      ? {}
+      : { next_action: normalized.nextAction }),
   };
 }

@@ -15,7 +15,7 @@ export function makeConfig(dir) {
     dataDir: dir,
     outputRoots: [path.join(dir, "assets")],
     planTtlMs: 30 * 60 * 1000,
-    requestTimeoutMs: 5000
+    requestTimeoutMs: 5000,
   };
 }
 
@@ -23,13 +23,19 @@ export async function makeRuntime() {
   const dir = await mkdtemp(path.join(tmpdir(), "tripo-svc-"));
   const config = makeConfig(dir);
   const session = new SessionManager(config);
-  await session.set({ authorization: `Bearer ${jwt(Math.floor(Date.now() / 1000) + 3600)}`, deviceId: "dev-1", region: "rg1" });
+  await session.set({
+    authorization: `Bearer ${jwt(Math.floor(Date.now() / 1000) + 3600)}`,
+    deviceId: "dev-1",
+    region: "rg1",
+  });
   const store = new TaskStore(dir);
   const calls = [];
   const gateway = {
     calls,
     project: { id: "proj-1", operator: {}, status: "success" },
-    progress: [{ operator_id: "op-1", project_id: "proj-1", status: "success" }],
+    progress: [
+      { operator_id: "op-1", project_id: "proj-1", status: "success" },
+    ],
     async getProject(id) {
       calls.push(["getProject", id]);
       return this.project;
@@ -44,10 +50,25 @@ export async function makeRuntime() {
       return { operator_id: "op-1" };
     },
     async getStudioImageAsset(id) {
-      return { asset_id: id, input: {}, output: { data: [{ bucket: "b", key: "k", url: "https://cdn.tripo3d.ai/x.png" }] }, status: "success", type: "generate_image" };
-    }
+      return {
+        asset_id: id,
+        input: {},
+        output: {
+          data: [
+            { bucket: "b", key: "k", url: "https://cdn.tripo3d.ai/x.png" },
+          ],
+        },
+        status: "success",
+        type: "generate_image",
+      };
+    },
   };
-  const service = new OperationService({ config, gateway, session, store, uploader: null });
+  const service = new OperationService({
+    config,
+    gateway,
+    session,
+    store,
+    uploader: null,
+  });
   return { config, gateway, service, session, store };
 }
-

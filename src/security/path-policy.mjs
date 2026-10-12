@@ -6,21 +6,35 @@ import { TripoError } from "../errors.mjs";
 // call cannot smuggle a URL fetch or a UNC/remote specifier into a paid op.
 export function assertLocalPathSpecifier(value, stage = "path_policy") {
   if (typeof value !== "string" || value.trim() === "") {
-    throw new TripoError("INVALID_INPUT", "A local file path is required.", { stage });
+    throw new TripoError("INVALID_INPUT", "A local file path is required.", {
+      stage,
+    });
   }
   const trimmed = value.trim();
-  if (/^(https?|file|ftp|s3|gs|data):\/\//i.test(trimmed) || /^data:/i.test(trimmed)) {
-    throw new TripoError("INVALID_INPUT", "Only plain local filesystem paths are accepted; URL and data specifiers are rejected.", { stage });
+  if (
+    /^(https?|file|ftp|s3|gs|data):\/\//i.test(trimmed) ||
+    /^data:/i.test(trimmed)
+  ) {
+    throw new TripoError(
+      "INVALID_INPUT",
+      "Only plain local filesystem paths are accepted; URL and data specifiers are rejected.",
+      { stage }
+    );
   }
   if (trimmed.includes("\0")) {
-    throw new TripoError("INVALID_INPUT", "The path contains a NUL byte.", { stage });
+    throw new TripoError("INVALID_INPUT", "The path contains a NUL byte.", {
+      stage,
+    });
   }
   return trimmed;
 }
 
 function isInside(root, candidate) {
   const relative = path.relative(root, candidate);
-  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
+  return (
+    relative === "" ||
+    (!relative.startsWith("..") && !path.isAbsolute(relative))
+  );
 }
 
 // Downloads may only write beneath configured output roots. Resolves symlinks
@@ -32,10 +46,17 @@ export async function resolveOutputPath(config, requestedPath, defaultName) {
   const roots = config.outputRoots.map((root) => path.resolve(root));
   const existing = await nearestExistingAncestor(target);
   if (!existing) {
-    throw new TripoError("DOWNLOAD_REJECTED", "No existing ancestor directory was found for the download path.", { stage: "download_path" });
+    throw new TripoError(
+      "DOWNLOAD_REJECTED",
+      "No existing ancestor directory was found for the download path.",
+      { stage: "download_path" }
+    );
   }
   const canonicalAncestor = await realpath(existing.path);
-  const canonicalTarget = path.join(canonicalAncestor, path.relative(existing.path, target));
+  const canonicalTarget = path.join(
+    canonicalAncestor,
+    path.relative(existing.path, target)
+  );
   if (!roots.some((root) => isInside(root, canonicalTarget))) {
     throw new TripoError(
       "DOWNLOAD_REJECTED",
@@ -62,24 +83,45 @@ async function nearestExistingAncestor(target) {
   return null;
 }
 
-const DOWNLOAD_HOST_SUFFIXES = ["tripo3d.ai", "tripo3d.com", "amazonaws.com", "cloudfront.net"];
+const DOWNLOAD_HOST_SUFFIXES = [
+  "tripo3d.ai",
+  "tripo3d.com",
+  "amazonaws.com",
+  "cloudfront.net",
+];
 
 export function assertDownloadUrl(urlValue) {
   let url;
   try {
     url = new URL(urlValue);
   } catch (error) {
-    throw new TripoError("DOWNLOAD_REJECTED", "The remote artifact URL is invalid.", { cause: error, stage: "download" });
+    throw new TripoError(
+      "DOWNLOAD_REJECTED",
+      "The remote artifact URL is invalid.",
+      { cause: error, stage: "download" }
+    );
   }
   if (url.protocol !== "https:") {
-    throw new TripoError("DOWNLOAD_REJECTED", "Remote artifacts must be served over HTTPS.", { stage: "download" });
+    throw new TripoError(
+      "DOWNLOAD_REJECTED",
+      "Remote artifacts must be served over HTTPS.",
+      { stage: "download" }
+    );
   }
   const host = url.hostname.toLowerCase();
-  if (!DOWNLOAD_HOST_SUFFIXES.some((suffix) => host === suffix || host.endsWith(`.${suffix}`))) {
-    throw new TripoError("DOWNLOAD_REJECTED", `Remote artifact host ${host} is not in the allowlist.`, {
-      details: { host },
-      stage: "download"
-    });
+  if (
+    !DOWNLOAD_HOST_SUFFIXES.some(
+      (suffix) => host === suffix || host.endsWith(`.${suffix}`)
+    )
+  ) {
+    throw new TripoError(
+      "DOWNLOAD_REJECTED",
+      `Remote artifact host ${host} is not in the allowlist.`,
+      {
+        details: { host },
+        stage: "download",
+      }
+    );
   }
   return url;
 }

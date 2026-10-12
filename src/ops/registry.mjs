@@ -13,13 +13,17 @@ export const OPERATIONS = {
   ...modelOperations,
   ...postprocessOperations,
   ...studioExtraOperations,
-  ...localEditingOperations
+  ...localEditingOperations,
 };
 
 export function getOperation(kind) {
   const operation = OPERATIONS[kind];
   if (!operation) {
-    throw new TripoError("UNSUPPORTED_CAPABILITY", `Unknown operation kind: ${kind}`, { stage: "operation_registry" });
+    throw new TripoError(
+      "UNSUPPORTED_CAPABILITY",
+      `Unknown operation kind: ${kind}`,
+      { stage: "operation_registry" }
+    );
   }
   return operation;
 }
@@ -30,6 +34,6 @@ export function operationCatalog() {
     consumes_credits: operation.consumesCredits,
     description: operation.description,
     kind,
-    title: operation.title
+    title: operation.title,
   }));
 }

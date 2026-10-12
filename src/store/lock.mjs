@@ -1,4 +1,4 @@
-import { mkdir, open, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { delay } from "../util/misc.mjs";
@@ -13,16 +13,23 @@ export class FileLock {
   }
 
   async acquire(name, { timeoutMs = 30000, staleMs = 120000 } = {}) {
-    if (!/^[a-z0-9][a-z0-9_-]{0,62}$/i.test(name)) throw new Error(`Invalid lock name: ${name}`);
+    if (!/^[a-z0-9][a-z0-9_-]{0,62}$/i.test(name))
+      throw new Error(`Invalid lock name: ${name}`);
     const lockPath = path.join(this.#dir, `${name}.lock`);
     const ownerPath = path.join(lockPath, "owner.json");
-    const owner = { id: randomUUID(), pid: process.pid, at: new Date().toISOString() };
+    const owner = {
+      id: randomUUID(),
+      pid: process.pid,
+      at: new Date().toISOString(),
+    };
     const deadline = Date.now() + timeoutMs;
     await mkdir(this.#dir, { recursive: true });
     for (;;) {
       try {
         await mkdir(lockPath);
-        await writeFile(ownerPath, `${JSON.stringify(owner)}\n`, { mode: 0o600 });
+        await writeFile(ownerPath, `${JSON.stringify(owner)}\n`, {
+          mode: 0o600,
+        });
         return this.#handle(lockPath, ownerPath, owner.id);
       } catch (error) {
         if (error.code !== "EEXIST") throw error;
@@ -41,8 +48,10 @@ export class FileLock {
     try {
       const owner = JSON.parse(await readFile(ownerPath, "utf8"));
       const info = await stat(lockPath);
-      const ageMs = Date.now() - Math.max(info.mtimeMs, Date.parse(owner.at ?? "") || 0);
-      const alive = typeof owner.pid === "number" && process.kill(owner.pid, 0) !== false;
+      const ageMs =
+        Date.now() - Math.max(info.mtimeMs, Date.parse(owner.at ?? "") || 0);
+      const alive =
+        typeof owner.pid === "number" && process.kill(owner.pid, 0) !== false;
       if (alive && ageMs < staleMs) return false;
       await rm(lockPath, { force: true, recursive: true });
       return true;
@@ -80,7 +89,7 @@ export class FileLock {
           released = true;
           await rm(lockPath, { force: true, recursive: true }).catch(() => {});
         }
-      }
+      },
     };
   }
 

@@ -1,5 +1,12 @@
+/* eslint-disable no-control-regex -- Intentionally validate control characters or binary padding. */
 import { execFileSync } from "node:child_process";
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
+import {
+  copyFileSync,
+  existsSync,
+  mkdtempSync,
+  readdirSync,
+  rmSync,
+} from "node:fs";
 import { createDecipheriv, createHash, pbkdf2Sync } from "node:crypto";
 import os from "node:os";
 import path from "node:path";
@@ -34,7 +41,10 @@ function sqliteRows(dbPath, sql) {
       db.close();
     }
   }
-  const out = execFileSync("sqlite3", ["-json", dbPath, sql], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+  const out = execFileSync("sqlite3", ["-json", dbPath, sql], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
   return JSON.parse(out || "[]");
 }
 
@@ -42,16 +52,27 @@ function chromiumBrowserRoots(platform, env) {
   const home = os.homedir();
   const roots = [];
   const push = (name, rel, keychainLabel) => {
-    const dir = platform === "darwin" || platform === "linux" || platform === "win32" ? path.join(home, rel) : null;
+    const dir =
+      platform === "darwin" || platform === "linux" || platform === "win32"
+        ? path.join(home, rel)
+        : null;
     if (dir) roots.push({ name, dir, keychainLabel });
   };
   if (platform === "darwin") {
     const as = (rel) => path.join("Library", "Application Support", rel);
     push("chrome", as(path.join("Google", "Chrome")), "Chrome Safe Storage");
-    push("chrome-beta", as(path.join("Google", "Chrome Beta")), "Chrome Safe Storage");
+    push(
+      "chrome-beta",
+      as(path.join("Google", "Chrome Beta")),
+      "Chrome Safe Storage"
+    );
     push("chromium", as("Chromium"), "Chromium Safe Storage");
     push("edge", as("Microsoft Edge"), "Microsoft Edge Safe Storage");
-    push("brave", as(path.join("BraveSoftware", "Brave-Browser")), "Brave Safe Storage");
+    push(
+      "brave",
+      as(path.join("BraveSoftware", "Brave-Browser")),
+      "Brave Safe Storage"
+    );
     push("arc", as(path.join("Arc", "User Data")), "Arc Safe Storage");
     push("vivaldi", as("Vivaldi"), "Vivaldi Safe Storage");
   } else if (platform === "linux") {
@@ -59,21 +80,44 @@ function chromiumBrowserRoots(platform, env) {
     push("chrome", cfg("google-chrome"), "Chrome Safe Storage");
     push("chromium", cfg("chromium"), "Chromium Safe Storage");
     push("edge", cfg("microsoft-edge"), "Microsoft Edge Safe Storage");
-    push("brave", cfg(path.join("BraveSoftware", "Brave-Browser")), "Brave Safe Storage");
+    push(
+      "brave",
+      cfg(path.join("BraveSoftware", "Brave-Browser")),
+      "Brave Safe Storage"
+    );
   }
   // Escape hatch: an explicit cookie-store root (e.g. a dedicated
   // Chrome-for-Testing profile) via TRIPO_BROWSER_PROFILE_DIR.
   if (env?.TRIPO_BROWSER_PROFILE_DIR) {
-    roots.push({ name: "custom", dir: path.resolve(env.TRIPO_BROWSER_PROFILE_DIR), keychainLabel: "Chrome Safe Storage" });
+    roots.push({
+      name: "custom",
+      dir: path.resolve(env.TRIPO_BROWSER_PROFILE_DIR),
+      keychainLabel: "Chrome Safe Storage",
+    });
   }
   return roots;
 }
 
 function firefoxRoots(platform, env) {
   const home = os.homedir();
-  if (platform === "darwin") return [path.join(home, "Library", "Application Support", "Firefox", "Profiles")];
-  if (platform === "linux") return [path.join(home, ".mozilla", "firefox"), path.join(home, "snap", "firefox", "common", ".mozilla", "firefox")];
-  if (platform === "win32") return [path.join(env?.APPDATA ?? path.join(home, "AppData", "Roaming"), "Mozilla", "Firefox", "Profiles")];
+  if (platform === "darwin")
+    return [
+      path.join(home, "Library", "Application Support", "Firefox", "Profiles"),
+    ];
+  if (platform === "linux")
+    return [
+      path.join(home, ".mozilla", "firefox"),
+      path.join(home, "snap", "firefox", "common", ".mozilla", "firefox"),
+    ];
+  if (platform === "win32")
+    return [
+      path.join(
+        env?.APPDATA ?? path.join(home, "AppData", "Roaming"),
+        "Mozilla",
+        "Firefox",
+        "Profiles"
+      ),
+    ];
   return [];
 }
 
@@ -100,11 +144,15 @@ function profileCookieDbs(rootDir) {
 
 function safeStorageKey(label) {
   try {
-    const password = execFileSync("security", ["find-generic-password", "-l", label, "-w"], {
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"],
-      timeout: 15000
-    }).trim();
+    const password = execFileSync(
+      "security",
+      ["find-generic-password", "-l", label, "-w"],
+      {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+        timeout: 15000,
+      }
+    ).trim();
     if (password) return pbkdf2Sync(password, "saltysalt", 1003, 16, "sha1");
   } catch {
     // Keychain denied or label missing — fall through to other stores.
@@ -124,14 +172,26 @@ function decryptChromiumValue(encryptedHex, hostKey, keys) {
   if (version !== "v10" && version !== "v11") return null;
   for (const key of keys) {
     try {
-      const decipher = createDecipheriv("aes-128-cbc", key, Buffer.alloc(16, 0x20));
+      const decipher = createDecipheriv(
+        "aes-128-cbc",
+        key,
+        Buffer.alloc(16, 0x20)
+      );
       decipher.setAutoPadding(false);
-      let plain = Buffer.concat([decipher.update(raw.subarray(3)), decipher.final()]);
+      let plain = Buffer.concat([
+        decipher.update(raw.subarray(3)),
+        decipher.final(),
+      ]);
       const pad = plain[plain.length - 1];
       if (pad < 1 || pad > 16) continue;
       plain = plain.subarray(0, plain.length - pad);
       // Chrome >= 80 prefixes values with the 32-byte SHA-256 of the host key.
-      if (plain.length > 32 && plain.subarray(0, 32).equals(createHash("sha256").update(hostKey).digest())) {
+      if (
+        plain.length > 32 &&
+        plain
+          .subarray(0, 32)
+          .equals(createHash("sha256").update(hostKey).digest())
+      ) {
         plain = plain.subarray(32);
       }
       const value = plain.toString("utf8");
@@ -198,8 +258,12 @@ function chromiumCookies(env) {
       }
       for (const row of rows) {
         const expiresUtc = Number(row.expires_utc ?? 0);
-        const expiresAtMs = expiresUtc > 0 ? Math.round(expiresUtc / 1000) - 11644473600000 : null;
-        let value = typeof row.value === "string" && row.value !== "" ? row.value : null;
+        const expiresAtMs =
+          expiresUtc > 0
+            ? Math.round(expiresUtc / 1000) - 11644473600000
+            : null;
+        let value =
+          typeof row.value === "string" && row.value !== "" ? row.value : null;
         if (!value && row.encrypted_hex) {
           value = decryptChromiumValue(row.encrypted_hex, row.host_key, keys);
         }
@@ -211,7 +275,7 @@ function chromiumCookies(env) {
             value,
             host: row.host_key,
             expiresAtMs,
-            sourcePath: dbPath
+            sourcePath: dbPath,
           });
         }
       }
@@ -253,8 +317,9 @@ function firefoxCookies(env) {
           name: row.name,
           value: row.value,
           host: row.host_key,
-          expiresAtMs: Number(row.expiry ?? 0) > 0 ? Number(row.expiry) * 1000 : null,
-          sourcePath: dbPath
+          expiresAtMs:
+            Number(row.expiry ?? 0) > 0 ? Number(row.expiry) * 1000 : null,
+          sourcePath: dbPath,
         });
       }
     }
@@ -276,14 +341,16 @@ export function sessionCandidates(env = process.env) {
   const byValue = new Map();
   const devices = new Map();
   for (const cookie of extractTripoCookies(env)) {
-    if (cookie.name === "tripo_device_id" && !devices.has(cookie.value)) devices.set(cookie.value, cookie.value);
+    if (cookie.name === "tripo_device_id" && !devices.has(cookie.value))
+      devices.set(cookie.value, cookie.value);
     if (cookie.name !== "ory_kratos_session") continue;
-    if (cookie.expiresAtMs !== null && cookie.expiresAtMs <= Date.now()) continue;
+    if (cookie.expiresAtMs !== null && cookie.expiresAtMs <= Date.now())
+      continue;
     if (!byValue.has(cookie.value)) {
       byValue.set(cookie.value, {
         cookie: cookie.value,
         browser: cookie.browser,
-        expiresAtMs: cookie.expiresAtMs
+        expiresAtMs: cookie.expiresAtMs,
       });
     }
   }

@@ -1,0 +1,3 @@
+pnpm run lint:staged
+pnpm test
+pnpm run check:distribution

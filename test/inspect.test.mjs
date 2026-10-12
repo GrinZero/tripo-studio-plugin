@@ -5,7 +5,11 @@ import path from "node:path";
 import { describe, it } from "node:test";
 import { inspectImage } from "../src/util/image.mjs";
 import { glbNodeNames, inspectModel } from "../src/util/model-inspect.mjs";
-import { assertDownloadUrl, assertLocalPathSpecifier, resolveOutputPath } from "../src/security/path-policy.mjs";
+import {
+  assertDownloadUrl,
+  assertLocalPathSpecifier,
+  resolveOutputPath,
+} from "../src/security/path-policy.mjs";
 
 // Minimal valid PNG: signature + IHDR(1x1) + IEND
 function png1x1() {
@@ -15,7 +19,8 @@ function png1x1() {
   ihdr.write("IHDR", 4);
   ihdr.writeUInt32BE(1, 8);
   ihdr.writeUInt32BE(1, 12);
-  ihdr[16] = 8; ihdr[17] = 6;
+  ihdr[16] = 8;
+  ihdr[17] = 6;
   const iend = Buffer.alloc(12);
   iend.write("IEND", 4);
   return Buffer.concat([sig, ihdr, iend]);
@@ -63,8 +68,14 @@ describe("model inspect", () => {
     const file = path.join(dir, "m.glb");
     const doc = {
       accessors: [{ count: 9 }],
-      meshes: [{ primitives: [{ attributes: { POSITION: 0, TEXCOORD_0: 1 }, indices: 0, mode: 4 }] }],
-      nodes: [{ name: "Body" }, { name: "Arm_L" }, {}]
+      meshes: [
+        {
+          primitives: [
+            { attributes: { POSITION: 0, TEXCOORD_0: 1 }, indices: 0, mode: 4 },
+          ],
+        },
+      ],
+      nodes: [{ name: "Body" }, { name: "Arm_L" }, {}],
     };
     const bytes = glb(doc);
     await writeFile(file, bytes);
@@ -84,23 +95,51 @@ describe("model inspect", () => {
 
 describe("path policy", () => {
   it("rejects url specifiers", () => {
-    assert.throws(() => assertLocalPathSpecifier("https://x/y.png"), /local filesystem paths/);
-    assert.throws(() => assertLocalPathSpecifier("file:///etc/passwd"), /local filesystem paths/);
-    assert.throws(() => assertLocalPathSpecifier("data:image/png;base64,AA"), /local filesystem paths/);
+    assert.throws(
+      () => assertLocalPathSpecifier("https://x/y.png"),
+      /local filesystem paths/
+    );
+    assert.throws(
+      () => assertLocalPathSpecifier("file:///etc/passwd"),
+      /local filesystem paths/
+    );
+    assert.throws(
+      () => assertLocalPathSpecifier("data:image/png;base64,AA"),
+      /local filesystem paths/
+    );
   });
   it("restricts downloads to output roots", async () => {
     const dir = await mkdtemp(path.join(tmpdir(), "tripo-dl-"));
     const config = { assetRoot: dir, outputRoots: [dir] };
-    const inside = await resolveOutputPath(config, path.join(dir, "sub", "f.png"), "d.png");
+    const inside = await resolveOutputPath(
+      config,
+      path.join(dir, "sub", "f.png"),
+      "d.png"
+    );
     assert.ok(inside.startsWith(dir));
-    await assert.rejects(() => resolveOutputPath(config, "/etc/passwd", "d.png"), /output roots/);
+    await assert.rejects(
+      () => resolveOutputPath(config, "/etc/passwd", "d.png"),
+      /output roots/
+    );
     const outside = await mkdtemp(path.join(tmpdir(), "tripo-out-"));
-    await assert.rejects(() => resolveOutputPath(config, path.join(outside, "f.png"), "d.png"), /output roots/);
+    await assert.rejects(
+      () => resolveOutputPath(config, path.join(outside, "f.png"), "d.png"),
+      /output roots/
+    );
   });
   it("allowlists download hosts", () => {
-    assert.equal(assertDownloadUrl("https://cdn.tripo3d.ai/x.glb").hostname, "cdn.tripo3d.ai");
-    assert.equal(assertDownloadUrl("https://s3.us-west-2.amazonaws.com/b/k").hostname, "s3.us-west-2.amazonaws.com");
+    assert.equal(
+      assertDownloadUrl("https://cdn.tripo3d.ai/x.glb").hostname,
+      "cdn.tripo3d.ai"
+    );
+    assert.equal(
+      assertDownloadUrl("https://s3.us-west-2.amazonaws.com/b/k").hostname,
+      "s3.us-west-2.amazonaws.com"
+    );
     assert.throws(() => assertDownloadUrl("http://cdn.tripo3d.ai/x"), /HTTPS/);
-    assert.throws(() => assertDownloadUrl("https://evil.example.com/x"), /allowlist/);
+    assert.throws(
+      () => assertDownloadUrl("https://evil.example.com/x"),
+      /allowlist/
+    );
   });
 });

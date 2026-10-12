@@ -31,10 +31,13 @@ async function verifyCookie(config, cookieValue) {
     origin: config.studioOrigin,
     referer: `${config.studioOrigin}/`,
     "x-tripo-device-id": config.deviceId,
-    "x-tripo-region": "rg1"
+    "x-tripo-region": "rg1",
   };
   try {
-    const response = await fetch(`${config.apiBaseUrl}${VERIFY_PATH}`, { headers, redirect: "error" });
+    const response = await fetch(`${config.apiBaseUrl}${VERIFY_PATH}`, {
+      headers,
+      redirect: "error",
+    });
     if (response.status !== 200) return null;
     const envelope = await response.json().catch(() => null);
     if (!envelope || envelope.code !== 0) return null;
@@ -44,10 +47,14 @@ async function verifyCookie(config, cookieValue) {
   let identityId;
   let expiresAtMs;
   try {
-    const whoami = await fetch(WHOAMI_URL, { headers: { cookie: `ory_kratos_session=${cookieValue}` }, redirect: "error" });
+    const whoami = await fetch(WHOAMI_URL, {
+      headers: { cookie: `ory_kratos_session=${cookieValue}` },
+      redirect: "error",
+    });
     if (whoami.status === 200) {
       const session = await whoami.json().catch(() => null);
-      identityId = session?.identity?.id ?? session?.identity?.traits?.subId ?? undefined;
+      identityId =
+        session?.identity?.id ?? session?.identity?.traits?.subId ?? undefined;
       const parsedExpiry = Date.parse(session?.expires_at ?? "");
       if (Number.isFinite(parsedExpiry)) expiresAtMs = parsedExpiry;
     }
@@ -103,7 +110,12 @@ export class AuthCoordinator {
         "auth",
         async () => {
           const status = await this.#session.status();
-          if (status.authenticated && (status.expires_in_seconds === null || status.expires_in_seconds > 300)) return true;
+          if (
+            status.authenticated &&
+            (status.expires_in_seconds === null ||
+              status.expires_in_seconds > 300)
+          )
+            return true;
           return await this.#tryCandidates(new Set());
         },
         { timeoutMs: 90000 }
@@ -118,10 +130,14 @@ export class AuthCoordinator {
   async recover({ reason } = {}) {
     const ok = await this.refresh();
     if (!ok) {
-      throw new TripoError("AUTH_REQUIRED", `Tripo Studio session refresh failed (${reason ?? "auth"}). Run tripo_auth_login and sign in once in your browser.`, {
-        nextAction: "tripo_auth_login",
-        stage: "authentication"
-      });
+      throw new TripoError(
+        "AUTH_REQUIRED",
+        `Tripo Studio session refresh failed (${reason ?? "auth"}). Run tripo_auth_login and sign in once in your browser.`,
+        {
+          nextAction: "tripo_auth_login",
+          stage: "authentication",
+        }
+      );
     }
     return true;
   }
@@ -130,9 +146,17 @@ export class AuthCoordinator {
     return await this.#lock.withLock("auth", async () => {
       const verified = await verifyCookie(this.#config, cookieValue);
       if (!verified) {
-        throw new TripoError("AUTH_CAPTURE_FAILED", "The provided Tripo Studio session cookie was rejected by the API.", { stage: "authentication" });
+        throw new TripoError(
+          "AUTH_CAPTURE_FAILED",
+          "The provided Tripo Studio session cookie was rejected by the API.",
+          { stage: "authentication" }
+        );
       }
-      await this.#session.set({ cookie: cookieValue, source: "imported", ...verified });
+      await this.#session.set({
+        cookie: cookieValue,
+        source: "imported",
+        ...verified,
+      });
       return await this.#session.status();
     });
   }
@@ -157,7 +181,7 @@ export class AuthCoordinator {
         deviceId: candidate.deviceId,
         expiresAtMs: verified.expiresAtMs ?? candidate.expiresAtMs,
         identityId: verified.identityId,
-        source: `cookie_store:${candidate.browser}`
+        source: `cookie_store:${candidate.browser}`,
       });
       return true;
     }

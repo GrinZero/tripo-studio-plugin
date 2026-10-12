@@ -22,19 +22,31 @@ export class JsonDocument {
     try {
       text = await readFile(this.#file, "utf8");
     } catch (error) {
-      if (error.code === "ENOENT") return typeof fallback === "function" ? fallback() : fallback;
-      throw new TripoError("PERSISTENCE_ERROR", `Could not read ${path.basename(this.#file)}.`, { cause: error });
+      if (error.code === "ENOENT")
+        return typeof fallback === "function" ? fallback() : fallback;
+      throw new TripoError(
+        "PERSISTENCE_ERROR",
+        `Could not read ${path.basename(this.#file)}.`,
+        { cause: error }
+      );
     }
     try {
       return JSON.parse(text);
     } catch (error) {
-      throw new TripoError("PERSISTENCE_ERROR", `${path.basename(this.#file)} is not valid JSON.`, { cause: error });
+      throw new TripoError(
+        "PERSISTENCE_ERROR",
+        `${path.basename(this.#file)} is not valid JSON.`,
+        { cause: error }
+      );
     }
   }
 
   async write(value) {
     await mkdir(path.dirname(this.#file), { recursive: true });
-    const temporary = path.join(path.dirname(this.#file), `.${path.basename(this.#file)}.${randomUUID()}.tmp`);
+    const temporary = path.join(
+      path.dirname(this.#file),
+      `.${path.basename(this.#file)}.${randomUUID()}.tmp`
+    );
     let handle;
     try {
       handle = await open(temporary, "wx", 0o600);
@@ -52,7 +64,11 @@ export class JsonDocument {
         }
       }
     } catch (error) {
-      throw new TripoError("PERSISTENCE_ERROR", `Could not durably update ${path.basename(this.#file)}.`, { cause: error });
+      throw new TripoError(
+        "PERSISTENCE_ERROR",
+        `Could not durably update ${path.basename(this.#file)}.`,
+        { cause: error }
+      );
     } finally {
       await handle?.close().catch(() => {});
       await unlink(temporary).catch(() => {});

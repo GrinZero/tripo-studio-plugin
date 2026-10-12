@@ -14,11 +14,11 @@
 
 **あなた専属の独立系 3D スタジオ。Codex 内の自然言語ひとつで、コンセプトからリギングまで全自動 3D 制作。**
 
-*Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language.*
+_Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language._
 
 <p align="center">
   <a href="#2-インストールとクイックスタート-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.7-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.8-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-ツールマトリクスと機能一覧-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -81,7 +81,7 @@ Codex に自然言語で話しかけるだけで、エージェントがパラ�
 - **Node.js ≥ 22**（npm / npx が Codex 環境から実行可能であること）
 - MCP Apps をサポートする Codex（プラグイン拡張対応環境）
 - **Tripo Studio 会員アカウント**（Web ブラウザのログインセッション）
-- *（任意）* **Blender**：ローカルメッシュ検査、ワイヤーフレーム描画、投影ベイク用
+- _（任意）_ **Blender**：ローカルメッシュ検査、ワイヤーフレーム描画、投影ベイク用
 
 ### 2.2 AI にコピーしてインストールを任せる（推奨）
 
@@ -161,6 +161,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.1 🖥️ 対話型ワークベンチ (Workbench)
+
 - **主要ツール**：`tripo_open_workbench`（および App 専用ツール 4 個）。
 - **特徴**：アセット管理、タスク履歴、モデル作成が統合された UI。ダーク/ライトモード対応、日・中・英言語切り替え可能。
 - **プロンプト例**：「Tripo ワークベンチのアセット一覧を開いて」
@@ -172,13 +173,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.2 ⚡ クラウド 3D 生成とマルチモーダル制作 (Generation)
+
 - **詳細ガイド**：👉 **[3D 生成ツール詳細マニュアル (docs/tools/generation.md)](docs/tools/generation.md)**
 - **ツール一覧**：`tripo_generate_model`, `tripo_generate_image`, `tripo_generate_multiview`, `tripo_regenerate_image`, `tripo_upscale_image`, `tripo_split_image`, `tripo_import_model`, `tripo_list_image_templates`
 - **主な機能**：
   - **High Detail パイプライン**：H3.1 世代アーキテクチャ、高密度メッシュ、2K/4K/8K PBR テクスチャ。
   - **Smart Mesh P2**：ゲーム向け 500〜25,000 面クアッド（四角形面）トポロジー、1/2/4 バリアント同時出力。
   - **4 視点画像からの生成**：正面・背面・左・右の画像から破綻のない 3D モデルを構築。
-  - **60 秒確認カード**：生成前に見積もりポイントを表示、パラメータ編集時は自動停止。
+  - **60 秒確認カード**：生成前に見積もりポイントを表示。パラメータが実際に変わった場合のみカウントダウンを停止し、フォーカス・クリック・プレビュー表示では停止しません。
 
 <div align="center">
   <img src="docs/images/configuration-dark.png" alt="ダークモード設定カード" width="70%" />
@@ -187,6 +189,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.3 🔧 メッシュ工房と 🎨 マテリアル・テクスチャ (Mesh & Texture)
+
 - **詳細ガイド**：👉 **[メッシュ・テクスチャ詳細マニュアル (docs/tools/mesh-texture.md)](docs/tools/mesh-texture.md)**
 - **ツール一覧**：
   - メッシュ処理：`tripo_segment_model` (部位自動分割), `tripo_complete_parts` (欠損補完), `tripo_remesh_model` (リトポロジー), `tripo_generate_uv` (Smart UV 候補), `tripo_apply_uv`, `tripo_get_uv_context`
@@ -199,6 +202,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.4 🦴 ボーン構造と AI モーション (Rigging & Animation)
+
 - **詳細ガイド**：👉 **[リギングとアニメーション詳細マニュアル (docs/tools/rigging-animation.md)](docs/tools/rigging-animation.md)**
 - **ツール一覧**：`tripo_rig_model`, `tripo_animate_model`, `tripo_list_animation_presets`, `tripo_generate_motion`, `tripo_apply_motion`, `tripo_list_motions`, `tripo_get_motion`
 - **主な機能**：
@@ -209,6 +213,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.5 🛠️ ローカル Blender エンジン (完全無料 · クレジット消費ゼロ)
+
 - **詳細ガイド**：👉 **[ローカル Blender ツール詳細マニュアル (docs/tools/local-blender.md)](docs/tools/local-blender.md)**
 - **ツール一覧**：`tripo_render_model`, `tripo_inspect_local_parts`, `tripo_edit_parts`, `tripo_bake_texture_projection`, `tripo_paint_texture`, `tripo_crop_image`
 - **主なメリット**：
@@ -220,6 +225,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ---
 
 ### 3.6 📦 アセットグループ・系統追跡・エクスポート (Assets, Tasks & Export)
+
 - **詳細ガイド**：👉 **[アセット・タスク・エクスポート詳細マニュアル (docs/tools/assets-tasks-export.md)](docs/tools/assets-tasks-export.md)**
 - **ツール一覧**：
   - グループ管理：`tripo_list_asset_groups`, `tripo_list_group_assets`, `tripo_create_asset_group`, `tripo_set_asset_group`, `tripo_rename_asset_group`
@@ -249,14 +255,14 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 - 設定フォームを表示してください。編集しなければ 60 秒後に自動送信されます。
 ```
 
-| 実践シナリオ | Codex への指示内容 | 利用される機能 |
-| --- | --- | --- |
-| **🎮 厳格なポリゴン予算** | 「この画像から Smart Mesh P2 を使い、5,000 面と 10,000 面の 2 種類のバリアントを作り、設定フォームを表示して。」 | Smart Mesh P2、複数バリアント |
-| **📐 4 視点の一致生成** | 「添付の 4 枚は正面・左・背面・右です。これらを組み合わせて単一のモデルを生成して。」 | マルチビューモデリング |
-| **🏃 リギングとモーション** | 「このモデルに二足歩行リギングを行い、Unity 互換ボーンを入れて歩行モーションを適用して。」 | Rig V3、骨格プリセット、モーション |
-| **📦 アセットのグループ整理** | 「選択したモデルと画像を『メカフォックス · ゲームアセット』というグループにまとめて。」 | ローカルグループ管理 |
-| **🔍 生成系統の調査** | 「このモデルがどの元画像とパラメータから生成されたか、親タスクの履歴を教えて。」 | タスク系統追跡 |
-| **🚀 Blender 向け出力** | 「このプロジェクトを Blender プリセット、2K テクスチャ付きの FBX として書き出して。」 | FBX エクスポート、テクスチャ同梱 |
+| 実践シナリオ                  | Codex への指示内容                                                                                               | 利用される機能                     |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| **🎮 厳格なポリゴン予算**     | 「この画像から Smart Mesh P2 を使い、5,000 面と 10,000 面の 2 種類のバリアントを作り、設定フォームを表示して。」 | Smart Mesh P2、複数バリアント      |
+| **📐 4 視点の一致生成**       | 「添付の 4 枚は正面・左・背面・右です。これらを組み合わせて単一のモデルを生成して。」                            | マルチビューモデリング             |
+| **🏃 リギングとモーション**   | 「このモデルに二足歩行リギングを行い、Unity 互換ボーンを入れて歩行モーションを適用して。」                       | Rig V3、骨格プリセット、モーション |
+| **📦 アセットのグループ整理** | 「選択したモデルと画像を『メカフォックス · ゲームアセット』というグループにまとめて。」                          | ローカルグループ管理               |
+| **🔍 生成系統の調査**         | 「このモデルがどの元画像とパラメータから生成されたか、親タスクの履歴を教えて。」                                 | タスク系統追跡                     |
+| **🚀 Blender 向け出力**       | 「このプロジェクトを Blender プリセット、2K テクスチャ付きの FBX として書き出して。」                            | FBX エクスポート、テクスチャ同梱   |
 
 ---
 

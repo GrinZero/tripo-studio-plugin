@@ -1,7 +1,10 @@
+/* eslint-disable no-control-regex -- Intentionally validate control characters or binary padding. */
 import { createHash, randomUUID } from "node:crypto";
 
 export function hashObject(value) {
-  return createHash("sha256").update(stableStringify(value), "utf8").digest("hex");
+  return createHash("sha256")
+    .update(stableStringify(value), "utf8")
+    .digest("hex");
 }
 
 export function stableStringify(value) {

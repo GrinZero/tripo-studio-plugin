@@ -1,0 +1,15 @@
+node_modules/
+dist/
+artifacts/
+output/
+.playwright-cli/
+.local/
+local-archive/
+.husky/_/
+pnpm-lock.yaml
+test/fixtures/
+scripts/licenses/
+.env
+.env.*
+# Playwright CLI consumes these files as bare function expressions.
+test/browser/*.js

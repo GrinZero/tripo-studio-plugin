@@ -1,5 +1,5 @@
 export const SERVER_NAME = "tripo-studio-plugin";
-export const SERVER_VERSION = "0.3.7";
+export const SERVER_VERSION = "0.3.8";
 
 export const STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 export const STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
@@ -9,7 +9,10 @@ export const TRIPO_ACCOUNT_ORIGIN = "https://www.tripo3d.ai";
 // Studio model versions observed on the production Studio contract (2026-10).
 export const NEXUS_MODEL_VERSION = "Nexus-v1.0-20260214";
 export const NEXUS_V2_MODEL_VERSION = "Nexus-v2.0-20260801";
-export const SMART_MESH_MODEL_VERSIONS = [NEXUS_MODEL_VERSION, NEXUS_V2_MODEL_VERSION];
+export const SMART_MESH_MODEL_VERSIONS = [
+  NEXUS_MODEL_VERSION,
+  NEXUS_V2_MODEL_VERSION,
+];
 export const NEXUS_MIN_FACES = 500;
 export const NEXUS_MAX_FACES = 25000;
 export const STUDIO_DEFAULT_MODEL_VERSION = "default";
@@ -19,8 +22,18 @@ export const TEXTURE_MODEL_VERSION = "v3.0-20250812";
 export const RIGGING_MODEL_VERSION_V1 = "v1.0-20240301";
 export const RIGGING_MODEL_VERSION_V2_5 = "v2.5-20260210";
 export const RIGGING_MODEL_VERSION_V3 = "v3.0-20260909";
-export const SKELETON_PRESETS = ["actorcore", "mixamo", "unreal", "vrm", "unity"];
-export const HIGH_DETAIL_MODEL_VERSIONS = ["v2.5-20250123", "v3.0-20250812", "v3.1-20260211"];
+export const SKELETON_PRESETS = [
+  "actorcore",
+  "mixamo",
+  "unreal",
+  "vrm",
+  "unity",
+];
+export const HIGH_DETAIL_MODEL_VERSIONS = [
+  "v2.5-20250123",
+  "v3.0-20250812",
+  "v3.1-20260211",
+];
 export const TEXT_IMAGE_MODEL_VERSION = "flux.1_dev";
 
 export const REMESH_MIN_FACES = 500;
@@ -45,12 +58,21 @@ export const STUDIO_IMAGE_MODELS = [
   "midjourney",
   "gemini_2.5_flash_image_preview",
   "gemini_3.1_flash_image_preview",
-  "gemini_3_pro_image_preview"
+  "gemini_3_pro_image_preview",
 ];
 export const STUDIO_IMAGE_RATIOS = ["1:1", "16:9", "9:16", "4:3", "3:4"];
 export const STUDIO_IMAGE_RESOLUTIONS = ["1K", "4K"];
 
-export const RIG_TYPES = ["aquatic", "avian", "biped", "hexapod", "octopod", "quadruped", "serpentine", "others"];
+export const RIG_TYPES = [
+  "aquatic",
+  "avian",
+  "biped",
+  "hexapod",
+  "octopod",
+  "quadruped",
+  "serpentine",
+  "others",
+];
 export const RETARGET_RIG_TYPES = RIG_TYPES.filter((t) => t !== "others");
 
 export const OPERATION_KINDS = [
@@ -81,7 +103,7 @@ export const OPERATION_KINDS = [
   "local.edit_parts",
   "local.project_texture",
   "local.paint",
-  "local.crop"
+  "local.crop",
 ];
 
 export const TASK_STATES = [
@@ -91,7 +113,7 @@ export const TASK_STATES = [
   "succeeded",
   "failed",
   "canceled",
-  "outcome_unknown"
+  "outcome_unknown",
 ];
 export const TASK_PHASES = [
   "queued",
@@ -101,8 +123,13 @@ export const TASK_PHASES = [
   "remote_processing",
   "downloading",
   "archiving",
-  "terminal"
+  "terminal",
 ];
-export const TERMINAL_STATES = new Set(["succeeded", "failed", "canceled", "outcome_unknown"]);
+export const TERMINAL_STATES = new Set([
+  "succeeded",
+  "failed",
+  "canceled",
+  "outcome_unknown",
+]);
 
 export const RESULT_CARD_RESOURCE_URI = "ui://tripo-studio/result-card-v2.html";

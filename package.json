@@ -1,6 +1,6 @@
 {
   "name": "tripo-studio-plugin",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Codex plugin for Tripo Studio member-account image and 3D workflows, shared model/image asset groups, persistent headless auth, durable tasks and provenance.",
   "type": "module",
   "license": "MIT",
@@ -43,28 +43,47 @@
   "engines": {
     "node": ">=22"
   },
+  "packageManager": "pnpm@12.11.2",
   "scripts": {
     "build": "node scripts/build.mjs",
     "install:local": "node scripts/install-local.mjs",
-    "prepack": "npm run build && npm run check:distribution",
+    "prepack": "node scripts/build.mjs && node scripts/check-distribution.mjs",
+    "prepare": "husky",
     "version": "node scripts/sync-version.mjs",
     "check:distribution": "node scripts/check-distribution.mjs",
     "test:package": "node scripts/test-package.mjs",
     "test": "node --test \"test/*.test.mjs\"",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix --max-warnings 0",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "check": "pnpm run lint && pnpm run format:check && pnpm run check:distribution",
+    "lint:staged": "lint-staged",
+    "commitlint": "commitlint",
     "serve": "node mcp/bootstrap.mjs",
     "serve:src": "node src/server.mjs"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "3.1147.0",
     "@aws-sdk/lib-storage": "3.1147.0",
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "@eslint/js": "10.0.1",
     "@google/model-viewer": "4.4.0",
     "@imagemagick/magick-wasm": "0.0.44",
     "@modelcontextprotocol/ext-apps": "1.7.5",
     "@modelcontextprotocol/sdk": "1.32.1",
     "@openai/mcp-extensions": "0.1.0",
     "esbuild": "^0.25.0",
+    "eslint": "10.12.0",
+    "eslint-config-prettier": "10.1.8",
     "fflate": "0.8.3",
+    "globals": "17.13.0",
+    "husky": "9.1.7",
+    "lint-staged": "17.6.0",
+    "prettier": "3.9.10",
     "three": "0.183.2",
+    "yaml": "2.9.1",
     "zod": "4.6.5"
   }
 }

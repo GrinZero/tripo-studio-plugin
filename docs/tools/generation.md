@@ -8,16 +8,16 @@ Tripo Studio for Codex 提供了业界顶尖的云端 AI 3D 资产生成管线�
 
 ## 包含的 MCP 工具
 
-| 工具名 | 操作类型 | 消耗积分 | 核心作用 |
-| --- | --- | :---: | --- |
-| `tripo_generate_model` | `model.generate` | 是 | 核心 3D 资产生成：单图生成、文字生成、四视角生成、Smart Mesh P2 多变体 |
-| `tripo_generate_image` | `image.generate` | 是 | 概念设计生图：内置高质量画风与模板，为 3D 建模准备基准图 |
-| `tripo_generate_multiview` | `image.multiview` | 是 | 多视角概念生成：自动衍生前/后/左/右视角一致性参考图 |
-| `tripo_regenerate_image` | `image.regenerate` | 是 | 参考图重绘与局部风格变体生成 |
-| `tripo_upscale_image` | `image.upscale` | 是 | 概念参考图 4K 超分辨率放大 |
-| `tripo_split_image` | `image.split` | 是 | 拼接参考图自动切分分离独立主体 |
-| `tripo_import_model` | `model.import` | 否 | 导入外部自包含 GLB/OBJ 模型进入管线，不消耗积分 |
-| `tripo_list_image_templates` | - | 否 | 获取系统概念风格库模版 |
+| 工具名                       | 操作类型           | 消耗积分 | 核心作用                                                               |
+| ---------------------------- | ------------------ | :------: | ---------------------------------------------------------------------- |
+| `tripo_generate_model`       | `model.generate`   |    是    | 核心 3D 资产生成：单图生成、文字生成、四视角生成、Smart Mesh P2 多变体 |
+| `tripo_generate_image`       | `image.generate`   |    是    | 概念设计生图：内置高质量画风与模板，为 3D 建模准备基准图               |
+| `tripo_generate_multiview`   | `image.multiview`  |    是    | 多视角概念生成：自动衍生前/后/左/右视角一致性参考图                    |
+| `tripo_regenerate_image`     | `image.regenerate` |    是    | 参考图重绘与局部风格变体生成                                           |
+| `tripo_upscale_image`        | `image.upscale`    |    是    | 概念参考图 4K 超分辨率放大                                             |
+| `tripo_split_image`          | `image.split`      |    是    | 拼接参考图自动切分分离独立主体                                         |
+| `tripo_import_model`         | `model.import`     |    否    | 导入外部自包含 GLB/OBJ 模型进入管线，不消耗积分                        |
+| `tripo_list_image_templates` | -                  |    否    | 获取系统概念风格库模版                                                 |
 
 ---
 
@@ -29,13 +29,14 @@ flowchart TD
     B -->|高保真影视/手办| C[High Detail 路线]
     B -->|游戏引擎/严格面数| D[Smart Mesh P2 路线]
     B -->|多角度高度一致| E[多视角四视图对齐路线]
-    
+
     C --> C1["架构: H3.1 / H3.0 / H2.5<br/>面数: 最高可达 100k+<br/>贴图: 2K / 4K / 8K PBR<br/>特性: 独立几何质量 / 自动语义分件"]
     D --> D1["网格: 严苛 500–25,000 面<br/>拓扑: 规整四边形网格 (Quads)<br/>变体: 一次输出 1 / 2 / 4 个不同面数预算"]
     E --> E1["输入: 前/后/左/右视角图<br/>特性: 几何严格贴合多视角，避免死角失真"]
 ```
 
 ### 1. High Detail 路线 (高精度细节资产)
+
 - **适用场景**：高精手办、影视道具、次世代展陈资产、复杂曲面角色。
 - **核心参数**：
   - `model_version`: 推荐 `H3.1`（官方最新架构），也可选 `H3.0` 或 `H2.5`。
@@ -45,6 +46,7 @@ flowchart TD
   - `pbr`: 设为 `true` 同步生成法线贴图与粗糙度材质。
 
 ### 2. Smart Mesh P2 路线 (严苛游戏多边形预算)
+
 - **三阶段链路**：`tripo_generate_model` 生成白模 → `tripo_generate_texture` 生成颜色贴图 → `tripo_generate_pbr` 单独生成 PBR 贴图。后两步复用同一模型的 `project_id`，等待上一步成功后继续。已有颜色贴图时，直接补 PBR，无需重生成白模或颜色贴图。
 - **白模生成参数**：`texture`、`pbr`、`delight`、`texture_quality`、`texture_alignment` 均不适用，应省略（包括 `false`）。颜色贴图阶段才使用 `quality`、`alignment`、`delight`；颜色贴图完成不代表独立 PBR 贴图组已完成。见[材质管线](mesh-texture.md)。
 - **适用场景**：实时游戏资产（Unity/Unreal）、移动端 AR、VR、轻量级 WebGL。
@@ -66,7 +68,7 @@ flowchart TD
 
 - **智能参数预设**：Agent 自动将自然语言解析为详细专业参数并呈现在卡片中。
 - **积分透明预估**：连接用户真实会员等级，卡片顶部实时展示本次生成的预估积分消耗。
-- **60 秒倒计时防手滑**：卡片提供 60 秒自动确认倒计时；用户只要点击“编辑参数”，**倒计时立刻暂停**！
+- **60 秒倒计时防手滑**：卡片提供 60 秒自动确认倒计时；只有参数实际变化才暂停。聚焦、点击、选择当前值或查看模型预览不会暂停。
 - **重新报价**：在卡片中修改面数或版本后保存，系统会自动校验合法性并刷新报价，校验通过后立即提交最新配置。
 - **统一提交流程**：Agent 工具只显示配置表单，不提供直接提交或仅存草稿参数。只估算费用时使用报价工具；生成任务由表单确认或 60 秒倒计时提交。
 
@@ -85,6 +87,7 @@ flowchart TD
 ## 典型对白范例 (Prompts)
 
 ### 场景 1：概念参考图生成高质量 H3.1 资产
+
 ```text
 请用附带的参考图生成「机甲先锋」3D 模型：
 - 采用 H3.1 架构
@@ -94,6 +97,7 @@ flowchart TD
 ```
 
 ### 场景 2：游戏 Smart Mesh 多变体网格
+
 ```text
 我需要为 Unity 项目制作一个道具：
 - 风格依据参考图，使用 Smart Mesh P2
@@ -103,6 +107,7 @@ flowchart TD
 ```
 
 ### 场景 3：多视角四视图建模
+
 ```text
 我上传了四张角色的三视图图片（正面、左侧、背面、右侧）。
 请调用 tripo_generate_model 采用多视角对齐管线进行统一建模。

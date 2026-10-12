@@ -1,4 +1,4 @@
-"""Run after npm run build, with i18n-server.mjs listening on port 43911.
+"""Run after pnpm run build, with i18n-server.mjs listening on port 43911.
 Requires Python Playwright and Chromium. Uses only simulated MCP tools.
 """
 from pathlib import Path

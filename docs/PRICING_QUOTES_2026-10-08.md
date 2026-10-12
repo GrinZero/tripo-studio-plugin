@@ -8,9 +8,14 @@ Example matching the star-maker multiview configuration:
 {
   "kind": "model.generate",
   "input": {
-    "tier": "high_detail", "mode": "multiview", "face_limit": 60000,
-    "geometry_quality": "standard", "texture": true,
-    "texture_quality": "detailed", "delight": true, "pbr": true,
+    "tier": "high_detail",
+    "mode": "multiview",
+    "face_limit": 60000,
+    "geometry_quality": "standard",
+    "texture": true,
+    "texture_quality": "detailed",
+    "delight": true,
+    "pbr": true,
     "quad": false
   }
 }
@@ -48,16 +53,16 @@ A price estimate does not replace operation preflight, subscription access check
 
 The real bundled MCP returned version 0.2.2 and 54 tools. Live quote results matched the observed page:
 
-| Settings | Base | Estimated net |
-| --- | ---: | ---: |
-| H3.1, standard geometry, 4K, PBR | 40 | 40 |
-| H3.1, standard geometry, 8K, PBR | 50 | 50 |
-| P2, 1 variant | 100 | 100 |
-| P2, 4 variants | 100 | 100 |
-| Nano Banana, 4 images, 4K | 80 | 0 (4 free images applied) |
-| Triangle remesh, Smart Poly off | 5 | 5 |
-| Owned model export | 0 | 0 |
-| Unverified AI motion | unknown | unknown |
+| Settings                         |    Base |             Estimated net |
+| -------------------------------- | ------: | ------------------------: |
+| H3.1, standard geometry, 4K, PBR |      40 |                        40 |
+| H3.1, standard geometry, 8K, PBR |      50 |                        50 |
+| P2, 1 variant                    |     100 |                       100 |
+| P2, 4 variants                   |     100 |                       100 |
+| Nano Banana, 4 images, 4K        |      80 | 0 (4 free images applied) |
+| Triangle remesh, Smart Poly off  |       5 |                         5 |
+| Owned model export               |       0 |                         0 |
+| Unverified AI motion             | unknown |                   unknown |
 
 An image request was staged only, its cost estimate persisted/read back and requoted from frozen parameters, then canceled. No paid request was sent. The wallet remained **24,420 credits** throughout verification.
 
