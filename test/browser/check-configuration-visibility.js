@@ -27,8 +27,8 @@ async (page) => {
     .waitFor({ state: "attached" });
   const hidden = await (await page.request.get(`${base}/stats`)).json();
   assert(
-    hidden.review.deadline_at === null,
-    "hidden mounted card must not start a deadline"
+    Number.isFinite(hidden.review.deadline_at),
+    "hidden mounted card must already have the creation deadline"
   );
   assert(
     !hidden.calls.some((call) => call.arguments?.action === "ready"),
@@ -42,8 +42,8 @@ async (page) => {
     .waitFor();
   const shown = await (await page.request.get(`${base}/stats`)).json();
   assert(
-    shown.review.deadline_at - Date.now() > 55000,
-    "displayed card must have a full edit window"
+    shown.review.deadline_at === hidden.review.deadline_at,
+    "display must preserve the creation deadline"
   );
   assert(
     shown.calls.filter((call) => call.arguments?.action === "ready").length ===
@@ -64,11 +64,11 @@ async (page) => {
     scrolled.review.deadline_at === shown.review.deadline_at,
     "scrolling back to the card must preserve its first deadline"
   );
-  // The host may replay the original tool result, before visibility was acknowledged.
+  // The host may replay the original creation receipt when reopening the chat.
   await page.route(`${base}/result?**`, async (route) => {
     const response = await route.fetch();
     const body = await response.json();
-    body.structuredContent.review.deadline_at = null;
+    body.structuredContent.review.deadline_at = hidden.review.deadline_at;
     await route.fulfill({ response, json: body });
   });
   await page.reload();

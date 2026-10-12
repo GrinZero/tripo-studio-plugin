@@ -1,4 +1,4 @@
-# Tool inventory — 68 MCP tools (0.3.10)
+# Tool inventory — 68 MCP tools (0.3.11)
 
 [README](README.md) · [Usage guide](docs/USAGE.md) · [Agent guide](skills/tripo-studio/SKILL.md)
 
@@ -37,7 +37,7 @@ The server registers 62 agent-visible tools and 6 app-only tools. Parameter name
 
 ## Operations (28)
 
-Agent-facing creation/editing tools always open an editable configuration form: confirmation or 60 seconds after visible display submits the saved settings. Editing pauses the deadline; saving validates/requotes and immediately submits the updated settings. There are no public `submit` or `review` parameters. Read-only local inspection executes immediately. Only entries marked yes below can consume Studio credits. See [submission behavior](docs/USAGE.md#提交报价与草稿).
+Agent-facing creation/editing tools always open an editable configuration form: confirmation or 60 seconds after card creation submits the saved settings, even for collapsed/unmounted cards and background sessions. Editing pauses the deadline; saving validates/requotes and immediately submits the updated settings. There are no public `submit` or `review` parameters. Read-only local inspection executes immediately. Only entries marked yes below can consume Studio credits. See [submission behavior](docs/USAGE.md#提交报价与草稿).
 
 | Tool                            | Kind                  | Credits |
 | ------------------------------- | --------------------- | ------- |

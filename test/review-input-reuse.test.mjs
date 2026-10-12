@@ -7,7 +7,7 @@ import { solidImage } from "./helpers/image-fixture.mjs";
 import { OperationService } from "../src/ops/service.mjs";
 import { ConfigurationReviews } from "../src/ui/reviews.mjs";
 
-async function fixture() {
+async function fixture({ setup } = {}) {
   const runtime = await makeRuntime();
   const counts = { uploads: 0, audits: 0, quotes: 0, submissions: 0 };
   runtime.gateway.requestTemporaryToken = async () => ({});
@@ -65,6 +65,7 @@ async function fixture() {
     schedule: () => 1,
     unschedule: () => {},
   });
+  setup?.(runtime);
   const initial = await reviews.create(
     "model.generate",
     input,
@@ -108,18 +109,14 @@ async function waitForAudits(f, count) {
   assert.equal(
     f.counts.audits,
     count,
-    "visibility must start background uploads and audit without another tool call"
+    "creation must start background uploads and audit without another tool call"
   );
 }
 
-it("visible form preuploads before generation; saving submits new parameters using those uploads", async () => {
+it("background form preuploads at creation; saving submits new parameters using those uploads", async () => {
   const f = await fixture();
   try {
-    assert.equal(f.counts.uploads, 0);
-    await f.reviews.action({
-      review_id: f.initial.review.review_id,
-      action: "ready",
-    });
+    assert.ok(Number.isFinite(f.initial.review.deadline_at));
     await waitForAudits(f, 4);
     assert.equal(f.counts.uploads, 4);
     assert.equal(f.counts.submissions, 0);
@@ -194,16 +191,19 @@ it("saving the final configuration dispatches once even when an old deadline rac
 });
 
 it("saving starts submission immediately and shares an in-flight upload before remote dispatch", async () => {
-  const f = await fixture();
   let release, saving;
   const gate = new Promise((resolve) => {
     release = resolve;
   });
-  const original = f.runtime.uploader.upload;
-  f.runtime.uploader.upload = async (...args) => {
-    await gate;
-    return original(...args);
-  };
+  const f = await fixture({
+    setup(runtime) {
+      const original = runtime.uploader.upload;
+      runtime.uploader.upload = async (...args) => {
+        await gate;
+        return original(...args);
+      };
+    },
+  });
   try {
     await f.reviews.action({
       review_id: f.initial.review.review_id,
@@ -264,9 +264,12 @@ it("replacing one view uploads only that view and durable cache survives a servi
 });
 
 it("audit rejection before dispatch never sends a generation request or crosses the paid boundary", async () => {
-  const f = await fixture();
+  const f = await fixture({
+    setup(runtime) {
+      runtime.gateway.auditImage = async () => ({ result: "reject" });
+    },
+  });
   try {
-    f.runtime.gateway.auditImage = async () => ({ result: "reject" });
     await assert.rejects(
       f.runtime.service.preupload(f.initial.task.draft_id),
       (error) => error.code === "CONTENT_AUDIT_REJECTED"

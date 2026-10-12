@@ -28,9 +28,7 @@ function summarize(value) {
     if (r.status === "pending" && r.auto_submit !== false)
       return (
         prefix +
-        (Number.isFinite(r.deadline_at)
-          ? "正在等待配置表单的 60 秒自动提交；用户编辑会暂停，保存后直接提交。"
-          : "正在等待配置表单显示；显示后 60 秒自动提交。这是正常等待状态，不是提交能力缺失。") +
+        "配置卡创建后 60 秒自动提交；卡片未展开或 session 在后台也会继续计时。用户编辑会暂停，保存后直接提交。" +
         follow
       );
     if (r.status === "submitting")

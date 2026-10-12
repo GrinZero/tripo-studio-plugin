@@ -180,7 +180,7 @@ async function main() {
     "tripo_ui_review",
     {
       description:
-        "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save/requote and immediately submit, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
+        "Configuration card actions: acknowledge visible controls for background preparation (the server starts the 60-second window at card creation), pause editing, save/requote and immediately submit, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
       _meta: { ui: { visibility: ["app"] } },
       inputSchema: {
         review_id: taskIdShape,
@@ -701,7 +701,7 @@ async function main() {
     "tripo_get_configuration_review",
     {
       description:
-        "Read or wait for the existing configuration form by its stable review_id. After creation call with wait_ms:60000 and keep following next_action until submitted, canceled, failed, or the user is editing. Pending or deadline_at:null means waiting for visible display/countdown, not a missing submission capability. The visible form submits automatically after 60 seconds; do not click the UI, request a direct-submit tool, recreate the task, or report blocked during normal waiting. Waiting is read-only and never starts or bypasses submission. After the receipt returns the actual task_id and remote IDs, follow that task.",
+        "Read or wait for the existing configuration form by its stable review_id. After creation call with wait_ms:60000 and keep following next_action until submitted, canceled, failed, or the user is editing. The server starts a persisted 60-second deadline when the automatic form is created and submits even if the card stays collapsed, unmounted, or the session runs in the background; do not click the UI, request a direct-submit tool, recreate the task, or report blocked during normal waiting. Waiting is read-only and never starts or bypasses submission. After the receipt returns the actual task_id and remote IDs, follow that task.",
       inputSchema: {
         review_id: taskIdShape,
         wait_ms: z
@@ -730,7 +730,7 @@ async function main() {
       toolName,
       {
         card: kind !== "local.inspect_parts",
-        description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""}${kind === "local.inspect_parts" ? "" : " Always opens an editable configuration form. Submit through the form: 60 seconds after visible display if parameters remain unchanged; actual parameter changes pause it, while focus, clicks and preview inspection do not. Saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode."} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
+        description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""}${kind === "local.inspect_parts" ? "" : " Always opens an editable configuration form. Submit through the form: 60 seconds after card creation if parameters remain unchanged, including collapsed cards and background sessions; actual parameter changes pause it, while focus, clicks and preview inspection do not. Saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode."} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
         inputSchema: inputShape,
       },
       async (input) => {

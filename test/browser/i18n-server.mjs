@@ -207,7 +207,7 @@ function reset() {
     input: { ...initialInput },
     schema,
     quote: { estimated_credits: 40 },
-    deadline_at: null,
+    deadline_at: Date.now() + 60000,
     timeout_seconds: 60,
     sources: [],
   };
@@ -302,14 +302,14 @@ const server = http.createServer(async (req, res) => {
             required: ["project_id"],
           },
           quote: { estimated_credits: 5 },
-          deadline_at: null,
+          deadline_at: Date.now() + 60000,
           timeout_seconds: 60,
           sources: [],
         };
         return send({ content: [], structuredContent: { review } });
       }
       if (kind === "manual-draft") {
-        review = { ...review, auto_submit: false };
+        review = { ...review, auto_submit: false, deadline_at: null };
         return send({
           content: [],
           structuredContent: {
@@ -545,13 +545,6 @@ const server = http.createServer(async (req, res) => {
         return send({ _meta: { tripo: { preview } } });
       }
       if (call.name === "tripo_ui_review") {
-        if (
-          args.action === "ready" &&
-          review.auto_submit !== false &&
-          review.status === "pending" &&
-          review.deadline_at === null
-        )
-          review = { ...review, deadline_at: Date.now() + 60000 };
         if (args.action === "edit")
           review = {
             ...review,

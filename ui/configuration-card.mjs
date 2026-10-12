@@ -891,13 +891,9 @@ export function mountConfiguration(
   const timer = setInterval(tick, 250);
   root.append(form);
   const visibility = watchConfigurationVisibility(form, async () => {
-    // Visibility starts pre-upload even if the user immediately begins editing.
-    // The server arms a deadline only for an untouched automatic form.
-    if (
-      !["pending", "editing"].includes(current.status) ||
-      Number.isFinite(current.deadline_at)
-    )
-      return;
+    // Display can preupload manual drafts; automatic cards already prepare and
+    // count down on the server, independently of mounting or visibility.
+    if (!["pending", "editing"].includes(current.status)) return;
     try {
       const result = await action("ready");
       if (

@@ -18,7 +18,7 @@ _Your own one-person 3D studio. Everything you need to create 3D assets with AI,
 
 <p align="center">
   <a href="#2-安装与快速上手-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.10-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.11-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-完整工具矩阵与功能清单-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>
@@ -188,7 +188,7 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
   - **High Detail**：H2.5 / H3.0 / H3.1 架构，支持指定面数、独立几何质量与 2K/4K/8K PBR 贴图。
   - **Smart Mesh P2**：控制在 500–25,000 面规整四边形网格，支持单次输出 1 / 2 / 4 个不同面数预算变体。
   - **多视角建模**：支持前/后/左/右四视角参考图统一对齐建模。
-  - **60 秒安全防手滑草稿卡片**：展示参数与积分预估，参数实际变化才暂停倒计时；聚焦、点击或查看预览不会暂停。
+  - **60 秒安全防手滑草稿卡片**：展示参数与积分预估，创建成功即开始计时，折叠卡片或后台 session 也会到期自动提交；参数实际变化才暂停倒计时；聚焦、点击或查看预览不会暂停。
 
 <div align="center">
   <img src="docs/images/configuration-dark.png" alt="深色安全参数配置卡片" width="70%" />

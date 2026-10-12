@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { ConfigurationReviews } from "../src/ui/reviews.mjs";
-async function fixture() {
+async function fixture(options = {}) {
   const dir = await mkdtemp(path.join(tmpdir(), "tripo-review-"));
   let time = 1000,
     submits = 0;
@@ -76,7 +76,12 @@ async function fixture() {
   };
   const reviews = new ConfigurationReviews(runtime, opts);
   const initial = await service.prepare("model.generate", input);
-  const output = await reviews.create("model.generate", input, initial);
+  const output = await reviews.create(
+    "model.generate",
+    input,
+    initial,
+    options
+  );
   return {
     dir,
     input,
@@ -95,7 +100,7 @@ async function fixture() {
   };
 }
 it("legacy draft forms do not auto-submit on display but saving submits immediately, once", async () => {
-  const f = await fixture();
+  const f = await fixture({ autoSubmit: false });
   try {
     const prepared = await f.runtime.service.prepare("model.generate", {
       ...f.input,
@@ -201,7 +206,7 @@ it("the Agent form entrypoint restores automatic review for a reused manual draf
       prepared
     );
     assert.equal(automatic.review.auto_submit, true);
-    assert.equal(automatic.review.deadline_at, null);
+    assert.equal(automatic.review.deadline_at, 61000);
     assert.equal(automatic.task.draft_id, id);
     assert.equal(f.submits(), 0);
     const shown = await f.reviews.action({ review_id: id, action: "ready" });
@@ -309,22 +314,28 @@ it("durable draft recovery preserves a long prompt when other settings are edite
     await rm(runtime.config.dataDir, { recursive: true, force: true });
   }
 });
-it("a delayed card mount cannot consume the edit window or submit an unseen configuration", async () => {
+it("an unmounted background card starts its countdown at creation and submits without UI calls", async () => {
   const f = await fixture();
   try {
-    f.advance(120000);
-    await f.reviews.action({
-      review_id: f.output.review.review_id,
-      action: "confirm",
-      automatic: true,
-    });
-    assert.equal(
-      f.submits(),
-      0,
-      "the card has not been displayed, so automatic submission must not run"
+    const id = f.output.review.review_id;
+    assert.equal(f.output.review.deadline_at, 61000);
+    assert.equal(f.scheduled.size, 1);
+    assert.equal([...f.scheduled.values()][0].delay, 60000);
+    f.advance(20000);
+    const reused = await f.reviews.create(
+      "model.generate",
+      f.input,
+      await f.runtime.service.get(id)
     );
+    assert.equal(reused.review.deadline_at, 61000);
+    assert.equal([...f.scheduled.values()][0].delay, 40000);
+    f.advance(40000);
+    [...f.scheduled.values()][0].fn();
+    const submitted = await f.reviews.wait(id, 1000);
+    assert.equal(submitted.review.status, "submitted");
+    assert.equal(submitted.task.task_id, id);
+    assert.equal(f.submits(), 1);
     assert.equal(f.scheduled.size, 0);
-    assert.equal(f.output.review.deadline_at, null);
   } finally {
     await f.close();
   }
@@ -393,7 +404,7 @@ it("visibility acknowledgements are idempotent and do not invalidate simultaneou
     await f.close();
   }
 });
-it("only controls displayed in a visible document can start the server deadline", async () => {
+it("hidden, visible and remounted controls never change the creation deadline", async () => {
   const { watchConfigurationVisibility } =
     await import("../ui/configuration-visibility.mjs");
   const f = await fixture();
@@ -426,22 +437,22 @@ it("only controls displayed in a visible document can start the server deadline"
     );
   const flush = () => new Promise((resolve) => setTimeout(resolve, 20));
   try {
-    f.advance(120000);
+    f.advance(20000);
     intersect([{ target: element, isIntersecting: true }]);
     await flush();
-    assert.equal(f.scheduled.size, 0);
+    assert.equal(f.scheduled.size, 1);
     intersect([{ target: element, isIntersecting: false }]);
     doc.visibilityState = "visible";
     listener();
     await flush();
-    assert.equal(f.scheduled.size, 0);
+    assert.equal(f.scheduled.size, 1);
     intersect([{ target: element, isIntersecting: true }]);
     await flush();
     const shown = await f.reviews.action({
       review_id: f.output.review.review_id,
       action: "get",
     });
-    assert.equal(shown.review.deadline_at, 181000);
+    assert.equal(shown.review.deadline_at, 61000);
     assert.equal(f.submits(), 0);
     intersect([{ target: element, isIntersecting: false }]);
     doc.visibilityState = "hidden";
@@ -469,7 +480,7 @@ it("only controls displayed in a visible document can start the server deadline"
       action: "get",
     });
     assert.equal(reopened.review.deadline_at, shown.review.deadline_at);
-    f.advance(29999);
+    f.advance(9999);
     await f.reviews.action({
       review_id: f.output.review.review_id,
       action: "confirm",
@@ -586,12 +597,11 @@ it("reopening a card after server recovery preserves its original countdown", as
     await f.close();
   }
 });
-it("recovery submits an elapsed visible deadline without reopening the card", async () => {
+it("recovery submits an elapsed creation deadline without ever opening the card", async () => {
   const f = await fixture();
   const restored = new ConfigurationReviews(f.runtime, f.opts);
   try {
     const id = f.output.review.review_id;
-    await f.reviews.action({ review_id: id, action: "ready" });
     f.reviews.close();
     f.advance(120000);
     await restored.recover();
@@ -610,46 +620,37 @@ it("recovery submits an elapsed visible deadline without reopening the card", as
     await f.close();
   }
 });
-it("recovery keeps unseen cards waiting for display and never retries interrupted submissions", async () => {
-  const f = await fixture();
-  try {
-    f.reviews.close();
+it("recovery preserves manual and paused cards and never retries interrupted submissions", async () => {
+  for (const state of ["manual", "editing", "submitting"]) {
+    const f = await fixture();
     const restored = new ConfigurationReviews(f.runtime, f.opts);
-    f.advance(120000);
-    await restored.recover();
-    assert.equal(f.scheduled.size, 0);
-    const recovered = await restored.action({
-      review_id: f.output.review.review_id,
-      action: "confirm",
-      automatic: true,
-    });
-    assert.equal(recovered.review.deadline_at, null);
-    assert.equal(f.submits(), 0);
-    const shown = await restored.action({
-      review_id: f.output.review.review_id,
-      action: "ready",
-    });
-    assert.equal(shown.review.deadline_at, 181000);
-    assert.equal(f.scheduled.size, 1);
-    await restored
-      .doc(f.output.review.review_id)
-      .update((r) => ({ ...r, status: "submitting" }));
-    restored.close();
-    const again = new ConfigurationReviews(f.runtime, f.opts);
-    await again.recover();
-    assert.equal(
-      (
-        await again.action({
-          review_id: f.output.review.review_id,
-          action: "get",
-        })
-      ).review.status,
-      "failed"
-    );
-    assert.equal(f.submits(), 0);
-    again.close();
-  } finally {
-    await f.close();
+    try {
+      const id = f.output.review.review_id;
+      f.reviews.close();
+      await f.reviews.doc(id).update((r) => ({
+        ...r,
+        status: state === "manual" ? "pending" : state,
+        auto_submit: state !== "manual",
+        deadline_at: null,
+      }));
+      f.advance(120000);
+      await restored.recover();
+      const recovered = await restored.wait(id);
+      assert.equal(
+        recovered.review.status,
+        state === "manual"
+          ? "pending"
+          : state === "submitting"
+            ? "failed"
+            : "editing"
+      );
+      assert.equal(recovered.review.deadline_at, null);
+      assert.equal(f.scheduled.size, 0);
+      assert.equal(f.submits(), 0);
+    } finally {
+      restored.close();
+      await f.close();
+    }
   }
 });
 it("an ambiguous submit failure is recorded without automatic retry", async () => {
@@ -773,7 +774,7 @@ it("configuration thumbnails read verified snapshots and reject changed files or
   }
 });
 
-it("Agent waits across visibility and countdown until the current submission receipt arrives", async () => {
+it("Agent waits for background countdown and the current submission receipt without UI acknowledgement", async () => {
   const f = await fixture();
   let transition;
   try {
@@ -787,13 +788,8 @@ it("Agent waits across visibility and countdown until the current submission rec
     transition = new Promise((resolve, reject) =>
       setTimeout(async () => {
         try {
-          await f.reviews.action({ review_id: id, action: "ready" });
           f.advance(60000);
-          await f.reviews.action({
-            review_id: id,
-            action: "confirm",
-            automatic: true,
-          });
+          [...f.scheduled.values()][0].fn();
           resolve();
         } catch (error) {
           reject(error);
@@ -815,19 +811,19 @@ it("Agent waits across visibility and countdown until the current submission rec
     await f.close();
   }
 });
-it("read-only waits time out while unseen without starting the deadline or creating a task", async () => {
+it("read-only waits preserve the background deadline without creating or dispatching tasks", async () => {
   const f = await fixture();
   try {
     const id = f.output.review.review_id,
       before = await f.reviews.doc(id).read();
     const result = await f.reviews.wait(id, 50);
     assert.equal(result.review.status, "pending");
-    assert.equal(result.review.deadline_at, null);
+    assert.equal(result.review.deadline_at, 61000);
     assert.equal(result.next_action.requires_user_action, false);
     assert.deepEqual(await f.reviews.doc(id).read(), before);
     assert.equal(f.submits(), 0);
     assert.equal(f.tasks.size, 1);
-    assert.equal(f.scheduled.size, 0);
+    assert.equal(f.scheduled.size, 1);
     await assert.rejects(
       f.reviews.wait(id, 60001),
       (error) => error.code === "INVALID_INPUT"

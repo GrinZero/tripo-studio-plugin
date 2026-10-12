@@ -524,16 +524,17 @@ describe("mcp handshake", () => {
       assert.equal(currentCard.structuredContent.review.status, "pending");
       assert.equal(
         currentCard.structuredContent.review.deadline_at,
-        null,
-        "read-only monitoring must not start submission"
+        draftCard.structuredContent.review.deadline_at,
+        "read-only monitoring must preserve the creation deadline"
       );
+      assert.ok(draftCard.structuredContent.review.deadline_at > Date.now());
       assert.deepEqual(currentCard.structuredContent.next_action, {
         tool: "tripo_get_configuration_review",
         arguments: { review_id: reviewId, wait_ms: 60000 },
         requires_user_action: false,
       });
       assert.match(draftCard.content[0].text, /wait_ms:60000/);
-      assert.match(currentCard.content[0].text, /不是提交能力缺失/);
+      assert.match(currentCard.content[0].text, /后台也会继续计时/);
       // The Agent surface has one form-based route and no submission switches.
       const agentTools = tools.tools.filter((t) =>
         t._meta.ui.visibility.includes("model")

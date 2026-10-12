@@ -89806,7 +89806,7 @@ function errorSnapshot(error113) {
 
 // src/constants.mjs
 var SERVER_NAME = "tripo-studio-plugin";
-var SERVER_VERSION = "0.3.10";
+var SERVER_VERSION = "0.3.11";
 var STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 var STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
 var STUDIO_WORKSPACE_URL = `${STUDIO_ORIGIN}/workspace/generate`;
@@ -102773,7 +102773,7 @@ function summarize(value) {
     const prefix = `\u914D\u7F6E\u5361\u7247 ${r7.review_id}\uFF1A${r7.status}\u3002`;
     const follow = `\u7EE7\u7EED\u8C03\u7528 tripo_get_configuration_review({review_id:"${r7.review_id}",wait_ms:60000}) \u7B49\u5F85\u5E76\u8BFB\u53D6\u6700\u65B0\u72B6\u6001\uFF1B\u4ECD\u4E3A pending/submitting \u65F6\u7EE7\u7EED\u7B49\u5F85\uFF0C\u4E0D\u8981\u63D0\u524D\u7ED3\u675F\u3002\u65E0\u9700\u4EE3\u70B9\u8868\u5355\u3001\u5F00\u653E\u76F4\u63A5\u63D0\u4EA4\u63A5\u53E3\u6216\u91CD\u65B0\u521B\u5EFA\u4EFB\u52A1\u3002`;
     if (r7.status === "pending" && r7.auto_submit !== false)
-      return prefix + (Number.isFinite(r7.deadline_at) ? "\u6B63\u5728\u7B49\u5F85\u914D\u7F6E\u8868\u5355\u7684 60 \u79D2\u81EA\u52A8\u63D0\u4EA4\uFF1B\u7528\u6237\u7F16\u8F91\u4F1A\u6682\u505C\uFF0C\u4FDD\u5B58\u540E\u76F4\u63A5\u63D0\u4EA4\u3002" : "\u6B63\u5728\u7B49\u5F85\u914D\u7F6E\u8868\u5355\u663E\u793A\uFF1B\u663E\u793A\u540E 60 \u79D2\u81EA\u52A8\u63D0\u4EA4\u3002\u8FD9\u662F\u6B63\u5E38\u7B49\u5F85\u72B6\u6001\uFF0C\u4E0D\u662F\u63D0\u4EA4\u80FD\u529B\u7F3A\u5931\u3002") + follow;
+      return prefix + "\u914D\u7F6E\u5361\u521B\u5EFA\u540E 60 \u79D2\u81EA\u52A8\u63D0\u4EA4\uFF1B\u5361\u7247\u672A\u5C55\u5F00\u6216 session \u5728\u540E\u53F0\u4E5F\u4F1A\u7EE7\u7EED\u8BA1\u65F6\u3002\u7528\u6237\u7F16\u8F91\u4F1A\u6682\u505C\uFF0C\u4FDD\u5B58\u540E\u76F4\u63A5\u63D0\u4EA4\u3002" + follow;
     if (r7.status === "submitting")
       return prefix + "\u6B63\u5728\u4E0A\u4F20\u6216\u7B49\u5F85\u63D0\u4EA4\u56DE\u6267\uFF1B\u5C1A\u65E0\u6700\u7EC8\u4EFB\u52A1 ID \u4E0D\u4EE3\u8868\u672A\u53D1\u8D77\u63D0\u4EA4\u3002" + follow;
     if (r7.status === "editing")
@@ -108076,6 +108076,11 @@ var ConfigurationReviews = class {
       this.timers.delete(id3);
     }
   }
+  withDeadline(record3) {
+    if (record3.auto_submit === false || record3.status !== "pending" || Number.isFinite(record3.deadline_at))
+      return record3;
+    return { ...record3, deadline_at: this.now() + this.timeoutMs };
+  }
   arm(record3) {
     this.stop(record3.review_id);
     if (record3.auto_submit === false || record3.status !== "pending" || !Number.isFinite(record3.deadline_at))
@@ -108121,6 +108126,8 @@ var ConfigurationReviews = class {
     for (const file3 of files.filter((f6) => f6.endsWith(".json"))) {
       const record3 = await new JsonDocument(path21.join(this.dir, file3)).read();
       this.arm(record3);
+      if (record3.status === "pending" && record3.auto_submit !== false)
+        this.preupload(record3);
       if (record3.status === "submitting" && !this.processAlive(record3.submitting_pid))
         await this.doc(record3.review_id).update((r7) => ({
           ...r7,
@@ -108263,17 +108270,18 @@ var ConfigurationReviews = class {
       const old = await this.doc(id3).read();
       if (old) {
         await this.owned(old);
+        let updated = old;
         if (old.auto_submit !== false !== autoSubmit && editableStates.has(old.status)) {
-          const updated = {
+          updated = {
             ...old,
             auto_submit: autoSubmit,
             deadline_at: null,
             revision: old.revision + 1
           };
-          await this.doc(id3).write(updated);
-          return updated;
         }
-        return old;
+        updated = this.withDeadline(updated);
+        if (updated !== old) await this.doc(id3).write(updated);
+        return updated;
       }
       const parsed = this.schema(kind).parse({ ...input2, submit: false });
       for (const [key, value] of Object.entries(
@@ -108281,7 +108289,7 @@ var ConfigurationReviews = class {
       ))
         if (key in this.schema(kind).shape && parsed[key] === void 0 && value !== void 0)
           parsed[key] = value;
-      const r7 = {
+      const r7 = this.withDeadline({
         review_id: id3,
         task_id: id3,
         kind,
@@ -108291,11 +108299,13 @@ var ConfigurationReviews = class {
         status: "pending",
         revision: 0,
         deadline_at: null
-      };
+      });
       await this.doc(id3).write(r7);
       return r7;
     });
     this.arm(record3);
+    if (record3.status === "pending" && record3.auto_submit !== false)
+      this.preupload(record3);
     return { ...prepared, ...await this.output(record3) };
   }
   async openDraft(id3) {
@@ -108339,11 +108349,6 @@ var ConfigurationReviews = class {
         throw new TripoError("PLAN_MISMATCH", "\u914D\u7F6E\u5DF2\u66F4\u65B0\uFF0C\u8BF7\u5237\u65B0\u5361\u7247\u3002");
       if (!editableStates.has(r7.status)) return r7;
       if (action === "ready") {
-        if (r7.status !== "pending" || Number.isFinite(r7.deadline_at) || r7.auto_submit === false)
-          return r7;
-        r7.deadline_at = this.now() + this.timeoutMs;
-        await this.doc(review_id).write(r7);
-        this.arm(r7);
         return r7;
       } else if (action === "edit") {
         r7.status = "editing";
@@ -109161,7 +109166,7 @@ async function main() {
   server.registerTool(
     "tripo_ui_review",
     {
-      description: "Configuration card actions: acknowledge visible controls to start the 60-second window, pause editing, save/requote and immediately submit, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
+      description: "Configuration card actions: acknowledge visible controls for background preparation (the server starts the 60-second window at card creation), pause editing, save/requote and immediately submit, confirm, cancel, or read status. Confirmation or the authorized deadline submits the durable task once.",
       _meta: { ui: { visibility: ["app"] } },
       inputSchema: {
         review_id: taskIdShape,
@@ -109604,7 +109609,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query))
   tool(
     "tripo_get_configuration_review",
     {
-      description: "Read or wait for the existing configuration form by its stable review_id. After creation call with wait_ms:60000 and keep following next_action until submitted, canceled, failed, or the user is editing. Pending or deadline_at:null means waiting for visible display/countdown, not a missing submission capability. The visible form submits automatically after 60 seconds; do not click the UI, request a direct-submit tool, recreate the task, or report blocked during normal waiting. Waiting is read-only and never starts or bypasses submission. After the receipt returns the actual task_id and remote IDs, follow that task.",
+      description: "Read or wait for the existing configuration form by its stable review_id. After creation call with wait_ms:60000 and keep following next_action until submitted, canceled, failed, or the user is editing. The server starts a persisted 60-second deadline when the automatic form is created and submits even if the card stays collapsed, unmounted, or the session runs in the background; do not click the UI, request a direct-submit tool, recreate the task, or report blocked during normal waiting. Waiting is read-only and never starts or bypasses submission. After the receipt returns the actual task_id and remote IDs, follow that task.",
       inputSchema: {
         review_id: taskIdShape,
         wait_ms: external_exports.number().int().min(0).max(6e4).default(0).describe(
@@ -109627,7 +109632,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query))
       toolName,
       {
         card: kind !== "local.inspect_parts",
-        description: `${operation2.description}${operation2.consumesCredits ? " Consumes Studio credits." : ""}${kind === "local.inspect_parts" ? "" : " Always opens an editable configuration form. Submit through the form: 60 seconds after visible display if parameters remain unchanged; actual parameter changes pause it, while focus, clicks and preview inspection do not. Saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode."} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
+        description: `${operation2.description}${operation2.consumesCredits ? " Consumes Studio credits." : ""}${kind === "local.inspect_parts" ? "" : " Always opens an editable configuration form. Submit through the form: 60 seconds after card creation if parameters remain unchanged, including collapsed cards and background sessions; actual parameter changes pause it, while focus, clicks and preview inspection do not. Saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode."} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
         inputSchema: inputShape
       },
       async (input2) => {

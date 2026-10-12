@@ -64,6 +64,15 @@ export class ConfigurationReviews {
       this.timers.delete(id);
     }
   }
+  withDeadline(record) {
+    if (
+      record.auto_submit === false ||
+      record.status !== "pending" ||
+      Number.isFinite(record.deadline_at)
+    )
+      return record;
+    return { ...record, deadline_at: this.now() + this.timeoutMs };
+  }
   arm(record) {
     this.stop(record.review_id);
     if (
@@ -115,10 +124,11 @@ export class ConfigurationReviews {
     });
     for (const file of files.filter((f) => f.endsWith(".json"))) {
       const record = await new JsonDocument(path.join(this.dir, file)).read();
-      // The persisted deadline records the first visible display. Recover the
-      // remaining time, even if the card is currently hidden or unmounted.
-      // Unseen cards still have no deadline and cannot auto-submit.
+      // Restore the persisted creation deadline, even for hidden/unmounted cards.
+      // Paused/manual cards and old records without deadlines stay unchanged.
       this.arm(record);
+      if (record.status === "pending" && record.auto_submit !== false)
+        this.preupload(record);
       // A process may have died after dispatch. Read the durable task; never retry the write.
       if (
         record.status === "submitting" &&
@@ -272,7 +282,7 @@ export class ConfigurationReviews {
       );
     const until = performance.now() + waitMs;
     let result = await this.action({ review_id: reviewId, action: "get" });
-    // Observe the app-owned lifecycle. Reading never acknowledges display,
+    // Observe the server-owned lifecycle. Reading never acknowledges display,
     // starts a countdown, dispatches a task, or changes the saved settings.
     while (
       result.next_action?.requires_user_action === false &&
@@ -292,21 +302,22 @@ export class ConfigurationReviews {
       if (old) {
         await this.owned(old);
         // Reused cards follow the entrypoint's policy while preserving edits.
-        // Changing policy still requires a fresh visibility acknowledgement.
+        // Enabling automatic submission starts a window only when not editing.
+        let updated = old;
         if (
           (old.auto_submit !== false) !== autoSubmit &&
           editableStates.has(old.status)
         ) {
-          const updated = {
+          updated = {
             ...old,
             auto_submit: autoSubmit,
             deadline_at: null,
             revision: old.revision + 1,
           };
-          await this.doc(id).write(updated);
-          return updated;
         }
-        return old;
+        updated = this.withDeadline(updated);
+        if (updated !== old) await this.doc(id).write(updated);
+        return updated;
       }
       const parsed = this.schema(kind).parse({ ...input, submit: false });
       // Expose the actual normalized defaults, while keeping only schema-supported keys.
@@ -319,7 +330,7 @@ export class ConfigurationReviews {
           value !== undefined
         )
           parsed[key] = value;
-      const r = {
+      const r = this.withDeadline({
         review_id: id,
         task_id: id,
         kind,
@@ -329,11 +340,13 @@ export class ConfigurationReviews {
         status: "pending",
         revision: 0,
         deadline_at: null,
-      };
+      });
       await this.doc(id).write(r);
       return r;
     });
     this.arm(record);
+    if (record.status === "pending" && record.auto_submit !== false)
+      this.preupload(record);
     return { ...prepared, ...(await this.output(record)) };
   }
   async openDraft(id) {
@@ -393,17 +406,8 @@ export class ConfigurationReviews {
         throw new TripoError("PLAN_MISMATCH", "配置已更新，请刷新卡片。");
       if (!editableStates.has(r.status)) return r;
       if (action === "ready") {
-        // App-only acknowledgement: repeated polls/renders must not extend the deadline.
-        if (
-          r.status !== "pending" ||
-          Number.isFinite(r.deadline_at) ||
-          r.auto_submit === false
-        )
-          return r;
-        r.deadline_at = this.now() + this.timeoutMs;
-        // Starting the clock must not invalidate a simultaneous focus/edit action.
-        await this.doc(review_id).write(r);
-        this.arm(r);
+        // Compatibility acknowledgement for mounted cards; display never starts
+        // or resets the server-owned countdown, nor invalidates an edit revision.
         return r;
       } else if (action === "edit") {
         r.status = "editing";
