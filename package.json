@@ -1,6 +1,6 @@
 {
   "name": "tripo-studio-plugin",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Codex plugin for Tripo Studio member-account image and 3D workflows, shared model/image asset groups, persistent headless auth, durable tasks and provenance.",
   "type": "module",
   "license": "MIT",
@@ -74,6 +74,7 @@
     "@modelcontextprotocol/ext-apps": "1.7.5",
     "@modelcontextprotocol/sdk": "1.32.1",
     "@openai/mcp-extensions": "0.1.0",
+    "@smithy/node-http-handler": "4.12.1",
     "esbuild": "^0.25.0",
     "eslint": "10.12.0",
     "eslint-config-prettier": "10.1.8",

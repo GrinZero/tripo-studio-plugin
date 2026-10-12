@@ -196,6 +196,9 @@ importers:
       '@openai/mcp-extensions':
         specifier: 0.1.0
         version: 0.1.0(@modelcontextprotocol/ext-apps@1.7.5(@modelcontextprotocol/sdk@1.32.1(@cfworker/json-schema@4.1.1)(zod@4.6.5))(zod@4.6.5))(@modelcontextprotocol/sdk@1.32.1(@cfworker/json-schema@4.1.1)(zod@4.6.5))
+      '@smithy/node-http-handler':
+        specifier: 4.12.1
+        version: 4.12.1
       esbuild:
         specifier: ^0.25.0
         version: 0.25.12

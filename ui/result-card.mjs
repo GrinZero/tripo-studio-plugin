@@ -22,7 +22,7 @@ import {
 import { mountQuote } from "./quote-card.mjs";
 import { parameterRows } from "./model.mjs";
 const app = new App(
-  { name: "Tripo Studio", version: "0.3.8" },
+  { name: "Tripo Studio", version: "0.3.9" },
   {},
   { autoResize: true }
 );
