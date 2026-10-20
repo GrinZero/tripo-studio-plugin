@@ -29,6 +29,11 @@ import {
 } from "./images.mjs";
 import { assertLocalPathSpecifier } from "../security/path-policy.mjs";
 import { mapRemoteStatus, selectProgress } from "./modelgen.mjs";
+import { sourceTextureInfo } from "../studio/export-resolution.mjs";
+import {
+  studioTextureQuality,
+  textureSize,
+} from "../studio/texture-quality.mjs";
 
 const PROJECT_ID = /^[^\s\u0000-\u001f\u007f]{1,256}$/;
 const PART_NAME = /^[^\u0000-\u001f\u007f]{1,256}$/;
@@ -186,8 +191,65 @@ export function postprocessSync() {
     }
     const status = mapRemoteStatus(item.status);
     let result;
+    const warnings = [];
     if (status === "succeeded") {
       result = { project_id: task.remote.project_id };
+      if (
+        ["texture.generate", "texture.upscale", "texture.pbr"].includes(
+          task.kind
+        )
+      ) {
+        const operatorId = task.remote.operator_id;
+        const detail = await ctx.gateway.getProject(
+          task.remote.project_id,
+          operatorId
+        );
+        if (
+          (detail.id && detail.id !== task.remote.project_id) ||
+          ((detail.model_url || detail.operator?.operator_id) &&
+            detail.operator?.operator_id !== operatorId)
+        ) {
+          throw new TripoError(
+            "INSUFFICIENT_EVIDENCE",
+            "Texture artifact identity mismatch; sync again.",
+            { stage: "operation_progress" }
+          );
+        }
+        const info = await sourceTextureInfo(ctx, detail, operatorId);
+        const textures = info.source_textures ?? [];
+        // A whole-model image inventory cannot prove which selected part owns
+        // each texture. Report partial texturing conservatively until inspected.
+        const verified =
+          info.source_texture_size_verified &&
+          textures.length > 0 &&
+          !task.payload.part_names?.length;
+        const requested = textureSize(task.payload.texture_quality);
+        const met =
+          verified && requested !== undefined
+            ? textures.every(
+                (t) => t.width >= requested && t.height >= requested
+              )
+            : null;
+        const resolutionStatus = !verified
+          ? "unverified"
+          : met === false
+            ? "mismatch"
+            : "verified";
+        const warning = !verified
+          ? "Texture resolution is unverified. Remote success and quality flags do not prove the requested resolution; inspect the saved artifact before claiming completion."
+          : met === false
+            ? `Requested ${requested}x${requested} textures, but received ${textures.map((t) => `${t.width}x${t.height}`).join(", ")}. The requested resolution was not achieved. Do not automatically repeat this paid operation.`
+            : null;
+        result.texture_resolution = {
+          requested_texture_size: requested ?? null,
+          actual_texture_size_verified: Boolean(verified),
+          requested_texture_size_met: met,
+          resolution_status: resolutionStatus,
+          textures,
+          ...(warning ? { warning } : {}),
+        };
+        if (warning) warnings.push(warning);
+      }
       if (task.kind === "texture.edit_preview") {
         const preview = await ctx.gateway.getRetexture(task.remote.operator_id);
         if (!preview?.url)
@@ -241,6 +303,7 @@ export function postprocessSync() {
       },
       result,
       status,
+      warnings,
     };
   };
 }
@@ -451,7 +514,12 @@ export const postprocessOperations = {
         ),
       project_id: projectId,
       prompt: z.string().optional().describe("Required for mode=text."),
-      quality: z.enum(["standard", "detailed", "ultra"]).default("detailed"),
+      quality: z
+        .enum(["standard", "detailed", "ultra"])
+        .default("detailed")
+        .describe(
+          "standard=2K, detailed=4K, ultra=8K. Remote success alone does not verify resolution; check result.texture_resolution and its warnings."
+        ),
       right_image_path: z.string().optional(),
       style: z.enum(["heritage", "mecha", "mecha_pop", "wood"]).optional(),
       style_image_path: z
@@ -492,7 +560,7 @@ export const postprocessOperations = {
           : {}),
         project_id: input.project_id,
         texture_alignment: input.alignment,
-        texture_quality: input.quality,
+        texture_quality: studioTextureQuality(input.quality),
       };
       const retain = async (imagePath, label, slot) => {
         assertLocalPathSpecifier(imagePath, "operation_input_policy");
@@ -776,7 +844,7 @@ export const postprocessOperations = {
         payload: {
           model_version: TEXTURE_MODEL_VERSION,
           project_id: input.project_id,
-          texture_quality: input.quality,
+          texture_quality: studioTextureQuality(input.quality),
         },
         snapshots: [],
         warnings: pf.warnings,

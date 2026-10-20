@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { publicTextureQuality } from "./texture-quality.mjs";
 import contract from "./pricing-contract.mjs";
 import localSnapshot from "./pricing-snapshot.mjs";
 import { getOperation } from "../ops/registry.mjs";
@@ -389,7 +390,7 @@ export class PricingService {
               }
             : { ...task.payload, ...task.metadata };
         if (kind === "texture.generate" || kind === "texture.upscale")
-          settings.quality = task.payload.texture_quality;
+          settings.quality = publicTextureQuality(task.payload.texture_quality);
         if (kind === "texture.generate")
           settings.style = Boolean(task.payload.style_image);
       } else {

@@ -113,6 +113,8 @@ Respect the requested scope: a white-mesh-only request ends after step 1; color 
 
 Report progress as **white mesh ready**, **color textures ready; PBR maps pending**, or **PBR maps generated and verified**. A glTF/Blender PBR material using fixed roughness/metallic values is not the separate PBR map set. If a task succeeds but the downloaded channels cannot be verified, state that verification is still pending; do not rerun generation just to obtain evidence.
 
+Texture quality inputs remain `standard` (2K), `detailed` (4K), and `ultra` (8K); the plugin maps public `ultra` to Studio's wire value `extreme`. After texture generation, upscaling, or PBR, inspect `task.result.texture_resolution`. Task `status:succeeded` describes remote execution only. Report 8K complete only when `actual_texture_size_verified:true` and `requested_texture_size_met:true`; `resolution_status:mismatch` means the actual textures missed the target, and `unverified` means resolution is still pending. Report actual per-image dimensions and warnings, preserve the existing artifact, and do not automatically repeat paid work to resolve a mismatch. PBR has no independent resolution input, so verify its actual channel dimensions against the user's request separately. Selected-part requests still need per-part artifact inspection.
+
 ## Local editing chain
 
 Local render/mesh/projection tools require Blender and a self-contained GLB. They preserve original files and run in background; never require a captured mouse.

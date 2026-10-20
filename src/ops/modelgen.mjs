@@ -17,6 +17,7 @@ import {
 } from "./images.mjs";
 import { assertLocalPathSpecifier } from "../security/path-policy.mjs";
 import { inspectModel } from "../util/model-inspect.mjs";
+import { studioTextureQuality } from "../studio/texture-quality.mjs";
 
 const identifier = z.string().regex(/^[^\s\u0000-\u001f\u007f]{1,256}$/);
 const IDENTITY_MATRIX = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
@@ -346,7 +347,7 @@ function commonWire(settings, mode) {
       body.pbr = settings.pbr;
       body.delight = settings.delight;
       body.texture_alignment = settings.texture_alignment;
-      body.texture_quality = settings.texture_quality;
+      body.texture_quality = studioTextureQuality(settings.texture_quality);
     }
     if (["image", "batch"].includes(mode))
       body.enable_image_autofix = settings.enable_image_autofix;
@@ -610,7 +611,11 @@ export const modelOperations = {
             image_source: "upload",
             key: staged.uploaded.key,
             ...(mode === "batch" && settings.texture
-              ? { texture_quality: settings.texture_quality }
+              ? {
+                  texture_quality: studioTextureQuality(
+                    settings.texture_quality
+                  ),
+                }
               : {}),
           };
           if (wireImages) wireImages.push(wire);

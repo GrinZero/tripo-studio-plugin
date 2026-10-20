@@ -570,10 +570,15 @@ async function render(result) {
   const items = cardItems(data);
   if (!result.isError && data.task?.status === "succeeded") {
     setText($("status"), () => tr("已完成"));
-    setText($("message"), () =>
-      items[0]?.preview?.type === "model"
-        ? tr("模型已准备就绪 · 拖动旋转，滚轮缩放")
-        : tr("已完成")
+    const resolutionWarning = data.task.result?.texture_resolution?.warning;
+    $("message").classList.toggle("error", Boolean(resolutionWarning));
+    setText(
+      $("message"),
+      () =>
+        resolutionWarning ??
+        (items[0]?.preview?.type === "model"
+          ? tr("模型已准备就绪 · 拖动旋转，滚轮缩放")
+          : tr("已完成"))
     );
   }
   if (!result.isError && data.download?.path) {

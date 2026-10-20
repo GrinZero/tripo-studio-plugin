@@ -39,7 +39,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/util.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/util.js
 var util_exports = {};
 __export(util_exports, {
   BIGINT_FORMAT_RANGES: () => BIGINT_FORMAT_RANGES,
@@ -772,7 +772,7 @@ function constantCatch(value) {
 }
 var Cached, EVALUATING, captureStackTrace, allowsEval, getParsedType2, propertyKeyTypes, primitiveTypes, NUMBER_FORMAT_RANGES, BIGINT_FORMAT_RANGES, highSurrogate, Class, installing, broke, breaker, CONSTANT_CATCH;
 var init_util = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/util.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/util.js"() {
     init_core();
     Cached = class {
       constructor(getter) {
@@ -887,7 +887,7 @@ var init_util = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/core.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/core.js
 function newError(Definition) {
   const E3 = _E;
   if (E3) {
@@ -990,7 +990,7 @@ function config(newConfig) {
 }
 var _a, NEVER, _zodDesc, _E, $brand, $ZodAsyncError, $ZodEncodeError, globalConfig;
 var init_core = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/core.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/core.js"() {
     init_util();
     NEVER = /* @__PURE__ */ Object.freeze({
       status: "aborted"
@@ -1014,7 +1014,7 @@ var init_core = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/errors.js
 function _getMessage() {
   const internals = this._zod;
   internals.message ?? (internals.message = JSON.stringify(internals.def, jsonStringifyReplacer, 2));
@@ -1172,7 +1172,7 @@ function prettifyError(error113) {
 }
 var _messageDesc, _issuesDesc, _installedToString, initializer, $ZodError, $ZodRealError;
 var init_errors = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/errors.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/errors.js"() {
     init_core();
     init_util();
     _messageDesc = {
@@ -1213,7 +1213,7 @@ var init_errors = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/parse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/parse.js
 function finalizeParams(callee, params) {
   return { callee: params?.callee ?? callee, Err: params?.Err };
 }
@@ -1253,7 +1253,7 @@ function validateFallback(schema, value, _ctx) {
 }
 var _parse, parse, _parseAsync, parseAsync, _safeParse, safeParse, _safeParseAsync, safeParseAsync, COMPILE_INVALID, COMPILE_FALLBACK, validate, validateAsync, _encode, encode, _decode, decode, _encodeAsync, encodeAsync, _decodeAsync, decodeAsync, _safeEncode, safeEncode, _safeDecode, safeDecode, _safeEncodeAsync, safeEncodeAsync, _safeDecodeAsync, safeDecodeAsync;
 var init_parse = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/parse.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/parse.js"() {
     init_core();
     init_errors();
     init_util();
@@ -1381,7 +1381,7 @@ var init_parse = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/regexes.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/regexes.js
 var regexes_exports = {};
 __export(regexes_exports, {
   anyString: () => anyString,
@@ -1482,7 +1482,7 @@ function fixedBase64url(length) {
 }
 var cuid, cuid2, ulid, xid, ksuid, nanoid, duration, extendedDuration, guid, uuid, uuid4, uuid6, uuid7, email, html5Email, rfc5322Email, unicodeEmail, idnEmail, browserEmail, _emoji, ipv4, ipv6, mac, cidrv4, cidrv6, base64, base64url, hostname, domain, httpProtocol, e164, creditCard, currencyCode, iban, dateSource, date, anyString, string, bigint, integer, number, boolean, _null, _undefined, lowercase, uppercase, hex, md5_hex, md5_base64, md5_base64url, sha1_hex, sha1_base64, sha1_base64url, sha256_hex, sha256_base64, sha256_base64url, sha384_hex, sha384_base64, sha384_base64url, sha512_hex, sha512_base64, sha512_base64url;
 var init_regexes = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/regexes.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/regexes.js"() {
     init_util();
     cuid = /^[cC][0-9a-z]{6,}$/;
     cuid2 = /^[0-9a-z]+$/;
@@ -1559,7 +1559,7 @@ var init_regexes = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/checks.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/checks.js
 function handleCheckPropertyResult(result, payload, property) {
   if (result.issues.length) {
     payload.issues.push(...prefixIssues(property, result.issues));
@@ -1567,7 +1567,7 @@ function handleCheckPropertyResult(result, payload, property) {
 }
 var $ZodCheck, _whenHasSize, _whenHasLength, numericOriginMap, $ZodCheckLessThan, $ZodCheckGreaterThan, $ZodCheckMultipleOf, $ZodCheckNumberFormat, $ZodCheckBigIntFormat, $ZodCheckMaxSize, $ZodCheckMinSize, $ZodCheckSizeEquals, $ZodCheckMaxLength, $ZodCheckMinLength, $ZodCheckLengthEquals, $ZodCheckStringFormat, $ZodCheckRegex, $ZodCheckLowerCase, $ZodCheckUpperCase, $ZodCheckIncludes, $ZodCheckStartsWith, $ZodCheckEndsWith, $ZodCheckProperty, $ZodCheckProperties, $ZodCheckMimeType, $ZodCheckOverwrite;
 var init_checks = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/checks.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/checks.js"() {
     init_core();
     init_regexes();
     init_util();
@@ -2043,10 +2043,10 @@ var init_checks = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/doc.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/doc.js
 var Doc;
 var init_doc = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/doc.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/doc.js"() {
     Doc = class {
       constructor(args = [], closed = {}) {
         this.content = [];
@@ -2089,10 +2089,10 @@ ${content.join("\n")}
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/versions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/versions.js
 var version;
 var init_versions = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/versions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/versions.js"() {
     version = {
       major: 4,
       minor: 6,
@@ -2101,7 +2101,7 @@ var init_versions = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/schemas.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/schemas.js
 async function validateAsync2(inst, value) {
   const ctx = { async: true };
   return toStandardResult(await inst._zod.run({ value, issues: [] }, ctx), ctx);
@@ -2760,7 +2760,7 @@ function handleRefineResult(result, payload, input2, inst) {
 }
 var $ZodType, toStandardResult, $ZodString, $ZodStringFormat, $ZodGUID, $ZodUUID, $ZodEmail, URL_BAD_FORMAT, URL_UNPARSEABLE, asciiTabOrNewline, $ZodURL, $ZodEmoji, $ZodNanoID, $ZodCUID, $ZodCUID2, $ZodULID, $ZodXID, $ZodKSUID, $ZodISODateTime, $ZodISODate, $ZodISOTime, $ZodISODuration, $ZodIPv4, ipv6Alphabet, $ZodIPv6, $ZodMAC, $ZodCIDRv4, $ZodCIDRv6, base64Charset, $ZodBase64, base64urlCharset, $ZodBase64URL, $ZodE164, CC_SANITIZE, $ZodCreditCard, $ZodIBAN, $ZodJWT, $ZodCustomStringFormat, $ZodNumber, $ZodNumberFormat, $ZodBoolean, $ZodBigInt, $ZodBigIntFormat, $ZodSymbol, $ZodUndefined, $ZodNull, $ZodAny, $ZodUnknown, $ZodNever, $ZodVoid, $ZodDate, $ZodArray, NO_SYMBOL_KEYS, $ZodObject, $ZodObjectJIT, $ZodUnion, $ZodXor, $ZodDiscriminatedUnion, $ZodIntersection, $ZodTuple, $ZodRecord, $ZodMap, $ZodSet, $ZodEnum, $ZodLiteral, $ZodFile, $ZodTransform, $ZodOptional, $ZodExactOptional, $ZodNullable, $ZodDefault, $ZodPrefault, $ZodNonOptional, $ZodSuccess, $ZodCatch, $ZodNaN, $ZodPipe, $ZodCodec, $ZodPreprocess, $ZodReadonly, $ZodTemplateLiteral, $ZodFunction, $ZodPromise, $ZodLazy, $ZodCustom;
 var init_schemas = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/schemas.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/schemas.js"() {
     init_checks();
     init_core();
     init_doc();
@@ -4528,7 +4528,7 @@ var init_schemas = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/memoizer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/memoizer.js
 function isRef(value) {
   return value !== null && typeof value === "object";
 }
@@ -4692,7 +4692,7 @@ function isBackEdge(ctx, value) {
 }
 var $ZodCyclicError, STATE, NO_ISSUES, recursive, NONE, ASSUMED, PROVEN, handoff, open, memo;
 var init_memoizer = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/memoizer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/memoizer.js"() {
     init_util();
     $ZodCyclicError = class extends Error {
       constructor() {
@@ -4810,7 +4810,7 @@ var init_memoizer = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ar.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ar.js
 function ar_default() {
   return {
     localeError: error()
@@ -4818,7 +4818,7 @@ function ar_default() {
 }
 var error;
 var init_ar = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ar.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ar.js"() {
     init_util();
     error = () => {
       const Sizable = {
@@ -4928,7 +4928,7 @@ var init_ar = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/az.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/az.js
 function az_default() {
   return {
     localeError: error2()
@@ -4936,7 +4936,7 @@ function az_default() {
 }
 var error2;
 var init_az = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/az.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/az.js"() {
     init_util();
     error2 = () => {
       const Sizable = {
@@ -5045,7 +5045,7 @@ var init_az = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/be.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/be.js
 function getBelarusianPlural(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -5068,7 +5068,7 @@ function be_default() {
 }
 var error3;
 var init_be = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/be.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/be.js"() {
     init_util();
     error3 = () => {
       const Sizable = {
@@ -5220,7 +5220,7 @@ var init_be = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bg.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bg.js
 function bg_default() {
   return {
     localeError: error4()
@@ -5228,7 +5228,7 @@ function bg_default() {
 }
 var error4;
 var init_bg = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bg.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bg.js"() {
     init_util();
     error4 = () => {
       const Sizable = {
@@ -5352,7 +5352,7 @@ var init_bg = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bn.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bn.js
 function bn_default() {
   return {
     localeError: error5()
@@ -5360,7 +5360,7 @@ function bn_default() {
 }
 var error5;
 var init_bn = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bn.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bn.js"() {
     init_util();
     error5 = () => {
       const Sizable = {
@@ -5472,7 +5472,7 @@ var init_bn = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ca.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ca.js
 function ca_default() {
   return {
     localeError: error6()
@@ -5480,7 +5480,7 @@ function ca_default() {
 }
 var error6;
 var init_ca = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ca.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ca.js"() {
     init_util();
     error6 = () => {
       const Sizable = {
@@ -5592,7 +5592,7 @@ var init_ca = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ckb.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ckb.js
 function ckb_default() {
   return {
     localeError: error7()
@@ -5600,7 +5600,7 @@ function ckb_default() {
 }
 var error7;
 var init_ckb = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ckb.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ckb.js"() {
     init_util();
     error7 = () => {
       const Sizable = {
@@ -5731,7 +5731,7 @@ var init_ckb = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/cs.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/cs.js
 function cs_default() {
   return {
     localeError: error8()
@@ -5739,7 +5739,7 @@ function cs_default() {
 }
 var error8;
 var init_cs = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/cs.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/cs.js"() {
     init_util();
     error8 = () => {
       const Sizable = {
@@ -5854,7 +5854,7 @@ var init_cs = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/da.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/da.js
 function da_default() {
   return {
     localeError: error9()
@@ -5862,7 +5862,7 @@ function da_default() {
 }
 var error9;
 var init_da = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/da.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/da.js"() {
     init_util();
     error9 = () => {
       const Sizable = {
@@ -5981,7 +5981,7 @@ var init_da = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/de.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/de.js
 function de_default() {
   return {
     localeError: error10()
@@ -5989,7 +5989,7 @@ function de_default() {
 }
 var error10;
 var init_de = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/de.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/de.js"() {
     init_util();
     error10 = () => {
       const Sizable = {
@@ -6101,7 +6101,7 @@ var init_de = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/el.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/el.js
 function el_default() {
   return {
     localeError: error11()
@@ -6109,7 +6109,7 @@ function el_default() {
 }
 var error11;
 var init_el = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/el.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/el.js"() {
     init_util();
     error11 = () => {
       const Sizable = {
@@ -6220,7 +6220,7 @@ var init_el = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/en.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/en.js
 function en_default2() {
   return {
     localeError: error12()
@@ -6228,7 +6228,7 @@ function en_default2() {
 }
 var error12;
 var init_en = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/en.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/en.js"() {
     init_util();
     error12 = () => {
       const Sizable = {
@@ -6351,7 +6351,7 @@ var init_en = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/eo.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/eo.js
 function eo_default() {
   return {
     localeError: error13()
@@ -6359,7 +6359,7 @@ function eo_default() {
 }
 var error13;
 var init_eo = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/eo.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/eo.js"() {
     init_util();
     error13 = () => {
       const Sizable = {
@@ -6472,7 +6472,7 @@ var init_eo = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/es.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/es.js
 function es_default() {
   return {
     localeError: error14()
@@ -6480,7 +6480,7 @@ function es_default() {
 }
 var error14;
 var init_es = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/es.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/es.js"() {
     init_util();
     error14 = () => {
       const Sizable = {
@@ -6615,7 +6615,7 @@ var init_es = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fa.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fa.js
 function fa_default() {
   return {
     localeError: error15()
@@ -6623,7 +6623,7 @@ function fa_default() {
 }
 var error15;
 var init_fa = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fa.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fa.js"() {
     init_util();
     error15 = () => {
       const Sizable = {
@@ -6741,7 +6741,7 @@ var init_fa = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fi.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fi.js
 function fi_default() {
   return {
     localeError: error16()
@@ -6749,7 +6749,7 @@ function fi_default() {
 }
 var error16;
 var init_fi = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fi.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fi.js"() {
     init_util();
     error16 = () => {
       const Sizable = {
@@ -6865,7 +6865,7 @@ var init_fi = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr.js
 function fr_default() {
   return {
     localeError: error17()
@@ -6873,7 +6873,7 @@ function fr_default() {
 }
 var error17;
 var init_fr = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr.js"() {
     init_util();
     error17 = () => {
       const Sizable = {
@@ -7001,7 +7001,7 @@ var init_fr = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr-CA.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr-CA.js
 function fr_CA_default() {
   return {
     localeError: error18()
@@ -7009,7 +7009,7 @@ function fr_CA_default() {
 }
 var error18;
 var init_fr_CA = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr-CA.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr-CA.js"() {
     init_util();
     error18 = () => {
       const Sizable = {
@@ -7120,7 +7120,7 @@ var init_fr_CA = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/gu.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/gu.js
 function gu_default() {
   return {
     localeError: error19()
@@ -7128,7 +7128,7 @@ function gu_default() {
 }
 var error19;
 var init_gu = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/gu.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/gu.js"() {
     init_util();
     error19 = () => {
       const Sizable = {
@@ -7240,7 +7240,7 @@ var init_gu = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/he.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/he.js
 function he_default() {
   return {
     localeError: error20()
@@ -7248,7 +7248,7 @@ function he_default() {
 }
 var error20;
 var init_he = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/he.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/he.js"() {
     init_util();
     error20 = () => {
       const TypeNames = {
@@ -7448,7 +7448,7 @@ var init_he = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hi.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hi.js
 function hi_default() {
   return {
     localeError: error21()
@@ -7456,7 +7456,7 @@ function hi_default() {
 }
 var error21;
 var init_hi = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hi.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hi.js"() {
     init_util();
     error21 = () => {
       const Sizable = {
@@ -7566,7 +7566,7 @@ var init_hi = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hr.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hr.js
 function hr_default() {
   return {
     localeError: error22()
@@ -7574,7 +7574,7 @@ function hr_default() {
 }
 var error22;
 var init_hr = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hr.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hr.js"() {
     init_util();
     error22 = () => {
       const Sizable = {
@@ -7699,7 +7699,7 @@ var init_hr = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hu.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hu.js
 function hu_default() {
   return {
     localeError: error23()
@@ -7707,7 +7707,7 @@ function hu_default() {
 }
 var error23;
 var init_hu = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hu.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hu.js"() {
     init_util();
     error23 = () => {
       const Sizable = {
@@ -7819,7 +7819,7 @@ var init_hu = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hy.js
 function getArmenianPlural(count, one, many) {
   return Math.abs(count) === 1 ? one : many;
 }
@@ -7837,7 +7837,7 @@ function hy_default() {
 }
 var error24;
 var init_hy = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hy.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hy.js"() {
     init_util();
     error24 = () => {
       const Sizable = {
@@ -7984,7 +7984,7 @@ var init_hy = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/id.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/id.js
 function id_default() {
   return {
     localeError: error25()
@@ -7992,7 +7992,7 @@ function id_default() {
 }
 var error25;
 var init_id = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/id.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/id.js"() {
     init_util();
     error25 = () => {
       const Sizable = {
@@ -8102,7 +8102,7 @@ var init_id = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/is.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/is.js
 function is_default() {
   return {
     localeError: error26()
@@ -8110,7 +8110,7 @@ function is_default() {
 }
 var error26;
 var init_is = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/is.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/is.js"() {
     init_util();
     error26 = () => {
       const Sizable = {
@@ -8223,7 +8223,7 @@ var init_is = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/it.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/it.js
 function it_default() {
   return {
     localeError: error27()
@@ -8231,7 +8231,7 @@ function it_default() {
 }
 var error27;
 var init_it = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/it.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/it.js"() {
     init_util();
     error27 = () => {
       const Sizable = {
@@ -8343,7 +8343,7 @@ var init_it = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ja.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ja.js
 function ja_default() {
   return {
     localeError: error28()
@@ -8351,7 +8351,7 @@ function ja_default() {
 }
 var error28;
 var init_ja = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ja.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ja.js"() {
     init_util();
     error28 = () => {
       const Sizable = {
@@ -8462,7 +8462,7 @@ var init_ja = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ka.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ka.js
 function ka_default() {
   return {
     localeError: error29()
@@ -8470,7 +8470,7 @@ function ka_default() {
 }
 var error29;
 var init_ka = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ka.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ka.js"() {
     init_util();
     error29 = () => {
       const Sizable = {
@@ -8586,7 +8586,7 @@ var init_ka = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/km.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/km.js
 function km_default() {
   return {
     localeError: error30()
@@ -8594,7 +8594,7 @@ function km_default() {
 }
 var error30;
 var init_km = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/km.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/km.js"() {
     init_util();
     error30 = () => {
       const Sizable = {
@@ -8708,17 +8708,17 @@ var init_km = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kh.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kh.js
 function kh_default() {
   return km_default();
 }
 var init_kh = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kh.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kh.js"() {
     init_km();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kn.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kn.js
 function kn_default() {
   return {
     localeError: error31()
@@ -8726,7 +8726,7 @@ function kn_default() {
 }
 var error31;
 var init_kn = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kn.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kn.js"() {
     init_util();
     error31 = () => {
       const Sizable = {
@@ -8840,7 +8840,7 @@ var init_kn = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ko.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ko.js
 function ko_default() {
   return {
     localeError: error32()
@@ -8848,7 +8848,7 @@ function ko_default() {
 }
 var error32;
 var init_ko = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ko.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ko.js"() {
     init_util();
     error32 = () => {
       const Sizable = {
@@ -8963,7 +8963,7 @@ var init_ko = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/lt.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/lt.js
 function getUnitTypeFromNumber(number7) {
   const abs = Math.abs(number7);
   const last = abs % 10;
@@ -8981,7 +8981,7 @@ function lt_default() {
 }
 var capitalizeFirstCharacter, error33;
 var init_lt = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/lt.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/lt.js"() {
     init_util();
     capitalizeFirstCharacter = (text) => {
       return text.charAt(0).toUpperCase() + text.slice(1);
@@ -9177,7 +9177,7 @@ var init_lt = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/mk.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/mk.js
 function mk_default() {
   return {
     localeError: error34()
@@ -9185,7 +9185,7 @@ function mk_default() {
 }
 var error34;
 var init_mk = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/mk.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/mk.js"() {
     init_util();
     error34 = () => {
       const Sizable = {
@@ -9298,7 +9298,7 @@ var init_mk = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ms.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ms.js
 function ms_default() {
   return {
     localeError: error35()
@@ -9306,7 +9306,7 @@ function ms_default() {
 }
 var error35;
 var init_ms = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ms.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ms.js"() {
     init_util();
     error35 = () => {
       const Sizable = {
@@ -9417,7 +9417,7 @@ var init_ms = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ne.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ne.js
 function ne_default() {
   return {
     localeError: error36()
@@ -9425,7 +9425,7 @@ function ne_default() {
 }
 var error36;
 var init_ne = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ne.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ne.js"() {
     init_util();
     error36 = () => {
       const Sizable = {
@@ -9535,7 +9535,7 @@ var init_ne = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nl.js
 function nl_default() {
   return {
     localeError: error37()
@@ -9543,7 +9543,7 @@ function nl_default() {
 }
 var error37;
 var init_nl = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nl.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nl.js"() {
     init_util();
     error37 = () => {
       const Sizable = {
@@ -9657,7 +9657,7 @@ var init_nl = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nn.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nn.js
 function nn_default() {
   return {
     localeError: error38()
@@ -9665,7 +9665,7 @@ function nn_default() {
 }
 var error38;
 var init_nn = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nn.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nn.js"() {
     init_util();
     error38 = () => {
       const Sizable = {
@@ -9777,7 +9777,7 @@ var init_nn = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/no.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/no.js
 function no_default() {
   return {
     localeError: error39()
@@ -9785,7 +9785,7 @@ function no_default() {
 }
 var error39;
 var init_no = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/no.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/no.js"() {
     init_util();
     error39 = () => {
       const Sizable = {
@@ -9897,7 +9897,7 @@ var init_no = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ota.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ota.js
 function ota_default() {
   return {
     localeError: error40()
@@ -9905,7 +9905,7 @@ function ota_default() {
 }
 var error40;
 var init_ota = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ota.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ota.js"() {
     init_util();
     error40 = () => {
       const Sizable = {
@@ -10018,7 +10018,7 @@ var init_ota = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ps.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ps.js
 function ps_default() {
   return {
     localeError: error41()
@@ -10026,7 +10026,7 @@ function ps_default() {
 }
 var error41;
 var init_ps = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ps.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ps.js"() {
     init_util();
     error41 = () => {
       const Sizable = {
@@ -10144,7 +10144,7 @@ var init_ps = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pl.js
 function pl_default() {
   return {
     localeError: error42()
@@ -10152,7 +10152,7 @@ function pl_default() {
 }
 var error42;
 var init_pl = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pl.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pl.js"() {
     init_util();
     error42 = () => {
       const Sizable = {
@@ -10265,7 +10265,7 @@ var init_pl = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt.js
 function pt_default() {
   return {
     localeError: error43()
@@ -10273,7 +10273,7 @@ function pt_default() {
 }
 var error43;
 var init_pt = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt.js"() {
     init_util();
     error43 = () => {
       const Sizable = {
@@ -10415,7 +10415,7 @@ var init_pt = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt-BR.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt-BR.js
 function pt_BR_default() {
   return {
     localeError: error44()
@@ -10423,7 +10423,7 @@ function pt_BR_default() {
 }
 var error44;
 var init_pt_BR = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt-BR.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt-BR.js"() {
     init_util();
     error44 = () => {
       const Sizable = {
@@ -10566,7 +10566,7 @@ var init_pt_BR = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ro.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ro.js
 function ro_default() {
   return {
     localeError: error45()
@@ -10574,7 +10574,7 @@ function ro_default() {
 }
 var error45;
 var init_ro = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ro.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ro.js"() {
     init_util();
     error45 = () => {
       const Sizable = {
@@ -10695,7 +10695,7 @@ var init_ro = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ru.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ru.js
 function getRussianPlural(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -10718,7 +10718,7 @@ function ru_default() {
 }
 var error46;
 var init_ru = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ru.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ru.js"() {
     init_util();
     error46 = () => {
       const Sizable = {
@@ -10870,7 +10870,7 @@ var init_ru = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sk.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sk.js
 function sk_default() {
   return {
     localeError: error47()
@@ -10878,7 +10878,7 @@ function sk_default() {
 }
 var error47;
 var init_sk = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sk.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sk.js"() {
     init_util();
     error47 = () => {
       const Sizable = {
@@ -10993,7 +10993,7 @@ var init_sk = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sl.js
 function sl_default() {
   return {
     localeError: error48()
@@ -11001,7 +11001,7 @@ function sl_default() {
 }
 var error48;
 var init_sl = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sl.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sl.js"() {
     init_util();
     error48 = () => {
       const Sizable = {
@@ -11114,7 +11114,7 @@ var init_sl = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sv.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sv.js
 function sv_default() {
   return {
     localeError: error49()
@@ -11122,7 +11122,7 @@ function sv_default() {
 }
 var error49;
 var init_sv = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sv.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sv.js"() {
     init_util();
     error49 = () => {
       const Sizable = {
@@ -11236,7 +11236,7 @@ var init_sv = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ta.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ta.js
 function ta_default() {
   return {
     localeError: error50()
@@ -11244,7 +11244,7 @@ function ta_default() {
 }
 var error50;
 var init_ta = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ta.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ta.js"() {
     init_util();
     error50 = () => {
       const Sizable = {
@@ -11358,7 +11358,7 @@ var init_ta = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tg.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tg.js
 function tg_default() {
   return {
     localeError: error51()
@@ -11366,7 +11366,7 @@ function tg_default() {
 }
 var error51;
 var init_tg = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tg.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tg.js"() {
     init_util();
     error51 = () => {
       const Sizable = {
@@ -11481,7 +11481,7 @@ var init_tg = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/th.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/th.js
 function th_default() {
   return {
     localeError: error52()
@@ -11489,7 +11489,7 @@ function th_default() {
 }
 var error52;
 var init_th = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/th.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/th.js"() {
     init_util();
     error52 = () => {
       const Sizable = {
@@ -11603,7 +11603,7 @@ var init_th = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tk.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tk.js
 function tk_default() {
   return {
     localeError: error53()
@@ -11611,7 +11611,7 @@ function tk_default() {
 }
 var error53;
 var init_tk = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tk.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tk.js"() {
     init_util();
     error53 = () => {
       const Sizable = {
@@ -11717,7 +11717,7 @@ var init_tk = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tr.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tr.js
 function tr_default() {
   return {
     localeError: error54()
@@ -11725,7 +11725,7 @@ function tr_default() {
 }
 var error54;
 var init_tr = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tr.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tr.js"() {
     init_util();
     error54 = () => {
       const Sizable = {
@@ -11834,7 +11834,7 @@ var init_tr = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uk.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uk.js
 function uk_default() {
   return {
     localeError: error55()
@@ -11842,7 +11842,7 @@ function uk_default() {
 }
 var error55;
 var init_uk = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uk.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uk.js"() {
     init_util();
     error55 = () => {
       const Sizable = {
@@ -11954,17 +11954,17 @@ var init_uk = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ua.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ua.js
 function ua_default() {
   return uk_default();
 }
 var init_ua = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ua.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ua.js"() {
     init_uk();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ur.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ur.js
 function ur_default() {
   return {
     localeError: error56()
@@ -11972,7 +11972,7 @@ function ur_default() {
 }
 var error56;
 var init_ur = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ur.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ur.js"() {
     init_util();
     error56 = () => {
       const Sizable = {
@@ -12086,7 +12086,7 @@ var init_ur = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uz.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uz.js
 function uz_default() {
   return {
     localeError: error57()
@@ -12094,7 +12094,7 @@ function uz_default() {
 }
 var error57;
 var init_uz = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uz.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uz.js"() {
     init_util();
     error57 = () => {
       const Sizable = {
@@ -12206,7 +12206,7 @@ var init_uz = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/vi.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/vi.js
 function vi_default() {
   return {
     localeError: error58()
@@ -12214,7 +12214,7 @@ function vi_default() {
 }
 var error58;
 var init_vi = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/vi.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/vi.js"() {
     init_util();
     error58 = () => {
       const Sizable = {
@@ -12326,7 +12326,7 @@ var init_vi = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-CN.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-CN.js
 function zh_CN_default() {
   return {
     localeError: error59()
@@ -12334,7 +12334,7 @@ function zh_CN_default() {
 }
 var error59;
 var init_zh_CN = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-CN.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-CN.js"() {
     init_util();
     error59 = () => {
       const Sizable = {
@@ -12447,7 +12447,7 @@ var init_zh_CN = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-TW.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-TW.js
 function zh_TW_default() {
   return {
     localeError: error60()
@@ -12455,7 +12455,7 @@ function zh_TW_default() {
 }
 var error60;
 var init_zh_TW = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-TW.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-TW.js"() {
     init_util();
     error60 = () => {
       const Sizable = {
@@ -12566,7 +12566,7 @@ var init_zh_TW = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/yo.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/yo.js
 function yo_default() {
   return {
     localeError: error61()
@@ -12574,7 +12574,7 @@ function yo_default() {
 }
 var error61;
 var init_yo = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/yo.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/yo.js"() {
     init_util();
     error61 = () => {
       const Sizable = {
@@ -12685,7 +12685,7 @@ var init_yo = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/index.js
 var locales_exports = {};
 __export(locales_exports, {
   ar: () => ar_default,
@@ -12753,7 +12753,7 @@ __export(locales_exports, {
   zhTW: () => zh_TW_default
 });
 var init_locales = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/index.js"() {
     init_ar();
     init_az();
     init_be();
@@ -12820,13 +12820,13 @@ var init_locales = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/registries.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/registries.js
 function registry() {
   return new $ZodRegistry();
 }
 var _a2, $output, $input, $ZodRegistry, globalRegistry;
 var init_registries = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/registries.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/registries.js"() {
     $output = /* @__PURE__ */ Symbol("ZodOutput");
     $input = /* @__PURE__ */ Symbol("ZodInput");
     $ZodRegistry = class {
@@ -12874,7 +12874,7 @@ var init_registries = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/compile.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/compile.js
 function compileValidator(schema, parser) {
   try {
     return compileFn(schema, { assertOnly: true });
@@ -14428,7 +14428,7 @@ function generateTransformCheck(doc, ctx, schema, accessor) {
 }
 var INVALID2, FALLBACK_FLAG, ZodCompileAsyncError, ZodCompileUnsupportedError, WHEN_DEFAULTED_CHECKS, PATTERN_IS_COMPLETE;
 var init_compile = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/compile.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/compile.js"() {
     init_core();
     init_doc();
     init_memoizer();
@@ -14487,7 +14487,7 @@ var init_compile = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/api.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/api.js
 function snapshotChecks(def) {
   if (def.checks)
     def.checks = [...def.checks];
@@ -15540,7 +15540,7 @@ function _stringFormat(Class3, format3, fnOrRegex, _params = {}) {
 }
 var TimePrecision;
 var init_api = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/api.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/api.js"() {
     init_checks();
     init_registries();
     init_schemas();
@@ -15555,7 +15555,7 @@ var init_api = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/to-json-schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/to-json-schema.js
 function assignProps(target, ...sources) {
   for (const source of sources) {
     for (const key of Reflect.ownKeys(source)) {
@@ -16071,7 +16071,7 @@ function isTransforming(_schema, _ctx) {
 }
 var FOLDABLE_KEYS, UNION_KEYS, createToJSONSchemaMethod, createStandardJSONSchemaMethod;
 var init_to_json_schema = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/to-json-schema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/to-json-schema.js"() {
     init_registries();
     init_util();
     FOLDABLE_KEYS = /* @__PURE__ */ new Set(["type", "properties", "required", "additionalProperties"]);
@@ -16092,7 +16092,7 @@ var init_to_json_schema = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-processors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-processors.js
 function aggregateChecks(schema) {
   const agg = {};
   const def = schema._zod.def;
@@ -16242,7 +16242,7 @@ function toJSONSchema(input2, params) {
 }
 var narrowMin, narrowMax, narrowBoth, addDivisor, addPattern, intersectMime, setFormat, minContributor, maxContributor, formatContributor, contributors, formatMap, exactPatterns, exactPattern, stringProcessor, numberProcessor, booleanProcessor, bigintProcessor, symbolProcessor, nullProcessor, undefinedProcessor, voidProcessor, neverProcessor, anyProcessor, unknownProcessor, dateProcessor, enumProcessor, literalProcessor, nanProcessor, templateLiteralProcessor, fileProcessor, successProcessor, customProcessor, functionProcessor, transformProcessor, mapProcessor, setProcessor, arrayProcessor, objectProcessor, unionProcessor, intersectionProcessor, tupleProcessor, pendingRecords, recordProcessor, nullableProcessor, nonoptionalProcessor, UNREPRESENTABLE_DEFAULT, defaultProcessor, prefaultProcessor, catchProcessor, pipeProcessor, readonlyProcessor, promiseProcessor, optionalProcessor, lazyProcessor, allProcessors;
 var init_json_schema_processors = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-processors.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-processors.js"() {
     init_regexes();
     init_schemas();
     init_to_json_schema();
@@ -16849,10 +16849,10 @@ var init_json_schema_processors = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-generator.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-generator.js
 var JSONSchemaGenerator;
 var init_json_schema_generator = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-generator.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-generator.js"() {
     init_json_schema_processors();
     init_to_json_schema();
     JSONSchemaGenerator = class {
@@ -16934,14 +16934,14 @@ var init_json_schema_generator = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema.js
 var json_schema_exports = {};
 var init_json_schema = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema.js"() {
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/index.js
 var core_exports2 = {};
 __export(core_exports2, {
   $ZodAny: () => $ZodAny,
@@ -17258,7 +17258,7 @@ __export(core_exports2, {
   withParser: () => withParser
 });
 var init_core2 = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/index.js"() {
     init_core();
     init_parse();
     init_errors();
@@ -17281,7 +17281,7 @@ var init_core2 = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/visit.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/visit.js
 function visit(schema, fnOrHandlers) {
   const fn = typeof fnOrHandlers === "function" ? fnOrHandlers : (node2, rewritten) => {
     const h7 = fnOrHandlers[node2._zod.def.type];
@@ -17436,14 +17436,14 @@ function visit(schema, fnOrHandlers) {
 }
 var RESOLVING;
 var init_visit = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/visit.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/visit.js"() {
     init_schemas();
     init_util();
     RESOLVING = Symbol("z.visit/resolving");
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/checks.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/checks.js
 var checks_exports2 = {};
 __export(checks_exports2, {
   endsWith: () => _endsWith,
@@ -17478,12 +17478,12 @@ __export(checks_exports2, {
   uppercase: () => _uppercase
 });
 var init_checks2 = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/checks.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/checks.js"() {
     init_core2();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/errors.js
 function _lazyMethod(proto, key, make) {
   Object.defineProperty(proto, key, {
     configurable: true,
@@ -17500,7 +17500,7 @@ function _lazyMethod(proto, key, make) {
 }
 var _installedErrorProtos, initializer2, ZodError2, ZodRealError;
 var init_errors2 = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/errors.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/errors.js"() {
     init_core2();
     init_core2();
     init_util();
@@ -17537,10 +17537,10 @@ var init_errors2 = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/parse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/parse.js
 var parse2, parseAsync2, safeParse3, safeParseAsync3, encode2, decode2, encodeAsync2, decodeAsync2, safeEncode2, safeDecode2, safeEncodeAsync2, safeDecodeAsync2;
 var init_parse2 = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/parse.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/parse.js"() {
     init_core2();
     init_errors2();
     init_core2();
@@ -17559,7 +17559,7 @@ var init_parse2 = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js
 var schemas_exports2 = {};
 __export(schemas_exports2, {
   ZodAny: () => ZodAny2,
@@ -18233,7 +18233,7 @@ function preprocess(fn, schema) {
 }
 var ZodType2, _ZodString, ZodString2, ZodStringFormat, ZodISODateTime, ZodISODate, ZodISOTime, ZodISODuration, ZodEmail, ZodGUID, ZodUUID, ZodURL, ZodEmoji, ZodNanoID, ZodCUID, ZodCUID2, ZodULID, ZodXID, ZodKSUID, ZodIPv4, ZodMAC, ZodIPv6, ZodCIDRv4, ZodCIDRv6, ZodBase64, ZodBase64URL, ZodE164, ZodCreditCard, ZodIBAN, ZodJWT, ZodCustomStringFormat, ZodNumber2, ZodNumberFormat, ZodBoolean2, ZodBigInt2, ZodBigIntFormat, ZodSymbol2, ZodUndefined2, ZodNull2, ZodAny2, ZodUnknown2, ZodNever2, ZodVoid2, ZodDate2, ZodArray2, ZodObject2, ZodUnion2, ZodXor, ZodDiscriminatedUnion2, ZodIntersection2, ZodTuple2, ZodRecord2, ZodMap2, ZodSet2, ZodEnum2, ZodLiteral2, ZodFile, ZodTransform, ZodOptional2, ZodExactOptional, ZodNullable2, ZodDefault2, ZodPrefault, ZodNonOptional, ZodSuccess, ZodCatch2, ZodNaN2, ZodPipe, ZodCodec, ZodPreprocess, ZodReadonly2, ZodTemplateLiteral, ZodLazy2, ZodPromise2, ZodFunction2, ZodCustom, describe2, meta2, ZodInstanceOf, stringbool;
 var init_schemas2 = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js"() {
     init_core2();
     init_core2();
     init_json_schema_processors();
@@ -19216,7 +19216,7 @@ var init_schemas2 = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/compat.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/compat.js
 function setErrorMap(map5) {
   config({
     customError: map5
@@ -19227,7 +19227,7 @@ function getErrorMap2() {
 }
 var ZodIssueCode2, ZodFirstPartyTypeKind2;
 var init_compat = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/compat.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/compat.js"() {
     init_core2();
     ZodIssueCode2 = {
       invalid_type: "invalid_type",
@@ -19247,7 +19247,7 @@ var init_compat = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/iso.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/iso.js
 var iso_exports2 = {};
 __export(iso_exports2, {
   ZodISODate: () => ZodISODate,
@@ -19272,14 +19272,14 @@ function duration2(params) {
   return _isoDuration(ZodISODuration, params);
 }
 var init_iso = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/iso.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/iso.js"() {
     init_core2();
     init_schemas2();
     init_schemas2();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/from-json-schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/from-json-schema.js
 function detectVersion(schema, defaultTarget) {
   const $schema = schema.$schema;
   if ($schema === "https://json-schema.org/draft/2020-12/schema") {
@@ -19910,7 +19910,7 @@ function fromJSONSchema(schema, params) {
 }
 var z, RECOGNIZED_KEYS, SCHEMA_KEYWORDS, SCHEMA_MAP_KEYWORDS, fullTime;
 var init_from_json_schema = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/from-json-schema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/from-json-schema.js"() {
     init_registries();
     init_util();
     init_checks2();
@@ -20022,7 +20022,7 @@ var init_from_json_schema = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/deep-partial.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/deep-partial.js
 function deepPartial(schema) {
   return visit(schema, {
     object: (s2) => s2.partial(),
@@ -20034,13 +20034,13 @@ function deepPartial(schema) {
   });
 }
 var init_deep_partial = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/deep-partial.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/deep-partial.js"() {
     init_visit();
     init_schemas2();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/in-out.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/in-out.js
 function withChecks(side, checks) {
   if (!checks?.length)
     return side;
@@ -20070,14 +20070,14 @@ function output(schema) {
   });
 }
 var init_in_out = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/in-out.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/in-out.js"() {
     init_util();
     init_visit();
     init_schemas2();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/coerce.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/coerce.js
 var coerce_exports2 = {};
 __export(coerce_exports2, {
   bigint: () => bigint3,
@@ -20102,13 +20102,13 @@ function date4(params) {
   return _coercedDate(ZodDate2, params);
 }
 var init_coerce = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/coerce.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/coerce.js"() {
     init_core2();
     init_schemas2();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/external.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/external.js
 var external_exports = {};
 __export(external_exports, {
   $brand: () => $brand,
@@ -20371,7 +20371,7 @@ __export(external_exports, {
   xor: () => xor
 });
 var init_external = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/external.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/external.js"() {
     init_core2();
     init_schemas2();
     init_checks2();
@@ -20390,24 +20390,24 @@ var init_external = __esm({
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/index.js
 var init_classic = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/index.js"() {
     init_external();
     init_external();
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/index.js
 var init_v4 = __esm({
-  "node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/index.js"() {
     init_classic();
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/code.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/code.js
 var require_code = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/code.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/code.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.regexpCode = exports.getEsmExportName = exports.getProperty = exports.safeStringify = exports.stringify = exports.strConcat = exports.addCodeArg = exports.str = exports._ = exports.nil = exports._Code = exports.Name = exports.IDENTIFIER = exports._CodeOrName = void 0;
@@ -20559,9 +20559,9 @@ var require_code = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/scope.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/scope.js
 var require_scope = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/scope.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/scope.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ValueScope = exports.ValueScopeName = exports.Scope = exports.varKinds = exports.UsedValueState = void 0;
@@ -20704,9 +20704,9 @@ var require_scope = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/index.js
 var require_codegen = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.or = exports.and = exports.not = exports.CodeGen = exports.operators = exports.varKinds = exports.ValueScopeName = exports.ValueScope = exports.Scope = exports.Name = exports.regexpCode = exports.stringify = exports.getProperty = exports.nil = exports.strConcat = exports.str = exports._ = void 0;
@@ -21424,9 +21424,9 @@ var require_codegen = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/util.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/util.js
 var require_util = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/util.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/util.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.checkStrictMode = exports.getErrorPath = exports.Type = exports.useFunc = exports.setEvaluated = exports.evaluatedPropsToName = exports.mergeEvaluated = exports.eachItem = exports.unescapeJsonPointer = exports.escapeJsonPointer = exports.escapeFragment = exports.unescapeFragment = exports.schemaRefOrVal = exports.schemaHasRulesButRef = exports.schemaHasRules = exports.checkUnknownRules = exports.alwaysValidSchema = exports.toHash = void 0;
@@ -21591,9 +21591,9 @@ var require_util = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/names.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/names.js
 var require_names = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/names.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/names.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -21630,9 +21630,9 @@ var require_names = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/errors.js
 var require_errors = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/errors.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/errors.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.extendErrors = exports.resetErrorsCount = exports.reportExtraError = exports.reportError = exports.keyword$DataError = exports.keywordError = void 0;
@@ -21752,9 +21752,9 @@ var require_errors = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/boolSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/boolSchema.js
 var require_boolSchema = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/boolSchema.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/boolSchema.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.boolOrEmptySchema = exports.topBoolOrEmptySchema = void 0;
@@ -21803,9 +21803,9 @@ var require_boolSchema = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/rules.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/rules.js
 var require_rules = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/rules.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/rules.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getRules = exports.isJSONType = void 0;
@@ -21834,9 +21834,9 @@ var require_rules = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/applicability.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/applicability.js
 var require_applicability = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/applicability.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/applicability.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.shouldUseRule = exports.shouldUseGroup = exports.schemaHasRulesForType = void 0;
@@ -21857,9 +21857,9 @@ var require_applicability = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/dataType.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/dataType.js
 var require_dataType = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/dataType.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/dataType.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.reportTypeError = exports.checkDataTypes = exports.checkDataType = exports.coerceAndCheckDataType = exports.getJSONTypes = exports.getSchemaTypes = exports.DataType = void 0;
@@ -22041,9 +22041,9 @@ var require_dataType = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/defaults.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/defaults.js
 var require_defaults = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/defaults.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/defaults.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.assignDefaults = void 0;
@@ -22078,9 +22078,9 @@ var require_defaults = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/code.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/code.js
 var require_code2 = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/code.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/code.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.validateUnion = exports.validateArray = exports.usePattern = exports.callValidateCode = exports.schemaProperties = exports.allSchemaProperties = exports.noPropertyInData = exports.propertyInData = exports.isOwnProperty = exports.hasPropFunc = exports.reportMissingProp = exports.checkMissingProp = exports.checkReportMissingProp = void 0;
@@ -22211,9 +22211,9 @@ var require_code2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/keyword.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/keyword.js
 var require_keyword = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/keyword.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/keyword.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.validateKeywordUsage = exports.validSchemaType = exports.funcKeywordCode = exports.macroKeywordCode = void 0;
@@ -22329,9 +22329,9 @@ var require_keyword = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/subschema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/subschema.js
 var require_subschema = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/subschema.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/subschema.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.extendSubschemaMode = exports.extendSubschemaData = exports.getSubschema = void 0;
@@ -22412,9 +22412,9 @@ var require_subschema = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js
 var require_fast_deep_equal = __commonJS({
-  "node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js"(exports, module) {
     "use strict";
     module.exports = function equal(a5, b9) {
       if (a5 === b9) return true;
@@ -22447,9 +22447,9 @@ var require_fast_deep_equal = __commonJS({
   }
 });
 
-// node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/index.js
 var require_json_schema_traverse = __commonJS({
-  "node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/index.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/index.js"(exports, module) {
     "use strict";
     var traverse = module.exports = function(schema, opts, cb) {
       if (typeof opts == "function") {
@@ -22535,9 +22535,9 @@ var require_json_schema_traverse = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/resolve.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/resolve.js
 var require_resolve = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/resolve.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/resolve.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getSchemaRefs = exports.resolveUrl = exports.normalizeId = exports._getFullPath = exports.getFullPath = exports.inlineRef = void 0;
@@ -22691,9 +22691,9 @@ var require_resolve = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/index.js
 var require_validate = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getData = exports.KeywordCxt = exports.validateFunctionCode = void 0;
@@ -23199,9 +23199,9 @@ var require_validate = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/validation_error.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/validation_error.js
 var require_validation_error = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/validation_error.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/validation_error.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var ValidationError = class extends Error {
@@ -23215,9 +23215,9 @@ var require_validation_error = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/ref_error.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/ref_error.js
 var require_ref_error = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/ref_error.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/ref_error.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var resolve_1 = require_resolve();
@@ -23232,9 +23232,9 @@ var require_ref_error = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/index.js
 var require_compile = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.resolveSchema = exports.getCompilingSchema = exports.resolveRef = exports.compileSchema = exports.SchemaEnv = void 0;
@@ -23456,9 +23456,9 @@ var require_compile = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json
 var require_data = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json"(exports, module) {
     module.exports = {
       $id: "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#",
       description: "Meta-schema for $data reference (JSON AnySchema extension proposal)",
@@ -23475,9 +23475,9 @@ var require_data = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/utils.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/utils.js
 var require_utils = __commonJS({
-  "node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/utils.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/utils.js"(exports, module) {
     "use strict";
     var isUUID = RegExp.prototype.test.bind(/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/iu);
     var isIPv4 = RegExp.prototype.test.bind(/^(?:(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|\d)$/u);
@@ -23977,9 +23977,9 @@ var require_utils = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/schemes.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/schemes.js
 var require_schemes = __commonJS({
-  "node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/schemes.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/lib/schemes.js"(exports, module) {
     "use strict";
     var { isUUID } = require_utils();
     var URN_REG = /^([\da-z][\d\-a-z]{0,31}):((?:[\w!$'()*+,\-./:;=@]|%[\da-f]{2})+)$/iu;
@@ -24188,9 +24188,9 @@ var require_schemes = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/index.js
 var require_fast_uri = __commonJS({
-  "node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/index.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fast-uri@3.1.8/node_modules/fast-uri/index.js"(exports, module) {
     "use strict";
     var { normalizeIPv6, removeDotSegments, recomposeAuthority, normalizePercentEncoding, normalizePathEncoding, serializePathEncoding, normalizeQueryFragmentEncoding, encodeQuery, encodeFragment, reescapeHostDelimiters, isIPv4, nonSimpleDomain } = require_utils();
     var { SCHEMES, getSchemeHandler } = require_schemes();
@@ -24594,9 +24594,9 @@ var require_fast_uri = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/uri.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/uri.js
 var require_uri = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/uri.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/uri.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var uri2 = require_fast_uri();
@@ -24605,9 +24605,9 @@ var require_uri = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/core.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/core.js
 var require_core = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/core.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/core.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = void 0;
@@ -25216,9 +25216,9 @@ var require_core = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/id.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/id.js
 var require_id = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/id.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/id.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var def = {
@@ -25231,9 +25231,9 @@ var require_id = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/ref.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/ref.js
 var require_ref = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/ref.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/ref.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.callRef = exports.getValidate = void 0;
@@ -25353,9 +25353,9 @@ var require_ref = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/index.js
 var require_core2 = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var id_1 = require_id();
@@ -25374,9 +25374,9 @@ var require_core2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitNumber.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitNumber.js
 var require_limitNumber = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitNumber.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitNumber.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -25406,9 +25406,9 @@ var require_limitNumber = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/multipleOf.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/multipleOf.js
 var require_multipleOf = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/multipleOf.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/multipleOf.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -25434,9 +25434,9 @@ var require_multipleOf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/ucs2length.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/ucs2length.js
 var require_ucs2length = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/ucs2length.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/ucs2length.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function ucs2length2(str) {
@@ -25460,9 +25460,9 @@ var require_ucs2length = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitLength.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitLength.js
 var require_limitLength = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitLength.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitLength.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -25492,9 +25492,9 @@ var require_limitLength = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/pattern.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/pattern.js
 var require_pattern = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/pattern.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/pattern.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var code_1 = require_code2();
@@ -25529,9 +25529,9 @@ var require_pattern = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitProperties.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitProperties.js
 var require_limitProperties = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitProperties.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitProperties.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -25558,9 +25558,9 @@ var require_limitProperties = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/required.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/required.js
 var require_required = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/required.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/required.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var code_1 = require_code2();
@@ -25640,9 +25640,9 @@ var require_required = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitItems.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitItems.js
 var require_limitItems = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitItems.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitItems.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -25669,9 +25669,9 @@ var require_limitItems = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/equal.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/equal.js
 var require_equal = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/equal.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/equal.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var equal = require_fast_deep_equal();
@@ -25680,9 +25680,9 @@ var require_equal = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/uniqueItems.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/uniqueItems.js
 var require_uniqueItems = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/uniqueItems.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/uniqueItems.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var dataType_1 = require_dataType();
@@ -25747,9 +25747,9 @@ var require_uniqueItems = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/const.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/const.js
 var require_const = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/const.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/const.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -25776,9 +25776,9 @@ var require_const = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/enum.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/enum.js
 var require_enum = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/enum.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/enum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -25825,9 +25825,9 @@ var require_enum = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/index.js
 var require_validation = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var limitNumber_1 = require_limitNumber();
@@ -25863,9 +25863,9 @@ var require_validation = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalItems.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalItems.js
 var require_additionalItems = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalItems.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalItems.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.validateAdditionalItems = void 0;
@@ -25916,9 +25916,9 @@ var require_additionalItems = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items.js
 var require_items = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.validateTuple = void 0;
@@ -25973,9 +25973,9 @@ var require_items = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/prefixItems.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/prefixItems.js
 var require_prefixItems = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/prefixItems.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/prefixItems.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var items_1 = require_items();
@@ -25990,9 +25990,9 @@ var require_prefixItems = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items2020.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items2020.js
 var require_items2020 = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items2020.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items2020.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -26025,9 +26025,9 @@ var require_items2020 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/contains.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/contains.js
 var require_contains = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/contains.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/contains.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -26119,9 +26119,9 @@ var require_contains = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/dependencies.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/dependencies.js
 var require_dependencies = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/dependencies.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/dependencies.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.validateSchemaDeps = exports.validatePropertyDeps = exports.error = void 0;
@@ -26213,9 +26213,9 @@ var require_dependencies = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/propertyNames.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/propertyNames.js
 var require_propertyNames = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/propertyNames.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/propertyNames.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -26256,9 +26256,9 @@ var require_propertyNames = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalProperties.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalProperties.js
 var require_additionalProperties = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalProperties.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalProperties.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var code_1 = require_code2();
@@ -26362,9 +26362,9 @@ var require_additionalProperties = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/properties.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/properties.js
 var require_properties = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/properties.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/properties.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var validate_1 = require_validate();
@@ -26420,9 +26420,9 @@ var require_properties = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/patternProperties.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/patternProperties.js
 var require_patternProperties = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/patternProperties.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/patternProperties.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var code_1 = require_code2();
@@ -26494,9 +26494,9 @@ var require_patternProperties = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/not.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/not.js
 var require_not = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/not.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/not.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var util_1 = require_util();
@@ -26525,9 +26525,9 @@ var require_not = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/anyOf.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/anyOf.js
 var require_anyOf = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/anyOf.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/anyOf.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var code_1 = require_code2();
@@ -26542,9 +26542,9 @@ var require_anyOf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/oneOf.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/oneOf.js
 var require_oneOf = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/oneOf.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/oneOf.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -26600,9 +26600,9 @@ var require_oneOf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/allOf.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/allOf.js
 var require_allOf = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/allOf.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/allOf.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var util_1 = require_util();
@@ -26627,9 +26627,9 @@ var require_allOf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/if.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/if.js
 var require_if = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/if.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/if.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -26696,9 +26696,9 @@ var require_if = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/thenElse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/thenElse.js
 var require_thenElse = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/thenElse.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/thenElse.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var util_1 = require_util();
@@ -26714,9 +26714,9 @@ var require_thenElse = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/index.js
 var require_applicator = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var additionalItems_1 = require_additionalItems();
@@ -26762,9 +26762,9 @@ var require_applicator = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/format.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/format.js
 var require_format = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/format.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/format.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -26852,9 +26852,9 @@ var require_format = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/index.js
 var require_format2 = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var format_1 = require_format();
@@ -26863,9 +26863,9 @@ var require_format2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/metadata.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/metadata.js
 var require_metadata = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/metadata.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/metadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.contentVocabulary = exports.metadataVocabulary = void 0;
@@ -26886,9 +26886,9 @@ var require_metadata = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/draft7.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/draft7.js
 var require_draft7 = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/draft7.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/draft7.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var core_1 = require_core2();
@@ -26908,9 +26908,9 @@ var require_draft7 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/types.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/types.js
 var require_types = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/types.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/types.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscrError = void 0;
@@ -26922,9 +26922,9 @@ var require_types = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/index.js
 var require_discriminator = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var codegen_1 = require_codegen();
@@ -27027,9 +27027,9 @@ var require_discriminator = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json
 var require_json_schema_draft_07 = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json"(exports, module) {
     module.exports = {
       $schema: "http://json-schema.org/draft-07/schema#",
       $id: "http://json-schema.org/draft-07/schema#",
@@ -27184,9 +27184,9 @@ var require_json_schema_draft_07 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/ajv.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/ajv.js
 var require_ajv = __commonJS({
-  "node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/ajv.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/ajv.js"(exports, module) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MissingRefError = exports.ValidationError = exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = exports.Ajv = void 0;
@@ -27254,9 +27254,9 @@ var require_ajv = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/formats.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/formats.js
 var require_formats = __commonJS({
-  "node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/formats.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/formats.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.formatNames = exports.fastFormats = exports.fullFormats = void 0;
@@ -27457,9 +27457,9 @@ var require_formats = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/limit.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/limit.js
 var require_limit = __commonJS({
-  "node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/limit.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/limit.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.formatLimitDefinition = void 0;
@@ -27529,9 +27529,9 @@ var require_limit = __commonJS({
   }
 });
 
-// node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/index.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/ajv-formats@3.0.1/node_modules/ajv-formats/dist/index.js"(exports, module) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var formats_1 = require_formats();
@@ -27571,10 +27571,10 @@ var require_dist = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/constants.js
 var RequestChecksumCalculation, DEFAULT_REQUEST_CHECKSUM_CALCULATION, ResponseChecksumValidation, DEFAULT_RESPONSE_CHECKSUM_VALIDATION, ChecksumAlgorithm, ChecksumLocation, DEFAULT_CHECKSUM_ALGORITHM;
 var init_constants = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/constants.js"() {
     RequestChecksumCalculation = {
       WHEN_SUPPORTED: "WHEN_SUPPORTED",
       WHEN_REQUIRED: "WHEN_REQUIRED"
@@ -27601,10 +27601,10 @@ var init_constants = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringUnionSelector.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringUnionSelector.js
 var SelectorType, stringUnionSelector;
 var init_stringUnionSelector = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringUnionSelector.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringUnionSelector.js"() {
     (function(SelectorType3) {
       SelectorType3["ENV"] = "env";
       SelectorType3["CONFIG"] = "shared config entry";
@@ -27621,10 +27621,10 @@ var init_stringUnionSelector = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS.js
 var ENV_REQUEST_CHECKSUM_CALCULATION, CONFIG_REQUEST_CHECKSUM_CALCULATION, NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS;
 var init_NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS.js"() {
     init_constants();
     init_stringUnionSelector();
     ENV_REQUEST_CHECKSUM_CALCULATION = "AWS_REQUEST_CHECKSUM_CALCULATION";
@@ -27637,10 +27637,10 @@ var init_NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS.js
 var ENV_RESPONSE_CHECKSUM_VALIDATION, CONFIG_RESPONSE_CHECKSUM_VALIDATION, NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS;
 var init_NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS.js"() {
     init_constants();
     init_stringUnionSelector();
     ENV_RESPONSE_CHECKSUM_VALIDATION = "AWS_RESPONSE_CHECKSUM_VALIDATION";
@@ -27653,10 +27653,10 @@ var init_NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js
 var state, emitWarningIfUnsupportedVersion;
 var init_emitWarningIfUnsupportedVersion = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js"() {
     state = {
       warningEmitted: false
     };
@@ -27684,10 +27684,10 @@ More information can be found at: https://a.co/c895JFp`);
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js
 var longPollMiddleware, longPollMiddlewareOptions, getLongPollPlugin;
 var init_longPollMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js"() {
     longPollMiddleware = () => (next, context) => async (args) => {
       context.__retryLongPoll = true;
       return next(args);
@@ -27706,7 +27706,7 @@ var init_longPollMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js
 function setCredentialFeature(credentials, feature, value) {
   if (!credentials.$source) {
     credentials.$source = {};
@@ -27715,23 +27715,23 @@ function setCredentialFeature(credentials, feature, value) {
   return credentials;
 }
 var init_setCredentialFeature = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/isStreamingPayload/isStreamingPayload.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/isStreamingPayload/isStreamingPayload.js
 import { Readable as Readable2 } from "node:stream";
 var isStreamingPayload;
 var init_isStreamingPayload = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/isStreamingPayload/isStreamingPayload.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/isStreamingPayload/isStreamingPayload.js"() {
     isStreamingPayload = (request) => request?.body instanceof Readable2 || typeof ReadableStream !== "undefined" && request?.body instanceof ReadableStream;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/middleware-stack/MiddlewareStack.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/middleware-stack/MiddlewareStack.js
 var getAllAliases, getMiddlewareNameWithAliases, constructStack, stepWeights, priorityWeights;
 var init_MiddlewareStack = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/middleware-stack/MiddlewareStack.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/middleware-stack/MiddlewareStack.js"() {
     getAllAliases = (name, aliases) => {
       const _aliases = [];
       if (name) {
@@ -27998,9 +27998,9 @@ var init_MiddlewareStack = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+types@4.19.0/node_modules/@smithy/types/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+types@4.19.0/node_modules/@smithy/types/dist-cjs/index.js
 var require_dist_cjs = __commonJS({
-  "node_modules/.pnpm/@smithy+types@4.19.0/node_modules/@smithy/types/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+types@4.19.0/node_modules/@smithy/types/dist-cjs/index.js"(exports) {
     var HttpAuthLocation;
     (function(HttpAuthLocation2) {
       HttpAuthLocation2["HEADER"] = "header";
@@ -28091,25 +28091,25 @@ var require_dist_cjs = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/getSmithyContext.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/getSmithyContext.js
 var import_types13, getSmithyContext;
 var init_getSmithyContext = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/getSmithyContext.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/getSmithyContext.js"() {
     import_types13 = __toESM(require_dist_cjs());
     getSmithyContext = (context) => context[import_types13.SMITHY_CONTEXT_KEY] || (context[import_types13.SMITHY_CONTEXT_KEY] = {});
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/hasOwn.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/hasOwn.js
 function hasOwn(o3, k7) {
   return Object.prototype.hasOwnProperty.call(o3, k7);
 }
 var init_hasOwn = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/hasOwn.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/hasOwn.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpRequest.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpRequest.js
 function cloneQuery(query) {
   return Object.keys(query).reduce((carry, paramName) => {
     const param = query[paramName];
@@ -28121,7 +28121,7 @@ function cloneQuery(query) {
 }
 var HttpRequest;
 var init_httpRequest = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpRequest.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpRequest.js"() {
     HttpRequest = class _HttpRequest {
       method;
       protocol;
@@ -28171,10 +28171,10 @@ var init_httpRequest = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpResponse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpResponse.js
 var HttpResponse;
 var init_httpResponse = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpResponse.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/httpResponse.js"() {
     HttpResponse = class {
       statusCode;
       reason;
@@ -28196,10 +28196,10 @@ var init_httpResponse = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostLabel.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostLabel.js
 var VALID_HOST_LABEL_REGEX, isValidHostLabel;
 var init_isValidHostLabel = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostLabel.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostLabel.js"() {
     VALID_HOST_LABEL_REGEX = new RegExp(`^(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$`);
     isValidHostLabel = (value, allowSubDomains = false) => {
       if (!allowSubDomains) {
@@ -28216,20 +28216,20 @@ var init_isValidHostLabel = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostname.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostname.js
 function isValidHostname(hostname5) {
   const hostPattern = /^[a-z0-9][a-z0-9.-]*[a-z0-9]$/;
   return hostPattern.test(hostname5);
 }
 var init_isValidHostname = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostname.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/isValidHostname.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/normalizeProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/normalizeProvider.js
 var normalizeProvider;
 var init_normalizeProvider = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/normalizeProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/normalizeProvider.js"() {
     normalizeProvider = (input2) => {
       if (typeof input2 === "function")
         return input2;
@@ -28239,7 +28239,7 @@ var init_normalizeProvider = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseQueryString.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseQueryString.js
 function parseQueryString(querystring) {
   const query = {};
   querystring = querystring.replace(/^\?/, "");
@@ -28262,14 +28262,14 @@ function parseQueryString(querystring) {
   return query;
 }
 var init_parseQueryString = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseQueryString.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseQueryString.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseUrl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseUrl.js
 var parseUrl;
 var init_parseUrl = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseUrl.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/parseUrl.js"() {
     init_parseQueryString();
     parseUrl = (url3) => {
       if (typeof url3 === "string") {
@@ -28291,10 +28291,10 @@ var init_parseUrl = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/toEndpointV1.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/toEndpointV1.js
 var toEndpointV1;
 var init_toEndpointV1 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/toEndpointV1.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/toEndpointV1.js"() {
     init_hasOwn();
     init_parseUrl();
     toEndpointV1 = (endpoint) => {
@@ -28318,9 +28318,9 @@ var init_toEndpointV1 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/index.js
 var init_transport = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/transport/index.js"() {
     init_getSmithyContext();
     init_hasOwn();
     init_httpRequest();
@@ -28334,28 +28334,28 @@ var init_transport = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidFunction.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidFunction.js
 var invalidFunction;
 var init_invalidFunction = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidFunction.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidFunction.js"() {
     invalidFunction = (message) => () => {
       throw new Error(message);
     };
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidProvider.js
 var invalidProvider;
 var init_invalidProvider = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/invalid-dependency/invalidProvider.js"() {
     invalidProvider = (message) => () => Promise.reject(message);
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/circularReplacer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/circularReplacer.js
 var getCircularReplacer;
 var init_circularReplacer = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/circularReplacer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/circularReplacer.js"() {
     getCircularReplacer = () => {
       const seen = /* @__PURE__ */ new WeakSet();
       return (key, value) => {
@@ -28371,20 +28371,20 @@ var init_circularReplacer = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/sleep.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/sleep.js
 var sleep;
 var init_sleep = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/sleep.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/sleep.js"() {
     sleep = (seconds) => {
       return new Promise((resolve) => setTimeout(resolve, seconds * 1e3));
     };
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/waiter.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/waiter.js
 var waiterServiceDefaults, WaiterState, checkExceptions;
 var init_waiter = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/waiter.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/waiter.js"() {
     init_circularReplacer();
     waiterServiceDefaults = {
       minDelay: 2,
@@ -28420,10 +28420,10 @@ var init_waiter = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/poller.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/poller.js
 var runPolling, checkWarn403, createMessageFromResponse, exponentialBackoffWithJitter, randomInRange;
 var init_poller = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/poller.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/poller.js"() {
     init_circularReplacer();
     init_sleep();
     init_waiter();
@@ -28512,10 +28512,10 @@ var init_poller = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/validate.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/validate.js
 var validateWaiterOptions;
 var init_validate = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/validate.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/utils/validate.js"() {
     validateWaiterOptions = (options) => {
       if (options.maxWaitTime <= 0) {
         throw new Error(`WaiterConfiguration.maxWaitTime must be greater than 0`);
@@ -28532,10 +28532,10 @@ var init_validate = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/createWaiter.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/createWaiter.js
 var abortTimeout, createWaiter;
 var init_createWaiter = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/createWaiter.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/util-waiter/createWaiter.js"() {
     init_poller();
     init_validate();
     init_waiter();
@@ -28586,10 +28586,10 @@ var init_createWaiter = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client.js
 var Client;
 var init_client = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client.js"() {
     init_MiddlewareStack();
     Client = class {
       config;
@@ -28640,10 +28640,10 @@ var init_client = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/deref.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/deref.js
 var deref;
 var init_deref = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/deref.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/deref.js"() {
     deref = (schemaRef) => {
       if (typeof schemaRef === "function") {
         return schemaRef();
@@ -28653,10 +28653,10 @@ var init_deref = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/operation.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/operation.js
 var operation;
 var init_operation = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/operation.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/operation.js"() {
     operation = (namespace, name, traits, input2, output2) => ({
       name,
       namespace,
@@ -28667,10 +28667,10 @@ var init_operation = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaDeserializationMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaDeserializationMiddleware.js
 var schemaDeserializationMiddleware, findHeader;
 var init_schemaDeserializationMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaDeserializationMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaDeserializationMiddleware.js"() {
     init_transport();
     init_operation();
     schemaDeserializationMiddleware = (config3) => (next, context) => async (args) => {
@@ -28734,10 +28734,10 @@ var init_schemaDeserializationMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaSerializationMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaSerializationMiddleware.js
 var schemaSerializationMiddleware;
 var init_schemaSerializationMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaSerializationMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/schemaSerializationMiddleware.js"() {
     init_transport();
     init_operation();
     schemaSerializationMiddleware = (config3) => (next, context) => async (args) => {
@@ -28757,7 +28757,7 @@ var init_schemaSerializationMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/getSchemaSerdePlugin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/getSchemaSerdePlugin.js
 function getSchemaSerdePlugin(config3) {
   return {
     applyToStack: (commandStack) => {
@@ -28769,7 +28769,7 @@ function getSchemaSerdePlugin(config3) {
 }
 var deserializerMiddlewareOption, serializerMiddlewareOption;
 var init_getSchemaSerdePlugin = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/getSchemaSerdePlugin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/middleware/getSchemaSerdePlugin.js"() {
     init_schemaDeserializationMiddleware();
     init_schemaSerializationMiddleware();
     deserializerMiddlewareOption = {
@@ -28787,10 +28787,10 @@ var init_getSchemaSerdePlugin = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/Schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/Schema.js
 var Schema;
 var init_Schema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/Schema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/Schema.js"() {
     Schema = class {
       name;
       namespace;
@@ -28814,10 +28814,10 @@ var init_Schema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ListSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ListSchema.js
 var ListSchema, list;
 var init_ListSchema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ListSchema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ListSchema.js"() {
     init_Schema();
     ListSchema = class _ListSchema extends Schema {
       static symbol = Symbol.for("@smithy/lis");
@@ -28833,10 +28833,10 @@ var init_ListSchema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/MapSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/MapSchema.js
 var MapSchema, map3;
 var init_MapSchema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/MapSchema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/MapSchema.js"() {
     init_Schema();
     MapSchema = class _MapSchema extends Schema {
       static symbol = Symbol.for("@smithy/map");
@@ -28854,10 +28854,10 @@ var init_MapSchema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/OperationSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/OperationSchema.js
 var OperationSchema, op;
 var init_OperationSchema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/OperationSchema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/OperationSchema.js"() {
     init_Schema();
     OperationSchema = class _OperationSchema extends Schema {
       static symbol = Symbol.for("@smithy/ope");
@@ -28875,10 +28875,10 @@ var init_OperationSchema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/StructureSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/StructureSchema.js
 var StructureSchema, struct;
 var init_StructureSchema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/StructureSchema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/StructureSchema.js"() {
     init_Schema();
     StructureSchema = class _StructureSchema extends Schema {
       static symbol = Symbol.for("@smithy/str");
@@ -28896,10 +28896,10 @@ var init_StructureSchema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ErrorSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ErrorSchema.js
 var ErrorSchema, error112;
 var init_ErrorSchema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ErrorSchema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/ErrorSchema.js"() {
     init_Schema();
     init_StructureSchema();
     ErrorSchema = class _ErrorSchema extends StructureSchema {
@@ -28918,7 +28918,7 @@ var init_ErrorSchema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/translateTraits.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/translateTraits.js
 function translateTraits(indicator) {
   if (typeof indicator === "object") {
     return indicator;
@@ -28946,12 +28946,12 @@ function translateTraits(indicator) {
 }
 var traitsCache;
 var init_translateTraits = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/translateTraits.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/translateTraits.js"() {
     traitsCache = [];
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/NormalizedSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/NormalizedSchema.js
 function member(memberSchema, memberName) {
   if (memberSchema instanceof NormalizedSchema) {
     return Object.assign(memberSchema, {
@@ -28964,7 +28964,7 @@ function member(memberSchema, memberName) {
 }
 var anno, simpleSchemaCacheN, simpleSchemaCacheS, NormalizedSchema, isMemberSchema, isStaticSchema;
 var init_NormalizedSchema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/NormalizedSchema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/NormalizedSchema.js"() {
     init_deref();
     init_translateTraits();
     anno = {
@@ -29240,10 +29240,10 @@ var init_NormalizedSchema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/SimpleSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/SimpleSchema.js
 var SimpleSchema, sim, simAdapter;
 var init_SimpleSchema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/SimpleSchema.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/SimpleSchema.js"() {
     init_Schema();
     SimpleSchema = class _SimpleSchema extends Schema {
       static symbol = Symbol.for("@smithy/sim");
@@ -29265,10 +29265,10 @@ var init_SimpleSchema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/sentinels.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/sentinels.js
 var SCHEMA;
 var init_sentinels = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/sentinels.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/schemas/sentinels.js"() {
     SCHEMA = {
       BLOB: 21,
       STREAMING_BLOB: 42,
@@ -29288,10 +29288,10 @@ var init_sentinels = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/TypeRegistry.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/TypeRegistry.js
 var TypeRegistry;
 var init_TypeRegistry = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/TypeRegistry.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/TypeRegistry.js"() {
     TypeRegistry = class _TypeRegistry {
       namespace;
       schemas;
@@ -29404,7 +29404,7 @@ var init_TypeRegistry = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/index.js
 var schema_exports = {};
 __export(schema_exports, {
   ErrorSchema: () => ErrorSchema,
@@ -29436,7 +29436,7 @@ __export(schema_exports, {
   translateTraits: () => translateTraits
 });
 var init_schema = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/schema/index.js"() {
     init_deref();
     init_getSchemaSerdePlugin();
     init_ListSchema();
@@ -29454,7 +29454,7 @@ var init_schema = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/schemaLogFilter.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/schemaLogFilter.js
 function schemaLogFilter(schema, data) {
   if (data == null) {
     return data;
@@ -29487,16 +29487,16 @@ function schemaLogFilter(schema, data) {
 }
 var SENSITIVE_STRING;
 var init_schemaLogFilter = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/schemaLogFilter.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/schemaLogFilter.js"() {
     init_schema();
     SENSITIVE_STRING = "***SensitiveInformation***";
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/command.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/command.js
 var import_types14, Command, ClassBuilder;
 var init_command = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/command.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/command.js"() {
     import_types14 = __toESM(require_dist_cjs());
     init_MiddlewareStack();
     init_schemaLogFilter();
@@ -29639,18 +29639,18 @@ var init_command = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/constants.js
 var SENSITIVE_STRING2;
 var init_constants2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/constants.js"() {
     SENSITIVE_STRING2 = "***SensitiveInformation***";
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/create-aggregated-client.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/create-aggregated-client.js
 var createAggregatedClient;
 var init_create_aggregated_client = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/create-aggregated-client.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/create-aggregated-client.js"() {
     createAggregatedClient = (commands5, Client2, options) => {
       for (const [command5, CommandCtor] of Object.entries(commands5)) {
         const methodImpl = async function(args, optionsOrCb, cb) {
@@ -29699,10 +29699,10 @@ var init_create_aggregated_client = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/exceptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/exceptions.js
 var ServiceException, decorateServiceException;
 var init_exceptions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/exceptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/exceptions.js"() {
     ServiceException = class _ServiceException extends Error {
       static shapeId = "smithy.ts.sdk.synthetic.nonamespace.client#ServiceException";
       $fault;
@@ -29784,10 +29784,10 @@ var init_exceptions = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/default-error-handler.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/default-error-handler.js
 var throwDefaultError, withBaseException, deserializeMetadata;
 var init_default_error_handler = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/default-error-handler.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/default-error-handler.js"() {
     init_exceptions();
     throwDefaultError = ({ output: output2, parsedBody, exceptionCtor, errorCode }) => {
       const $metadata = deserializeMetadata(output2);
@@ -29813,10 +29813,10 @@ var init_default_error_handler = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/defaults-mode.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/defaults-mode.js
 var loadConfigsForDefaultMode;
 var init_defaults_mode = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/defaults-mode.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/defaults-mode.js"() {
     loadConfigsForDefaultMode = (mode) => {
       switch (mode) {
         case "standard":
@@ -29846,10 +29846,10 @@ var init_defaults_mode = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/emitWarningIfUnsupportedVersion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/emitWarningIfUnsupportedVersion.js
 var warningEmitted, emitWarningIfUnsupportedVersion2;
 var init_emitWarningIfUnsupportedVersion2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/emitWarningIfUnsupportedVersion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/emitWarningIfUnsupportedVersion.js"() {
     warningEmitted = false;
     emitWarningIfUnsupportedVersion2 = (version3) => {
       if (version3 && !warningEmitted && parseInt(version3.substring(1, version3.indexOf("."))) < 16) {
@@ -29859,10 +29859,10 @@ var init_emitWarningIfUnsupportedVersion2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/checksum.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/checksum.js
 var import_types15, knownAlgorithms, getChecksumConfiguration, resolveChecksumRuntimeConfig;
 var init_checksum = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/checksum.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/checksum.js"() {
     init_transport();
     import_types15 = __toESM(require_dist_cjs());
     knownAlgorithms = Object.values(import_types15.AlgorithmId);
@@ -29916,10 +29916,10 @@ var init_checksum = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/retry.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/retry.js
 var getRetryConfiguration, resolveRetryRuntimeConfig;
 var init_retry = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/retry.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/retry.js"() {
     getRetryConfiguration = (runtimeConfig) => {
       return {
         setRetryStrategy(retryStrategy) {
@@ -29938,10 +29938,10 @@ var init_retry = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/defaultExtensionConfiguration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/defaultExtensionConfiguration.js
 var getDefaultExtensionConfiguration, getDefaultClientConfiguration, resolveDefaultRuntimeConfig;
 var init_defaultExtensionConfiguration = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/defaultExtensionConfiguration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/extensions/defaultExtensionConfiguration.js"() {
     init_checksum();
     init_retry();
     getDefaultExtensionConfiguration = (runtimeConfig) => {
@@ -29954,18 +29954,18 @@ var init_defaultExtensionConfiguration = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-array-if-single-item.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-array-if-single-item.js
 var getArrayIfSingleItem;
 var init_get_array_if_single_item = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-array-if-single-item.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-array-if-single-item.js"() {
     getArrayIfSingleItem = (mayBeArray) => Array.isArray(mayBeArray) ? mayBeArray : [mayBeArray];
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-value-from-text-node.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-value-from-text-node.js
 var getValueFromTextNode;
 var init_get_value_from_text_node = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-value-from-text-node.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/get-value-from-text-node.js"() {
     init_transport();
     getValueFromTextNode = (obj) => {
       const textNodeName = "#text";
@@ -29983,20 +29983,20 @@ var init_get_value_from_text_node = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/is-serializable-header-value.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/is-serializable-header-value.js
 var isSerializableHeaderValue;
 var init_is_serializable_header_value = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/is-serializable-header-value.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/is-serializable-header-value.js"() {
     isSerializableHeaderValue = (value) => {
       return value != null;
     };
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/NoOpLogger.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/NoOpLogger.js
 var NoOpLogger;
 var init_NoOpLogger = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/NoOpLogger.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/NoOpLogger.js"() {
     NoOpLogger = class {
       trace() {
       }
@@ -30012,7 +30012,7 @@ var init_NoOpLogger = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/object-mapping.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/object-mapping.js
 function map4(arg0, arg1, arg2) {
   let target;
   let filter;
@@ -30043,7 +30043,7 @@ function map4(arg0, arg1, arg2) {
 }
 var convertMap, take, mapWithFilter, applyInstruction, nonNullish, pass;
 var init_object_mapping = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/object-mapping.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/object-mapping.js"() {
     init_transport();
     convertMap = (target) => {
       const output2 = {};
@@ -30110,10 +30110,10 @@ var init_object_mapping = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/ser-utils.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/ser-utils.js
 var serializeFloat, serializeDateTime;
 var init_ser_utils = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/ser-utils.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/ser-utils.js"() {
     serializeFloat = (value) => {
       if (value !== value) {
         return "NaN";
@@ -30131,10 +30131,10 @@ var init_ser_utils = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/serde-json.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/serde-json.js
 var _json;
 var init_serde_json = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/serde-json.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/serde-json.js"() {
     init_transport();
     _json = (obj) => {
       if (obj == null) {
@@ -30160,7 +30160,7 @@ var init_serde_json = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client-command-builder.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client-command-builder.js
 function makeBuilder(common, service, name, ep) {
   return function makeCommand(added, plugins, op2, $, smithyContext = {}) {
     const epMerged = Object.assign({}, common, added);
@@ -30172,12 +30172,12 @@ function makeBuilder(common, service, name, ep) {
   };
 }
 var init_client_command_builder = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client-command-builder.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/smithy-client/client-command-builder.js"() {
     init_command();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/index.js
 var client_exports = {};
 __export(client_exports, {
   AlgorithmId: () => import_types15.AlgorithmId,
@@ -30221,7 +30221,7 @@ __export(client_exports, {
   withBaseException: () => withBaseException
 });
 var init_client2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/client/index.js"() {
     init_MiddlewareStack();
     init_transport();
     init_transport();
@@ -30252,18 +30252,18 @@ var init_client2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/is-array-buffer/is-array-buffer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/is-array-buffer/is-array-buffer.js
 var isArrayBuffer;
 var init_is_array_buffer = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/is-array-buffer/is-array-buffer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/is-array-buffer/is-array-buffer.js"() {
     isArrayBuffer = (arg) => typeof ArrayBuffer === "function" && arg instanceof ArrayBuffer || Object.prototype.toString.call(arg) === "[object ArrayBuffer]";
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-buffer-from/buffer-from.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-buffer-from/buffer-from.js
 var fromArrayBuffer, fromString;
 var init_buffer_from = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-buffer-from/buffer-from.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-buffer-from/buffer-from.js"() {
     init_is_array_buffer();
     fromArrayBuffer = (input2, offset = 0, length = input2.byteLength - offset) => {
       if (!isArrayBuffer(input2)) {
@@ -30280,10 +30280,10 @@ var init_buffer_from = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/fromBase64.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/fromBase64.js
 var BASE64_REGEX, fromBase64;
 var init_fromBase64 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/fromBase64.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/fromBase64.js"() {
     init_buffer_from();
     BASE64_REGEX = /^[A-Za-z0-9+/]*={0,2}$/;
     fromBase64 = (input2) => {
@@ -30299,10 +30299,10 @@ var init_fromBase64 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.js
 var fromUtf8;
 var init_fromUtf8 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.js"() {
     init_buffer_from();
     fromUtf8 = (input2) => {
       const buf = fromString(input2, "utf8");
@@ -30311,10 +30311,10 @@ var init_fromUtf8 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.js
 var toBase64;
 var init_toBase64 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.js"() {
     init_buffer_from();
     init_fromUtf8();
     toBase64 = (_input) => {
@@ -30332,7 +30332,7 @@ var init_toBase64 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/blob/Uint8ArrayBlobAdapter.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/blob/Uint8ArrayBlobAdapter.js
 function bindUint8ArrayBlobAdapter(toUtf83, fromUtf83, toBase643, fromBase642) {
   return class Uint8ArrayBlobAdapter2 extends Uint8Array {
     static fromString(source, encoding = "utf-8") {
@@ -30357,14 +30357,14 @@ function bindUint8ArrayBlobAdapter(toUtf83, fromUtf83, toBase643, fromBase642) {
   };
 }
 var init_Uint8ArrayBlobAdapter = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/blob/Uint8ArrayBlobAdapter.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/blob/Uint8ArrayBlobAdapter.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.js
 var toUtf8;
 var init_toUtf8 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.js"() {
     init_buffer_from();
     toUtf8 = (input2) => {
       if (typeof input2 === "string") {
@@ -30378,7 +30378,7 @@ var init_toUtf8 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/uuid/v4.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/uuid/v4.js
 function bindV4(getRandomValues2) {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return () => crypto.randomUUID();
@@ -30393,23 +30393,23 @@ function bindV4(getRandomValues2) {
 }
 var decimalToHex;
 var init_v42 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/uuid/v4.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/uuid/v4.js"() {
     decimalToHex = Array.from({ length: 256 }, (_3, i5) => i5.toString(16).padStart(2, "0"));
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/copyDocumentWithTransform.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/copyDocumentWithTransform.js
 var copyDocumentWithTransform;
 var init_copyDocumentWithTransform = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/copyDocumentWithTransform.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/copyDocumentWithTransform.js"() {
     copyDocumentWithTransform = (source, _schemaRef, _transform3 = (_3) => _3) => source;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/parse-utils.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/parse-utils.js
 var parseBoolean, expectBoolean, expectNumber, MAX_FLOAT, expectFloat32, expectLong, expectInt, expectInt32, expectShort, expectByte, expectSizedInt, castInt, expectNonNull, expectObject, expectString, expectUnion, strictParseDouble, strictParseFloat, strictParseFloat32, NUMBER_REGEX, parseNumber, limitedParseDouble, handleFloat, limitedParseFloat, limitedParseFloat32, parseFloatString, strictParseLong, strictParseInt, strictParseInt32, strictParseShort, strictParseByte, stackTraceWarning, logger;
 var init_parse_utils = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/parse-utils.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/parse-utils.js"() {
     init_transport();
     parseBoolean = (value) => {
       switch (value) {
@@ -30645,7 +30645,7 @@ var init_parse_utils = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/date-utils.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/date-utils.js
 function dateToUtcString(date11) {
   const year2 = date11.getUTCFullYear();
   const month = date11.getUTCMonth();
@@ -30662,7 +30662,7 @@ function dateToUtcString(date11) {
 }
 var DAYS2, MONTHS, RFC3339, parseRfc3339DateTime, RFC3339_WITH_OFFSET, parseRfc3339DateTimeWithOffset, IMF_FIXDATE, RFC_850_DATE, ASC_TIME, parseRfc7231DateTime, parseEpochTimestamp, buildDate, parseTwoDigitYear, FIFTY_YEARS_IN_MILLIS, adjustRfc850Year, parseMonthByShortName, DAYS_IN_MONTH, validateDayOfMonth, isLeapYear2, parseDateValue, parseMilliseconds, parseOffsetToMilliseconds, stripLeadingZeroes;
 var init_date_utils = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/date-utils.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/date-utils.js"() {
     init_parse_utils();
     DAYS2 = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -30837,10 +30837,10 @@ var init_date_utils = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/lazy-json.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/lazy-json.js
 var LazyJsonString;
 var init_lazy_json = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/lazy-json.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/lazy-json.js"() {
     LazyJsonString = function LazyJsonString2(val) {
       const str = Object.assign(new String(val), {
         deserializeJSON() {
@@ -30867,7 +30867,7 @@ var init_lazy_json = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/quote-header.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/quote-header.js
 function quoteHeader(part) {
   if (part.includes(",") || part.includes('"')) {
     part = `"${part.replace(/"/g, '\\"')}"`;
@@ -30875,11 +30875,11 @@ function quoteHeader(part) {
   return part;
 }
 var init_quote_header = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/quote-header.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/quote-header.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/schema-serde-lib/schema-date-utils.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/schema-serde-lib/schema-date-utils.js
 function range(v3, min, max2) {
   const _v = Number(v3);
   if (_v < min || _v > max2) {
@@ -30888,7 +30888,7 @@ function range(v3, min, max2) {
 }
 var ddd, mmm, time6, date10, year, RFC3339_WITH_OFFSET2, IMF_FIXDATE2, RFC_850_DATE2, ASC_TIME2, months, _parseEpochTimestamp, _parseRfc3339DateTimeWithOffset, _parseRfc7231DateTime;
 var init_schema_date_utils = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/schema-serde-lib/schema-date-utils.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/schema-serde-lib/schema-date-utils.js"() {
     ddd = `(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)(?:[ne|u?r]?s?day)?`;
     mmm = `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)`;
     time6 = `(\\d?\\d):(\\d{2}):(\\d{2})(?:\\.(\\d+))?`;
@@ -30983,7 +30983,7 @@ var init_schema_date_utils = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-every.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-every.js
 function splitEvery(value, delimiter, numDelimiters) {
   if (numDelimiters <= 0 || !Number.isInteger(numDelimiters)) {
     throw new Error("Invalid number of delimiters (" + numDelimiters + ") for splitEvery.");
@@ -31011,14 +31011,14 @@ function splitEvery(value, delimiter, numDelimiters) {
   return compoundSegments;
 }
 var init_split_every = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-every.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-every.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-header.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-header.js
 var splitHeader;
 var init_split_header = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-header.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/split-header.js"() {
     splitHeader = (value) => {
       const z4 = value.length;
       const values = [];
@@ -31059,13 +31059,13 @@ var init_split_header = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/value/NumericValue.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/value/NumericValue.js
 function nv(input2) {
   return new NumericValue(String(input2), "bigDecimal");
 }
 var format2, NumericValue;
 var init_NumericValue = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/value/NumericValue.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/value/NumericValue.js"() {
     format2 = /^-?((0|[1-9]\d*)(\.\d+)?|\.\d+)([eE][+-]?\d+)?$/;
     NumericValue = class _NumericValue {
       string;
@@ -31091,7 +31091,7 @@ var init_NumericValue = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-hex-encoding/hex-encoding.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-hex-encoding/hex-encoding.js
 function fromHex(encoded) {
   if (encoded.length % 2 !== 0) {
     throw new Error("Hex encoded strings must have an even number length");
@@ -31116,7 +31116,7 @@ function toHex(bytes) {
 }
 var SHORT_TO_HEX, HEX_TO_SHORT;
 var init_hex_encoding = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-hex-encoding/hex-encoding.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-hex-encoding/hex-encoding.js"() {
     SHORT_TO_HEX = {};
     HEX_TO_SHORT = {};
     for (let i5 = 0; i5 < 256; i5++) {
@@ -31130,11 +31130,11 @@ var init_hex_encoding = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-body-length/calculateBodyLength.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-body-length/calculateBodyLength.js
 import { ReadStream, fstatSync, lstatSync } from "node:fs";
 var calculateBodyLength;
 var init_calculateBodyLength = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-body-length/calculateBodyLength.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-body-length/calculateBodyLength.js"() {
     calculateBodyLength = (body) => {
       if (!body) {
         return 0;
@@ -31159,10 +31159,10 @@ var init_calculateBodyLength = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUint8Array.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUint8Array.js
 var toUint8Array;
 var init_toUint8Array = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUint8Array.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUint8Array.js"() {
     init_fromUtf8();
     toUint8Array = (data) => {
       if (data instanceof Uint8Array) {
@@ -31179,7 +31179,7 @@ var init_toUint8Array = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/concatBytes.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/concatBytes.js
 function concatBytes(arrays, length) {
   if (length === void 0) {
     length = 0;
@@ -31196,14 +31196,14 @@ function concatBytes(arrays, length) {
   return result;
 }
 var init_concatBytes = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/concatBytes.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/concatBytes.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/deserializerMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/deserializerMiddleware.js
 var deserializerMiddleware, findHeader2;
 var init_deserializerMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/deserializerMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/deserializerMiddleware.js"() {
     init_transport();
     deserializerMiddleware = (options, deserializer) => (next, context) => async (args) => {
       const { response } = await next(args);
@@ -31261,10 +31261,10 @@ var init_deserializerMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/ProviderError.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/ProviderError.js
 var ProviderError;
 var init_ProviderError = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/ProviderError.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/ProviderError.js"() {
     ProviderError = class _ProviderError extends Error {
       name = "ProviderError";
       tryNextLink;
@@ -31290,10 +31290,10 @@ var init_ProviderError = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/CredentialsProviderError.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/CredentialsProviderError.js
 var CredentialsProviderError;
 var init_CredentialsProviderError = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/CredentialsProviderError.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/CredentialsProviderError.js"() {
     init_ProviderError();
     CredentialsProviderError = class _CredentialsProviderError extends ProviderError {
       name = "CredentialsProviderError";
@@ -31305,10 +31305,10 @@ var init_CredentialsProviderError = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/TokenProviderError.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/TokenProviderError.js
 var TokenProviderError;
 var init_TokenProviderError = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/TokenProviderError.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/TokenProviderError.js"() {
     init_ProviderError();
     TokenProviderError = class _TokenProviderError extends ProviderError {
       name = "TokenProviderError";
@@ -31320,10 +31320,10 @@ var init_TokenProviderError = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/chain.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/chain.js
 var chain;
 var init_chain = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/chain.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/chain.js"() {
     init_ProviderError();
     chain = (...providers) => async () => {
       if (providers.length === 0) {
@@ -31347,18 +31347,18 @@ var init_chain = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/fromValue.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/fromValue.js
 var fromValue;
 var init_fromValue = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/fromValue.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/fromValue.js"() {
     fromValue = (staticValue) => () => Promise.resolve(staticValue);
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/memoize.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/memoize.js
 var memoize;
 var init_memoize = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/memoize.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/property-provider/memoize.js"() {
     memoize = (provider, isExpired, requiresRefresh) => {
       let resolved;
       let pending;
@@ -31406,10 +31406,10 @@ var init_memoize = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/booleanSelector.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/booleanSelector.js
 var booleanSelector;
 var init_booleanSelector = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/booleanSelector.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/booleanSelector.js"() {
     booleanSelector = (obj, key, type) => {
       if (!(key in obj))
         return void 0;
@@ -31422,10 +31422,10 @@ var init_booleanSelector = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/numberSelector.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/numberSelector.js
 var numberSelector;
 var init_numberSelector = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/numberSelector.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/numberSelector.js"() {
     numberSelector = (obj, key, type) => {
       if (!(key in obj))
         return void 0;
@@ -31438,10 +31438,10 @@ var init_numberSelector = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/types.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/types.js
 var SelectorType2;
 var init_types = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/types.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/util-config-provider/types.js"() {
     (function(SelectorType3) {
       SelectorType3["ENV"] = "env";
       SelectorType3["CONFIG"] = "shared config entry";
@@ -31449,12 +31449,12 @@ var init_types = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getHomeDir.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getHomeDir.js
 import { homedir } from "node:os";
 import { sep } from "node:path";
 var homeDirCache, getHomeDirCacheKey, getHomeDir;
 var init_getHomeDir = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getHomeDir.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getHomeDir.js"() {
     homeDirCache = {};
     getHomeDirCacheKey = () => {
       if (process && process.geteuid) {
@@ -31478,22 +31478,22 @@ var init_getHomeDir = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getProfileName.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getProfileName.js
 var ENV_PROFILE, DEFAULT_PROFILE, getProfileName;
 var init_getProfileName = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getProfileName.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getProfileName.js"() {
     ENV_PROFILE = "AWS_PROFILE";
     DEFAULT_PROFILE = "default";
     getProfileName = (init) => init.profile || process.env[ENV_PROFILE] || DEFAULT_PROFILE;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFilepath.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFilepath.js
 import { createHash as createHash10 } from "node:crypto";
 import { join } from "node:path";
 var getSSOTokenFilepath;
 var init_getSSOTokenFilepath = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFilepath.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFilepath.js"() {
     init_getHomeDir();
     getSSOTokenFilepath = (id3) => {
       const hasher = createHash10("sha1");
@@ -31503,11 +31503,11 @@ var init_getSSOTokenFilepath = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFromFile.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFromFile.js
 import { readFile as readFile10 } from "node:fs/promises";
 var tokenIntercept, getSSOTokenFromFile;
 var init_getSSOTokenFromFile = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFromFile.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSSOTokenFromFile.js"() {
     init_getSSOTokenFilepath();
     tokenIntercept = {};
     getSSOTokenFromFile = async (id3) => {
@@ -31521,18 +31521,18 @@ var init_getSSOTokenFromFile = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/constants.js
 var CONFIG_PREFIX_SEPARATOR;
 var init_constants3 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/constants.js"() {
     CONFIG_PREFIX_SEPARATOR = ".";
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigData.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigData.js
 var import_types16, getConfigData;
 var init_getConfigData = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigData.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigData.js"() {
     import_types16 = __toESM(require_dist_cjs());
     init_constants3();
     getConfigData = (data) => Object.entries(data).filter(([key]) => {
@@ -31552,32 +31552,32 @@ var init_getConfigData = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigFilepath.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigFilepath.js
 import { join as join2 } from "node:path";
 var ENV_CONFIG_PATH, getConfigFilepath;
 var init_getConfigFilepath = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigFilepath.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getConfigFilepath.js"() {
     init_getHomeDir();
     ENV_CONFIG_PATH = "AWS_CONFIG_FILE";
     getConfigFilepath = () => process.env[ENV_CONFIG_PATH] || join2(getHomeDir(), ".aws", "config");
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getCredentialsFilepath.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getCredentialsFilepath.js
 import { join as join3 } from "node:path";
 var ENV_CREDENTIALS_PATH, getCredentialsFilepath;
 var init_getCredentialsFilepath = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getCredentialsFilepath.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getCredentialsFilepath.js"() {
     init_getHomeDir();
     ENV_CREDENTIALS_PATH = "AWS_SHARED_CREDENTIALS_FILE";
     getCredentialsFilepath = () => process.env[ENV_CREDENTIALS_PATH] || join3(getHomeDir(), ".aws", "credentials");
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseIni.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseIni.js
 var import_types17, prefixKeyRegex, profileNameBlockList, parseIni;
 var init_parseIni = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseIni.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseIni.js"() {
     import_types17 = __toESM(require_dist_cjs());
     init_constants3();
     prefixKeyRegex = /^([\w-]+)\s(["'])?([\w-@+.%:/]+)\2$/;
@@ -31630,11 +31630,11 @@ var init_parseIni = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/readFile.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/readFile.js
 import { readFile as fsReadFile } from "node:fs/promises";
 var filePromises, fileIntercept, readFile11;
 var init_readFile = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/readFile.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/readFile.js"() {
     filePromises = {};
     fileIntercept = {};
     readFile11 = (path24, options) => {
@@ -31649,11 +31649,11 @@ var init_readFile = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSharedConfigFiles.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSharedConfigFiles.js
 import { join as join4 } from "node:path";
 var swallowError, loadSharedConfigFiles;
 var init_loadSharedConfigFiles = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSharedConfigFiles.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSharedConfigFiles.js"() {
     init_getConfigData();
     init_getConfigFilepath();
     init_getCredentialsFilepath();
@@ -31690,20 +31690,20 @@ var init_loadSharedConfigFiles = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSsoSessionData.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSsoSessionData.js
 var import_types18, getSsoSessionData;
 var init_getSsoSessionData = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSsoSessionData.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/getSsoSessionData.js"() {
     import_types18 = __toESM(require_dist_cjs());
     init_loadSharedConfigFiles();
     getSsoSessionData = (data) => Object.entries(data).filter(([key]) => key.startsWith(import_types18.IniSectionType.SSO_SESSION + CONFIG_PREFIX_SEPARATOR)).reduce((acc, [key, value]) => ({ ...acc, [key.substring(key.indexOf(CONFIG_PREFIX_SEPARATOR) + 1)]: value }), {});
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSsoSessionData.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSsoSessionData.js
 var swallowError2, loadSsoSessionData;
 var init_loadSsoSessionData = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSsoSessionData.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/loadSsoSessionData.js"() {
     init_getConfigFilepath();
     init_getSsoSessionData();
     init_parseIni();
@@ -31713,10 +31713,10 @@ var init_loadSsoSessionData = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/mergeConfigFiles.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/mergeConfigFiles.js
 var mergeConfigFiles;
 var init_mergeConfigFiles = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/mergeConfigFiles.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/mergeConfigFiles.js"() {
     mergeConfigFiles = (...files) => {
       const merged = {};
       for (const file3 of files) {
@@ -31733,10 +31733,10 @@ var init_mergeConfigFiles = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseKnownFiles.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseKnownFiles.js
 var parseKnownFiles;
 var init_parseKnownFiles = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseKnownFiles.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/parseKnownFiles.js"() {
     init_loadSharedConfigFiles();
     init_mergeConfigFiles();
     parseKnownFiles = async (init) => {
@@ -31746,10 +31746,10 @@ var init_parseKnownFiles = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/externalDataInterceptor.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/externalDataInterceptor.js
 var externalDataInterceptor;
 var init_externalDataInterceptor = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/externalDataInterceptor.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/shared-ini-file-loader/externalDataInterceptor.js"() {
     init_getSSOTokenFromFile();
     init_readFile();
     externalDataInterceptor = {
@@ -31769,7 +31769,7 @@ var init_externalDataInterceptor = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/getSelectorName.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/getSelectorName.js
 function getSelectorName(functionString) {
   try {
     const constants2 = new Set(Array.from(functionString.match(/([A-Z_]){3,}/g) ?? []));
@@ -31782,14 +31782,14 @@ function getSelectorName(functionString) {
   }
 }
 var init_getSelectorName = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/getSelectorName.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/getSelectorName.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromEnv.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromEnv.js
 var fromEnv;
 var init_fromEnv = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromEnv.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromEnv.js"() {
     init_CredentialsProviderError();
     init_getSelectorName();
     fromEnv = (envVarSelector, options) => async () => {
@@ -31806,10 +31806,10 @@ var init_fromEnv = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromSharedConfigFiles.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromSharedConfigFiles.js
 var fromSharedConfigFiles;
 var init_fromSharedConfigFiles = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromSharedConfigFiles.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromSharedConfigFiles.js"() {
     init_CredentialsProviderError();
     init_getProfileName();
     init_loadSharedConfigFiles();
@@ -31834,20 +31834,20 @@ var init_fromSharedConfigFiles = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromStatic.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromStatic.js
 var isFunction, fromStatic;
 var init_fromStatic = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromStatic.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/fromStatic.js"() {
     init_fromValue();
     isFunction = (func) => typeof func === "function";
     fromStatic = (defaultValue) => isFunction(defaultValue) ? async () => await defaultValue() : fromValue(defaultValue);
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/configLoader.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/configLoader.js
 var loadConfig2;
 var init_configLoader = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/configLoader.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/node-config-provider/configLoader.js"() {
     init_chain();
     init_memoize();
     init_fromEnv();
@@ -31861,10 +31861,10 @@ var init_configLoader = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseDualstackEndpointConfigOptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseDualstackEndpointConfigOptions.js
 var ENV_USE_DUALSTACK_ENDPOINT, CONFIG_USE_DUALSTACK_ENDPOINT, DEFAULT_USE_DUALSTACK_ENDPOINT, NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS, nodeDualstackConfigSelectors;
 var init_NodeUseDualstackEndpointConfigOptions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseDualstackEndpointConfigOptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseDualstackEndpointConfigOptions.js"() {
     init_booleanSelector();
     init_types();
     ENV_USE_DUALSTACK_ENDPOINT = "AWS_USE_DUALSTACK_ENDPOINT";
@@ -31883,10 +31883,10 @@ var init_NodeUseDualstackEndpointConfigOptions = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseFipsEndpointConfigOptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseFipsEndpointConfigOptions.js
 var ENV_USE_FIPS_ENDPOINT, CONFIG_USE_FIPS_ENDPOINT, DEFAULT_USE_FIPS_ENDPOINT, NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS, nodeFipsConfigSelectors;
 var init_NodeUseFipsEndpointConfigOptions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseFipsEndpointConfigOptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/NodeUseFipsEndpointConfigOptions.js"() {
     init_booleanSelector();
     init_types();
     ENV_USE_FIPS_ENDPOINT = "AWS_USE_FIPS_ENDPOINT";
@@ -31905,10 +31905,10 @@ var init_NodeUseFipsEndpointConfigOptions = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveCustomEndpointsConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveCustomEndpointsConfig.js
 var resolveCustomEndpointsConfig;
 var init_resolveCustomEndpointsConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveCustomEndpointsConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveCustomEndpointsConfig.js"() {
     init_client2();
     resolveCustomEndpointsConfig = (input2) => {
       const { tls, endpoint, urlParser, useDualstackEndpoint } = input2;
@@ -31922,10 +31922,10 @@ var init_resolveCustomEndpointsConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/utils/getEndpointFromRegion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/utils/getEndpointFromRegion.js
 var getEndpointFromRegion;
 var init_getEndpointFromRegion = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/utils/getEndpointFromRegion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/utils/getEndpointFromRegion.js"() {
     getEndpointFromRegion = async (input2) => {
       const { tls = true } = input2;
       const region = await input2.region();
@@ -31944,10 +31944,10 @@ var init_getEndpointFromRegion = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveEndpointsConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveEndpointsConfig.js
 var resolveEndpointsConfig;
 var init_resolveEndpointsConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveEndpointsConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/endpointsConfig/resolveEndpointsConfig.js"() {
     init_client2();
     init_getEndpointFromRegion();
     resolveEndpointsConfig = (input2) => {
@@ -31963,10 +31963,10 @@ var init_resolveEndpointsConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/constants.js
 var AWS_EXECUTION_ENV, AWS_REGION_ENV, AWS_DEFAULT_REGION_ENV, ENV_IMDS_DISABLED, DEFAULTS_MODE_OPTIONS, IMDS_REGION_PATH, IMDS_TOKEN_PATH, X_AWS_EC2_METADATA_TOKEN, X_AWS_EC2_METADATA_TOKEN_TTL;
 var init_constants4 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/constants.js"() {
     AWS_EXECUTION_ENV = "AWS_EXECUTION_ENV";
     AWS_REGION_ENV = "AWS_REGION";
     AWS_DEFAULT_REGION_ENV = "AWS_DEFAULT_REGION";
@@ -31979,10 +31979,10 @@ var init_constants4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getInstanceMetadataRegion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getInstanceMetadataRegion.js
 var TIMEOUT_MS, NEG_CACHE_TTL_MS, negativeCacheUntil, getInstanceMetadataRegion, cacheNegativeAndReturnUndefined, resolveImdsEndpoint, imdsRequest;
 var init_getInstanceMetadataRegion = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getInstanceMetadataRegion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getInstanceMetadataRegion.js"() {
     init_constants4();
     TIMEOUT_MS = 1e3;
     NEG_CACHE_TTL_MS = 6e4;
@@ -32075,10 +32075,10 @@ var init_getInstanceMetadataRegion = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/config.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/config.js
 var REGION_ENV_NAME, REGION_INI_NAME, NODE_REGION_CONFIG_OPTIONS, NODE_REGION_CONFIG_FILE_OPTIONS;
 var init_config = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/config.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/config.js"() {
     init_getInstanceMetadataRegion();
     REGION_ENV_NAME = "AWS_REGION";
     REGION_INI_NAME = "region";
@@ -32099,10 +32099,10 @@ var init_config = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/checkRegion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/checkRegion.js
 var validRegions, checkRegion;
 var init_checkRegion = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/checkRegion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/checkRegion.js"() {
     init_transport();
     validRegions = /* @__PURE__ */ new Set();
     checkRegion = (region, check3 = isValidHostLabel) => {
@@ -32119,27 +32119,27 @@ var init_checkRegion = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/isFipsRegion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/isFipsRegion.js
 var isFipsRegion;
 var init_isFipsRegion = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/isFipsRegion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/isFipsRegion.js"() {
     isFipsRegion = (region) => typeof region === "string" && (region.startsWith("fips-") || region.endsWith("-fips"));
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getRealRegion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getRealRegion.js
 var getRealRegion;
 var init_getRealRegion = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getRealRegion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/getRealRegion.js"() {
     init_isFipsRegion();
     getRealRegion = (region) => isFipsRegion(region) ? ["fips-aws-global", "aws-fips"].includes(region) ? "us-east-1" : region.replace(/fips-(dkr-|prod-)?|-fips/, "") : region;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/resolveRegionConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/resolveRegionConfig.js
 var resolveRegionConfig;
 var init_resolveRegionConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/resolveRegionConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionConfig/resolveRegionConfig.js"() {
     init_checkRegion();
     init_getRealRegion();
     init_isFipsRegion();
@@ -32167,34 +32167,34 @@ var init_resolveRegionConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getHostnameFromVariants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getHostnameFromVariants.js
 var getHostnameFromVariants;
 var init_getHostnameFromVariants = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getHostnameFromVariants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getHostnameFromVariants.js"() {
     getHostnameFromVariants = (variants = [], { useFipsEndpoint, useDualstackEndpoint }) => variants.find(({ tags }) => useFipsEndpoint === tags.includes("fips") && useDualstackEndpoint === tags.includes("dualstack"))?.hostname;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedHostname.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedHostname.js
 var getResolvedHostname;
 var init_getResolvedHostname = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedHostname.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedHostname.js"() {
     getResolvedHostname = (resolvedRegion, { regionHostname, partitionHostname }) => regionHostname ? regionHostname : partitionHostname ? partitionHostname.replace("{region}", resolvedRegion) : void 0;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedPartition.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedPartition.js
 var getResolvedPartition;
 var init_getResolvedPartition = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedPartition.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedPartition.js"() {
     getResolvedPartition = (region, { partitionHash }) => Object.keys(partitionHash || {}).find((key) => partitionHash[key].regions.includes(region)) ?? "aws";
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedSigningRegion.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedSigningRegion.js
 var getResolvedSigningRegion;
 var init_getResolvedSigningRegion = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedSigningRegion.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getResolvedSigningRegion.js"() {
     getResolvedSigningRegion = (hostname5, { signingRegion, regionRegex, useFipsEndpoint }) => {
       if (signingRegion) {
         return signingRegion;
@@ -32209,10 +32209,10 @@ var init_getResolvedSigningRegion = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getRegionInfo.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getRegionInfo.js
 var getRegionInfo;
 var init_getRegionInfo = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getRegionInfo.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/config-resolver/regionInfo/getRegionInfo.js"() {
     init_getHostnameFromVariants();
     init_getResolvedHostname();
     init_getResolvedPartition();
@@ -32245,10 +32245,10 @@ var init_getRegionInfo = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/defaultsModeConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/defaultsModeConfig.js
 var AWS_DEFAULTS_MODE_ENV, AWS_DEFAULTS_MODE_CONFIG, NODE_DEFAULTS_MODE_CONFIG_OPTIONS;
 var init_defaultsModeConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/defaultsModeConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/defaultsModeConfig.js"() {
     AWS_DEFAULTS_MODE_ENV = "AWS_DEFAULTS_MODE";
     AWS_DEFAULTS_MODE_CONFIG = "defaults_mode";
     NODE_DEFAULTS_MODE_CONFIG_OPTIONS = {
@@ -32263,10 +32263,10 @@ var init_defaultsModeConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/resolveDefaultsModeConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/resolveDefaultsModeConfig.js
 var resolveDefaultsModeConfig, resolveNodeDefaultsModeAuto, inferPhysicalRegion;
 var init_resolveDefaultsModeConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/resolveDefaultsModeConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/defaults-mode/resolveDefaultsModeConfig.js"() {
     init_config();
     init_getInstanceMetadataRegion();
     init_configLoader();
@@ -32314,7 +32314,7 @@ var init_resolveDefaultsModeConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/index.js
 var config_exports = {};
 __export(config_exports, {
   CONFIG_PREFIX_SEPARATOR: () => CONFIG_PREFIX_SEPARATOR,
@@ -32361,7 +32361,7 @@ __export(config_exports, {
   resolveRegionConfig: () => resolveRegionConfig
 });
 var init_config2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/config/index.js"() {
     init_ProviderError();
     init_CredentialsProviderError();
     init_TokenProviderError();
@@ -32394,10 +32394,10 @@ var init_config2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointUrlConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointUrlConfig.js
 var ENV_ENDPOINT_URL, CONFIG_ENDPOINT_URL, getEndpointUrlConfig;
 var init_getEndpointUrlConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointUrlConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointUrlConfig.js"() {
     init_config2();
     ENV_ENDPOINT_URL = "AWS_ENDPOINT_URL";
     CONFIG_ENDPOINT_URL = "endpoint_url";
@@ -32434,10 +32434,10 @@ var init_getEndpointUrlConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getIgnoreConfiguredEndpointUrls.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getIgnoreConfiguredEndpointUrls.js
 var ENV_IGNORE_CONFIGURED_ENDPOINT_URLS, CONFIG_IGNORE_CONFIGURED_ENDPOINT_URLS, ignoreConfiguredEndpointUrlsConfigSelectors;
 var init_getIgnoreConfiguredEndpointUrls = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getIgnoreConfiguredEndpointUrls.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getIgnoreConfiguredEndpointUrls.js"() {
     init_config2();
     ENV_IGNORE_CONFIGURED_ENDPOINT_URLS = "AWS_IGNORE_CONFIGURED_ENDPOINT_URLS";
     CONFIG_IGNORE_CONFIGURED_ENDPOINT_URLS = "ignore_configured_endpoint_urls";
@@ -32449,10 +32449,10 @@ var init_getIgnoreConfiguredEndpointUrls = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromConfig.js
 var getEndpointFromConfig;
 var init_getEndpointFromConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromConfig.js"() {
     init_config2();
     init_getEndpointUrlConfig();
     init_getIgnoreConfiguredEndpointUrls();
@@ -32466,10 +32466,10 @@ var init_getEndpointFromConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/s3.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/s3.js
 var resolveParamsForS3, DOMAIN_PATTERN, IP_ADDRESS_PATTERN, DOTS_PATTERN, isDnsCompatibleBucketName, isArnBucketName;
 var init_s3 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/s3.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/s3.js"() {
     resolveParamsForS3 = async (endpointParams) => {
       const bucket = endpointParams?.Bucket || "";
       if (typeof endpointParams.Bucket === "string") {
@@ -32504,17 +32504,17 @@ var init_s3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/index.js
 var init_service_customizations = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/service-customizations/index.js"() {
     init_s3();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/createConfigValueProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/createConfigValueProvider.js
 var createConfigValueProvider;
 var init_createConfigValueProvider = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/createConfigValueProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/createConfigValueProvider.js"() {
     createConfigValueProvider = (configKey, canonicalEndpointParamKey, config3, isClientContextParam = false) => {
       const configProvider = async () => {
         let configValue;
@@ -32567,14 +32567,14 @@ var init_createConfigValueProvider = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/toEndpointV1.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/toEndpointV1.js
 var init_toEndpointV12 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/toEndpointV1.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/toEndpointV1.js"() {
     init_transport();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromInstructions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromInstructions.js
 function bindGetEndpointFromInstructions(getEndpointFromConfig2) {
   return async (commandInput, instructionsSupplier, clientConfig, context) => {
     if (!clientConfig.isCustomEndpoint && !clientConfig.ignoreConfiguredEndpointUrls) {
@@ -32609,7 +32609,7 @@ function bindGetEndpointFromInstructions(getEndpointFromConfig2) {
 }
 var resolveParams;
 var init_getEndpointFromInstructions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromInstructions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/adaptors/getEndpointFromInstructions.js"() {
     init_service_customizations();
     init_createConfigValueProvider();
     init_toEndpointV12();
@@ -32646,7 +32646,7 @@ var init_getEndpointFromInstructions = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/endpointMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/endpointMiddleware.js
 function setFeature(context, feature, value) {
   if (!context.__smithy_context) {
     context.__smithy_context = { features: {} };
@@ -32692,13 +32692,13 @@ function bindEndpointMiddleware(getEndpointFromConfig2) {
   };
 }
 var init_endpointMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/endpointMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/endpointMiddleware.js"() {
     init_transport();
     init_getEndpointFromInstructions();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/getEndpointPlugin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/getEndpointPlugin.js
 function bindGetEndpointPlugin(getEndpointFromConfig2) {
   const endpointMiddleware2 = bindEndpointMiddleware(getEndpointFromConfig2);
   return (config3, instructions) => ({
@@ -32712,7 +32712,7 @@ function bindGetEndpointPlugin(getEndpointFromConfig2) {
 }
 var serializerMiddlewareOption2, endpointMiddlewareOptions;
 var init_getEndpointPlugin = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/getEndpointPlugin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/getEndpointPlugin.js"() {
     init_endpointMiddleware();
     serializerMiddlewareOption2 = {
       name: "serializerMiddleware",
@@ -32731,7 +32731,7 @@ var init_getEndpointPlugin = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointConfig.js
 function bindResolveEndpointConfig(getEndpointFromConfig2) {
   return (input2) => {
     const tls = input2.tls ?? true;
@@ -32757,16 +32757,16 @@ function bindResolveEndpointConfig(getEndpointFromConfig2) {
   };
 }
 var init_resolveEndpointConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointConfig.js"() {
     init_transport();
     init_toEndpointV12();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/bdd/BinaryDecisionDiagram.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/bdd/BinaryDecisionDiagram.js
 var BinaryDecisionDiagram;
 var init_BinaryDecisionDiagram = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/bdd/BinaryDecisionDiagram.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/bdd/BinaryDecisionDiagram.js"() {
     BinaryDecisionDiagram = class _BinaryDecisionDiagram {
       nodes;
       root;
@@ -32785,10 +32785,10 @@ var init_BinaryDecisionDiagram = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/cache/EndpointCache.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/cache/EndpointCache.js
 var EndpointCache;
 var init_EndpointCache = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/cache/EndpointCache.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/cache/EndpointCache.js"() {
     EndpointCache = class {
       capacity;
       data = /* @__PURE__ */ new Map();
@@ -32842,10 +32842,10 @@ var init_EndpointCache = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/EndpointError.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/EndpointError.js
 var EndpointError;
 var init_EndpointError = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/EndpointError.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/EndpointError.js"() {
     EndpointError = class extends Error {
       constructor(message) {
         super(message);
@@ -32855,22 +32855,22 @@ var init_EndpointError = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/index.js
 var init_types2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/types/index.js"() {
     init_EndpointError();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/debugId.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/debugId.js
 var debugId;
 var init_debugId = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/debugId.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/debugId.js"() {
     debugId = "endpoints";
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/toDebugString.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/toDebugString.js
 function toDebugString(input2) {
   if (typeof input2 !== "object" || input2 == null) {
     return input2;
@@ -32884,35 +32884,35 @@ function toDebugString(input2) {
   return JSON.stringify(input2, null, 2);
 }
 var init_toDebugString = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/toDebugString.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/toDebugString.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/index.js
 var init_debug = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/debug/index.js"() {
     init_debugId();
     init_toDebugString();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/customEndpointFunctions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/customEndpointFunctions.js
 var customEndpointFunctions;
 var init_customEndpointFunctions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/customEndpointFunctions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/customEndpointFunctions.js"() {
     customEndpointFunctions = {};
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/booleanEquals.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/booleanEquals.js
 var booleanEquals;
 var init_booleanEquals = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/booleanEquals.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/booleanEquals.js"() {
     booleanEquals = (value1, value2) => value1 === value2;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/coalesce.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/coalesce.js
 function coalesce(...args) {
   for (const arg of args) {
     if (arg != null) {
@@ -32922,14 +32922,14 @@ function coalesce(...args) {
   return void 0;
 }
 var init_coalesce = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/coalesce.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/coalesce.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttrPathList.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttrPathList.js
 var getAttrPathList;
 var init_getAttrPathList = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttrPathList.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttrPathList.js"() {
     init_types2();
     getAttrPathList = (path24) => {
       const parts = path24.split(".");
@@ -32957,10 +32957,10 @@ var init_getAttrPathList = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttr.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttr.js
 var getAttr;
 var init_getAttr = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttr.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/getAttr.js"() {
     init_types2();
     init_getAttrPathList();
     getAttr = (value, path24) => getAttrPathList(path24).reduce((acc, index) => {
@@ -32975,44 +32975,44 @@ var init_getAttr = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isSet.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isSet.js
 var isSet;
 var init_isSet = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isSet.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isSet.js"() {
     isSet = (value) => value != null;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/ite.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/ite.js
 function ite(condition, trueValue, falseValue) {
   return condition ? trueValue : falseValue;
 }
 var init_ite = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/ite.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/ite.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/not.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/not.js
 var not;
 var init_not = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/not.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/not.js"() {
     not = (value) => !value;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isIpAddress.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isIpAddress.js
 var IP_V4_REGEX, isIpAddress;
 var init_isIpAddress = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isIpAddress.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/isIpAddress.js"() {
     IP_V4_REGEX = new RegExp(`^(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}$`);
     isIpAddress = (value) => IP_V4_REGEX.test(value) || value.startsWith("[") && value.endsWith("]");
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/parseURL.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/parseURL.js
 var import_types24, DEFAULT_PORTS, parseURL;
 var init_parseURL = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/parseURL.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/parseURL.js"() {
     import_types24 = __toESM(require_dist_cjs());
     init_isIpAddress();
     DEFAULT_PORTS = {
@@ -33063,7 +33063,7 @@ var init_parseURL = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/split.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/split.js
 function split(value, delimiter, limit) {
   if (limit === 1) {
     return [value];
@@ -33078,22 +33078,22 @@ function split(value, delimiter, limit) {
   return parts.slice(0, limit - 1).concat(parts.slice(1).join(delimiter));
 }
 var init_split = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/split.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/split.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/stringEquals.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/stringEquals.js
 var stringEquals;
 var init_stringEquals = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/stringEquals.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/stringEquals.js"() {
     stringEquals = (value1, value2) => value1 === value2;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/substring.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/substring.js
 var substring;
 var init_substring = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/substring.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/substring.js"() {
     substring = (input2, start, stop, reverse) => {
       if (input2 == null || start >= stop || input2.length < stop || /[^\u0000-\u007f]/.test(input2)) {
         return null;
@@ -33106,17 +33106,17 @@ var init_substring = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/uriEncode.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/uriEncode.js
 var uriEncode;
 var init_uriEncode = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/uriEncode.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/uriEncode.js"() {
     uriEncode = (value) => encodeURIComponent(value).replace(/[!*'()]/g, (c5) => `%${c5.charCodeAt(0).toString(16).toUpperCase()}`);
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/index.js
 var init_lib = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/lib/index.js"() {
     init_booleanEquals();
     init_coalesce();
     init_getAttr();
@@ -33132,10 +33132,10 @@ var init_lib = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/endpointFunctions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/endpointFunctions.js
 var endpointFunctions;
 var init_endpointFunctions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/endpointFunctions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/endpointFunctions.js"() {
     init_lib();
     endpointFunctions = {
       booleanEquals,
@@ -33154,10 +33154,10 @@ var init_endpointFunctions = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateTemplate.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateTemplate.js
 var evaluateTemplate;
 var init_evaluateTemplate = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateTemplate.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateTemplate.js"() {
     init_lib();
     evaluateTemplate = (template, options) => {
       const evaluatedTemplateArr = [];
@@ -33193,20 +33193,20 @@ var init_evaluateTemplate = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getReferenceValue.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getReferenceValue.js
 var getReferenceValue;
 var init_getReferenceValue = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getReferenceValue.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getReferenceValue.js"() {
     getReferenceValue = ({ ref }, options) => {
       return options.referenceRecord[ref] ?? options.endpointParams[ref];
     };
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateExpression.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateExpression.js
 var evaluateExpression, callFunction, group;
 var init_evaluateExpression = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateExpression.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateExpression.js"() {
     init_types2();
     init_customEndpointFunctions();
     init_endpointFunctions();
@@ -33253,17 +33253,17 @@ var init_evaluateExpression = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/callFunction.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/callFunction.js
 var init_callFunction = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/callFunction.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/callFunction.js"() {
     init_evaluateExpression();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateCondition.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateCondition.js
 var evaluateCondition;
 var init_evaluateCondition = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateCondition.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateCondition.js"() {
     init_debug();
     init_types2();
     init_callFunction();
@@ -33283,10 +33283,10 @@ var init_evaluateCondition = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointHeaders.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointHeaders.js
 var getEndpointHeaders;
 var init_getEndpointHeaders = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointHeaders.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointHeaders.js"() {
     init_types2();
     init_evaluateExpression();
     getEndpointHeaders = (headers, options) => Object.entries(headers ?? {}).reduce((acc, [headerKey, headerVal]) => {
@@ -33302,10 +33302,10 @@ var init_getEndpointHeaders = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointProperties.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointProperties.js
 var getEndpointProperties, getEndpointProperty, group2;
 var init_getEndpointProperties = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointProperties.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointProperties.js"() {
     init_types2();
     init_evaluateTemplate();
     getEndpointProperties = (properties, options) => Object.entries(properties).reduce((acc, [propertyKey, propertyVal]) => {
@@ -33337,10 +33337,10 @@ var init_getEndpointProperties = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointUrl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointUrl.js
 var getEndpointUrl;
 var init_getEndpointUrl = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointUrl.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/getEndpointUrl.js"() {
     init_types2();
     init_evaluateExpression();
     getEndpointUrl = (endpointUrl, options) => {
@@ -33358,10 +33358,10 @@ var init_getEndpointUrl = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/decideEndpoint.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/decideEndpoint.js
 var RESULT, decideEndpoint;
 var init_decideEndpoint = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/decideEndpoint.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/decideEndpoint.js"() {
     init_types2();
     init_evaluateCondition();
     init_evaluateExpression();
@@ -33407,10 +33407,10 @@ var init_decideEndpoint = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateConditions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateConditions.js
 var evaluateConditions;
 var init_evaluateConditions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateConditions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateConditions.js"() {
     init_debug();
     init_evaluateCondition();
     evaluateConditions = (conditions = [], options) => {
@@ -33440,10 +33440,10 @@ var init_evaluateConditions = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateEndpointRule.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateEndpointRule.js
 var evaluateEndpointRule;
 var init_evaluateEndpointRule = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateEndpointRule.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateEndpointRule.js"() {
     init_debug();
     init_evaluateConditions();
     init_getEndpointHeaders();
@@ -33473,10 +33473,10 @@ var init_evaluateEndpointRule = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateErrorRule.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateErrorRule.js
 var evaluateErrorRule;
 var init_evaluateErrorRule = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateErrorRule.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateErrorRule.js"() {
     init_types2();
     init_evaluateConditions();
     init_evaluateExpression();
@@ -33495,10 +33495,10 @@ var init_evaluateErrorRule = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateRules.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateRules.js
 var evaluateRules, evaluateTreeRule, group3;
 var init_evaluateRules = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateRules.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/evaluateRules.js"() {
     init_types2();
     init_evaluateConditions();
     init_evaluateEndpointRule();
@@ -33539,17 +33539,17 @@ var init_evaluateRules = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/index.js
 var init_utils = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/utils/index.js"() {
     init_evaluateRules();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/resolveEndpoint.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/resolveEndpoint.js
 var resolveEndpoint;
 var init_resolveEndpoint = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/resolveEndpoint.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/util-endpoints/resolveEndpoint.js"() {
     init_transport();
     init_debug();
     init_types2();
@@ -33578,10 +33578,10 @@ var init_resolveEndpoint = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointRequiredConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointRequiredConfig.js
 var resolveEndpointRequiredConfig;
 var init_resolveEndpointRequiredConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointRequiredConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/middleware-endpoint/resolveEndpointRequiredConfig.js"() {
     resolveEndpointRequiredConfig = (input2) => {
       const { endpoint } = input2;
       if (endpoint === void 0) {
@@ -33594,7 +33594,7 @@ var init_resolveEndpointRequiredConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/index.js
 var endpoints_exports = {};
 __export(endpoints_exports, {
   BinaryDecisionDiagram: () => BinaryDecisionDiagram,
@@ -33617,7 +33617,7 @@ __export(endpoints_exports, {
 });
 var getEndpointFromInstructions, resolveEndpointConfig, endpointMiddleware, getEndpointPlugin;
 var init_endpoints = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/endpoints/index.js"() {
     init_getEndpointFromConfig();
     init_getEndpointFromInstructions();
     init_endpointMiddleware();
@@ -33643,10 +33643,10 @@ var init_endpoints = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serializerMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serializerMiddleware.js
 var serializerMiddleware;
 var init_serializerMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serializerMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serializerMiddleware.js"() {
     init_endpoints();
     serializerMiddleware = (options, serializer) => (next, context) => async (args) => {
       const endpointConfig = options;
@@ -33663,7 +33663,7 @@ var init_serializerMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serdePlugin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serdePlugin.js
 function getSerdePlugin(config3, serializer, deserializer) {
   return {
     applyToStack: (commandStack) => {
@@ -33674,7 +33674,7 @@ function getSerdePlugin(config3, serializer, deserializer) {
 }
 var deserializerMiddlewareOption2, serializerMiddlewareOption3;
 var init_serdePlugin = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serdePlugin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/middleware-serde/serdePlugin.js"() {
     init_deserializerMiddleware();
     init_serializerMiddleware();
     deserializerMiddlewareOption2 = {
@@ -33692,7 +33692,7 @@ var init_serdePlugin = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/hash-node/hash-node.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/hash-node/hash-node.js
 import { createHash as createHash11, createHmac } from "node:crypto";
 function castSourceData(toCast, encoding) {
   if (Buffer.isBuffer(toCast)) {
@@ -33708,7 +33708,7 @@ function castSourceData(toCast, encoding) {
 }
 var Hash;
 var init_hash_node = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/hash-node/hash-node.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/hash-node/hash-node.js"() {
     init_buffer_from();
     init_toUint8Array();
     Hash = class {
@@ -33733,11 +33733,11 @@ var init_hash_node = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.js
 import { Readable as Readable3 } from "node:stream";
 var ChecksumStream;
 var init_ChecksumStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.js"() {
     init_toBase64();
     ChecksumStream = class extends Readable3 {
       expectedChecksum;
@@ -33815,10 +33815,10 @@ var init_ChecksumStream = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-type-check.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-type-check.js
 var isReadableStream, isBlob;
 var init_stream_type_check = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-type-check.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-type-check.js"() {
     isReadableStream = (stream) => typeof ReadableStream === "function" && (stream?.constructor?.name === ReadableStream.name || stream instanceof ReadableStream);
     isBlob = (blob) => {
       return typeof Blob === "function" && (blob?.constructor?.name === Blob.name || blob instanceof Blob);
@@ -33826,18 +33826,18 @@ var init_stream_type_check = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.browser.js
 var fromUtf82;
 var init_fromUtf8_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/fromUtf8.browser.js"() {
     fromUtf82 = (input2) => new TextEncoder().encode(input2);
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/constants-for-browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/constants-for-browser.js
 var chars, alphabetByEncoding, alphabetByValue, bitsPerLetter, bitsPerByte, maxLetterValue;
 var init_constants_for_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/constants-for-browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/constants-for-browser.js"() {
     chars = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/`;
     alphabetByEncoding = Object.entries(chars).reduce((acc, [i5, c5]) => {
       acc[c5] = Number(i5);
@@ -33850,7 +33850,7 @@ var init_constants_for_browser = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.browser.js
 function toBase642(_input) {
   let input2;
   if (typeof _input === "string") {
@@ -33882,16 +33882,16 @@ function toBase642(_input) {
   return str;
 }
 var init_toBase64_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-base64/toBase64.browser.js"() {
     init_fromUtf8_browser();
     init_constants_for_browser();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.browser.js
 var ReadableStreamRef, ChecksumStream2;
 var init_ChecksumStream_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/ChecksumStream.browser.js"() {
     ReadableStreamRef = typeof ReadableStream === "function" ? ReadableStream : function() {
     };
     ChecksumStream2 = class extends ReadableStreamRef {
@@ -33899,10 +33899,10 @@ var init_ChecksumStream_browser = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.browser.js
 var createChecksumStream;
 var init_createChecksumStream_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.browser.js"() {
     init_toBase64_browser();
     init_stream_type_check();
     init_ChecksumStream_browser();
@@ -33940,7 +33940,7 @@ var init_createChecksumStream_browser = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.js
 function createChecksumStream2(init) {
   if (typeof ReadableStream === "function" && isReadableStream(init.source)) {
     return createChecksumStream(init);
@@ -33948,17 +33948,17 @@ function createChecksumStream2(init) {
   return new ChecksumStream(init);
 }
 var init_createChecksumStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/checksum/createChecksumStream.js"() {
     init_stream_type_check();
     init_ChecksumStream();
     init_createChecksumStream_browser();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/ByteArrayCollector.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/ByteArrayCollector.js
 var ByteArrayCollector;
 var init_ByteArrayCollector = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/ByteArrayCollector.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/ByteArrayCollector.js"() {
     ByteArrayCollector = class {
       allocByteArray;
       byteLength = 0;
@@ -33994,7 +33994,7 @@ var init_ByteArrayCollector = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.browser.js
 function createBufferedReadableStream(upstream, size, logger2) {
   const reader = upstream.getReader();
   let streamBufferingLoggedWarning = false;
@@ -34086,12 +34086,12 @@ function modeOf(chunk, allowBuffer = true) {
   return -1;
 }
 var init_createBufferedReadable_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.browser.js"() {
     init_ByteArrayCollector();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.js
 import { Readable as Readable4 } from "node:stream";
 function createBufferedReadable(upstream, size, logger2) {
   if (isReadableStream(upstream)) {
@@ -34147,17 +34147,17 @@ function createBufferedReadable(upstream, size, logger2) {
   return downstream;
 }
 var init_createBufferedReadable = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/createBufferedReadable.js"() {
     init_ByteArrayCollector();
     init_createBufferedReadable_browser();
     init_stream_type_check();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.browser.js
 var getAwsChunkedEncodingStream;
 var init_getAwsChunkedEncodingStream_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.browser.js"() {
     getAwsChunkedEncodingStream = (readableStream, options) => {
       const { base64Encoder, bodyLengthChecker, checksumAlgorithmFn, checksumLocationName, streamHasher } = options;
       const checksumRequired = base64Encoder !== void 0 && bodyLengthChecker !== void 0 && checksumAlgorithmFn !== void 0 && checksumLocationName !== void 0 && streamHasher !== void 0;
@@ -34190,7 +34190,7 @@ ${value}\r
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.js
 import { Readable as Readable5 } from "node:stream";
 function getAwsChunkedEncodingStream2(stream, options) {
   const readable = stream;
@@ -34243,13 +34243,13 @@ function getAwsChunkedEncodingStream2(stream, options) {
   return awsChunkedEncodingStream;
 }
 var init_getAwsChunkedEncodingStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/getAwsChunkedEncodingStream.js"() {
     init_getAwsChunkedEncodingStream_browser();
     init_stream_type_check();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.browser.js
 async function headStream(stream, bytes) {
   let byteLengthCounter = 0;
   const chunks = [];
@@ -34281,15 +34281,15 @@ async function headStream(stream, bytes) {
   return collected;
 }
 var init_headStream_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.browser.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.js
 import { Writable } from "node:stream";
 var headStream2, Collector;
 var init_headStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/headStream.js"() {
     init_concatBytes();
     init_headStream_browser();
     init_stream_type_check();
@@ -34331,10 +34331,10 @@ var init_headStream = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.browser.js
 var toUtf82;
 var init_toUtf8_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-utf8/toUtf8.browser.js"() {
     toUtf82 = (input2) => {
       if (typeof input2 === "string") {
         return input2;
@@ -34347,7 +34347,7 @@ var init_toUtf8_browser = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.browser.js
 async function collectBlob(blob) {
   return blob.arrayBuffer().then((ab) => new Uint8Array(ab));
 }
@@ -34369,7 +34369,7 @@ async function collectReadableStream(stream) {
 }
 var streamCollector;
 var init_stream_collector_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.browser.js"() {
     init_concatBytes();
     init_stream_type_check();
     streamCollector = async (stream) => {
@@ -34381,10 +34381,10 @@ var init_stream_collector_browser = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.browser.js
 var ERR_MSG_STREAM_HAS_BEEN_TRANSFORMED, sdkStreamMixin, isBlobInstance;
 var init_sdk_stream_mixin_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.browser.js"() {
     init_toBase64_browser();
     init_hex_encoding();
     init_toUtf8_browser();
@@ -34445,11 +34445,11 @@ var init_sdk_stream_mixin_browser = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.js
 import { Writable as Writable2 } from "node:stream";
 var streamCollector2, Collector2;
 var init_stream_collector = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/stream-collector.js"() {
     init_concatBytes();
     init_stream_collector_browser();
     init_stream_type_check();
@@ -34485,11 +34485,11 @@ var init_stream_collector = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.js
 import { Readable as Readable6 } from "node:stream";
 var ERR_MSG_STREAM_HAS_BEEN_TRANSFORMED2, sdkStreamMixin2;
 var init_sdk_stream_mixin = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/sdk-stream-mixin.js"() {
     init_buffer_from();
     init_sdk_stream_mixin_browser();
     init_stream_collector();
@@ -34540,7 +34540,7 @@ var init_sdk_stream_mixin = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.browser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.browser.js
 async function splitStream(stream) {
   if (typeof stream.stream === "function") {
     stream = stream.stream();
@@ -34549,11 +34549,11 @@ async function splitStream(stream) {
   return readableStream.tee();
 }
 var init_splitStream_browser = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.browser.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.browser.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.js
 import { PassThrough } from "node:stream";
 async function splitStream2(stream) {
   if (isReadableStream(stream) || isBlob(stream)) {
@@ -34566,13 +34566,13 @@ async function splitStream2(stream) {
   return [stream1, stream2];
 }
 var init_splitStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/util-stream/splitStream.js"() {
     init_splitStream_browser();
     init_stream_type_check();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/index.js
 var serde_exports = {};
 __export(serde_exports, {
   ChecksumStream: () => ChecksumStream,
@@ -34652,7 +34652,7 @@ __export(serde_exports, {
 import { getRandomValues } from "node:crypto";
 var Uint8ArrayBlobAdapter, _getRandomValues, v4, generateIdempotencyToken;
 var init_serde = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/serde/index.js"() {
     init_fromBase64();
     init_toBase64();
     init_Uint8ArrayBlobAdapter();
@@ -34696,10 +34696,10 @@ var init_serde = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/collect-stream-body.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/collect-stream-body.js
 var collectBody;
 var init_collect_stream_body = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/collect-stream-body.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/collect-stream-body.js"() {
     init_serde();
     collectBody = async (streamBody = new Uint8Array(), context) => {
       if (streamBody instanceof Uint8Array) {
@@ -34714,21 +34714,21 @@ var init_collect_stream_body = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/extended-encode-uri-component.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/extended-encode-uri-component.js
 function extendedEncodeURIComponent(str) {
   return encodeURIComponent(str).replace(/[!'()*]/g, function(c5) {
     return "%" + c5.charCodeAt(0).toString(16).toUpperCase();
   });
 }
 var init_extended_encode_uri_component = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/extended-encode-uri-component.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/extended-encode-uri-component.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/SerdeContext.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/SerdeContext.js
 var SerdeContext;
 var init_SerdeContext = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/SerdeContext.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/SerdeContext.js"() {
     SerdeContext = class {
       serdeContext;
       setSerdeContext(serdeContext) {
@@ -34738,7 +34738,7 @@ var init_SerdeContext = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/chunked-blob-reader/chunked-blob-reader.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/chunked-blob-reader/chunked-blob-reader.js
 async function blobReader(blob, onChunk, chunkSize = 1024 * 1024) {
   const size = blob.size;
   let totalBytesRead = 0;
@@ -34749,14 +34749,14 @@ async function blobReader(blob, onChunk, chunkSize = 1024 * 1024) {
   }
 }
 var init_chunked_blob_reader = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/chunked-blob-reader/chunked-blob-reader.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/chunked-blob-reader/chunked-blob-reader.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-blob-browser/blobHasher.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-blob-browser/blobHasher.js
 var blobHasher;
 var init_blobHasher = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-blob-browser/blobHasher.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-blob-browser/blobHasher.js"() {
     init_chunked_blob_reader();
     blobHasher = async function blobHasher2(hashCtor, blob) {
       const hash5 = new hashCtor();
@@ -34768,11 +34768,11 @@ var init_blobHasher = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/HashCalculator.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/HashCalculator.js
 import { Writable as Writable3 } from "node:stream";
 var HashCalculator;
 var init_HashCalculator = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/HashCalculator.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/HashCalculator.js"() {
     init_serde();
     HashCalculator = class extends Writable3 {
       hash;
@@ -34792,11 +34792,11 @@ var init_HashCalculator = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/fileStreamHasher.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/fileStreamHasher.js
 import { createReadStream as createReadStream2 } from "node:fs";
 var fileStreamHasher, isReadStream;
 var init_fileStreamHasher = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/fileStreamHasher.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/fileStreamHasher.js"() {
     init_HashCalculator();
     fileStreamHasher = (hashCtor, fileStream) => new Promise((resolve, reject2) => {
       if (!isReadStream(fileStream)) {
@@ -34823,10 +34823,10 @@ var init_fileStreamHasher = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/readableStreamHasher.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/readableStreamHasher.js
 var readableStreamHasher;
 var init_readableStreamHasher = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/readableStreamHasher.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/hash-stream-node/readableStreamHasher.js"() {
     init_HashCalculator();
     readableStreamHasher = (hashCtor, readableStream) => {
       if (readableStream.readableFlowing !== null) {
@@ -34849,7 +34849,7 @@ var init_readableStreamHasher = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Js.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Js.js
 function compress(state2, block) {
   let a5 = state2[0], b9 = state2[1], c5 = state2[2], d6 = state2[3];
   for (let i5 = 0; i5 < 64; ++i5) {
@@ -34883,7 +34883,7 @@ function compress(state2, block) {
 }
 var Md5Js, INIT, M3, S2, T3;
 var init_Md5Js = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Js.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Js.js"() {
     init_serde();
     Md5Js = class {
       digestLength = 16;
@@ -34945,7 +34945,7 @@ var init_Md5Js = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Node.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Node.js
 import { createHash as createHash12 } from "node:crypto";
 function buildNativeClass() {
   return class Md5Node {
@@ -34965,7 +34965,7 @@ function buildNativeClass() {
 }
 var hasNativeCrypto, Md5Node;
 var init_Md5Node = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Node.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Node.js"() {
     init_serde();
     init_Md5Js();
     hasNativeCrypto = (() => {
@@ -34980,10 +34980,10 @@ var init_Md5Node = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Js.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Js.js
 var CRC32_TABLE, ONES, Crc32Js;
 var init_Crc32Js = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Js.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Js.js"() {
     CRC32_TABLE = new Uint32Array(256);
     for (let i5 = 0; i5 < 256; ++i5) {
       let c5 = i5;
@@ -35017,7 +35017,7 @@ var init_Crc32Js = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Node.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Node.js
 import * as zlib from "node:zlib";
 function buildNativeClass2(nativeCrc32) {
   return class Crc32Node {
@@ -35041,17 +35041,17 @@ function buildNativeClass2(nativeCrc32) {
 }
 var zlibCrc32, Crc32Node;
 var init_Crc32Node = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Node.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/crc32/Crc32Node.js"() {
     init_Crc32Js();
     zlibCrc32 = typeof zlib.crc32 === "function" ? zlib.crc32 : void 0;
     Crc32Node = zlibCrc32 ? buildNativeClass2(zlibCrc32) : Crc32Js;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Js.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Js.js
 var BLOCK, DIGEST_LENGTH, MAX_HASHABLE_LENGTH, Sha256Js, INIT2, K2;
 var init_Sha256Js = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Js.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Js.js"() {
     init_serde();
     BLOCK = 64;
     DIGEST_LENGTH = 32;
@@ -35286,7 +35286,7 @@ var init_Sha256Js = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Node.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Node.js
 import { createHash as createHash13, createHmac as createHmac2 } from "node:crypto";
 function buildNativeClass3() {
   return class Sha256Node {
@@ -35336,7 +35336,7 @@ function toBuffer(data) {
 }
 var hasNativeCrypto2, Sha256Node;
 var init_Sha256Node = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Node.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256Node.js"() {
     init_Sha256Js();
     hasNativeCrypto2 = (() => {
       try {
@@ -35350,10 +35350,10 @@ var init_Sha256Node = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256WebCrypto.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256WebCrypto.js
 var digest, sign, importKey, subtle, MAX_PENDING_BYTES, Sha256WebCrypto;
 var init_Sha256WebCrypto = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256WebCrypto.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/sha256/Sha256WebCrypto.js"() {
     init_serde();
     init_Sha256Js();
     ({ digest, sign, importKey } = globalThis?.crypto?.subtle ?? {});
@@ -35426,7 +35426,7 @@ var init_Sha256WebCrypto = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/index.js
 var checksum_exports = {};
 __export(checksum_exports, {
   Crc32: () => Crc32Node,
@@ -35445,7 +35445,7 @@ __export(checksum_exports, {
   readableStreamHasher: () => readableStreamHasher
 });
 var init_checksum2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/checksum/index.js"() {
     init_blobHasher();
     init_fileStreamHasher();
     init_readableStreamHasher();
@@ -35460,7 +35460,7 @@ var init_checksum2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/Int64.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/Int64.js
 function negate(bytes) {
   for (let i5 = 0; i5 < 8; i5++) {
     bytes[i5] ^= 255;
@@ -35473,7 +35473,7 @@ function negate(bytes) {
 }
 var Int64;
 var init_Int64 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/Int64.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/Int64.js"() {
     init_serde();
     Int64 = class _Int64 {
       bytes;
@@ -35511,10 +35511,10 @@ var init_Int64 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/HeaderMarshaller.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/HeaderMarshaller.js
 var HeaderMarshaller, HEADER_VALUE_TYPE, BOOLEAN_TAG, BYTE_TAG, SHORT_TAG, INT_TAG, LONG_TAG, BINARY_TAG, STRING_TAG, TIMESTAMP_TAG, UUID_TAG, UUID_PATTERN;
 var init_HeaderMarshaller = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/HeaderMarshaller.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/HeaderMarshaller.js"() {
     init_transport();
     init_serde();
     init_Int64();
@@ -35704,7 +35704,7 @@ var init_HeaderMarshaller = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/splitMessage.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/splitMessage.js
 function splitMessage({ byteLength, byteOffset, buffer }) {
   if (byteLength < MINIMUM_MESSAGE_LENGTH) {
     throw new Error("Provided message too short to accommodate event stream message overhead");
@@ -35733,7 +35733,7 @@ function splitMessage({ byteLength, byteOffset, buffer }) {
 }
 var PRELUDE_MEMBER_LENGTH, PRELUDE_LENGTH, CHECKSUM_LENGTH, MINIMUM_MESSAGE_LENGTH;
 var init_splitMessage = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/splitMessage.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/splitMessage.js"() {
     init_checksum2();
     PRELUDE_MEMBER_LENGTH = 4;
     PRELUDE_LENGTH = PRELUDE_MEMBER_LENGTH * 2;
@@ -35742,10 +35742,10 @@ var init_splitMessage = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/EventStreamCodec.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/EventStreamCodec.js
 var EventStreamCodec;
 var init_EventStreamCodec = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/EventStreamCodec.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/EventStreamCodec.js"() {
     init_checksum2();
     init_HeaderMarshaller();
     init_splitMessage();
@@ -35816,10 +35816,10 @@ var init_EventStreamCodec = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageDecoderStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageDecoderStream.js
 var MessageDecoderStream;
 var init_MessageDecoderStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageDecoderStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageDecoderStream.js"() {
     MessageDecoderStream = class {
       options;
       constructor(options) {
@@ -35838,10 +35838,10 @@ var init_MessageDecoderStream = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageEncoderStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageEncoderStream.js
 var MessageEncoderStream;
 var init_MessageEncoderStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageEncoderStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/MessageEncoderStream.js"() {
     MessageEncoderStream = class {
       options;
       constructor(options) {
@@ -35863,10 +35863,10 @@ var init_MessageEncoderStream = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageDecoderStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageDecoderStream.js
 var SmithyMessageDecoderStream;
 var init_SmithyMessageDecoderStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageDecoderStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageDecoderStream.js"() {
     SmithyMessageDecoderStream = class {
       options;
       constructor(options) {
@@ -35887,10 +35887,10 @@ var init_SmithyMessageDecoderStream = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageEncoderStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageEncoderStream.js
 var SmithyMessageEncoderStream;
 var init_SmithyMessageEncoderStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageEncoderStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-codec/SmithyMessageEncoderStream.js"() {
     SmithyMessageEncoderStream = class {
       options;
       constructor(options) {
@@ -35909,7 +35909,7 @@ var init_SmithyMessageEncoderStream = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getChunkedStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getChunkedStream.js
 function getChunkedStream(source) {
   let currentMessageTotalLength = 0;
   let currentMessagePendingLength = 0;
@@ -35975,11 +35975,11 @@ function getChunkedStream(source) {
   };
 }
 var init_getChunkedStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getChunkedStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getChunkedStream.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getUnmarshalledStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getUnmarshalledStream.js
 function getUnmarshalledStream(source, options) {
   const messageUnmarshaller = getMessageUnmarshaller(options.deserializer, options.toUtf8);
   return {
@@ -36025,14 +36025,14 @@ function getMessageUnmarshaller(deserializer, toUtf83) {
   };
 }
 var init_getUnmarshalledStream = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getUnmarshalledStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/getUnmarshalledStream.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/EventStreamMarshaller.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/EventStreamMarshaller.js
 var EventStreamMarshaller, eventStreamSerdeProvider;
 var init_EventStreamMarshaller = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/EventStreamMarshaller.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-universal/EventStreamMarshaller.js"() {
     init_EventStreamCodec();
     init_MessageDecoderStream();
     init_MessageEncoderStream();
@@ -36066,7 +36066,7 @@ var init_EventStreamMarshaller = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/EventStreamMarshaller.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/EventStreamMarshaller.js
 import { Readable as Readable7 } from "node:stream";
 async function* readableToIterable(readStream) {
   let streamEnded = false;
@@ -36096,7 +36096,7 @@ async function* readableToIterable(readStream) {
 }
 var EventStreamMarshaller2, eventStreamSerdeProvider2;
 var init_EventStreamMarshaller2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/EventStreamMarshaller.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/EventStreamMarshaller.js"() {
     init_EventStreamMarshaller();
     EventStreamMarshaller2 = class {
       universalMarshaller;
@@ -36118,10 +36118,10 @@ var init_EventStreamMarshaller2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/utils.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/utils.js
 var readableStreamToIterable, iterableToReadableStream;
 var init_utils2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/utils.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde/utils.js"() {
     readableStreamToIterable = (readableStream) => ({
       [Symbol.asyncIterator]: async function* () {
         const reader = readableStream.getReader();
@@ -36152,20 +36152,20 @@ var init_utils2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-config-resolver/EventStreamSerdeConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-config-resolver/EventStreamSerdeConfig.js
 var resolveEventStreamSerdeConfig;
 var init_EventStreamSerdeConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-config-resolver/EventStreamSerdeConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/eventstream-serde-config-resolver/EventStreamSerdeConfig.js"() {
     resolveEventStreamSerdeConfig = (input2) => Object.assign(input2, {
       eventStreamMarshaller: input2.eventStreamSerdeProvider(input2)
     });
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/EventStreamSerde.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/EventStreamSerde.js
 var EventStreamSerde;
 var init_EventStreamSerde = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/EventStreamSerde.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/EventStreamSerde.js"() {
     init_transport();
     init_schema();
     init_serde();
@@ -36438,7 +36438,7 @@ var init_EventStreamSerde = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/index.js
 var event_streams_exports = {};
 __export(event_streams_exports, {
   EventStreamCodec: () => EventStreamCodec,
@@ -36461,7 +36461,7 @@ __export(event_streams_exports, {
   universalEventStreamSerdeProvider: () => eventStreamSerdeProvider
 });
 var init_event_streams = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/event-streams/index.js"() {
     init_EventStreamCodec();
     init_HeaderMarshaller();
     init_Int64();
@@ -36479,10 +36479,10 @@ var init_event_streams = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpProtocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpProtocol.js
 var HttpProtocol;
 var init_HttpProtocol = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpProtocol.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpProtocol.js"() {
     init_transport();
     init_schema();
     init_transport();
@@ -36682,10 +36682,10 @@ var init_HttpProtocol = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpBindingProtocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpBindingProtocol.js
 var HttpBindingProtocol;
 var init_HttpBindingProtocol = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpBindingProtocol.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/HttpBindingProtocol.js"() {
     init_transport();
     init_schema();
     init_serde();
@@ -36966,10 +36966,10 @@ var init_HttpBindingProtocol = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/RpcProtocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/RpcProtocol.js
 var RpcProtocol;
 var init_RpcProtocol = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/RpcProtocol.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/RpcProtocol.js"() {
     init_transport();
     init_schema();
     init_transport();
@@ -37065,10 +37065,10 @@ var init_RpcProtocol = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/resolve-path.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/resolve-path.js
 var resolvedPath;
 var init_resolve_path = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/resolve-path.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/resolve-path.js"() {
     init_extended_encode_uri_component();
     resolvedPath = (resolvedPath2, input2, memberName, labelValueProvider, uriLabel, isGreedyLabel) => {
       if (input2 != null && input2[memberName] !== void 0) {
@@ -37085,13 +37085,13 @@ var init_resolve_path = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/requestBuilder.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/requestBuilder.js
 function requestBuilder(input2, context) {
   return new RequestBuilder(input2, context);
 }
 var RequestBuilder;
 var init_requestBuilder = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/requestBuilder.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/requestBuilder.js"() {
     init_transport();
     init_resolve_path();
     RequestBuilder = class {
@@ -37161,7 +37161,7 @@ var init_requestBuilder = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/determineTimestampFormat.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/determineTimestampFormat.js
 function determineTimestampFormat(ns, settings) {
   if (settings.timestampFormat.useTrait) {
     if (ns.isTimestampSchema() && (ns.getSchema() === 5 || ns.getSchema() === 6 || ns.getSchema() === 7)) {
@@ -37173,14 +37173,14 @@ function determineTimestampFormat(ns, settings) {
   return bindingFormat ?? settings.timestampFormat.default;
 }
 var init_determineTimestampFormat = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/determineTimestampFormat.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/determineTimestampFormat.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/FromStringShapeDeserializer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/FromStringShapeDeserializer.js
 var FromStringShapeDeserializer;
 var init_FromStringShapeDeserializer = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/FromStringShapeDeserializer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/FromStringShapeDeserializer.js"() {
     init_schema();
     init_serde();
     init_SerdeContext();
@@ -37248,10 +37248,10 @@ var init_FromStringShapeDeserializer = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeDeserializer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeDeserializer.js
 var HttpInterceptingShapeDeserializer;
 var init_HttpInterceptingShapeDeserializer = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeDeserializer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeDeserializer.js"() {
     init_schema();
     init_serde();
     init_SerdeContext();
@@ -37296,10 +37296,10 @@ var init_HttpInterceptingShapeDeserializer = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/ToStringShapeSerializer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/ToStringShapeSerializer.js
 var ToStringShapeSerializer;
 var init_ToStringShapeSerializer = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/ToStringShapeSerializer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/ToStringShapeSerializer.js"() {
     init_schema();
     init_serde();
     init_SerdeContext();
@@ -37392,10 +37392,10 @@ var init_ToStringShapeSerializer = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeSerializer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeSerializer.js
 var HttpInterceptingShapeSerializer;
 var init_HttpInterceptingShapeSerializer = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeSerializer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/serde/HttpInterceptingShapeSerializer.js"() {
     init_schema();
     init_ToStringShapeSerializer();
     HttpInterceptingShapeSerializer = class {
@@ -37432,10 +37432,10 @@ var init_HttpInterceptingShapeSerializer = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Field.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Field.js
 var import_types35, Field;
 var init_Field = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Field.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Field.js"() {
     import_types35 = __toESM(require_dist_cjs());
     Field = class {
       name;
@@ -37465,10 +37465,10 @@ var init_Field = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Fields.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Fields.js
 var Fields;
 var init_Fields = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Fields.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/Fields.js"() {
     Fields = class {
       entries = {};
       encoding;
@@ -37492,10 +37492,10 @@ var init_Fields = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/extensions/httpExtensionConfiguration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/extensions/httpExtensionConfiguration.js
 var getHttpHandlerExtensionConfiguration, resolveHttpHandlerRuntimeConfig;
 var init_httpExtensionConfiguration = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/extensions/httpExtensionConfiguration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/protocol-http/extensions/httpExtensionConfiguration.js"() {
     getHttpHandlerExtensionConfiguration = (runtimeConfig) => {
       if (runtimeConfig.logger && runtimeConfig.logger.constructor?.name !== "NoOpLogger") {
         runtimeConfig.requestHandler?.updateHttpClientConfig?.(Symbol.for("logger"), runtimeConfig.logger);
@@ -37523,7 +37523,7 @@ var init_httpExtensionConfiguration = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/middleware-content-length/contentLengthMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/middleware-content-length/contentLengthMiddleware.js
 function contentLengthMiddleware(bodyLengthChecker) {
   return (next) => async (args) => {
     const request = args.request;
@@ -37550,7 +37550,7 @@ function contentLengthMiddleware(bodyLengthChecker) {
 }
 var CONTENT_LENGTH_HEADER, contentLengthMiddlewareOptions, getContentLengthPlugin;
 var init_contentLengthMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/middleware-content-length/contentLengthMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/middleware-content-length/contentLengthMiddleware.js"() {
     init_transport();
     CONTENT_LENGTH_HEADER = "content-length";
     contentLengthMiddlewareOptions = {
@@ -37567,25 +37567,25 @@ var init_contentLengthMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri.js
 var escapeUri, hexEncode;
 var init_escape_uri = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri.js"() {
     escapeUri = (uri2) => encodeURIComponent(uri2).replace(/[!'()*]/g, hexEncode);
     hexEncode = (c5) => `%${c5.charCodeAt(0).toString(16).toUpperCase()}`;
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri-path.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri-path.js
 var escapeUriPath;
 var init_escape_uri_path = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri-path.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/util-uri-escape/escape-uri-path.js"() {
     init_escape_uri();
     escapeUriPath = (uri2) => uri2.split("/").map(escapeUri).join("/");
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/querystring-builder/buildQueryString.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/querystring-builder/buildQueryString.js
 function buildQueryString(query) {
   const parts = [];
   for (let key of Object.keys(query).sort()) {
@@ -37606,12 +37606,12 @@ function buildQueryString(query) {
   return parts.join("&");
 }
 var init_buildQueryString = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/querystring-builder/buildQueryString.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/querystring-builder/buildQueryString.js"() {
     init_escape_uri();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/index.js
 var protocols_exports = {};
 __export(protocols_exports, {
   Field: () => Field,
@@ -37645,7 +37645,7 @@ __export(protocols_exports, {
   resolvedPath: () => resolvedPath
 });
 var init_protocols = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/protocols/index.js"() {
     init_collect_stream_body();
     init_extended_encode_uri_component();
     init_HttpBindingProtocol();
@@ -37674,10 +37674,10 @@ var init_protocols = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/constants.js
 var CLOCK_SKEW_ERROR_CODES, THROTTLING_ERROR_CODES, TRANSIENT_ERROR_CODES, TRANSIENT_ERROR_STATUS_CODES, NODEJS_TIMEOUT_ERROR_CODES, NODEJS_NETWORK_ERROR_CODES;
 var init_constants5 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/constants.js"() {
     CLOCK_SKEW_ERROR_CODES = [
       "AccessDeniedException",
       "AuthFailure",
@@ -37710,13 +37710,13 @@ var init_constants5 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/service-error-classification.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/service-error-classification.js
 function isNodeJsHttp2TransientError(error113) {
   return error113.code === "ERR_HTTP2_STREAM_ERROR" && error113.message.includes("NGHTTP2_REFUSED_STREAM");
 }
 var isRetryableByTrait, isClockSkewError, isClockSkewCorrectedError, isBrowserNetworkError, isThrottlingError, isTransientError, isServerError;
 var init_service_error_classification = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/service-error-classification.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/service-error-classification/service-error-classification.js"() {
     init_constants5();
     isRetryableByTrait = (error113) => error113?.$retryable !== void 0;
     isClockSkewError = (error113) => CLOCK_SKEW_ERROR_CODES.includes(error113.name);
@@ -37750,10 +37750,10 @@ var init_service_error_classification = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/constants.js
 var DEFAULT_RETRY_DELAY_BASE, MAXIMUM_RETRY_DELAY, THROTTLING_RETRY_DELAY_BASE, INITIAL_RETRY_TOKENS, RETRY_COST, TIMEOUT_RETRY_COST, NO_RETRY_INCREMENT, INVOCATION_ID_HEADER, REQUEST_HEADER;
 var init_constants6 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/constants.js"() {
     DEFAULT_RETRY_DELAY_BASE = 100;
     MAXIMUM_RETRY_DELAY = 20 * 1e3;
     THROTTLING_RETRY_DELAY_BASE = 500;
@@ -37766,7 +37766,7 @@ var init_constants6 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/parseRetryAfterHeader.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/parseRetryAfterHeader.js
 function parseRetryAfterHeader(response, logger2) {
   if (!HttpResponse.isInstance(response)) {
     return;
@@ -37812,17 +37812,17 @@ function getRetryAfterHint(response, logger2) {
   return parseRetryAfterHeader(response, logger2);
 }
 var init_parseRetryAfterHeader = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/parseRetryAfterHeader.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/parseRetryAfterHeader.js"() {
     init_transport();
     init_protocols();
     init_serde();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/util.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/util.js
 var asSdkError;
 var init_util2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/util.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/util.js"() {
     asSdkError = (error113) => {
       if (error113 instanceof Error)
         return error113;
@@ -37835,7 +37835,7 @@ var init_util2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retryMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retryMiddleware.js
 function bindRetryMiddleware(isStreamingPayload2) {
   return (options) => (next, context) => async (args) => {
     let retryStrategy = await options.retryStrategy();
@@ -37905,7 +37905,7 @@ function bindGetRetryPlugin(isStreamingPayload2) {
 }
 var cooldown, isRetryStrategyV2, getRetryErrorInfo, getRetryErrorType, retryMiddlewareOptions;
 var init_retryMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retryMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retryMiddleware.js"() {
     init_client2();
     init_protocols();
     init_serde();
@@ -37945,10 +37945,10 @@ var init_retryMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRateLimiter.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRateLimiter.js
 var DefaultRateLimiter;
 var init_DefaultRateLimiter = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRateLimiter.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRateLimiter.js"() {
     init_service_error_classification();
     DefaultRateLimiter = class _DefaultRateLimiter {
       static setTimeoutFn = (fn, delay3) => setTimeout(fn, delay3);
@@ -38062,10 +38062,10 @@ var init_DefaultRateLimiter = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/retries-2026-config.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/retries-2026-config.js
 var Retry;
 var init_retries_2026_config = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/retries-2026-config.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/retries-2026-config.js"() {
     Retry = class _Retry {
       static v2026 = typeof process !== "undefined" && process.env?.SMITHY_NEW_RETRIES_2026 === "true";
       static delay() {
@@ -38087,10 +38087,10 @@ var init_retries_2026_config = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryBackoffStrategy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryBackoffStrategy.js
 var DefaultRetryBackoffStrategy;
 var init_DefaultRetryBackoffStrategy = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryBackoffStrategy.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryBackoffStrategy.js"() {
     init_constants6();
     init_retries_2026_config();
     DefaultRetryBackoffStrategy = class {
@@ -38108,10 +38108,10 @@ var init_DefaultRetryBackoffStrategy = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryToken.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryToken.js
 var DefaultRetryToken;
 var init_DefaultRetryToken = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryToken.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/DefaultRetryToken.js"() {
     init_constants6();
     DefaultRetryToken = class {
       delay;
@@ -38143,10 +38143,10 @@ var init_DefaultRetryToken = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/config.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/config.js
 var RETRY_MODES, DEFAULT_MAX_ATTEMPTS, DEFAULT_RETRY_MODE;
 var init_config3 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/config.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/config.js"() {
     (function(RETRY_MODES2) {
       RETRY_MODES2["STANDARD"] = "standard";
       RETRY_MODES2["ADAPTIVE"] = "adaptive";
@@ -38156,10 +38156,10 @@ var init_config3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/StandardRetryStrategy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/StandardRetryStrategy.js
 var refusal, StandardRetryStrategy;
 var init_StandardRetryStrategy = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/StandardRetryStrategy.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/StandardRetryStrategy.js"() {
     init_DefaultRetryBackoffStrategy();
     init_DefaultRetryToken();
     init_config3();
@@ -38256,10 +38256,10 @@ var init_StandardRetryStrategy = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/AdaptiveRetryStrategy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/AdaptiveRetryStrategy.js
 var AdaptiveRetryStrategy;
 var init_AdaptiveRetryStrategy = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/AdaptiveRetryStrategy.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/AdaptiveRetryStrategy.js"() {
     init_DefaultRateLimiter();
     init_StandardRetryStrategy();
     init_config3();
@@ -38297,10 +38297,10 @@ var init_AdaptiveRetryStrategy = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/ConfiguredRetryStrategy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/ConfiguredRetryStrategy.js
 var ConfiguredRetryStrategy;
 var init_ConfiguredRetryStrategy = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/ConfiguredRetryStrategy.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/util-retry/ConfiguredRetryStrategy.js"() {
     init_StandardRetryStrategy();
     init_retries_2026_config();
     ConfiguredRetryStrategy = class extends StandardRetryStrategy {
@@ -38321,10 +38321,10 @@ var init_ConfiguredRetryStrategy = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/defaultRetryQuota.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/defaultRetryQuota.js
 var getDefaultRetryQuota;
 var init_defaultRetryQuota = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/defaultRetryQuota.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/defaultRetryQuota.js"() {
     init_constants6();
     getDefaultRetryQuota = (initialRetryTokens, options) => {
       const MAX_CAPACITY = initialRetryTokens;
@@ -38355,19 +38355,19 @@ var init_defaultRetryQuota = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/delayDecider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/delayDecider.js
 var defaultDelayDecider;
 var init_delayDecider = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/delayDecider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/delayDecider.js"() {
     init_constants6();
     defaultDelayDecider = (delayBase, attempts) => Math.floor(Math.min(MAXIMUM_RETRY_DELAY, Math.random() * 2 ** attempts * delayBase));
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/retryDecider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/retryDecider.js
 var defaultRetryDecider;
 var init_retryDecider = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/retryDecider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/retryDecider.js"() {
     init_service_error_classification();
     defaultRetryDecider = (error113) => {
       if (!error113) {
@@ -38378,10 +38378,10 @@ var init_retryDecider = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/StandardRetryStrategy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/StandardRetryStrategy.js
 var StandardRetryStrategy2, getDelayFromRetryAfterHeader;
 var init_StandardRetryStrategy2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/StandardRetryStrategy.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/StandardRetryStrategy.js"() {
     init_protocols();
     init_serde();
     init_service_error_classification();
@@ -38478,10 +38478,10 @@ var init_StandardRetryStrategy2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/AdaptiveRetryStrategy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/AdaptiveRetryStrategy.js
 var AdaptiveRetryStrategy2;
 var init_AdaptiveRetryStrategy2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/AdaptiveRetryStrategy.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/retry-pre-sra-deprecated/AdaptiveRetryStrategy.js"() {
     init_DefaultRateLimiter();
     init_config3();
     init_StandardRetryStrategy2();
@@ -38507,10 +38507,10 @@ var init_AdaptiveRetryStrategy2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/configurations.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/configurations.js
 var ENV_MAX_ATTEMPTS, CONFIG_MAX_ATTEMPTS, NODE_MAX_ATTEMPT_CONFIG_OPTIONS, resolveRetryConfig, ENV_RETRY_MODE, CONFIG_RETRY_MODE, NODE_RETRY_MODE_CONFIG_OPTIONS;
 var init_configurations = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/configurations.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/configurations.js"() {
     init_client2();
     init_AdaptiveRetryStrategy();
     init_StandardRetryStrategy();
@@ -38575,10 +38575,10 @@ var init_configurations = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/omitRetryHeadersMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/omitRetryHeadersMiddleware.js
 var omitRetryHeadersMiddleware, omitRetryHeadersMiddlewareOptions, getOmitRetryHeadersPlugin;
 var init_omitRetryHeadersMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/omitRetryHeadersMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/middleware-retry/omitRetryHeadersMiddleware.js"() {
     init_protocols();
     init_constants6();
     omitRetryHeadersMiddleware = () => (next) => async (args) => {
@@ -38604,7 +38604,7 @@ var init_omitRetryHeadersMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/index.js
 var retry_exports = {};
 __export(retry_exports, {
   AdaptiveRetryStrategy: () => AdaptiveRetryStrategy,
@@ -38653,7 +38653,7 @@ __export(retry_exports, {
 });
 var retryMiddleware, getRetryPlugin;
 var init_retry2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/submodules/retry/index.js"() {
     init_isStreamingPayload();
     init_retryMiddleware();
     init_service_error_classification();
@@ -38677,7 +38677,7 @@ var init_retry2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js
 function setFeature2(context, feature, value) {
   if (!context.__aws_sdk_context) {
     context.__aws_sdk_context = {
@@ -38689,13 +38689,13 @@ function setFeature2(context, feature, value) {
   context.__aws_sdk_context.features[feature] = value;
 }
 var init_setFeature = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js"() {
     init_retry2();
     Retry.v2026 ||= typeof process === "object" && process.env?.AWS_NEW_RETRIES_2026 === "true";
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js
 function setTokenFeature(token, feature, value) {
   if (!token.$source) {
     token.$source = {};
@@ -38704,17 +38704,17 @@ function setTokenFeature(token, feature, value) {
   return token;
 }
 var init_setTokenFeature = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js
 function resolveHostHeaderConfig(input2) {
   return input2;
 }
 var hostHeaderMiddleware, hostHeaderMiddlewareOptions, getHostHeaderPlugin;
 var init_hostHeaderMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js"() {
     init_protocols();
     hostHeaderMiddleware = (options) => (next) => async (args) => {
       if (!HttpRequest.isInstance(args.request))
@@ -38747,10 +38747,10 @@ var init_hostHeaderMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js
 var loggerMiddleware, loggerMiddlewareOptions, getLoggerPlugin;
 var init_loggerMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js"() {
     loggerMiddleware = () => (next, context) => async (args) => {
       try {
         const response = await next(args);
@@ -38795,10 +38795,10 @@ var init_loggerMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js
 var recursionDetectionMiddlewareOptions;
 var init_configuration = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js"() {
     recursionDetectionMiddlewareOptions = {
       step: "build",
       tags: ["RECURSION_DETECTION", "TRACE_CONTEXT_PROPAGATION"],
@@ -38809,10 +38809,10 @@ var init_configuration = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws+lambda-invoke-store@0.3.0/node_modules/@aws/lambda-invoke-store/dist-es/invoke-store.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws+lambda-invoke-store@0.3.0/node_modules/@aws/lambda-invoke-store/dist-es/invoke-store.js
 var PROTECTED_KEYS, NO_GLOBAL_AWS_LAMBDA, InvokeStoreBase, InvokeStoreSingle, InvokeStoreMulti, InvokeStore;
 var init_invoke_store = __esm({
-  "node_modules/.pnpm/@aws+lambda-invoke-store@0.3.0/node_modules/@aws/lambda-invoke-store/dist-es/invoke-store.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws+lambda-invoke-store@0.3.0/node_modules/@aws/lambda-invoke-store/dist-es/invoke-store.js"() {
     PROTECTED_KEYS = {
       REQUEST_ID: Symbol.for("_AWS_LAMBDA_REQUEST_ID"),
       X_RAY_TRACE_ID: Symbol.for("_AWS_LAMBDA_X_RAY_TRACE_ID"),
@@ -38936,7 +38936,7 @@ var init_invoke_store = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js
 function sanitizeTraceHeaders(headers) {
   for (const header of Object.keys(headers)) {
     const lower = header.toLowerCase();
@@ -38948,7 +38948,7 @@ function sanitizeTraceHeaders(headers) {
 }
 var AWS_LAMBDA_FUNCTION_NAME, _X_AMZN_TRACE_ID, X_AMZN_TRACE_ID, TRACEPARENT, TRACESTATE, BAGGAGE, recursionDetectionMiddleware;
 var init_recursionDetectionMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js"() {
     init_invoke_store();
     init_protocols();
     AWS_LAMBDA_FUNCTION_NAME = "AWS_LAMBDA_FUNCTION_NAME";
@@ -39000,10 +39000,10 @@ var init_recursionDetectionMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js
 var getRecursionDetectionPlugin;
 var init_getRecursionDetectionPlugin = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js"() {
     init_configuration();
     init_recursionDetectionMiddleware();
     getRecursionDetectionPlugin = (options) => ({
@@ -39014,10 +39014,10 @@ var init_getRecursionDetectionPlugin = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/resolveAuthOptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/resolveAuthOptions.js
 var resolveAuthOptions;
 var init_resolveAuthOptions = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/resolveAuthOptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/resolveAuthOptions.js"() {
     resolveAuthOptions = (candidateAuthOptions, authSchemePreference) => {
       if (!authSchemePreference || authSchemePreference.length === 0) {
         return candidateAuthOptions;
@@ -39041,7 +39041,7 @@ var init_resolveAuthOptions = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/httpAuthSchemeMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/httpAuthSchemeMiddleware.js
 function convertHttpAuthSchemesToMap(httpAuthSchemes) {
   const map5 = /* @__PURE__ */ new Map();
   for (const scheme of httpAuthSchemes) {
@@ -39051,7 +39051,7 @@ function convertHttpAuthSchemesToMap(httpAuthSchemes) {
 }
 var httpAuthSchemeMiddleware;
 var init_httpAuthSchemeMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/httpAuthSchemeMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/httpAuthSchemeMiddleware.js"() {
     init_transport();
     init_resolveAuthOptions();
     httpAuthSchemeMiddleware = (config3, mwOptions) => (next, context) => async (args) => {
@@ -39090,10 +39090,10 @@ var init_httpAuthSchemeMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemeEndpointRuleSetPlugin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemeEndpointRuleSetPlugin.js
 var httpAuthSchemeEndpointRuleSetMiddlewareOptions, getHttpAuthSchemeEndpointRuleSetPlugin;
 var init_getHttpAuthSchemeEndpointRuleSetPlugin = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemeEndpointRuleSetPlugin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemeEndpointRuleSetPlugin.js"() {
     init_httpAuthSchemeMiddleware();
     httpAuthSchemeEndpointRuleSetMiddlewareOptions = {
       step: "serialize",
@@ -39114,10 +39114,10 @@ var init_getHttpAuthSchemeEndpointRuleSetPlugin = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemePlugin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemePlugin.js
 var httpAuthSchemeMiddlewareOptions, getHttpAuthSchemePlugin;
 var init_getHttpAuthSchemePlugin = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemePlugin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/getHttpAuthSchemePlugin.js"() {
     init_httpAuthSchemeMiddleware();
     httpAuthSchemeMiddlewareOptions = {
       step: "serialize",
@@ -39138,19 +39138,19 @@ var init_getHttpAuthSchemePlugin = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/index.js
 var init_middleware_http_auth_scheme = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-auth-scheme/index.js"() {
     init_httpAuthSchemeMiddleware();
     init_getHttpAuthSchemeEndpointRuleSetPlugin();
     init_getHttpAuthSchemePlugin();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/httpSigningMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/httpSigningMiddleware.js
 var defaultErrorHandler, defaultSuccessHandler, httpSigningMiddleware;
 var init_httpSigningMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/httpSigningMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/httpSigningMiddleware.js"() {
     init_protocols();
     init_transport();
     defaultErrorHandler = (signingProperties) => (error113) => {
@@ -39178,10 +39178,10 @@ var init_httpSigningMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/getHttpSigningMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/getHttpSigningMiddleware.js
 var httpSigningMiddlewareOptions, getHttpSigningPlugin;
 var init_getHttpSigningMiddleware = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/getHttpSigningMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/getHttpSigningMiddleware.js"() {
     init_httpSigningMiddleware();
     httpSigningMiddlewareOptions = {
       step: "finalizeRequest",
@@ -39200,18 +39200,18 @@ var init_getHttpSigningMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/index.js
 var init_middleware_http_signing = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/middleware-http-signing/index.js"() {
     init_httpSigningMiddleware();
     init_getHttpSigningMiddleware();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/normalizeProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/normalizeProvider.js
 var normalizeProvider2;
 var init_normalizeProvider2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/normalizeProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/normalizeProvider.js"() {
     normalizeProvider2 = (input2) => {
       if (typeof input2 === "function")
         return input2;
@@ -39221,7 +39221,7 @@ var init_normalizeProvider2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/pagination/createPaginator.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/pagination/createPaginator.js
 function createPaginator(ClientCtor, CommandCtor, inputTokenName, outputTokenName, pageSizeTokenName) {
   return async function* paginateOperation(config3, input2, ...additionalArguments) {
     const _input = input2;
@@ -39248,7 +39248,7 @@ function createPaginator(ClientCtor, CommandCtor, inputTokenName, outputTokenNam
 }
 var makePagedClientRequest, get;
 var init_createPaginator = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/pagination/createPaginator.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/pagination/createPaginator.js"() {
     makePagedClientRequest = async (CommandCtor, client, input2, withCommand = (_3) => _3, ...args) => {
       let command5 = new CommandCtor(input2);
       command5 = withCommand(command5) ?? command5;
@@ -39268,7 +39268,7 @@ var init_createPaginator = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/setFeature.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/setFeature.js
 function setFeature3(context, feature, value) {
   if (!context.__smithy_context) {
     context.__smithy_context = {
@@ -39280,14 +39280,14 @@ function setFeature3(context, feature, value) {
   context.__smithy_context.features[feature] = value;
 }
 var init_setFeature2 = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/setFeature.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/setFeature.js"() {
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/DefaultIdentityProviderConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/DefaultIdentityProviderConfig.js
 var DefaultIdentityProviderConfig;
 var init_DefaultIdentityProviderConfig = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/DefaultIdentityProviderConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/DefaultIdentityProviderConfig.js"() {
     init_transport();
     DefaultIdentityProviderConfig = class {
       authSchemes = /* @__PURE__ */ new Map();
@@ -39308,10 +39308,10 @@ var init_DefaultIdentityProviderConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpApiKeyAuth.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpApiKeyAuth.js
 var import_types36, HttpApiKeyAuthSigner;
 var init_httpApiKeyAuth = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpApiKeyAuth.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpApiKeyAuth.js"() {
     init_protocols();
     import_types36 = __toESM(require_dist_cjs());
     HttpApiKeyAuthSigner = class {
@@ -39342,10 +39342,10 @@ var init_httpApiKeyAuth = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpBearerAuth.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpBearerAuth.js
 var HttpBearerAuthSigner;
 var init_httpBearerAuth = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpBearerAuth.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/httpBearerAuth.js"() {
     init_protocols();
     HttpBearerAuthSigner = class {
       async sign(httpRequest, identity, signingProperties) {
@@ -39360,10 +39360,10 @@ var init_httpBearerAuth = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/noAuth.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/noAuth.js
 var NoAuthSigner;
 var init_noAuth = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/noAuth.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/noAuth.js"() {
     NoAuthSigner = class {
       async sign(httpRequest, identity, signingProperties) {
         return httpRequest;
@@ -39372,19 +39372,19 @@ var init_noAuth = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/index.js
 var init_httpAuthSchemes = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/httpAuthSchemes/index.js"() {
     init_httpApiKeyAuth();
     init_httpBearerAuth();
     init_noAuth();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/memoizeIdentityProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/memoizeIdentityProvider.js
 var createIsIdentityExpiredFunction, EXPIRATION_MS, isIdentityExpired, doesIdentityRequireRefresh, memoizeIdentityProvider;
 var init_memoizeIdentityProvider = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/memoizeIdentityProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/memoizeIdentityProvider.js"() {
     createIsIdentityExpiredFunction = (expirationMs) => function isIdentityExpired2(identity) {
       return doesIdentityRequireRefresh(identity) && identity.expiration.getTime() - Date.now() < expirationMs;
     };
@@ -39442,16 +39442,16 @@ var init_memoizeIdentityProvider = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/index.js
 var init_util_identity_and_auth = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/legacy-root-exports/util-identity-and-auth/index.js"() {
     init_DefaultIdentityProviderConfig();
     init_httpAuthSchemes();
     init_memoizeIdentityProvider();
   }
 });
 
-// node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/index.js
 var dist_es_exports = {};
 __export(dist_es_exports, {
   DefaultIdentityProviderConfig: () => DefaultIdentityProviderConfig,
@@ -39478,7 +39478,7 @@ __export(dist_es_exports, {
   setFeature: () => setFeature3
 });
 var init_dist_es = __esm({
-  "node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+core@3.35.1/node_modules/@smithy/core/dist-es/index.js"() {
     init_transport();
     init_middleware_http_auth_scheme();
     init_middleware_http_signing();
@@ -39490,7 +39490,7 @@ var init_dist_es = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js
 function isValidUserAgentAppId(appId) {
   if (appId === void 0) {
     return true;
@@ -39518,16 +39518,16 @@ function resolveUserAgentConfig(input2) {
 }
 var DEFAULT_UA_APP_ID;
 var init_configurations2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js"() {
     init_dist_es();
     DEFAULT_UA_APP_ID = void 0;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js
 var partitionsInfo;
 var init_partitions = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js"() {
     partitionsInfo = {
       "partitions": [
         {
@@ -39807,10 +39807,10 @@ var init_partitions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js
 var selectedPartitionsInfo, selectedUserAgentPrefix, partition, setPartitionInfo, useDefaultPartitionInfo, getUserAgentPrefix;
 var init_partition = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js"() {
     init_partitions();
     selectedPartitionsInfo = partitionsInfo;
     selectedUserAgentPrefix = "";
@@ -39854,7 +39854,7 @@ var init_partition = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js
 async function checkFeatures(context, config3, args) {
   const request = args.request;
   if (request?.headers?.["smithy-protocol"] === "rpc-v2-cbor") {
@@ -39903,17 +39903,17 @@ async function checkFeatures(context, config3, args) {
 }
 var ACCOUNT_ID_ENDPOINT_REGEX;
 var init_check_features = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js"() {
     init_retry2();
     init_setFeature();
     ACCOUNT_ID_ENDPOINT_REGEX = /\d{12}\.ddb/;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js
 var USER_AGENT, X_AMZ_USER_AGENT, SPACE, UA_NAME_SEPARATOR, UA_NAME_ESCAPE_REGEX, UA_VALUE_ESCAPE_REGEX, UA_ESCAPE_CHAR;
 var init_constants7 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js"() {
     USER_AGENT = "user-agent";
     X_AMZ_USER_AGENT = "x-amz-user-agent";
     SPACE = " ";
@@ -39924,7 +39924,7 @@ var init_constants7 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js
 function encodeFeatures(features) {
   let buffer = "";
   for (const key in features) {
@@ -39943,15 +39943,15 @@ function encodeFeatures(features) {
 }
 var BYTE_LIMIT;
 var init_encode_features = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js"() {
     BYTE_LIMIT = 1024;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js
 var userAgentMiddleware, escapeUserAgent, getUserAgentMiddlewareOptions, getUserAgentPlugin;
 var init_user_agent_middleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js"() {
     init_protocols();
     init_partition();
     init_check_features();
@@ -40027,11 +40027,11 @@ var init_user_agent_middleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js
 import { versions } from "node:process";
 var getRuntimeUserAgentPair;
 var init_getRuntimeUserAgentPair = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js"() {
     getRuntimeUserAgentPair = () => {
       const runtimesToCheck = ["deno", "bun", "llrt"];
       for (const runtime of runtimesToCheck) {
@@ -40044,20 +40044,20 @@ var init_getRuntimeUserAgentPair = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js
 var crtAvailability;
 var init_crt_availability = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js"() {
     crtAvailability = {
       isCrtAvailable: false
     };
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js
 var isCrtAvailable;
 var init_is_crt_available = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js"() {
     init_crt_availability();
     isCrtAvailable = () => {
       if (crtAvailability.isCrtAvailable) {
@@ -40068,12 +40068,12 @@ var init_is_crt_available = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js
 import { platform, release } from "node:os";
 import { env } from "node:process";
 var createDefaultUserAgentProvider, defaultUserAgent;
 var init_defaultUserAgent = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js"() {
     init_getRuntimeUserAgentPair();
     init_is_crt_available();
     init_crt_availability();
@@ -40106,10 +40106,10 @@ var init_defaultUserAgent = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js
 var UA_APP_ID_ENV_NAME, UA_APP_ID_INI_NAME, UA_APP_ID_INI_NAME_DEPRECATED, NODE_APP_ID_CONFIG_OPTIONS;
 var init_nodeAppIdConfigOptions = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js"() {
     init_configurations2();
     UA_APP_ID_ENV_NAME = "AWS_SDK_UA_APP_ID";
     UA_APP_ID_INI_NAME = "sdk_ua_app_id";
@@ -40122,9 +40122,9 @@ var init_nodeAppIdConfigOptions = __esm({
   }
 });
 
-// node_modules/.pnpm/bowser@2.14.1/node_modules/bowser/es5.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/bowser@2.14.1/node_modules/bowser/es5.js
 var require_es5 = __commonJS({
-  "node_modules/.pnpm/bowser@2.14.1/node_modules/bowser/es5.js"(exports, module) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/bowser@2.14.1/node_modules/bowser/es5.js"(exports, module) {
     !(function(e33, t8) {
       "object" == typeof exports && "object" == typeof module ? module.exports = t8() : "function" == typeof define && define.amd ? define([], t8) : "object" == typeof exports ? exports.bowser = t8() : e33.bowser = t8();
     })(exports, (function() {
@@ -40938,10 +40938,10 @@ var require_es5 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js
 var createUserAgentStringParsingProvider;
 var init_createUserAgentStringParsingProvider = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js"() {
     createUserAgentStringParsingProvider = ({ serviceId, clientVersion }) => async (config3) => {
       const module = await Promise.resolve().then(() => __toESM(require_es5()));
       const parse6 = module.parse ?? module.default.parse ?? (() => "");
@@ -40965,10 +40965,10 @@ var init_createUserAgentStringParsingProvider = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js
 var fallback;
 var init_defaultUserAgent2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js"() {
     fallback = {
       os(ua) {
         if (/iPhone|iPad|iPod/.test(ua))
@@ -40998,17 +40998,17 @@ var init_defaultUserAgent2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js
 var init_isIpAddress2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js"() {
     init_endpoints();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js
 var isVirtualHostableS3Bucket;
 var init_isVirtualHostableS3Bucket = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js"() {
     init_endpoints();
     init_isIpAddress2();
     isVirtualHostableS3Bucket = (value, allowSubDomains = false) => {
@@ -41037,10 +41037,10 @@ var init_isVirtualHostableS3Bucket = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js
 var ARN_DELIMITER, RESOURCE_DELIMITER, parseArn;
 var init_parseArn = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js"() {
     ARN_DELIMITER = ":";
     RESOURCE_DELIMITER = "/";
     parseArn = (value) => {
@@ -41062,10 +41062,10 @@ var init_parseArn = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js
 var awsEndpointFunctions;
 var init_aws = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js"() {
     init_endpoints();
     init_isVirtualHostableS3Bucket();
     init_parseArn();
@@ -41079,17 +41079,17 @@ var init_aws = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js
 var init_resolveEndpoint2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js"() {
     init_endpoints();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js
 var resolveDefaultAwsRegionalEndpointsConfig, toEndpointV12;
 var init_resolveDefaultAwsRegionalEndpointsConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js"() {
     init_protocols();
     resolveDefaultAwsRegionalEndpointsConfig = (input2) => {
       if (typeof input2.endpointProvider !== "function") {
@@ -41112,22 +41112,22 @@ var init_resolveDefaultAwsRegionalEndpointsConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js
 var init_EndpointError2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js"() {
     init_endpoints();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js
 var init_awsRegionConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js"() {
     init_config2();
     init_config2();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js
 function stsRegionDefaultResolver(loaderConfig = {}) {
   return loadConfig2({
     ...NODE_REGION_CONFIG_OPTIONS,
@@ -41141,7 +41141,7 @@ function stsRegionDefaultResolver(loaderConfig = {}) {
 }
 var warning;
 var init_stsRegionDefaultResolver = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js"() {
     init_config2();
     warning = {
       silence: false
@@ -41149,10 +41149,10 @@ var init_stsRegionDefaultResolver = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js
 var getAwsRegionExtensionConfiguration, resolveAwsRegionExtensionConfiguration;
 var init_extensions = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js"() {
     getAwsRegionExtensionConfiguration = (runtimeConfig) => {
       return {
         setRegion(region) {
@@ -41171,7 +41171,7 @@ var init_extensions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js
 var client_exports2 = {};
 __export(client_exports2, {
   DEFAULT_UA_APP_ID: () => DEFAULT_UA_APP_ID,
@@ -41226,7 +41226,7 @@ __export(client_exports2, {
   userAgentMiddleware: () => userAgentMiddleware
 });
 var init_client3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js"() {
     init_emitWarningIfUnsupportedVersion();
     init_longPollMiddleware();
     init_setCredentialFeature();
@@ -41257,10 +41257,10 @@ var init_client3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmForRequest.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmForRequest.js
 var getChecksumAlgorithmForRequest;
 var init_getChecksumAlgorithmForRequest = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmForRequest.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmForRequest.js"() {
     init_constants();
     getChecksumAlgorithmForRequest = (input2, { requestChecksumRequired, requestAlgorithmMember, requestChecksumCalculation }) => {
       if (!requestAlgorithmMember) {
@@ -41275,19 +41275,19 @@ var init_getChecksumAlgorithmForRequest = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumLocationName.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumLocationName.js
 var getChecksumLocationName;
 var init_getChecksumLocationName = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumLocationName.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumLocationName.js"() {
     init_constants();
     getChecksumLocationName = (algorithm) => algorithm === ChecksumAlgorithm.MD5 ? "content-md5" : `x-amz-checksum-${algorithm.toLowerCase()}`;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeader.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeader.js
 var hasHeader;
 var init_hasHeader = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeader.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeader.js"() {
     hasHeader = (header, headers) => {
       const soughtHeader = header.toLowerCase();
       for (const headerName of Object.keys(headers)) {
@@ -41300,10 +41300,10 @@ var init_hasHeader = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeaderWithPrefix.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeaderWithPrefix.js
 var hasHeaderWithPrefix;
 var init_hasHeaderWithPrefix = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeaderWithPrefix.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/hasHeaderWithPrefix.js"() {
     hasHeaderWithPrefix = (headerPrefix, headers) => {
       const soughtHeaderPrefix = headerPrefix.toLowerCase();
       for (const headerName of Object.keys(headers)) {
@@ -41316,19 +41316,19 @@ var init_hasHeaderWithPrefix = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isStreaming.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isStreaming.js
 var isStreaming;
 var init_isStreaming = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isStreaming.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isStreaming.js"() {
     init_serde();
     isStreaming = (body) => body !== void 0 && typeof body !== "string" && !ArrayBuffer.isView(body) && !isArrayBuffer(body);
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cJs.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cJs.js
 var T4, Crc32cJs;
 var init_Crc32cJs = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cJs.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cJs.js"() {
     T4 = new Uint32Array(256);
     for (let i5 = 0; i5 < 256; ++i5) {
       let c5 = i5;
@@ -41363,29 +41363,29 @@ var init_Crc32cJs = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cNode.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cNode.js
 var Crc32cNode;
 var init_Crc32cNode = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cNode.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc32c/Crc32cNode.js"() {
     init_Crc32cJs();
     Crc32cNode = Crc32cJs;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/crc64-nvme-crt-container.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/crc64-nvme-crt-container.js
 var crc64NvmeCrtContainer;
 var init_crc64_nvme_crt_container = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/crc64-nvme-crt-container.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/crc64-nvme-crt-container.js"() {
     crc64NvmeCrtContainer = {
       CrtCrc64Nvme: null
     };
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64NvmeJs.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64NvmeJs.js
 var generateCRC64NVMETable, CRC64_NVME_REVERSED_TABLE, t0, t1, t22, t3, t4, t5, t6, t7, ensureTablesInitialized, Crc64NvmeJs;
 var init_Crc64NvmeJs = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64NvmeJs.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64NvmeJs.js"() {
     generateCRC64NVMETable = () => {
       const sliceLength = 8;
       const tables = new Array(sliceLength);
@@ -41469,10 +41469,10 @@ var init_Crc64NvmeJs = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64Nvme.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64Nvme.js
 var Crc64Nvme;
 var init_Crc64Nvme = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64Nvme.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/crc64-nvme/Crc64Nvme.js"() {
     init_crc64_nvme_crt_container();
     init_Crc64NvmeJs();
     Crc64Nvme = class {
@@ -41494,19 +41494,19 @@ var init_Crc64Nvme = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/index.js
 var init_crc = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/crc/index.js"() {
     init_Crc32cNode();
     init_Crc64Nvme();
     init_checksum2();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/types.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/types.js
 var CLIENT_SUPPORTED_ALGORITHMS, PRIORITY_ORDER_ALGORITHMS;
 var init_types3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/types.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/types.js"() {
     init_constants();
     CLIENT_SUPPORTED_ALGORITHMS = [
       ChecksumAlgorithm.CRC32,
@@ -41525,10 +41525,10 @@ var init_types3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/selectChecksumAlgorithmFunction.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/selectChecksumAlgorithmFunction.js
 var selectChecksumAlgorithmFunction;
 var init_selectChecksumAlgorithmFunction = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/selectChecksumAlgorithmFunction.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/selectChecksumAlgorithmFunction.js"() {
     init_crc();
     init_constants();
     init_types3();
@@ -41557,10 +41557,10 @@ var init_selectChecksumAlgorithmFunction = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringHasher.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringHasher.js
 var stringHasher;
 var init_stringHasher = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringHasher.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/stringHasher.js"() {
     init_serde();
     stringHasher = (checksumAlgorithmFn, body) => {
       const hash5 = new checksumAlgorithmFn();
@@ -41570,10 +41570,10 @@ var init_stringHasher = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsMiddleware.js
 var flexibleChecksumsMiddlewareOptions, flexibleChecksumsMiddleware;
 var init_flexibleChecksumsMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsMiddleware.js"() {
     init_client3();
     init_protocols();
     init_serde();
@@ -41692,10 +41692,10 @@ var init_flexibleChecksumsMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsInputMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsInputMiddleware.js
 var flexibleChecksumsInputMiddlewareOptions, flexibleChecksumsInputMiddleware;
 var init_flexibleChecksumsInputMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsInputMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsInputMiddleware.js"() {
     init_client3();
     init_constants();
     flexibleChecksumsInputMiddlewareOptions = {
@@ -41736,10 +41736,10 @@ var init_flexibleChecksumsInputMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmListForResponse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmListForResponse.js
 var getChecksumAlgorithmListForResponse;
 var init_getChecksumAlgorithmListForResponse = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmListForResponse.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksumAlgorithmListForResponse.js"() {
     init_types3();
     getChecksumAlgorithmListForResponse = (responseAlgorithms = []) => {
       const validChecksumAlgorithms = [];
@@ -41757,10 +41757,10 @@ var init_getChecksumAlgorithmListForResponse = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isChecksumWithPartNumber.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isChecksumWithPartNumber.js
 var isChecksumWithPartNumber;
 var init_isChecksumWithPartNumber = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isChecksumWithPartNumber.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/isChecksumWithPartNumber.js"() {
     isChecksumWithPartNumber = (checksum) => {
       const lastHyphenIndex = checksum.lastIndexOf("-");
       if (lastHyphenIndex !== -1) {
@@ -41777,19 +41777,19 @@ var init_isChecksumWithPartNumber = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksum.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksum.js
 var getChecksum;
 var init_getChecksum = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksum.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getChecksum.js"() {
     init_stringHasher();
     getChecksum = async (body, { checksumAlgorithmFn, base64Encoder }) => base64Encoder(await stringHasher(checksumAlgorithmFn, body));
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/validateChecksumFromResponse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/validateChecksumFromResponse.js
 var validateChecksumFromResponse;
 var init_validateChecksumFromResponse = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/validateChecksumFromResponse.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/validateChecksumFromResponse.js"() {
     init_serde();
     init_constants();
     init_getChecksum();
@@ -41836,10 +41836,10 @@ var init_validateChecksumFromResponse = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsResponseMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsResponseMiddleware.js
 var flexibleChecksumsResponseMiddlewareOptions, flexibleChecksumsResponseMiddleware;
 var init_flexibleChecksumsResponseMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsResponseMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/flexibleChecksumsResponseMiddleware.js"() {
     init_protocols();
     init_getChecksumAlgorithmListForResponse();
     init_getChecksumLocationName();
@@ -41889,10 +41889,10 @@ var init_flexibleChecksumsResponseMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getFlexibleChecksumsPlugin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getFlexibleChecksumsPlugin.js
 var getFlexibleChecksumsPlugin;
 var init_getFlexibleChecksumsPlugin = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getFlexibleChecksumsPlugin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/getFlexibleChecksumsPlugin.js"() {
     init_flexibleChecksumsInputMiddleware();
     init_flexibleChecksumsMiddleware();
     init_flexibleChecksumsResponseMiddleware();
@@ -41906,10 +41906,10 @@ var init_getFlexibleChecksumsPlugin = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/resolveFlexibleChecksumsConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/resolveFlexibleChecksumsConfig.js
 var resolveFlexibleChecksumsConfig;
 var init_resolveFlexibleChecksumsConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/resolveFlexibleChecksumsConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/resolveFlexibleChecksumsConfig.js"() {
     init_client2();
     init_constants();
     resolveFlexibleChecksumsConfig = (input2) => {
@@ -41924,7 +41924,7 @@ var init_resolveFlexibleChecksumsConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/index.js
 var flexible_checksums_exports = {};
 __export(flexible_checksums_exports, {
   CONFIG_REQUEST_CHECKSUM_CALCULATION: () => CONFIG_REQUEST_CHECKSUM_CALCULATION,
@@ -41946,7 +41946,7 @@ __export(flexible_checksums_exports, {
   resolveFlexibleChecksumsConfig: () => resolveFlexibleChecksumsConfig
 });
 var init_flexible_checksums = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/flexible-checksums/index.js"() {
     init_NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS();
     init_NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS();
     init_constants();
@@ -41956,7 +41956,7 @@ var init_flexible_checksums = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-check-content-length-header/check-content-length-header.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-check-content-length-header/check-content-length-header.js
 function checkContentLengthHeader() {
   return (next, context) => async (args) => {
     const { request } = args;
@@ -41975,7 +41975,7 @@ function checkContentLengthHeader() {
 }
 var CONTENT_LENGTH_HEADER2, DECODED_CONTENT_LENGTH_HEADER, checkContentLengthHeaderMiddlewareOptions, getCheckContentLengthHeaderPlugin;
 var init_check_content_length_header = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-check-content-length-header/check-content-length-header.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-check-content-length-header/check-content-length-header.js"() {
     init_client2();
     init_protocols();
     CONTENT_LENGTH_HEADER2 = "content-length";
@@ -41994,10 +41994,10 @@ var init_check_content_length_header = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-endpoint-middleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-endpoint-middleware.js
 var regionRedirectEndpointMiddleware, regionRedirectEndpointMiddlewareOptions;
 var init_region_redirect_endpoint_middleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-endpoint-middleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-endpoint-middleware.js"() {
     regionRedirectEndpointMiddleware = (config3) => {
       return (next, context) => async (args) => {
         const originalRegion = await config3.region();
@@ -42042,7 +42042,7 @@ var init_region_redirect_endpoint_middleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-middleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-middleware.js
 function regionRedirectMiddleware(clientConfig) {
   return (next, context) => async (args) => {
     try {
@@ -42072,7 +42072,7 @@ function regionRedirectMiddleware(clientConfig) {
 }
 var regionRedirectMiddlewareOptions, getRegionRedirectMiddlewarePlugin;
 var init_region_redirect_middleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-middleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/region-redirect-middleware.js"() {
     init_client3();
     init_region_redirect_endpoint_middleware();
     regionRedirectMiddlewareOptions = {
@@ -42090,10 +42090,10 @@ var init_region_redirect_middleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCache.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCache.js
 var S3ExpressIdentityCache;
 var init_S3ExpressIdentityCache = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCache.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCache.js"() {
     S3ExpressIdentityCache = class _S3ExpressIdentityCache {
       data;
       lastPurgeTime = Date.now();
@@ -42136,10 +42136,10 @@ var init_S3ExpressIdentityCache = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCacheEntry.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCacheEntry.js
 var S3ExpressIdentityCacheEntry;
 var init_S3ExpressIdentityCacheEntry = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCacheEntry.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityCacheEntry.js"() {
     S3ExpressIdentityCacheEntry = class {
       _identity;
       isRefreshing;
@@ -42157,10 +42157,10 @@ var init_S3ExpressIdentityCacheEntry = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityProviderImpl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityProviderImpl.js
 var S3ExpressIdentityProviderImpl;
 var init_S3ExpressIdentityProviderImpl = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityProviderImpl.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/S3ExpressIdentityProviderImpl.js"() {
     init_S3ExpressIdentityCache();
     init_S3ExpressIdentityCacheEntry();
     S3ExpressIdentityProviderImpl = class _S3ExpressIdentityProviderImpl {
@@ -42213,10 +42213,10 @@ var init_S3ExpressIdentityProviderImpl = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-configuration/s3Configuration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-configuration/s3Configuration.js
 var resolveS3Config;
 var init_s3Configuration = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-configuration/s3Configuration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-configuration/s3Configuration.js"() {
     init_S3ExpressIdentityProviderImpl();
     resolveS3Config = (input2, { session }) => {
       const [s3ClientProvider, CreateSessionCommandCtor] = session;
@@ -42236,10 +42236,10 @@ var init_s3Configuration = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-expires/s3-expires-middleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-expires/s3-expires-middleware.js
 var s3ExpiresMiddleware, s3ExpiresMiddlewareOptions, getS3ExpiresMiddlewarePlugin;
 var init_s3_expires_middleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-expires/s3-expires-middleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-expires/s3-expires-middleware.js"() {
     init_protocols();
     init_serde();
     s3ExpiresMiddleware = (config3) => {
@@ -42275,9 +42275,9 @@ var init_s3_expires_middleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@smithy+signature-v4@5.7.4/node_modules/@smithy/signature-v4/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+signature-v4@5.7.4/node_modules/@smithy/signature-v4/dist-cjs/index.js
 var require_dist_cjs2 = __commonJS({
-  "node_modules/.pnpm/@smithy+signature-v4@5.7.4/node_modules/@smithy/signature-v4/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+signature-v4@5.7.4/node_modules/@smithy/signature-v4/dist-cjs/index.js"(exports) {
     var { hasOwn: hasOwn2, fromUtf8: fromUtf83, fromHex: fromHex2, toHex: toHex2, toUint8Array: toUint8Array2, isArrayBuffer: isArrayBuffer2 } = (init_serde(), __toCommonJS(serde_exports));
     var { normalizeProvider: normalizeProvider3 } = (init_client2(), __toCommonJS(client_exports));
     var { escapeUri: escapeUri2, HttpRequest: HttpRequest2 } = (init_protocols(), __toCommonJS(protocols_exports));
@@ -42823,9 +42823,9 @@ ${toHex2(hashedRequest)}`;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+signature-v4-multi-region@3.996.47/node_modules/@aws-sdk/signature-v4-multi-region/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+signature-v4-multi-region@3.996.47/node_modules/@aws-sdk/signature-v4-multi-region/dist-cjs/index.js
 var require_dist_cjs3 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+signature-v4-multi-region@3.996.47/node_modules/@aws-sdk/signature-v4-multi-region/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+signature-v4-multi-region@3.996.47/node_modules/@aws-sdk/signature-v4-multi-region/dist-cjs/index.js"(exports) {
     var { SignatureV4: SignatureV42, signatureV4aContainer } = require_dist_cjs2();
     var signatureV4CrtContainer = {
       CrtSignerV4: null
@@ -42955,20 +42955,20 @@ var require_dist_cjs3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/SignatureV4S3Express.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/SignatureV4S3Express.js
 var import_signature_v4_multi_region, SignatureV4S3Express;
 var init_SignatureV4S3Express = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/SignatureV4S3Express.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/classes/SignatureV4S3Express.js"() {
     import_signature_v4_multi_region = __toESM(require_dist_cjs3());
     SignatureV4S3Express = class extends import_signature_v4_multi_region.SignatureV4SignWithCredentials {
     };
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/constants.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/constants.js
 var S3_EXPRESS_BUCKET_TYPE, S3_EXPRESS_BACKEND, S3_EXPRESS_AUTH_SCHEME, SESSION_TOKEN_QUERY_PARAM, SESSION_TOKEN_HEADER, NODE_DISABLE_S3_EXPRESS_SESSION_AUTH_ENV_NAME, NODE_DISABLE_S3_EXPRESS_SESSION_AUTH_INI_NAME, NODE_DISABLE_S3_EXPRESS_SESSION_AUTH_OPTIONS;
 var init_constants8 = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/constants.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/constants.js"() {
     init_config2();
     S3_EXPRESS_BUCKET_TYPE = "Directory";
     S3_EXPRESS_BACKEND = "S3Express";
@@ -42985,10 +42985,10 @@ var init_constants8 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressMiddleware.js
 var s3ExpressMiddleware, s3ExpressMiddlewareOptions, getS3ExpressPlugin;
 var init_s3ExpressMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressMiddleware.js"() {
     init_client3();
     init_protocols();
     init_constants8();
@@ -43032,10 +43032,10 @@ var init_s3ExpressMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/signS3Express.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/signS3Express.js
 var signS3Express;
 var init_signS3Express = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/signS3Express.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/signS3Express.js"() {
     signS3Express = async (s3ExpressIdentity, signingOptions, request, sigV4MultiRegionSigner) => {
       const signedRequest = await sigV4MultiRegionSigner.signWithCredentials(request, s3ExpressIdentity, {});
       if (signedRequest.headers["X-Amz-Security-Token"] || signedRequest.headers["x-amz-security-token"]) {
@@ -43046,10 +43046,10 @@ var init_signS3Express = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressHttpSigningMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressHttpSigningMiddleware.js
 var defaultErrorHandler2, defaultSuccessHandler2, s3ExpressHttpSigningMiddlewareOptions, s3ExpressHttpSigningMiddleware, getS3ExpressHttpSigningPlugin;
 var init_s3ExpressHttpSigningMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressHttpSigningMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-s3-express/functions/s3ExpressHttpSigningMiddleware.js"() {
     init_dist_es();
     init_client2();
     init_protocols();
@@ -43091,20 +43091,20 @@ var init_s3ExpressHttpSigningMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/to-stream/toStream.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/to-stream/toStream.js
 import { Readable as Readable8 } from "node:stream";
 function toStream(bytes) {
   return Readable8.from(Buffer.from(bytes));
 }
 var init_toStream = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/to-stream/toStream.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/to-stream/toStream.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-throw-200-exceptions/throw-200-exceptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-throw-200-exceptions/throw-200-exceptions.js
 var THROW_IF_EMPTY_BODY, throw200ExceptionsMiddleware, collectBody2, throw200ExceptionsMiddlewareOptions, getThrow200ExceptionsPlugin;
 var init_throw_200_exceptions = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-throw-200-exceptions/throw-200-exceptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-throw-200-exceptions/throw-200-exceptions.js"() {
     init_protocols();
     init_toStream();
     THROW_IF_EMPTY_BODY = {
@@ -43159,10 +43159,10 @@ var init_throw_200_exceptions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/util-arn-parser/arn.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/util-arn-parser/arn.js
 var validate3, parse5;
 var init_arn = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/util-arn-parser/arn.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/util-arn-parser/arn.js"() {
     validate3 = (str) => typeof str === "string" && str.indexOf("arn:") === 0 && str.split(":").length >= 6;
     parse5 = (arn) => {
       const segments = arn.split(":");
@@ -43180,14 +43180,14 @@ var init_arn = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/index.js
 var init_util3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/util/index.js"() {
     init_arn();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/bucket-endpoint-middleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/bucket-endpoint-middleware.js
 function bucketEndpointMiddleware(options) {
   return (next, context) => async (args) => {
     if (options.bucketEndpoint) {
@@ -43218,7 +43218,7 @@ function bucketEndpointMiddleware(options) {
 }
 var bucketEndpointMiddlewareOptions;
 var init_bucket_endpoint_middleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/bucket-endpoint-middleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-region-redirect/bucket-endpoint-middleware.js"() {
     bucketEndpointMiddlewareOptions = {
       name: "bucketEndpointMiddleware",
       override: true,
@@ -43228,7 +43228,7 @@ var init_bucket_endpoint_middleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-validate-bucket-name/validate-bucket-name.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-validate-bucket-name/validate-bucket-name.js
 function validateBucketNameMiddleware({ bucketEndpoint }) {
   return (next) => async (args) => {
     const { input: { Bucket } } = args;
@@ -43242,7 +43242,7 @@ function validateBucketNameMiddleware({ bucketEndpoint }) {
 }
 var validateBucketNameMiddlewareOptions, getValidateBucketNamePlugin;
 var init_validate_bucket_name = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-validate-bucket-name/validate-bucket-name.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-validate-bucket-name/validate-bucket-name.js"() {
     init_util3();
     init_bucket_endpoint_middleware();
     validateBucketNameMiddlewareOptions = {
@@ -43260,10 +43260,10 @@ var init_validate_bucket_name = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ProtocolLib.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ProtocolLib.js
 var ProtocolLib;
 var init_ProtocolLib = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ProtocolLib.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ProtocolLib.js"() {
     init_client2();
     init_schema();
     ProtocolLib = class {
@@ -43401,10 +43401,10 @@ var init_ProtocolLib = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ConfigurableSerdeContext.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ConfigurableSerdeContext.js
 var SerdeContextConfig;
 var init_ConfigurableSerdeContext = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ConfigurableSerdeContext.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ConfigurableSerdeContext.js"() {
     SerdeContextConfig = class {
       serdeContext;
       setSerdeContext(serdeContext) {
@@ -43414,10 +43414,10 @@ var init_ConfigurableSerdeContext = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/UnionSerde.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/UnionSerde.js
 var UnionSerde;
 var init_UnionSerde = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/UnionSerde.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/UnionSerde.js"() {
     UnionSerde = class {
       from;
       to;
@@ -43447,7 +43447,7 @@ var init_UnionSerde = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/detectBufferParsing.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/detectBufferParsing.js
 function detectBufferParsing() {
   if (canParseBuffer === void 0) {
     try {
@@ -43465,11 +43465,11 @@ function detectBufferParsing() {
 }
 var canParseBuffer;
 var init_detectBufferParsing = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/detectBufferParsing.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/detectBufferParsing.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReviver.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReviver.js
 function jsonReviver(key, value, context) {
   if (context?.source) {
     const numericString = context.source;
@@ -43584,12 +43584,12 @@ function expandExponentToBigInt(s2) {
   return negative ? -result : result;
 }
 var init_jsonReviver = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReviver.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReviver.js"() {
     init_serde();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/needsReviver.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/needsReviver.js
 function needsReviver(schema) {
   const ns = NormalizedSchema.of(schema);
   const raw = ns.getSchema();
@@ -43629,23 +43629,23 @@ function _check3(ns, seen) {
 }
 var REVIVER_SYMBOL;
 var init_needsReviver = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/needsReviver.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/needsReviver.js"() {
     init_schema();
     REVIVER_SYMBOL = Symbol.for("@aws-sdk/reviver");
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/common.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/common.js
 var collectBodyString;
 var init_common = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/common.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/common.js"() {
     init_protocols();
     init_serde();
     collectBodyString = (streamBody, context) => collectBody(streamBody, context).then((body) => (context?.utf8Encoder ?? toUtf8)(body));
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/parseJsonBody.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/parseJsonBody.js
 async function parseJsonBody(streamBody, context, schema) {
   let parsingInput;
   if (detectBufferParsing() && typeof streamBody?.[Symbol.asyncIterator] === "function") {
@@ -43678,7 +43678,7 @@ async function parseJsonBody(streamBody, context, schema) {
 }
 var findKey, sanitizeErrorCode, loadRestJsonErrorCode, loadErrorCode;
 var init_parseJsonBody = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/parseJsonBody.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/parseJsonBody.js"() {
     init_protocols();
     init_common();
     init_detectBufferParsing();
@@ -43731,19 +43731,19 @@ var init_parseJsonBody = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/writeKey.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/writeKey.js
 function writeKey(obj) {
   Object.defineProperty(obj, "__proto__", { value: void 0, writable: true, enumerable: true, configurable: true });
 }
 var init_writeKey = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/writeKey.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/writeKey.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeDeserializer2.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeDeserializer2.js
 var JsonShapeDeserializer2;
 var init_JsonShapeDeserializer2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeDeserializer2.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeDeserializer2.js"() {
     init_protocols();
     init_schema();
     init_serde();
@@ -43943,10 +43943,10 @@ var init_JsonShapeDeserializer2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonBytesStringAdapter.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonBytesStringAdapter.js
 var JsonBytesStringAdapter, warned;
 var init_JsonBytesStringAdapter = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonBytesStringAdapter.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonBytesStringAdapter.js"() {
     init_serde();
     JsonBytesStringAdapter = class _JsonBytesStringAdapter extends Uint8Array {
       string = null;
@@ -44052,13 +44052,13 @@ var init_JsonBytesStringAdapter = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeSerializer2.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeSerializer2.js
 function alloc(size) {
   return JsonBytesStringAdapter.allocUnsafe(size);
 }
 var encoder, OPEN_BRACE, CLOSE_BRACE, OPEN_BRACKET, CLOSE_BRACKET, QUOTE, COLON, COMMA, BACKSLASH, TRUE, FALSE, NULL, ESCAPE_TABLE, INITIAL_BUFFER_SIZE, JsonShapeSerializer2;
 var init_JsonShapeSerializer2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeSerializer2.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeSerializer2.js"() {
     init_protocols();
     init_schema();
     init_serde();
@@ -44563,10 +44563,10 @@ var init_JsonShapeSerializer2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonCodec2.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonCodec2.js
 var JsonCodec2;
 var init_JsonCodec2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonCodec2.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonCodec2.js"() {
     init_ConfigurableSerdeContext();
     init_JsonShapeDeserializer2();
     init_JsonShapeSerializer2();
@@ -44590,10 +44590,10 @@ var init_JsonCodec2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsRestJsonProtocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsRestJsonProtocol.js
 var AwsRestJsonProtocol;
 var init_AwsRestJsonProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsRestJsonProtocol.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsRestJsonProtocol.js"() {
     init_protocols();
     init_schema();
     init_ProtocolLib();
@@ -44682,9 +44682,9 @@ var init_AwsRestJsonProtocol = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+xml-builder@3.972.41/node_modules/@aws-sdk/xml-builder/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+xml-builder@3.972.41/node_modules/@aws-sdk/xml-builder/dist-cjs/index.js
 var require_dist_cjs4 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+xml-builder@3.972.41/node_modules/@aws-sdk/xml-builder/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+xml-builder@3.972.41/node_modules/@aws-sdk/xml-builder/dist-cjs/index.js"(exports) {
     var ATTR_ESCAPE_RE = /[&<>"]/g;
     var ATTR_ESCAPE_MAP = {
       "&": "&amp;",
@@ -45043,10 +45043,10 @@ var require_dist_cjs4 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeDeserializer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeDeserializer.js
 var import_xml_builder, XmlShapeDeserializer;
 var init_XmlShapeDeserializer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeDeserializer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeDeserializer.js"() {
     import_xml_builder = __toESM(require_dist_cjs4());
     init_client2();
     init_protocols();
@@ -45200,10 +45200,10 @@ var init_XmlShapeDeserializer = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/QueryShapeSerializer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/QueryShapeSerializer.js
 var QueryShapeSerializer;
 var init_QueryShapeSerializer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/QueryShapeSerializer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/QueryShapeSerializer.js"() {
     init_protocols();
     init_schema();
     init_serde();
@@ -45380,10 +45380,10 @@ var init_QueryShapeSerializer = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsQueryProtocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsQueryProtocol.js
 var AwsQueryProtocol;
 var init_AwsQueryProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsQueryProtocol.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsQueryProtocol.js"() {
     init_protocols();
     init_schema();
     init_ProtocolLib();
@@ -45520,10 +45520,10 @@ var init_AwsQueryProtocol = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js
 var loadRestXmlErrorCode;
 var init_parseXmlBody = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js"() {
     loadRestXmlErrorCode = (output2, data) => {
       if (data?.Error?.Code !== void 0) {
         return data.Error.Code;
@@ -45538,10 +45538,10 @@ var init_parseXmlBody = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js
 var import_xml_builder2, XmlShapeSerializer;
 var init_XmlShapeSerializer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js"() {
     import_xml_builder2 = __toESM(require_dist_cjs4());
     init_protocols();
     init_schema();
@@ -45816,10 +45816,10 @@ var init_XmlShapeSerializer = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js
 var XmlCodec;
 var init_XmlCodec = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js"() {
     init_ConfigurableSerdeContext();
     init_XmlShapeDeserializer();
     init_XmlShapeSerializer();
@@ -45843,10 +45843,10 @@ var init_XmlCodec = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js
 var AwsRestXmlProtocol;
 var init_AwsRestXmlProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js"() {
     init_protocols();
     init_schema();
     init_ProtocolLib();
@@ -45942,19 +45942,19 @@ var init_AwsRestXmlProtocol = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js
 var init_protocols2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js"() {
     init_AwsRestJsonProtocol();
     init_AwsQueryProtocol();
     init_AwsRestXmlProtocol();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/protocol/S3RestXmlProtocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/protocol/S3RestXmlProtocol.js
 var S3RestXmlProtocol;
 var init_S3RestXmlProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/protocol/S3RestXmlProtocol.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/protocol/S3RestXmlProtocol.js"() {
     init_protocols2();
     init_schema();
     S3RestXmlProtocol = class extends AwsRestXmlProtocol {
@@ -45983,10 +45983,10 @@ var init_S3RestXmlProtocol = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeDisableMultiregionAccessPointConfigOptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeDisableMultiregionAccessPointConfigOptions.js
 var NODE_DISABLE_MULTIREGION_ACCESS_POINT_ENV_NAME, NODE_DISABLE_MULTIREGION_ACCESS_POINT_INI_NAME, NODE_DISABLE_MULTIREGION_ACCESS_POINT_CONFIG_OPTIONS;
 var init_NodeDisableMultiregionAccessPointConfigOptions = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeDisableMultiregionAccessPointConfigOptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeDisableMultiregionAccessPointConfigOptions.js"() {
     init_config2();
     NODE_DISABLE_MULTIREGION_ACCESS_POINT_ENV_NAME = "AWS_S3_DISABLE_MULTIREGION_ACCESS_POINTS";
     NODE_DISABLE_MULTIREGION_ACCESS_POINT_INI_NAME = "s3_disable_multiregion_access_points";
@@ -45998,10 +45998,10 @@ var init_NodeDisableMultiregionAccessPointConfigOptions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeUseArnRegionConfigOptions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeUseArnRegionConfigOptions.js
 var NODE_USE_ARN_REGION_ENV_NAME, NODE_USE_ARN_REGION_INI_NAME, NODE_USE_ARN_REGION_CONFIG_OPTIONS;
 var init_NodeUseArnRegionConfigOptions = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeUseArnRegionConfigOptions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/NodeUseArnRegionConfigOptions.js"() {
     init_config2();
     NODE_USE_ARN_REGION_ENV_NAME = "AWS_S3_USE_ARN_REGION";
     NODE_USE_ARN_REGION_INI_NAME = "s3_use_arn_region";
@@ -46013,10 +46013,10 @@ var init_NodeUseArnRegionConfigOptions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostnameUtils.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostnameUtils.js
 var DOMAIN_PATTERN2, IP_ADDRESS_PATTERN2, DOTS_PATTERN2, DOT_PATTERN2, S3_HOSTNAME_PATTERN2, S3_US_EAST_1_ALTNAME_PATTERN, AWS_PARTITION_SUFFIX, isBucketNameOptions, isDnsCompatibleBucketName2, getRegionalSuffix, getSuffix, getSuffixForArnEndpoint, validateArnEndpointOptions, validateService, validateS3Service, validateOutpostService, validatePartition, validateRegion, validateRegionalClient, validateAccountId, validateDNSHostLabel, validateCustomEndpoint, getArnResources, validateNoDualstack, validateNoFIPS, validateMrapAlias;
 var init_bucketHostnameUtils = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostnameUtils.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostnameUtils.js"() {
     DOMAIN_PATTERN2 = /^[a-z0-9][a-z0-9\.\-]{1,61}[a-z0-9]$/;
     IP_ADDRESS_PATTERN2 = /(\d+\.){3}\d+/;
     DOTS_PATTERN2 = /\.\./;
@@ -46124,10 +46124,10 @@ var init_bucketHostnameUtils = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostname.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostname.js
 var bucketHostname, getEndpointFromBucketName, getEndpointFromArn, getEndpointFromObjectLambdaArn, getEndpointFromMRAPArn, getEndpointFromOutpostArn, getEndpointFromAccessPointArn;
 var init_bucketHostname = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostname.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketHostname.js"() {
     init_bucketHostnameUtils();
     bucketHostname = (options) => {
       validateCustomEndpoint(options);
@@ -46230,10 +46230,10 @@ var init_bucketHostname = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketEndpointMiddleware.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketEndpointMiddleware.js
 var bucketEndpointMiddleware2, bucketEndpointMiddlewareOptions2, getBucketEndpointPlugin;
 var init_bucketEndpointMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketEndpointMiddleware.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/bucketEndpointMiddleware.js"() {
     init_util3();
     init_protocols();
     init_bucketHostname();
@@ -46316,7 +46316,7 @@ var init_bucketEndpointMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/configurations.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/configurations.js
 function resolveBucketEndpointConfig(input2) {
   const { bucketEndpoint = false, forcePathStyle = false, useAccelerateEndpoint = false, useArnRegion, disableMultiregionAccessPoints = false } = input2;
   return Object.assign(input2, {
@@ -46328,11 +46328,11 @@ function resolveBucketEndpointConfig(input2) {
   });
 }
 var init_configurations3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/configurations.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-bucket-endpoint/configurations.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-expect-continue/middleware-expect-continue.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-expect-continue/middleware-expect-continue.js
 function addExpectContinueMiddleware(options) {
   return (next) => async (args) => {
     const { request } = args;
@@ -46359,7 +46359,7 @@ function addExpectContinueMiddleware(options) {
 }
 var addExpectContinueMiddlewareOptions, getAddExpectContinuePlugin;
 var init_middleware_expect_continue = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-expect-continue/middleware-expect-continue.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-expect-continue/middleware-expect-continue.js"() {
     init_protocols();
     addExpectContinueMiddlewareOptions = {
       step: "build",
@@ -46375,7 +46375,7 @@ var init_middleware_expect_continue = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/middleware-location-constraint.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/middleware-location-constraint.js
 function locationConstraintMiddleware(options) {
   return (next) => async (args) => {
     const { CreateBucketConfiguration } = args.input;
@@ -46391,7 +46391,7 @@ function locationConstraintMiddleware(options) {
 }
 var locationConstraintMiddlewareOptions, getLocationConstraintPlugin;
 var init_middleware_location_constraint = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/middleware-location-constraint.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/middleware-location-constraint.js"() {
     locationConstraintMiddlewareOptions = {
       step: "initialize",
       tags: ["LOCATION_CONSTRAINT", "CREATE_BUCKET_CONFIGURATION"],
@@ -46406,16 +46406,16 @@ var init_middleware_location_constraint = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/configuration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/configuration.js
 function resolveLocationConstraintConfig(input2) {
   return input2;
 }
 var init_configuration2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/configuration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-location-constraint/configuration.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-ssec/middleware-ssec.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-ssec/middleware-ssec.js
 function ssecMiddleware(options) {
   return (next) => async (args) => {
     const input2 = { ...args.input };
@@ -46468,7 +46468,7 @@ function isValidBase64EncodedSSECustomerKey(str, options) {
 }
 var ssecMiddlewareOptions, getSsecPlugin;
 var init_middleware_ssec = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-ssec/middleware-ssec.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/middleware-ssec/middleware-ssec.js"() {
     ssecMiddlewareOptions = {
       name: "ssecMiddleware",
       step: "initialize",
@@ -46483,7 +46483,7 @@ var init_middleware_ssec = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/index.js
 var s3_exports = {};
 __export(s3_exports, {
   NODE_DISABLE_MULTIREGION_ACCESS_POINT_CONFIG_OPTIONS: () => NODE_DISABLE_MULTIREGION_ACCESS_POINT_CONFIG_OPTIONS,
@@ -46549,7 +46549,7 @@ __export(s3_exports, {
   validateRegion: () => validateRegion
 });
 var init_s32 = __esm({
-  "node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.77/node_modules/@aws-sdk/middleware-sdk-s3/dist-es/submodules/s3/index.js"() {
     init_check_content_length_header();
     init_region_redirect_endpoint_middleware();
     init_region_redirect_middleware();
@@ -46578,28 +46578,28 @@ var init_s32 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js
 var getDateHeader, getAgeHeader;
 var init_getDateHeader = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js"() {
     init_protocols();
     getDateHeader = (response) => HttpResponse.isInstance(response) ? response.headers?.date ?? response.headers?.Date : void 0;
     getAgeHeader = (response) => HttpResponse.isInstance(response) ? response.headers?.age ?? response.headers?.Age : void 0;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js
 var getSkewCorrectedDate;
 var init_getSkewCorrectedDate = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js"() {
     getSkewCorrectedDate = (systemClockOffset) => new Date(Date.now() + systemClockOffset);
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js
 var getUpdatedSystemClockOffset;
 var init_getUpdatedSystemClockOffset = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js"() {
     getUpdatedSystemClockOffset = (clockTime, currentSystemClockOffset, timeRequestSent, ageHeader) => {
       if (ageHeader !== void 0) {
         return currentSystemClockOffset;
@@ -46615,19 +46615,19 @@ var init_getUpdatedSystemClockOffset = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js
 var init_utils3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js"() {
     init_getDateHeader();
     init_getSkewCorrectedDate();
     init_getUpdatedSystemClockOffset();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js
 var throwSigningPropertyError, validateSigningProperties, AwsSdkSigV4Signer, AWSSDKSigV4Signer;
 var init_AwsSdkSigV4Signer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js"() {
     init_protocols();
     init_utils3();
     throwSigningPropertyError = (name, property) => {
@@ -46722,10 +46722,10 @@ var init_AwsSdkSigV4Signer = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js
 var AwsSdkSigV4ASigner;
 var init_AwsSdkSigV4ASigner = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js"() {
     init_protocols();
     init_utils3();
     init_AwsSdkSigV4Signer();
@@ -46754,26 +46754,26 @@ var init_AwsSdkSigV4ASigner = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js
 var getArrayForCommaSeparatedString;
 var init_getArrayForCommaSeparatedString = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js"() {
     getArrayForCommaSeparatedString = (str) => typeof str === "string" && str.length > 0 ? str.split(",").map((item) => item.trim()) : [];
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js
 var getBearerTokenEnvKey;
 var init_getBearerTokenEnvKey = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js"() {
     getBearerTokenEnvKey = (signingName) => `AWS_BEARER_TOKEN_${signingName.replace(/[\s-]/g, "_").toUpperCase()}`;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js
 var NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY, NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY, NODE_AUTH_SCHEME_PREFERENCE_OPTIONS;
 var init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js"() {
     init_getArrayForCommaSeparatedString();
     init_getBearerTokenEnvKey();
     NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY = "AWS_AUTH_SCHEME_PREFERENCE";
@@ -46799,10 +46799,10 @@ var init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js
 var resolveAwsSdkSigV4AConfig, NODE_SIGV4A_CONFIG_OPTIONS;
 var init_resolveAwsSdkSigV4AConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js"() {
     init_dist_es();
     init_config2();
     resolveAwsSdkSigV4AConfig = (config3) => {
@@ -46831,7 +46831,7 @@ var init_resolveAwsSdkSigV4AConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js
 function normalizeCredentialProvider(config3, { credentials, credentialDefaultProvider }) {
   let credentialsProvider;
   if (credentials) {
@@ -46865,7 +46865,7 @@ function bindCallerConfig(config3, credentialsProvider) {
 }
 var import_signature_v4, bindResolveAwsSdkSigV4Config;
 var init_resolveAwsSdkSigV4Config = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js"() {
     init_client3();
     init_dist_es();
     import_signature_v4 = __toESM(require_dist_cjs2());
@@ -46969,9 +46969,9 @@ var init_resolveAwsSdkSigV4Config = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js
 var init_aws_sdk = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js"() {
     init_AwsSdkSigV4Signer();
     init_AwsSdkSigV4ASigner();
     init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS();
@@ -46980,10 +46980,10 @@ var init_aws_sdk = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js
 var ENV_DISABLE_CLOCK_SKEW_CORRECTION, CONFIG_DISABLE_CLOCK_SKEW_CORRECTION, NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS;
 var init_clock_skew_node_config = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js"() {
     init_config2();
     ENV_DISABLE_CLOCK_SKEW_CORRECTION = "AWS_DISABLE_CLOCK_SKEW_CORRECTION";
     CONFIG_DISABLE_CLOCK_SKEW_CORRECTION = "disable_clock_skew_correction";
@@ -46995,17 +46995,17 @@ var init_clock_skew_node_config = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js
 var DEFAULT_DISABLE_CLOCK_SKEW_CORRECTION;
 var init_clock_skew_defaults = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js"() {
     init_config2();
     init_clock_skew_node_config();
     DEFAULT_DISABLE_CLOCK_SKEW_CORRECTION = loadConfig2(NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS);
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js
 var httpAuthSchemes_exports = {};
 __export(httpAuthSchemes_exports, {
   AWSSDKSigV4Signer: () => AWSSDKSigV4Signer,
@@ -47021,7 +47021,7 @@ __export(httpAuthSchemes_exports, {
 });
 var resolveAwsSdkSigV4Config, resolveAWSSDKSigV4Config;
 var init_httpAuthSchemes2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+core@3.978.1/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js"() {
     init_aws_sdk();
     init_getBearerTokenEnvKey();
     init_aws_sdk();
@@ -47031,9 +47031,9 @@ var init_httpAuthSchemes2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-env@3.972.72/node_modules/@aws-sdk/credential-provider-env/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-env@3.972.72/node_modules/@aws-sdk/credential-provider-env/dist-cjs/index.js
 var require_dist_cjs5 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-env@3.972.72/node_modules/@aws-sdk/credential-provider-env/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-env@3.972.72/node_modules/@aws-sdk/credential-provider-env/dist-cjs/index.js"(exports) {
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2 } = (init_config2(), __toCommonJS(config_exports));
     var ENV_KEY = "AWS_ACCESS_KEY_ID";
@@ -47074,9 +47074,9 @@ var require_dist_cjs5 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@smithy+credential-provider-imds@4.5.2/node_modules/@smithy/credential-provider-imds/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+credential-provider-imds@4.5.2/node_modules/@smithy/credential-provider-imds/dist-cjs/index.js
 var require_dist_cjs6 = __commonJS({
-  "node_modules/.pnpm/@smithy+credential-provider-imds@4.5.2/node_modules/@smithy/credential-provider-imds/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+credential-provider-imds@4.5.2/node_modules/@smithy/credential-provider-imds/dist-cjs/index.js"(exports) {
     var { ProviderError: ProviderError2, CredentialsProviderError: CredentialsProviderError2, loadConfig: loadConfig3 } = (init_config2(), __toCommonJS(config_exports));
     var node_http = __require("node:http");
     var { parseUrl: parseUrl2 } = (init_protocols(), __toCommonJS(protocols_exports));
@@ -47418,9 +47418,9 @@ For more information, please visit: ` + STATIC_STABILITY_DOC_URL);
   }
 });
 
-// node_modules/.pnpm/@smithy+node-http-handler@4.12.1/node_modules/@smithy/node-http-handler/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+node-http-handler@4.12.1/node_modules/@smithy/node-http-handler/dist-cjs/index.js
 var require_dist_cjs7 = __commonJS({
-  "node_modules/.pnpm/@smithy+node-http-handler@4.12.1/node_modules/@smithy/node-http-handler/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@smithy+node-http-handler@4.12.1/node_modules/@smithy/node-http-handler/dist-cjs/index.js"(exports) {
     var { hasOwn: hasOwn2 } = (init_serde(), __toCommonJS(serde_exports));
     var { streamCollector: streamCollector7 } = (init_serde(), __toCommonJS(serde_exports));
     exports.streamCollector = streamCollector7;
@@ -48241,9 +48241,9 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-http@3.972.74/node_modules/@aws-sdk/credential-provider-http/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-http@3.972.74/node_modules/@aws-sdk/credential-provider-http/dist-cjs/index.js
 var require_dist_cjs8 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-http@3.972.74/node_modules/@aws-sdk/credential-provider-http/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-http@3.972.74/node_modules/@aws-sdk/credential-provider-http/dist-cjs/index.js"(exports) {
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2 } = (init_config2(), __toCommonJS(config_exports));
     var { NodeHttpHandler: NodeHttpHandler2 } = require_dist_cjs7();
@@ -48400,7 +48400,7 @@ Set AWS_CONTAINER_CREDENTIALS_FULL_URI or AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthSchemeProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthSchemeProvider.js
 function createAwsAuthSigv4HttpAuthOption(authParameters) {
   return {
     schemeId: "aws.auth#sigv4",
@@ -48423,7 +48423,7 @@ function createSmithyApiNoAuthHttpAuthOption(authParameters) {
 }
 var defaultSSOOIDCHttpAuthSchemeParametersProvider, defaultSSOOIDCHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig;
 var init_httpAuthSchemeProvider = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthSchemeProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthSchemeProvider.js"() {
     init_httpAuthSchemes2();
     init_client2();
     defaultSSOOIDCHttpAuthSchemeParametersProvider = async (config3, context, input2) => {
@@ -48458,10 +48458,10 @@ var init_httpAuthSchemeProvider = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/EndpointParameters.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/EndpointParameters.js
 var resolveClientEndpointParameters, commonParams;
 var init_EndpointParameters = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/EndpointParameters.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/EndpointParameters.js"() {
     resolveClientEndpointParameters = (options) => {
       return Object.assign(options, {
         useDualstackEndpoint: options.useDualstackEndpoint ?? false,
@@ -48478,10 +48478,10 @@ var init_EndpointParameters = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/package.json
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/package.json
 var package_default;
 var init_package = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/package.json"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/package.json"() {
     package_default = {
       name: "@aws-sdk/nested-clients",
       version: "3.997.46",
@@ -48606,10 +48606,10 @@ var init_package = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/bdd.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/bdd.js
 var k3, a, b3, c, d2, e29, f2, g2, h3, i, j3, _data, root, r3, nodes, bdd;
 var init_bdd = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/bdd.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/bdd.js"() {
     init_endpoints();
     k3 = "ref";
     a = -1;
@@ -48699,10 +48699,10 @@ var init_bdd = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/endpointResolver.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/endpointResolver.js
 var cache, defaultEndpointResolver;
 var init_endpointResolver = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/endpointResolver.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/endpointResolver.js"() {
     init_client3();
     init_endpoints();
     init_bdd();
@@ -48720,10 +48720,10 @@ var init_endpointResolver = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/SSOOIDCServiceException.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/SSOOIDCServiceException.js
 var SSOOIDCServiceException;
 var init_SSOOIDCServiceException = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/SSOOIDCServiceException.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/SSOOIDCServiceException.js"() {
     init_client2();
     SSOOIDCServiceException = class _SSOOIDCServiceException extends ServiceException {
       constructor(options) {
@@ -48734,10 +48734,10 @@ var init_SSOOIDCServiceException = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/errors.js
 var AccessDeniedException, AuthorizationPendingException, ExpiredTokenException, InternalServerException, InvalidClientException, InvalidGrantException, InvalidRequestException, InvalidScopeException, SlowDownException, UnauthorizedClientException, UnsupportedGrantTypeException;
 var init_errors3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/errors.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/errors.js"() {
     init_SSOOIDCServiceException();
     AccessDeniedException = class _AccessDeniedException extends SSOOIDCServiceException {
       name = "AccessDeniedException";
@@ -48922,10 +48922,10 @@ var init_errors3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/schemas/schemas_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/schemas/schemas_0.js
 var _ADE, _APE, _AT, _CS, _CT, _CTR, _CTRr, _CV, _ETE, _ICE, _IGE, _IRE, _ISE, _ISEn, _IT, _RT, _SDE, _UCE, _UGTE, _aT, _c, _cI, _cS, _cV, _co, _dC, _e2, _eI, _ed, _gT, _h, _hE, _iT, _r, _rT, _rU, _s, _sc, _se, _tT, n0, _s_registry, SSOOIDCServiceException$, n0_registry, AccessDeniedException$, AuthorizationPendingException$, ExpiredTokenException$, InternalServerException$, InvalidClientException$, InvalidGrantException$, InvalidRequestException$, InvalidScopeException$, SlowDownException$, UnauthorizedClientException$, UnsupportedGrantTypeException$, errorTypeRegistries, AccessToken, ClientSecret, CodeVerifier, IdToken, RefreshToken, CreateTokenRequest$, CreateTokenResponse$, Scopes, CreateToken$;
 var init_schemas_0 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/schemas/schemas_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/schemas/schemas_0.js"() {
     init_schema();
     init_errors3();
     init_SSOOIDCServiceException();
@@ -49111,10 +49111,10 @@ var init_schemas_0 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.shared.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.shared.js
 var getRuntimeConfig;
 var init_runtimeConfig_shared = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.shared.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.shared.js"() {
     init_httpAuthSchemes2();
     init_protocols2();
     init_dist_es();
@@ -49164,10 +49164,10 @@ var init_runtimeConfig_shared = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.js
 var import_node_http_handler, getRuntimeConfig2;
 var init_runtimeConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.js"() {
     init_package();
     init_client3();
     init_httpAuthSchemes2();
@@ -49211,10 +49211,10 @@ var init_runtimeConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthExtensionConfiguration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthExtensionConfiguration.js
 var getHttpAuthExtensionConfiguration, resolveHttpAuthRuntimeConfig;
 var init_httpAuthExtensionConfiguration = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthExtensionConfiguration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthExtensionConfiguration.js"() {
     getHttpAuthExtensionConfiguration = (runtimeConfig) => {
       const _httpAuthSchemes = runtimeConfig.httpAuthSchemes;
       let _httpAuthSchemeProvider = runtimeConfig.httpAuthSchemeProvider;
@@ -49255,10 +49255,10 @@ var init_httpAuthExtensionConfiguration = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeExtensions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeExtensions.js
 var resolveRuntimeExtensions;
 var init_runtimeExtensions = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeExtensions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeExtensions.js"() {
     init_client3();
     init_client2();
     init_protocols();
@@ -49271,10 +49271,10 @@ var init_runtimeExtensions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDCClient.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDCClient.js
 var SSOOIDCClient;
 var init_SSOOIDCClient = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDCClient.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDCClient.js"() {
     init_client3();
     init_dist_es();
     init_client2();
@@ -49324,10 +49324,10 @@ var init_SSOOIDCClient = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commandBuilder.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commandBuilder.js
 var command, _ep0, _mw0;
 var init_commandBuilder = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commandBuilder.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commandBuilder.js"() {
     init_client2();
     init_endpoints();
     init_EndpointParameters();
@@ -49337,10 +49337,10 @@ var init_commandBuilder = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/CreateTokenCommand.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/CreateTokenCommand.js
 var CreateTokenCommand;
 var init_CreateTokenCommand = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/CreateTokenCommand.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/CreateTokenCommand.js"() {
     init_commandBuilder();
     init_schemas_0();
     CreateTokenCommand = class extends command(_ep0, _mw0, "CreateToken", CreateToken$) {
@@ -49348,10 +49348,10 @@ var init_CreateTokenCommand = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDC.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDC.js
 var commands, SSOOIDC;
 var init_SSOOIDC = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDC.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDC.js"() {
     init_client2();
     init_CreateTokenCommand();
     init_SSOOIDCClient();
@@ -49364,17 +49364,17 @@ var init_SSOOIDC = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/index.js
 var init_commands = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/commands/index.js"() {
     init_CreateTokenCommand();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/enums.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/enums.js
 var AccessDeniedExceptionReason, InvalidRequestExceptionReason;
 var init_enums = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/enums.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/enums.js"() {
     AccessDeniedExceptionReason = {
       KMS_ACCESS_DENIED: "KMS_AccessDeniedException"
     };
@@ -49387,13 +49387,13 @@ var init_enums = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/models_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/models_0.js
 var init_models_0 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/models_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/models/models_0.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/index.js
 var sso_oidc_exports = {};
 __export(sso_oidc_exports, {
   $Command: () => Command,
@@ -49433,7 +49433,7 @@ __export(sso_oidc_exports, {
   errorTypeRegistries: () => errorTypeRegistries
 });
 var init_sso_oidc = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/index.js"() {
     init_SSOOIDCClient();
     init_SSOOIDC();
     init_commands();
@@ -49446,9 +49446,9 @@ var init_sso_oidc = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+token-providers@3.1138.0/node_modules/@aws-sdk/token-providers/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+token-providers@3.1138.0/node_modules/@aws-sdk/token-providers/dist-cjs/index.js
 var require_dist_cjs9 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+token-providers@3.1138.0/node_modules/@aws-sdk/token-providers/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+token-providers@3.1138.0/node_modules/@aws-sdk/token-providers/dist-cjs/index.js"(exports) {
     var { setTokenFeature: setTokenFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { getBearerTokenEnvKey: getBearerTokenEnvKey2 } = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
     var { TokenProviderError: TokenProviderError2, getSSOTokenFilepath: getSSOTokenFilepath2, parseKnownFiles: parseKnownFiles2, getProfileName: getProfileName2, loadSsoSessionData: loadSsoSessionData2, getSSOTokenFromFile: getSSOTokenFromFile2, memoize: memoize2, chain: chain2 } = (init_config2(), __toCommonJS(config_exports));
@@ -49595,7 +49595,7 @@ var require_dist_cjs9 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthSchemeProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthSchemeProvider.js
 function createAwsAuthSigv4HttpAuthOption2(authParameters) {
   return {
     schemeId: "aws.auth#sigv4",
@@ -49618,7 +49618,7 @@ function createSmithyApiNoAuthHttpAuthOption2(authParameters) {
 }
 var defaultSSOHttpAuthSchemeParametersProvider, defaultSSOHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig2;
 var init_httpAuthSchemeProvider2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthSchemeProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthSchemeProvider.js"() {
     init_httpAuthSchemes2();
     init_client2();
     defaultSSOHttpAuthSchemeParametersProvider = async (config3, context, input2) => {
@@ -49653,10 +49653,10 @@ var init_httpAuthSchemeProvider2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/EndpointParameters.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/EndpointParameters.js
 var resolveClientEndpointParameters2, commonParams2;
 var init_EndpointParameters2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/EndpointParameters.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/EndpointParameters.js"() {
     resolveClientEndpointParameters2 = (options) => {
       return Object.assign(options, {
         useDualstackEndpoint: options.useDualstackEndpoint ?? false,
@@ -49673,10 +49673,10 @@ var init_EndpointParameters2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/bdd.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/bdd.js
 var k4, a2, b5, c2, d3, e30, f3, g3, h4, i2, j4, _data2, root2, r4, nodes2, bdd2;
 var init_bdd2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/bdd.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/bdd.js"() {
     init_endpoints();
     k4 = "ref";
     a2 = -1;
@@ -49766,10 +49766,10 @@ var init_bdd2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/endpointResolver.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/endpointResolver.js
 var cache2, defaultEndpointResolver2;
 var init_endpointResolver2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/endpointResolver.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/endpointResolver.js"() {
     init_client3();
     init_endpoints();
     init_bdd2();
@@ -49787,10 +49787,10 @@ var init_endpointResolver2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/SSOServiceException.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/SSOServiceException.js
 var SSOServiceException;
 var init_SSOServiceException = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/SSOServiceException.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/SSOServiceException.js"() {
     init_client2();
     SSOServiceException = class _SSOServiceException extends ServiceException {
       constructor(options) {
@@ -49801,10 +49801,10 @@ var init_SSOServiceException = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/errors.js
 var InvalidRequestException2, ResourceNotFoundException, TooManyRequestsException, UnauthorizedException;
 var init_errors4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/errors.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/errors.js"() {
     init_SSOServiceException();
     InvalidRequestException2 = class _InvalidRequestException extends SSOServiceException {
       name = "InvalidRequestException";
@@ -49857,10 +49857,10 @@ var init_errors4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/schemas/schemas_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/schemas/schemas_0.js
 var _ATT, _GRC, _GRCR, _GRCRe, _IRE2, _RC, _RNFE, _SAKT, _STT, _TMRE, _UE, _aI, _aKI, _aT2, _ai, _c2, _e3, _ex, _h2, _hE2, _hH, _hQ, _m, _rC, _rN, _rn, _s2, _sAK, _sT, _xasbt, n02, _s_registry2, SSOServiceException$, n0_registry2, InvalidRequestException$2, ResourceNotFoundException$, TooManyRequestsException$, UnauthorizedException$, errorTypeRegistries2, AccessTokenType, SecretAccessKeyType, SessionTokenType, GetRoleCredentialsRequest$, GetRoleCredentialsResponse$, RoleCredentials$, GetRoleCredentials$;
 var init_schemas_02 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/schemas/schemas_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/schemas/schemas_0.js"() {
     init_schema();
     init_errors4();
     init_SSOServiceException();
@@ -49978,10 +49978,10 @@ var init_schemas_02 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.shared.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.shared.js
 var getRuntimeConfig3;
 var init_runtimeConfig_shared2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.shared.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.shared.js"() {
     init_httpAuthSchemes2();
     init_protocols2();
     init_dist_es();
@@ -50031,10 +50031,10 @@ var init_runtimeConfig_shared2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.js
 var import_node_http_handler2, getRuntimeConfig4;
 var init_runtimeConfig2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.js"() {
     init_package();
     init_client3();
     init_httpAuthSchemes2();
@@ -50078,10 +50078,10 @@ var init_runtimeConfig2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthExtensionConfiguration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthExtensionConfiguration.js
 var getHttpAuthExtensionConfiguration2, resolveHttpAuthRuntimeConfig2;
 var init_httpAuthExtensionConfiguration2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthExtensionConfiguration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthExtensionConfiguration.js"() {
     getHttpAuthExtensionConfiguration2 = (runtimeConfig) => {
       const _httpAuthSchemes = runtimeConfig.httpAuthSchemes;
       let _httpAuthSchemeProvider = runtimeConfig.httpAuthSchemeProvider;
@@ -50122,10 +50122,10 @@ var init_httpAuthExtensionConfiguration2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeExtensions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeExtensions.js
 var resolveRuntimeExtensions2;
 var init_runtimeExtensions2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeExtensions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeExtensions.js"() {
     init_client3();
     init_client2();
     init_protocols();
@@ -50138,10 +50138,10 @@ var init_runtimeExtensions2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSOClient.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSOClient.js
 var SSOClient;
 var init_SSOClient = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSOClient.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSOClient.js"() {
     init_client3();
     init_dist_es();
     init_client2();
@@ -50191,10 +50191,10 @@ var init_SSOClient = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commandBuilder.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commandBuilder.js
 var command2, _ep02, _mw02;
 var init_commandBuilder2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commandBuilder.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commandBuilder.js"() {
     init_client2();
     init_endpoints();
     init_EndpointParameters2();
@@ -50204,10 +50204,10 @@ var init_commandBuilder2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/GetRoleCredentialsCommand.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/GetRoleCredentialsCommand.js
 var GetRoleCredentialsCommand;
 var init_GetRoleCredentialsCommand = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/GetRoleCredentialsCommand.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/GetRoleCredentialsCommand.js"() {
     init_commandBuilder2();
     init_schemas_02();
     GetRoleCredentialsCommand = class extends command2(_ep02, _mw02, "GetRoleCredentials", GetRoleCredentials$) {
@@ -50215,10 +50215,10 @@ var init_GetRoleCredentialsCommand = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSO.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSO.js
 var commands2, SSO;
 var init_SSO = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSO.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSO.js"() {
     init_client2();
     init_GetRoleCredentialsCommand();
     init_SSOClient();
@@ -50231,20 +50231,20 @@ var init_SSO = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/index.js
 var init_commands2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/commands/index.js"() {
     init_GetRoleCredentialsCommand();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/models_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/models_0.js
 var init_models_02 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/models_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/models/models_0.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/index.js
 var sso_exports = {};
 __export(sso_exports, {
   $Command: () => Command,
@@ -50269,7 +50269,7 @@ __export(sso_exports, {
   errorTypeRegistries: () => errorTypeRegistries2
 });
 var init_sso = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/index.js"() {
     init_SSOClient();
     init_SSO();
     init_commands2();
@@ -50281,18 +50281,18 @@ var init_sso = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/loadSso-BGYXHf8s.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/loadSso-BGYXHf8s.js
 var require_loadSso_BGYXHf8s = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/loadSso-BGYXHf8s.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/loadSso-BGYXHf8s.js"(exports) {
     var { GetRoleCredentialsCommand: GetRoleCredentialsCommand2, SSOClient: SSOClient2 } = (init_sso(), __toCommonJS(sso_exports));
     exports.GetRoleCredentialsCommand = GetRoleCredentialsCommand2;
     exports.SSOClient = SSOClient2;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/index.js
 var require_dist_cjs10 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.16/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/index.js"(exports) {
     var { CredentialsProviderError: CredentialsProviderError2, getSSOTokenFromFile: getSSOTokenFromFile2, getProfileName: getProfileName2, parseKnownFiles: parseKnownFiles2, loadSsoSessionData: loadSsoSessionData2 } = (init_config2(), __toCommonJS(config_exports));
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { fromSso } = require_dist_cjs9();
@@ -50469,10 +50469,10 @@ Reference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.ht
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/bdd.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/bdd.js
 var q, a3, b6, c3, d4, e31, f4, g4, h5, i3, j5, k5, l, m3, n2, o, p3, _data3, root3, r5, nodes3, bdd3;
 var init_bdd3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/bdd.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/bdd.js"() {
     init_endpoints();
     q = "ref";
     a3 = -1;
@@ -50638,10 +50638,10 @@ var init_bdd3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/endpointResolver.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/endpointResolver.js
 var cache3, defaultEndpointResolver3;
 var init_endpointResolver3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/endpointResolver.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/endpointResolver.js"() {
     init_client3();
     init_endpoints();
     init_bdd3();
@@ -50659,7 +50659,7 @@ var init_endpointResolver3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthSchemeProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthSchemeProvider.js
 function createAwsAuthSigv4HttpAuthOption3(authParameters) {
   return {
     schemeId: "aws.auth#sigv4",
@@ -50697,7 +50697,7 @@ function createSmithyApiNoAuthHttpAuthOption3(authParameters) {
 }
 var import_signature_v4_multi_region2, createEndpointRuleSetHttpAuthSchemeParametersProvider, _defaultSTSHttpAuthSchemeParametersProvider, defaultSTSHttpAuthSchemeParametersProvider, createEndpointRuleSetHttpAuthSchemeProvider, _defaultSTSHttpAuthSchemeProvider, defaultSTSHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig3;
 var init_httpAuthSchemeProvider3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthSchemeProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthSchemeProvider.js"() {
     init_httpAuthSchemes2();
     import_signature_v4_multi_region2 = __toESM(require_dist_cjs3());
     init_client2();
@@ -50796,10 +50796,10 @@ var init_httpAuthSchemeProvider3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/EndpointParameters.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/EndpointParameters.js
 var resolveClientEndpointParameters3, commonParams3;
 var init_EndpointParameters3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/EndpointParameters.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/EndpointParameters.js"() {
     resolveClientEndpointParameters3 = (options) => {
       return Object.assign(options, {
         useDualstackEndpoint: options.useDualstackEndpoint ?? false,
@@ -50818,10 +50818,10 @@ var init_EndpointParameters3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/STSServiceException.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/STSServiceException.js
 var STSServiceException;
 var init_STSServiceException = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/STSServiceException.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/STSServiceException.js"() {
     init_client2();
     STSServiceException = class _STSServiceException extends ServiceException {
       constructor(options) {
@@ -50832,10 +50832,10 @@ var init_STSServiceException = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/errors.js
 var ExpiredTokenException2, MalformedPolicyDocumentException, PackedPolicyTooLargeException, RegionDisabledException, IDPRejectedClaimException, InvalidIdentityTokenException, IDPCommunicationErrorException;
 var init_errors5 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/errors.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/errors.js"() {
     init_STSServiceException();
     ExpiredTokenException2 = class _ExpiredTokenException extends STSServiceException {
       name = "ExpiredTokenException";
@@ -50925,10 +50925,10 @@ var init_errors5 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/schemas/schemas_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/schemas/schemas_0.js
 var _A, _AKI, _AR, _ARI, _ARR, _ARRs, _ARU, _ARWWI, _ARWWIR, _ARWWIRs, _Au, _C, _CA, _DS, _E2, _EI, _ETE2, _IDPCEE, _IDPRCE, _IITE, _K, _MPDE, _MSTS, _P, _PA, _PAr, _PC, _PCLT, _PCr, _PDT, _PI, _PPS, _PPTLE, _Pr, _RA, _RDE, _RSN, _SAK, _SFWIT, _SI, _SN, _ST, _STS, _STU, _T, _TC, _TTK, _Ta, _V, _WIT, _a6, _aKST, _aQE, _c3, _cTT, _e4, _hE3, _m2, _pDLT, _s3, _tLT, n03, _s_registry3, STSServiceException$, n0_registry3, ExpiredTokenException$2, IDPCommunicationErrorException$, IDPRejectedClaimException$, InvalidIdentityTokenException$, MalformedPolicyDocumentException$, PackedPolicyTooLargeException$, RegionDisabledException$, errorTypeRegistries3, accessKeySecretType, clientTokenType, AssumedRoleUser$, AssumeRoleRequest$, AssumeRoleResponse$, AssumeRoleWithWebIdentityRequest$, AssumeRoleWithWebIdentityResponse$, Credentials$, PolicyDescriptorType$, ProvidedContext$, Tag$, policyDescriptorListType, ProvidedContextsListType, tagKeyListType, tagListType, AssumeRole$, AssumeRoleWithWebIdentity$;
 var init_schemas_03 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/schemas/schemas_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/schemas/schemas_0.js"() {
     init_schema();
     init_errors5();
     init_STSServiceException();
@@ -51185,10 +51185,10 @@ var init_schemas_03 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.shared.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.shared.js
 var import_signature_v4_multi_region3, getRuntimeConfig5;
 var init_runtimeConfig_shared3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.shared.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.shared.js"() {
     init_httpAuthSchemes2();
     init_protocols2();
     import_signature_v4_multi_region3 = __toESM(require_dist_cjs3());
@@ -51246,10 +51246,10 @@ var init_runtimeConfig_shared3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.js
 var import_node_http_handler3, getRuntimeConfig6;
 var init_runtimeConfig3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.js"() {
     init_package();
     init_client3();
     init_httpAuthSchemes2();
@@ -51312,10 +51312,10 @@ var init_runtimeConfig3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthExtensionConfiguration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthExtensionConfiguration.js
 var getHttpAuthExtensionConfiguration3, resolveHttpAuthRuntimeConfig3;
 var init_httpAuthExtensionConfiguration3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthExtensionConfiguration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthExtensionConfiguration.js"() {
     getHttpAuthExtensionConfiguration3 = (runtimeConfig) => {
       const _httpAuthSchemes = runtimeConfig.httpAuthSchemes;
       let _httpAuthSchemeProvider = runtimeConfig.httpAuthSchemeProvider;
@@ -51356,10 +51356,10 @@ var init_httpAuthExtensionConfiguration3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeExtensions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeExtensions.js
 var resolveRuntimeExtensions3;
 var init_runtimeExtensions3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeExtensions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeExtensions.js"() {
     init_client3();
     init_client2();
     init_protocols();
@@ -51372,10 +51372,10 @@ var init_runtimeExtensions3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STSClient.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STSClient.js
 var STSClient;
 var init_STSClient = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STSClient.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STSClient.js"() {
     init_client3();
     init_dist_es();
     init_client2();
@@ -51426,10 +51426,10 @@ var init_STSClient = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commandBuilder.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commandBuilder.js
 var command3, _ep03, _mw03;
 var init_commandBuilder3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commandBuilder.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commandBuilder.js"() {
     init_client2();
     init_endpoints();
     init_EndpointParameters3();
@@ -51439,10 +51439,10 @@ var init_commandBuilder3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleCommand.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleCommand.js
 var AssumeRoleCommand;
 var init_AssumeRoleCommand = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleCommand.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleCommand.js"() {
     init_commandBuilder3();
     init_schemas_03();
     AssumeRoleCommand = class extends command3(_ep03, _mw03, "AssumeRole", AssumeRole$) {
@@ -51450,10 +51450,10 @@ var init_AssumeRoleCommand = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleWithWebIdentityCommand.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleWithWebIdentityCommand.js
 var AssumeRoleWithWebIdentityCommand;
 var init_AssumeRoleWithWebIdentityCommand = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleWithWebIdentityCommand.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/AssumeRoleWithWebIdentityCommand.js"() {
     init_commandBuilder3();
     init_schemas_03();
     AssumeRoleWithWebIdentityCommand = class extends command3(_ep03, _mw03, "AssumeRoleWithWebIdentity", AssumeRoleWithWebIdentity$) {
@@ -51461,10 +51461,10 @@ var init_AssumeRoleWithWebIdentityCommand = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STS.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STS.js
 var commands3, STS;
 var init_STS = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STS.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STS.js"() {
     init_client2();
     init_AssumeRoleCommand();
     init_AssumeRoleWithWebIdentityCommand();
@@ -51479,24 +51479,24 @@ var init_STS = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/index.js
 var init_commands3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/commands/index.js"() {
     init_AssumeRoleCommand();
     init_AssumeRoleWithWebIdentityCommand();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/models_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/models_0.js
 var init_models_03 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/models_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/models/models_0.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultStsRoleAssumers.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultStsRoleAssumers.js
 var getAccountIdFromAssumedRoleUser, resolveRegion, getDefaultRoleAssumer, getDefaultRoleAssumerWithWebIdentity, isH2;
 var init_defaultStsRoleAssumers = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultStsRoleAssumers.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultStsRoleAssumers.js"() {
     init_client3();
     init_AssumeRoleCommand();
     init_AssumeRoleWithWebIdentityCommand();
@@ -51601,10 +51601,10 @@ var init_defaultStsRoleAssumers = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultRoleAssumers.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultRoleAssumers.js
 var getCustomizableStsClientCtor, getDefaultRoleAssumer2, getDefaultRoleAssumerWithWebIdentity2, decorateDefaultCredentialProvider;
 var init_defaultRoleAssumers = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultRoleAssumers.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultRoleAssumers.js"() {
     init_defaultStsRoleAssumers();
     init_STSClient();
     getCustomizableStsClientCtor = (baseCtor, customizations) => {
@@ -51630,7 +51630,7 @@ var init_defaultRoleAssumers = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/index.js
 var sts_exports = {};
 __export(sts_exports, {
   $Command: () => Command,
@@ -51672,7 +51672,7 @@ __export(sts_exports, {
   getDefaultRoleAssumerWithWebIdentity: () => getDefaultRoleAssumerWithWebIdentity2
 });
 var init_sts = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/index.js"() {
     init_STSClient();
     init_STS();
     init_commands3();
@@ -51685,7 +51685,7 @@ var init_sts = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthSchemeProvider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthSchemeProvider.js
 function createAwsAuthSigv4HttpAuthOption4(authParameters) {
   return {
     schemeId: "aws.auth#sigv4",
@@ -51708,7 +51708,7 @@ function createSmithyApiNoAuthHttpAuthOption4(authParameters) {
 }
 var defaultSigninHttpAuthSchemeParametersProvider, defaultSigninHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig4;
 var init_httpAuthSchemeProvider4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthSchemeProvider.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthSchemeProvider.js"() {
     init_httpAuthSchemes2();
     init_client2();
     defaultSigninHttpAuthSchemeParametersProvider = async (config3, context, input2) => {
@@ -51743,10 +51743,10 @@ var init_httpAuthSchemeProvider4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/EndpointParameters.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/EndpointParameters.js
 var resolveClientEndpointParameters4, commonParams4;
 var init_EndpointParameters4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/EndpointParameters.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/EndpointParameters.js"() {
     resolveClientEndpointParameters4 = (options) => {
       return Object.assign(options, {
         useDualstackEndpoint: options.useDualstackEndpoint ?? false,
@@ -51763,10 +51763,10 @@ var init_EndpointParameters4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/bdd.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/bdd.js
 var s, a4, b7, c4, d5, e32, f5, g5, h6, i4, j6, k6, l2, m4, n3, o2, p4, q2, _data4, root4, r6, nodes4, bdd4;
 var init_bdd4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/bdd.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/bdd.js"() {
     init_endpoints();
     s = "ref";
     a4 = -1;
@@ -51966,10 +51966,10 @@ var init_bdd4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/endpointResolver.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/endpointResolver.js
 var cache4, defaultEndpointResolver4;
 var init_endpointResolver4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/endpointResolver.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/endpointResolver.js"() {
     init_client3();
     init_endpoints();
     init_bdd4();
@@ -51987,10 +51987,10 @@ var init_endpointResolver4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/SigninServiceException.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/SigninServiceException.js
 var SigninServiceException;
 var init_SigninServiceException = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/SigninServiceException.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/SigninServiceException.js"() {
     init_client2();
     SigninServiceException = class _SigninServiceException extends ServiceException {
       constructor(options) {
@@ -52001,10 +52001,10 @@ var init_SigninServiceException = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/errors.js
 var AccessDeniedException2, InternalServerException2, TooManyRequestsError, ValidationException;
 var init_errors6 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/errors.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/errors.js"() {
     init_SigninServiceException();
     AccessDeniedException2 = class _AccessDeniedException extends SigninServiceException {
       name = "AccessDeniedException";
@@ -52065,10 +52065,10 @@ var init_errors6 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/schemas/schemas_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/schemas/schemas_0.js
 var _ADE2, _AT2, _COAT, _COATR, _COATRB, _COATRBr, _COATRr, _COATWIAM, _COATWIAMR, _COATWIAMRr, _ISE2, _OAAT, _RT2, _TMRE2, _VE, _aKI2, _aT3, _at, _c4, _cI2, _cV2, _co2, _e5, _eI2, _ei, _gT2, _gt3, _h3, _hE4, _iT2, _jN, _m3, _r2, _rT2, _rU2, _s4, _sAK2, _sT2, _se2, _tI, _tO, _tT2, _tt, n04, _s_registry4, SigninServiceException$, n0_registry4, AccessDeniedException$2, InternalServerException$2, TooManyRequestsError$, ValidationException$, errorTypeRegistries4, OAuthAccessToken, RefreshToken2, AccessToken$, CreateOAuth2TokenRequest$, CreateOAuth2TokenRequestBody$, CreateOAuth2TokenResponse$, CreateOAuth2TokenResponseBody$, CreateOAuth2TokenWithIAMRequest$, CreateOAuth2TokenWithIAMResponse$, CreateOAuth2Token$, CreateOAuth2TokenWithIAM$;
 var init_schemas_04 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/schemas/schemas_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/schemas/schemas_0.js"() {
     init_schema();
     init_errors6();
     init_SigninServiceException();
@@ -52248,10 +52248,10 @@ var init_schemas_04 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.shared.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.shared.js
 var getRuntimeConfig7;
 var init_runtimeConfig_shared4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.shared.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.shared.js"() {
     init_httpAuthSchemes2();
     init_protocols2();
     init_dist_es();
@@ -52301,10 +52301,10 @@ var init_runtimeConfig_shared4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.js
 var import_node_http_handler4, getRuntimeConfig8;
 var init_runtimeConfig4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.js"() {
     init_package();
     init_client3();
     init_httpAuthSchemes2();
@@ -52348,10 +52348,10 @@ var init_runtimeConfig4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthExtensionConfiguration.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthExtensionConfiguration.js
 var getHttpAuthExtensionConfiguration4, resolveHttpAuthRuntimeConfig4;
 var init_httpAuthExtensionConfiguration4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthExtensionConfiguration.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthExtensionConfiguration.js"() {
     getHttpAuthExtensionConfiguration4 = (runtimeConfig) => {
       const _httpAuthSchemes = runtimeConfig.httpAuthSchemes;
       let _httpAuthSchemeProvider = runtimeConfig.httpAuthSchemeProvider;
@@ -52392,10 +52392,10 @@ var init_httpAuthExtensionConfiguration4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeExtensions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeExtensions.js
 var resolveRuntimeExtensions4;
 var init_runtimeExtensions4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeExtensions.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeExtensions.js"() {
     init_client3();
     init_client2();
     init_protocols();
@@ -52408,10 +52408,10 @@ var init_runtimeExtensions4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/SigninClient.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/SigninClient.js
 var SigninClient;
 var init_SigninClient = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/SigninClient.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/SigninClient.js"() {
     init_client3();
     init_dist_es();
     init_client2();
@@ -52461,10 +52461,10 @@ var init_SigninClient = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commandBuilder.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commandBuilder.js
 var command4, _ep04, _ep1, _mw04;
 var init_commandBuilder4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commandBuilder.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commandBuilder.js"() {
     init_client2();
     init_endpoints();
     init_EndpointParameters4();
@@ -52479,10 +52479,10 @@ var init_commandBuilder4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenCommand.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenCommand.js
 var CreateOAuth2TokenCommand;
 var init_CreateOAuth2TokenCommand = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenCommand.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenCommand.js"() {
     init_commandBuilder4();
     init_schemas_04();
     CreateOAuth2TokenCommand = class extends command4(_ep04, _mw04, "CreateOAuth2Token", CreateOAuth2Token$) {
@@ -52490,10 +52490,10 @@ var init_CreateOAuth2TokenCommand = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenWithIAMCommand.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenWithIAMCommand.js
 var CreateOAuth2TokenWithIAMCommand;
 var init_CreateOAuth2TokenWithIAMCommand = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenWithIAMCommand.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/CreateOAuth2TokenWithIAMCommand.js"() {
     init_commandBuilder4();
     init_schemas_04();
     CreateOAuth2TokenWithIAMCommand = class extends command4(_ep1, _mw04, "CreateOAuth2TokenWithIAM", CreateOAuth2TokenWithIAM$) {
@@ -52501,10 +52501,10 @@ var init_CreateOAuth2TokenWithIAMCommand = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/Signin.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/Signin.js
 var commands4, Signin;
 var init_Signin = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/Signin.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/Signin.js"() {
     init_client2();
     init_CreateOAuth2TokenCommand();
     init_CreateOAuth2TokenWithIAMCommand();
@@ -52519,18 +52519,18 @@ var init_Signin = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/index.js
 var init_commands4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/commands/index.js"() {
     init_CreateOAuth2TokenCommand();
     init_CreateOAuth2TokenWithIAMCommand();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/enums.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/enums.js
 var OAuth2ErrorCode;
 var init_enums2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/enums.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/enums.js"() {
     OAuth2ErrorCode = {
       AUTHCODE_EXPIRED: "AUTHCODE_EXPIRED",
       CONFLICT: "CONFLICT",
@@ -52545,13 +52545,13 @@ var init_enums2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/models_0.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/models_0.js
 var init_models_04 = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/models_0.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/models/models_0.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/index.js
 var signin_exports = {};
 __export(signin_exports, {
   $Command: () => Command,
@@ -52583,7 +52583,7 @@ __export(signin_exports, {
   errorTypeRegistries: () => errorTypeRegistries4
 });
 var init_signin = __esm({
-  "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+nested-clients@3.997.46/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/index.js"() {
     init_SigninClient();
     init_Signin();
     init_commands4();
@@ -52596,9 +52596,9 @@ var init_signin = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.79/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.79/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
 var require_dist_cjs11 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.79/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.79/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js"(exports) {
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2, parseKnownFiles: parseKnownFiles2, getProfileName: getProfileName2 } = (init_config2(), __toCommonJS(config_exports));
     var { HttpRequest: HttpRequest2 } = (init_protocols(), __toCommonJS(protocols_exports));
@@ -52881,9 +52881,9 @@ var require_dist_cjs11 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-process@3.972.72/node_modules/@aws-sdk/credential-provider-process/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-process@3.972.72/node_modules/@aws-sdk/credential-provider-process/dist-cjs/index.js
 var require_dist_cjs12 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-process@3.972.72/node_modules/@aws-sdk/credential-provider-process/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-process@3.972.72/node_modules/@aws-sdk/credential-provider-process/dist-cjs/index.js"(exports) {
     var { externalDataInterceptor: externalDataInterceptor2, CredentialsProviderError: CredentialsProviderError2, parseKnownFiles: parseKnownFiles2, getProfileName: getProfileName2 } = (init_config2(), __toCommonJS(config_exports));
     var { exec } = __require("node:child_process");
     var { promisify } = __require("node:util");
@@ -52955,9 +52955,9 @@ var require_dist_cjs12 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-web-identity@3.972.78/node_modules/@aws-sdk/credential-provider-web-identity/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-web-identity@3.972.78/node_modules/@aws-sdk/credential-provider-web-identity/dist-cjs/index.js
 var require_dist_cjs13 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-web-identity@3.972.78/node_modules/@aws-sdk/credential-provider-web-identity/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-web-identity@3.972.78/node_modules/@aws-sdk/credential-provider-web-identity/dist-cjs/index.js"(exports) {
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2, externalDataInterceptor: externalDataInterceptor2 } = (init_config2(), __toCommonJS(config_exports));
     var { readFileSync: readFileSync2 } = __require("node:fs");
@@ -53015,9 +53015,9 @@ var require_dist_cjs13 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.17/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.17/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js
 var require_dist_cjs14 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.17/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.17/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js"(exports) {
     var { CredentialsProviderError: CredentialsProviderError2, chain: chain2, getProfileName: getProfileName2, parseKnownFiles: parseKnownFiles2 } = (init_config2(), __toCommonJS(config_exports));
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var resolveCredentialSource = (credentialSource, profileName, logger2) => {
@@ -53212,9 +53212,9 @@ var require_dist_cjs14 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.84/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.84/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js
 var require_dist_cjs15 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.84/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.84/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js"(exports) {
     var { ENV_KEY, ENV_SECRET, fromEnv: fromEnv2 } = require_dist_cjs5();
     var { chain: chain2, CredentialsProviderError: CredentialsProviderError2, ENV_PROFILE: ENV_PROFILE2 } = (init_config2(), __toCommonJS(config_exports));
     var ENV_IMDS_DISABLED2 = "AWS_EC2_METADATA_DISABLED";
@@ -53368,10 +53368,10 @@ var require_dist_cjs15 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Js.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Js.js
 var BLOCK2, DIGEST_LENGTH2, INIT3, K4, Sha1Js;
 var init_Sha1Js = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Js.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Js.js"() {
     init_serde();
     BLOCK2 = 64;
     DIGEST_LENGTH2 = 20;
@@ -53540,7 +53540,7 @@ var init_Sha1Js = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Node.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Node.js
 import { createHash as createHash14, createHmac as createHmac3 } from "node:crypto";
 function buildNativeClass4() {
   return class Sha1Node {
@@ -53590,7 +53590,7 @@ function toBuffer2(data) {
 }
 var hasNativeCrypto3, Sha1Node;
 var init_Sha1Node = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Node.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1Node.js"() {
     init_Sha1Js();
     hasNativeCrypto3 = (() => {
       try {
@@ -53604,10 +53604,10 @@ var init_Sha1Node = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1WebCrypto.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1WebCrypto.js
 var digest2, sign2, importKey2, subtle2, MAX_PENDING_BYTES2, Sha1WebCrypto;
 var init_Sha1WebCrypto = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1WebCrypto.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/sha1/Sha1WebCrypto.js"() {
     init_serde();
     init_Sha1Js();
     ({ digest: digest2, sign: sign2, importKey: importKey2 } = globalThis?.crypto?.subtle ?? {});
@@ -53680,7 +53680,7 @@ var init_Sha1WebCrypto = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/index.js
 var sha_exports = {};
 __export(sha_exports, {
   Sha1: () => Sha1Node,
@@ -53692,7 +53692,7 @@ __export(sha_exports, {
   Sha256Node: () => Sha256Node
 });
 var init_sha = __esm({
-  "node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/index.js"() {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+checksums@3.1001.1/node_modules/@aws-sdk/checksums/dist-es/submodules/sha/index.js"() {
     init_Sha1Js();
     init_Sha1Node();
     init_Sha1WebCrypto();
@@ -53700,9 +53700,9 @@ var init_sha = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/client-s3/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/client-s3/dist-cjs/index.js
 var require_dist_cjs16 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/client-s3/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/client-s3/dist-cjs/index.js"(exports) {
     var { getFlexibleChecksumsPlugin: getFlexibleChecksumsPlugin2, NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS: NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS2, NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS: NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS2, resolveFlexibleChecksumsConfig: resolveFlexibleChecksumsConfig2 } = (init_flexible_checksums(), __toCommonJS(flexible_checksums_exports));
     var { awsEndpointFunctions: awsEndpointFunctions2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion$1, createDefaultUserAgentProvider: createDefaultUserAgentProvider2, NODE_APP_ID_CONFIG_OPTIONS: NODE_APP_ID_CONFIG_OPTIONS2, getAwsRegionExtensionConfiguration: getAwsRegionExtensionConfiguration2, resolveAwsRegionExtensionConfiguration: resolveAwsRegionExtensionConfiguration2, resolveUserAgentConfig: resolveUserAgentConfig2, resolveHostHeaderConfig: resolveHostHeaderConfig2, getUserAgentPlugin: getUserAgentPlugin2, getHostHeaderPlugin: getHostHeaderPlugin2, getLoggerPlugin: getLoggerPlugin2, getRecursionDetectionPlugin: getRecursionDetectionPlugin2 } = (init_client3(), __toCommonJS(client_exports2));
     var { getThrow200ExceptionsPlugin: getThrow200ExceptionsPlugin2, getSsecPlugin: getSsecPlugin2, getLocationConstraintPlugin: getLocationConstraintPlugin2, getS3ExpiresMiddlewarePlugin: getS3ExpiresMiddlewarePlugin2, getCheckContentLengthHeaderPlugin: getCheckContentLengthHeaderPlugin2, S3RestXmlProtocol: S3RestXmlProtocol2, NODE_USE_ARN_REGION_CONFIG_OPTIONS: NODE_USE_ARN_REGION_CONFIG_OPTIONS2, NODE_DISABLE_S3_EXPRESS_SESSION_AUTH_OPTIONS: NODE_DISABLE_S3_EXPRESS_SESSION_AUTH_OPTIONS2, resolveS3Config: resolveS3Config2, getValidateBucketNamePlugin: getValidateBucketNamePlugin2, getAddExpectContinuePlugin: getAddExpectContinuePlugin2, getRegionRedirectMiddlewarePlugin: getRegionRedirectMiddlewarePlugin2, getS3ExpressPlugin: getS3ExpressPlugin2, getS3ExpressHttpSigningPlugin: getS3ExpressHttpSigningPlugin2 } = (init_s32(), __toCommonJS(s3_exports));
@@ -63434,9 +63434,9 @@ var require_dist_cjs16 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+lib-storage@3.1147.0_@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/lib-storage/dist-cjs/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+lib-storage@3.1147.0_@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/lib-storage/dist-cjs/index.js
 var require_dist_cjs17 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+lib-storage@3.1147.0_@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/lib-storage/dist-cjs/index.js"(exports) {
+  "../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@aws-sdk+lib-storage@3.1147.0_@aws-sdk+client-s3@3.1147.0/node_modules/@aws-sdk/lib-storage/dist-cjs/index.js"(exports) {
     var { PutObjectCommand, ChecksumAlgorithm: ChecksumAlgorithm2, CreateMultipartUploadCommand, AbortMultipartUploadCommand, UploadPartCommand, CompleteMultipartUploadCommand, PutObjectTaggingCommand } = require_dist_cjs16();
     var { toEndpointV1: toEndpointV13, getEndpointFromInstructions: getEndpointFromInstructions2 } = (init_endpoints(), __toCommonJS(endpoints_exports));
     var { extendedEncodeURIComponent: extendedEncodeURIComponent2 } = (init_protocols(), __toCommonJS(protocols_exports));
@@ -63935,7 +63935,7 @@ to input.params.ContentLength in bytes.
   }
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/helpers/util.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/helpers/util.js
 var util;
 (function(util2) {
   util2.assertEqual = (_3) => {
@@ -64069,7 +64069,7 @@ var getParsedType = (data) => {
   }
 };
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/ZodError.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/ZodError.js
 var ZodIssueCode = util.arrayToEnum([
   "invalid_type",
   "invalid_literal",
@@ -64198,7 +64198,7 @@ ZodError.create = (issues) => {
   return error113;
 };
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/locales/en.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/locales/en.js
 var errorMap = (issue3, _ctx) => {
   let message;
   switch (issue3.code) {
@@ -64301,13 +64301,13 @@ var errorMap = (issue3, _ctx) => {
 };
 var en_default = errorMap;
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/errors.js
 var overrideErrorMap = en_default;
 function getErrorMap() {
   return overrideErrorMap;
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/helpers/parseUtil.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/helpers/parseUtil.js
 var makeIssue = (params) => {
   const { data, path: path24, errorMaps, issueData } = params;
   const fullPath = [...path24, ...issueData.path || []];
@@ -64416,14 +64416,14 @@ var isDirty = (x2) => x2.status === "dirty";
 var isValid = (x2) => x2.status === "valid";
 var isAsync = (x2) => typeof Promise !== "undefined" && x2 instanceof Promise;
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/helpers/errorUtil.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/helpers/errorUtil.js
 var errorUtil;
 (function(errorUtil2) {
   errorUtil2.errToObj = (message) => typeof message === "string" ? { message } : message || {};
   errorUtil2.toString = (message) => typeof message === "string" ? message : message?.message;
 })(errorUtil || (errorUtil = {}));
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/types.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v3/types.js
 var ParseInputLazyPath = class {
   constructor(parent, value, path24, key) {
     this._cachedPath = [];
@@ -67831,13 +67831,13 @@ var nullableType = ZodNullable.create;
 var preprocessType = ZodEffects.createWithPreprocess;
 var pipelineType = ZodPipeline.create;
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/external.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/external.js
 init_core2();
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/parse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/parse.js
 init_core2();
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/schemas.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/schemas.js
 init_core2();
 init_util();
 var ZodMiniType = /* @__PURE__ */ $constructor("ZodMiniType", (inst, def) => {
@@ -67905,11 +67905,11 @@ function object(shape, params) {
   return new ZodMiniObject(def);
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/external.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/mini/external.js
 init_json_schema_processors();
 init_locales();
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-compat.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-compat.js
 function isZ4Schema(s2) {
   const schema = s2;
   return !!schema._zod;
@@ -68069,7 +68069,7 @@ function getLiteralValue(schema) {
   return void 0;
 }
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/types.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/types.js
 init_v4();
 var LATEST_PROTOCOL_VERSION = "2025-11-25";
 var SUPPORTED_PROTOCOL_VERSIONS = [LATEST_PROTOCOL_VERSION, "2025-06-18", "2025-03-26", "2024-11-05", "2024-10-07"];
@@ -69601,12 +69601,12 @@ var UrlElicitationRequiredError = class extends McpError {
   }
 };
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/interfaces.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/interfaces.js
 function isTerminal(status) {
   return status === "completed" || status === "failed" || status === "cancelled";
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/Options.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/Options.js
 var ignoreOverride = Symbol("Let zodToJsonSchema decide on which parser to use");
 var defaultOptions = {
   name: void 0,
@@ -69640,7 +69640,7 @@ var getDefaultOptions = (options) => typeof options === "string" ? {
   ...options
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/Refs.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/Refs.js
 var getRefs = (options) => {
   const _options = getDefaultOptions(options);
   const currentPath = _options.name !== void 0 ? [..._options.basePath, _options.definitionPath, _options.name] : _options.basePath;
@@ -69661,7 +69661,7 @@ var getRefs = (options) => {
   };
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/errorMessages.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/errorMessages.js
 function addErrorMessage(res, key, errorMessage, refs) {
   if (!refs?.errorMessages)
     return;
@@ -69677,7 +69677,7 @@ function setResponseValueAndErrors(res, key, value, errorMessage, refs) {
   addErrorMessage(res, key, errorMessage, refs);
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/getRelativePath.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/getRelativePath.js
 var getRelativePath = (pathA, pathB) => {
   let i5 = 0;
   for (; i5 < pathA.length && i5 < pathB.length; i5++) {
@@ -69687,7 +69687,7 @@ var getRelativePath = (pathA, pathB) => {
   return [(pathA.length - i5).toString(), ...pathB.slice(i5)].join("/");
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/any.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/any.js
 function parseAnyDef(refs) {
   if (refs.target !== "openAi") {
     return {};
@@ -69703,7 +69703,7 @@ function parseAnyDef(refs) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/array.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/array.js
 function parseArrayDef(def, refs) {
   const res = {
     type: "array"
@@ -69727,7 +69727,7 @@ function parseArrayDef(def, refs) {
   return res;
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/bigint.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/bigint.js
 function parseBigintDef(def, refs) {
   const res = {
     type: "integer",
@@ -69773,24 +69773,24 @@ function parseBigintDef(def, refs) {
   return res;
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/boolean.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/boolean.js
 function parseBooleanDef() {
   return {
     type: "boolean"
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/branded.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/branded.js
 function parseBrandedDef(_def, refs) {
   return parseDef(_def.type._def, refs);
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/catch.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/catch.js
 var parseCatchDef = (def, refs) => {
   return parseDef(def.innerType._def, refs);
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/date.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/date.js
 function parseDateDef(def, refs, overrideDateStrategy) {
   const strategy = overrideDateStrategy ?? refs.dateStrategy;
   if (Array.isArray(strategy)) {
@@ -69849,7 +69849,7 @@ var integerDateParser = (def, refs) => {
   return res;
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/default.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/default.js
 function parseDefaultDef(_def, refs) {
   return {
     ...parseDef(_def.innerType._def, refs),
@@ -69857,12 +69857,12 @@ function parseDefaultDef(_def, refs) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/effects.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/effects.js
 function parseEffectsDef(_def, refs) {
   return refs.effectStrategy === "input" ? parseDef(_def.schema._def, refs) : parseAnyDef(refs);
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/enum.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/enum.js
 function parseEnumDef(def) {
   return {
     type: "string",
@@ -69870,7 +69870,7 @@ function parseEnumDef(def) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/intersection.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/intersection.js
 var isJsonSchema7AllOfType = (type) => {
   if ("type" in type && type.type === "string")
     return false;
@@ -69912,7 +69912,7 @@ function parseIntersectionDef(def, refs) {
   } : void 0;
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/literal.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/literal.js
 function parseLiteralDef(def, refs) {
   const parsedType3 = typeof def.value;
   if (parsedType3 !== "bigint" && parsedType3 !== "number" && parsedType3 !== "boolean" && parsedType3 !== "string") {
@@ -69932,7 +69932,7 @@ function parseLiteralDef(def, refs) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/string.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/string.js
 var emojiRegex2 = void 0;
 var zodPatterns = {
   /**
@@ -70257,7 +70257,7 @@ function stringifyRegExpWithFlags(regex2, refs) {
   return pattern;
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/record.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/record.js
 function parseRecordDef(def, refs) {
   if (refs.target === "openAi") {
     console.warn("Warning: OpenAI may not support records in schemas! Try an array of key-value pairs instead.");
@@ -70309,7 +70309,7 @@ function parseRecordDef(def, refs) {
   return schema;
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/map.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/map.js
 function parseMapDef(def, refs) {
   if (refs.mapStrategy === "record") {
     return parseRecordDef(def, refs);
@@ -70334,7 +70334,7 @@ function parseMapDef(def, refs) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/nativeEnum.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/nativeEnum.js
 function parseNativeEnumDef(def) {
   const object4 = def.values;
   const actualKeys = Object.keys(def.values).filter((key) => {
@@ -70348,7 +70348,7 @@ function parseNativeEnumDef(def) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/never.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/never.js
 function parseNeverDef(refs) {
   return refs.target === "openAi" ? void 0 : {
     not: parseAnyDef({
@@ -70358,7 +70358,7 @@ function parseNeverDef(refs) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/null.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/null.js
 function parseNullDef(refs) {
   return refs.target === "openApi3" ? {
     enum: ["null"],
@@ -70368,7 +70368,7 @@ function parseNullDef(refs) {
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/union.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/union.js
 var primitiveMappings = {
   ZodString: "string",
   ZodNumber: "number",
@@ -70436,7 +70436,7 @@ var asAnyOf = (def, refs) => {
   return anyOf.length ? { anyOf } : void 0;
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/nullable.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/nullable.js
 function parseNullableDef(def, refs) {
   if (["ZodString", "ZodNumber", "ZodBigInt", "ZodBoolean", "ZodNull"].includes(def.innerType._def.typeName) && (!def.innerType._def.checks || !def.innerType._def.checks.length)) {
     if (refs.target === "openApi3") {
@@ -70468,7 +70468,7 @@ function parseNullableDef(def, refs) {
   return base && { anyOf: [base, { type: "null" }] };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/number.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/number.js
 function parseNumberDef(def, refs) {
   const res = {
     type: "number"
@@ -70517,7 +70517,7 @@ function parseNumberDef(def, refs) {
   return res;
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/object.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/object.js
 function parseObjectDef(def, refs) {
   const forceOptionalIntoNullable = refs.target === "openAi";
   const result = {
@@ -70587,7 +70587,7 @@ function safeIsOptional(schema) {
   }
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/optional.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/optional.js
 var parseOptionalDef = (def, refs) => {
   if (refs.currentPath.toString() === refs.propertyPath?.toString()) {
     return parseDef(def.innerType._def, refs);
@@ -70606,7 +70606,7 @@ var parseOptionalDef = (def, refs) => {
   } : parseAnyDef(refs);
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/pipeline.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/pipeline.js
 var parsePipelineDef = (def, refs) => {
   if (refs.pipeStrategy === "input") {
     return parseDef(def.in._def, refs);
@@ -70626,12 +70626,12 @@ var parsePipelineDef = (def, refs) => {
   };
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/promise.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/promise.js
 function parsePromiseDef(def, refs) {
   return parseDef(def.type._def, refs);
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/set.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/set.js
 function parseSetDef(def, refs) {
   const items = parseDef(def.valueType._def, {
     ...refs,
@@ -70651,7 +70651,7 @@ function parseSetDef(def, refs) {
   return schema;
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/tuple.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/tuple.js
 function parseTupleDef(def, refs) {
   if (def.rest) {
     return {
@@ -70679,24 +70679,24 @@ function parseTupleDef(def, refs) {
   }
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/undefined.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/undefined.js
 function parseUndefinedDef(refs) {
   return {
     not: parseAnyDef(refs)
   };
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/unknown.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/unknown.js
 function parseUnknownDef(refs) {
   return parseAnyDef(refs);
 }
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/readonly.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parsers/readonly.js
 var parseReadonlyDef = (def, refs) => {
   return parseDef(def.innerType._def, refs);
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/selectParser.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/selectParser.js
 var selectParser = (def, typeName, refs) => {
   switch (typeName) {
     case ZodFirstPartyTypeKind.ZodString:
@@ -70772,7 +70772,7 @@ var selectParser = (def, typeName, refs) => {
   }
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parseDef.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/parseDef.js
 function parseDef(def, refs, forceResolution = false) {
   const seenItem = refs.seen.get(def);
   if (refs.override) {
@@ -70828,7 +70828,7 @@ var addMeta = (def, refs, jsonSchema) => {
   return jsonSchema;
 };
 
-// node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/zodToJsonSchema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod-to-json-schema@3.25.2_zod@4.6.5/node_modules/zod-to-json-schema/dist/esm/zodToJsonSchema.js
 var zodToJsonSchema = (schema, options) => {
   const refs = getRefs(options);
   let definitions = typeof options === "object" && options.definitions ? Object.entries(options.definitions).reduce((acc, [name2, schema2]) => ({
@@ -70890,7 +70890,7 @@ var zodToJsonSchema = (schema, options) => {
   return combined;
 };
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-json-schema-compat.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-json-schema-compat.js
 function mapMiniTarget(t8) {
   if (!t8)
     return "draft-7";
@@ -70932,7 +70932,7 @@ function parseWithCompat(schema, data) {
   return result.data;
 }
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js
 var DEFAULT_REQUEST_TIMEOUT_MSEC = 6e4;
 var Protocol = class {
   constructor(_options) {
@@ -71909,7 +71909,7 @@ function mergeCapabilities(base, additional) {
   return result;
 }
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/validation/ajv-provider.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/validation/ajv-provider.js
 var import_ajv = __toESM(require_ajv(), 1);
 var import_ajv_formats = __toESM(require_dist(), 1);
 function createDefaultAjvInstance() {
@@ -71977,7 +71977,7 @@ var AjvJsonSchemaValidator = class {
   }
 };
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/server.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/server.js
 var ExperimentalServerTasks = class {
   constructor(_server) {
     this._server = _server;
@@ -72190,7 +72190,7 @@ var ExperimentalServerTasks = class {
   }
 };
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/helpers.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/helpers.js
 function assertToolsCallTaskCapability(requests, method, entityName) {
   if (!requests) {
     throw new Error(`${entityName} does not support task creation (required for ${method})`);
@@ -72225,7 +72225,7 @@ function assertClientRequestTaskCapability(requests, method, entityName) {
   }
 }
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/index.js
 var Server = class extends Protocol {
   /**
    * Initializes this server with the given name and version information.
@@ -72596,7 +72596,7 @@ var Server = class extends Protocol {
   }
 };
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/completable.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/completable.js
 var COMPLETABLE_SYMBOL = Symbol.for("mcp.completable");
 function isCompletable(schema) {
   return !!schema && typeof schema === "object" && COMPLETABLE_SYMBOL in schema;
@@ -72610,7 +72610,7 @@ var McpZodTypeKind;
   McpZodTypeKind2["Completable"] = "McpCompletable";
 })(McpZodTypeKind || (McpZodTypeKind = {}));
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/toolNameValidation.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/toolNameValidation.js
 var TOOL_NAME_REGEX = /^[A-Za-z0-9._-]{1,128}$/;
 function validateToolName(name) {
   const warnings = [];
@@ -72668,7 +72668,7 @@ function validateAndWarnToolName(name) {
   return result.isValid;
 }
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/mcp-server.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/mcp-server.js
 var ExperimentalMcpServerTasks = class {
   constructor(_mcpServer) {
     this._mcpServer = _mcpServer;
@@ -72683,11 +72683,11 @@ var ExperimentalMcpServerTasks = class {
   }
 };
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/index.js
 init_external();
 init_external();
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/mcp.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/mcp.js
 function toolInputElementCount(value, max2) {
   let count = 0;
   const stack = [value];
@@ -73519,10 +73519,10 @@ var EMPTY_COMPLETION_RESULT = {
   }
 };
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/stdio.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/stdio.js
 import process2 from "node:process";
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/stdio.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/stdio.js
 var STDIO_DEFAULT_MAX_BUFFER_SIZE = 10 * 1024 * 1024;
 var ReadBuffer = class {
   constructor(options) {
@@ -73559,7 +73559,7 @@ function serializeMessage(message) {
   return JSON.stringify(message) + "\n";
 }
 
-// node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/stdio.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5/node_modules/@modelcontextprotocol/sdk/dist/esm/server/stdio.js
 var StdioServerTransport = class {
   constructor(_stdin = process2.stdin, _stdout = process2.stdout, options) {
     this._stdin = _stdin;
@@ -73626,7 +73626,7 @@ var StdioServerTransport = class {
   }
 };
 
-// node_modules/.pnpm/@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5__zod@4.6.5/node_modules/@modelcontextprotocol/ext-apps/dist/src/server/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol+sdk@1.32.1_@cfworker+json-schema@4.1.1_zod@4.6.5__zod@4.6.5/node_modules/@modelcontextprotocol/ext-apps/dist/src/server/index.js
 init_v4();
 var r = ((Z) => typeof __require < "u" ? __require : typeof Proxy < "u" ? new Proxy(Z, { get: ($, J) => (typeof __require < "u" ? __require : $)[J] }) : Z)(function(Z) {
   if (typeof __require < "u") return __require.apply(this, arguments);
@@ -73721,7 +73721,7 @@ function N3(Z, $, J, X, V) {
   return Z.registerResource($, J, { mimeType: p, ...X }, V);
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/external.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/external.js
 var external_exports2 = {};
 __export(external_exports2, {
   $brand: () => $brand2,
@@ -73964,7 +73964,7 @@ __export(external_exports2, {
   xor: () => xor2
 });
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/index.js
 var core_exports4 = {};
 __export(core_exports4, {
   $ZodAny: () => $ZodAny2,
@@ -74243,7 +74243,7 @@ __export(core_exports4, {
   version: () => version2
 });
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/core.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/core.js
 var _a3;
 var NEVER2 = /* @__PURE__ */ Object.freeze({
   status: "aborted"
@@ -74320,7 +74320,7 @@ function config2(newConfig) {
   return globalConfig2;
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/util.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/util.js
 var util_exports2 = {};
 __export(util_exports2, {
   BIGINT_FORMAT_RANGES: () => BIGINT_FORMAT_RANGES2,
@@ -75016,7 +75016,7 @@ var Class2 = class {
   }
 };
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/errors.js
 var initializer3 = (inst, def) => {
   inst.name = "$ZodError";
   Object.defineProperty(inst, "_zod", {
@@ -75155,7 +75155,7 @@ function prettifyError2(error113) {
   return lines.join("\n");
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/parse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/parse.js
 var _parse3 = (_Err) => (schema, value, _ctx, _params) => {
   const ctx = _ctx ? { ..._ctx, async: false } : { async: false };
   const result = schema._zod.run({ value, issues: [] }, ctx);
@@ -75243,7 +75243,7 @@ var _safeDecodeAsync2 = (_Err) => async (schema, value, _ctx) => {
 };
 var safeDecodeAsync3 = /* @__PURE__ */ _safeDecodeAsync2($ZodRealError2);
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/regexes.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/regexes.js
 var regexes_exports2 = {};
 __export(regexes_exports2, {
   base64: () => base643,
@@ -75402,7 +75402,7 @@ var sha512_hex2 = /^[0-9a-fA-F]{128}$/;
 var sha512_base642 = /* @__PURE__ */ fixedBase642(86, "==");
 var sha512_base64url2 = /* @__PURE__ */ fixedBase64url2(86);
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/checks.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/checks.js
 var $ZodCheck2 = /* @__PURE__ */ $constructor2("$ZodCheck", (inst, def) => {
   var _a7;
   inst._zod ?? (inst._zod = {});
@@ -75950,7 +75950,7 @@ var $ZodCheckOverwrite2 = /* @__PURE__ */ $constructor2("$ZodCheckOverwrite", (i
   };
 });
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/doc.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/doc.js
 var Doc2 = class {
   constructor(args = []) {
     this.content = [];
@@ -75986,14 +75986,14 @@ var Doc2 = class {
   }
 };
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/versions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/versions.js
 var version2 = {
   major: 4,
   minor: 4,
   patch: 3
 };
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/schemas.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/schemas.js
 var $ZodType2 = /* @__PURE__ */ $constructor2("$ZodType", (inst, def) => {
   var _a7;
   inst ?? (inst = {});
@@ -78086,7 +78086,7 @@ function handleRefineResult2(result, payload, input2, inst) {
   }
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/index.js
 var locales_exports2 = {};
 __export(locales_exports2, {
   ar: () => ar_default2,
@@ -78143,7 +78143,7 @@ __export(locales_exports2, {
   zhTW: () => zh_TW_default2
 });
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ar.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ar.js
 var error62 = () => {
   const Sizable = {
     string: { unit: "\u062D\u0631\u0641", verb: "\u0623\u0646 \u064A\u062D\u0648\u064A" },
@@ -78250,7 +78250,7 @@ function ar_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/az.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/az.js
 var error63 = () => {
   const Sizable = {
     string: { unit: "simvol", verb: "olmal\u0131d\u0131r" },
@@ -78356,7 +78356,7 @@ function az_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/be.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/be.js
 function getBelarusianPlural2(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -78513,7 +78513,7 @@ function be_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/bg.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/bg.js
 var error65 = () => {
   const Sizable = {
     string: { unit: "\u0441\u0438\u043C\u0432\u043E\u043B\u0430", verb: "\u0434\u0430 \u0441\u044A\u0434\u044A\u0440\u0436\u0430" },
@@ -78634,7 +78634,7 @@ function bg_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ca.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ca.js
 var error66 = () => {
   const Sizable = {
     string: { unit: "car\xE0cters", verb: "contenir" },
@@ -78743,7 +78743,7 @@ function ca_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/cs.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/cs.js
 var error67 = () => {
   const Sizable = {
     string: { unit: "znak\u016F", verb: "m\xEDt" },
@@ -78855,7 +78855,7 @@ function cs_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/da.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/da.js
 var error68 = () => {
   const Sizable = {
     string: { unit: "tegn", verb: "havde" },
@@ -78971,7 +78971,7 @@ function da_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/de.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/de.js
 var error69 = () => {
   const Sizable = {
     string: { unit: "Zeichen", verb: "zu haben" },
@@ -79080,7 +79080,7 @@ function de_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/el.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/el.js
 var error70 = () => {
   const Sizable = {
     string: { unit: "\u03C7\u03B1\u03C1\u03B1\u03BA\u03C4\u03AE\u03C1\u03B5\u03C2", verb: "\u03BD\u03B1 \u03AD\u03C7\u03B5\u03B9" },
@@ -79190,7 +79190,7 @@ function el_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/en.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/en.js
 var error71 = () => {
   const Sizable = {
     string: { unit: "characters", verb: "to have" },
@@ -79303,7 +79303,7 @@ function en_default3() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/eo.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/eo.js
 var error72 = () => {
   const Sizable = {
     string: { unit: "karaktrojn", verb: "havi" },
@@ -79413,7 +79413,7 @@ function eo_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/es.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/es.js
 var error73 = () => {
   const Sizable = {
     string: { unit: "caracteres", verb: "tener" },
@@ -79546,7 +79546,7 @@ function es_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fa.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fa.js
 var error74 = () => {
   const Sizable = {
     string: { unit: "\u06A9\u0627\u0631\u0627\u06A9\u062A\u0631", verb: "\u062F\u0627\u0634\u062A\u0647 \u0628\u0627\u0634\u062F" },
@@ -79661,7 +79661,7 @@ function fa_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fi.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fi.js
 var error75 = () => {
   const Sizable = {
     string: { unit: "merkki\xE4", subject: "merkkijonon" },
@@ -79774,7 +79774,7 @@ function fi_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fr.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fr.js
 var error76 = () => {
   const Sizable = {
     string: { unit: "caract\xE8res", verb: "avoir" },
@@ -79900,7 +79900,7 @@ function fr_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fr-CA.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/fr-CA.js
 var error77 = () => {
   const Sizable = {
     string: { unit: "caract\xE8res", verb: "avoir" },
@@ -80008,7 +80008,7 @@ function fr_CA_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/he.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/he.js
 var error78 = () => {
   const TypeNames = {
     string: { label: "\u05DE\u05D7\u05E8\u05D5\u05D6\u05EA", gender: "f" },
@@ -80203,7 +80203,7 @@ function he_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/hr.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/hr.js
 var error79 = () => {
   const Sizable = {
     string: { unit: "znakova", verb: "imati" },
@@ -80326,7 +80326,7 @@ function hr_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/hu.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/hu.js
 var error80 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "legyen" },
@@ -80435,7 +80435,7 @@ function hu_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/hy.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/hy.js
 function getArmenianPlural2(count, one, many) {
   return Math.abs(count) === 1 ? one : many;
 }
@@ -80583,7 +80583,7 @@ function hy_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/id.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/id.js
 var error82 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "memiliki" },
@@ -80690,7 +80690,7 @@ function id_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/is.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/is.js
 var error83 = () => {
   const Sizable = {
     string: { unit: "stafi", verb: "a\xF0 hafa" },
@@ -80800,7 +80800,7 @@ function is_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/it.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/it.js
 var error84 = () => {
   const Sizable = {
     string: { unit: "caratteri", verb: "avere" },
@@ -80909,7 +80909,7 @@ function it_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ja.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ja.js
 var error85 = () => {
   const Sizable = {
     string: { unit: "\u6587\u5B57", verb: "\u3067\u3042\u308B" },
@@ -81017,7 +81017,7 @@ function ja_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ka.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ka.js
 var error86 = () => {
   const Sizable = {
     string: { unit: "\u10E1\u10D8\u10DB\u10D1\u10DD\u10DA\u10DD", verb: "\u10E3\u10DC\u10D3\u10D0 \u10E8\u10D4\u10D8\u10EA\u10D0\u10D5\u10D3\u10D4\u10E1" },
@@ -81130,7 +81130,7 @@ function ka_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/km.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/km.js
 var error87 = () => {
   const Sizable = {
     string: { unit: "\u178F\u17BD\u17A2\u1780\u17D2\u179F\u179A", verb: "\u1782\u17BD\u179A\u1798\u17B6\u1793" },
@@ -81241,12 +81241,12 @@ function km_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/kh.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/kh.js
 function kh_default2() {
   return km_default2();
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ko.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ko.js
 var error88 = () => {
   const Sizable = {
     string: { unit: "\uBB38\uC790", verb: "to have" },
@@ -81358,7 +81358,7 @@ function ko_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/lt.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/lt.js
 var capitalizeFirstCharacter2 = (text) => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
@@ -81562,7 +81562,7 @@ function lt_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/mk.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/mk.js
 var error90 = () => {
   const Sizable = {
     string: { unit: "\u0437\u043D\u0430\u0446\u0438", verb: "\u0434\u0430 \u0438\u043C\u0430\u0430\u0442" },
@@ -81672,7 +81672,7 @@ function mk_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ms.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ms.js
 var error91 = () => {
   const Sizable = {
     string: { unit: "aksara", verb: "mempunyai" },
@@ -81780,7 +81780,7 @@ function ms_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/nl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/nl.js
 var error92 = () => {
   const Sizable = {
     string: { unit: "tekens", verb: "heeft" },
@@ -81891,7 +81891,7 @@ function nl_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/no.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/no.js
 var error93 = () => {
   const Sizable = {
     string: { unit: "tegn", verb: "\xE5 ha" },
@@ -82000,7 +82000,7 @@ function no_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ota.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ota.js
 var error94 = () => {
   const Sizable = {
     string: { unit: "harf", verb: "olmal\u0131d\u0131r" },
@@ -82110,7 +82110,7 @@ function ota_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ps.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ps.js
 var error95 = () => {
   const Sizable = {
     string: { unit: "\u062A\u0648\u06A9\u064A", verb: "\u0648\u0644\u0631\u064A" },
@@ -82225,7 +82225,7 @@ function ps_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/pl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/pl.js
 var error96 = () => {
   const Sizable = {
     string: { unit: "znak\xF3w", verb: "mie\u0107" },
@@ -82335,7 +82335,7 @@ function pl_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/pt.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/pt.js
 var error97 = () => {
   const Sizable = {
     string: { unit: "caracteres", verb: "ter" },
@@ -82444,7 +82444,7 @@ function pt_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ro.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ro.js
 var error98 = () => {
   const Sizable = {
     string: { unit: "caractere", verb: "s\u0103 aib\u0103" },
@@ -82564,7 +82564,7 @@ function ro_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ru.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ru.js
 function getRussianPlural2(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -82721,7 +82721,7 @@ function ru_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/sl.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/sl.js
 var error100 = () => {
   const Sizable = {
     string: { unit: "znakov", verb: "imeti" },
@@ -82831,7 +82831,7 @@ function sl_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/sv.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/sv.js
 var error101 = () => {
   const Sizable = {
     string: { unit: "tecken", verb: "att ha" },
@@ -82942,7 +82942,7 @@ function sv_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ta.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ta.js
 var error102 = () => {
   const Sizable = {
     string: { unit: "\u0B8E\u0BB4\u0BC1\u0BA4\u0BCD\u0BA4\u0BC1\u0B95\u0BCD\u0B95\u0BB3\u0BCD", verb: "\u0B95\u0BCA\u0BA3\u0BCD\u0B9F\u0BBF\u0BB0\u0BC1\u0B95\u0BCD\u0B95 \u0BB5\u0BC7\u0BA3\u0BCD\u0B9F\u0BC1\u0BAE\u0BCD" },
@@ -83053,7 +83053,7 @@ function ta_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/th.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/th.js
 var error103 = () => {
   const Sizable = {
     string: { unit: "\u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23", verb: "\u0E04\u0E27\u0E23\u0E21\u0E35" },
@@ -83164,7 +83164,7 @@ function th_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/tr.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/tr.js
 var error104 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "olmal\u0131" },
@@ -83270,7 +83270,7 @@ function tr_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/uk.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/uk.js
 var error105 = () => {
   const Sizable = {
     string: { unit: "\u0441\u0438\u043C\u0432\u043E\u043B\u0456\u0432", verb: "\u043C\u0430\u0442\u0438\u043C\u0435" },
@@ -83379,12 +83379,12 @@ function uk_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ua.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ua.js
 function ua_default2() {
   return uk_default2();
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ur.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/ur.js
 var error106 = () => {
   const Sizable = {
     string: { unit: "\u062D\u0631\u0648\u0641", verb: "\u06C1\u0648\u0646\u0627" },
@@ -83495,7 +83495,7 @@ function ur_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/uz.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/uz.js
 var error107 = () => {
   const Sizable = {
     string: { unit: "belgi", verb: "bo\u2018lishi kerak" },
@@ -83606,7 +83606,7 @@ function uz_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/vi.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/vi.js
 var error108 = () => {
   const Sizable = {
     string: { unit: "k\xFD t\u1EF1", verb: "c\xF3" },
@@ -83715,7 +83715,7 @@ function vi_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/zh-CN.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/zh-CN.js
 var error109 = () => {
   const Sizable = {
     string: { unit: "\u5B57\u7B26", verb: "\u5305\u542B" },
@@ -83825,7 +83825,7 @@ function zh_CN_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/zh-TW.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/zh-TW.js
 var error110 = () => {
   const Sizable = {
     string: { unit: "\u5B57\u5143", verb: "\u64C1\u6709" },
@@ -83933,7 +83933,7 @@ function zh_TW_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/yo.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/locales/yo.js
 var error111 = () => {
   const Sizable = {
     string: { unit: "\xE0mi", verb: "n\xED" },
@@ -84041,7 +84041,7 @@ function yo_default2() {
   };
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/registries.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/registries.js
 var _a4;
 var $output2 = Symbol("ZodOutput");
 var $input2 = Symbol("ZodInput");
@@ -84091,7 +84091,7 @@ function registry2() {
 (_a4 = globalThis).__zod_globalRegistry ?? (_a4.__zod_globalRegistry = registry2());
 var globalRegistry2 = globalThis.__zod_globalRegistry;
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/api.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/api.js
 // @__NO_SIDE_EFFECTS__
 function _string2(Class3, params) {
   return new Class3({
@@ -85130,7 +85130,7 @@ function _stringFormat2(Class3, format3, fnOrRegex, _params = {}) {
   return inst;
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/to-json-schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/to-json-schema.js
 function initializeContext2(params) {
   let target = params?.target ?? "draft-2020-12";
   if (target === "draft-4")
@@ -85489,7 +85489,7 @@ var createStandardJSONSchemaMethod2 = (schema, io, processors = {}) => (params) 
   return finalize2(ctx, schema);
 };
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/json-schema-processors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/json-schema-processors.js
 var formatMap2 = {
   guid: "uuid",
   url: "uri",
@@ -86033,7 +86033,7 @@ function toJSONSchema2(input2, params) {
   return finalize2(ctx, input2);
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/json-schema-generator.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/json-schema-generator.js
 var JSONSchemaGenerator2 = class {
   /** @deprecated Access via ctx instead */
   get metadataRegistry() {
@@ -86108,10 +86108,10 @@ var JSONSchemaGenerator2 = class {
   }
 };
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/json-schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/core/json-schema.js
 var json_schema_exports2 = {};
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/schemas.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/schemas.js
 var schemas_exports4 = {};
 __export(schemas_exports4, {
   ZodAny: () => ZodAny3,
@@ -86282,7 +86282,7 @@ __export(schemas_exports4, {
   xor: () => xor2
 });
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/checks.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/checks.js
 var checks_exports4 = {};
 __export(checks_exports4, {
   endsWith: () => _endsWith2,
@@ -86316,7 +86316,7 @@ __export(checks_exports4, {
   uppercase: () => _uppercase2
 });
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/iso.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/iso.js
 var iso_exports3 = {};
 __export(iso_exports3, {
   ZodISODate: () => ZodISODate2,
@@ -86357,7 +86357,7 @@ function duration4(params) {
   return _isoDuration2(ZodISODuration2, params);
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/errors.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/errors.js
 var initializer4 = (inst, issues) => {
   $ZodError2.init(inst, issues);
   inst.name = "ZodError";
@@ -86397,7 +86397,7 @@ var ZodRealError2 = /* @__PURE__ */ $constructor2("ZodError", initializer4, {
   Parent: Error
 });
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/parse.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/parse.js
 var parse4 = /* @__PURE__ */ _parse3(ZodRealError2);
 var parseAsync4 = /* @__PURE__ */ _parseAsync3(ZodRealError2);
 var safeParse5 = /* @__PURE__ */ _safeParse2(ZodRealError2);
@@ -86411,7 +86411,7 @@ var safeDecode4 = /* @__PURE__ */ _safeDecode2(ZodRealError2);
 var safeEncodeAsync4 = /* @__PURE__ */ _safeEncodeAsync2(ZodRealError2);
 var safeDecodeAsync4 = /* @__PURE__ */ _safeDecodeAsync2(ZodRealError2);
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/schemas.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/schemas.js
 var _installedGroups = /* @__PURE__ */ new WeakMap();
 function _installLazyMethods(inst, group4, methods) {
   const proto = Object.getPrototypeOf(inst);
@@ -87701,7 +87701,7 @@ function preprocess2(fn, schema) {
   });
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/compat.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/compat.js
 var ZodIssueCode3 = {
   invalid_type: "invalid_type",
   too_big: "too_big",
@@ -87727,7 +87727,7 @@ var ZodFirstPartyTypeKind3;
 /* @__PURE__ */ (function(ZodFirstPartyTypeKind4) {
 })(ZodFirstPartyTypeKind3 || (ZodFirstPartyTypeKind3 = {}));
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/from-json-schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/from-json-schema.js
 var z2 = {
   ...schemas_exports4,
   ...checks_exports4,
@@ -88207,7 +88207,7 @@ function fromJSONSchema2(schema, params) {
   return convertSchema2(normalized, ctx);
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/coerce.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/coerce.js
 var coerce_exports3 = {};
 __export(coerce_exports3, {
   bigint: () => bigint6,
@@ -88232,10 +88232,10 @@ function date8(params) {
   return _coercedDate2(ZodDate3, params);
 }
 
-// node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/external.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/external.js
 config2(en_default3());
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/deep-compare-strict.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/deep-compare-strict.js
 function deepCompareStrict(a5, b9) {
   const typeofa = typeof a5;
   if (typeofa !== typeof b9) {
@@ -88276,7 +88276,7 @@ function deepCompareStrict(a5, b9) {
   return a5 === b9;
 }
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/pointer.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/pointer.js
 function encodePointer(p5) {
   return encodeURI(escapePointer(p5));
 }
@@ -88284,7 +88284,7 @@ function escapePointer(p5) {
   return p5.replace(/~/g, "~0").replace(/\//g, "~1");
 }
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/dereference.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/dereference.js
 var schemaArrayKeyword = {
   prefixItems: true,
   items: true,
@@ -88405,7 +88405,7 @@ function dereference(schema, lookup = /* @__PURE__ */ Object.create(null), baseU
   return lookup;
 }
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/format.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/format.js
 var DATE = /^(\d\d\d\d)-(\d\d)-(\d\d)$/;
 var DAYS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var TIME = /^(\d\d):(\d\d):(\d\d)(\.\d+)?(z|[+-]\d\d(?::?\d\d)?)?$/i;
@@ -88498,7 +88498,7 @@ function regex(str) {
   }
 }
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/types.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/types.js
 var OutputFormat;
 (function(OutputFormat2) {
   OutputFormat2[OutputFormat2["Flag"] = 1] = "Flag";
@@ -88506,7 +88506,7 @@ var OutputFormat;
   OutputFormat2[OutputFormat2["Detailed"] = 4] = "Detailed";
 })(OutputFormat || (OutputFormat = {}));
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/ucs2-length.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/ucs2-length.js
 function ucs2length(s2) {
   let result = 0;
   let length = s2.length;
@@ -88525,7 +88525,7 @@ function ucs2length(s2) {
   return result;
 }
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/validate.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/validate.js
 function validate2(instance, schema, draft = "2019-09", lookup = dereference(schema), shortCircuit = true, recursiveAnchor = null, instanceLocation = "#", schemaLocation = "#", evaluated = /* @__PURE__ */ Object.create(null)) {
   if (schema === true) {
     return { valid: true, errors: [] };
@@ -89283,7 +89283,7 @@ Known schemas:
   return { valid: errors.length === 0, errors };
 }
 
-// node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/validator.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@cfworker+json-schema@4.1.1/node_modules/@cfworker/json-schema/dist/esm/validator.js
 var Validator = class {
   schema;
   draft;
@@ -89306,7 +89306,7 @@ var Validator = class {
   }
 };
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/fields.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/fields.js
 var optionSchema = TitledSingleSelectEnumSchemaSchema.shape.oneOf.element.extend({
   "x-openai-thumbnail": IconSchema.optional(),
   /** @deprecated Use x-openai-thumbnail. */
@@ -89372,7 +89372,7 @@ var standardFieldSchemas = [
   stringArraySchema
 ];
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/file-picker.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/file-picker.js
 var userOptionsSchema = external_exports2.object({
   kind: external_exports2.enum(["file", "directory"]).optional(),
   accept: external_exports2.array(external_exports2.string()).optional()
@@ -89425,7 +89425,7 @@ function isValidFileSelection(input2, value) {
   return input2.selection === "implicit" || input2.userOptions != null || selected.every((uri2) => input2.options.some((option) => option.uri === uri2));
 }
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/schema.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/schema.js
 var OpenAIFormFieldSchema = external_exports2.union([
   OpenAIFileFormFieldSchema,
   ...standardFieldSchemas
@@ -89482,7 +89482,7 @@ function createFormRecordSchema(valueSchema) {
   return external_exports2.custom((value) => external_exports2.record(external_exports2.string(), external_exports2.unknown()).safeParse(value).success).transform((value) => Object.entries(value)).pipe(external_exports2.array(external_exports2.tuple([external_exports2.string(), valueSchema.nonoptional()]))).transform((entries) => Object.fromEntries(entries));
 }
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/elicitation.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/forms/elicitation.js
 var OPENAI_ELICITATION_EXTENSION_ID = "openai/elicitation";
 var OPENAI_ELICITATION_METHOD = "openai/elicitation/create";
 var OpenAIFormClientCapabilitiesSchema = external_exports2.object({
@@ -89511,10 +89511,10 @@ function createElicitInput(server) {
   };
 }
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/shared/strings.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/shared/strings.js
 var NonBlankStringSchema = external_exports2.string().regex(/\S/);
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/mentions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/mentions.js
 var OpenAIMentionResourceSchema = external_exports2.strictObject({
   icons: external_exports2.array(IconSchema).optional(),
   resourceUri: NonBlankStringSchema,
@@ -89557,7 +89557,7 @@ function createMentions(server) {
   };
 }
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/settings.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/settings.js
 var OPENAI_SETTINGS_CAPABILITY_KEY = "openai/settings";
 var OpenAISettingsCapabilitySchema = external_exports2.object({
   readTool: NonBlankStringSchema,
@@ -89708,7 +89708,7 @@ function createSettings(server) {
   };
 }
 
-// node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/extensions.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@openai+mcp-extensions@0.1.0_@modelcontextprotocol+ext-apps@1.7.5_@modelcontextprotocol_64dc08dba8ce9dad16f984a31a1d68d7/node_modules/@openai/mcp-extensions/dist/server/extensions.js
 var OpenAIExtensions = class {
   elicitInput;
   mentions;
@@ -91586,6 +91586,11 @@ function modelNodeNames(bytes) {
   return [...new Set(names)];
 }
 
+// src/studio/texture-quality.mjs
+var studioTextureQuality = (quality) => quality === "ultra" ? "extreme" : quality;
+var publicTextureQuality = (quality) => quality === "extreme" ? "ultra" : quality;
+var textureSize = (quality) => ({ standard: 2048, detailed: 4096, ultra: 8192, extreme: 8192 })[quality];
+
 // src/ops/modelgen.mjs
 var identifier = external_exports.string().regex(/^[^\s\u0000-\u001f\u007f]{1,256}$/);
 var IDENTITY_MATRIX = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
@@ -91812,7 +91817,7 @@ function commonWire(settings, mode) {
       body.pbr = settings.pbr;
       body.delight = settings.delight;
       body.texture_alignment = settings.texture_alignment;
-      body.texture_quality = settings.texture_quality;
+      body.texture_quality = studioTextureQuality(settings.texture_quality);
     }
     if (["image", "batch"].includes(mode))
       body.enable_image_autofix = settings.enable_image_autofix;
@@ -92008,7 +92013,11 @@ var modelOperations = {
             image_audit_result: staged.audit.result,
             image_source: "upload",
             key: staged.uploaded.key,
-            ...mode === "batch" && settings.texture ? { texture_quality: settings.texture_quality } : {}
+            ...mode === "batch" && settings.texture ? {
+              texture_quality: studioTextureQuality(
+                settings.texture_quality
+              )
+            } : {}
           };
           if (wireImages) wireImages.push(wire);
           else single = wire;
@@ -92284,889 +92293,6 @@ async function syncGeneratedModels(ctx, task) {
   };
 }
 
-// src/ops/postops.mjs
-var PROJECT_ID = /^[^\s\u0000-\u001f\u007f]{1,256}$/;
-var PART_NAME = /^[^\u0000-\u001f\u007f]{1,256}$/;
-var MAX_PARTS = 200;
-var MAX_PROMPT_LENGTH = 1e3;
-var projectId = external_exports.string().regex(PROJECT_ID).describe("Studio project (model asset) id \u2014 see tripo_list_models.");
-var partNames = external_exports.array(external_exports.string().regex(PART_NAME)).min(1).max(MAX_PARTS);
-var BUILTIN_TEXTURE_STYLES = {
-  heritage: {
-    bucket: "tripo-data",
-    key: "tripo-studio/style_image/heritage.png"
-  },
-  mecha: { bucket: "tripo-data", key: "tripo-studio/style_image/mecha.png" },
-  mecha_pop: {
-    bucket: "tripo-data",
-    key: "tripo-studio/style_image/mecha_pop.png"
-  },
-  wood: { bucket: "tripo-data", key: "tripo-studio/style_image/wood.jpg" }
-};
-var POSTPROCESS_ENDPOINTS = {
-  ai_completion: "ai_completion",
-  animation_retarget: "retarget_model",
-  apply_retexture: "apply_retexture",
-  mesh_fill: "mesh_fill",
-  pbr: "pbr_generate",
-  remesh: "remesh",
-  retexture_preview: "retexture_generate",
-  rigging: "rigging_model",
-  segmentation: "ai_segmentation",
-  texture_generate: "texture_model",
-  texture_upscale: "texture_upscaler"
-};
-function validateProjectId(value) {
-  if (!PROJECT_ID.test(value)) {
-    throw new TripoError(
-      "INVALID_INPUT",
-      "project_id must be a non-empty Studio project identifier without whitespace.",
-      { safeToRetryPaidOperation: true, stage: "operation_stage" }
-    );
-  }
-  return value;
-}
-function validatePartNames(names, field = "part_names") {
-  if (!Array.isArray(names) || names.length < 1 || names.length > MAX_PARTS) {
-    throw new TripoError(
-      "INVALID_INPUT",
-      `${field} must contain 1 through ${MAX_PARTS} raw hierarchy names.`,
-      { safeToRetryPaidOperation: true, stage: "operation_stage" }
-    );
-  }
-  const normalized = names.map((name) => name.trim());
-  if (normalized.some((name) => !PART_NAME.test(name))) {
-    throw new TripoError(
-      "INVALID_INPUT",
-      `${field} contains an empty, control-character, or overlong name.`,
-      { safeToRetryPaidOperation: true, stage: "operation_stage" }
-    );
-  }
-  if (new Set(normalized).size !== normalized.length) {
-    throw new TripoError(
-      "INVALID_INPUT",
-      `${field} must not contain duplicate names.`,
-      { safeToRetryPaidOperation: true, stage: "operation_stage" }
-    );
-  }
-  return normalized;
-}
-function validatePrompt(prompt, field) {
-  const normalized = prompt.trim();
-  if (normalized.length < 1 || normalized.length > MAX_PROMPT_LENGTH || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(normalized)) {
-    throw new TripoError(
-      "INVALID_INPUT",
-      `${field} must contain 1 through ${MAX_PROMPT_LENGTH} safe characters.`,
-      { safeToRetryPaidOperation: true, stage: "operation_stage" }
-    );
-  }
-  return normalized;
-}
-async function preflight(ctx, internalKind, pid, options = {}) {
-  validateProjectId(pid);
-  const detail = await ctx.gateway.getProject(pid);
-  if (detail.id && detail.id !== pid) {
-    throw new TripoError(
-      "INSUFFICIENT_EVIDENCE",
-      "Tripo returned a different project during operation staging.",
-      { safeToRetryPaidOperation: true, stage: "operation_stage" }
-    );
-  }
-  const capabilities = projectCapabilities(pid, detail);
-  assertProjectSupports(internalKind, capabilities, options);
-  const warnings = [];
-  if ((internalKind === "texture_generate" || internalKind === "texture_upscale") && capabilities.is_ultra_textured === true) {
-    warnings.push(
-      "This project is already 8K; Studio may only allow an 8K regenerate target."
-    );
-  }
-  return { capabilities, warnings };
-}
-function postprocessSubmit(endpointKey) {
-  return async (ctx, task) => {
-    const receipt = await ctx.gateway.submitPostprocess(
-      POSTPROCESS_ENDPOINTS[endpointKey],
-      task.payload
-    );
-    if (receipt.project_id !== void 0 && receipt.project_id !== task.payload.project_id) {
-      throw new TripoError(
-        "INSUFFICIENT_EVIDENCE",
-        "Tripo returned a different project ID for the submitted operation.",
-        { stage: "operation_dispatch_receipt" }
-      );
-    }
-    return {
-      operator_id: receipt.operator_id,
-      project_id: task.payload.project_id
-    };
-  };
-}
-function postprocessSync() {
-  return async (ctx, task) => {
-    const items = await ctx.gateway.getProgress([task.remote.operator_id]);
-    const item = selectProgress(items, task.remote.operator_id);
-    if (item.project_id && item.project_id !== task.remote.project_id) {
-      throw new TripoError(
-        "INSUFFICIENT_EVIDENCE",
-        "Progress returned a different project ID for this operation.",
-        { stage: "operation_progress" }
-      );
-    }
-    const status = remoteStatus(item.status);
-    let result;
-    if (status === "succeeded") {
-      result = { project_id: task.remote.project_id };
-      if (task.kind === "texture.edit_preview") {
-        const preview = await ctx.gateway.getRetexture(task.remote.operator_id);
-        if (!preview?.url)
-          throw new TripoError(
-            "INSUFFICIENT_EVIDENCE",
-            "Completed texture preview has no artifact yet; sync again.",
-            { stage: "operation_progress" }
-          );
-        result.retexture_preview = {
-          camera_matrix: preview.camera_matrix,
-          url: preview.url
-        };
-      }
-      if (task.kind === "model.animate" || task.kind === "model.apply_motion") {
-        const detail = await ctx.gateway.getProject(
-          task.remote.project_id,
-          task.remote.operator_id
-        );
-        if (detail.id && detail.id !== task.remote.project_id)
-          throw new TripoError(
-            "INSUFFICIENT_EVIDENCE",
-            "Animation artifact project identity mismatch.",
-            { stage: "operation_progress" }
-          );
-        const artifacts = detail?.operator?.Retarget ?? detail?.operator?.retarget ?? detail?.operator?.retarget_model ?? [];
-        const expected = task.payload.animations?.[0];
-        const match = artifacts.find(
-          (entry) => task.payload.motion_asset_id ? entry.motion_asset_id === task.payload.motion_asset_id : entry.name === expected
-        );
-        if (!match?.model_url)
-          throw new TripoError(
-            "INSUFFICIENT_EVIDENCE",
-            "The requested animation artifact is not available yet; sync again.",
-            { stage: "operation_progress" }
-          );
-        result.animation_model_url = match.model_url;
-      }
-    }
-    return {
-      progress: {
-        left_time: item.left_time ?? null,
-        progress: item.progress ?? null,
-        reason: item.reason ?? null,
-        status: item.status
-      },
-      result,
-      status
-    };
-  };
-}
-function validateRiggingModelVersion(modelVersion) {
-  if (![
-    RIGGING_MODEL_VERSION_V1,
-    RIGGING_MODEL_VERSION_V2_5,
-    RIGGING_MODEL_VERSION_V3
-  ].includes(modelVersion)) {
-    throw new TripoError(
-      "INVALID_INPUT",
-      `model_version must be ${RIGGING_MODEL_VERSION_V1}, ${RIGGING_MODEL_VERSION_V2_5}, or ${RIGGING_MODEL_VERSION_V3}.`,
-      { safeToRetryPaidOperation: true, stage: "operation_stage" }
-    );
-  }
-  return modelVersion;
-}
-function publicRiggingPrecheck(precheck, requestedModelVersion) {
-  const submissionModelVersion = precheck.riggable && precheck.rig_type !== "others" ? precheck.rig_type === "biped" ? RIGGING_MODEL_VERSION_V1 : requestedModelVersion : null;
-  return {
-    requested_model_version: requestedModelVersion,
-    riggable: precheck.riggable,
-    rig_type: precheck.rig_type,
-    submission_model_version: requestedModelVersion === RIGGING_MODEL_VERSION_V3 && precheck.riggable ? requestedModelVersion : submissionModelVersion
-  };
-}
-var postprocessOperations = {
-  "model.segment": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Segment the model into semantic parts (required before part completion and part-scoped texture work). Studio internal kind: ai_segmentation.",
-    inputShape: {
-      project_id: projectId,
-      segmentation_granularity: external_exports.enum(["coarse", "balanced", "fine"]).default("balanced"),
-      submit: external_exports.boolean().optional()
-    },
-    internalKind: "segmentation",
-    title: "Segment model",
-    async build(ctx, input2) {
-      const pf = await preflight(ctx, "segmentation", input2.project_id);
-      return {
-        capabilities: pf.capabilities,
-        payload: {
-          model_version: SEGMENTATION_MODEL_VERSION,
-          project_id: input2.project_id,
-          segmentation_granularity: input2.segmentation_granularity
-        },
-        snapshots: [],
-        warnings: pf.warnings
-      };
-    },
-    submitRemote: postprocessSubmit("segmentation"),
-    syncRemote: postprocessSync()
-  },
-  "model.complete_parts": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Fill or complete selected mesh parts. mode=quick_cap closes open boundaries; mode=ai_completion regenerates missing regions. Requires a segmented/multi-mesh project and raw hierarchy part names (see tripo_get_model include parts).",
-    inputShape: {
-      mode: external_exports.enum(["quick_cap", "ai_completion"]).default("ai_completion"),
-      part_names: partNames.describe(
-        "Raw hierarchy part names, not display renames."
-      ),
-      project_id: projectId,
-      submit: external_exports.boolean().optional()
-    },
-    title: "Complete mesh parts",
-    async build(ctx, input2) {
-      const internalKind = input2.mode === "quick_cap" ? "mesh_fill" : "ai_completion";
-      const pf = await preflight(ctx, internalKind, input2.project_id);
-      return {
-        capabilities: pf.capabilities,
-        metadata: { mode: input2.mode },
-        payload: {
-          model_version: input2.mode === "quick_cap" ? STUDIO_DEFAULT_MODEL_VERSION : COMPLETION_MODEL_VERSION,
-          part_names: validatePartNames(input2.part_names),
-          project_id: input2.project_id
-        },
-        snapshots: [],
-        warnings: [
-          ...pf.warnings,
-          "part_names must be raw hierarchy names, not display renames; the project must already be segmented/multi-mesh."
-        ]
-      };
-    },
-    submitRemote: async (ctx, task) => postprocessSubmit(
-      task.metadata?.mode === "quick_cap" ? "mesh_fill" : "ai_completion"
-    )(ctx, task),
-    syncRemote: postprocessSync()
-  },
-  "model.remesh": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Remesh selected parts to a target face budget. quad toggles quad-dominant topology; smart_poly enables Smart Poly mode (not on Nexus/Smart Mesh projects). face_limit bounds: normal quad \u226450K, normal triangle \u2264150K, smart quad \u226410K, smart triangle \u226420K, all \u2265500.",
-    inputShape: {
-      face_limit: external_exports.number().int().describe("Target face budget for the selected mode."),
-      part_name_list: partNames.describe("Raw hierarchy part names to remesh."),
-      project_id: projectId,
-      quad: external_exports.boolean().default(false),
-      smart_poly: external_exports.boolean().default(false),
-      submit: external_exports.boolean().optional()
-    },
-    internalKind: "remesh",
-    title: "Remesh model",
-    async build(ctx, input2) {
-      const maximum = input2.smart_poly ? input2.quad ? REMESH_SMART_QUAD_MAX_FACES : REMESH_SMART_TRIANGLE_MAX_FACES : input2.quad ? REMESH_NORMAL_QUAD_MAX_FACES : REMESH_NORMAL_TRIANGLE_MAX_FACES;
-      if (!Number.isSafeInteger(input2.face_limit) || input2.face_limit < REMESH_MIN_FACES || input2.face_limit > maximum) {
-        throw new TripoError(
-          "INVALID_INPUT",
-          `face_limit must be an integer from ${REMESH_MIN_FACES} through ${maximum} for the selected remesh mode.`,
-          { safeToRetryPaidOperation: true, stage: "operation_stage" }
-        );
-      }
-      const pf = await preflight(ctx, "remesh", input2.project_id, {
-        smartPoly: input2.smart_poly
-      });
-      return {
-        capabilities: pf.capabilities,
-        payload: {
-          bake: true,
-          face_limit: input2.face_limit,
-          model_version: STUDIO_DEFAULT_MODEL_VERSION,
-          part_name_list: validatePartNames(
-            input2.part_name_list,
-            "part_name_list"
-          ),
-          project_id: input2.project_id,
-          quad: input2.quad,
-          smart_poly: input2.smart_poly
-        },
-        snapshots: [],
-        warnings: pf.warnings
-      };
-    },
-    submitRemote: postprocessSubmit("remesh"),
-    syncRemote: postprocessSync()
-  },
-  "texture.generate": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Generate color textures for an existing project, preserving its geometry. Smart Mesh stage 2 of 3: white mesh (tripo_generate_model) \u2192 color textures (this tool) \u2192 separate PBR maps (tripo_generate_pbr). This tool does not automatically generate the separate PBR map set. If PBR maps are requested, wait for color-texture success then call tripo_generate_pbr on the same project; if color textures already exist and only PBR is missing, skip this tool. mode=text (prompt), mode=image (local reference image), or mode=multiview (front plus optional left/back/right). quality, alignment and delight apply in this stage. Omit part_names or pass [] for the whole model; use raw hierarchy names for selected parts. Built-in styles (heritage|mecha|mecha_pop|wood) or a local style image are incompatible with multiview mode.",
-    inputShape: {
-      alignment: external_exports.enum(["original_image", "geometry"]).default("original_image"),
-      delight: external_exports.boolean().default(true).describe(
-        "Remove lighting during color-texture generation, including for an existing Smart Mesh. This does not generate PBR maps; use tripo_generate_pbr afterward when requested."
-      ),
-      back_image_path: external_exports.string().optional(),
-      front_image_path: external_exports.string().optional(),
-      image_path: external_exports.string().optional().describe("Local reference image for mode=image."),
-      left_image_path: external_exports.string().optional(),
-      mode: external_exports.enum(["text", "image", "multiview"]).describe("Texture source mode."),
-      part_names: external_exports.array(external_exports.string().regex(PART_NAME)).max(MAX_PARTS).optional().describe(
-        "Raw hierarchy names for selected parts. Omit or pass [] for the whole model; segmentation is not required."
-      ),
-      project_id: projectId,
-      prompt: external_exports.string().optional().describe("Required for mode=text."),
-      quality: external_exports.enum(["standard", "detailed", "ultra"]).default("detailed"),
-      right_image_path: external_exports.string().optional(),
-      style: external_exports.enum(["heritage", "mecha", "mecha_pop", "wood"]).optional(),
-      style_image_path: external_exports.string().optional().describe(
-        "Local style reference image; mutually exclusive with style."
-      ),
-      submit: external_exports.boolean().optional()
-    },
-    internalKind: "texture_generate",
-    title: "Generate texture",
-    async build(ctx, input2, taskId) {
-      const pf = await preflight(ctx, "texture_generate", input2.project_id);
-      if (input2.style && input2.style_image_path) {
-        throw new TripoError(
-          "INVALID_INPUT",
-          "Choose either a built-in style or style_image_path, not both.",
-          { safeToRetryPaidOperation: true, stage: "operation_stage" }
-        );
-      }
-      if (input2.mode === "multiview" && (input2.style || input2.style_image_path)) {
-        throw new TripoError(
-          "INVALID_INPUT",
-          "The current Studio UI does not combine a style image with multiview texture mode.",
-          { safeToRetryPaidOperation: true, stage: "operation_stage" }
-        );
-      }
-      const snapshots = [];
-      const payload = {
-        model_version: TEXTURE_MODEL_VERSION,
-        delight: input2.delight,
-        ...input2.part_names?.length ? { part_names: validatePartNames(input2.part_names) } : {},
-        project_id: input2.project_id,
-        texture_alignment: input2.alignment,
-        texture_quality: input2.quality
-      };
-      const retain = async (imagePath2, label, slot) => {
-        assertLocalPathSpecifier(imagePath2, "operation_input_policy");
-        const image = await stageLocalImage(
-          ctx.config,
-          ctx.gateway,
-          ctx.uploader,
-          imagePath2,
-          true,
-          {
-            deferUpload: ctx.deferUploads,
-            index: snapshots.length + 1,
-            label,
-            slot,
-            taskId
-          }
-        );
-        snapshots.push(image.provenance);
-        return image;
-      };
-      const imageMetadata2 = [];
-      if (input2.mode === "text") {
-        payload.prompt_text = validatePrompt(input2.prompt ?? "", "prompt");
-      } else if (input2.mode === "image") {
-        if (!input2.image_path)
-          throw new TripoError(
-            "INVALID_INPUT",
-            "image_path is required for image texture mode.",
-            { stage: "operation_stage" }
-          );
-        const image = await retain(
-          input2.image_path,
-          "Texture reference",
-          "reference"
-        );
-        payload.image = auditedImageWire(image);
-        imageMetadata2.push({ role: "reference", ...image.metadata });
-      } else {
-        if (!input2.front_image_path)
-          throw new TripoError(
-            "INVALID_INPUT",
-            "front_image_path is required for multiview mode.",
-            { stage: "operation_stage" }
-          );
-        const paths = [
-          input2.front_image_path,
-          input2.left_image_path,
-          input2.back_image_path,
-          input2.right_image_path
-        ];
-        if (paths.filter(Boolean).length < 2) {
-          throw new TripoError(
-            "INVALID_INPUT",
-            "Multiview mode requires the front image and at least one additional view.",
-            { stage: "operation_stage" }
-          );
-        }
-        const roles = ["front", "left", "back", "right"];
-        const images = [];
-        for (let index = 0; index < paths.length; index += 1) {
-          if (!paths[index]) {
-            images.push(null);
-            continue;
-          }
-          const image = await retain(
-            paths[index],
-            `${roles[index]} view`,
-            roles[index]
-          );
-          images.push(auditedImageWire(image));
-          imageMetadata2.push({ role: roles[index], ...image.metadata });
-        }
-        payload.images = images;
-      }
-      if (input2.style) {
-        payload.style_image = { ...BUILTIN_TEXTURE_STYLES[input2.style] };
-      } else if (input2.style_image_path) {
-        const style = await retain(
-          input2.style_image_path,
-          "Style reference",
-          "style"
-        );
-        payload.style_image = {
-          bucket: style.uploaded.bucket,
-          image_audit_result: style.audit.result,
-          key: style.uploaded.key
-        };
-        imageMetadata2.push({ role: "style", ...style.metadata });
-      }
-      return {
-        capabilities: pf.capabilities,
-        metadata: {
-          images: imageMetadata2,
-          mode: input2.mode,
-          ...input2.style ? { builtin_style: input2.style } : {}
-        },
-        payload,
-        snapshots,
-        warnings: pf.warnings
-      };
-    },
-    submitRemote: postprocessSubmit("texture_generate"),
-    syncRemote: postprocessSync()
-  },
-  "texture.edit_preview": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Studio Magic Brush: generate a retexture preview for a rendered viewport. render_image_path must be a static WebP produced at 2x the active viewport; camera_matrix must be activeCamera.matrix.toArray() (16 values).",
-    inputShape: {
-      camera_matrix: external_exports.array(external_exports.number()).length(16).describe("Three.js camera world matrix."),
-      project_id: projectId,
-      prompt: external_exports.string().min(1).max(1e3),
-      render_image_path: external_exports.string().describe("Local WebP viewport render at 2x."),
-      strength: external_exports.number().min(0).max(1).default(0.5),
-      submit: external_exports.boolean().optional()
-    },
-    internalKind: "retexture_preview",
-    title: "Magic Brush preview",
-    async build(ctx, input2, taskId) {
-      if (input2.camera_matrix.length !== 16 || input2.camera_matrix.some(
-        (value) => !Number.isFinite(value) || Math.abs(value) > 1e9
-      )) {
-        throw new TripoError(
-          "INVALID_INPUT",
-          "camera_matrix must contain exactly 16 finite Three.js camera world-matrix values.",
-          { safeToRetryPaidOperation: true, stage: "operation_stage" }
-        );
-      }
-      const pf = await preflight(ctx, "retexture_preview", input2.project_id);
-      assertLocalPathSpecifier(
-        input2.render_image_path,
-        "operation_input_policy"
-      );
-      const render = await stageLocalImage(
-        ctx.config,
-        ctx.gateway,
-        ctx.uploader,
-        input2.render_image_path,
-        false,
-        {
-          deferUpload: ctx.deferUploads,
-          index: 1,
-          label: "Viewport render",
-          requiredFormat: "webp",
-          slot: "render",
-          taskId
-        }
-      );
-      return {
-        capabilities: pf.capabilities,
-        metadata: { render_image: render.metadata },
-        payload: {
-          camera_matrix: input2.camera_matrix,
-          model_version: TEXTURE_MODEL_VERSION,
-          project_id: input2.project_id,
-          prompt: validatePrompt(input2.prompt, "prompt"),
-          render_image: directImageWire(render),
-          strength: input2.strength
-        },
-        snapshots: [render.provenance],
-        warnings: [
-          ...pf.warnings,
-          "render_image must be a 2x Studio viewport render and camera_matrix must be activeCamera.matrix.toArray(), not a view/projection matrix."
-        ]
-      };
-    },
-    submitRemote: postprocessSubmit("retexture_preview"),
-    syncRemote: postprocessSync()
-  },
-  "texture.edit_apply": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Apply baked per-part textures to the model (Studio apply_retexture). Each entry needs a raw part name plus a local image already baked for that part by a Studio-compatible viewport workflow.",
-    inputShape: {
-      project_id: projectId,
-      submit: external_exports.boolean().optional(),
-      textures: external_exports.array(
-        external_exports.object({
-          image_path: external_exports.string(),
-          part_name: external_exports.string().regex(PART_NAME)
-        }).strict()
-      ).min(1).max(MAX_PARTS).describe("Per-part baked texture images.")
-    },
-    internalKind: "apply_retexture",
-    title: "Apply texture edits",
-    async build(ctx, input2, taskId) {
-      const pf = await preflight(ctx, "apply_retexture", input2.project_id);
-      const names = validatePartNames(
-        input2.textures.map((entry) => entry.part_name)
-      );
-      const snapshots = [];
-      const imageMap = [];
-      const images = [];
-      for (let index = 0; index < input2.textures.length; index += 1) {
-        const entry = input2.textures[index];
-        assertLocalPathSpecifier(entry.image_path, "operation_input_policy");
-        const image = await stageLocalImage(
-          ctx.config,
-          ctx.gateway,
-          ctx.uploader,
-          entry.image_path,
-          false,
-          {
-            deferUpload: ctx.deferUploads,
-            index: index + 1,
-            label: names[index],
-            slot: `part:${names[index]}`,
-            taskId
-          }
-        );
-        snapshots.push(image.provenance);
-        imageMap.push({
-          image: directImageWire(image),
-          part_name: names[index]
-        });
-        images.push({ part_name: names[index], ...image.metadata });
-      }
-      return {
-        capabilities: pf.capabilities,
-        metadata: { images },
-        payload: {
-          image_map: imageMap,
-          model_version: TEXTURE_MODEL_VERSION,
-          project_id: input2.project_id
-        },
-        snapshots,
-        warnings: [
-          ...pf.warnings,
-          "Each input must be a complete per-part texture already baked by a Studio-compatible viewport workflow; the backend accepts no mask field."
-        ]
-      };
-    },
-    submitRemote: postprocessSubmit("apply_retexture"),
-    syncRemote: postprocessSync()
-  },
-  "texture.upscale": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Upscale the project's texture set. quality=detailed targets 4K, ultra targets 8K. A project already at 8K cannot be downscaled to 4K.",
-    inputShape: {
-      project_id: projectId,
-      quality: external_exports.enum(["detailed", "ultra"]).describe("detailed=4K, ultra=8K."),
-      submit: external_exports.boolean().optional()
-    },
-    internalKind: "texture_upscale",
-    title: "Upscale textures",
-    async build(ctx, input2) {
-      const pf = await preflight(ctx, "texture_upscale", input2.project_id);
-      if (input2.quality === "detailed" && pf.capabilities.is_ultra_textured === true) {
-        throw new TripoError(
-          "REMOTE_API_ERROR",
-          "A current 8K project cannot be downscaled to the 4K target in Studio.",
-          { safeToRetryPaidOperation: true, stage: "operation_stage" }
-        );
-      }
-      return {
-        capabilities: pf.capabilities,
-        payload: {
-          model_version: TEXTURE_MODEL_VERSION,
-          project_id: input2.project_id,
-          texture_quality: input2.quality
-        },
-        snapshots: [],
-        warnings: pf.warnings
-      };
-    },
-    submitRemote: postprocessSubmit("texture_upscale"),
-    syncRemote: postprocessSync()
-  },
-  "texture.pbr": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Generate separate PBR material maps (Normal, Roughness and Metallic) for an already color-textured project, preserving its geometry and color textures. Smart Mesh stage 3 of 3: white mesh \u2192 color textures \u2192 PBR maps. If color textures already exist and only PBR is missing, call this tool directly on that project's project_id; do not regenerate the model or color textures. Wait for success, then export/download and verify the actual channels, including packed maps. A PBR material with scalar factors alone does not prove PBR maps exist.",
-    inputShape: { project_id: projectId, submit: external_exports.boolean().optional() },
-    internalKind: "pbr",
-    title: "Generate PBR maps",
-    async build(ctx, input2) {
-      const pf = await preflight(ctx, "pbr", input2.project_id);
-      return {
-        capabilities: pf.capabilities,
-        payload: {
-          model_version: TEXTURE_MODEL_VERSION,
-          project_id: input2.project_id
-        },
-        snapshots: [],
-        warnings: pf.warnings
-      };
-    },
-    submitRemote: postprocessSubmit("pbr"),
-    syncRemote: postprocessSync()
-  },
-  "model.rig": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Auto-rig a textured project, default V3 with humanoid skeleton presets (ActorCore/Mixamo/Unreal/VRM/Unity). Runs Studio's rig precheck before staging; legacy V1/V2.5 remain selectable, and legacy bipeds use V1.",
-    inputShape: {
-      model_version: external_exports.enum([
-        RIGGING_MODEL_VERSION_V1,
-        RIGGING_MODEL_VERSION_V2_5,
-        RIGGING_MODEL_VERSION_V3
-      ]).default(RIGGING_MODEL_VERSION_V3),
-      skeleton_preset: external_exports.enum(SKELETON_PRESETS).optional().describe("V3 humanoid spec: actorcore, mixamo, unreal, vrm, unity."),
-      rigging_type: external_exports.enum(["humanoid", "other"]).default("humanoid"),
-      project_id: projectId,
-      submit: external_exports.boolean().optional()
-    },
-    internalKind: "rigging",
-    title: "Auto-rig model",
-    async build(ctx, input2) {
-      const requestedModelVersion = validateRiggingModelVersion(
-        input2.model_version
-      );
-      if (input2.skeleton_preset && (requestedModelVersion !== RIGGING_MODEL_VERSION_V3 || input2.rigging_type !== "humanoid"))
-        throw new TripoError(
-          "INVALID_INPUT",
-          "skeleton_preset requires V3 humanoid rigging."
-        );
-      const pf = await preflight(ctx, "rigging", input2.project_id);
-      const precheck = await ctx.gateway.precheckRigging({
-        modelVersion: requestedModelVersion,
-        projectId: input2.project_id
-      });
-      const publicPrecheck = publicRiggingPrecheck(
-        precheck,
-        requestedModelVersion
-      );
-      if (!precheck.riggable) {
-        throw new TripoError(
-          "REMOTE_API_ERROR",
-          precheck.rig_type === "biped" ? "Studio's rig precheck rejected this biped. A clear T-pose is required before Auto Rig." : "Studio's rig precheck determined that this model is not riggable.",
-          {
-            details: {
-              riggable: precheck.riggable,
-              rig_type: precheck.rig_type
-            },
-            safeToRetryPaidOperation: true,
-            stage: "rigging_precheck"
-          }
-        );
-      }
-      if (requestedModelVersion === RIGGING_MODEL_VERSION_V3 && input2.rigging_type === "humanoid" && precheck.rig_type !== "biped") {
-        throw new TripoError(
-          "INVALID_INPUT",
-          "The selected humanoid rig requires a biped precheck result. Use rigging_type=other for the detected animal rig.",
-          {
-            details: { rig_type: precheck.rig_type },
-            safeToRetryPaidOperation: true,
-            stage: "rigging_precheck"
-          }
-        );
-      }
-      if (precheck.rig_type === "others" || publicPrecheck.submission_model_version === null) {
-        throw new TripoError(
-          "REMOTE_API_ERROR",
-          "Studio's rig precheck did not identify a supported rig type.",
-          {
-            details: {
-              riggable: precheck.riggable,
-              rig_type: precheck.rig_type
-            },
-            safeToRetryPaidOperation: true,
-            stage: "rigging_precheck"
-          }
-        );
-      }
-      const warnings = [...pf.warnings];
-      if (precheck.rig_type === "biped" && publicPrecheck.submission_model_version !== requestedModelVersion) {
-        warnings.push(
-          `Studio forces biped Auto Rig submissions to ${RIGGING_MODEL_VERSION_V1}.`
-        );
-      }
-      return {
-        capabilities: pf.capabilities,
-        metadata: { rigging_precheck: publicPrecheck },
-        payload: {
-          model_version: publicPrecheck.submission_model_version,
-          project_id: input2.project_id,
-          rig_type: requestedModelVersion === RIGGING_MODEL_VERSION_V3 && input2.rigging_type === "humanoid" ? "biped" : precheck.rig_type,
-          ...requestedModelVersion === RIGGING_MODEL_VERSION_V3 && input2.rigging_type === "humanoid" ? { spec: input2.skeleton_preset ?? "actorcore" } : {}
-        },
-        snapshots: [],
-        warnings
-      };
-    },
-    submitRemote: postprocessSubmit("rigging"),
-    syncRemote: postprocessSync()
-  },
-  "model.animate": {
-    category: "postprocess",
-    consumesCredits: true,
-    description: "Retarget a Studio animation preset onto an already-rigged project. animation must be an exact preset id (preset:<rig_type>:<name>) \u2014 see tripo_list_animation_presets or tripo_get_model include animation_presets. rig_type must match the project's rig.",
-    inputShape: {
-      animation: external_exports.string().describe("Exact Studio preset id, e.g. preset:biped:walk."),
-      project_id: projectId,
-      rig_type: external_exports.string().describe("The project's rig type."),
-      submit: external_exports.boolean().optional()
-    },
-    internalKind: "animation_retarget",
-    title: "Retarget animation preset",
-    async build(ctx, input2) {
-      if (!isRetargetRigType(input2.rig_type)) {
-        throw new TripoError(
-          "INVALID_INPUT",
-          "rig_type is not supported by Studio animation retargeting.",
-          { safeToRetryPaidOperation: true, stage: "operation_stage" }
-        );
-      }
-      if (!isAnimationPreset(input2.animation) || animationPresetRigType(input2.animation) !== input2.rig_type) {
-        throw new TripoError(
-          "INVALID_INPUT",
-          'animation must be an exact current Studio preset identifier for the selected rig_type. Use tripo_list_animation_presets or tripo_get_model include ["animation_presets"].',
-          { safeToRetryPaidOperation: true, stage: "operation_stage" }
-        );
-      }
-      const pf = await preflight(ctx, "animation_retarget", input2.project_id, {
-        rigType: input2.rig_type
-      });
-      return {
-        capabilities: pf.capabilities,
-        metadata: { preset_catalog_verified: true },
-        payload: {
-          animations: [input2.animation],
-          model_version: STUDIO_DEFAULT_MODEL_VERSION,
-          project_id: input2.project_id,
-          rig_type: input2.rig_type
-        },
-        snapshots: [],
-        warnings: pf.warnings
-      };
-    },
-    submitRemote: postprocessSubmit("animation_retarget"),
-    syncRemote: postprocessSync()
-  }
-};
-
-// src/studio/downloader.mjs
-import { createWriteStream } from "node:fs";
-import { mkdir as mkdir4, stat as stat4 } from "node:fs/promises";
-import path7 from "node:path";
-import { Readable, Transform } from "node:stream";
-import { pipeline } from "node:stream/promises";
-var MAX_DOWNLOAD_BYTES = 4 * 1024 * 1024 * 1024;
-async function downloadArtifact(config3, urlValue, requestedPath, defaultName, fetchImpl = fetch) {
-  const url3 = assertDownloadUrl(urlValue);
-  const target = await resolveOutputPath(config3, requestedPath, defaultName);
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10 * 60 * 1e3);
-  try {
-    const response = await fetchImpl(url3, {
-      redirect: "follow",
-      signal: controller.signal
-    });
-    if (!response.ok || !response.body) {
-      throw new TripoError(
-        "DOWNLOAD_FAILED",
-        `The remote artifact returned HTTP ${response.status}.`,
-        {
-          details: { http_status: response.status },
-          retryable: true,
-          stage: "download"
-        }
-      );
-    }
-    const contentLength = Number(response.headers.get("content-length") ?? 0);
-    if (contentLength > MAX_DOWNLOAD_BYTES) {
-      await response.body.cancel().catch(() => {
-      });
-      throw new TripoError(
-        "DOWNLOAD_FAILED",
-        "The remote artifact exceeds the 4 GiB download limit.",
-        { stage: "download" }
-      );
-    }
-    await mkdir4(path7.dirname(target), { recursive: true });
-    let bytes = 0;
-    const counting = new Transform({
-      transform(chunk, _encoding, callback) {
-        bytes += chunk.length;
-        if (bytes > MAX_DOWNLOAD_BYTES) {
-          callback(
-            new TripoError(
-              "DOWNLOAD_FAILED",
-              "The remote artifact exceeds the 4 GiB download limit.",
-              { stage: "download" }
-            )
-          );
-          return;
-        }
-        callback(null, chunk);
-      }
-    });
-    await pipeline(
-      Readable.fromWeb(response.body),
-      counting,
-      createWriteStream(target)
-    );
-    const written = await stat4(target);
-    return {
-      bytes: written.size,
-      host: url3.hostname,
-      path: target
-    };
-  } catch (error113) {
-    if (error113 instanceof TripoError) throw error113;
-    throw new TripoError(
-      "DOWNLOAD_FAILED",
-      "The remote artifact download failed.",
-      { cause: error113, retryable: true, stage: "download" }
-    );
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
 // src/studio/export-resolution.mjs
 import path8 from "node:path";
 import { createHash as createHash5, randomUUID as randomUUID5 } from "node:crypto";
@@ -93175,7 +92301,7 @@ import { readFile as readFile7, writeFile as writeFile2, mkdir as mkdir5, unlink
 // src/util/image-processing.mjs
 import { readFile as readFile6 } from "node:fs/promises";
 
-// node_modules/.pnpm/@imagemagick+magick-wasm@0.0.44/node_modules/@imagemagick/magick-wasm/dist/index.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/@imagemagick+magick-wasm@0.0.44/node_modules/@imagemagick/magick-wasm/dist/index.js
 function e(e33) {
   return e33 instanceof Int8Array || e33 instanceof Uint8Array || e33 instanceof Uint8ClampedArray;
 }
@@ -100975,7 +100101,7 @@ async function encodePixels(data, { width, height, channels = 4 }, options = {})
   return R2.read(data, settings, (image) => encode5(image, options));
 }
 
-// node_modules/.pnpm/fflate@0.8.3/node_modules/fflate/esm/index.mjs
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/fflate@0.8.3/node_modules/fflate/esm/index.mjs
 import { createRequire } from "module";
 var require2 = createRequire("/");
 var _a5;
@@ -101961,6 +101087,85 @@ function unzipSync(data, opts) {
   return files;
 }
 
+// src/studio/downloader.mjs
+import { createWriteStream } from "node:fs";
+import { mkdir as mkdir4, stat as stat4 } from "node:fs/promises";
+import path7 from "node:path";
+import { Readable, Transform } from "node:stream";
+import { pipeline } from "node:stream/promises";
+var MAX_DOWNLOAD_BYTES = 4 * 1024 * 1024 * 1024;
+async function downloadArtifact(config3, urlValue, requestedPath, defaultName, fetchImpl = fetch) {
+  const url3 = assertDownloadUrl(urlValue);
+  const target = await resolveOutputPath(config3, requestedPath, defaultName);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10 * 60 * 1e3);
+  try {
+    const response = await fetchImpl(url3, {
+      redirect: "follow",
+      signal: controller.signal
+    });
+    if (!response.ok || !response.body) {
+      throw new TripoError(
+        "DOWNLOAD_FAILED",
+        `The remote artifact returned HTTP ${response.status}.`,
+        {
+          details: { http_status: response.status },
+          retryable: true,
+          stage: "download"
+        }
+      );
+    }
+    const contentLength = Number(response.headers.get("content-length") ?? 0);
+    if (contentLength > MAX_DOWNLOAD_BYTES) {
+      await response.body.cancel().catch(() => {
+      });
+      throw new TripoError(
+        "DOWNLOAD_FAILED",
+        "The remote artifact exceeds the 4 GiB download limit.",
+        { stage: "download" }
+      );
+    }
+    await mkdir4(path7.dirname(target), { recursive: true });
+    let bytes = 0;
+    const counting = new Transform({
+      transform(chunk, _encoding, callback) {
+        bytes += chunk.length;
+        if (bytes > MAX_DOWNLOAD_BYTES) {
+          callback(
+            new TripoError(
+              "DOWNLOAD_FAILED",
+              "The remote artifact exceeds the 4 GiB download limit.",
+              { stage: "download" }
+            )
+          );
+          return;
+        }
+        callback(null, chunk);
+      }
+    });
+    await pipeline(
+      Readable.fromWeb(response.body),
+      counting,
+      createWriteStream(target)
+    );
+    const written = await stat4(target);
+    return {
+      bytes: written.size,
+      host: url3.hostname,
+      path: target
+    };
+  } catch (error113) {
+    if (error113 instanceof TripoError) throw error113;
+    throw new TripoError(
+      "DOWNLOAD_FAILED",
+      "The remote artifact download failed.",
+      { cause: error113, retryable: true, stage: "download" }
+    );
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 // src/studio/export-resolution.mjs
 var MAX_BYTES = 512 * 1024 * 1024;
 var imageName = /\.(png|jpe?g|webp)$/i;
@@ -102121,24 +101326,24 @@ function boundedZip(bytes) {
   if (offset !== end) reject("Invalid ZIP central directory.");
   return unzipSync(bytes);
 }
-async function normalizeExport(bytes, { textureSize, format: format3, expectTextures = false }) {
+async function normalizeExport(bytes, { textureSize: textureSize2, format: format3, expectTextures = false }) {
   if (bytes.length > MAX_BYTES)
     reject(
       "Export resolution processing currently supports files up to 512 MiB."
     );
   let result;
   if (bytes.toString("ascii", 0, 4) === "glTF")
-    result = await resizeGlb(bytes, textureSize, "model.glb");
+    result = await resizeGlb(bytes, textureSize2, "model.glb");
   else if (bytes.length >= 4 && bytes.readUInt32LE(0) === 67324752) {
     const files = boundedZip(bytes), textures = [];
     let changed = false;
     for (const [name, data] of Object.entries(files)) {
       let item;
       if (imageName.test(name)) {
-        item = await resizeImage(Buffer.from(data), textureSize, name);
+        item = await resizeImage(Buffer.from(data), textureSize2, name);
         textures.push(item.texture);
       } else if (/\.glb$/i.test(name)) {
-        item = await resizeGlb(Buffer.from(data), textureSize, name);
+        item = await resizeGlb(Buffer.from(data), textureSize2, name);
         textures.push(...item.textures);
       }
       if (item?.changed) {
@@ -102163,7 +101368,7 @@ async function normalizeExport(bytes, { textureSize, format: format3, expectText
   return {
     ...result,
     verification: {
-      requested_texture_size: textureSize,
+      requested_texture_size: textureSize2,
       actual_texture_size_verified: result.textures.length > 0,
       resolution_status: result.textures.length ? "verified" : "not_applicable",
       resolution_method: result.changed ? "local_downsample" : "remote_verified",
@@ -102202,7 +101407,8 @@ async function sourceTextureInfo(ctx, detail, operatorId) {
   return {
     source_texture_size: textures.length ? Math.max(...textures.map((t8) => Math.max(t8.width, t8.height))) : 2048,
     source_texture_size_verified: true,
-    source_texture_count: textures.length
+    source_texture_count: textures.length,
+    source_textures: textures
   };
 }
 async function prepareExportDownload(runtime, record3) {
@@ -102259,6 +101465,848 @@ async function writeImmutable(target, bytes) {
       reject("Cached export artifact changed; refusing to overwrite it.");
   }
 }
+
+// src/ops/postops.mjs
+var PROJECT_ID = /^[^\s\u0000-\u001f\u007f]{1,256}$/;
+var PART_NAME = /^[^\u0000-\u001f\u007f]{1,256}$/;
+var MAX_PARTS = 200;
+var MAX_PROMPT_LENGTH = 1e3;
+var projectId = external_exports.string().regex(PROJECT_ID).describe("Studio project (model asset) id \u2014 see tripo_list_models.");
+var partNames = external_exports.array(external_exports.string().regex(PART_NAME)).min(1).max(MAX_PARTS);
+var BUILTIN_TEXTURE_STYLES = {
+  heritage: {
+    bucket: "tripo-data",
+    key: "tripo-studio/style_image/heritage.png"
+  },
+  mecha: { bucket: "tripo-data", key: "tripo-studio/style_image/mecha.png" },
+  mecha_pop: {
+    bucket: "tripo-data",
+    key: "tripo-studio/style_image/mecha_pop.png"
+  },
+  wood: { bucket: "tripo-data", key: "tripo-studio/style_image/wood.jpg" }
+};
+var POSTPROCESS_ENDPOINTS = {
+  ai_completion: "ai_completion",
+  animation_retarget: "retarget_model",
+  apply_retexture: "apply_retexture",
+  mesh_fill: "mesh_fill",
+  pbr: "pbr_generate",
+  remesh: "remesh",
+  retexture_preview: "retexture_generate",
+  rigging: "rigging_model",
+  segmentation: "ai_segmentation",
+  texture_generate: "texture_model",
+  texture_upscale: "texture_upscaler"
+};
+function validateProjectId(value) {
+  if (!PROJECT_ID.test(value)) {
+    throw new TripoError(
+      "INVALID_INPUT",
+      "project_id must be a non-empty Studio project identifier without whitespace.",
+      { safeToRetryPaidOperation: true, stage: "operation_stage" }
+    );
+  }
+  return value;
+}
+function validatePartNames(names, field = "part_names") {
+  if (!Array.isArray(names) || names.length < 1 || names.length > MAX_PARTS) {
+    throw new TripoError(
+      "INVALID_INPUT",
+      `${field} must contain 1 through ${MAX_PARTS} raw hierarchy names.`,
+      { safeToRetryPaidOperation: true, stage: "operation_stage" }
+    );
+  }
+  const normalized = names.map((name) => name.trim());
+  if (normalized.some((name) => !PART_NAME.test(name))) {
+    throw new TripoError(
+      "INVALID_INPUT",
+      `${field} contains an empty, control-character, or overlong name.`,
+      { safeToRetryPaidOperation: true, stage: "operation_stage" }
+    );
+  }
+  if (new Set(normalized).size !== normalized.length) {
+    throw new TripoError(
+      "INVALID_INPUT",
+      `${field} must not contain duplicate names.`,
+      { safeToRetryPaidOperation: true, stage: "operation_stage" }
+    );
+  }
+  return normalized;
+}
+function validatePrompt(prompt, field) {
+  const normalized = prompt.trim();
+  if (normalized.length < 1 || normalized.length > MAX_PROMPT_LENGTH || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(normalized)) {
+    throw new TripoError(
+      "INVALID_INPUT",
+      `${field} must contain 1 through ${MAX_PROMPT_LENGTH} safe characters.`,
+      { safeToRetryPaidOperation: true, stage: "operation_stage" }
+    );
+  }
+  return normalized;
+}
+async function preflight(ctx, internalKind, pid, options = {}) {
+  validateProjectId(pid);
+  const detail = await ctx.gateway.getProject(pid);
+  if (detail.id && detail.id !== pid) {
+    throw new TripoError(
+      "INSUFFICIENT_EVIDENCE",
+      "Tripo returned a different project during operation staging.",
+      { safeToRetryPaidOperation: true, stage: "operation_stage" }
+    );
+  }
+  const capabilities = projectCapabilities(pid, detail);
+  assertProjectSupports(internalKind, capabilities, options);
+  const warnings = [];
+  if ((internalKind === "texture_generate" || internalKind === "texture_upscale") && capabilities.is_ultra_textured === true) {
+    warnings.push(
+      "This project is already 8K; Studio may only allow an 8K regenerate target."
+    );
+  }
+  return { capabilities, warnings };
+}
+function postprocessSubmit(endpointKey) {
+  return async (ctx, task) => {
+    const receipt = await ctx.gateway.submitPostprocess(
+      POSTPROCESS_ENDPOINTS[endpointKey],
+      task.payload
+    );
+    if (receipt.project_id !== void 0 && receipt.project_id !== task.payload.project_id) {
+      throw new TripoError(
+        "INSUFFICIENT_EVIDENCE",
+        "Tripo returned a different project ID for the submitted operation.",
+        { stage: "operation_dispatch_receipt" }
+      );
+    }
+    return {
+      operator_id: receipt.operator_id,
+      project_id: task.payload.project_id
+    };
+  };
+}
+function postprocessSync() {
+  return async (ctx, task) => {
+    const items = await ctx.gateway.getProgress([task.remote.operator_id]);
+    const item = selectProgress(items, task.remote.operator_id);
+    if (item.project_id && item.project_id !== task.remote.project_id) {
+      throw new TripoError(
+        "INSUFFICIENT_EVIDENCE",
+        "Progress returned a different project ID for this operation.",
+        { stage: "operation_progress" }
+      );
+    }
+    const status = remoteStatus(item.status);
+    let result;
+    const warnings = [];
+    if (status === "succeeded") {
+      result = { project_id: task.remote.project_id };
+      if (["texture.generate", "texture.upscale", "texture.pbr"].includes(
+        task.kind
+      )) {
+        const operatorId = task.remote.operator_id;
+        const detail = await ctx.gateway.getProject(
+          task.remote.project_id,
+          operatorId
+        );
+        if (detail.id && detail.id !== task.remote.project_id || (detail.model_url || detail.operator?.operator_id) && detail.operator?.operator_id !== operatorId) {
+          throw new TripoError(
+            "INSUFFICIENT_EVIDENCE",
+            "Texture artifact identity mismatch; sync again.",
+            { stage: "operation_progress" }
+          );
+        }
+        const info = await sourceTextureInfo(ctx, detail, operatorId);
+        const textures = info.source_textures ?? [];
+        const verified = info.source_texture_size_verified && textures.length > 0 && !task.payload.part_names?.length;
+        const requested = textureSize(task.payload.texture_quality);
+        const met = verified && requested !== void 0 ? textures.every(
+          (t8) => t8.width >= requested && t8.height >= requested
+        ) : null;
+        const resolutionStatus = !verified ? "unverified" : met === false ? "mismatch" : "verified";
+        const warning2 = !verified ? "Texture resolution is unverified. Remote success and quality flags do not prove the requested resolution; inspect the saved artifact before claiming completion." : met === false ? `Requested ${requested}x${requested} textures, but received ${textures.map((t8) => `${t8.width}x${t8.height}`).join(", ")}. The requested resolution was not achieved. Do not automatically repeat this paid operation.` : null;
+        result.texture_resolution = {
+          requested_texture_size: requested ?? null,
+          actual_texture_size_verified: Boolean(verified),
+          requested_texture_size_met: met,
+          resolution_status: resolutionStatus,
+          textures,
+          ...warning2 ? { warning: warning2 } : {}
+        };
+        if (warning2) warnings.push(warning2);
+      }
+      if (task.kind === "texture.edit_preview") {
+        const preview = await ctx.gateway.getRetexture(task.remote.operator_id);
+        if (!preview?.url)
+          throw new TripoError(
+            "INSUFFICIENT_EVIDENCE",
+            "Completed texture preview has no artifact yet; sync again.",
+            { stage: "operation_progress" }
+          );
+        result.retexture_preview = {
+          camera_matrix: preview.camera_matrix,
+          url: preview.url
+        };
+      }
+      if (task.kind === "model.animate" || task.kind === "model.apply_motion") {
+        const detail = await ctx.gateway.getProject(
+          task.remote.project_id,
+          task.remote.operator_id
+        );
+        if (detail.id && detail.id !== task.remote.project_id)
+          throw new TripoError(
+            "INSUFFICIENT_EVIDENCE",
+            "Animation artifact project identity mismatch.",
+            { stage: "operation_progress" }
+          );
+        const artifacts = detail?.operator?.Retarget ?? detail?.operator?.retarget ?? detail?.operator?.retarget_model ?? [];
+        const expected = task.payload.animations?.[0];
+        const match = artifacts.find(
+          (entry) => task.payload.motion_asset_id ? entry.motion_asset_id === task.payload.motion_asset_id : entry.name === expected
+        );
+        if (!match?.model_url)
+          throw new TripoError(
+            "INSUFFICIENT_EVIDENCE",
+            "The requested animation artifact is not available yet; sync again.",
+            { stage: "operation_progress" }
+          );
+        result.animation_model_url = match.model_url;
+      }
+    }
+    return {
+      progress: {
+        left_time: item.left_time ?? null,
+        progress: item.progress ?? null,
+        reason: item.reason ?? null,
+        status: item.status
+      },
+      result,
+      status,
+      warnings
+    };
+  };
+}
+function validateRiggingModelVersion(modelVersion) {
+  if (![
+    RIGGING_MODEL_VERSION_V1,
+    RIGGING_MODEL_VERSION_V2_5,
+    RIGGING_MODEL_VERSION_V3
+  ].includes(modelVersion)) {
+    throw new TripoError(
+      "INVALID_INPUT",
+      `model_version must be ${RIGGING_MODEL_VERSION_V1}, ${RIGGING_MODEL_VERSION_V2_5}, or ${RIGGING_MODEL_VERSION_V3}.`,
+      { safeToRetryPaidOperation: true, stage: "operation_stage" }
+    );
+  }
+  return modelVersion;
+}
+function publicRiggingPrecheck(precheck, requestedModelVersion) {
+  const submissionModelVersion = precheck.riggable && precheck.rig_type !== "others" ? precheck.rig_type === "biped" ? RIGGING_MODEL_VERSION_V1 : requestedModelVersion : null;
+  return {
+    requested_model_version: requestedModelVersion,
+    riggable: precheck.riggable,
+    rig_type: precheck.rig_type,
+    submission_model_version: requestedModelVersion === RIGGING_MODEL_VERSION_V3 && precheck.riggable ? requestedModelVersion : submissionModelVersion
+  };
+}
+var postprocessOperations = {
+  "model.segment": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Segment the model into semantic parts (required before part completion and part-scoped texture work). Studio internal kind: ai_segmentation.",
+    inputShape: {
+      project_id: projectId,
+      segmentation_granularity: external_exports.enum(["coarse", "balanced", "fine"]).default("balanced"),
+      submit: external_exports.boolean().optional()
+    },
+    internalKind: "segmentation",
+    title: "Segment model",
+    async build(ctx, input2) {
+      const pf = await preflight(ctx, "segmentation", input2.project_id);
+      return {
+        capabilities: pf.capabilities,
+        payload: {
+          model_version: SEGMENTATION_MODEL_VERSION,
+          project_id: input2.project_id,
+          segmentation_granularity: input2.segmentation_granularity
+        },
+        snapshots: [],
+        warnings: pf.warnings
+      };
+    },
+    submitRemote: postprocessSubmit("segmentation"),
+    syncRemote: postprocessSync()
+  },
+  "model.complete_parts": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Fill or complete selected mesh parts. mode=quick_cap closes open boundaries; mode=ai_completion regenerates missing regions. Requires a segmented/multi-mesh project and raw hierarchy part names (see tripo_get_model include parts).",
+    inputShape: {
+      mode: external_exports.enum(["quick_cap", "ai_completion"]).default("ai_completion"),
+      part_names: partNames.describe(
+        "Raw hierarchy part names, not display renames."
+      ),
+      project_id: projectId,
+      submit: external_exports.boolean().optional()
+    },
+    title: "Complete mesh parts",
+    async build(ctx, input2) {
+      const internalKind = input2.mode === "quick_cap" ? "mesh_fill" : "ai_completion";
+      const pf = await preflight(ctx, internalKind, input2.project_id);
+      return {
+        capabilities: pf.capabilities,
+        metadata: { mode: input2.mode },
+        payload: {
+          model_version: input2.mode === "quick_cap" ? STUDIO_DEFAULT_MODEL_VERSION : COMPLETION_MODEL_VERSION,
+          part_names: validatePartNames(input2.part_names),
+          project_id: input2.project_id
+        },
+        snapshots: [],
+        warnings: [
+          ...pf.warnings,
+          "part_names must be raw hierarchy names, not display renames; the project must already be segmented/multi-mesh."
+        ]
+      };
+    },
+    submitRemote: async (ctx, task) => postprocessSubmit(
+      task.metadata?.mode === "quick_cap" ? "mesh_fill" : "ai_completion"
+    )(ctx, task),
+    syncRemote: postprocessSync()
+  },
+  "model.remesh": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Remesh selected parts to a target face budget. quad toggles quad-dominant topology; smart_poly enables Smart Poly mode (not on Nexus/Smart Mesh projects). face_limit bounds: normal quad \u226450K, normal triangle \u2264150K, smart quad \u226410K, smart triangle \u226420K, all \u2265500.",
+    inputShape: {
+      face_limit: external_exports.number().int().describe("Target face budget for the selected mode."),
+      part_name_list: partNames.describe("Raw hierarchy part names to remesh."),
+      project_id: projectId,
+      quad: external_exports.boolean().default(false),
+      smart_poly: external_exports.boolean().default(false),
+      submit: external_exports.boolean().optional()
+    },
+    internalKind: "remesh",
+    title: "Remesh model",
+    async build(ctx, input2) {
+      const maximum = input2.smart_poly ? input2.quad ? REMESH_SMART_QUAD_MAX_FACES : REMESH_SMART_TRIANGLE_MAX_FACES : input2.quad ? REMESH_NORMAL_QUAD_MAX_FACES : REMESH_NORMAL_TRIANGLE_MAX_FACES;
+      if (!Number.isSafeInteger(input2.face_limit) || input2.face_limit < REMESH_MIN_FACES || input2.face_limit > maximum) {
+        throw new TripoError(
+          "INVALID_INPUT",
+          `face_limit must be an integer from ${REMESH_MIN_FACES} through ${maximum} for the selected remesh mode.`,
+          { safeToRetryPaidOperation: true, stage: "operation_stage" }
+        );
+      }
+      const pf = await preflight(ctx, "remesh", input2.project_id, {
+        smartPoly: input2.smart_poly
+      });
+      return {
+        capabilities: pf.capabilities,
+        payload: {
+          bake: true,
+          face_limit: input2.face_limit,
+          model_version: STUDIO_DEFAULT_MODEL_VERSION,
+          part_name_list: validatePartNames(
+            input2.part_name_list,
+            "part_name_list"
+          ),
+          project_id: input2.project_id,
+          quad: input2.quad,
+          smart_poly: input2.smart_poly
+        },
+        snapshots: [],
+        warnings: pf.warnings
+      };
+    },
+    submitRemote: postprocessSubmit("remesh"),
+    syncRemote: postprocessSync()
+  },
+  "texture.generate": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Generate color textures for an existing project, preserving its geometry. Smart Mesh stage 2 of 3: white mesh (tripo_generate_model) \u2192 color textures (this tool) \u2192 separate PBR maps (tripo_generate_pbr). This tool does not automatically generate the separate PBR map set. If PBR maps are requested, wait for color-texture success then call tripo_generate_pbr on the same project; if color textures already exist and only PBR is missing, skip this tool. mode=text (prompt), mode=image (local reference image), or mode=multiview (front plus optional left/back/right). quality, alignment and delight apply in this stage. Omit part_names or pass [] for the whole model; use raw hierarchy names for selected parts. Built-in styles (heritage|mecha|mecha_pop|wood) or a local style image are incompatible with multiview mode.",
+    inputShape: {
+      alignment: external_exports.enum(["original_image", "geometry"]).default("original_image"),
+      delight: external_exports.boolean().default(true).describe(
+        "Remove lighting during color-texture generation, including for an existing Smart Mesh. This does not generate PBR maps; use tripo_generate_pbr afterward when requested."
+      ),
+      back_image_path: external_exports.string().optional(),
+      front_image_path: external_exports.string().optional(),
+      image_path: external_exports.string().optional().describe("Local reference image for mode=image."),
+      left_image_path: external_exports.string().optional(),
+      mode: external_exports.enum(["text", "image", "multiview"]).describe("Texture source mode."),
+      part_names: external_exports.array(external_exports.string().regex(PART_NAME)).max(MAX_PARTS).optional().describe(
+        "Raw hierarchy names for selected parts. Omit or pass [] for the whole model; segmentation is not required."
+      ),
+      project_id: projectId,
+      prompt: external_exports.string().optional().describe("Required for mode=text."),
+      quality: external_exports.enum(["standard", "detailed", "ultra"]).default("detailed").describe(
+        "standard=2K, detailed=4K, ultra=8K. Remote success alone does not verify resolution; check result.texture_resolution and its warnings."
+      ),
+      right_image_path: external_exports.string().optional(),
+      style: external_exports.enum(["heritage", "mecha", "mecha_pop", "wood"]).optional(),
+      style_image_path: external_exports.string().optional().describe(
+        "Local style reference image; mutually exclusive with style."
+      ),
+      submit: external_exports.boolean().optional()
+    },
+    internalKind: "texture_generate",
+    title: "Generate texture",
+    async build(ctx, input2, taskId) {
+      const pf = await preflight(ctx, "texture_generate", input2.project_id);
+      if (input2.style && input2.style_image_path) {
+        throw new TripoError(
+          "INVALID_INPUT",
+          "Choose either a built-in style or style_image_path, not both.",
+          { safeToRetryPaidOperation: true, stage: "operation_stage" }
+        );
+      }
+      if (input2.mode === "multiview" && (input2.style || input2.style_image_path)) {
+        throw new TripoError(
+          "INVALID_INPUT",
+          "The current Studio UI does not combine a style image with multiview texture mode.",
+          { safeToRetryPaidOperation: true, stage: "operation_stage" }
+        );
+      }
+      const snapshots = [];
+      const payload = {
+        model_version: TEXTURE_MODEL_VERSION,
+        delight: input2.delight,
+        ...input2.part_names?.length ? { part_names: validatePartNames(input2.part_names) } : {},
+        project_id: input2.project_id,
+        texture_alignment: input2.alignment,
+        texture_quality: studioTextureQuality(input2.quality)
+      };
+      const retain = async (imagePath2, label, slot) => {
+        assertLocalPathSpecifier(imagePath2, "operation_input_policy");
+        const image = await stageLocalImage(
+          ctx.config,
+          ctx.gateway,
+          ctx.uploader,
+          imagePath2,
+          true,
+          {
+            deferUpload: ctx.deferUploads,
+            index: snapshots.length + 1,
+            label,
+            slot,
+            taskId
+          }
+        );
+        snapshots.push(image.provenance);
+        return image;
+      };
+      const imageMetadata2 = [];
+      if (input2.mode === "text") {
+        payload.prompt_text = validatePrompt(input2.prompt ?? "", "prompt");
+      } else if (input2.mode === "image") {
+        if (!input2.image_path)
+          throw new TripoError(
+            "INVALID_INPUT",
+            "image_path is required for image texture mode.",
+            { stage: "operation_stage" }
+          );
+        const image = await retain(
+          input2.image_path,
+          "Texture reference",
+          "reference"
+        );
+        payload.image = auditedImageWire(image);
+        imageMetadata2.push({ role: "reference", ...image.metadata });
+      } else {
+        if (!input2.front_image_path)
+          throw new TripoError(
+            "INVALID_INPUT",
+            "front_image_path is required for multiview mode.",
+            { stage: "operation_stage" }
+          );
+        const paths = [
+          input2.front_image_path,
+          input2.left_image_path,
+          input2.back_image_path,
+          input2.right_image_path
+        ];
+        if (paths.filter(Boolean).length < 2) {
+          throw new TripoError(
+            "INVALID_INPUT",
+            "Multiview mode requires the front image and at least one additional view.",
+            { stage: "operation_stage" }
+          );
+        }
+        const roles = ["front", "left", "back", "right"];
+        const images = [];
+        for (let index = 0; index < paths.length; index += 1) {
+          if (!paths[index]) {
+            images.push(null);
+            continue;
+          }
+          const image = await retain(
+            paths[index],
+            `${roles[index]} view`,
+            roles[index]
+          );
+          images.push(auditedImageWire(image));
+          imageMetadata2.push({ role: roles[index], ...image.metadata });
+        }
+        payload.images = images;
+      }
+      if (input2.style) {
+        payload.style_image = { ...BUILTIN_TEXTURE_STYLES[input2.style] };
+      } else if (input2.style_image_path) {
+        const style = await retain(
+          input2.style_image_path,
+          "Style reference",
+          "style"
+        );
+        payload.style_image = {
+          bucket: style.uploaded.bucket,
+          image_audit_result: style.audit.result,
+          key: style.uploaded.key
+        };
+        imageMetadata2.push({ role: "style", ...style.metadata });
+      }
+      return {
+        capabilities: pf.capabilities,
+        metadata: {
+          images: imageMetadata2,
+          mode: input2.mode,
+          ...input2.style ? { builtin_style: input2.style } : {}
+        },
+        payload,
+        snapshots,
+        warnings: pf.warnings
+      };
+    },
+    submitRemote: postprocessSubmit("texture_generate"),
+    syncRemote: postprocessSync()
+  },
+  "texture.edit_preview": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Studio Magic Brush: generate a retexture preview for a rendered viewport. render_image_path must be a static WebP produced at 2x the active viewport; camera_matrix must be activeCamera.matrix.toArray() (16 values).",
+    inputShape: {
+      camera_matrix: external_exports.array(external_exports.number()).length(16).describe("Three.js camera world matrix."),
+      project_id: projectId,
+      prompt: external_exports.string().min(1).max(1e3),
+      render_image_path: external_exports.string().describe("Local WebP viewport render at 2x."),
+      strength: external_exports.number().min(0).max(1).default(0.5),
+      submit: external_exports.boolean().optional()
+    },
+    internalKind: "retexture_preview",
+    title: "Magic Brush preview",
+    async build(ctx, input2, taskId) {
+      if (input2.camera_matrix.length !== 16 || input2.camera_matrix.some(
+        (value) => !Number.isFinite(value) || Math.abs(value) > 1e9
+      )) {
+        throw new TripoError(
+          "INVALID_INPUT",
+          "camera_matrix must contain exactly 16 finite Three.js camera world-matrix values.",
+          { safeToRetryPaidOperation: true, stage: "operation_stage" }
+        );
+      }
+      const pf = await preflight(ctx, "retexture_preview", input2.project_id);
+      assertLocalPathSpecifier(
+        input2.render_image_path,
+        "operation_input_policy"
+      );
+      const render = await stageLocalImage(
+        ctx.config,
+        ctx.gateway,
+        ctx.uploader,
+        input2.render_image_path,
+        false,
+        {
+          deferUpload: ctx.deferUploads,
+          index: 1,
+          label: "Viewport render",
+          requiredFormat: "webp",
+          slot: "render",
+          taskId
+        }
+      );
+      return {
+        capabilities: pf.capabilities,
+        metadata: { render_image: render.metadata },
+        payload: {
+          camera_matrix: input2.camera_matrix,
+          model_version: TEXTURE_MODEL_VERSION,
+          project_id: input2.project_id,
+          prompt: validatePrompt(input2.prompt, "prompt"),
+          render_image: directImageWire(render),
+          strength: input2.strength
+        },
+        snapshots: [render.provenance],
+        warnings: [
+          ...pf.warnings,
+          "render_image must be a 2x Studio viewport render and camera_matrix must be activeCamera.matrix.toArray(), not a view/projection matrix."
+        ]
+      };
+    },
+    submitRemote: postprocessSubmit("retexture_preview"),
+    syncRemote: postprocessSync()
+  },
+  "texture.edit_apply": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Apply baked per-part textures to the model (Studio apply_retexture). Each entry needs a raw part name plus a local image already baked for that part by a Studio-compatible viewport workflow.",
+    inputShape: {
+      project_id: projectId,
+      submit: external_exports.boolean().optional(),
+      textures: external_exports.array(
+        external_exports.object({
+          image_path: external_exports.string(),
+          part_name: external_exports.string().regex(PART_NAME)
+        }).strict()
+      ).min(1).max(MAX_PARTS).describe("Per-part baked texture images.")
+    },
+    internalKind: "apply_retexture",
+    title: "Apply texture edits",
+    async build(ctx, input2, taskId) {
+      const pf = await preflight(ctx, "apply_retexture", input2.project_id);
+      const names = validatePartNames(
+        input2.textures.map((entry) => entry.part_name)
+      );
+      const snapshots = [];
+      const imageMap = [];
+      const images = [];
+      for (let index = 0; index < input2.textures.length; index += 1) {
+        const entry = input2.textures[index];
+        assertLocalPathSpecifier(entry.image_path, "operation_input_policy");
+        const image = await stageLocalImage(
+          ctx.config,
+          ctx.gateway,
+          ctx.uploader,
+          entry.image_path,
+          false,
+          {
+            deferUpload: ctx.deferUploads,
+            index: index + 1,
+            label: names[index],
+            slot: `part:${names[index]}`,
+            taskId
+          }
+        );
+        snapshots.push(image.provenance);
+        imageMap.push({
+          image: directImageWire(image),
+          part_name: names[index]
+        });
+        images.push({ part_name: names[index], ...image.metadata });
+      }
+      return {
+        capabilities: pf.capabilities,
+        metadata: { images },
+        payload: {
+          image_map: imageMap,
+          model_version: TEXTURE_MODEL_VERSION,
+          project_id: input2.project_id
+        },
+        snapshots,
+        warnings: [
+          ...pf.warnings,
+          "Each input must be a complete per-part texture already baked by a Studio-compatible viewport workflow; the backend accepts no mask field."
+        ]
+      };
+    },
+    submitRemote: postprocessSubmit("apply_retexture"),
+    syncRemote: postprocessSync()
+  },
+  "texture.upscale": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Upscale the project's texture set. quality=detailed targets 4K, ultra targets 8K. A project already at 8K cannot be downscaled to 4K.",
+    inputShape: {
+      project_id: projectId,
+      quality: external_exports.enum(["detailed", "ultra"]).describe("detailed=4K, ultra=8K."),
+      submit: external_exports.boolean().optional()
+    },
+    internalKind: "texture_upscale",
+    title: "Upscale textures",
+    async build(ctx, input2) {
+      const pf = await preflight(ctx, "texture_upscale", input2.project_id);
+      if (input2.quality === "detailed" && pf.capabilities.is_ultra_textured === true) {
+        throw new TripoError(
+          "REMOTE_API_ERROR",
+          "A current 8K project cannot be downscaled to the 4K target in Studio.",
+          { safeToRetryPaidOperation: true, stage: "operation_stage" }
+        );
+      }
+      return {
+        capabilities: pf.capabilities,
+        payload: {
+          model_version: TEXTURE_MODEL_VERSION,
+          project_id: input2.project_id,
+          texture_quality: studioTextureQuality(input2.quality)
+        },
+        snapshots: [],
+        warnings: pf.warnings
+      };
+    },
+    submitRemote: postprocessSubmit("texture_upscale"),
+    syncRemote: postprocessSync()
+  },
+  "texture.pbr": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Generate separate PBR material maps (Normal, Roughness and Metallic) for an already color-textured project, preserving its geometry and color textures. Smart Mesh stage 3 of 3: white mesh \u2192 color textures \u2192 PBR maps. If color textures already exist and only PBR is missing, call this tool directly on that project's project_id; do not regenerate the model or color textures. Wait for success, then export/download and verify the actual channels, including packed maps. A PBR material with scalar factors alone does not prove PBR maps exist.",
+    inputShape: { project_id: projectId, submit: external_exports.boolean().optional() },
+    internalKind: "pbr",
+    title: "Generate PBR maps",
+    async build(ctx, input2) {
+      const pf = await preflight(ctx, "pbr", input2.project_id);
+      return {
+        capabilities: pf.capabilities,
+        payload: {
+          model_version: TEXTURE_MODEL_VERSION,
+          project_id: input2.project_id
+        },
+        snapshots: [],
+        warnings: pf.warnings
+      };
+    },
+    submitRemote: postprocessSubmit("pbr"),
+    syncRemote: postprocessSync()
+  },
+  "model.rig": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Auto-rig a textured project, default V3 with humanoid skeleton presets (ActorCore/Mixamo/Unreal/VRM/Unity). Runs Studio's rig precheck before staging; legacy V1/V2.5 remain selectable, and legacy bipeds use V1.",
+    inputShape: {
+      model_version: external_exports.enum([
+        RIGGING_MODEL_VERSION_V1,
+        RIGGING_MODEL_VERSION_V2_5,
+        RIGGING_MODEL_VERSION_V3
+      ]).default(RIGGING_MODEL_VERSION_V3),
+      skeleton_preset: external_exports.enum(SKELETON_PRESETS).optional().describe("V3 humanoid spec: actorcore, mixamo, unreal, vrm, unity."),
+      rigging_type: external_exports.enum(["humanoid", "other"]).default("humanoid"),
+      project_id: projectId,
+      submit: external_exports.boolean().optional()
+    },
+    internalKind: "rigging",
+    title: "Auto-rig model",
+    async build(ctx, input2) {
+      const requestedModelVersion = validateRiggingModelVersion(
+        input2.model_version
+      );
+      if (input2.skeleton_preset && (requestedModelVersion !== RIGGING_MODEL_VERSION_V3 || input2.rigging_type !== "humanoid"))
+        throw new TripoError(
+          "INVALID_INPUT",
+          "skeleton_preset requires V3 humanoid rigging."
+        );
+      const pf = await preflight(ctx, "rigging", input2.project_id);
+      const precheck = await ctx.gateway.precheckRigging({
+        modelVersion: requestedModelVersion,
+        projectId: input2.project_id
+      });
+      const publicPrecheck = publicRiggingPrecheck(
+        precheck,
+        requestedModelVersion
+      );
+      if (!precheck.riggable) {
+        throw new TripoError(
+          "REMOTE_API_ERROR",
+          precheck.rig_type === "biped" ? "Studio's rig precheck rejected this biped. A clear T-pose is required before Auto Rig." : "Studio's rig precheck determined that this model is not riggable.",
+          {
+            details: {
+              riggable: precheck.riggable,
+              rig_type: precheck.rig_type
+            },
+            safeToRetryPaidOperation: true,
+            stage: "rigging_precheck"
+          }
+        );
+      }
+      if (requestedModelVersion === RIGGING_MODEL_VERSION_V3 && input2.rigging_type === "humanoid" && precheck.rig_type !== "biped") {
+        throw new TripoError(
+          "INVALID_INPUT",
+          "The selected humanoid rig requires a biped precheck result. Use rigging_type=other for the detected animal rig.",
+          {
+            details: { rig_type: precheck.rig_type },
+            safeToRetryPaidOperation: true,
+            stage: "rigging_precheck"
+          }
+        );
+      }
+      if (precheck.rig_type === "others" || publicPrecheck.submission_model_version === null) {
+        throw new TripoError(
+          "REMOTE_API_ERROR",
+          "Studio's rig precheck did not identify a supported rig type.",
+          {
+            details: {
+              riggable: precheck.riggable,
+              rig_type: precheck.rig_type
+            },
+            safeToRetryPaidOperation: true,
+            stage: "rigging_precheck"
+          }
+        );
+      }
+      const warnings = [...pf.warnings];
+      if (precheck.rig_type === "biped" && publicPrecheck.submission_model_version !== requestedModelVersion) {
+        warnings.push(
+          `Studio forces biped Auto Rig submissions to ${RIGGING_MODEL_VERSION_V1}.`
+        );
+      }
+      return {
+        capabilities: pf.capabilities,
+        metadata: { rigging_precheck: publicPrecheck },
+        payload: {
+          model_version: publicPrecheck.submission_model_version,
+          project_id: input2.project_id,
+          rig_type: requestedModelVersion === RIGGING_MODEL_VERSION_V3 && input2.rigging_type === "humanoid" ? "biped" : precheck.rig_type,
+          ...requestedModelVersion === RIGGING_MODEL_VERSION_V3 && input2.rigging_type === "humanoid" ? { spec: input2.skeleton_preset ?? "actorcore" } : {}
+        },
+        snapshots: [],
+        warnings
+      };
+    },
+    submitRemote: postprocessSubmit("rigging"),
+    syncRemote: postprocessSync()
+  },
+  "model.animate": {
+    category: "postprocess",
+    consumesCredits: true,
+    description: "Retarget a Studio animation preset onto an already-rigged project. animation must be an exact preset id (preset:<rig_type>:<name>) \u2014 see tripo_list_animation_presets or tripo_get_model include animation_presets. rig_type must match the project's rig.",
+    inputShape: {
+      animation: external_exports.string().describe("Exact Studio preset id, e.g. preset:biped:walk."),
+      project_id: projectId,
+      rig_type: external_exports.string().describe("The project's rig type."),
+      submit: external_exports.boolean().optional()
+    },
+    internalKind: "animation_retarget",
+    title: "Retarget animation preset",
+    async build(ctx, input2) {
+      if (!isRetargetRigType(input2.rig_type)) {
+        throw new TripoError(
+          "INVALID_INPUT",
+          "rig_type is not supported by Studio animation retargeting.",
+          { safeToRetryPaidOperation: true, stage: "operation_stage" }
+        );
+      }
+      if (!isAnimationPreset(input2.animation) || animationPresetRigType(input2.animation) !== input2.rig_type) {
+        throw new TripoError(
+          "INVALID_INPUT",
+          'animation must be an exact current Studio preset identifier for the selected rig_type. Use tripo_list_animation_presets or tripo_get_model include ["animation_presets"].',
+          { safeToRetryPaidOperation: true, stage: "operation_stage" }
+        );
+      }
+      const pf = await preflight(ctx, "animation_retarget", input2.project_id, {
+        rigType: input2.rig_type
+      });
+      return {
+        capabilities: pf.capabilities,
+        metadata: { preset_catalog_verified: true },
+        payload: {
+          animations: [input2.animation],
+          model_version: STUDIO_DEFAULT_MODEL_VERSION,
+          project_id: input2.project_id,
+          rig_type: input2.rig_type
+        },
+        snapshots: [],
+        warnings: pf.warnings
+      };
+    },
+    submitRemote: postprocessSubmit("animation_retarget"),
+    syncRemote: postprocessSync()
+  }
+};
 
 // src/ops/studio-extras.mjs
 var id = external_exports.string().regex(/^[^\s\u0000-\u001f\u007f]{1,256}$/);
@@ -102519,10 +102567,10 @@ var studioExtraOperations = {
         );
       const sourceTextures = await sourceTextureInfo(ctx, detail, operatorId);
       const sourceTextureSize = sourceTextures.source_texture_size;
-      const textureSize = input2.texture_size ?? [8192, 4096, 2048, 1024, 512].find(
+      const textureSize2 = input2.texture_size ?? [8192, 4096, 2048, 1024, 512].find(
         (size) => size <= sourceTextureSize
       ) ?? 512;
-      if (textureSize > Math.max(512, sourceTextureSize))
+      if (textureSize2 > Math.max(512, sourceTextureSize))
         throw new TripoError(
           "INVALID_INPUT",
           "Export resolution cannot exceed the project's current texture resolution; upscale its textures first."
@@ -102532,7 +102580,7 @@ var studioExtraOperations = {
       return {
         payload: {
           ...params,
-          texture_size: textureSize,
+          texture_size: textureSize2,
           name,
           format: input2.format === "glb" ? "gltf" : input2.format,
           model_version: "default"
@@ -102540,7 +102588,7 @@ var studioExtraOperations = {
         metadata: {
           source_operator_id: operatorId,
           output_format: input2.format,
-          requested_texture_size: textureSize,
+          requested_texture_size: textureSize2,
           ...sourceTextures
         },
         snapshots: []
@@ -103167,7 +103215,7 @@ import { createHash as createHash6 } from "node:crypto";
 import { readFile as readFile8, stat as stat5, writeFile as writeFile3 } from "node:fs/promises";
 import path10 from "node:path";
 
-// node_modules/.pnpm/three@0.183.2/node_modules/three/examples/jsm/libs/meshopt_decoder.module.js
+// ../../../../../../../Users/bugyaluwang/project/tripo-studio-plugin/node_modules/.pnpm/three@0.183.2/node_modules/three/examples/jsm/libs/meshopt_decoder.module.js
 var MeshoptDecoder = (function() {
   var wasm_base = "b9H79Tebbbe8Fv9Gbb9Gvuuuuueu9Giuuub9Geueu9Giuuueuixkbeeeddddillviebeoweuec:W:Odkr;Neqo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbeY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVbdE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbiL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtblK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949WboY9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVJ9V29VVbrl79IV9Rbwq;lZkdbk;jYi5ud9:du8Jjjjjbcj;kb9Rgv8Kjjjjbc9:hodnalTmbcuhoaiRbbgrc;WeGc:Ge9hmbarcsGgwce0mbc9:hoalcufadcd4cbawEgDadfgrcKcaawEgqaraq0Egk6mbaicefhxcj;abad9Uc;WFbGcjdadca0EhmaialfgPar9Rgoadfhsavaoadz:jjjjbgzceVhHcbhOdndninaeaO9nmeaPax9RaD6mdamaeaO9RaOamfgoae6EgAcsfglc9WGhCabaOad2fhXaAcethQaxaDfhiaOaeaoaeao6E9RhLalcl4cifcd4hKazcj;cbfaAfhYcbh8AazcjdfhEaHh3incbhodnawTmbaxa8Acd4fRbbhokaocFeGh5cbh8Eazcj;cbfhqinaih8Fdndndndna5a8Ecet4ciGgoc9:fPdebdkaPa8F9RaA6mrazcj;cbfa8EaA2fa8FaAz:jjjjb8Aa8FaAfhixdkazcj;cbfa8EaA2fcbaAz:kjjjb8Aa8FhixekaPa8F9RaK6mva8FaKfhidnaCTmbaPai9RcK6mbaocdtc:q1jjbfcj1jjbawEhaczhrcbhlinargoc9Wfghaqfhrdndndndndndnaaa8Fahco4fRbbalcoG4ciGcdtfydbPDbedvivvvlvkar9cb83bbarcwf9cb83bbxlkarcbaiRbdai8Xbb9c:c:qj:bw9:9c:q;c1:I1e:d9c:b:c:e1z9:gg9cjjjjjz:dg8J9qE86bbaqaofgrcGfag9c8F1:NghcKtc8F91aicdfa8J9c8N1:Nfg8KRbbG86bbarcVfcba8KahcjeGcr4fghRbbag9cjjjjjl:dg8J9qE86bbarc7fcbaha8J9c8L1:NfghRbbag9cjjjjjd:dg8J9qE86bbarctfcbaha8J9c8K1:NfghRbbag9cjjjjje:dg8J9qE86bbarc91fcbaha8J9c8J1:NfghRbbag9cjjjj;ab:dg8J9qE86bbarc4fcbaha8J9cg1:NfghRbbag9cjjjja:dg8J9qE86bbarc93fcbaha8J9ch1:NfghRbbag9cjjjjz:dgg9qE86bbarc94fcbahag9ca1:NfghRbbai8Xbe9c:c:qj:bw9:9c:q;c1:I1e:d9c:b:c:e1z9:gg9cjjjjjz:dg8J9qE86bbarc95fag9c8F1:NgicKtc8F91aha8J9c8N1:NfghRbbG86bbarc96fcbahaicjeGcr4fgiRbbag9cjjjjjl:dg8J9qE86bbarc97fcbaia8J9c8L1:NfgiRbbag9cjjjjjd:dg8J9qE86bbarc98fcbaia8J9c8K1:NfgiRbbag9cjjjjje:dg8J9qE86bbarc99fcbaia8J9c8J1:NfgiRbbag9cjjjj;ab:dg8J9qE86bbarc9:fcbaia8J9cg1:NfgiRbbag9cjjjja:dg8J9qE86bbarcufcbaia8J9ch1:NfgiRbbag9cjjjjz:dgg9qE86bbaiag9ca1:NfhixikaraiRblaiRbbghco4g8Ka8KciSg8KE86bbaqaofgrcGfaiclfa8Kfg8KRbbahcl4ciGg8La8LciSg8LE86bbarcVfa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc7fa8Ka8Lfg8KRbbahciGghahciSghE86bbarctfa8Kahfg8KRbbaiRbeghco4g8La8LciSg8LE86bbarc91fa8Ka8Lfg8KRbbahcl4ciGg8La8LciSg8LE86bbarc4fa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc93fa8Ka8Lfg8KRbbahciGghahciSghE86bbarc94fa8Kahfg8KRbbaiRbdghco4g8La8LciSg8LE86bbarc95fa8Ka8Lfg8KRbbahcl4ciGg8La8LciSg8LE86bbarc96fa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc97fa8Ka8Lfg8KRbbahciGghahciSghE86bbarc98fa8KahfghRbbaiRbigico4g8Ka8KciSg8KE86bbarc99faha8KfghRbbaicl4ciGg8Ka8KciSg8KE86bbarc9:faha8KfghRbbaicd4ciGg8Ka8KciSg8KE86bbarcufaha8KfgrRbbaiciGgiaiciSgiE86bbaraifhixdkaraiRbwaiRbbghcl4g8Ka8KcsSg8KE86bbaqaofgrcGfaicwfa8Kfg8KRbbahcsGghahcsSghE86bbarcVfa8KahfghRbbaiRbeg8Kcl4g8La8LcsSg8LE86bbarc7faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarctfaha8KfghRbbaiRbdg8Kcl4g8La8LcsSg8LE86bbarc91faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc4faha8KfghRbbaiRbig8Kcl4g8La8LcsSg8LE86bbarc93faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc94faha8KfghRbbaiRblg8Kcl4g8La8LcsSg8LE86bbarc95faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc96faha8KfghRbbaiRbvg8Kcl4g8La8LcsSg8LE86bbarc97faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc98faha8KfghRbbaiRbog8Kcl4g8La8LcsSg8LE86bbarc99faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc9:faha8KfghRbbaiRbrgicl4g8Ka8KcsSg8KE86bbarcufaha8KfgrRbbaicsGgiaicsSgiE86bbaraifhixekarai8Pbb83bbarcwfaicwf8Pbb83bbaiczfhikdnaoaC9pmbalcdfhlaoczfhraPai9RcL0mekkaoaC6moaimexokaCmva8FTmvkaqaAfhqa8Ecefg8Ecl9hmbkdndndndnawTmbasa8Acd4fRbbgociGPlbedrbkaATmdaza8Afh8Fazcj;cbfhhcbh8EaEhaina8FRbbhraahocbhlinaoahalfRbbgqce4cbaqceG9R7arfgr86bbaoadfhoaAalcefgl9hmbkaacefhaa8Fcefh8FahaAfhha8Ecefg8Ecl9hmbxikkaATmeaza8Afhaazcj;cbfhhcbhoceh8EaYh8FinaEaofhlaa8Vbbhrcbhoinala8FaofRbbcwtahaofRbbgqVc;:FiGce4cbaqceG9R7arfgr87bbaladfhlaLaocefgofmbka8FaQfh8FcdhoaacdfhaahaQfhha8EceGhlcbh8EalmbxdkkaATmbcbaocl49Rh8Eaza8AfRbbhqcwhoa3hlinalRbbaotaqVhqalcefhlaocwfgoca9hmbkcbhhaEh8FaYhainazcj;cbfahfRbbhrcwhoaahlinalRbbaotarVhralaAfhlaocwfgoca9hmbkara8E93aq7hqcbhoa8Fhlinalaqao486bbalcefhlaocwfgoca9hmbka8Fadfh8FaacefhaahcefghaA9hmbkkaEclfhEa3clfh3a8Aclfg8Aad6mbkaXazcjdfaAad2z:jjjjb8AazazcjdfaAcufad2fadz:jjjjb8AaAaOfhOaihxaimbkc9:hoxdkcbc99aPax9RakSEhoxekc9:hokavcj;kbf8Kjjjjbaok:XseHu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnaeci9UgrcHfal0mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgDce0mbavc;abfcFecjez:kjjjb8AavcUf9cu83ibavc8Wf9cu83ibavcyf9cu83ibavcaf9cu83ibavcKf9cu83ibavczf9cu83ibav9cu83iwav9cu83ibaialfc9WfhqaicefgwarfhldnaeTmbcmcsaDceSEhkcbhxcbhmcbhrcbhicbhoindnalaq9nmbc9:hoxikdndnawRbbgDc;Ve0mbavc;abfaoaDcu7gPcl4fcsGcitfgsydlhzasydbhHdndnaDcsGgsak9pmbavaiaPfcsGcdtfydbaxasEhDaxasTgOfhxxekdndnascsSmbcehOasc987asamffcefhDxekalcefhDal8SbbgscFeGhPdndnascu9mmbaDhlxekalcvfhlaPcFbGhPcrhsdninaD8SbbgOcFbGastaPVhPaOcu9kmeaDcefhDascrfgsc8J9hmbxdkkaDcefhlkcehOaPce4cbaPceG9R7amfhDkaDhmkavc;abfaocitfgsaDBdbasazBdlavaicdtfaDBdbavc;abfaocefcsGcitfgsaHBdbasaDBdlaocdfhoaOaifhidnadcd9hmbabarcetfgsaH87ebasclfaD87ebascdfaz87ebxdkabarcdtfgsaHBdbascwfaDBdbasclfazBdbxekdnaDcpe0mbaxcefgOavaiaqaDcsGfRbbgscl49RcsGcdtfydbascz6gPEhDavaias9RcsGcdtfydbaOaPfgzascsGgOEhsaOThOdndnadcd9hmbabarcetfgHax87ebaHclfas87ebaHcdfaD87ebxekabarcdtfgHaxBdbaHcwfasBdbaHclfaDBdbkavaicdtfaxBdbavc;abfaocitfgHaDBdbaHaxBdlavaicefgicsGcdtfaDBdbavc;abfaocefcsGcitfgHasBdbaHaDBdlavaiaPfgicsGcdtfasBdbavc;abfaocdfcsGcitfgDaxBdbaDasBdlaocifhoaiaOfhiazaOfhxxekaxcbalRbbgHEgAaDc;:eSgDfhzaHcsGhCaHcl4hXdndnaHcs0mbazcefhOxekazhOavaiaX9RcsGcdtfydbhzkdndnaCmbaOcefhxxekaOhxavaiaH9RcsGcdtfydbhOkdndnaDTmbalcefhDxekalcdfhDal8SbegPcFeGhsdnaPcu9kmbalcofhAascFbGhscrhldninaD8SbbgPcFbGaltasVhsaPcu9kmeaDcefhDalcrfglc8J9hmbkaAhDxekaDcefhDkasce4cbasceG9R7amfgmhAkdndnaXcsSmbaDhsxekaDcefhsaD8SbbglcFeGhPdnalcu9kmbaDcvfhzaPcFbGhPcrhldninas8SbbgDcFbGaltaPVhPaDcu9kmeascefhsalcrfglc8J9hmbkazhsxekascefhskaPce4cbaPceG9R7amfgmhzkdndnaCcsSmbashlxekascefhlas8SbbgDcFeGhPdnaDcu9kmbascvfhOaPcFbGhPcrhDdninal8SbbgscFbGaDtaPVhPascu9kmealcefhlaDcrfgDc8J9hmbkaOhlxekalcefhlkaPce4cbaPceG9R7amfgmhOkdndnadcd9hmbabarcetfgDaA87ebaDclfaO87ebaDcdfaz87ebxekabarcdtfgDaABdbaDcwfaOBdbaDclfazBdbkavc;abfaocitfgDazBdbaDaABdlavaicdtfaABdbavc;abfaocefcsGcitfgDaOBdbaDazBdlavaicefgicsGcdtfazBdbavc;abfaocdfcsGcitfgDaABdbaDaOBdlavaiaHcz6aXcsSVfgicsGcdtfaOBdbaiaCTaCcsSVfhiaocifhokawcefhwaocsGhoaicsGhiarcifgrae6mbkkcbc99alaqSEhokavc;aef8Kjjjjbaok:clevu8Jjjjjbcz9Rhvdnaecvfal9nmbc9:skdnaiRbbc;:eGc;qeSmbcuskav9cb83iwaicefhoaialfc98fhrdnaeTmbdnadcdSmbcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcdtfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgiBdbalaiBdbawcefgwae9hmbxdkkcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcetfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgi87ebalaiBdbawcefgwae9hmbkkcbc99aoarSEk:Lvoeue99dud99eud99dndnadcl9hmbaeTmeindndnabcdfgd8Sbb:Yab8Sbbgi:Ygl:l:tabcefgv8Sbbgo:Ygr:l:tgwJbb;:9cawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai86bbdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad86bbdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad86bbabclfhbaecufgembxdkkaeTmbindndnabclfgd8Ueb:Yab8Uebgi:Ygl:l:tabcdfgv8Uebgo:Ygr:l:tgwJb;:FSawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai87ebdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad87ebdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad87ebabcwfhbaecufgembkkk::ioiue99dud99dud99dnaeTmbcbhiabhlindndnal8Uebgv:YgoJ:ji:1Salcof8UebgrciVgw:Y:vgDNJbbbZJbbb:;avcu9kEMgq:lJbbb9p9DTmbaq:Ohkxekcjjjj94hkkalclf8Uebhvalcdf8UebhxabaiarcefciGfcetfak87ebdndnax:YgqaDNJbbbZJbbb:;axcu9kEMgm:lJbbb9p9DTmbam:Ohxxekcjjjj94hxkabaiarciGfgkcd7cetfax87ebdndnav:YgmaDNJbbbZJbbb:;avcu9kEMgP:lJbbb9p9DTmbaP:Ohvxekcjjjj94hvkabaiarcufciGfcetfav87ebdndnawaw2:ZgPaPMaoaoN:taqaqN:tamamN:tgoJbbbbaoJbbbb9GE:raDNJbbbZMgD:lJbbb9p9DTmbaD:Ohrxekcjjjj94hrkabakcetfar87ebalcwfhlaiclfhiaecufgembkkk9mbdnadcd4ae2gdTmbinababydbgecwtcw91:Yaece91cjjj98Gcjjj;8if::NUdbabclfhbadcufgdmbkkk:Tvirud99eudndnadcl9hmbaeTmeindndnabRbbgiabcefgl8Sbbgvabcdfgo8Sbbgrf9R:YJbbuJabcifgwRbbgdce4adVgDcd4aDVgDcl4aDVgD:Z:vgqNJbbbZMgk:lJbbb9p9DTmbak:Ohxxekcjjjj94hxkaoax86bbdndnaraif:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohoxekcjjjj94hokalao86bbdndnavaifar9R:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohixekcjjjj94hikabai86bbdndnaDadcetGadceGV:ZaqNJbbbZMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkawad86bbabclfhbaecufgembxdkkaeTmbindndnab8Vebgiabcdfgl8Uebgvabclfgo8Uebgrf9R:YJbFu9habcofgw8Vebgdce4adVgDcd4aDVgDcl4aDVgDcw4aDVgD:Z:vgqNJbbbZMgk:lJbbb9p9DTmbak:Ohxxekcjjjj94hxkaoax87ebdndnaraif:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohoxekcjjjj94hokalao87ebdndnavaifar9R:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohixekcjjjj94hikabai87ebdndnaDadcetGadceGV:ZaqNJbbbZMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkawad87ebabcwfhbaecufgembkkk9teiucbcbyd:K1jjbgeabcifc98GfgbBd:K1jjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaik;teeeudndnaeabVciGTmbabhixekdndnadcz9pmbabhixekabhiinaiaeydbBdbaiaeydlBdlaiaeydwBdwaiaeydxBdxaeczfheaiczfhiadc9Wfgdcs0mbkkadcl6mbinaiaeydbBdbaeclfheaiclfhiadc98fgdci0mbkkdnadTmbinaiaeRbb86bbaicefhiaecefheadcufgdmbkkabk:3eedudndnabciGTmbabhixekaecFeGc:b:c:ew2hldndnadcz9pmbabhixekabhiinaialBdxaialBdwaialBdlaialBdbaiczfhiadc9Wfgdcs0mbkkadcl6mbinaialBdbaiclfhiadc98fgdci0mbkkdnadTmbinaiae86bbaicefhiadcufgdmbkkabkk81dbcjwk8Kbbbbdbbblbbbwbbbbbbbebbbdbbblbbbwbbbbc:Kwkl8WNbb";
   var wasm_simd = "b9H79TebbbeKl9Gbb9Gvuuuuueu9Giuuub9Geueuixkbbebeeddddilve9Weeeviebeoweuec:q:6dkr;Neqo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbdY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVblE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtboK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbrL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949WbwY9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVJ9V29VVbDl79IV9Rbqq:Ctklbzik9:evu8Jjjjjbcz9Rhbcbheincbhdcbhiinabcwfadfaicjuaead4ceGglE86bbaialfhiadcefgdcw9hmbkaec:q:yjjbfai86bbaecitc:q1jjbfab8Piw83ibaecefgecjd9hmbkk:183lYud97dur978Jjjjjbcj;kb9Rgv8Kjjjjbc9:hodnalTmbcuhoaiRbbgrc;WeGc:Ge9hmbarcsGgwce0mbc9:hoalcufadcd4cbawEgDadfgrcKcaawEgqaraq0Egk6mbaicefhxavaialfgmar9Rgoad;8qbbcj;abad9Uc;WFbGcjdadca0EhPdndndnadTmbaoadfhscbhzinaeaz9nmdamax9RaD6miabazad2fhHaxaDfhOaPaeaz9RazaPfae6EgAcsfgocl4cifcd4hCavcj;cbfaoc9WGgXcetfhQavcj;cbfaXci2fhLavcj;cbfaXfhKcbhYaoc;ab6h8AincbhodnawTmbaxaYcd4fRbbhokaocFeGhEcbh3avcj;cbfh5indndndndnaEa3cet4ciGgoc9:fPdebdkamaO9RaX6mwavcj;cbfa3aX2faOaX;8qbbaOaAfhOxdkavcj;cbfa3aX2fcbaX;8kbxekamaO9RaC6moaoclVcbawEhraOaCfhocbhidna8Ambamao9Rc;Gb6mbcbhlina5alfhidndndndndndnaOalco4fRbbgqciGarfPDbedibledibkaipxbbbbbbbbbbbbbbbbpklbxlkaiaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaoclffahc:q:yjjbfRbbfhoxikaiaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaocwffahc:q:yjjbfRbbfhoxdkaiaopbbbpklbaoczfhoxekaiaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaaaocdffahc:q:yjjbfRbbfhokdndndndndndnaqcd4ciGarfPDbedibledibkaiczfpxbbbbbbbbbbbbbbbbpklbxlkaiczfaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaoclffahc:q:yjjbfRbbfhoxikaiczfaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaocwffahc:q:yjjbfRbbfhoxdkaiczfaopbbbpklbaoczfhoxekaiczfaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaaaocdffahc:q:yjjbfRbbfhokdndndndndndnaqcl4ciGarfPDbedibledibkaicafpxbbbbbbbbbbbbbbbbpklbxlkaicafaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaoclffahc:q:yjjbfRbbfhoxikaicafaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaaaocwffahc:q:yjjbfRbbfhoxdkaicafaopbbbpklbaoczfhoxekaicafaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaaaocdffahc:q:yjjbfRbbfhokdndndndndndnaqco4arfPDbedibledibkaic8Wfpxbbbbbbbbbbbbbbbbpklbxlkaic8Wfaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngicitc:q1jjbfpbibaic:q:yjjbfRbbgipsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Ngqcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaiaoclffaqc:q:yjjbfRbbfhoxikaic8Wfaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngicitc:q1jjbfpbibaic:q:yjjbfRbbgipsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Ngqcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spklbaiaocwffaqc:q:yjjbfRbbfhoxdkaic8Wfaopbbbpklbaoczfhoxekaic8WfaopbbdaoRbbgicitc:q1jjbfpbibaic:q:yjjbfRbbgipsaoRbegqcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpklbaiaocdffaqc:q:yjjbfRbbfhokalc;abfhialcjefaX0meaihlamao9Rc;Fb0mbkkdnaiaX9pmbaici4hlinamao9RcK6mwa5aifhqdndndndndndnaOaico4fRbbalcoG4ciGarfPDbedibledibkaqpxbbbbbbbbbbbbbbbbpkbbxlkaqaopbblaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLg8Ecdp:mea8EpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9og8Fpxiiiiiiiiiiiiiiiip8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spkbbaaaoclffahc:q:yjjbfRbbfhoxikaqaopbbwaopbbbg8Eclp:mea8EpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9og8Fpxssssssssssssssssp8Jg8Ep5b9cjF;8;4;W;G;ab9:9cU1:Ngacitc:q1jjbfpbibaac:q:yjjbfRbbgapsa8Ep5e9cjF;8;4;W;G;ab9:9cU1:Nghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPa8Fa8Ep9spkbbaaaocwffahc:q:yjjbfRbbfhoxdkaqaopbbbpkbbaoczfhoxekaqaopbbdaoRbbgacitc:q1jjbfpbibaac:q:yjjbfRbbgapsaoRbeghcitc:q1jjbfpbibp9UpmbedilvorzHOACXQLpPpkbbaaaocdffahc:q:yjjbfRbbfhokalcdfhlaiczfgiaX6mbkkaohOaoTmoka5aXfh5a3cefg3cl9hmbkdndndndnawTmbasaYcd4fRbbglciGPlbedwbkaXTmdavcjdfaYfhlavaYfpbdbhgcbhoinalavcj;cbfaofpblbg8JaKaofpblbg8KpmbzeHdOiAlCvXoQrLg8LaQaofpblbg8MaLaofpblbg8NpmbzeHdOiAlCvXoQrLgypmbezHdiOAlvCXorQLg8Ecep9Ta8Epxeeeeeeeeeeeeeeeeg8Fp9op9Hp9rg8Eagp9Uggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp9Uggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp9Uggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9Abbbaladfglaga8LaypmwDKYqk8AExm35Ps8E8Fg8Ecep9Ta8Ea8Fp9op9Hp9rg8Ep9Uggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp9Uggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp9Uggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9Abbbaladfglaga8Ja8KpmwKDYq8AkEx3m5P8Es8Fg8Ja8Ma8NpmwKDYq8AkEx3m5P8Es8Fg8KpmbezHdiOAlvCXorQLg8Ecep9Ta8Ea8Fp9op9Hp9rg8Ep9Uggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp9Uggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp9Uggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9Abbbaladfglaga8Ja8KpmwDKYqk8AExm35Ps8E8Fg8Ecep9Ta8Ea8Fp9op9Hp9rg8Ep9Ug8Fp9Abbbaladfgla8Fa8Ea8Epmlvorlvorlvorlvorp9Ug8Fp9Abbbaladfgla8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9Ug8Fp9Abbbaladfgla8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9Uggp9AbbbaladfhlaoczfgoaX6mbxikkaXTmeavcjdfaYfhlavaYfpbdbhgcbhoinalavcj;cbfaofpblbg8JaKaofpblbg8KpmbzeHdOiAlCvXoQrLg8LaQaofpblbg8MaLaofpblbg8NpmbzeHdOiAlCvXoQrLgypmbezHdiOAlvCXorQLg8Ecep:nea8Epxebebebebebebebebg8Fp9op:bep9rg8Eagp:oeggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp:oeggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp:oeggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9Abbbaladfglaga8LaypmwDKYqk8AExm35Ps8E8Fg8Ecep:nea8Ea8Fp9op:bep9rg8Ep:oeggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp:oeggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp:oeggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9Abbbaladfglaga8Ja8KpmwKDYq8AkEx3m5P8Es8Fg8Ja8Ma8NpmwKDYq8AkEx3m5P8Es8Fg8KpmbezHdiOAlvCXorQLg8Ecep:nea8Ea8Fp9op:bep9rg8Ep:oeggp9Abbbaladfglaga8Ea8Epmlvorlvorlvorlvorp:oeggp9Abbbaladfglaga8Ea8EpmwDqkwDqkwDqkwDqkp:oeggp9Abbbaladfglaga8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9Abbbaladfglaga8Ja8KpmwDKYqk8AExm35Ps8E8Fg8Ecep:nea8Ea8Fp9op:bep9rg8Ep:oeg8Fp9Abbbaladfgla8Fa8Ea8Epmlvorlvorlvorlvorp:oeg8Fp9Abbbaladfgla8Fa8Ea8EpmwDqkwDqkwDqkwDqkp:oeg8Fp9Abbbaladfgla8Fa8Ea8EpmxmPsxmPsxmPsxmPsp:oeggp9AbbbaladfhlaoczfgoaX6mbxdkkaXTmbcbhocbalcl4gl9Rc8FGhiavcjdfaYfhravaYfpbdbh8Finaravcj;cbfaofpblbggaKaofpblbg8JpmbzeHdOiAlCvXoQrLg8KaQaofpblbg8LaLaofpblbg8MpmbzeHdOiAlCvXoQrLg8NpmbezHdiOAlvCXorQLg8Eaip:Rea8Ealp:Sep9qg8Ea8Fp9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9Abbbaradfgra8Fa8Ka8NpmwDKYqk8AExm35Ps8E8Fg8Eaip:Rea8Ealp:Sep9qg8Ep9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9Abbbaradfgra8Faga8JpmwKDYq8AkEx3m5P8Es8Fgga8La8MpmwKDYq8AkEx3m5P8Es8Fg8JpmbezHdiOAlvCXorQLg8Eaip:Rea8Ealp:Sep9qg8Ep9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9Abbbaradfgra8Faga8JpmwDKYqk8AExm35Ps8E8Fg8Eaip:Rea8Ealp:Sep9qg8Ep9rg8Fp9Abbbaradfgra8Fa8Ea8Epmlvorlvorlvorlvorp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmwDqkwDqkwDqkwDqkp9rg8Fp9Abbbaradfgra8Fa8Ea8EpmxmPsxmPsxmPsxmPsp9rg8Fp9AbbbaradfhraoczfgoaX6mbkkaYclfgYad6mbkaHavcjdfaAad2;8qbbavavcjdfaAcufad2fad;8qbbaAazfhzc9:hoaOhxaOmbxlkkaeTmbaDalfhrcbhocuhlinaralaD9RglfaD6mdaPaeao9RaoaPfae6Eaofgoae6mbkaial9Rhxkcbc99amax9RakSEhoxekc9:hokavcj;kbf8Kjjjjbaokwbz:bjjjbk:TseHu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnaeci9UgrcHfal0mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgDce0mbavc;abfcFecje;8kbavcUf9cu83ibavc8Wf9cu83ibavcyf9cu83ibavcaf9cu83ibavcKf9cu83ibavczf9cu83ibav9cu83iwav9cu83ibaialfc9WfhqaicefgwarfhldnaeTmbcmcsaDceSEhkcbhxcbhmcbhrcbhicbhoindnalaq9nmbc9:hoxikdndnawRbbgDc;Ve0mbavc;abfaoaDcu7gPcl4fcsGcitfgsydlhzasydbhHdndnaDcsGgsak9pmbavaiaPfcsGcdtfydbaxasEhDaxasTgOfhxxekdndnascsSmbcehOasc987asamffcefhDxekalcefhDal8SbbgscFeGhPdndnascu9mmbaDhlxekalcvfhlaPcFbGhPcrhsdninaD8SbbgOcFbGastaPVhPaOcu9kmeaDcefhDascrfgsc8J9hmbxdkkaDcefhlkcehOaPce4cbaPceG9R7amfhDkaDhmkavc;abfaocitfgsaDBdbasazBdlavaicdtfaDBdbavc;abfaocefcsGcitfgsaHBdbasaDBdlaocdfhoaOaifhidnadcd9hmbabarcetfgsaH87ebasclfaD87ebascdfaz87ebxdkabarcdtfgsaHBdbascwfaDBdbasclfazBdbxekdnaDcpe0mbaxcefgOavaiaqaDcsGfRbbgscl49RcsGcdtfydbascz6gPEhDavaias9RcsGcdtfydbaOaPfgzascsGgOEhsaOThOdndnadcd9hmbabarcetfgHax87ebaHclfas87ebaHcdfaD87ebxekabarcdtfgHaxBdbaHcwfasBdbaHclfaDBdbkavaicdtfaxBdbavc;abfaocitfgHaDBdbaHaxBdlavaicefgicsGcdtfaDBdbavc;abfaocefcsGcitfgHasBdbaHaDBdlavaiaPfgicsGcdtfasBdbavc;abfaocdfcsGcitfgDaxBdbaDasBdlaocifhoaiaOfhiazaOfhxxekaxcbalRbbgHEgAaDc;:eSgDfhzaHcsGhCaHcl4hXdndnaHcs0mbazcefhOxekazhOavaiaX9RcsGcdtfydbhzkdndnaCmbaOcefhxxekaOhxavaiaH9RcsGcdtfydbhOkdndnaDTmbalcefhDxekalcdfhDal8SbegPcFeGhsdnaPcu9kmbalcofhAascFbGhscrhldninaD8SbbgPcFbGaltasVhsaPcu9kmeaDcefhDalcrfglc8J9hmbkaAhDxekaDcefhDkasce4cbasceG9R7amfgmhAkdndnaXcsSmbaDhsxekaDcefhsaD8SbbglcFeGhPdnalcu9kmbaDcvfhzaPcFbGhPcrhldninas8SbbgDcFbGaltaPVhPaDcu9kmeascefhsalcrfglc8J9hmbkazhsxekascefhskaPce4cbaPceG9R7amfgmhzkdndnaCcsSmbashlxekascefhlas8SbbgDcFeGhPdnaDcu9kmbascvfhOaPcFbGhPcrhDdninal8SbbgscFbGaDtaPVhPascu9kmealcefhlaDcrfgDc8J9hmbkaOhlxekalcefhlkaPce4cbaPceG9R7amfgmhOkdndnadcd9hmbabarcetfgDaA87ebaDclfaO87ebaDcdfaz87ebxekabarcdtfgDaABdbaDcwfaOBdbaDclfazBdbkavc;abfaocitfgDazBdbaDaABdlavaicdtfaABdbavc;abfaocefcsGcitfgDaOBdbaDazBdlavaicefgicsGcdtfazBdbavc;abfaocdfcsGcitfgDaABdbaDaOBdlavaiaHcz6aXcsSVfgicsGcdtfaOBdbaiaCTaCcsSVfhiaocifhokawcefhwaocsGhoaicsGhiarcifgrae6mbkkcbc99alaqSEhokavc;aef8Kjjjjbaok:clevu8Jjjjjbcz9Rhvdnaecvfal9nmbc9:skdnaiRbbc;:eGc;qeSmbcuskav9cb83iwaicefhoaialfc98fhrdnaeTmbdnadcdSmbcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcdtfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgiBdbalaiBdbawcefgwae9hmbxdkkcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcetfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgi87ebalaiBdbawcefgwae9hmbkkcbc99aoarSEk:2Pliur97eue978Jjjjjbc8W9Rhiaec98Ghldndnadcl9hmbdnalTmbcbhvabhdinadadpbbbgocKp:RecKp:Sep;6egraocwp:RecKp:Sep;6earp;Geaoczp:RecKp:Sep;6egwp;Gep;Kep;LegDpxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgkp9op9rp;Kegrpxbb;:9cbb;:9cbb;:9cbb;:9cararp;MeaDaDp;Meawaqawakp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFbbbFbbbFbbbFbbbp9oaopxbbbFbbbFbbbFbbbFp9op9qarawp;Meaqp;Kecwp:RepxbFbbbFbbbFbbbFbbp9op9qaDawp;Meaqp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qpkbbadczfhdavclfgval6mbkkalaeSmeaipxbbbbbbbbbbbbbbbbgqpklbaiabalcdtfgdaeciGglcdtgv;8qbbdnalTmbaiaipblbgocKp:RecKp:Sep;6egraocwp:RecKp:Sep;6earp;Geaoczp:RecKp:Sep;6egwp;Gep;Kep;LegDaqp:2egqarpxbbbjbbbjbbbjbbbjgkp9op9rp;Kegrpxbb;:9cbb;:9cbb;:9cbb;:9cararp;MeaDaDp;Meawaqawakp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFbbbFbbbFbbbFbbbp9oaopxbbbFbbbFbbbFbbbFp9op9qarawp;Meaqp;Kecwp:RepxbFbbbFbbbFbbbFbbp9op9qaDawp;Meaqp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qpklbkadaiav;8qbbskaipxFubbFubbFubbFubbgxpklbdnalTmbcbhvabhdinadczfgmampbbbgopxbbbbbbFFbbbbbbFFgkp9oadpbbbgDaopmbediwDqkzHOAKY8AEgwczp:Reczp:Sep;6egraipblbaDaopmlvorxmPsCXQL358E8Fp9op;6eawczp:Sep;6egwp;Gearp;Gep;Kep;Legopxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgPp9op9rp;Kegrpxb;:FSb;:FSb;:FSb;:FSararp;Meaoaop;MeawaqawaPp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFFbbFFbbFFbbFFbbp9oaoawp;Meaqp;Keczp:Rep9qgoarawp;Meaqp;KepxFFbbFFbbFFbbFFbbp9ogrpmwDKYqk8AExm35Ps8E8Fp9qpkbbadaDakp9oaoarpmbezHdiOAlvCXorQLp9qpkbbadcafhdavclfgval6mbkkalaeSmbaiczfpxbbbbbbbbbbbbbbbbgopklbaiaopklbaiabalcitfgdaeciGglcitgv;8qbbaiaxpkladnalTmbaiaipblzgopxbbbbbbFFbbbbbbFFgkp9oaipblbgDaopmbediwDqkzHOAKY8AEgwczp:Reczp:Sep;6egraipblaaDaopmlvorxmPsCXQL358E8Fp9op;6eawczp:Sep;6egwp;Gearp;Gep;Kep;Legopxbbbbbbbbbbbbbbbbp:2egqarpxbbbjbbbjbbbjbbbjgPp9op9rp;Kegrpxb;:FSb;:FSb;:FSb;:FSararp;Meaoaop;MeawaqawaPp9op9rp;Kegrarp;Mep;Kep;Kep;Jep;Negwp;Mepxbbn0bbn0bbn0bbn0gqp;KepxFFbbFFbbFFbbFFbbp9oaoawp;Meaqp;Keczp:Rep9qgoarawp;Meaqp;KepxFFbbFFbbFFbbFFbbp9ogrpmwDKYqk8AExm35Ps8E8Fp9qpklzaiaDakp9oaoarpmbezHdiOAlvCXorQLp9qpklbkadaiav;8qbbkk:Iwllue97euo978Jjjjjbca9Rhidnaec98GglTmbcbhvabhoinaocKfpx:ji:1S:ji:1S:ji:1S:ji:1SaopbbbgraoczfgwpbbbgDpmlvorxmPsCXQL358E8Fgqczp:Segkpxibbbibbbibbbibbbp9qgxp;6ep;Negmaxaxp:1ep;7egxaxp;KearaDpmbediwDqkzHOAKY8AEgxczp:Reczp:Sep;6egrarp;Meaxczp:Sep;6egDaDp;Meaqczp:Reczp:Sep;6egqaqp;Mep;Kep;Kep;Lepxbbbbbbbbbbbbbbbbp:4ep;Jep;Mepxbbn0bbn0bbn0bbn0gxp;KepxFFbbFFbbFFbbFFbbgPp9oamaDp;Meaxp;Keczp:Rep9qgDamarp;Meaxp;KeaPp9oamaqp;Meaxp;Keczp:Rep9qgxpmwDKYqk8AExm35Ps8E8Fgrp5eakclp:RegmpEi:T:j83ibawarp5bampEd:T:j83ibaocwfaDaxpmbezHdiOAlvCXorQLgxp5eampEe:T:j83ibaoaxp5bampEb:T:j83ibaocafhoavclfgval6mbkkdnalaeSmbaiczfpxbbbbbbbbbbbbbbbbgmpklbaiampklbaiabalcitfgoaeciGgvcitgw;8qbbdnavTmbaipx:ji:1S:ji:1S:ji:1S:ji:1SaipblbgraipblzgDpmlvorxmPsCXQL358E8Fgqczp:Segkpxibbbibbbibbbibbbp9qgxp;6ep;Negmaxaxp:1ep;7egxaxp;KearaDpmbediwDqkzHOAKY8AEgxczp:Reczp:Sep;6egrarp;Meaxczp:Sep;6egDaDp;Meaqczp:Reczp:Sep;6egqaqp;Mep;Kep;Kep;Lepxbbbbbbbbbbbbbbbbp:4ep;Jep;Mepxbbn0bbn0bbn0bbn0gxp;KepxFFbbFFbbFFbbFFbbgPp9oamaDp;Meaxp;Keczp:Rep9qgDamarp;Meaxp;KeaPp9oamaqp;Meaxp;Keczp:Rep9qgxpmwDKYqk8AExm35Ps8E8Fgrp5eakclp:RegmpEi:T:j83iKaiarp5bampEd:T:j83izaiaDaxpmbezHdiOAlvCXorQLgxp5eampEe:T:j83iwaiaxp5bampEb:T:j83ibkaoaiaw;8qbbkk;uddiue978Jjjjjbc;ab9Rhidnadcd4ae2glc98GgvTmbcbheabhdinadadpbbbgocwp:Recwp:Sep;6eaocep:SepxbbjFbbjFbbjFbbjFp9opxbbjZbbjZbbjZbbjZp:Uep;Mepkbbadczfhdaeclfgeav6mbkkdnavalSmbaic8WfpxbbbbbbbbbbbbbbbbgopklbaicafaopklbaiczfaopklbaiaopklbaiabavcdtfgdalciGgecdtgv;8qbbdnaeTmbaiaipblbgocwp:Recwp:Sep;6eaocep:SepxbbjFbbjFbbjFbbjFp9opxbbjZbbjZbbjZbbjZp:Uep;Mepklbkadaiav;8qbbkk:CPvdue97euw97eu8Jjjjjbc8W9Rhiaec98Ghldndnadcl9hmbaipxbbbbbbbbbbbbbbbbgvpklbdnalTmbcbhoabhdinadpbbbhradpxbbuJbbuJbbuJbbuJaipblbarcKp:Tep9qgwcep:Seawp9qgDcdp:SeaDp9qgDclp:SeaDp9qgqp;6ep;NegDarcwp:RecKp:SegkarpxFbbbFbbbFbbbFbbbgxp9ogmp:Uep;6ep;Mepxbbn0bbn0bbn0bbn0gPp;Kecwp:RepxbFbbbFbbbFbbbFbbp9oaDamakp:Xearczp:RecKp:Segrp:Uep;6ep;MeaPp;Keaxp9op9qaDamakarp:Uep:Xep;6ep;MeaPp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qaDaqawcep:Rep9oawpxebbbebbbebbbebbbp9op9qp;6ep;MeaPp;KecKp:Rep9qpkbbadczfhdaoclfgoal6mbkkalaeSmeaiavpklaaicafabalcdtfgdaeciGglcdtgo;8qbbaiavpklbdnalTmbaipblahraipxbbuJbbuJbbuJbbuJaipblbarcKp:Tep9qgwcep:Seawp9qgDcdp:SeaDp9qgDclp:SeaDp9qgqp;6ep;NegDarcwp:RecKp:SegkarpxFbbbFbbbFbbbFbbbgxp9ogmp:Uep;6ep;Mepxbbn0bbn0bbn0bbn0gPp;Kecwp:RepxbFbbbFbbbFbbbFbbp9oaDamakp:Xearczp:RecKp:Segrp:Uep;6ep;MeaPp;Keaxp9op9qaDamakarp:Uep:Xep;6ep;MeaPp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qaDaqawcep:Rep9oawpxebbbebbbebbbebbbp9op9qp;6ep;MeaPp;KecKp:Rep9qpklakadaicafao;8qbbskaipxbbbbbbbbbbbbbbbbgvpklbdnalTmbcbhoabhdinadczfgspxbFu9hbFu9hbFu9hbFu9hadpbbbgDaspbbbgPpmlvorxmPsCXQL358E8Fgmczp:Teaipblbp9qgrcep:Searp9qgwcdp:Seawp9qgwclp:Seawp9qgwcwp:Seawp9qgqp;6ep;NegwaDaPpmbediwDqkzHOAKY8AEgDpxFFbbFFbbFFbbFFbbgPp9ogkaDczp:Segxp:Ueamczp:Reczp:Segmp:Xep;6ep;Mepxbbn0bbn0bbn0bbn0gDp;KeaPp9oawakaxamp:Uep:Xep;6ep;MeaDp;Keczp:Rep9qgxawaqarcep:Rep9oarpxebbbebbbebbbebbbp9op9qp;6ep;MeaDp;Keczp:Reawamakp:Uep;6ep;MeaDp;KeaPp9op9qgrpmwDKYqk8AExm35Ps8E8FpkbbadaxarpmbezHdiOAlvCXorQLpkbbadcafhdaoclfgoal6mbkkalaeSmbaiczfpxbbbbbbbbbbbbbbbbgrpklbaiarpklbaiabalcitfgdaeciGglcitgo;8qbbaiavpkladnalTmbaipxbFu9hbFu9hbFu9hbFu9haipblbgDaipblzgPpmlvorxmPsCXQL358E8Fgmczp:Teaipblap9qgrcep:Searp9qgwcdp:Seawp9qgwclp:Seawp9qgwcwp:Seawp9qgqp;6ep;NegwaDaPpmbediwDqkzHOAKY8AEgDpxFFbbFFbbFFbbFFbbgPp9ogkaDczp:Segxp:Ueamczp:Reczp:Segmp:Xep;6ep;Mepxbbn0bbn0bbn0bbn0gDp;KeaPp9oawakaxamp:Uep:Xep;6ep;MeaDp;Keczp:Rep9qgxawaqarcep:Rep9oarpxebbbebbbebbbebbbp9op9qp;6ep;MeaDp;Keczp:Reawamakp:Uep;6ep;MeaDp;KeaPp9op9qgrpmwDKYqk8AExm35Ps8E8FpklzaiaxarpmbezHdiOAlvCXorQLpklbkadaiao;8qbbkk9teiucbcbydj1jjbgeabcifc98GfgbBdj1jjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaikkkebcjwklz:Dbb";
@@ -104676,6 +104724,10 @@ var OperationService = class {
       if (TERMINAL.has(current.status)) return current;
       current.progress = remote.progress ?? current.progress;
       if (remote.result !== void 0) current.result = remote.result;
+      if (remote.warnings?.length)
+        current.warnings = [
+          .../* @__PURE__ */ new Set([...current.warnings ?? [], ...remote.warnings])
+        ];
       const status = remote.status;
       if (status && status !== current.status) {
         current.status = status;
@@ -107450,7 +107502,7 @@ var PricingService = class {
           request_count: task.payload.mode === "batch" ? task.payload.body.image.length : 1
         } : { ...task.payload, ...task.metadata };
         if (kind === "texture.generate" || kind === "texture.upscale")
-          settings.quality = task.payload.texture_quality;
+          settings.quality = publicTextureQuality(task.payload.texture_quality);
         if (kind === "texture.generate")
           settings.style = Boolean(task.payload.style_image);
       } else {

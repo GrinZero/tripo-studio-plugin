@@ -664,6 +664,10 @@ export class OperationService {
       if (TERMINAL.has(current.status)) return current;
       current.progress = remote.progress ?? current.progress;
       if (remote.result !== undefined) current.result = remote.result;
+      if (remote.warnings?.length)
+        current.warnings = [
+          ...new Set([...(current.warnings ?? []), ...remote.warnings]),
+        ];
       const status = remote.status;
       if (status && status !== current.status) {
         current.status = status;

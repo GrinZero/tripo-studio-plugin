@@ -328,6 +328,7 @@ export async function sourceTextureInfo(ctx, detail, operatorId) {
       : 2048,
     source_texture_size_verified: true,
     source_texture_count: textures.length,
+    source_textures: textures,
   };
 }
 export async function prepareExportDownload(runtime, record) {

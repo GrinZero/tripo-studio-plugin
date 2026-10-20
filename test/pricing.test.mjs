@@ -489,3 +489,24 @@ describe("reviewed Studio credit pricing", () => {
     assert.equal(attempts, 2);
   });
 });
+
+it("quotes frozen Studio extreme requests as the public 8K quality", async () => {
+  for (const kind of ["texture.generate", "texture.upscale"]) {
+    const { service } = harness();
+    const expected = await service.quote(kind, { quality: "ultra" });
+    const actual = await service.quote(
+      kind,
+      {},
+      {
+        task: {
+          kind,
+          payload: { texture_quality: "extreme" },
+          metadata: {},
+        },
+      }
+    );
+    assert.equal(actual.estimated_credits, expected.estimated_credits);
+    assert.equal(actual.base_credits, expected.base_credits);
+    assert.equal(actual.effective_settings.quality, "ultra");
+  }
+});
