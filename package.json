@@ -1,6 +1,6 @@
 {
   "name": "tripo-studio-plugin",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "Codex plugin for Tripo Studio member-account image and 3D workflows, shared model/image asset groups, persistent headless auth, durable tasks and provenance.",
   "type": "module",
   "license": "MIT",

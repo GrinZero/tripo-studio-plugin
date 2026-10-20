@@ -89806,7 +89806,7 @@ function errorSnapshot(error113) {
 
 // src/constants.mjs
 var SERVER_NAME = "tripo-studio-plugin";
-var SERVER_VERSION = "0.3.11";
+var SERVER_VERSION = "0.3.12";
 var STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 var STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
 var STUDIO_WORKSPACE_URL = `${STUDIO_ORIGIN}/workspace/generate`;
