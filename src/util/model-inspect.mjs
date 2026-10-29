@@ -240,7 +240,7 @@ function fbxArray(bytes, propertyOffset) {
   return { data, next: end };
 }
 
-function inspectBinaryFbx(bytes, onNode) {
+function inspectBinaryFbx(bytes, onNode, geometry = true) {
   if (
     bytes.length < 27 ||
     !bytes.subarray(0, FBX_BINARY_MAGIC.length).equals(FBX_BINARY_MAGIC)
@@ -255,7 +255,8 @@ function inspectBinaryFbx(bytes, onNode) {
   let faceCount = 0;
   let isUvMapped = false;
   let nodeCount = 0;
-  const visitNode = (offset, parentEnd) => {
+  const visitNode = (offset, parentEnd, parentName, depth = 0) => {
+    if (depth > 128) throw invalid("The FBX hierarchy is too deep.");
     if (offset + headerSize > parentEnd || offset + headerSize > bytes.length)
       return parentEnd;
     const endOffset = wide
@@ -290,10 +291,10 @@ function inspectBinaryFbx(bytes, onNode) {
       throw invalid("The FBX node offsets are inconsistent.");
     }
     const name = bytes.subarray(nameStart, nameEnd).toString("utf8");
-    onNode?.(name, propertyStart, propertyEnd, propertyCount);
+    onNode?.(name, propertyStart, propertyEnd, propertyCount, parentName);
     if (name === "LayerElementUV" || name === "UV" || name === "UVIndex")
       isUvMapped = true;
-    if (name === "PolygonVertexIndex") {
+    if (geometry && name === "PolygonVertexIndex") {
       if (
         propertyCount < 1 ||
         propertyStart >= propertyEnd ||
@@ -324,7 +325,7 @@ function inspectBinaryFbx(bytes, onNode) {
     let child = propertyEnd;
     const childLimit = endOffset - nullSize;
     while (child + headerSize <= childLimit) {
-      const next = visitNode(child, endOffset);
+      const next = visitNode(child, endOffset, name, depth + 1);
       if (next <= child)
         throw invalid("The FBX node traversal made no progress.");
       child = next;
@@ -343,7 +344,7 @@ function inspectBinaryFbx(bytes, onNode) {
       throw invalid("The FBX top-level traversal made no progress.");
     offset = next;
   }
-  assertFaceLimit(faceCount);
+  if (geometry) assertFaceLimit(faceCount);
   return { faceCount, isUvMapped };
 }
 
@@ -554,4 +555,23 @@ export function modelNodeNames(bytes) {
     if (name) names.push(name);
   });
   return [...new Set(names)];
+}
+
+// Inspect only embedded Video content; never resolve external FBX paths.
+export function fbxEmbeddedImages(bytes) {
+  const images = [];
+  inspectBinaryFbx(
+    bytes,
+    (name, start, end, count, parent) => {
+      if (parent !== "Video" || name !== "Content") return;
+      if (count !== 1 || end - start < 5 || bytes[start] !== 82)
+        throw invalid("The FBX embedded image property is invalid.");
+      const length = bytes.readUInt32LE(start + 1);
+      if (start + 5 + length !== end)
+        throw invalid("The FBX embedded image exceeds its property bounds.");
+      if (length) images.push(bytes.subarray(start + 5, end));
+    },
+    false
+  );
+  return images;
 }

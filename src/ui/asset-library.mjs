@@ -77,17 +77,33 @@ export class AssetLibrary {
     this.groupStore = new AssetGroupStore(config.dataDir);
     this.cache = new Map();
   }
-  async catalog(account, type, filter, refresh = false) {
+  catalogEntry(account, type, filter, refresh = false) {
     const key = JSON.stringify([account, type, filter]);
     const cached = this.cache.get(key);
-    if (!refresh && cached && cached.expires > Date.now())
-      return cached.promise;
-    const promise = (async () => {
+    // Share in-flight scans, including explicit refreshes. TTL starts when the
+    // scan finishes, so a large library cannot expire while it is loading.
+    if (cached && (cached.syncing || (!refresh && cached.expires > Date.now())))
+      return cached;
+    let ready;
+    const entry = {
+      assets: cached?.complete ? cached.assets : [],
+      complete: cached?.complete ?? false,
+      syncing: true,
+      error: null,
+      expires: Infinity,
+      ready: new Promise((resolve) => {
+        ready = resolve;
+      }),
+    };
+    this.cache.set(key, entry);
+    if (entry.complete) ready();
+    entry.promise = (async () => {
       const assets = [],
         seen = new Set();
       let offset = 0,
         pageNum = 1;
       for (;;) {
+        await this.assertAccount(account);
         const page =
           type === "models"
             ? await this.gateway.listModels({
@@ -96,12 +112,13 @@ export class AssetLibrary {
                 offset,
               })
             : await this.gateway.listStudioImageAssets(pageNum, 100);
+        await this.assertAccount(account);
         const raw = type === "models" ? page.projects : page.assets;
         if (type === "models") this.media?.rememberProjects(raw);
         let added = 0;
         for (const item of raw) {
-          const card = type === "models" ? modelCard(item) : imageCard(item),
-            id = assetKey(card);
+          const card = type === "models" ? modelCard(item) : imageCard(item);
+          const id = assetKey(card);
           if (!seen.has(id)) {
             seen.add(id);
             assets.push(card);
@@ -110,6 +127,9 @@ export class AssetLibrary {
         }
         offset += raw.length;
         pageNum++;
+        // Keep a complete cached snapshot stable until its replacement is ready.
+        if (!entry.complete) entry.assets = assets;
+        ready();
         if (
           !raw.length ||
           !added ||
@@ -117,29 +137,64 @@ export class AssetLibrary {
         )
           break;
       }
+      entry.assets = assets;
+      entry.complete = true;
+      entry.syncing = false;
+      entry.expires = Date.now() + 5 * 60_000;
       return assets;
-    })();
-    const entry = { promise, expires: Date.now() + 30000 };
-    this.cache.set(key, entry);
-    promise.catch(() => {
-      if (this.cache.get(key) === entry) this.cache.delete(key);
+    })().catch((error) => {
+      entry.error = error;
+      entry.syncing = false;
+      entry.expires = Date.now() + 30_000;
+      ready();
+      // Account changes must never leave a reusable mixed-account snapshot.
+      if (error.code === "PLAN_MISMATCH" && this.cache.get(key) === entry)
+        this.cache.delete(key);
+      throw error;
     });
-    return promise;
+    // UI reads may await only the first page; always handle later failures.
+    entry.promise.catch(() => {});
+    return entry;
   }
-  async context(type, filter = "all", refresh = false) {
+  async catalog(account, type, filter, refresh = false) {
+    return this.catalogEntry(account, type, filter, refresh).promise;
+  }
+  async catalogSnapshot(account, type, filter, refresh = false) {
+    const entry = this.catalogEntry(account, type, filter, refresh);
+    await entry.ready;
+    if (
+      entry.error &&
+      ((!entry.complete && !entry.assets.length) ||
+        entry.error.code === "PLAN_MISMATCH")
+    )
+      throw entry.error;
+    return {
+      assets: [...entry.assets],
+      complete: entry.complete,
+      syncing: entry.syncing,
+      sync_error: entry.error?.message ?? null,
+    };
+  }
+  async context(type, filter = "all", refresh = false, progressive = false) {
     const account = await this.session.accountFingerprint();
     const catalog =
-      type === "all"
-        ? Promise.all([
-            this.catalog(account, "models", filter, refresh),
-            this.catalog(account, "images", "all", refresh),
-          ]).then((pages) => pages.flat())
-        : this.catalog(account, type, filter, refresh);
-    const [assets, records, saved] = await Promise.all([
+      progressive && type !== "all"
+        ? this.catalogSnapshot(account, type, filter, refresh)
+        : type === "all"
+          ? Promise.all([
+              this.catalog(account, "models", filter, refresh),
+              this.catalog(account, "images", "all", refresh),
+            ]).then((pages) => pages.flat())
+          : this.catalog(account, type, filter, refresh);
+    const [result, records, saved] = await Promise.all([
       catalog,
       this.store.list({ limit: 5000 }),
       this.groupStore.read(account),
     ]);
+    const snapshot = Array.isArray(result)
+      ? { assets: result, complete: true, syncing: false, sync_error: null }
+      : result;
+    const { assets } = snapshot;
     const sourceIndex = assetCharacterIndex(records, account);
     const sourceGroups = [...sourceIndex.values()].filter(Boolean);
     const index = applyAssetAssignments(sourceIndex, saved);
@@ -148,7 +203,14 @@ export class AssetLibrary {
       character_group: index.get(assetKey(a)) ?? null,
     }));
     await this.assertAccount(account);
-    return { account, assets: annotated, saved, index, sourceGroups };
+    return {
+      ...snapshot,
+      account,
+      assets: annotated,
+      saved,
+      index,
+      sourceGroups,
+    };
   }
   async identities() {
     const account = await this.session.accountFingerprint();
@@ -223,8 +285,9 @@ export class AssetLibrary {
     search = "",
     sort = "recent",
     refresh = false,
+    progressive = false,
   } = {}) {
-    const context = await this.context(type, filter, refresh),
+    const context = await this.context(type, filter, refresh, progressive),
       { assets } = context;
     const { entries, groups } = libraryEntries(assets, group_id);
     const known = new Map(
@@ -267,12 +330,18 @@ export class AssetLibrary {
         : (Date.parse(b.created_at) || 0) - (Date.parse(a.created_at) || 0)
     );
     return {
+      complete: context.complete,
+      syncing: context.syncing,
+      sync_error: context.sync_error,
       entries: filtered.slice(offset, offset + limit),
       groups: [...known.values()],
       group: group_id ? (known.get(group_id) ?? null) : null,
       total: filtered.length,
       asset_count: assets.length,
-      next_offset: offset + limit < filtered.length ? offset + limit : null,
+      next_offset:
+        context.complete && offset + limit < filtered.length
+          ? offset + limit
+          : null,
       offset,
     };
   }

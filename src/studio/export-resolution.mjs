@@ -7,6 +7,9 @@ import { TripoError } from "../errors.mjs";
 import { downloadArtifact } from "./downloader.mjs";
 import { resolveOutputPath } from "../security/path-policy.mjs";
 
+import { binaryModelFormat } from "../util/model-format.mjs";
+import { fbxEmbeddedImages } from "../util/model-inspect.mjs";
+
 const MAX_BYTES = 512 * 1024 * 1024;
 const imageName = /\.(png|jpe?g|webp)$/i;
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -94,6 +97,30 @@ export async function inspectGlbTextures(bytes) {
       };
     })
   );
+}
+export async function inspectModelTextures(bytes) {
+  if (bytes.length > MAX_BYTES) reject("Texture source exceeds 512 MiB.");
+  if (binaryModelFormat(bytes) !== "fbx") return inspectGlbTextures(bytes);
+  let images;
+  try {
+    images = fbxEmbeddedImages(bytes);
+  } catch {
+    reject("Invalid embedded FBX texture data.");
+  }
+  return Promise.all(
+    images.map(async (bytes, i) => {
+      const m = await imageMetadata(bytes);
+      return { name: `embedded-image-${i}`, width: m.width, height: m.height };
+    })
+  );
+}
+async function inspectFbxExport(bytes, size) {
+  const textures = await inspectModelTextures(bytes);
+  if (textures.some((t) => Math.max(t.width, t.height) > size))
+    reject(
+      "Embedded FBX textures exceed the requested size; export ZIP textures for downsampling."
+    );
+  return { bytes, changed: false, textures };
 }
 async function resizeImage(bytes, size, name) {
   const m = await imageMetadata(bytes);
@@ -241,6 +268,8 @@ export async function normalizeExport(
   let result;
   if (bytes.toString("ascii", 0, 4) === "glTF")
     result = await resizeGlb(bytes, textureSize, "model.glb");
+  else if (binaryModelFormat(bytes) === "fbx")
+    result = await inspectFbxExport(bytes, textureSize);
   else if (bytes.length >= 4 && bytes.readUInt32LE(0) === 0x04034b50) {
     const files = boundedZip(bytes),
       textures = [];
@@ -250,6 +279,12 @@ export async function normalizeExport(
       if (imageName.test(name)) {
         item = await resizeImage(Buffer.from(data), textureSize, name);
         textures.push(item.texture);
+      } else if (
+        /\.fbx$/i.test(name) &&
+        binaryModelFormat(Buffer.from(data)) === "fbx"
+      ) {
+        item = await inspectFbxExport(Buffer.from(data), textureSize);
+        textures.push(...item.textures);
       } else if (/\.glb$/i.test(name)) {
         item = await resizeGlb(Buffer.from(data), textureSize, name);
         textures.push(...item.textures);
@@ -273,7 +308,7 @@ export async function normalizeExport(
   } else result = { bytes, changed: false, textures: [] };
   if (expectTextures && !result.textures.length && format !== "stl")
     reject(
-      "Textured export has no inspectable images. Use self-contained GLB or ZIP FBX/OBJ instead of embedded FBX."
+      "Textured export has no inspectable images. Use a model with embedded textures or ZIP FBX/OBJ textures."
     );
   return {
     ...result,
@@ -321,7 +356,7 @@ export async function sourceTextureInfo(ctx, detail, operatorId) {
   }
   // Operator IDs are immutable model versions; a validated cached source avoids
   // repeatedly fetching the same multi-megabyte file during staging.
-  const textures = await inspectGlbTextures(bytes);
+  const textures = await inspectModelTextures(bytes);
   return {
     source_texture_size: textures.length
       ? Math.max(...textures.map((t) => Math.max(t.width, t.height)))

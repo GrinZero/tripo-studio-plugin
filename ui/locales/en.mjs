@@ -1,5 +1,15 @@
 // Authored UI copy only; interpolation values retain their original content.
 export default {
+  "正在后台更新资产，当前显示上次完整结果。":
+    "Refreshing assets in the background. Showing the last complete result.",
+  "正在加载其余资产，数量、排序和搜索结果尚未完整；加载完成后可翻页。":
+    "Loading remaining assets. Counts, order and search results are incomplete; paging is available when loading finishes.",
+  "资产更新失败，已保留当前结果。":
+    "Asset refresh failed. Current results have been kept.",
+  "当前结果不完整，请重试加载。": "Results are incomplete. Retry loading.",
+  正在加载资产: "Loading assets",
+  "当前结果不完整，请稍候或重试加载。":
+    "Results are incomplete. Please wait or retry loading.",
   生成输入: "Generation input",
   生成参数: "Generation settings",
   展开: "Expand",

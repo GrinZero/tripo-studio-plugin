@@ -159,6 +159,7 @@ async function main() {
         limit: z.number().int().min(1).max(100).default(20),
         search: z.string().max(1000).default(""),
         sort: z.enum(["recent", "name"]).default("recent"),
+        progressive: z.boolean().default(false),
         refresh: z.boolean().default(false),
       },
     },

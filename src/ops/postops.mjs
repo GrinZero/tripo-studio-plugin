@@ -1,6 +1,6 @@
 /* eslint-disable no-control-regex -- Intentionally validate control characters or binary padding. */
 import { z } from "zod";
-import { TripoError } from "../errors.mjs";
+import { TripoError, errorSnapshot } from "../errors.mjs";
 import {
   COMPLETION_MODEL_VERSION,
   REMESH_MIN_FACES,
@@ -215,7 +215,16 @@ export function postprocessSync() {
             { stage: "operation_progress" }
           );
         }
-        const info = await sourceTextureInfo(ctx, detail, operatorId);
+        let info;
+        let verificationError;
+        try {
+          info = await sourceTextureInfo(ctx, detail, operatorId);
+        } catch (error) {
+          // Remote success is durable even when artifact inspection fails.
+          // Identity validation above remains mandatory.
+          verificationError = errorSnapshot(error);
+          info = { source_texture_size_verified: false };
+        }
         const textures = info.source_textures ?? [];
         // A whole-model image inventory cannot prove which selected part owns
         // each texture. Report partial texturing conservatively until inspected.
@@ -241,6 +250,9 @@ export function postprocessSync() {
             ? `Requested ${requested}x${requested} textures, but received ${textures.map((t) => `${t.width}x${t.height}`).join(", ")}. The requested resolution was not achieved. Do not automatically repeat this paid operation.`
             : null;
         result.texture_resolution = {
+          ...(verificationError
+            ? { verification_error: verificationError }
+            : {}),
           requested_texture_size: requested ?? null,
           actual_texture_size_verified: Boolean(verified),
           requested_texture_size_met: met,

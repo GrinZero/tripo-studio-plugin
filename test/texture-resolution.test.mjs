@@ -264,3 +264,87 @@ it("does not certify a newer project revision as the texture task's result", asy
     await rm(config.dataDir, { recursive: true, force: true });
   }
 });
+
+it("finishes native quad FBX tasks and separates failed inspection from remote success", async () => {
+  const { textureFbx } = await import("./helpers/fbx-texture-fixture.mjs");
+  const { normalizeExport, inspectModelTextures } =
+    await import("../src/studio/export-resolution.mjs");
+  const previousFetch = globalThis.fetch;
+  for (const version of [7400, 7500, null]) {
+    const { service, gateway, config } = await makeRuntime();
+    try {
+      const bytes = version
+        ? textureFbx(
+            await solidImage({
+              width: 32,
+              height: 32,
+              channels: 3,
+              background: "#abcdef",
+            }),
+            version
+          )
+        : Buffer.from("broken model");
+      globalThis.fetch = async () => new Response(bytes);
+      const prepared = await service.prepare("texture.generate", {
+        project_id: "proj-1",
+        quality: "detailed",
+        mode: "text",
+        prompt: "wood",
+      });
+      await service.submit(prepared.task.task_id, {
+        confirmation: prepared.confirmation,
+      });
+      gateway.project = {
+        id: "proj-1",
+        operator: { operator_id: "op-1" },
+        model_url: "https://cdn.tripo3d.ai/mislabeled.glb",
+      };
+      const { task, progress_error } = await service.sync(
+        prepared.task.task_id
+      );
+      assert.equal(progress_error, undefined);
+      assert.equal(task.status, "succeeded");
+      const result = task.result.texture_resolution;
+      assert.equal(result.actual_texture_size_verified, Boolean(version));
+      assert.equal(
+        result.resolution_status,
+        version ? "mismatch" : "unverified"
+      );
+      if (version) {
+        assert.equal(result.textures[0].width, 32);
+        const exported = await normalizeExport(bytes, {
+          textureSize: 32,
+          format: "fbx",
+          expectTextures: true,
+        });
+        assert.deepEqual(exported.bytes, bytes);
+        await assert.rejects(
+          normalizeExport(bytes, { textureSize: 16, format: "fbx" }),
+          /exceed/
+        );
+        const malformed = Buffer.from(bytes);
+        malformed.writeUInt32LE(
+          0xffffffff,
+          bytes.indexOf(Buffer.from("Content")) + 8
+        );
+        await assert.rejects(
+          inspectModelTextures(malformed),
+          /Invalid embedded FBX/
+        );
+      } else {
+        assert.equal(result.requested_texture_size_met, null);
+        assert.equal(
+          result.verification_error.code,
+          "EXPORT_RESOLUTION_UNVERIFIED"
+        );
+      }
+      assert.equal(
+        gateway.calls.filter(([name]) => name === "submitPostprocess").length,
+        1
+      );
+    } finally {
+      globalThis.fetch = previousFetch;
+      await rm(config.dataDir, { recursive: true, force: true });
+    }
+  }
+});

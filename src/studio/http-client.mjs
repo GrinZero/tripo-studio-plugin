@@ -118,8 +118,7 @@ export class StudioHttpClient {
           this.#authRecovery &&
           attempt === 1
         ) {
-          // Headless refresh: no window, no user interaction. If it fails the
-          // caller gets the auth error verbatim.
+          // Keep the original rejection classification for paid operations.
           try {
             await this.#authRecovery.recover({
               reason:
@@ -128,6 +127,7 @@ export class StudioHttpClient {
                   : "auth_expired",
             });
           } catch {
+            error.nextAction = "tripo_auth_login";
             throw error;
           }
           return await this.#requestOnce(request, parseData);
@@ -195,11 +195,17 @@ export class StudioHttpClient {
     if (response.status === 401 || response.status === 403) {
       clearTimeout(timeout);
       void response.body?.cancel().catch(() => {});
+      // A remote rejection overrides the local expiry. Preserve a newer
+      // credential if another request already refreshed this session.
+      if (this.#session.isCurrentSessionIdentity(identity)) {
+        await this.#session.clear();
+      }
       throw new TripoError(
         "AUTH_EXPIRED",
         "Tripo Studio login expired; the session will be refreshed headlessly when possible.",
         {
           details: { http_status: response.status },
+          nextAction: "tripo_auth_login",
           retryable: false,
           stage: "request",
         }

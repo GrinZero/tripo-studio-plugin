@@ -355,3 +355,242 @@ it("rejects reads and mutations when the active account changes during catalog t
     assignments: {},
   });
 });
+
+function deferred() {
+  let resolve;
+  const promise = new Promise((done) => {
+    resolve = done;
+  });
+  return { promise, resolve };
+}
+
+it(
+  "returns grouped first-page cards before later remote pages and keeps partial search honest",
+  { timeout: 5000 },
+  async (t) => {
+    const { runtime, library, calls } = await fixture(t);
+    const gate = deferred(),
+      read = runtime.gateway.listModels;
+    runtime.gateway.listModels = async (args) => {
+      if (args.offset > 0) await gate.promise;
+      return read(args);
+    };
+    try {
+      const first = await library.list({ progressive: true });
+      assert.equal(first.complete, false);
+      assert.equal(first.syncing, true);
+      assert.equal(first.asset_count, 20);
+      assert.equal(
+        first.entries.find((e) => e.group_id === "paimon").count,
+        10
+      );
+      assert.equal(first.next_offset, null);
+      const search = await library.list({
+        progressive: true,
+        search: "Model 44",
+      });
+      assert.equal(search.entries.length, 0);
+      assert.equal(
+        search.complete,
+        false,
+        "empty partial results are not a confirmed absence"
+      );
+      assert.equal(calls.length, 1, "polls reuse the in-flight catalog");
+    } finally {
+      gate.resolve();
+    }
+    const final = await library.list({ search: "Model 44" });
+    assert.equal(final.complete, true);
+    assert.equal(final.syncing, false);
+    assert.equal(final.entries[0].project_id, "model-44");
+    assert.equal(final.asset_count, 45);
+    assert.equal(calls.length, 3);
+  }
+);
+
+it(
+  "retains a complete snapshot during refresh and coalesces concurrent refresh requests",
+  { timeout: 5000 },
+  async (t) => {
+    const { runtime, library, calls } = await fixture(t);
+    const original = await library.list();
+    const gate = deferred(),
+      read = runtime.gateway.listModels;
+    runtime.gateway.listModels = async (args) => {
+      await gate.promise;
+      const page = await read(args);
+      return {
+        ...page,
+        projects: page.projects.map((p) => ({ ...p, project_name: "Updated" })),
+      };
+    };
+    try {
+      const results = await Promise.all([
+        library.list({ progressive: true, refresh: true }),
+        library.list({ progressive: true, refresh: true }),
+      ]);
+      for (const result of results) {
+        assert.deepEqual(result.entries, original.entries);
+        assert.equal(result.complete, true);
+        assert.equal(result.syncing, true);
+      }
+    } finally {
+      gate.resolve();
+    }
+    const final = await library.list();
+    assert.equal(
+      final.entries.find((e) => e.project_id === "model-44").name,
+      "Updated"
+    );
+    assert.equal(calls.length, 6, "only one replacement scan runs");
+  }
+);
+
+it(
+  "starts cache lifetime on completion and serves expired results while revalidating",
+  { timeout: 5000 },
+  async (t) => {
+    const { runtime, library, calls } = await fixture(t);
+    let now = Date.now();
+    t.mock.method(Date, "now", () => now);
+    const read = runtime.gateway.listModels;
+    const firstGate = deferred();
+    runtime.gateway.listModels = async (args) => {
+      if (args.offset > 0) await firstGate.promise;
+      return read(args);
+    };
+    try {
+      await library.list({ progressive: true });
+      now += 10 * 60_000;
+      assert.equal((await library.list({ progressive: true })).syncing, true);
+    } finally {
+      firstGate.resolve();
+    }
+    await library.list();
+    now += 60_000;
+    await library.list();
+    assert.equal(
+      calls.length,
+      3,
+      "a slow scan and normal paging must not trigger duplicate scans"
+    );
+    const gate = deferred();
+    runtime.gateway.listModels = async (args) => {
+      await gate.promise;
+      return read(args);
+    };
+    now += 5 * 60_000;
+    try {
+      const stale = await library.list({ progressive: true });
+      assert.equal(stale.complete, true);
+      assert.equal(stale.syncing, true);
+      assert.equal(stale.asset_count, 45);
+    } finally {
+      gate.resolve();
+    }
+    await library.list();
+    assert.equal(calls.length, 6);
+  }
+);
+
+it(
+  "preserves partial cards on later-page failure, stops syncing and supports explicit retry",
+  { timeout: 5000 },
+  async (t) => {
+    const { runtime, library } = await fixture(t);
+    const read = runtime.gateway.listModels,
+      gate = deferred();
+    runtime.gateway.listModels = async (args) => {
+      if (args.offset > 0) {
+        await gate.promise;
+        throw Error("Later page unavailable");
+      }
+      return read(args);
+    };
+    try {
+      await library.list({ progressive: true });
+    } finally {
+      gate.resolve();
+    }
+    await assert.rejects(library.list(), /Later page unavailable/);
+    const failed = await library.list({ progressive: true });
+    assert.equal(failed.asset_count, 20);
+    assert.equal(failed.complete, false);
+    assert.equal(failed.syncing, false);
+    assert.match(failed.sync_error, /Later page unavailable/);
+    runtime.gateway.listModels = read;
+    await library.list({ progressive: true, refresh: true });
+    const retried = await library.list();
+    assert.equal(retried.asset_count, 45);
+    assert.equal(retried.sync_error, null);
+  }
+);
+
+it(
+  "does not reuse a partial scan across an account switch",
+  { timeout: 5000 },
+  async (t) => {
+    const { runtime, library, switchAccount } = await fixture(t);
+    const read = runtime.gateway.listModels,
+      gate = deferred(),
+      started = deferred();
+    runtime.gateway.listModels = async (args) => {
+      if (args.offset > 0) {
+        started.resolve();
+        await gate.promise;
+      }
+      return read(args);
+    };
+    const first = await library.list({ progressive: true });
+    assert.equal(first.asset_count, 20);
+    const scan = library.catalog("account", "models", "all");
+    await started.promise;
+    switchAccount("other");
+    gate.resolve();
+    await assert.rejects(scan, /account changed/);
+    runtime.gateway.listModels = async () => ({ projects: [], total: 0 });
+    const other = await library.list({ progressive: true });
+    assert.equal(other.asset_count, 0);
+    assert.equal(other.groups.length, 0);
+    switchAccount("account");
+    assert.equal(
+      (await library.list()).asset_count,
+      0,
+      "old partial data was invalidated"
+    );
+  }
+);
+
+it(
+  "loads images progressively with the same completion contract",
+  { timeout: 5000 },
+  async (t) => {
+    const { runtime, library } = await fixture(t);
+    const gate = deferred();
+    runtime.gateway.listStudioImageAssets = async (page) => {
+      if (page > 1) {
+        await gate.promise;
+        return { assets: [] };
+      }
+      return {
+        assets: Array.from({ length: 100 }, (_, i) => ({
+          asset_id: `image-${i}`,
+          input: { prompt: `Image ${i}` },
+          output: { data: [{}] },
+          status: "success",
+        })),
+      };
+    };
+    try {
+      const first = await library.list({ type: "images", progressive: true });
+      assert.equal(first.asset_count, 100);
+      assert.equal(first.complete, false);
+      assert.equal(first.next_offset, null);
+    } finally {
+      gate.resolve();
+    }
+    const final = await library.list({ type: "images" });
+    assert.equal(final.complete, true);
+    assert.equal(final.next_offset, 20);
+  }
+);

@@ -31,6 +31,7 @@ import {
 } from "./model.mjs";
 import { SERVER_VERSION } from "../src/constants.mjs";
 import { latestWorkbenchHtml, reloadDocument } from "./workbench-reload.mjs";
+import { createAuthRecovery } from "./auth-recovery.mjs";
 
 const $ = (id) => document.getElementById(id);
 const buildInfo = __TRIPO_BUILD_INFO__;
@@ -135,6 +136,10 @@ const state = {
   detailBusy: false,
   assetLoading: false,
   assetError: "",
+  assetComplete: false,
+  assetSyncing: false,
+  assetSyncError: "",
+  assetResultKey: null,
   tasks: [],
   groups: [],
   taskFilter: "all",
@@ -185,7 +190,7 @@ const state = {
   },
 };
 
-let assetSearchTimer;
+let assetSearchTimer, assetSyncTimer;
 let hostTheme,
   theme = "system",
   viewer,
@@ -292,11 +297,36 @@ app.ontoolresult = ({ structuredContent: input }) => {
 app.ontoolcancelled = () =>
   showConnection(tr("打开请求已取消，请重新打开工作台。"));
 
+const authRecovery = createAuthRecovery({
+  expired() {
+    state.authed = false;
+    state.credits = null;
+    state.quote = null;
+    ++paymentEpoch;
+    renderAuthStatus();
+    $("creditBalance").classList.add("hidden");
+  },
+  async login() {
+    $("login").disabled = true;
+    try {
+      await data("tripo_auth_login", {}, 660000);
+      await authStatus();
+      await navigate(state.view);
+    } finally {
+      $("login").disabled = false;
+    }
+  },
+  failed(error) {
+    toast(error.message, true);
+  },
+});
+
 async function call(name, args = {}, timeout = 300000) {
   const result = await app.callServerTool(
     { name, arguments: args },
     { timeout }
   );
+  authRecovery.observe(name, result);
   if (result.isError) {
     const error = Error(
       result.structuredContent?.error?.message ??
@@ -304,6 +334,7 @@ async function call(name, args = {}, timeout = 300000) {
         tr("操作失败，请重试。")
     );
     error.task = result.structuredContent?.task;
+    error.code = result.structuredContent?.error?.code;
     throw error;
   }
   return result;
@@ -332,12 +363,16 @@ async function authStatus() {
     state.credits = null;
   state.accountFingerprint = result.account_fingerprint;
   state.authed = result.session?.authenticated === true;
+  renderAuthStatus();
+  void refreshCredits();
+}
+
+function renderAuthStatus() {
   setText($("sessionStatus"), () =>
     state.authed ? tr("已登录 Studio") : tr("未登录")
   );
   $("sessionStatus").className = `status ${state.authed ? "ok" : ""}`;
   $("authNotice").classList.toggle("hidden", state.authed);
-  void refreshCredits();
 }
 
 let paymentEpoch = 0;
@@ -522,11 +557,12 @@ function hydratePreviews() {
 // ==========================================================================
 // Assets Module
 // ==========================================================================
-async function loadAssets(reset = false, refresh = false) {
+async function loadAssets(reset = false, refresh = false, background = false) {
   clearTimeout(assetSearchTimer);
+  clearTimeout(assetSyncTimer);
   if (reset) state.assetOffset = 0;
   const epoch = ++assetEpoch;
-  const focused = document.activeElement?.id === "assetSearch",
+  let focused = document.activeElement?.id === "assetSearch",
     position = $("assetSearch")?.selectionStart;
   const restoreSearch = () => {
     if (focused) {
@@ -534,10 +570,28 @@ async function loadAssets(reset = false, refresh = false) {
       $("assetSearch")?.setSelectionRange(position, position);
     }
   };
-  state.assetLoading = true;
+  const resultKey = JSON.stringify([
+    state.accountFingerprint,
+    state.assetType,
+    state.assetFilter,
+    state.assetGroup,
+    state.assetSearch,
+    state.assetSort,
+    state.assetOffset,
+  ]);
+  const keepCards = state.assetResultKey === resultKey;
+  state.assetLoading = !keepCards;
   state.assetError = "";
-  renderAssets();
-  restoreSearch();
+  if (!keepCards) {
+    state.assetComplete = false;
+    state.assetSyncing = false;
+    state.assetSyncError = "";
+  }
+  if (!background) {
+    renderAssets();
+    restoreSearch();
+  }
+  let changed = !background;
   try {
     const result = await data("tripo_ui_asset_library", {
       action: "list",
@@ -547,9 +601,35 @@ async function loadAssets(reset = false, refresh = false) {
       ...(state.assetGroup !== "all" ? { group_id: state.assetGroup } : {}),
       search: state.assetSearch,
       sort: state.assetSort,
+      progressive: true,
       refresh,
     });
     if (epoch !== assetEpoch) return;
+    changed ||=
+      JSON.stringify([
+        state.libraryEntries,
+        state.assetGroups,
+        state.activeGroup,
+        state.total,
+        state.assetNext,
+        state.assetComplete,
+        state.assetSyncing,
+        state.assetSyncError,
+      ]) !==
+      JSON.stringify([
+        result.entries ?? [],
+        result.groups ?? [],
+        result.group,
+        result.total ?? 0,
+        result.next_offset ?? null,
+        result.complete !== false,
+        result.syncing === true,
+        result.sync_error ?? "",
+      ]);
+    state.assetResultKey = resultKey;
+    state.assetComplete = result.complete !== false;
+    state.assetSyncing = result.syncing === true;
+    state.assetSyncError = result.sync_error ?? "";
     state.libraryEntries = result.entries ?? [];
     state.activeGroup = result.group;
     state.assetGroups = result.groups ?? [];
@@ -559,13 +639,33 @@ async function loadAssets(reset = false, refresh = false) {
     if (state.assetType === "models") state.models = assets;
     else state.images = assets;
   } catch (e) {
-    if (epoch === assetEpoch) state.assetError = e.message;
+    if (epoch === assetEpoch) {
+      changed = true;
+      state.assetSyncing = false;
+      if (keepCards) state.assetSyncError = e.message;
+      else state.assetError = e.message;
+    }
   }
   if (epoch !== assetEpoch) return;
   state.assetLoading = false;
   if (state.view === "assets" && !state.detail) {
-    renderAssets();
-    restoreSearch();
+    if (changed) {
+      if (background) {
+        focused = document.activeElement?.id === "assetSearch";
+        position = $("assetSearch")?.selectionStart;
+      }
+      renderAssets();
+      restoreSearch();
+    }
+    if (state.assetSyncing) {
+      const poll = () => {
+        if (epoch !== assetEpoch || state.view !== "assets" || state.detail)
+          return;
+        if (document.hidden) assetSyncTimer = setTimeout(poll, 1000);
+        else void loadAssets(false, false, true);
+      };
+      assetSyncTimer = setTimeout(poll, 1000);
+    }
   }
 }
 
@@ -605,10 +705,10 @@ function renderGroupCard(group) {
       <div class="asset-picture-wrap group-cover">
         <div class="group-preview-grid ${group.covers.length === 1 ? "single" : ""}">${group.covers.map((asset) => `<div class="group-preview-tile">${previewPlaceholder(args(asset))}</div>`).join("")}</div>
         <div class="card-badges"><span class="card-badge badge-orange">${icon("layers")}${th("分组")}</span></div>
-        <span class="group-cover-count">${formatNumber(group.count)}</span>
+        <span class="group-cover-count">${formatNumber(group.count)}${state.assetComplete ? "" : "+"}</span>
       </div>
       <div class="asset-caption"><div class="asset-name" title="${esc(group.name)}">${esc(group.name)}</div>
-        <div class="asset-meta-row"><span class="muted small">${state.assetType === "models" ? tr("{0} 个模型", { 0: group.count }) : tr("{0} 个图片资产", { 0: group.count })}</span><span class="group-enter">${th("查看分组")}${icon("right")}</span></div>
+        <div class="asset-meta-row"><span class="muted small">${state.assetType === "models" ? tr("{0} 个模型", { 0: state.assetComplete ? group.count : `${formatNumber(group.count)}+` }) : tr("{0} 个图片资产", { 0: state.assetComplete ? group.count : `${formatNumber(group.count)}+` })}</span><span class="group-enter">${th("查看分组")}${icon("right")}</span></div>
       </div>
     </button>
   </article>`;
@@ -621,7 +721,7 @@ function renderAssets() {
   setMain(`
     ${inside ? `<div class="breadcrumb">${button(icon("left"), "groupsBack", "icon-button", `aria-label="${th("返回资产")}"`)}<span class="muted">${th("我的资产")}</span><span class="muted">/</span><strong>${esc(state.activeGroup?.name ?? "")}</strong></div>` : ""}
     <div class="row spread page-title">
-      <div class="page-heading"><div class="row" style="gap:10px;align-items:center"><h1>${inside ? esc(state.activeGroup?.name ?? tr("分组")) : isModels ? tr("3D 资产库") : tr("图片资产库")}</h1><span class="asset-count">${inside ? tr("{0} 个资产", { 0: state.total }) : tr("{0} 项", { 0: state.total })}</span></div>
+      <div class="page-heading"><div class="row" style="gap:10px;align-items:center"><h1>${inside ? esc(state.activeGroup?.name ?? tr("分组")) : isModels ? tr("3D 资产库") : tr("图片资产库")}</h1><span class="asset-count">${inside ? tr("{0} 个资产", { 0: state.assetLoading ? "…" : state.assetComplete ? state.total : `${formatNumber(state.total)}+` }) : tr("{0} 项", { 0: state.assetLoading ? "…" : state.assetComplete ? state.total : `${formatNumber(state.total)}+` })}</span></div>
         <p class="muted small">${inside ? tr("分组内的全部资产，可预览、下载或继续处理。") : tr("分组显示为一张卡片，点击查看组内资产。")}</p>
       </div>
       <div class="page-title-actions">${inside && state.activeGroup ? button(tr("重命名分组"), "renameAssetGroup", "secondary", "", state.busy) : ""}${button(icon("plus") + tr("创建新模型"), "create", "primary", "", !state.ready)}</div>
@@ -656,8 +756,10 @@ function renderAssets() {
       </div>
     </div>
     <div class="asset-summary selection-hint"><span>${th("点击卡片即可多选，点击查看详情打开资产。")}</span>${button(tr("全选本页"), "selectPageAssets", "text-button", "", !items.some((e) => e.entry_type === "asset") || state.assetLoading)}</div>
-    ${state.assetLoading ? '<div class="loading-grid">' + Array(6).fill('<div class="skeleton"></div>').join("") + "</div>" : state.assetError ? empty(tr("资产读取失败"), state.assetError, button(tr("重新读取"), "assetsReload", "secondary")) : items.length ? `<div class="asset-grid ${state.layout === "list" ? "list" : ""}">${items.map((e) => (e.entry_type === "group" ? renderGroupCard(e) : renderAssetCard(e))).join("")}</div>` : empty(tr("未找到匹配的资产"), inside ? tr("此分组在当前类别下暂无资产。") : tr("试试输入其他关键词，或清除搜索条件。"), state.assetSearch ? button(tr("清除搜索条件"), "clearAssetSearch", "secondary") : inside ? button(tr("返回资产"), "groupsBack", "secondary") : button(icon("plus") + tr("创建模型"), "create", "primary"))}
-    ${pageButtons(state.assetOffset, state.assetNext, "assetsPrev", "assetsNext")}
+    ${state.assetSyncing ? `<div class="asset-summary muted small" role="status">${state.assetComplete ? th("正在后台更新资产，当前显示上次完整结果。") : th("正在加载其余资产，数量、排序和搜索结果尚未完整；加载完成后可翻页。")}</div>` : ""}
+    ${state.assetSyncError ? `<div class="asset-summary small" role="status"><span>${th("资产更新失败，已保留当前结果。")}${!state.assetComplete ? ` ${th("当前结果不完整，请重试加载。")}` : ""} ${esc(state.assetSyncError)}</span>${button(tr("重新读取"), "assetsReload", "secondary")}</div>` : ""}
+    ${state.assetLoading ? '<div class="loading-grid">' + Array(6).fill('<div class="skeleton"></div>').join("") + "</div>" : state.assetError ? empty(tr("资产读取失败"), state.assetError, button(tr("重新读取"), "assetsReload", "secondary")) : items.length ? `<div class="asset-grid ${state.layout === "list" ? "list" : ""}">${items.map((e) => (e.entry_type === "group" ? renderGroupCard(e) : renderAssetCard(e))).join("")}</div>` : !state.assetComplete && !state.assetError ? empty(tr("正在加载资产"), tr("当前结果不完整，请稍候或重试加载。")) : empty(tr("未找到匹配的资产"), inside ? tr("此分组在当前类别下暂无资产。") : tr("试试输入其他关键词，或清除搜索条件。"), state.assetSearch ? button(tr("清除搜索条件"), "clearAssetSearch", "secondary") : inside ? button(tr("返回资产"), "groupsBack", "secondary") : button(icon("plus") + tr("创建模型"), "create", "primary"))}
+    ${pageButtons(state.assetOffset, state.assetLoading ? null : state.assetNext, "assetsPrev", "assetsNext")}
     ${selectedBar()}`);
   hydratePreviews();
 }
@@ -822,6 +924,8 @@ async function renameAssetGroup() {
 }
 
 async function openAsset(projectId) {
+  ++assetEpoch;
+  clearTimeout(assetSyncTimer);
   state.selectedAssets.clear();
   if (state.detail?.project_id !== projectId) state.opForm.parts = undefined;
   const epoch = ++detailEpoch;
@@ -2346,6 +2450,8 @@ function updateTabs() {
 
 async function navigate(view) {
   ++detailEpoch;
+  ++assetEpoch;
+  clearTimeout(assetSyncTimer);
   state.view = view;
   clearTimeout(assetSearchTimer);
   if (view !== "assets") {
@@ -2467,22 +2573,13 @@ $("refresh").onclick = async () => {
   }
 };
 
-$("login").onclick = async () => {
-  $("login").disabled = true;
-  try {
-    await data("tripo_auth_login");
-    await authStatus();
-    await navigate(state.view);
-  } catch (e) {
-    toast(e.message, true);
-  } finally {
-    $("login").disabled = false;
-  }
-};
+$("login").onclick = () => authRecovery.login();
 
 $("main").addEventListener("input", (e) => {
   if (e.target.id === "assetSearch") {
     state.assetSearch = e.target.value;
+    ++assetEpoch;
+    clearTimeout(assetSyncTimer);
     clearTimeout(assetSearchTimer);
     assetSearchTimer = setTimeout(() => {
       if (state.view === "assets" && !state.detail) loadAssets(true);
@@ -2816,6 +2913,8 @@ const creditPoll = setInterval(() => {
 
 window.addEventListener("pagehide", () => {
   clearInterval(taskPoll);
+  ++assetEpoch;
+  clearTimeout(assetSyncTimer);
   clearInterval(creditPoll);
   ++paymentEpoch;
   clearTimeout(quoteTimer);
