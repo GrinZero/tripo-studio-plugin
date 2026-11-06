@@ -596,8 +596,8 @@ export default {
   "主题切换为：{0}": "Theme: {0}",
   图片输出预览: "Image output preview",
   "角色分组已更新。": "Character group updated.",
-  "请从 Codex 的 Tripo 工作台入口打开，此页面需要宿主连接。":
-    "Open Tripo Workbench from Codex. This page requires a host connection.",
+  "请从 Tripo 工作台入口打开，此页面需要宿主连接。":
+    "Open Tripo Workbench from your host. This page requires a host connection.",
   未连接: "Disconnected",
   "Tripo 结果卡片": "Tripo result card",
   "调用已取消。": "Call canceled.",

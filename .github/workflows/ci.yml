@@ -67,6 +67,25 @@ jobs:
         run: pnpm test
       - name: Test tarball with fresh npx and offline cached startup
         run: pnpm run test:package
+      - name: Test DeepSeek adapter and shared host state
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 24
+        run: node --test test/deepseek*.test.mjs
+      - name: Test isolated DeepSeek package installation
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 24
+        run: pnpm run test:deepseek:package
+      - name: Install Chromium for the DeepSeek Web integration test
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 24
+        run: pnpm --filter tripo-studio-deepseek exec playwright install --with-deps chromium
+      - name: Test real DeepSeek Harness Web without cloud credits
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 24
+        run: pnpm run test:deepseek:web
+      - name: Preserve tested DeepSeek preview package
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 24
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: deepseek-package
+          path: artifacts/tripo-studio-deepseek-*.tgz
+          if-no-files-found: error
       - name: Preserve tested npm release artifact
         if: matrix.os == 'ubuntu-latest' && matrix.node == 22
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

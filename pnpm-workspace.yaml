@@ -1,6 +1,15 @@
 packages:
   - "."
+  - "packages/*"
+linkWorkspacePackages: true
 saveExact: true
 strictPeerDependencies: true
+overrides:
+  "@opentelemetry/api": "1.9.0"
 allowBuilds:
   esbuild: true
+  "@deepseek-ai/dsh-subprocess-local": false
+  "@google/genai": false
+  koffi: false
+  node-pty: false
+  protobufjs: false
