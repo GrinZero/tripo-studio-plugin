@@ -141,33 +141,38 @@ export class OperationService {
     const store = this.#ctx.store;
     let recovered = 0;
     for (const task of await store.listDispatching()) {
-      await store
-        .update(task.task_id, (record) => {
-          if (record.dispatch_state === "dispatching" && !record.remote) {
-            const local = getOperation(record.kind).category === "local";
-            record.status = local ? "failed" : "outcome_unknown";
-            record.dispatch_state = local ? "rejected" : "outcome_unknown";
-            record.error = errorSnapshot(
-              new TripoError(
-                local ? "LOCAL_INTERRUPTED" : "OUTCOME_UNKNOWN",
-                local
-                  ? "The local operation was interrupted. Its input snapshots remain intact; stage a new task to run again."
-                  : "The previous request crossed the durable dispatch boundary; reconcile it instead of resubmitting.",
-                { stage: "task_recovery" }
-              )
-            );
-            record.events.push(
-              event(
-                local
-                  ? "recovery.local_interrupted"
-                  : "recovery.outcome_unknown"
-              )
-            );
-          }
-          return record;
-        })
+      await this.#submissionLock
+        .withLock(
+          `submit-${task.task_id}`,
+          () =>
+            store.update(task.task_id, (record) => {
+              if (record.dispatch_state === "dispatching" && !record.remote) {
+                const local = getOperation(record.kind).category === "local";
+                record.status = local ? "failed" : "outcome_unknown";
+                record.dispatch_state = local ? "rejected" : "outcome_unknown";
+                record.error = errorSnapshot(
+                  new TripoError(
+                    local ? "LOCAL_INTERRUPTED" : "OUTCOME_UNKNOWN",
+                    local
+                      ? "The local operation was interrupted. Its input snapshots remain intact; stage a new task to run again."
+                      : "The previous request crossed the durable dispatch boundary; reconcile it instead of resubmitting.",
+                    { stage: "task_recovery" }
+                  )
+                );
+                record.events.push(
+                  event(
+                    local
+                      ? "recovery.local_interrupted"
+                      : "recovery.outcome_unknown"
+                  )
+                );
+                recovered += 1;
+              }
+              return record;
+            }),
+          { timeoutMs: 100, staleMs: 60 * 60 * 1000 }
+        )
         .catch(() => {});
-      recovered += 1;
     }
     return recovered;
   }
@@ -179,7 +184,28 @@ export class OperationService {
         () => this.#prepare(kind, input, options),
         { staleMs: 60 * 60 * 1000 }
       );
-    return this.#prepare(kind, input, options);
+    // The lookup and creation must share a process-wide mutex. A lock only
+    // around TaskStore.create cannot prevent two hosts staging the same input.
+    const operation = getOperation(kind);
+    const validated = z
+      .object({ ...operation.inputShape, ...taskContextShape })
+      .strict()
+      .parse(input);
+    const { character_name, parent_task_id, ...normalized } = validated;
+    const account =
+      operation.category === "local"
+        ? "local"
+        : await this.#ctx.session.accountFingerprint();
+    const identity = hashObject({
+      account_fingerprint: account,
+      kind,
+      input: stripSubmitFlag(normalized),
+    });
+    return this.#submissionLock.withLock(
+      `prepare-${identity.slice(0, 48)}`,
+      () => this.#prepare(kind, validated, options),
+      { timeoutMs: 180000, staleMs: 60 * 60 * 1000 }
+    );
   }
 
   async #prepare(kind, input, options) {

@@ -12,13 +12,15 @@
 
 # Tripo Studio for Codex
 
+> **DeepSeek preview:** This repository also includes an adapter for official DeepSeek Harness Web / Desktop with embedded configuration cards and a sidebar workbench. See [setup and verification limits](docs/DEEPSEEK.md). Codex installation is unchanged.
+
 **Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language.**
 
 _Your one-stop 3D AI studio inside Codex. Describe, sculpt, rig, and export 3D models with one sentence — powered by Tripo Studio & local Blender pipeline._
 
 <p align="center">
   <a href="#2-installation--quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.13-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.14-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-tool-matrix--capabilities-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>

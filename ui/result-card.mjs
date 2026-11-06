@@ -11,7 +11,7 @@ import {
   applyDocumentTheme,
   applyHostStyleVariables,
 } from "@modelcontextprotocol/ext-apps";
-import { OpenAIExtensions } from "@openai/mcp-extensions/app";
+import { installHostExtensions } from "./host-capabilities.mjs";
 import { mountModel } from "./viewer.mjs";
 import { mountConfiguration } from "./configuration-card.mjs";
 import {
@@ -22,11 +22,11 @@ import {
 import { mountQuote } from "./quote-card.mjs";
 import { parameterRows } from "./model.mjs";
 const app = new App(
-  { name: "Tripo Studio", version: "0.3.13" },
+  { name: "Tripo Studio", version: "0.3.14" },
   {},
   { autoResize: true }
 );
-new OpenAIExtensions(app);
+installHostExtensions(app);
 const $ = (id) => document.getElementById(id);
 const buildInfo = __TRIPO_BUILD_INFO__;
 $("cardVersion").textContent = `v${buildInfo.version}-${buildInfo.timestamp}`;

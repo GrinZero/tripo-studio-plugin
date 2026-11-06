@@ -8,6 +8,10 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const read = (relative) => readFile(path.join(root, relative), "utf8");
 const save = (relative, value) => writeFile(path.join(root, relative), value);
 const { name, version } = JSON.parse(await read("package.json"));
+const adapterPath = "packages/deepseek-adapter/package.json";
+const adapter = JSON.parse(await read(adapterPath));
+adapter.dependencies[name] = version;
+await save(adapterPath, `${JSON.stringify(adapter, null, 2)}\n`);
 for (const relative of [
   ".codex-plugin/plugin.json",
   ".mcp.json",

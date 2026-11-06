@@ -1,0 +1,57 @@
+{
+  "name": "tripo-studio-deepseek",
+  "version": "0.1.0-preview.1",
+  "description": "Tripo Studio tools, configuration cards and embedded 3D workbench for DeepSeek Harness Web and Desktop.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrinZero/tripo-studio-plugin.git",
+    "directory": "packages/deepseek-adapter"
+  },
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": "0.2.2-rc.1"
+  },
+  "main": "./dist/host.mjs",
+  "exports": {
+    ".": "./dist/host.mjs",
+    "./client": "./dist/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/",
+    "cordis.patch.yml",
+    "skills/",
+    "README.md"
+  ],
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-tool",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  },
+  "dependencies": {
+    "tripo-studio-plugin": "0.3.14",
+    "@deepseek-ai/dsh-mcp-client": "0.2.2-rc.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh": "0.2.2-rc.1",
+    "@playwright/test": "1.57.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

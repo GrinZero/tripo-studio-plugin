@@ -1,6 +1,6 @@
 {
   "name": "tripo-studio-plugin",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "Codex plugin for Tripo Studio member-account image and 3D workflows, shared model/image asset groups, persistent headless auth, durable tasks and provenance.",
   "type": "module",
   "license": "MIT",
@@ -52,6 +52,8 @@
     "version": "node scripts/sync-version.mjs",
     "check:distribution": "node scripts/check-distribution.mjs",
     "test:package": "node scripts/test-package.mjs",
+    "test:deepseek:package": "node scripts/test-deepseek-package.mjs",
+    "test:deepseek:web": "node scripts/test-deepseek-web.mjs",
     "test": "node --test \"test/*.test.mjs\"",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix --max-warnings 0",
