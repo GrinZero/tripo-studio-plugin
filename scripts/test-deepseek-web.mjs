@@ -289,7 +289,40 @@ export function apply(ctx){
   // Use the actual production form rather than submitting through the test seam.
   const cancel = card.getByRole("button", { name: /取消|Cancel/i }).first();
   await cancel.waitFor();
-  await cancel.click();
+  // Exercise cancellation with a slow carrier so a click cannot imply completion.
+  const delayCancellation = async (route) => {
+    const body = route.request().postDataJSON();
+    if (body?.name === "tripo_ui_review" && body.arguments?.action === "cancel")
+      await new Promise((resolve) => setTimeout(resolve, 200));
+    await route.continue();
+  };
+  await page.route("**/api/tripo-studio", delayCancellation);
+  const [cancelResponse] = await Promise.all([
+    page.waitForResponse((response) => {
+      const request = response.request();
+      if (
+        new URL(response.url()).pathname !== "/api/tripo-studio" ||
+        request.method() !== "POST"
+      )
+        return false;
+      const body = request.postDataJSON();
+      return (
+        body?.action === "callTool" &&
+        body.name === "tripo_ui_review" &&
+        body.arguments?.action === "cancel" &&
+        body.arguments.review_id === review.review_id
+      );
+    }),
+    cancel.click(),
+  ]);
+  assert.equal(cancelResponse.status(), 200);
+  const cancellation = await cancelResponse.json();
+  assert.equal(
+    cancellation.structuredContent?.review?.status,
+    "canceled",
+    JSON.stringify(cancellation)
+  );
+  await page.unroute("**/api/tripo-studio", delayCancellation);
   const canceled = await invoke(
     "tripo_get_configuration_review",
     { review_id: review.review_id },
