@@ -76,6 +76,16 @@ Action 会在 Linux、macOS、Windows 上验收发布包，Release 附件与 npm
 
 市场 `main` 分支上的新版本清单与 npm 发布之间可能有短暂间隔；在对应 npm 版本发布完成前不要宣布安装／更新可用。
 
+## DeepSeek 适配包
+
+DeepSeek 使用独立的 `tripo-studio-deepseek` 包，包含 `dsh.bundle` 与 `dsh.client`，并固定依赖共享运行时。根包的 `version` 生命周期也会同步这个依赖；`build` 生成两种宿主的分发产物，`check:distribution` 验证版本及清单一致。
+
+DSH 预览版要求 Node ≥24.9。CI 的 Node 24 Linux lane 验证适配器、双进程共享任务、隔离 npm 安装和真实 Harness Web 界面；Codex 的 Node 22 启动与发布包验证保留。测试工具链的可选原生依赖不执行安装脚本，OpenTelemetry API 固定在满足 SDK peer 范围的 `1.9.0`。
+
+发布顺序为：先按现有流程发布根运行时，再发布依赖该确切版本的适配包。发布前额外执行 `pnpm run test:deepseek:package` 和 `pnpm run test:deepseek:web`。本次不增加自动发布适配包的工作流；预览包由维护者明确选择发布，原生 Desktop 与云端积分消费验证单独记录，不能用 Web 测试替代。
+
+用户接入和预览限制见 [DeepSeek 支持说明](DEEPSEEK.md)。
+
 ## 用户更新与卸载
 
 ```bash

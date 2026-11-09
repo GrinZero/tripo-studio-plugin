@@ -6,6 +6,7 @@ import { mkdir, readFile, writeFile, copyFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { browserPreviewOptions } from "./browser-build-options.mjs";
+import { buildDeepSeek } from "./build-deepseek.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const { version } = JSON.parse(
@@ -79,9 +80,11 @@ const card = await build({
   define: { __TRIPO_BUILD_INFO__: JSON.stringify(buildInfo) },
 });
 
+const deepseek = await buildDeepSeek();
+
 // Retain the licenses and notices for third-party code copied into the bundles.
 const packages = new Map();
-for (const bundle of [server, workbench, card]) {
+for (const bundle of [server, workbench, card, ...deepseek]) {
   for (const input of Object.keys(bundle.metafile.inputs)) {
     // pnpm stores transitive packages in nested node_modules directories.
     const match = [
@@ -161,12 +164,22 @@ for (const [directory, name] of [...packages].sort(
 }
 await writeFile(
   path.join(root, "dist", "THIRD_PARTY_NOTICES.txt"),
-  `Third-party code bundled with Tripo Studio for Codex\n\n${[...notices].map(([text, owners]) => `${owners.join("\n")}\n\n${text}`).join("\n\n---\n\n")}\n`
+  `Third-party code bundled with Tripo Studio\n\n${[...notices].map(([text, owners]) => `${owners.join("\n")}\n\n${text}`).join("\n\n---\n\n")}\n`
 );
 
 await writeFile(
   path.join(root, "dist", "build-info.json"),
   `${JSON.stringify(buildInfo, null, 2)}\n`
+);
+await copyFile(
+  path.join(root, "dist", "THIRD_PARTY_NOTICES.txt"),
+  path.join(
+    root,
+    "packages",
+    "deepseek-adapter",
+    "dist",
+    "THIRD_PARTY_NOTICES.txt"
+  )
 );
 console.log(
   `build: v${buildInfo.version}-${buildInfo.timestamp}, server, MCP Apps and image WASM ready (no external runtime dependencies)`

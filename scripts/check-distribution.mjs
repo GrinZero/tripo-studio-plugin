@@ -174,6 +174,40 @@ for (const relative of [
 ]) {
   await readFile(path.resolve(root, relative));
 }
+const adapter = await json("packages/deepseek-adapter/package.json");
+const adapterBuild = await json(
+  "packages/deepseek-adapter/dist/build-info.json"
+);
+assert.equal(adapter.dependencies[pkg.name], pkg.version);
+assert.equal(adapterBuild.runtime, pkg.version);
+assert.equal(adapterBuild.version, adapter.version);
+assert.equal(adapterBuild.dsh, adapter.engines.dsh);
+assert.equal(
+  adapter.dependencies["@deepseek-ai/dsh-mcp-client"],
+  adapter.engines.dsh
+);
+assert.equal(adapter.dsh.bundle.patch, "./cordis.patch.yml");
+assert.equal(adapter.dsh.client.platform, "web");
+assert.ok(
+  lock.importers["packages/deepseek-adapter"],
+  "lock the DeepSeek adapter dependencies"
+);
+const clientBundle = await readFile(
+  path.join(root, "packages/deepseek-adapter/dist/client.js"),
+  "utf8"
+);
+assert.ok(
+  clientBundle.includes(
+    `__ModuleLoader__.load({id:${JSON.stringify(adapter.name)}`
+  )
+);
+for (const relative of [
+  adapter.main,
+  adapter.exports["./client"],
+  "skills/tripo-studio/SKILL.md",
+  "dist/THIRD_PARTY_NOTICES.txt",
+])
+  await readFile(path.resolve(root, "packages/deepseek-adapter", relative));
 console.log(
   `distribution: ${pkg.name}@${pkg.version}, marketplace and MCP configuration agree`
 );

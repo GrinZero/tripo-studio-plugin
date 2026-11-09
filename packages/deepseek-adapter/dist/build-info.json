@@ -1,0 +1,5 @@
+{
+  "version": "0.1.0-preview.1",
+  "runtime": "0.3.14",
+  "dsh": "0.2.2-rc.1"
+}

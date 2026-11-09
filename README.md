@@ -12,13 +12,15 @@
 
 # Tripo Studio for Codex
 
+> **DeepSeek 预览支持**：源码新增官方 DeepSeek Harness Web / Desktop 适配包，包含内嵌配置卡和侧栏工作台。固定宿主版本、源码安装及验证范围见 [DeepSeek 支持说明](docs/DEEPSEEK.md)；Codex 安装方式不变。
+
 **你的专属独立 3D 资产工坊。在 Codex 中，用一句话开启从概念到绑定的全流程 3D 资产生产。**
 
 _Your own one-person 3D studio. Everything you need to create 3D assets with AI, right inside Codex. Bring your own Tripo Studio account._
 
 <p align="center">
   <a href="#2-安装与快速上手-quick-start"><img src="https://img.shields.io/badge/INSTALL-CODEX%20PLUGIN-000000?style=for-the-badge&logo=openai&logoColor=white" alt="Install Plugin" /></a>
-  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.13-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
+  <a href="https://www.npmjs.com/package/tripo-studio-plugin"><img src="https://img.shields.io/badge/NPM-v0.3.14-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM Package" /></a>
   <a href="https://github.com/GrinZero/tripo-studio-plugin"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" /></a>
   <a href="#3-完整工具矩阵与功能清单-68-mcp-tools"><img src="https://img.shields.io/badge/DOCS-68%20TOOLS-2563EB?style=for-the-badge" alt="68 Tools" /></a>
 </p>

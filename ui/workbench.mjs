@@ -14,7 +14,7 @@ import {
   applyDocumentTheme,
   applyHostStyleVariables,
 } from "@modelcontextprotocol/ext-apps";
-import { OpenAIExtensions } from "@openai/mcp-extensions/app";
+import { installHostExtensions } from "./host-capabilities.mjs";
 import { HostInfoTransport, isCodexHost } from "./host-layout.mjs";
 import { mountModel } from "./viewer.mjs";
 import {
@@ -209,7 +209,7 @@ const app = new App(
   {},
   { autoResize: true }
 );
-new OpenAIExtensions(app);
+installHostExtensions(app);
 const reloadState = window.__TRIPO_RELOAD_STATE__;
 if (reloadState) Object.assign(state, reloadState);
 let restoringReload = !!reloadState;
@@ -2927,9 +2927,7 @@ window.addEventListener("pagehide", () => {
   renderAssets();
   try {
     if (window.parent === window)
-      throw Error(
-        tr("请从 Codex 的 Tripo 工作台入口打开，此页面需要宿主连接。")
-      );
+      throw Error(tr("请从 Tripo 工作台入口打开，此页面需要宿主连接。"));
     await app.connect(
       new HostInfoTransport(window.parent, (info) => {
         hostInfo = info;

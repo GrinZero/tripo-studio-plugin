@@ -6,6 +6,7 @@ import globals from "globals";
 export default defineConfig([
   globalIgnores([
     "dist/**",
+    "packages/*/dist/**",
     "node_modules/**",
     "artifacts/**",
     "output/**",
@@ -41,18 +42,24 @@ export default defineConfig([
       "test/helpers/*.mjs",
       "test/browser/*server.mjs",
       "*.config.mjs",
+      "packages/*/src/host.mjs",
+      "packages/*/src/broker.mjs",
     ],
     languageOptions: { globals: globals.node },
   },
   {
-    files: ["ui/**/*.{js,mjs}", "test/browser/i18n-host.mjs"],
+    files: [
+      "ui/**/*.{js,mjs}",
+      "packages/*/src/client.mjs",
+      "test/browser/i18n-host.mjs",
+    ],
     languageOptions: {
       globals: { ...globals.browser, __TRIPO_BUILD_INFO__: "readonly" },
     },
   },
   {
     // Playwright snippets run in Node and evaluate callbacks inside the browser.
-    files: ["test/browser/*.js"],
+    files: ["test/browser/*.js", "scripts/test-deepseek-web.mjs"],
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
   },
   prettier,

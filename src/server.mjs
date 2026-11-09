@@ -127,7 +127,7 @@ async function main() {
         ),
       };
     });
-  new OpenAIExtensions(server);
+  if (process.env.TRIPO_HOST !== "deepseek") new OpenAIExtensions(server);
   const media = createWorkbenchMedia(runtime);
   registerWorkbenchMedia(server, media);
   const assetLibrary = new AssetLibrary({ ...runtime, media });
@@ -219,13 +219,18 @@ async function main() {
 
   // Data tools must not replace the user's current preview. Only creation
   // cards and the explicit presentation tool opt into a UI resource.
-  const tool = (name, { card = false, visibility, ...meta }, handler) =>
+  const tool = (
+    name,
+    { card = false, configuration = false, visibility, ...meta },
+    handler
+  ) =>
     registerAppTool(
       server,
       name,
       {
         ...meta,
         _meta: {
+          tripo: { requires_configuration_ui: configuration },
           ui: {
             ...(card ? { resourceUri: RESULT_CARD_RESOURCE_URI } : {}),
             visibility:
@@ -731,6 +736,7 @@ async function main() {
       toolName,
       {
         card: kind !== "local.inspect_parts",
+        configuration: kind !== "local.inspect_parts",
         description: `${operation.description}${operation.consumesCredits ? " Consumes Studio credits." : ""}${kind === "local.inspect_parts" ? "" : " Always opens an editable configuration form. Submit through the form: 60 seconds after card creation if parameters remain unchanged, including collapsed cards and background sessions; actual parameter changes pause it, while focus, clicks and preview inspection do not. Saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode."} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
         inputSchema: inputShape,
       },

@@ -89806,7 +89806,7 @@ function errorSnapshot(error113) {
 
 // src/constants.mjs
 var SERVER_NAME = "tripo-studio-plugin";
-var SERVER_VERSION = "0.3.13";
+var SERVER_VERSION = "0.3.14";
 var STUDIO_ORIGIN = "https://studio.tripo3d.ai";
 var STUDIO_API_BASE_URL = "https://api.tripo3d.ai";
 var STUDIO_WORKSPACE_URL = `${STUDIO_ORIGIN}/workspace/generate`;
@@ -104364,28 +104364,32 @@ var OperationService = class {
     const store = this.#ctx.store;
     let recovered = 0;
     for (const task of await store.listDispatching()) {
-      await store.update(task.task_id, (record3) => {
-        if (record3.dispatch_state === "dispatching" && !record3.remote) {
-          const local2 = getOperation(record3.kind).category === "local";
-          record3.status = local2 ? "failed" : "outcome_unknown";
-          record3.dispatch_state = local2 ? "rejected" : "outcome_unknown";
-          record3.error = errorSnapshot(
-            new TripoError(
-              local2 ? "LOCAL_INTERRUPTED" : "OUTCOME_UNKNOWN",
-              local2 ? "The local operation was interrupted. Its input snapshots remain intact; stage a new task to run again." : "The previous request crossed the durable dispatch boundary; reconcile it instead of resubmitting.",
-              { stage: "task_recovery" }
-            )
-          );
-          record3.events.push(
-            event(
-              local2 ? "recovery.local_interrupted" : "recovery.outcome_unknown"
-            )
-          );
-        }
-        return record3;
-      }).catch(() => {
+      await this.#submissionLock.withLock(
+        `submit-${task.task_id}`,
+        () => store.update(task.task_id, (record3) => {
+          if (record3.dispatch_state === "dispatching" && !record3.remote) {
+            const local2 = getOperation(record3.kind).category === "local";
+            record3.status = local2 ? "failed" : "outcome_unknown";
+            record3.dispatch_state = local2 ? "rejected" : "outcome_unknown";
+            record3.error = errorSnapshot(
+              new TripoError(
+                local2 ? "LOCAL_INTERRUPTED" : "OUTCOME_UNKNOWN",
+                local2 ? "The local operation was interrupted. Its input snapshots remain intact; stage a new task to run again." : "The previous request crossed the durable dispatch boundary; reconcile it instead of resubmitting.",
+                { stage: "task_recovery" }
+              )
+            );
+            record3.events.push(
+              event(
+                local2 ? "recovery.local_interrupted" : "recovery.outcome_unknown"
+              )
+            );
+            recovered += 1;
+          }
+          return record3;
+        }),
+        { timeoutMs: 100, staleMs: 60 * 60 * 1e3 }
+      ).catch(() => {
       });
-      recovered += 1;
     }
     return recovered;
   }
@@ -104396,7 +104400,20 @@ var OperationService = class {
         () => this.#prepare(kind, input2, options),
         { staleMs: 60 * 60 * 1e3 }
       );
-    return this.#prepare(kind, input2, options);
+    const operation2 = getOperation(kind);
+    const validated = external_exports.object({ ...operation2.inputShape, ...taskContextShape }).strict().parse(input2);
+    const { character_name, parent_task_id, ...normalized } = validated;
+    const account = operation2.category === "local" ? "local" : await this.#ctx.session.accountFingerprint();
+    const identity = hashObject({
+      account_fingerprint: account,
+      kind,
+      input: stripSubmitFlag(normalized)
+    });
+    return this.#submissionLock.withLock(
+      `prepare-${identity.slice(0, 48)}`,
+      () => this.#prepare(kind, validated, options),
+      { timeoutMs: 18e4, staleMs: 60 * 60 * 1e3 }
+    );
   }
   async #prepare(kind, input2, options) {
     const operation2 = getOperation(kind);
@@ -109288,7 +109305,7 @@ async function main() {
       )
     };
   });
-  new OpenAIExtensions(server);
+  if (process.env.TRIPO_HOST !== "deepseek") new OpenAIExtensions(server);
   const media = createWorkbenchMedia(runtime);
   registerWorkbenchMedia(server, media);
   const assetLibrary = new AssetLibrary({ ...runtime, media });
@@ -109367,12 +109384,13 @@ async function main() {
       }
     }
   );
-  const tool = (name, { card = false, visibility, ...meta5 }, handler) => K3(
+  const tool = (name, { card = false, configuration = false, visibility, ...meta5 }, handler) => K3(
     server,
     name,
     {
       ...meta5,
       _meta: {
+        tripo: { requires_configuration_ui: configuration },
         ui: {
           ...card ? { resourceUri: RESULT_CARD_RESOURCE_URI } : {},
           visibility: visibility ?? (name === "tripo_auth_import" ? ["model"] : ["model", "app"])
@@ -109798,6 +109816,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query))
       toolName,
       {
         card: kind !== "local.inspect_parts",
+        configuration: kind !== "local.inspect_parts",
         description: `${operation2.description}${operation2.consumesCredits ? " Consumes Studio credits." : ""}${kind === "local.inspect_parts" ? "" : " Always opens an editable configuration form. Submit through the form: 60 seconds after card creation if parameters remain unchanged, including collapsed cards and background sessions; actual parameter changes pause it, while focus, clicks and preview inspection do not. Saving validates/requotes and immediately submits the updated settings. After calling, follow next_action using tripo_get_configuration_review with wait_ms:60000 until submission. Pending is normal waiting, not blocked; no UI clicks or direct-submit capability are needed. No direct-submit or draft-only mode."} AI: supply character_name from the user's context for character work; reuse canonical names or parent_task_id across follow-up operations for automatic UI grouping.`,
         inputSchema: inputShape
       },
