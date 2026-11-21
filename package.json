@@ -23,6 +23,8 @@
   "files": [
     ".codex-plugin/plugin.json",
     ".mcp.json",
+    "plugin.json",
+    "mcp_config.json",
     "mcp/",
     "dist/",
     "ui/*.html",
@@ -33,6 +35,7 @@
     "docs/USAGE.md",
     "docs/CONFIGURATION.md",
     "docs/DISTRIBUTION.md",
+    "docs/ANTIGRAVITY.md",
     "docs/images/*.png",
     "TOOL_INVENTORY.md"
   ],

@@ -223,14 +223,26 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/") {
       res.setHeader("content-type", "text/html");
       return res.end(
-        `<!doctype html><meta charset="utf-8">${url.searchParams.has("layout") || url.searchParams.has("assets") ? "<style>body{margin:0}#app{height:100dvh!important;display:block}</style>" : ""}<iframe id="app" style="width:100%;height:1500px;border:0"></iframe><script type="module" src="/host.js"></script>`
+        `<!doctype html><meta charset="utf-8">${url.searchParams.has("layout") || url.searchParams.has("assets") ? "<style>body{margin:0}#app{height:100dvh!important;display:block}</style>" : ""}<iframe id="app" ${url.searchParams.get("host") === "antigravity" ? 'sandbox="allow-scripts"' : ""} style="width:100%;height:1500px;border:0"></iframe><script type="module" src="/host.js"></script>`
       );
     }
     if (["/workbench", "/card"].includes(url.pathname)) {
       res.setHeader("content-type", "text/html");
-      return res.end(
-        pages[url.pathname === "/card" ? "result-card" : "workbench"]
-      );
+      const html =
+        pages[url.pathname === "/card" ? "result-card" : "workbench"];
+      if (url.searchParams.get("host") === "antigravity") {
+        res.setHeader(
+          "content-security-policy",
+          "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src data: blob:; font-src data:; media-src data: blob:; worker-src blob:; base-uri 'none'; form-action 'none'"
+        );
+        return res.end(
+          html.replace(
+            "<script>",
+            '<script>window.__TRIPO_HOST__="antigravity";'
+          )
+        );
+      }
+      return res.end(html);
     }
     if (url.pathname === "/latest-workbench") {
       const [html, script] = await Promise.all([

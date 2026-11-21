@@ -12,6 +12,8 @@
 
 # Tripo Studio for Codex
 
+> **Antigravity / agy 预览支持。** 可通过 agy 安装 Tripo Studio 插件，并在已启用 MCP Apps 的 Antigravity App 中打开工作台。见 [Antigravity 快速上手](#25-antigravity--agy-预览)。
+
 > **DeepSeek 预览支持**：源码新增官方 DeepSeek Harness Web / Desktop 适配包，包含内嵌配置卡和侧栏工作台。固定宿主版本、源码安装及验证范围见 [DeepSeek 支持说明](docs/DEEPSEEK.md)；Codex 安装方式不变。
 
 **你的专属独立 3D 资产工坊。在 Codex 中，用一句话开启从概念到绑定的全流程 3D 资产生产。**
@@ -144,6 +146,21 @@ codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ```
 
 任务、登录会话和下载资产保存在插件安装目录之外；更新和卸载不会删除这些数据。开发者的源码 MCP 接入方式见[开发说明](CONTRIBUTING.md#本地开发)。
+
+### 2.5 Antigravity / agy 预览
+
+准备 Node.js ≥ 22、agy 和 `package.json` 指定版本的 pnpm。在包含 Antigravity 接入文件的源码目录运行以下命令。
+
+```bash
+pnpm install --frozen-lockfile
+pnpm run build
+agy plugin validate . --json
+agy plugin install .
+```
+
+安装后，在 Antigravity App 中打开 **Tripo Studio** 侧栏入口，或对 Agent 说“打开 Tripo 工作台”。工作台、配置卡和 3D 预览需要 App 启用 MCP Apps。CLI 可查询账号、资产、任务和积分报价。出现 `UI_UNAVAILABLE` 时，当前连接只能使用无需界面的工具，创建工具会在生成配置卡和启动倒计时前退出。
+
+安装验证、更新和共用数据目录见 [Antigravity 支持说明](docs/ANTIGRAVITY.md)。
 
 ---
 

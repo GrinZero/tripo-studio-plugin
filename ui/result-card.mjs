@@ -11,7 +11,10 @@ import {
   applyDocumentTheme,
   applyHostStyleVariables,
 } from "@modelcontextprotocol/ext-apps";
-import { installHostExtensions } from "./host-capabilities.mjs";
+import {
+  installHostExtensions,
+  updateModelContext,
+} from "./host-capabilities.mjs";
 import { mountModel } from "./viewer.mjs";
 import { mountConfiguration } from "./configuration-card.mjs";
 import {
@@ -367,12 +370,10 @@ async function render(result) {
       setText($("message"), () => error.message);
     }
   }
-  if (data.review)
-    app
-      .updateModelContext({
-        content: [{ type: "text", text: taskContextSummary(data) }],
-      })
-      .catch(() => {});
+  if (data.review && window.__TRIPO_HOST__ !== "antigravity")
+    void updateModelContext(app, {
+      content: [{ type: "text", text: taskContextSummary(data) }],
+    });
   if (!result.isError && data.quote) {
     setText($("message"), () => "");
     quoteView = mountQuote($("items"), data.quote, (status) => {
@@ -462,17 +463,18 @@ async function render(result) {
           });
           if (current === epoch) {
             latest = updated;
-            if (action === "edit" || action === "ready")
-              app
-                .updateModelContext({
-                  content: [
-                    {
-                      type: "text",
-                      text: taskContextSummary(updated.structuredContent),
-                    },
-                  ],
-                })
-                .catch(() => {});
+            if (
+              action === "edit" ||
+              (action === "ready" && window.__TRIPO_HOST__ !== "antigravity")
+            )
+              void updateModelContext(app, {
+                content: [
+                  {
+                    type: "text",
+                    text: taskContextSummary(updated.structuredContent),
+                  },
+                ],
+              });
             // Keep the existing fields alive while the user edits.
             if (action === "edit" || action === "ready")
               configuration?.update(updated.structuredContent.review);

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "tripo-studio",
+  "displayName": "Tripo Studio",
+  "version": "0.3.14",
+  "description": "Generate, edit, rig, animate and export images and 3D assets with your Tripo Studio member account, using an interactive asset workbench.",
+  "logo": "ui/icon.svg",
+  "suggestedPrompts": [
+    "打开 Tripo 工作台，查看已有模型和图片。",
+    "把我选中的模型和参考图加入同一个资产分组。",
+    "先估算用参考图生成 4K 贴图模型需要的积分。"
+  ],
+  "author": {
+    "name": "tripo-studio-plugin contributors"
+  },
+  "homepage": "https://github.com/GrinZero/tripo-studio-plugin",
+  "repository": "https://github.com/GrinZero/tripo-studio-plugin",
+  "license": "MIT",
+  "keywords": ["tripo", "3d", "images", "blender", "mcp"]
+}

@@ -14,11 +14,13 @@ adapter.dependencies[name] = version;
 await save(adapterPath, `${JSON.stringify(adapter, null, 2)}\n`);
 for (const relative of [
   ".codex-plugin/plugin.json",
+  "plugin.json",
   ".mcp.json",
   ".agents/plugins/marketplace.json",
 ]) {
   const doc = JSON.parse(await read(relative));
-  if (relative === ".codex-plugin/plugin.json") doc.version = version;
+  if (relative === "plugin.json" || relative.endsWith("/plugin.json"))
+    doc.version = version;
   if (relative === ".mcp.json") {
     doc.mcpServers["tripo-studio"].args = doc.mcpServers[
       "tripo-studio"

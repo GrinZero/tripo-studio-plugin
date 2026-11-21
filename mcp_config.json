@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "tripo-studio": {
+      "command": "node",
+      "args": ["${PLUGIN_ROOT}/mcp/bootstrap.mjs"],
+      "cwd": "${PLUGIN_ROOT}",
+      "env": {
+        "TRIPO_HOST": "antigravity"
+      },
+      "timeoutSeconds": 3700
+    }
+  }
+}

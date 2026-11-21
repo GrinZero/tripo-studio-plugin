@@ -5,6 +5,7 @@ import {
   registerAppResource,
   registerAppTool,
   RESOURCE_MIME_TYPE,
+  getUiCapability,
 } from "@modelcontextprotocol/ext-apps/server";
 import { OpenAIExtensions } from "@openai/mcp-extensions/server";
 import { z } from "zod";
@@ -113,21 +114,57 @@ async function main() {
     version: SERVER_VERSION,
     icons,
   });
+  const missingHostUi = () =>
+    process.env.TRIPO_HOST === "antigravity" &&
+    !getUiCapability(server.server.getClientCapabilities());
+  const requireHostUi = () => {
+    if (missingHostUi())
+      throw new TripoError(
+        "UI_UNAVAILABLE",
+        "This Antigravity connection has not enabled MCP Apps. Use an Antigravity App connection with MCP Apps support for the workbench and configuration cards. Read-only tools and quotes remain available; no new configuration or countdown was created.",
+        { stage: "configuration" }
+      );
+  };
+  // Hosts without MCP Apps can ignore visibility metadata. Keep internal App
+  // tools out of their catalog and reject direct calls before reaching handlers.
+  const appOnlyTools = new Set();
+  const registerTool = server.registerTool.bind(server);
+  server.registerTool = (name, config, handler) => {
+    if (
+      config._meta?.ui?.visibility &&
+      !config._meta.ui.visibility.includes("model")
+    )
+      appOnlyTools.add(name);
+    return registerTool(name, config, handler);
+  };
   // SDK 1.32.1 registerTool omits icons from tools/list. Decorate the public
   // handler registration so the host receives the workbench's brand mark.
   const setRequestHandler = server.server.setRequestHandler.bind(server.server);
   server.server.setRequestHandler = (schema, handler) =>
     setRequestHandler(schema, async (request, extra) => {
+      if (
+        request.method === "tools/call" &&
+        appOnlyTools.has(request.params.name)
+      ) {
+        try {
+          requireHostUi();
+        } catch (error) {
+          return fail(error);
+        }
+      }
       const result = await handler(request, extra);
       if (request.method !== "tools/list") return result;
       return {
         ...result,
-        tools: result.tools.map((tool) =>
-          tool.name === "tripo_open_workbench" ? { ...tool, icons } : tool
-        ),
+        tools: result.tools
+          .filter((tool) => !missingHostUi() || !appOnlyTools.has(tool.name))
+          .map((tool) =>
+            tool.name === "tripo_open_workbench" ? { ...tool, icons } : tool
+          ),
       };
     });
-  if (process.env.TRIPO_HOST !== "deepseek") new OpenAIExtensions(server);
+  if (!["deepseek", "antigravity"].includes(process.env.TRIPO_HOST))
+    new OpenAIExtensions(server);
   const media = createWorkbenchMedia(runtime);
   registerWorkbenchMedia(server, media);
   const assetLibrary = new AssetLibrary({ ...runtime, media });
@@ -242,6 +279,7 @@ async function main() {
       async (input) => {
         let result;
         try {
+          if (configuration) requireHostUi();
           result = await handler(input);
         } catch (error) {
           result = fail(error);
@@ -1248,6 +1286,10 @@ async function main() {
     "dist",
     "workbench.js"
   );
+  const hostScript =
+    process.env.TRIPO_HOST === "antigravity"
+      ? 'window.__TRIPO_HOST__="antigravity";'
+      : "";
   registerAppTool(
     server,
     "tripo_open_workbench",
@@ -1272,13 +1314,25 @@ async function main() {
           visibility: ["model", "app"],
         },
         "openai/ui": { entrypoints: [{ type: "global" }, { type: "thread" }] },
+        "com.google.antigravity/ui": {
+          entrypoints: [
+            { type: "aux_pane", title: "Tripo Studio" },
+            { type: "global", title: "Tripo Studio" },
+          ],
+        },
       },
     },
-    async (input) =>
-      ok(
+    async (input) => {
+      try {
+        requireHostUi();
+      } catch (error) {
+        return fail(error);
+      }
+      return ok(
         { ...input, session: await session.status() },
         "Tripo 工作台已准备就绪。"
-      )
+      );
+    }
   );
   const uiMeta = {
     ui: {
@@ -1314,7 +1368,7 @@ async function main() {
             text: html.replace(
               "<!-- WORKBENCH_SCRIPT -->",
               () =>
-                `<script>${script.replace(/<\/script/gi, "<\\/script")}</script>`
+                `<script>${hostScript}${script.replace(/<\/script/gi, "<\\/script")}</script>`
             ),
             uri: WORKBENCH_RESOURCE_URI,
             _meta: uiMeta,
@@ -1365,7 +1419,7 @@ async function main() {
             text: html.replace(
               "<!-- CARD_SCRIPT -->",
               () =>
-                `<script>${script.replace(/<\/script/gi, "<\\/script")}</script>`
+                `<script>${hostScript}${script.replace(/<\/script/gi, "<\\/script")}</script>`
             ),
             _meta: cardMeta,
           },

@@ -28,8 +28,11 @@ const packageManagerCli = process.env.npm_execpath;
 const sandbox = await mkdtemp(path.join(tmpdir(), "tripo-package-"));
 const cache = path.join(sandbox, "npm-cache");
 
-async function handshake(tarball, offline) {
-  const work = path.join(sandbox, offline ? "warm" : "cold");
+async function handshake(tarball, offline, host = "codex") {
+  const work = path.join(
+    sandbox,
+    host === "antigravity" ? "agy" : offline ? "warm" : "cold"
+  );
   await mkdir(path.join(work, "mcp"), { recursive: true });
   // Codex extracts the plugin's own package.json but does not install its deps.
   // An explicit prefix prevents npx from mistaking that manifest for an already
@@ -52,26 +55,44 @@ async function handshake(tarball, offline) {
     .map((arg) =>
       arg.startsWith("--package=") ? `--package=${tarball}` : arg
     );
-  const proc = spawn(
-    process.execPath,
-    [
-      npmCli,
-      "exec",
-      ...runtimeArgs,
-      "--no-audit",
-      "--no-fund",
-      "--cache",
+  let command = process.execPath;
+  let cwd = work;
+  let args = [
+    npmCli,
+    "exec",
+    ...runtimeArgs,
+    "--no-audit",
+    "--no-fund",
+    "--cache",
+    cache,
+    ...(offline ? ["--offline"] : []),
+    "--",
+    mcp.args.at(-1),
+  ];
+  if (host === "antigravity") {
+    const [key] = await readdir(path.join(cache, "_npx"));
+    const installedRoot = path.join(
       cache,
-      ...(offline ? ["--offline"] : []),
-      "--",
-      mcp.args.at(-1),
-    ],
-    {
-      cwd: work,
-      env,
-      stdio: ["pipe", "pipe", "pipe"],
-    }
-  );
+      "_npx",
+      key,
+      "node_modules",
+      pkg.name
+    );
+    const agy = JSON.parse(
+      await readFile(path.join(installedRoot, "mcp_config.json"), "utf8")
+    ).mcpServers["tripo-studio"];
+    command = agy.command;
+    args = agy.args.map((arg) =>
+      arg.replaceAll("${PLUGIN_ROOT}", installedRoot)
+    );
+    Object.assign(env, agy.env);
+    cwd = agy.cwd.replaceAll("${PLUGIN_ROOT}", installedRoot);
+  }
+  const proc = spawn(command, args, {
+    cwd,
+    env,
+    stdio: ["pipe", "pipe", "pipe"],
+  });
   let buffer = "",
     stderr = "",
     id = 0,
@@ -143,7 +164,16 @@ async function handshake(tarball, offline) {
   try {
     const init = await request("initialize", {
       protocolVersion: "2024-11-05",
-      capabilities: {},
+      capabilities:
+        host === "antigravity"
+          ? {
+              extensions: {
+                "io.modelcontextprotocol/ui": {
+                  mimeTypes: ["text/html;profile=mcp-app"],
+                },
+              },
+            }
+          : {},
       clientInfo: { name: "npm-package-smoke", version: "1.0.0" },
     });
     assert.equal(init.serverInfo.name, pkg.name);
@@ -232,6 +262,12 @@ async function handshake(tarball, offline) {
       (tool) => tool.name === "tripo_open_workbench"
     );
     assert.ok(workbench.icons[0].src.startsWith("data:image/png;base64,"));
+    assert.deepEqual(
+      workbench._meta["com.google.antigravity/ui"].entrypoints.map(
+        (entry) => entry.type
+      ),
+      ["aux_pane", "global"]
+    );
     const resources = (await request("resources/list", {})).resources;
     for (const uri of [
       workbench._meta.ui.resourceUri,
@@ -241,6 +277,10 @@ async function handshake(tarball, offline) {
       const resource = (await request("resources/read", { uri })).contents[0];
       assert.equal(resource.mimeType, "text/html;profile=mcp-app");
       assert.ok(resource.text.includes("ui/initialize"));
+      if (host === "antigravity")
+        assert.ok(
+          resource.text.includes('window.__TRIPO_HOST__="antigravity";')
+        );
       assert.doesNotMatch(resource.text, /<!-- (?:WORKBENCH|CARD)_SCRIPT -->/);
     }
     assert.equal(
@@ -295,7 +335,7 @@ async function handshake(tarball, offline) {
     assert.equal(preview._meta.tripo.preview.width, 8);
     assert.equal(preview._meta.tripo.preview.height, 6);
     console.log(
-      `package: ${offline ? "offline cached" : "fresh npx"} startup, 68 tools, MCP Apps and WASM image processing passed`
+      `package: ${host === "antigravity" ? "Antigravity direct Node" : offline ? "offline cached" : "fresh npx"} startup, 68 tools, MCP Apps and WASM image processing passed`
     );
   } finally {
     for (const item of pending.values()) clearTimeout(item.timer);
@@ -346,6 +386,8 @@ try {
   for (const required of [
     ".codex-plugin/plugin.json",
     ".mcp.json",
+    "plugin.json",
+    "mcp_config.json",
     "mcp/bootstrap.mjs",
     "dist/server.mjs",
     "dist/magick.wasm",
@@ -358,6 +400,8 @@ try {
     "scripts/blender-worker.py",
     "skills/tripo-studio/SKILL.md",
     "skills/tripo-studio/references/asset-groups.md",
+    "skills/tripo-studio/references/operations.md",
+    "docs/ANTIGRAVITY.md",
     "docs/DISTRIBUTION.md",
   ])
     assert.ok(files.has(required), `tarball is missing ${required}`);
@@ -369,6 +413,7 @@ try {
   const tarball = path.resolve(artifactDir, packed.filename);
   await handshake(tarball, false);
   await handshake(tarball, true);
+  await handshake(tarball, true, "antigravity");
   console.log(
     `package: verified ${path.basename(tarball)} (${(await stat(tarball)).size} bytes, ${files.size} files)`
   );

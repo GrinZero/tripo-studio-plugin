@@ -12,6 +12,8 @@
 
 # Tripo Studio for Codex
 
+> **Antigravity / agy プレビュー。** agy で Tripo Studio プラグインをインストールし、MCP Apps が有効な Antigravity アプリでワークベンチを開けます。[Antigravity クイックスタート（英語）](README.en.md#25-antigravity--agy-preview)
+
 **あなた専属の独立系 3D スタジオ。Codex 内の自然言語ひとつで、コンセプトからリギングまで全自動 3D 制作。**
 
 _Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language._

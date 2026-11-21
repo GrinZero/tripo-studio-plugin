@@ -5,11 +5,12 @@ import {
 import { McpUiInitializeResultSchema } from "@modelcontextprotocol/ext-apps";
 const params = new URLSearchParams(location.search),
   iframe = document.getElementById("app");
+const antigravity = params.get("host") === "antigravity";
 const context = () => ({
   locale: params.get("locale") ?? "ja-JP",
   theme: params.get("theme") ?? "light",
   displayMode: "inline",
-  availableDisplayModes: ["inline", "fullscreen"],
+  availableDisplayModes: antigravity ? ["inline"] : ["inline", "fullscreen"],
   ...(params.get("codex") === "normalized"
     ? {
         userAgent: "chatgpt",
@@ -38,7 +39,10 @@ const bridge = new AppBridge(
     ? params.get("codex") === "normalized"
       ? normalizedInfo
       : codexInfo
-    : { name: "I18n test host", version: "1" },
+    : {
+        name: antigravity ? "Antigravity test host" : "I18n test host",
+        version: "1",
+      },
   { serverTools: {}, logging: {} },
   {
     hostContext: context(),
@@ -99,4 +103,6 @@ if (params.has("layout") || params.has("assets"))
 await bridge.connect(
   new PostMessageTransport(iframe.contentWindow, iframe.contentWindow)
 );
-iframe.src = params.get("card") ? "/card" : "/workbench";
+iframe.src =
+  (params.get("card") ? "/card" : "/workbench") +
+  (antigravity ? "?host=antigravity" : "");

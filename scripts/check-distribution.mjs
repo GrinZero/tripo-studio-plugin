@@ -45,6 +45,29 @@ assert.ok(
   "preview cards must show the recorded build marker; run pnpm run build"
 );
 const plugin = await json(".codex-plugin/plugin.json");
+const antigravity = await json("plugin.json");
+const agyMcp = (await json("mcp_config.json")).mcpServers["tripo-studio"];
+assert.equal(antigravity.version, pkg.version);
+assert.equal(antigravity.name, "tripo-studio");
+assert.equal(agyMcp.command, "node");
+assert.deepEqual(agyMcp.args, ["${PLUGIN_ROOT}/mcp/bootstrap.mjs"]);
+assert.equal(agyMcp.cwd, "${PLUGIN_ROOT}");
+assert.equal(agyMcp.env.TRIPO_HOST, "antigravity");
+assert.ok(agyMcp.timeoutSeconds >= 3700);
+assert.equal(
+  agyMcp.env.TRIPO_PLUGIN_DATA_DIR,
+  undefined,
+  "AGY must retain the existing shared account/task directory by default"
+);
+const sharedSkill = await readFile(
+  path.join(root, "skills/tripo-studio/SKILL.md"),
+  "utf8"
+);
+assert.ok(
+  Buffer.byteLength(sharedSkill) < 24000,
+  "keep the skill below Antigravity's loading limit; move detail into references"
+);
+await readFile(path.resolve(root, antigravity.logo));
 const lockDocuments = parseAllDocuments(
   await readFile(path.join(root, "pnpm-lock.yaml"), "utf8")
 );

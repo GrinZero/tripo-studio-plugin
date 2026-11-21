@@ -73720,6 +73720,11 @@ function K3(Z, $, J, X) {
 function N3(Z, $, J, X, V) {
   return Z.registerResource($, J, { mimeType: p, ...X }, V);
 }
+var TQ = "io.modelcontextprotocol/ui";
+function Y3(Z) {
+  if (!Z) return;
+  return Z.extensions?.[TQ];
+}
 
 // node_modules/.pnpm/zod@4.4.3/node_modules/zod/v4/classic/external.js
 var external_exports2 = {};
@@ -109294,18 +109299,42 @@ async function main() {
     version: SERVER_VERSION,
     icons
   });
+  const missingHostUi = () => process.env.TRIPO_HOST === "antigravity" && !Y3(server.server.getClientCapabilities());
+  const requireHostUi = () => {
+    if (missingHostUi())
+      throw new TripoError(
+        "UI_UNAVAILABLE",
+        "This Antigravity connection has not enabled MCP Apps. Use an Antigravity App connection with MCP Apps support for the workbench and configuration cards. Read-only tools and quotes remain available; no new configuration or countdown was created.",
+        { stage: "configuration" }
+      );
+  };
+  const appOnlyTools = /* @__PURE__ */ new Set();
+  const registerTool = server.registerTool.bind(server);
+  server.registerTool = (name, config4, handler) => {
+    if (config4._meta?.ui?.visibility && !config4._meta.ui.visibility.includes("model"))
+      appOnlyTools.add(name);
+    return registerTool(name, config4, handler);
+  };
   const setRequestHandler = server.server.setRequestHandler.bind(server.server);
   server.server.setRequestHandler = (schema, handler) => setRequestHandler(schema, async (request, extra) => {
+    if (request.method === "tools/call" && appOnlyTools.has(request.params.name)) {
+      try {
+        requireHostUi();
+      } catch (error113) {
+        return fail2(error113);
+      }
+    }
     const result = await handler(request, extra);
     if (request.method !== "tools/list") return result;
     return {
       ...result,
-      tools: result.tools.map(
+      tools: result.tools.filter((tool2) => !missingHostUi() || !appOnlyTools.has(tool2.name)).map(
         (tool2) => tool2.name === "tripo_open_workbench" ? { ...tool2, icons } : tool2
       )
     };
   });
-  if (process.env.TRIPO_HOST !== "deepseek") new OpenAIExtensions(server);
+  if (!["deepseek", "antigravity"].includes(process.env.TRIPO_HOST))
+    new OpenAIExtensions(server);
   const media = createWorkbenchMedia(runtime);
   registerWorkbenchMedia(server, media);
   const assetLibrary = new AssetLibrary({ ...runtime, media });
@@ -109400,6 +109429,7 @@ async function main() {
     async (input2) => {
       let result;
       try {
+        if (configuration) requireHostUi();
         result = await handler(input2);
       } catch (error113) {
         result = fail2(error113);
@@ -110236,6 +110266,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query))
     "dist",
     "workbench.js"
   );
+  const hostScript = process.env.TRIPO_HOST === "antigravity" ? 'window.__TRIPO_HOST__="antigravity";' : "";
   K3(
     server,
     "tripo_open_workbench",
@@ -110258,13 +110289,26 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query))
           resourceUri: WORKBENCH_RESOURCE_URI,
           visibility: ["model", "app"]
         },
-        "openai/ui": { entrypoints: [{ type: "global" }, { type: "thread" }] }
+        "openai/ui": { entrypoints: [{ type: "global" }, { type: "thread" }] },
+        "com.google.antigravity/ui": {
+          entrypoints: [
+            { type: "aux_pane", title: "Tripo Studio" },
+            { type: "global", title: "Tripo Studio" }
+          ]
+        }
       }
     },
-    async (input2) => ok(
-      { ...input2, session: await session.status() },
-      "Tripo \u5DE5\u4F5C\u53F0\u5DF2\u51C6\u5907\u5C31\u7EEA\u3002"
-    )
+    async (input2) => {
+      try {
+        requireHostUi();
+      } catch (error113) {
+        return fail2(error113);
+      }
+      return ok(
+        { ...input2, session: await session.status() },
+        "Tripo \u5DE5\u4F5C\u53F0\u5DF2\u51C6\u5907\u5C31\u7EEA\u3002"
+      );
+    }
   );
   const uiMeta = {
     ui: {
@@ -110299,7 +110343,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query))
             mimeType: p,
             text: html.replace(
               "<!-- WORKBENCH_SCRIPT -->",
-              () => `<script>${script.replace(/<\/script/gi, "<\\/script")}</script>`
+              () => `<script>${hostScript}${script.replace(/<\/script/gi, "<\\/script")}</script>`
             ),
             uri: WORKBENCH_RESOURCE_URI,
             _meta: uiMeta
@@ -110348,7 +110392,7 @@ ${template.tag.join("\n")}`.toLowerCase().includes(query))
             mimeType: p,
             text: html.replace(
               "<!-- CARD_SCRIPT -->",
-              () => `<script>${script.replace(/<\/script/gi, "<\\/script")}</script>`
+              () => `<script>${hostScript}${script.replace(/<\/script/gi, "<\\/script")}</script>`
             ),
             _meta: cardMeta
           }

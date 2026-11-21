@@ -12,6 +12,8 @@
 
 # Tripo Studio for Codex
 
+> **Antigravity / agy 預覽支援。** 可透過 agy 安裝 Tripo Studio 外掛，並在已啟用 MCP Apps 的 Antigravity App 開啟工作台。請參閱 [Antigravity 快速上手](README.md#25-antigravity--agy-预览)。
+
 **你的專屬獨立 3D 資產工坊。在 Codex 中，用一句話開啟從概念到綁定的全流程 3D 資產製作。**
 
 _Your own one-person 3D studio. Everything you need to create 3D assets with AI, right inside Codex. Bring your own Tripo Studio account._

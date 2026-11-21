@@ -12,6 +12,8 @@
 
 # Tripo Studio for Codex
 
+> **Antigravity / agy preview.** Install Tripo Studio with agy and open the workbench in the Antigravity app with MCP Apps enabled. See the [Antigravity quick start](#25-antigravity--agy-preview).
+
 > **DeepSeek preview:** This repository also includes an adapter for official DeepSeek Harness Web / Desktop with embedded configuration cards and a sidebar workbench. See [setup and verification limits](docs/DEEPSEEK.md). Codex installation is unchanged.
 
 **Your own one-person 3D studio. Create, sculpt, rig, and export 3D assets inside Codex with natural language.**
@@ -140,6 +142,21 @@ To uninstall:
 ```bash
 codex plugin remove tripo-studio-plugin@tripo-studio-plugins
 ```
+
+### 2.5 Antigravity / agy Preview
+
+Use Node.js ≥ 22, agy, and the pnpm version pinned in `package.json`. Run these commands from a source checkout that includes the Antigravity plugin files.
+
+```bash
+pnpm install --frozen-lockfile
+pnpm run build
+agy plugin validate . --json
+agy plugin install .
+```
+
+In the Antigravity app, open **Tripo Studio** from the sidebar or ask the agent to “Open Tripo workbench.” The workbench, configuration cards, and 3D previews require MCP Apps to be enabled. The CLI supports account, asset, task, and credit quote lookups. If you see `UI_UNAVAILABLE`, the connection can use tools that work without a UI. Creation tools stop before opening a configuration card or starting a countdown.
+
+See the [Antigravity guide](docs/ANTIGRAVITY.md) for installation checks, updates, and shared data paths.
 
 ---
 
